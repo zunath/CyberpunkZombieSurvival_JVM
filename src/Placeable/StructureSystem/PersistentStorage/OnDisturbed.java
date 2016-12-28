@@ -1,4 +1,4 @@
-package Placeable.StructureSystem;
+package Placeable.StructureSystem.PersistentStorage;
 
 import Entities.PCTerritoryFlagStructureEntity;
 import Entities.PCTerritoryFlagStructureItemEntity;
@@ -11,7 +11,7 @@ import org.nwnx.nwnx2.jvm.SCORCO;
 import org.nwnx.nwnx2.jvm.Scheduler;
 
 @SuppressWarnings("unused")
-public class PersistentStorage_OnDisturbed implements IScriptEventHandler {
+public class OnDisturbed implements IScriptEventHandler {
     @Override
     public void runScript(NWObject objSelf) {
         final NWObject oPC = NWScript.getLastDisturbed();

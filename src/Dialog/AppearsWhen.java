@@ -61,7 +61,7 @@ public class AppearsWhen implements IScriptEventHandler {
             {
                 try
                 {
-                    Class scriptClass = Class.forName("contagionJVM.Dialog.Conversation_" + dialog.getActiveDialogName());
+                    Class scriptClass = Class.forName("Conversation." + dialog.getActiveDialogName());
                     IDialogHandler script = (IDialogHandler)scriptClass.newInstance();
                     script.Initialize();
                     NWScript.setLocalInt(oPC, "DIALOG_SYSTEM_INITIALIZE_RAN", 1);
@@ -75,7 +75,7 @@ public class AppearsWhen implements IScriptEventHandler {
             if(dialog.isEnding())
             {
                 try {
-                    Class scriptClass = Class.forName("contagionJVM.Dialog.Conversation_" + dialog.getActiveDialogName());
+                    Class scriptClass = Class.forName("Conversation." + dialog.getActiveDialogName());
                     IDialogHandler script = (IDialogHandler)scriptClass.newInstance();
                     script.EndDialog();
                     DialogManager.removePlayerDialog(pcGO.getUUID());
@@ -85,19 +85,19 @@ public class AppearsWhen implements IScriptEventHandler {
                 }
 
                 NWScript.deleteLocalInt(oPC, "DIALOG_SYSTEM_INITIALIZE_RAN");
-                NWScript.setLocalInt(oNPC, "REO_CONVERSATION_SHOW_NODE", 0);
+                NWScript.setLocalInt(oNPC, "CONVERSATION_SHOW_NODE", 0);
                 return;
             }
 
             page = dialog.getCurrentPage();
             newNodeText = page.getHeader();
             NWScript.setCustomToken(90000, newNodeText);
-            NWScript.setLocalInt(oNPC, "REO_CONVERSATION_SHOW_NODE", 1);
+            NWScript.setLocalInt(oNPC, "CONVERSATION_SHOW_NODE", 1);
             return;
         }
 
         NWScript.setCustomToken(90001 + nodeID, newNodeText);
-        NWScript.setLocalInt(oNPC, "REO_CONVERSATION_SHOW_NODE", displayNode ? 1 : 0);
+        NWScript.setLocalInt(oNPC, "CONVERSATION_SHOW_NODE", displayNode ? 1 : 0);
 
     }
 }

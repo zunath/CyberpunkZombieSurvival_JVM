@@ -5,9 +5,9 @@ import GameSystems.SearchSystem;
 import org.nwnx.nwnx2.jvm.NWObject;
 
 @SuppressWarnings("UnusedDeclaration")
-public class SearchContainer_OnOpened implements IScriptEventHandler {
+public class OnClosed implements IScriptEventHandler {
     @Override
     public void runScript(NWObject objSelf) {
-        SearchSystem.OnChestOpen(objSelf);
+        SearchSystem.OnChestClose(objSelf);
     }
 }

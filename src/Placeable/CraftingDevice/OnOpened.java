@@ -8,7 +8,7 @@ import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 
 @SuppressWarnings("unused")
-public class CraftingDevice_OnOpened implements IScriptEventHandler {
+public class OnOpened implements IScriptEventHandler {
     @Override
     public void runScript(NWObject device) {
         NWObject oPC = NWScript.getLastOpenedBy();

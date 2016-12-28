@@ -25,6 +25,8 @@ public class AreaInstanceSystem {
 
     private static void DuplicateAreas()
     {
+        if(instanceList == null) return;
+
         for(AreaInstanceModel model : instanceList)
         {
             for(int x = 1; x <= model.getInstanceCount(); x++)

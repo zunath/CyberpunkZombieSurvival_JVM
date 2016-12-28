@@ -11,7 +11,7 @@ import org.nwnx.nwnx2.jvm.SCORCO;
 import java.util.List;
 
 @SuppressWarnings("unused")
-public class OverflowStorage_OnOpened implements IScriptEventHandler {
+public class OnOpened implements IScriptEventHandler {
     @Override
     public void runScript(NWObject objSelf) {
         NWObject oPC = NWScript.getLastOpenedBy();

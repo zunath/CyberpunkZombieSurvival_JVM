@@ -55,7 +55,7 @@ public class DialogManager {
             throws ClassNotFoundException, IllegalAccessException, InstantiationException
     {
         PlayerGO pcGO = new PlayerGO(oPC);
-        Class scriptClass = Class.forName("contagionJVM.Dialog.Conversation_" + conversationName);
+        Class scriptClass = Class.forName("Conversation." + conversationName);
         IDialogHandler script = (IDialogHandler)scriptClass.newInstance();
         PlayerDialog dialog = script.SetUp(oPC);
         dialog.setActiveDialogName(conversationName);
@@ -72,12 +72,12 @@ public class DialogManager {
             Scheduler.assign(oPC, new Runnable() {
                 @Override
                 public void run() {
-                    NWScript.actionStartConversation(oTalkTo, "reo_dialog", true, false);
+                    NWScript.actionStartConversation(oTalkTo, "dialog", true, false);
                 }
             });
         }
         catch(Exception ex) {
-            ErrorHelper.HandleException(ex, "DialogStart was unable to execute class method: contagionJVM.Dialog.Conversation_" + conversationName + ".Initialize()");
+            ErrorHelper.HandleException(ex, "DialogStart was unable to execute class method: Conversation." + conversationName + ".Initialize()");
         }
     }
 

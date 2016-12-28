@@ -1,7 +1,9 @@
 package Event.Module;
 
 import Common.Constants;
+import Data.Repository.ServerConfigurationRepository;
 import Entities.PlayerEntity;
+import Entities.ServerConfigurationEntity;
 import Helper.ColorToken;
 import GameObject.PlayerGO;
 import Common.IScriptEventHandler;
@@ -54,11 +56,9 @@ public class OnClientEnter implements IScriptEventHandler {
         PlayerGO pcGO = new PlayerGO(oPC);
         NWObject oDatabase = pcGO.GetDatabaseItem();
 
-        if(NWScript.getIsDM(oPC) || NWScript.getLocalInt(oDatabase, "MIGRATED_TO_OAL") == 1) return;
         boolean missingStringID = NWScript.getLocalString(oDatabase, Constants.PCIDNumberVariable).equals("");
-        boolean missingIntegerID = NWScript.getLocalInt(oDatabase, Constants.PCIDNumberVariable) <= 0;
 
-        if(oDatabase == NWObject.INVALID || (missingStringID && missingIntegerID))
+        if(oDatabase == NWObject.INVALID || missingStringID)
         {
             pcGO.destroyAllEquippedItems();
             pcGO.destroyAllInventoryItems(true);
@@ -99,7 +99,6 @@ public class OnClientEnter implements IScriptEventHandler {
 
             ProgressionSystem.InitializePlayer(oPC);
             NWNX_Funcs.SetRawQuickBarSlot(oPC, "1 4 0 1116 0");
-            NWScript.setLocalInt(oDatabase, "MIGRATED_TO_OAL", 1);
             Scheduler.delay(oPC, 1000, new Runnable() {
                 @Override
                 public void run() {
@@ -111,9 +110,10 @@ public class OnClientEnter implements IScriptEventHandler {
 
     private void ShowMOTD()
     {
+        ServerConfigurationEntity config = ServerConfigurationRepository.GetServerConfiguration();
+
         final NWObject oPC = NWScript.getEnteringObject();
-        final String sMOTD = NWScript.getLocalString(NWObject.MODULE, "MOTD");
-        final String message = ColorToken.Green() + "Welcome to Outbreak: After Life!\n\nMOTD:" + ColorToken.White() +  sMOTD + ColorToken.End();
+        final String message = ColorToken.Green() + "Welcome to " + config.getServerName() + "!\n\nMOTD:" + ColorToken.White() +  config.getMessageOfTheDay() + ColorToken.End();
 
         Scheduler.delay(oPC, 6500, new Runnable() {
             @Override

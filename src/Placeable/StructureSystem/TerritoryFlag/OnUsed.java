@@ -1,4 +1,4 @@
-package Placeable.StructureSystem;
+package Placeable.StructureSystem.TerritoryFlag;
 
 import Dialog.DialogManager;
 import Entities.PCTerritoryFlagEntity;
@@ -10,7 +10,7 @@ import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 
 @SuppressWarnings("unused")
-public class TerritoryFlag_OnUsed implements IScriptEventHandler {
+public class OnUsed implements IScriptEventHandler {
     @Override
     public void runScript(NWObject site) {
         NWObject oPC = NWScript.getLastUsedBy();

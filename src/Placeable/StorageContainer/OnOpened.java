@@ -5,9 +5,9 @@ import GameSystems.StorageSystem;
 import org.nwnx.nwnx2.jvm.NWObject;
 
 @SuppressWarnings("unused")
-public class StorageContainer_OnDisturbed implements IScriptEventHandler {
+public class OnOpened implements IScriptEventHandler {
     @Override
     public void runScript(NWObject oChest) {
-        StorageSystem.OnChestDisturbed(oChest);
+        StorageSystem.OnChestOpened(oChest);
     }
 }

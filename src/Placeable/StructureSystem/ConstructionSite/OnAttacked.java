@@ -1,4 +1,4 @@
-package Placeable.StructureSystem;
+package Placeable.StructureSystem.ConstructionSite;
 
 
 import Entities.ConstructionSiteEntity;
@@ -12,7 +12,7 @@ import org.nwnx.nwnx2.jvm.constants.BaseItem;
 import org.nwnx.nwnx2.jvm.constants.InventorySlot;
 
 @SuppressWarnings("unused")
-public class ConstructionSite_OnAttacked implements IScriptEventHandler {
+public class OnAttacked implements IScriptEventHandler {
     @Override
     public void runScript(NWObject oSite) {
 

@@ -5,6 +5,7 @@ import Data.Repository.PlayerRepository;
 import Dialog.DialogManager;
 import Entities.PlayerEntity;
 import GameObject.PlayerGO;
+import Helper.ScriptHelper;
 import NWNX.NWNX_Events;
 import org.nwnx.nwnx2.jvm.NWLocation;
 import org.nwnx.nwnx2.jvm.NWObject;
@@ -19,19 +20,23 @@ public class OmniTool implements IScriptEventHandler {
 
         if(castSpellType == 0)
         {
-            HandleAutoFollow(oPC);
+            HandleCheckInfectionLevel(oPC);
         }
         else if(castSpellType == 1)
         {
-            HandleOpenRestMenu(oPC);
+            HandleAutoFollow(oPC);
         }
         else if(castSpellType == 2)
         {
-            HandleUseStructureTool(oPC);
+            HandleOpenRestMenu(oPC);
         }
         else if (castSpellType == 3)
         {
-            HandleCheckInfectionLevel(oPC);
+            HandleReloadWeapon(oPC);
+        }
+        else if(castSpellType == 4)
+        {
+            HandleUseStructureTool(oPC);
         }
 
     }
@@ -152,6 +157,11 @@ public class OmniTool implements IScriptEventHandler {
 
 
         NWScript.sendMessageToPC(oPC, name + ": " + message);
+    }
+
+    private void HandleReloadWeapon(NWObject oPC)
+    {
+        ScriptHelper.RunJavaScript(oPC, "Feat.ReloadGun");
     }
 
 }

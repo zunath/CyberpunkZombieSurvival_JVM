@@ -14,7 +14,5 @@ public class OnPlayerChat implements IScriptEventHandler {
 	@Override
 	public void runScript(final NWObject objSelf) {
 
-		// Housing GameSystems
-		NWScript.executeScript("rhs_mod_chat", objSelf);
 	}
 }

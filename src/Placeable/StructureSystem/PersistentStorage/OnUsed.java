@@ -1,4 +1,4 @@
-package Placeable.StructureSystem;
+package Placeable.StructureSystem.PersistentStorage;
 
 import Dialog.DialogManager;
 import Entities.PCTerritoryFlagStructureEntity;
@@ -10,7 +10,7 @@ import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 
 @SuppressWarnings("unused")
-public class PersistentStorage_OnUsed implements IScriptEventHandler {
+public class OnUsed implements IScriptEventHandler {
     @Override
     public void runScript(NWObject objSelf) {
         NWObject oPC = NWScript.getLastUsedBy();

@@ -1,4 +1,4 @@
-package Placeable.StructureSystem;
+package Placeable.StructureSystem.PersistentStorage;
 
 import Entities.PCTerritoryFlagStructureEntity;
 import Entities.PCTerritoryFlagStructureItemEntity;
@@ -10,7 +10,7 @@ import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.SCORCO;
 
 @SuppressWarnings("unused")
-public class PersistentStorage_OnOpened implements IScriptEventHandler {
+public class OnOpened implements IScriptEventHandler {
     @Override
     public void runScript(NWObject chest) {
         NWObject oPC = NWScript.getLastOpenedBy();

@@ -15,7 +15,7 @@ public class DialogEnd implements IScriptEventHandler {
         PlayerDialog dialog = DialogManager.loadPlayerDialog(pcGO.getUUID());
 
         try {
-            Class scriptClass = Class.forName("contagionJVM.Dialog.Conversation_" + dialog.getActiveDialogName());
+            Class scriptClass = Class.forName("Conversation." + dialog.getActiveDialogName());
             IDialogHandler script = (IDialogHandler)scriptClass.newInstance();
             script.EndDialog();
             DialogManager.removePlayerDialog(pcGO.getUUID());
@@ -25,6 +25,6 @@ public class DialogEnd implements IScriptEventHandler {
         }
 
         NWScript.deleteLocalInt(oPC, "DIALOG_SYSTEM_INITIALIZE_RAN");
-        NWScript.setLocalInt(oNPC, "REO_CONVERSATION_SHOW_NODE", 0);
+        NWScript.setLocalInt(oNPC, "CONVERSATION_SHOW_NODE", 0);
     }
 }

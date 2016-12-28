@@ -138,61 +138,6 @@ public class MigrationSystem {
     {
         switch(versionNumber)
         {
-            // Initial migration from MZS to Contagion
-            case 1:
-            {
-                Migrate_ToVersion1(oPC);
-                break;
-            }
         }
     }
-
-    private static void Migrate_ToVersion1(NWObject oPC)
-    {
-        PlayerGO pcGO = new PlayerGO(oPC);
-
-        int level = NWScript.getLevelByPosition(1, oPC) +
-                NWScript.getLevelByPosition(2, oPC) +
-                NWScript.getLevelByPosition(3, oPC);
-        int nwnEXP = NWScript.getXP(oPC);
-        ProgressionSystem.InitializePlayer(oPC);
-        int migrationEXP = 0;
-
-        switch(level)
-        {
-            case 1: migrationEXP = 500; break;
-            case 2: migrationEXP = 500; break;
-            case 3:
-                if(nwnEXP >= 4500) migrationEXP = 1250;
-                else migrationEXP = 500;
-                break;
-            case 4:
-                if(nwnEXP >= 8000) migrationEXP = 3500;
-                else migrationEXP = 2250;
-                break;
-            case 5: migrationEXP = 5000; break;
-        }
-
-        ProgressionSystem.GiveExperienceToPC(oPC, migrationEXP);
-        NWScript.destroyObject(pcGO.GetDatabaseItem(), 0.0f);
-        NWObject databaseItem = NWScript.createItemOnObject(Constants.PCDatabaseTag, oPC, 1, "");
-        pcGO.setCreateDate(databaseItem);
-        NWScript.setLocalInt(databaseItem, "MIGRATED_TO_OAL", 1);
-
-        for(NWObject inventory : NWScript.getItemsInInventory(oPC))
-        {
-            if(NWScript.getLocalInt(inventory, "HUNGER_RESTORE") > 0)
-            {
-                NWScript.setLocalInt(inventory, "SKIP_ANIMATION", 1);
-                NWScript.setLocalString(inventory, "JAVA_SCRIPT", "Food");
-            }
-
-            if(NWScript.getLocalInt(inventory, "THIRST_RESTORE") > 0)
-            {
-                NWScript.destroyObject(inventory, 0.0f);
-            }
-        }
-
-    }
-
 }

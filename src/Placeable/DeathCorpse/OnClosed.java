@@ -5,7 +5,7 @@ import GameSystems.DeathSystem;
 import org.nwnx.nwnx2.jvm.NWObject;
 
 @SuppressWarnings("UnusedDeclaration")
-public class DeathCorpse_OnClosed implements IScriptEventHandler {
+public class OnClosed implements IScriptEventHandler {
     @Override
     public void runScript(NWObject objSelf) {
         DeathSystem.OnCorpseClose(objSelf);

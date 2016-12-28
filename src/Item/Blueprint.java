@@ -1,4 +1,4 @@
-package Item.Crafting;
+package Item;
 
 import GameObject.PlayerGO;
 import Common.IScriptEventHandler;

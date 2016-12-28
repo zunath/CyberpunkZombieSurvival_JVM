@@ -8,6 +8,7 @@ import GameSystems.KeyItemSystem;
 import GameSystems.MigrationSystem;
 import GameSystems.SpawnSystem;
 import org.nwnx.nwnx2.jvm.*;
+import org.nwnx.nwnx2.jvm.constants.*;
 
 @SuppressWarnings("UnusedDeclaration")
 public class OnEnter implements IScriptEventHandler {
@@ -18,16 +19,56 @@ public class OnEnter implements IScriptEventHandler {
         NWObject oPC = NWScript.getEnteringObject();
         MigrationSystem.OnAreaEnter(oPC);
 
-        // Temporary Sanctuary Effects
-        NWScript.executeScript("sanctuary", oArea);
+        ApplySanctuaryEffects(oPC);
         LoadLocation(oPC, oArea);
         SaveLocation(oPC, oArea);
         spawnSystem.ZSS_OnAreaEnter(oArea);
-        // Initialize camera in designated areas.
-        NWScript.executeScript("initialize_camer", oArea);
+        AdjustCamera(oPC);
 
-        // Save characters
-        if(NWScript.getIsObjectValid(oPC) && NWScript.getIsPC(oPC) && !NWScript.getIsDM(oPC)) NWScript.exportSingleCharacter(oPC);
+        if(NWScript.getIsObjectValid(oPC) && NWScript.getIsPC(oPC) && !NWScript.getIsDM(oPC))
+            NWScript.exportSingleCharacter(oPC);
+    }
+
+    private void CheckForMovement(final NWObject oPC, final NWLocation location)
+    {
+        if(!NWScript.getIsObjectValid(oPC) || NWScript.getIsDead(oPC)) return;
+
+        if(NWScript.getLocation(oPC) != location)
+        {
+            for(NWEffect effect : NWScript.getEffects(oPC))
+            {
+                int type = NWScript.getEffectType(effect);
+                if(type == EffectType.DAMAGE_REDUCTION || type == EffectType.SANCTUARY)
+                {
+                    NWScript.removeEffect(oPC, effect);
+                }
+            }
+
+            return;
+        }
+
+        Scheduler.delay(oPC, 1000, new Runnable() {
+            @Override
+            public void run() {
+                CheckForMovement(oPC, location);
+            }
+        });
+    }
+
+    private void ApplySanctuaryEffects(final NWObject oPC)
+    {
+        if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return;
+
+        NWScript.applyEffectToObject(DurationType.PERMANENT, NWScript.effectSanctuary(99), oPC, 0.0f);
+        NWScript.applyEffectToObject(DurationType.PERMANENT, NWScript.effectDamageReduction(50, DamagePowerPlus.TWENTY, 0), oPC, 0.0f);
+        final NWLocation location = NWScript.getLocation(oPC);
+
+        Scheduler.delay(oPC, 3500, new Runnable() {
+            @Override
+            public void run() {
+                CheckForMovement(oPC, location);
+            }
+        });
     }
 
     private void SaveLocation(NWObject oPC, NWObject oArea)
@@ -85,6 +126,14 @@ public class OnEnter implements IScriptEventHandler {
         {
             NWScript.exploreAreaForPlayer(oArea, oPC, true);
         }
+    }
+
+    private void AdjustCamera(NWObject oPC)
+    {
+        if(!NWScript.getIsPC(oPC)) return;
+
+        float facing = NWScript.getFacing(oPC) - 180;
+        NWScript.setCameraFacing(facing, 1.0f, 1.0f, CameraTransitionType.SNAP);
     }
 
 }

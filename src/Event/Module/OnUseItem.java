@@ -3,6 +3,7 @@ package Event.Module;
 import Bioware.XP2;
 import Helper.ErrorHelper;
 import Common.IScriptEventHandler;
+import Helper.ScriptHelper;
 import NWNX.NWNX_Events;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
@@ -24,25 +25,10 @@ public class OnUseItem implements IScriptEventHandler {
         NWObject oItem = NWNX_Events.GetEventItem();
 
         String className = NWScript.getLocalString(oItem, "JAVA_SCRIPT");
-        if(className.equals("") || NWScript.getLocalInt(oItem, "SKIP_ANIMATION") == 0) return;
+        if(className.equals("")) return;
 
-        RunJavaScript(oPC, "Item." + className);
-    }
-
-    private void RunJavaScript(NWObject oPC, String className)
-    {
-        try
-        {
-            NWNX_Events.BypassEvent();
-            Class scriptClass = Class.forName("contagionJVM." + className);
-            IScriptEventHandler script = (IScriptEventHandler)scriptClass.newInstance();
-            script.runScript(oPC);
-            Scheduler.flushQueues();
-        }
-        catch (Exception ex)
-        {
-            ErrorHelper.HandleException(ex, "OnUseItem was unable to execute class method: contagionJVM.Item." + className + ".runScript()");
-        }
+        NWNX_Events.BypassEvent();
+        ScriptHelper.RunJavaScript(oPC, "Item." + className);
     }
 
     private void HandleSpecificItemUses(NWObject oPC)
@@ -63,7 +49,7 @@ public class OnUseItem implements IScriptEventHandler {
         boolean bRadioPower = XP2.IPGetItemHasProperty(oItem, NWScript.itemPropertyCastSpell(549, IpConst.CASTSPELL_NUMUSES_UNLIMITED_USE), -1, false);
         // Change Radio Channel Property
         boolean bRadioChannel = XP2.IPGetItemHasProperty(oItem, NWScript.itemPropertyCastSpell(550, IpConst.CASTSPELL_NUMUSES_UNLIMITED_USE), -1, false);
-        // Use Lockpick Property
+        // Use UseLockpick Property
         boolean bLockpick = XP2.IPGetItemHasProperty(oItem, NWScript.itemPropertyCastSpell(551, IpConst.CASTSPELL_NUMUSES_UNLIMITED_USE), -1, false);
         // Use Structure Tool Property
         boolean bUseStructure = XP2.IPGetItemHasProperty(oItem, NWScript.itemPropertyCastSpell(553, IpConst.CASTSPELL_NUMUSES_UNLIMITED_USE), -1, false);
@@ -72,14 +58,6 @@ public class OnUseItem implements IScriptEventHandler {
         // Check Infection Level Property
         boolean bCheckInfectionLevel = XP2.IPGetItemHasProperty(oItem, NWScript.itemPropertyCastSpell(556, IpConst.CASTSPELL_NUMUSES_UNLIMITED_USE), -1, false);
 
-
-        String sChangeAmmoScript = "gun_changeammo";
-        String sChangeModeScript = "gun_changemode";
-        String sCombineScript = "reo_combine";
-        String sRadioTogglePowerScript = "radio_toggpower";
-        String sRadioChangeChannelScript = "radio_changechan";
-        String sUseLockpickScript = "item_lockpick";
-
         boolean bBypassEvent = true;
 
         // Firearms - Ammo Priority (0), Change Firing Mode (1), Combine (2)
@@ -87,15 +65,15 @@ public class OnUseItem implements IScriptEventHandler {
         {
             if(iSubtype == 0)
             {
-                NWScript.executeScript(sChangeAmmoScript, oPC);
+                ScriptHelper.RunJavaScript(oPC, "Feat.ChangeGunAmmo");
             }
             else if(iSubtype == 1)
             {
-                NWScript.executeScript(sChangeModeScript, oPC);
+                ScriptHelper.RunJavaScript(oPC, "Feat.ChangeGunMode");
             }
             else if(iSubtype == 2)
             {
-                NWScript.executeScript(sCombineScript, oPC);
+                ScriptHelper.RunJavaScript(oPC, "Feat.CombineItem");
             }
         }
         // Firearms - Ammo Priority (0), Change Firing Mode (1)
@@ -103,11 +81,11 @@ public class OnUseItem implements IScriptEventHandler {
         {
             if(iSubtype == 0)
             {
-                NWScript.executeScript(sChangeAmmoScript, oPC);
+                ScriptHelper.RunJavaScript(oPC, "Feat.ChangeGunAmmo");
             }
             else if(iSubtype == 1)
             {
-                NWScript.executeScript(sChangeModeScript, oPC);
+                ScriptHelper.RunJavaScript(oPC, "Feat.ChangeGunMode");
             }
         }
         // Firearms - Ammo Priority (0), Combine (1)
@@ -115,11 +93,11 @@ public class OnUseItem implements IScriptEventHandler {
         {
             if(iSubtype == 0)
             {
-                NWScript.executeScript(sChangeAmmoScript, oPC);
+                ScriptHelper.RunJavaScript(oPC, "Feat.ChangeGunAmmo");
             }
             else if(iSubtype == 1)
             {
-                NWScript.executeScript(sCombineScript, oPC);
+                ScriptHelper.RunJavaScript(oPC, "Feat.CombineItem");
             }
         }
         // Firearms - Ammo Priority (0)
@@ -127,7 +105,7 @@ public class OnUseItem implements IScriptEventHandler {
         {
             if(iSubtype == 0)
             {
-                NWScript.executeScript(sChangeAmmoScript, oPC);
+                ScriptHelper.RunJavaScript(oPC, "Feat.ChangeGunAmmo");
             }
         }
 
@@ -137,7 +115,7 @@ public class OnUseItem implements IScriptEventHandler {
             // Combine
             if(iSubtype == 0)
             {
-                NWScript.executeScript(sCombineScript, oPC);
+                ScriptHelper.RunJavaScript(oPC, "Feat.CombineItem");
             }
             else if(iSubtype == 1)
             {
@@ -150,7 +128,7 @@ public class OnUseItem implements IScriptEventHandler {
         {
             if(iSubtype == 0)
             {
-                NWScript.executeScript(sCombineScript, oPC);
+                ScriptHelper.RunJavaScript(oPC, "Feat.CombineItem");
             }
         }
 
@@ -161,48 +139,12 @@ public class OnUseItem implements IScriptEventHandler {
             // Change Radio Channel
             if(iSubtype == 0)
             {
-                NWScript.executeScript(sRadioChangeChannelScript, oPC);
+                ScriptHelper.RunJavaScript(oPC, "Feat.Radio_ChangeChannel");
             }
             // Toggle Radio Power
             else if(iSubtype == 1)
             {
-                NWScript.executeScript(sRadioTogglePowerScript, oPC);
-            }
-        }
-
-        // Use Lockpick (0)
-        else if(bLockpick)
-        {
-            bBypassEvent = true;
-            NWScript.executeScript(sUseLockpickScript, oPC);
-        }
-        // Omni Tool: Check Infection Level (0), Open Rest Menu (1), Use Structure Tool (2)
-        else if(bUseStructure && bOpenRestMenu && bCheckInfectionLevel)
-        {
-            bBypassEvent = true;
-            if(iSubtype == 0)
-            {
-                RunJavaScript(oPC, "Item.OmniTool.AutoFollow");
-            }
-            // Check Infection Level
-            else if(iSubtype == 1)
-            {
-                RunJavaScript(oPC, "Item.OmniTool.CheckInfectionLevel");
-            }
-            // Open Rest Menu
-            else if(iSubtype == 2)
-            {
-                RunJavaScript(oPC, "Item.OmniTool.OpenRestMenu");
-            }
-            // Reload
-            else if(iSubtype == 3)
-            {
-                RunJavaScript(oPC, "Feat.ReloadGun");
-            }
-            // Use Structure Tool
-            else if(iSubtype == 4)
-            {
-                RunJavaScript(oPC, "Item.OmniTool.UseStructureTool");
+                ScriptHelper.RunJavaScript(oPC, "Feat.Radio_TogglePower");
             }
         }
         // Fire tag based scripting in all other cases (I.E: Don't bypass this event)

@@ -48,7 +48,7 @@ public class CustomEffectSystem {
 
         NWScript.sendMessageToPC(oPC, effect.getCustomEffect().getContinueMessage());
         try {
-            Class scriptClass = Class.forName("contagionJVM.CustomEffect." + effect.getCustomEffect().getScriptHandler());
+            Class scriptClass = Class.forName("CustomEffect." + effect.getCustomEffect().getScriptHandler());
             ICustomEffectHandler script = (ICustomEffectHandler)scriptClass.newInstance();
             script.run(oPC);
             Scheduler.flushQueues();

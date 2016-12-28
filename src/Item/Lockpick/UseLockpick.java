@@ -12,7 +12,7 @@ import org.nwnx.nwnx2.jvm.Scheduler;
 import org.nwnx.nwnx2.jvm.constants.Animation;
 
 @SuppressWarnings("UnusedDeclaration")
-public class Lockpick implements IScriptEventHandler {
+public class UseLockpick implements IScriptEventHandler {
 
     final String CurrentStatusVariable = "LOCKPICK_TEMPORARY_CURRENTLY_PICKING_LOCK";
     final String UnlockingObjectVariable = "LOCKPICK_TEMP_UNLOCKING_OBJECT";

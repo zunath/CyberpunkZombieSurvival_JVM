@@ -31,11 +31,11 @@ public class ActionTaken implements IScriptEventHandler {
 
             // Try to locate a matching class name based on the event passed in from NWN JVM_EVENT call.
             try {
-                Class scriptClass = Class.forName("contagionJVM.Dialog.Conversation_" + dialog.getActiveDialogName());
+                Class scriptClass = Class.forName("Conversation." + dialog.getActiveDialogName());
                 IDialogHandler script = (IDialogHandler) scriptClass.newInstance();
                 script.DoAction(oPC, dialog.getCurrentPageName(), responseID + 1);
             } catch (Exception ex) {
-                ErrorHelper.HandleException(ex, "ActionTaken was unable to execute class method: contagionJVM.Dialog.Conversation_\" + dialog.getActiveDialogName() + \".DoAction()");
+                ErrorHelper.HandleException(ex, "ActionTaken was unable to execute class method: Conversation.\" + dialog.getActiveDialogName() + \".DoAction()");
             }
         }
 

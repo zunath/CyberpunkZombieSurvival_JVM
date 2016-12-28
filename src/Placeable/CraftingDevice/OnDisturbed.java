@@ -12,7 +12,7 @@ import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.constants.InventoryDisturbType;
 
 @SuppressWarnings("unused")
-public class CraftingDevice_OnDisturbed implements IScriptEventHandler {
+public class OnDisturbed implements IScriptEventHandler {
     @Override
     public void runScript(NWObject device) {
         NWObject oPC = NWScript.getLastDisturbed();

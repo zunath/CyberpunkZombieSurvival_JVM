@@ -130,7 +130,7 @@ public abstract class DialogBase {
 
         try
         {
-            Class scriptClass = Class.forName("contagionJVM.Dialog.Conversation_" + dialog.getActiveDialogName());
+            Class scriptClass = Class.forName("Conversation." + dialog.getActiveDialogName());
             IDialogHandler script = (IDialogHandler)scriptClass.newInstance();
             script.Initialize();
             NWScript.setLocalInt(oPC, "DIALOG_SYSTEM_INITIALIZE_RAN", 1);

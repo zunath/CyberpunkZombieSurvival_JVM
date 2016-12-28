@@ -8,7 +8,7 @@ import org.nwnx.nwnx2.jvm.Scheduler;
 import org.nwnx.nwnx2.jvm.constants.InventoryDisturbType;
 
 @SuppressWarnings("unused")
-public class OverflowStorage_OnDisturbed implements IScriptEventHandler {
+public class OnDisturbed implements IScriptEventHandler {
     @Override
     public void runScript(NWObject objSelf) {
 

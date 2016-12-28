@@ -14,7 +14,7 @@ public class OnAcquireItem implements IScriptEventHandler {
 
 		radioSystem.OnModuleAcquire();
 
-		// Key Item GameSystems
+		// Key Item system
 		NWScript.executeScript("key_item_modacq", objSelf);
 	}
 }
