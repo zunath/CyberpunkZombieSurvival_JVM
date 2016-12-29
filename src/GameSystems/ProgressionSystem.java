@@ -73,6 +73,12 @@ public class ProgressionSystem {
     public static final int SkillType_WISDOM                     = 33;
     public static final int SkillType_INTELLIGENCE               = 34;
     public static final int SkillType_CHARISMA                   = 35;
+    public static final int SkillType_MANA                       = 36;
+    public static final int SkillType_ABILITY_SLOTS              = 37;
+    public static final int SkillType_HOLY_AFFINITY              = 38;
+    public static final int SkillType_EVOCATION_AFFINITY         = 39;
+    public static final int SkillType_ENHANCEMENT_AFFINITY       = 40;
+
 
 
 

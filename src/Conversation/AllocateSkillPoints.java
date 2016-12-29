@@ -23,13 +23,15 @@ public class AllocateSkillPoints extends DialogBase implements IDialogHandler {
                 "Statistics",
                 "Proficiencies",
                 "Utility",
-                "Abilities",
+                "Magic",
                 "Back"
         );
 
         DialogPage statsPage = new DialogPage(
                 "Please select an upgrade.",
                 "Hit Points",
+                "Mana",
+                "Ability Slots",
                 "Strength",
                 "Dexterity",
                 "Constitution",
@@ -37,6 +39,7 @@ public class AllocateSkillPoints extends DialogBase implements IDialogHandler {
                 "Intelligence",
                 "Charisma",
                 "Inventory Space",
+                "Natural Regeneration",
                 "Back"
         );
 
@@ -65,13 +68,14 @@ public class AllocateSkillPoints extends DialogBase implements IDialogHandler {
                 "Back"
         );
 
-        DialogPage abilitiesPage = new DialogPage(
+        DialogPage magicPage = new DialogPage(
                 "Please select an upgrade.",
-                "Power Attack",
-                "Ambidexterity",
-                "Two-Weapon Fighting",
+                "Holy Affinity",
+                "Evocation Affinity",
+                "Enhancement Affinity",
                 "Back"
         );
+
 
         DialogPage upgradePage = new DialogPage(
                 "<REPLACED LATER>",
@@ -84,7 +88,7 @@ public class AllocateSkillPoints extends DialogBase implements IDialogHandler {
         dialog.addPage("StatsPage", statsPage);
         dialog.addPage("ProficienciesPage", proficienciesPage);
         dialog.addPage("UtilityPage", utilityPage);
-        dialog.addPage("AbilitiesPage", abilitiesPage);
+        dialog.addPage("MagicPage", magicPage);
         dialog.addPage("UpgradePage", upgradePage);
 
         return dialog;
@@ -116,10 +120,10 @@ public class AllocateSkillPoints extends DialogBase implements IDialogHandler {
                         NWScript.setLocalString(oPC, "TEMP_MENU_CATEGORY_PAGE", "UtilityPage");
                         ChangePage("UtilityPage");
                         break;
-                    // Abilities
+                    // Magic + Abilities
                     case 4:
-                        NWScript.setLocalString(oPC, "TEMP_MENU_CATEGORY_PAGE", "AbilitiesPage");
-                        ChangePage("AbilitiesPage");
+                        NWScript.setLocalString(oPC, "TEMP_MENU_CATEGORY_PAGE", "MagicPage");
+                        ChangePage("MagicPage");
                         break;
                     case 5: // "Back to Main Menu"
                         ClearTempVariables();
@@ -133,27 +137,36 @@ public class AllocateSkillPoints extends DialogBase implements IDialogHandler {
                         LoadSkillUpgradePage(ProgressionSystem.SkillType_HP);
                         break;
                     case 2:
-                        LoadSkillUpgradePage(ProgressionSystem.SkillType_STRENGTH);
+                        LoadSkillUpgradePage(ProgressionSystem.SkillType_MANA);
                         break;
                     case 3:
-                        LoadSkillUpgradePage(ProgressionSystem.SkillType_DEXTERITY);
+                        LoadSkillUpgradePage(ProgressionSystem.SkillType_ABILITY_SLOTS);
                         break;
                     case 4:
-                        LoadSkillUpgradePage(ProgressionSystem.SkillType_CONSTITUTION);
+                        LoadSkillUpgradePage(ProgressionSystem.SkillType_STRENGTH);
                         break;
                     case 5:
-                        LoadSkillUpgradePage(ProgressionSystem.SkillType_WISDOM);
+                        LoadSkillUpgradePage(ProgressionSystem.SkillType_DEXTERITY);
                         break;
                     case 6:
-                        LoadSkillUpgradePage(ProgressionSystem.SkillType_INTELLIGENCE);
+                        LoadSkillUpgradePage(ProgressionSystem.SkillType_CONSTITUTION);
                         break;
                     case 7:
-                        LoadSkillUpgradePage(ProgressionSystem.SkillType_CHARISMA);
+                        LoadSkillUpgradePage(ProgressionSystem.SkillType_WISDOM);
                         break;
                     case 8:
+                        LoadSkillUpgradePage(ProgressionSystem.SkillType_INTELLIGENCE);
+                        break;
+                    case 9:
+                        LoadSkillUpgradePage(ProgressionSystem.SkillType_CHARISMA);
+                        break;
+                    case 10:
                         LoadSkillUpgradePage(ProgressionSystem.SkillType_INVENTORY_SPACE);
                         break;
-                    case 9: // "Back"
+                    case 11:
+                        LoadSkillUpgradePage(ProgressionSystem.SkillType_NATURAL_REGENERATION);
+                        break;
+                    case 12: // "Back"
                         ClearTempVariables();
                         ChangePage("MainPage");
                         break;
@@ -220,16 +233,18 @@ public class AllocateSkillPoints extends DialogBase implements IDialogHandler {
                         break;
                 }
                 break;
-            case "AbilitiesPage":
-                switch (responseID) {
+            case "MagicPage": {
+
+                switch(responseID) {
+
                     case 1:
-                        LoadSkillUpgradePage(ProgressionSystem.SkillType_POWER_ATTACK);
+                        LoadSkillUpgradePage(ProgressionSystem.SkillType_HOLY_AFFINITY);
                         break;
                     case 2:
-                        LoadSkillUpgradePage(ProgressionSystem.SkillType_AMBIDEXTERITY);
+                        LoadSkillUpgradePage(ProgressionSystem.SkillType_EVOCATION_AFFINITY);
                         break;
                     case 3:
-                        LoadSkillUpgradePage(ProgressionSystem.SkillType_TWO_WEAPON_FIGHTING);
+                        LoadSkillUpgradePage(ProgressionSystem.SkillType_ENHANCEMENT_AFFINITY);
                         break;
                     case 4: // "Back"
                         ClearTempVariables();
@@ -237,6 +252,7 @@ public class AllocateSkillPoints extends DialogBase implements IDialogHandler {
                         break;
                 }
                 break;
+            }
             case "UpgradePage":
                 switch (responseID) {
                     // Upgrade
