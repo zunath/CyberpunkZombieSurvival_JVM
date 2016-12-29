@@ -19,6 +19,8 @@ public class Constants {
 	public static final int BaseHPRegenRate = 20;
 	public static final int BaseHungerRate = 60;
 
+	// The following is the number of inventory slots available in NWN, not to be confused by the inventory limitations
+	// imposed in this module.
     public static final int NumberOfInventorySlots = 18;
 
 	// Update this to run players through the migration process on entry

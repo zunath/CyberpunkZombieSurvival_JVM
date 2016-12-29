@@ -36,6 +36,7 @@ public class AllocateSkillPoints extends DialogBase implements IDialogHandler {
                 "Wisdom",
                 "Intelligence",
                 "Charisma",
+                "Inventory Space",
                 "Back"
         );
 
@@ -149,7 +150,10 @@ public class AllocateSkillPoints extends DialogBase implements IDialogHandler {
                     case 7:
                         LoadSkillUpgradePage(ProgressionSystem.SkillType_CHARISMA);
                         break;
-                    case 8: // "Back"
+                    case 8:
+                        LoadSkillUpgradePage(ProgressionSystem.SkillType_INVENTORY_SPACE);
+                        break;
+                    case 9: // "Back"
                         ClearTempVariables();
                         ChangePage("MainPage");
                         break;

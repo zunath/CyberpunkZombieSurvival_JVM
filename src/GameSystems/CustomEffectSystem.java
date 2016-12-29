@@ -6,6 +6,7 @@ import Entities.PCCustomEffectEntity;
 import GameObject.PlayerGO;
 import Helper.ErrorHelper;
 import Data.Repository.CustomEffectRepository;
+import Helper.ScriptHelper;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.Scheduler;
@@ -47,15 +48,7 @@ public class CustomEffectSystem {
         if(effect.getTicks() < 0) return null;
 
         NWScript.sendMessageToPC(oPC, effect.getCustomEffect().getContinueMessage());
-        try {
-            Class scriptClass = Class.forName("CustomEffect." + effect.getCustomEffect().getScriptHandler());
-            ICustomEffectHandler script = (ICustomEffectHandler)scriptClass.newInstance();
-            script.run(oPC);
-            Scheduler.flushQueues();
-        }
-        catch(Exception ex) {
-            ErrorHelper.HandleException(ex, "RunCustomEffectProcess was unable to run specific effect script: " + effect.getCustomEffect().getScriptHandler());
-        }
+        ScriptHelper.RunJavaScript(oPC, "CustomEffect." + effect.getCustomEffect());
 
         return effect;
     }

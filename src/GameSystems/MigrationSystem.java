@@ -38,16 +38,6 @@ public class MigrationSystem {
         PCMigrationRepository migrationRepo = new PCMigrationRepository();
         PlayerEntity entity = playerRepo.getByUUID(pcGO.getUUID());
 
-        // This piece of code migrates characters from MZS3 to the new version's database structure.
-        if(entity == null &&
-                (!NWScript.getLocalString(pcGO.GetDatabaseItem(), Constants.PCIDNumberVariable).equals("") ||
-                NWScript.getLocalInt(pcGO.GetDatabaseItem(), Constants.PCIDNumberVariable) > 0))
-        {
-            entity = pcGO.createEntity();
-            entity.setVersionNumber(0);
-            playerRepo.save(entity);
-        }
-
         for(int version = entity.getVersionNumber() + 1; version <= Constants.PlayerVersionNumber; version++)
         {
             HashMap<String, PCMigrationItemEntity> itemMap = new HashMap<>();

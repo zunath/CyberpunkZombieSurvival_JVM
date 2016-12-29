@@ -12,10 +12,9 @@ public class OnPlayerEquipItem implements IScriptEventHandler {
 		// Bioware Default
 		NWScript.executeScript("x2_mod_def_equ", objSelf);
 		ProgressionSystem.OnModuleEquip();
-		// Combat GameSystems
         combatSystem.OnModuleEquip();
-		// Item Durability GameSystems
         DurabilitySystem.OnModuleEquip();
 		ArmorSystem.OnModuleEquipItem();
+		InventorySystem.OnModuleEquipItem();
 	}
 }

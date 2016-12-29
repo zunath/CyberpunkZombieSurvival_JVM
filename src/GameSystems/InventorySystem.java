@@ -16,7 +16,7 @@ import java.util.Objects;
 
 public class InventorySystem {
 
-    private static final int BaseInventoryLimit = 1500;
+    private static final int BaseInventoryLimit = 20;
     private static final int NumberOfSystemItems = 4;
 
 
