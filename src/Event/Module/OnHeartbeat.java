@@ -9,9 +9,11 @@ import Data.Repository.PlayerRepository;
 import GameSystems.DiseaseSystem;
 import GameSystems.FoodSystem;
 import GameSystems.ProgressionSystem;
+import Helper.ColorToken;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.nwnx.nwnx2.jvm.*;
+import org.nwnx.nwnx2.jvm.constants.Ability;
 import org.nwnx.nwnx2.jvm.constants.DurationType;
 
 import java.util.ArrayList;
@@ -38,6 +40,7 @@ public class OnHeartbeat implements IScriptEventHandler {
 				if(entity != null)
 				{
 					entity = HandleRegenerationTick(pc, entity);
+					entity = HandleManaRegenerationTick(pc, entity);
 					entity = HandleDiseaseTick(pc, entity);
 					entity = HandleFoodTick(pc, entity);
 					playerRepo.save(entity);
@@ -77,6 +80,29 @@ public class OnHeartbeat implements IScriptEventHandler {
 			}
 
 			entity.setRegenerationTick(rate);
+		}
+
+		return entity;
+	}
+
+	private PlayerEntity HandleManaRegenerationTick(NWObject oPC, PlayerEntity entity)
+	{
+		entity.setCurrentManaTick(entity.getCurrentManaTick() - 1);
+		int rate = Constants.BaseManaRegenRate;
+		int amount = Constants.BaseManaRegenAmount + ((NWScript.getAbilityScore(oPC, Ability.CHARISMA, false) - 10) / 2);
+
+		if(entity.getCurrentManaTick() <= 0)
+		{
+			if(entity.getCurrentMana() < entity.getMaxMana())
+			{
+				entity.setCurrentMana(entity.getCurrentMana() + amount);
+				if(entity.getCurrentMana() > entity.getMaxMana())
+					entity.setCurrentMana(entity.getMaxMana());
+
+				NWScript.sendMessageToPC(oPC, ColorToken.Custom(32,223,219) + "Mana: " + entity.getCurrentMana() + " / " + entity.getMaxMana());
+			}
+
+			entity.setCurrentManaTick(rate);
 		}
 
 		return entity;

@@ -65,7 +65,12 @@ public class PlayerEntity {
     private int zombieKillCount;
     @Column(name = "VersionNumber")
     private int versionNumber;
-
+    @Column(name="MaxMana")
+    private int maxMana;
+    @Column(name="CurrentMana")
+    private int currentMana;
+    @Column(name="CurrentManaTick")
+    private int currentManaTick;
 
     public PlayerEntity()
     {
@@ -302,5 +307,30 @@ public class PlayerEntity {
 
     public void setNextResetTokenReceiveDate(Date nextResetTokenReceiveDate) {
         this.nextResetTokenReceiveDate = nextResetTokenReceiveDate;
+    }
+
+    public int getMaxMana(){
+        return maxMana;
+    }
+
+    public void setMaxMana(int maxMana){
+        this.maxMana = maxMana;
+    }
+
+    public int getCurrentMana()
+    {
+        return currentMana;
+    }
+
+    public void setCurrentMana(int currentMana) {
+        this.currentMana = currentMana;
+    }
+
+    public int getCurrentManaTick(){
+        return currentManaTick;
+    }
+
+    public void setCurrentManaTick(int currentManaTick){
+        this.currentManaTick = currentManaTick;
     }
 }

@@ -17,7 +17,6 @@ import java.util.Objects;
 public class InventorySystem {
 
     private static final int BaseInventoryLimit = 20;
-    private static final int NumberOfSystemItems = 4;
 
 
     public static void OnModuleAcquireItem()
@@ -55,7 +54,15 @@ public class InventorySystem {
 
     private static int GetItemCount(NWObject oPC)
     {
-        return NWScript.getItemsInInventory(oPC).length;
+        int count = 0;
+        for(NWObject item: NWScript.getItemsInInventory(oPC))
+        {
+            if(!IsItemExempt(item))
+            {
+                count++;
+            }
+        }
+        return count;
     }
 
     @SuppressWarnings("RedundantIfStatement")
@@ -130,7 +137,7 @@ public class InventorySystem {
     {
         if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC) || IsItemExempt(oItem)) return;
 
-        int numberOfItems = GetItemCount(oPC) - NumberOfSystemItems;
+        int numberOfItems = GetItemCount(oPC);
         int limit = GetPlayerInventoryLimit(oPC);
 
         NWEffect[] effects = NWScript.getEffects(oPC);

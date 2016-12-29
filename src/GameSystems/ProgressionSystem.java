@@ -130,6 +130,9 @@ public class ProgressionSystem {
         entity.setRegenerationTick(Constants.BaseHPRegenRate);
         entity.setHpRegenerationAmount(Constants.BaseHPRegenAmount);
         entity.setInventorySpaceBonus(0);
+        entity.setMaxMana(0);
+        entity.setCurrentManaTick(20);
+        entity.setCurrentMana(0);
 
         playerRepo.save(entity);
 
@@ -234,6 +237,10 @@ public class ProgressionSystem {
 
     private static  void ApplyCustomUpgradeEffects(NWObject oPC, int skillID)
     {
+        PlayerGO pcGO = new PlayerGO(oPC);
+        PlayerRepository repo = new PlayerRepository();
+        PlayerEntity entity = repo.getByUUID(pcGO.getUUID());
+
         switch (skillID)
         {
             case SkillType_HP:
@@ -277,6 +284,10 @@ public class ProgressionSystem {
                 break;
             case SkillType_TWO_WEAPON_FIGHTING:
                 NWNX_Funcs.AddKnownFeat(oPC, Feat.TWO_WEAPON_FIGHTING, 0);
+                break;
+            case SkillType_MANA:
+                entity.setMaxMana(entity.getMaxMana() + 5);
+                repo.save(entity);
                 break;
 
         }
