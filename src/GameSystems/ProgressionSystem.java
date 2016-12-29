@@ -211,7 +211,7 @@ public class ProgressionSystem {
             playerSkillEntity.setProgressionSkillID(skillID);
         }
 
-        int requiredSP = skillEntity.getInitialPrice() + playerSkillEntity.getUpgradeLevel() + 1;
+        int requiredSP = skillEntity.getInitialPrice() + playerSkillEntity.getUpgradeLevel();
         int upgradeCap = playerSkillEntity.isSoftCapUnlocked() ? skillEntity.getMaxUpgrades() : skillEntity.getSoftCap();
 
         if(playerSkillEntity.getUpgradeLevel() >= upgradeCap)

@@ -334,7 +334,7 @@ public class AllocateSkillPoints extends DialogBase implements IDialogHandler {
         DialogResponse response = GetResponseByID("UpgradePage", 1);
         int upgradeLevel = pcSkill == null ? 0 : pcSkill.getUpgradeLevel();
         int upgradeCap = pcSkill == null || !pcSkill.isSoftCapUnlocked() ? skill.getSoftCap() : skill.getMaxUpgrades();
-        int nextUpgradeCost = pcSkill == null ? skill.getInitialPrice() : pcSkill.getUpgradeLevel() + skill.getInitialPrice() + 1;
+        int nextUpgradeCost = pcSkill == null ? skill.getInitialPrice() : pcSkill.getUpgradeLevel() + skill.getInitialPrice();
 
         if(upgradeLevel >= upgradeCap || playerEntity.getUnallocatedSP() < nextUpgradeCost)
         {
@@ -363,7 +363,7 @@ public class AllocateSkillPoints extends DialogBase implements IDialogHandler {
         int upgradeLevel = pcSkill == null ? 0 : pcSkill.getUpgradeLevel();
         int upgradeCap = pcSkill == null || !pcSkill.isSoftCapUnlocked() ? skill.getSoftCap() : skill.getMaxUpgrades();
         int availableSP = pcEntity.getUnallocatedSP();
-        int nextUpgradeCost = 1 + skill.getInitialPrice() + (pcSkill == null ? 0 : pcSkill.getUpgradeLevel());
+        int nextUpgradeCost = skill.getInitialPrice() + (pcSkill == null ? 0 : pcSkill.getUpgradeLevel());
 
         String upgradeCapText = ColorToken.Yellow() + upgradeCap + ColorToken.End();
         if(pcSkill != null && pcSkill.isSoftCapUnlocked())
