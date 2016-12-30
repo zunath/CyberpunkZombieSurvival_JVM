@@ -1,5 +1,6 @@
 package NWNX;
 
+import Helper.ScriptHelper;
 import org.nwnx.nwnx2.jvm.*;
 
 import java.util.Objects;
@@ -904,22 +905,22 @@ public class NWNX_Funcs {
 
 
 
-    public static void StartTimingBar(final NWObject oCreature, int nSeconds, final String sScript) {
+    public static void StartTimingBar(final NWObject oCreature, int nSeconds, final String sJavaScript) {
         NWScript.setLocalString(oCreature, "NWNX!FUNCSEXT!STARTTIMINGBAR", nSeconds * 1000 + "    ");
         NWScript.deleteLocalString(oCreature, "NWNX!FUNCSEXT!STARTTIMINGBAR");
         Scheduler.delay(oCreature, nSeconds * 1000, new Runnable() {
             @Override
             public void run() {
-                StopTimingBar(oCreature, sScript);
+                StopTimingBar(oCreature, sJavaScript);
             }
         });
     }
 
-    public static void StopTimingBar(NWObject oCreature, String sScript) {
+    public static void StopTimingBar(NWObject oCreature, String sJavaScript) {
         NWScript.setLocalString(oCreature, "NWNX!FUNCSEXT!STOPTIMINGBAR", "    ");
         NWScript.deleteLocalString(oCreature, "NWNX!FUNCSEXT!STOPTIMINGBAR");
-        if(!Objects.equals(sScript, "")) {
-            NWScript.executeScript(sScript, oCreature);
+        if(!Objects.equals(sJavaScript, "")) {
+            ScriptHelper.RunJavaScript(oCreature, sJavaScript);
         }
     }
 

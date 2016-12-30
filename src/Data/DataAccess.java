@@ -71,6 +71,7 @@ public class DataAccess {
         _configuration.addAnnotatedClass(LootTableEntity.class);
         _configuration.addAnnotatedClass(LootTableItemEntity.class);
         _configuration.addAnnotatedClass(PCAuthorizedCDKeyEntity.class);
+        _configuration.addAnnotatedClass(PCAbilityEntity.class);
         _configuration.addAnnotatedClass(PCBadgeEntity.class);
         _configuration.addAnnotatedClass(PCBlueprintEntity.class);
         _configuration.addAnnotatedClass(PCKeyItemEntity.class);

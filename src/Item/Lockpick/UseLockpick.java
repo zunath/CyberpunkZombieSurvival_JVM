@@ -99,7 +99,7 @@ public class UseLockpick implements IScriptEventHandler {
             });
 
             // Show timing bar, set PC's current action status, and inform PC they're picking a lock.
-            NWNX_Funcs.StartTimingBar(oPC, iSeconds, "perform_lockpick");
+            NWNX_Funcs.StartTimingBar(oPC, iSeconds, "Item.Lockpick.PerformLockpick");
             NWScript.setLocalObject(oPC, UnlockingObjectVariable, oTarget);
             NWScript.setLocalInt(oPC, CurrentStatusVariable, 1);
 

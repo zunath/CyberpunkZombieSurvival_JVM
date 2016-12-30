@@ -45,7 +45,7 @@ public class Defibrillator implements IScriptEventHandler {
         {
             if(NWScript.getCurrentHitPoints(oTarget) <= 0)
             {
-                NWNX_Funcs.StartTimingBar(oPC, iDelayTime, "perform_defib");
+                NWNX_Funcs.StartTimingBar(oPC, iDelayTime, "Item.Defibrillator.PerformDefibrillator");
                 NWScript.setLocalObject(oPC, TemporaryTargetObjectVariable, oTarget);
                 NWScript.setLocalInt(oPC, DefibInUseStatusVariable, 1);
 

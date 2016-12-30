@@ -35,6 +35,13 @@ public class MagicSystem {
         AbilityRegistration.put(0, new Cure());
     }
 
+    public static IAbility GetAbilityByFeatID(int featID)
+    {
+        if(!AbilityRegistration.containsKey(featID)) return null;
+
+        return AbilityRegistration.get(featID);
+    }
+
     public static void OnFeatUsed(NWObject pc)
     {
         PlayerRepository playerRepo = new PlayerRepository();
