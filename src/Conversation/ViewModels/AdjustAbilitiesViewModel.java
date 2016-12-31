@@ -3,7 +3,6 @@ package Conversation.ViewModels;
 import Entities.AbilityCategoryEntity;
 import Entities.PCEquippedAbilityEntity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AdjustAbilitiesViewModel {

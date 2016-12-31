@@ -15,11 +15,9 @@ import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.NWVector;
 import org.nwnx.nwnx2.jvm.Scheduler;
-import org.nwnx.nwnx2.jvm.constants.Ability;
 import org.nwnx.nwnx2.jvm.constants.Animation;
 import org.nwnx.nwnx2.jvm.constants.DurationType;
 import org.nwnx.nwnx2.jvm.constants.VfxDur;
-import sun.font.Script;
 
 import java.util.UUID;
 
@@ -43,7 +41,7 @@ public class MagicSystem {
 
         PlayerEntity playerEntity = playerRepo.getByUUID(pcGO.getUUID());
 
-        if(!ability.CanCastSpell())
+        if(!ability.CanCastSpell(pc))
         {
             NWScript.sendMessageToPC(pc,
                     ability.CannotCastSpellMessage() == null ?
@@ -162,6 +160,7 @@ public class MagicSystem {
 
 
         IAbility ability = (IAbility) ScriptHelper.GetClassByName("Abilities." + abilityEntity.getJavaScriptName());
+        NWNX_Funcs.AddKnownFeat(oPC, abilityEntity.getFeatID(), 0);
         ability.OnEquip(oPC);
         repo.Save(entity);
 
@@ -174,15 +173,15 @@ public class MagicSystem {
         PlayerGO pcGO = new PlayerGO(oPC);
         PCEquippedAbilityEntity entity = repo.GetPCEquippedAbilities(pcGO.getUUID());
         IAbility ability;
+        int featID = -1;
         String scriptName = null;
-
-
 
         if(slotID == 1)
         {
             if(entity.getSlot1() == null) return entity;
 
             scriptName = entity.getSlot1().getJavaScriptName();
+            featID = entity.getSlot1().getFeatID();
             entity.setSlot1(null);
         }
         else if(slotID == 2)
@@ -190,6 +189,7 @@ public class MagicSystem {
             if(entity.getSlot2() == null) return entity;
 
             scriptName = entity.getSlot2().getJavaScriptName();
+            featID = entity.getSlot2().getFeatID();
             entity.setSlot2(null);
         }
         else if(slotID == 3)
@@ -197,6 +197,7 @@ public class MagicSystem {
             if(entity.getSlot3() == null) return entity;
 
             scriptName = entity.getSlot3().getJavaScriptName();
+            featID = entity.getSlot3().getFeatID();
             entity.setSlot3(null);
         }
         else if(slotID == 4)
@@ -204,6 +205,7 @@ public class MagicSystem {
             if(entity.getSlot4() == null) return entity;
 
             scriptName = entity.getSlot4().getJavaScriptName();
+            featID = entity.getSlot4().getFeatID();
             entity.setSlot4(null);
         }
         else if(slotID == 5)
@@ -211,6 +213,7 @@ public class MagicSystem {
             if(entity.getSlot5() == null) return entity;
 
             scriptName = entity.getSlot5().getJavaScriptName();
+            featID = entity.getSlot5().getFeatID();
             entity.setSlot5(null);
         }
         else if(slotID == 6)
@@ -218,6 +221,7 @@ public class MagicSystem {
             if(entity.getSlot6() == null) return entity;
 
             scriptName = entity.getSlot6().getJavaScriptName();
+            featID = entity.getSlot6().getFeatID();
             entity.setSlot6(null);
         }
         else if(slotID == 7)
@@ -225,6 +229,7 @@ public class MagicSystem {
             if(entity.getSlot7() == null) return entity;
 
             scriptName = entity.getSlot7().getJavaScriptName();
+            featID = entity.getSlot7().getFeatID();
             entity.setSlot7(null);
         }
         else if(slotID == 8)
@@ -232,6 +237,7 @@ public class MagicSystem {
             if(entity.getSlot8() == null) return entity;
 
             scriptName = entity.getSlot8().getJavaScriptName();
+            featID = entity.getSlot8().getFeatID();
             entity.setSlot8(null);
         }
         else if(slotID == 9)
@@ -239,6 +245,7 @@ public class MagicSystem {
             if(entity.getSlot9() == null) return entity;
 
             scriptName = entity.getSlot9().getJavaScriptName();
+            featID = entity.getSlot9().getFeatID();
             entity.setSlot9(null);
         }
         else if(slotID == 10)
@@ -246,14 +253,37 @@ public class MagicSystem {
             if(entity.getSlot10() == null) return entity;
 
             scriptName = entity.getSlot10().getJavaScriptName();
+            featID = entity.getSlot10().getFeatID();
             entity.setSlot10(null);
         }
 
         ability = (IAbility) ScriptHelper.GetClassByName("Abilities." + scriptName);
+
+        NWNX_Funcs.RemoveKnownFeat(oPC, featID);
         ability.OnUnequip(oPC);
         repo.Save(entity);
 
         return entity;
+    }
+
+
+    public static boolean IsAbilityEquipped(NWObject oPC, int abilityID)
+    {
+        MagicRepository repo = new MagicRepository();
+        PlayerGO pcGO = new PlayerGO(oPC);
+        PCEquippedAbilityEntity entity = repo.GetPCEquippedAbilities(pcGO.getUUID());
+
+        return (entity.getSlot1() != null && entity.getSlot1().getAbilityID() == abilityID) ||
+                (entity.getSlot2() != null && entity.getSlot2().getAbilityID() == abilityID) ||
+                (entity.getSlot3() != null && entity.getSlot3().getAbilityID() == abilityID) ||
+                (entity.getSlot4() != null && entity.getSlot4().getAbilityID() == abilityID) ||
+                (entity.getSlot5() != null && entity.getSlot5().getAbilityID() == abilityID) ||
+                (entity.getSlot6() != null && entity.getSlot6().getAbilityID() == abilityID) ||
+                (entity.getSlot7() != null && entity.getSlot7().getAbilityID() == abilityID) ||
+                (entity.getSlot8() != null && entity.getSlot8().getAbilityID() == abilityID) ||
+                (entity.getSlot9() != null && entity.getSlot9().getAbilityID() == abilityID) ||
+                (entity.getSlot10() != null && entity.getSlot10().getAbilityID() == abilityID);
+
     }
 
 }

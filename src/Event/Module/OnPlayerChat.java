@@ -1,8 +1,6 @@
 package Event.Module;
-import Common.Constants;
 import Common.IScriptEventHandler;
 import org.nwnx.nwnx2.jvm.*;
-import org.nwnx.nwnx2.jvm.constants.*;
 
 @SuppressWarnings("UnusedDeclaration")
 public class OnPlayerChat implements IScriptEventHandler {

@@ -1,13 +1,11 @@
 package Event.Module;
 
 import Bioware.XP2;
-import Helper.ErrorHelper;
 import Common.IScriptEventHandler;
 import Helper.ScriptHelper;
 import NWNX.NWNX_Events;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
-import org.nwnx.nwnx2.jvm.Scheduler;
 import org.nwnx.nwnx2.jvm.constants.IpConst;
 
 @SuppressWarnings("UnusedDeclaration")

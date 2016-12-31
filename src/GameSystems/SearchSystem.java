@@ -5,6 +5,7 @@ import Entities.LootTableEntity;
 import Entities.LootTableItemEntity;
 import Entities.PCSearchSiteEntity;
 import Entities.PCSearchSiteItemEntity;
+import Enumerations.AbilityType;
 import GameObject.ItemGO;
 import GameObject.PlayerGO;
 import Helper.ColorToken;
@@ -17,6 +18,7 @@ import org.nwnx.nwnx2.jvm.constants.*;
 
 import java.sql.Timestamp;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class SearchSystem {
 
@@ -110,6 +112,15 @@ public class SearchSystem {
         if(timeLock.isBefore(DateTime.now().minus(1)) || searchEntity == null)
         {
             int dc = NWScript.getLocalInt(oChest, SearchSiteDCVariableName);
+
+            // Good Eye ability occasionally grants +1 search attempt.
+            if(MagicSystem.IsAbilityEquipped(oPC, AbilityType.GoodEye))
+            {
+                if(ThreadLocalRandom.current().nextInt(0, 100) <= 10)
+                {
+                    numberOfSearches++;
+                }
+            }
 
             for(int search = 1; search <= numberOfSearches; search++)
             {

@@ -1,7 +1,5 @@
 package Entities;
 
-import org.hibernate.annotations.Fetch;
-
 import javax.persistence.*;
 import java.sql.Timestamp;
 

@@ -1,7 +1,6 @@
 package Event.Module;
 import Common.IScriptEventHandler;
 import org.nwnx.nwnx2.jvm.*;
-import org.nwnx.nwnx2.jvm.constants.ClassType;
 
 @SuppressWarnings("UnusedDeclaration")
 public class OnPlayerLevelUp implements IScriptEventHandler {

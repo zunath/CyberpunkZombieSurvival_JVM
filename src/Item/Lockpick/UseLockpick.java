@@ -1,6 +1,8 @@
 package Item.Lockpick;
 
 import Bioware.Position;
+import Enumerations.AbilityType;
+import GameSystems.MagicSystem;
 import Helper.ColorToken;
 import Common.IScriptEventHandler;
 import NWNX.NWNX_Events;
@@ -58,7 +60,7 @@ public class UseLockpick implements IScriptEventHandler {
         {
             NWScript.floatingTextStringOnCreature(ColorToken.Red() + "You must get closer to do that." + ColorToken.End(), oPC, false);
         }
-        // All requirements met. Begin process to unlock NWObject
+        // All requirements met. Begin process to unlock object
         else
         {
             int iSeconds = 10 + NWScript.random(5);
@@ -71,7 +73,14 @@ public class UseLockpick implements IScriptEventHandler {
             if(iSkillBonus > 0)
             {
                 float fMultiplier = iSkillBonus * 0.05f;
-                if(fMultiplier > 0.75)
+
+                // Master of Unlocking ability grants +0.25 multiplier
+                if(MagicSystem.IsAbilityEquipped(oPC, AbilityType.MasterOfUnlocking))
+                {
+                    fMultiplier += 0.25f;
+                }
+
+                if(fMultiplier > 0.75f)
                     fMultiplier = 0.75f;
 
                 fSeconds = fSeconds * fMultiplier;

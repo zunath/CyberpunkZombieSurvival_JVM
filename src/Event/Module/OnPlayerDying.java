@@ -1,5 +1,4 @@
 package Event.Module;
-import Common.Constants;
 import Helper.ColorToken;
 import Common.IScriptEventHandler;
 import org.nwnx.nwnx2.jvm.*;

@@ -1,6 +1,7 @@
 package GameSystems;
 
 import Entities.*;
+import Enumerations.AbilityType;
 import GameObject.PlayerGO;
 import Helper.ColorToken;
 import Helper.ErrorHelper;
@@ -21,7 +22,7 @@ import java.util.Random;
 
 public class CraftSystem {
 
-    private static final float CraftDelay = 4.0f;
+    private static final float CraftDelay = 10.0f;
 
 
     public static void CraftItem(final NWObject oPC, final NWObject device, final int blueprintID)
@@ -42,24 +43,30 @@ public class CraftSystem {
 
         if(allComponentsFound)
         {
-            NWScript.applyEffectToObject(DurationType.TEMPORARY, NWScript.effectCutsceneImmobilize(), oPC, CraftDelay + 0.1f);
+            // Speedy Crafter grants 80% crafting speed bonus.
+            boolean hasAbility = MagicSystem.IsAbilityEquipped(oPC, AbilityType.SpeedyCrafter);
+            final float modifiedCraftDelay = hasAbility ?
+                    CraftDelay * 0.80f :
+                    CraftDelay;
+
+            NWScript.applyEffectToObject(DurationType.TEMPORARY, NWScript.effectCutsceneImmobilize(), oPC, modifiedCraftDelay + 0.1f);
             Scheduler.assign(oPC, new Runnable() {
                 @Override
                 public void run() {
                     NWScript.clearAllActions(false);
-                    NWScript.actionPlayAnimation(Animation.LOOPING_GET_MID, 1.0f, CraftDelay);
+                    NWScript.actionPlayAnimation(Animation.LOOPING_GET_MID, 1.0f, modifiedCraftDelay);
                 }
             });
-            Scheduler.delay(device, 1000 * NWScript.floatToInt(CraftDelay / 2.0f), new Runnable() {
+            Scheduler.delay(device, 1000 * NWScript.floatToInt(modifiedCraftDelay / 2.0f), new Runnable() {
                 @Override
                 public void run() {
                     NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectVisualEffect(VfxComBlood.SPARK_MEDIUM, false), device, 0.0f);
                 }
             });
 
-            NWNX_Funcs.StartTimingBar(oPC, NWScript.floatToInt(CraftDelay), "");
+            NWNX_Funcs.StartTimingBar(oPC, NWScript.floatToInt(modifiedCraftDelay), "");
 
-            Scheduler.delay(oPC, NWScript.floatToInt(CraftDelay * 1000), new Runnable() {
+            Scheduler.delay(oPC, NWScript.floatToInt(modifiedCraftDelay * 1000), new Runnable() {
                 @Override
                 public void run() {
                     try

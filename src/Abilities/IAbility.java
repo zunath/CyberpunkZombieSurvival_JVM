@@ -3,7 +3,7 @@ package Abilities;
 import org.nwnx.nwnx2.jvm.NWObject;
 
 public interface IAbility {
-    boolean CanCastSpell();
+    boolean CanCastSpell(NWObject oPC);
     String CannotCastSpellMessage();
     int ManaCost(NWObject oPC, int baseCost);
     float CastingTime(NWObject oPC, float baseCastingTime);

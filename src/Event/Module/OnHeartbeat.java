@@ -2,12 +2,14 @@ package Event.Module;
 import Common.Constants;
 import Entities.ActivePlayerEntity;
 import Entities.PlayerEntity;
+import Enumerations.AbilityType;
 import GameObject.PlayerGO;
 import Common.IScriptEventHandler;
 import Data.Repository.ActivePlayerRepository;
 import Data.Repository.PlayerRepository;
 import GameSystems.DiseaseSystem;
 import GameSystems.FoodSystem;
+import GameSystems.MagicSystem;
 import GameSystems.ProgressionSystem;
 import Helper.ColorToken;
 import org.joda.time.DateTime;
@@ -76,6 +78,12 @@ public class OnHeartbeat implements IScriptEventHandler {
 		{
 			if(NWScript.getCurrentHitPoints(oPC) < NWScript.getMaxHitPoints(oPC))
 			{
+				// Lizard Regeneration ability grants +2 to heal amount.
+				if(MagicSystem.IsAbilityEquipped(oPC, AbilityType.LizardRegeneration))
+				{
+					amount += 2;
+				}
+
 				NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectHeal(amount), oPC, 0.0f);
 			}
 
@@ -95,6 +103,12 @@ public class OnHeartbeat implements IScriptEventHandler {
 		{
 			if(entity.getCurrentMana() < entity.getMaxMana())
 			{
+				// Clarity ability grants +2 to mana regen amount.
+				if(MagicSystem.IsAbilityEquipped(oPC, AbilityType.Clarity))
+				{
+					amount += 2;
+				}
+
 				entity.setCurrentMana(entity.getCurrentMana() + amount);
 				if(entity.getCurrentMana() > entity.getMaxMana())
 					entity.setCurrentMana(entity.getMaxMana());

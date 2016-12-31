@@ -9,10 +9,8 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
-import org.nwnx.nwnx2.jvm.constants.Ability;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MagicRepository {

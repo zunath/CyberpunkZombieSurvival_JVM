@@ -1,6 +1,7 @@
 package GameSystems;
 
 import Bioware.Position;
+import Enumerations.AbilityType;
 import Enumerations.CustomAnimationType;
 import Enumerations.GunType;
 import GameObject.GunGO;
@@ -13,6 +14,7 @@ import org.nwnx.nwnx2.jvm.constants.*;
 import org.nwnx.nwnx2.jvm.constants.Action;
 
 import java.util.Objects;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class CombatSystem {
 
@@ -449,6 +451,16 @@ public class CombatSystem {
                 break;
             }
         }
+
+        // Quick Reload ability occasionally grants instantaneous reload
+        if(MagicSystem.IsAbilityEquipped(oPC, AbilityType.QuickReload))
+        {
+            if(ThreadLocalRandom.current().nextInt(0, 100) <= 10)
+            {
+                fDelay = 0.01f;
+            }
+        }
+
 
         UnloadAmmo(oPC, oGun);
 

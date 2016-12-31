@@ -1,7 +1,6 @@
 package NWNX;
 
 import org.nwnx.nwnx2.jvm.*;
-import org.nwnx.nwnx2.jvm.NWObject;
 
 @SuppressWarnings("UnusedDeclaration")
 public class NWNX_Structs {

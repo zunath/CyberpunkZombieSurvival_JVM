@@ -1,7 +1,6 @@
 package Event.Module;
 import Common.IScriptEventHandler;
 import GameSystems.InventorySystem;
-import GameSystems.KeyItemSystem;
 import GameSystems.RadioSystem;
 import org.nwnx.nwnx2.jvm.*;
 

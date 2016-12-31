@@ -13,7 +13,7 @@ public class PerformLockpick implements IScriptEventHandler {
 
         final NWObject oTarget = NWScript.getLocalObject(oPC, "LOCKPICK_TEMP_UNLOCKING_OBJECT");
 
-        NWScript.floatingTextStringOnCreature(ColorToken.Purple() + "Lockpicking complete! The NWObject is now unlocked." + ColorToken.End(), oPC, false);
+        NWScript.floatingTextStringOnCreature(ColorToken.Purple() + "Lockpicking complete! The object is now unlocked." + ColorToken.End(), oPC, false);
         NWScript.setLocked(oTarget, false);
 
         Scheduler.delay(oTarget, 12000, new Runnable() {

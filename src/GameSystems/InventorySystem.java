@@ -3,6 +3,7 @@ package GameSystems;
 import Common.Constants;
 import Entities.PlayerEntity;
 import Entities.PlayerProgressionSkillEntity;
+import Enumerations.AbilityType;
 import Enumerations.CustomItemProperty;
 import GameObject.PlayerGO;
 import Helper.ColorToken;
@@ -130,7 +131,10 @@ public class InventorySystem {
             }
         }
 
-        return slots + equipBonusSlots;
+        // Strong Back ability grants +10 item slots.
+        int abilityBonusSlots = MagicSystem.IsAbilityEquipped(oPC, AbilityType.StrongBack) ? 10 : 0;
+
+        return slots + equipBonusSlots + abilityBonusSlots;
     }
 
     private static void RunItemLimitCheck(NWObject oPC, NWObject oItem)

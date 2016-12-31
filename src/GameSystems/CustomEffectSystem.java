@@ -1,15 +1,13 @@
 package GameSystems;
 
-import CustomEffect.ICustomEffectHandler;
 import Entities.CustomEffectEntity;
 import Entities.PCCustomEffectEntity;
 import GameObject.PlayerGO;
-import Helper.ErrorHelper;
 import Data.Repository.CustomEffectRepository;
 import Helper.ScriptHelper;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
-import org.nwnx.nwnx2.jvm.Scheduler;
+
 import java.util.List;
 
 public class CustomEffectSystem {

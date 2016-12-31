@@ -1,17 +1,19 @@
-package Abilities;
+package Abilities.HolyMagic;
 
+import Abilities.IAbility;
+import Enumerations.AbilityType;
+import GameSystems.MagicSystem;
 import GameSystems.ProgressionSystem;
+import org.nwnx.nwnx2.jvm.NWEffect;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.constants.Ability;
 
-import java.util.Random;
+import static org.nwnx.nwnx2.jvm.constants.All.DURATION_TYPE_TEMPORARY;
 
-import static org.nwnx.nwnx2.jvm.constants.All.DURATION_TYPE_INSTANT;
-
-public class Cure implements IAbility {
+public class Regenerate implements IAbility {
     @Override
-    public boolean CanCastSpell() {
+    public boolean CanCastSpell(NWObject oPC) {
         return true;
     }
 
@@ -22,6 +24,9 @@ public class Cure implements IAbility {
 
     @Override
     public int ManaCost(NWObject oPC, int baseManaCost) {
+        if(MagicSystem.IsAbilityEquipped(oPC, AbilityType.TouchedByHoly))
+            baseManaCost--;
+
         return baseManaCost;
     }
 
@@ -35,20 +40,17 @@ public class Cure implements IAbility {
         return baseCooldownTime;
     }
 
+
     @Override
     public void OnImpact(NWObject oPC, NWObject oTarget) {
-        Random random = new Random();
         int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_HOLY_AFFINITY);
         int wisdom = NWScript.getAbilityScore(oPC, Ability.WISDOM, false) - 10;
-        int baseRecovery = 4 + (skill / 2) + (wisdom / 2);
-        int hp = random.nextInt(10 + (skill / 2) + wisdom) + 1;
-        int visualID = 0;
+        float baseDuration = 60.0f;
+        float bonusDuration = ((skill / 2) + wisdom) * 20.0f;
+        float duration = baseDuration + bonusDuration;
+        NWEffect effect = NWScript.effectRegenerate(1, 10.0f);
 
-        if(hp < baseRecovery) hp = baseRecovery;
-
-
-        NWScript.applyEffectToObject(DURATION_TYPE_INSTANT, NWScript.effectVisualEffect(visualID, false), oTarget, 0.0f);
-        NWScript.applyEffectToObject(DURATION_TYPE_INSTANT, NWScript.effectHeal(hp), oTarget, 0.0f);
+        NWScript.applyEffectToObject(DURATION_TYPE_TEMPORARY, effect, oTarget, duration);
     }
 
     @Override
