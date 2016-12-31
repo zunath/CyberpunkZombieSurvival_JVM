@@ -52,6 +52,7 @@ public class DataAccess {
         _configuration.setProperty("hibernate.c3p0.min_size", "10");
 
         // Link all DB entities to the configuration here.
+        _configuration.addAnnotatedClass(AbilityCategoryEntity.class);
         _configuration.addAnnotatedClass(AbilityEntity.class);
         _configuration.addAnnotatedClass(ActivePlayerEntity.class);
         _configuration.addAnnotatedClass(AuthorizedDMEntity.class);

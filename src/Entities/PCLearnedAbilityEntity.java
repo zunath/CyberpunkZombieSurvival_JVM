@@ -1,5 +1,7 @@
 package Entities;
 
+import org.hibernate.annotations.Fetch;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 
@@ -18,8 +20,9 @@ public class PCLearnedAbilityEntity {
     @Column(name = "AcquiredDate")
     private Timestamp acquiredDate;
 
-    @Column(name = "AbilityID")
-    private int abilityID;
+    @ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name = "AbilityID")
+    private AbilityEntity ability;
 
     public int getPcBlueprintID() {
         return pcAbilityID;
@@ -45,11 +48,11 @@ public class PCLearnedAbilityEntity {
         this.acquiredDate = acquiredDate;
     }
 
-    public int getAbilityID() {
-        return abilityID;
+    public AbilityEntity getAbility() {
+        return ability;
     }
 
-    public void setAbilityID(int abilityID) {
-        this.abilityID = abilityID;
+    public void setAbility(AbilityEntity ability) {
+        this.ability = ability;
     }
 }

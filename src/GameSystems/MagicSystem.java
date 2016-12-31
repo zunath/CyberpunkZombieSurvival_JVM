@@ -5,6 +5,7 @@ import Bioware.Position;
 import Data.Repository.MagicRepository;
 import Data.Repository.PlayerRepository;
 import Entities.AbilityEntity;
+import Entities.PCEquippedAbilityEntity;
 import Entities.PlayerEntity;
 import GameObject.PlayerGO;
 import Helper.ScriptHelper;
@@ -14,9 +15,11 @@ import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.NWVector;
 import org.nwnx.nwnx2.jvm.Scheduler;
+import org.nwnx.nwnx2.jvm.constants.Ability;
 import org.nwnx.nwnx2.jvm.constants.Animation;
 import org.nwnx.nwnx2.jvm.constants.DurationType;
 import org.nwnx.nwnx2.jvm.constants.VfxDur;
+import sun.font.Script;
 
 import java.util.UUID;
 
@@ -140,5 +143,117 @@ public class MagicSystem {
         });
     }
 
+    public static PCEquippedAbilityEntity EquipAbility(NWObject oPC, int slotID, int abilityID)
+    {
+        MagicRepository repo = new MagicRepository();
+        PCEquippedAbilityEntity entity = UnequipAbility(oPC, slotID);
+        AbilityEntity abilityEntity = repo.GetAbilityByID(abilityID);
+
+        if(slotID == 1) entity.setSlot1(abilityEntity);
+        else if(slotID == 2) entity.setSlot2(abilityEntity);
+        else if(slotID == 3) entity.setSlot3(abilityEntity);
+        else if(slotID == 4) entity.setSlot4(abilityEntity);
+        else if(slotID == 5) entity.setSlot5(abilityEntity);
+        else if(slotID == 6) entity.setSlot6(abilityEntity);
+        else if(slotID == 7) entity.setSlot7(abilityEntity);
+        else if(slotID == 8) entity.setSlot8(abilityEntity);
+        else if(slotID == 9) entity.setSlot9(abilityEntity);
+        else if(slotID == 10) entity.setSlot10(abilityEntity);
+
+
+        IAbility ability = (IAbility) ScriptHelper.GetClassByName("Abilities." + abilityEntity.getJavaScriptName());
+        ability.OnEquip(oPC);
+        repo.Save(entity);
+
+        return entity;
+    }
+
+    public static PCEquippedAbilityEntity UnequipAbility(NWObject oPC, int slotID)
+    {
+        MagicRepository repo = new MagicRepository();
+        PlayerGO pcGO = new PlayerGO(oPC);
+        PCEquippedAbilityEntity entity = repo.GetPCEquippedAbilities(pcGO.getUUID());
+        IAbility ability;
+        String scriptName = null;
+
+
+
+        if(slotID == 1)
+        {
+            if(entity.getSlot1() == null) return entity;
+
+            scriptName = entity.getSlot1().getJavaScriptName();
+            entity.setSlot1(null);
+        }
+        else if(slotID == 2)
+        {
+            if(entity.getSlot2() == null) return entity;
+
+            scriptName = entity.getSlot2().getJavaScriptName();
+            entity.setSlot2(null);
+        }
+        else if(slotID == 3)
+        {
+            if(entity.getSlot3() == null) return entity;
+
+            scriptName = entity.getSlot3().getJavaScriptName();
+            entity.setSlot3(null);
+        }
+        else if(slotID == 4)
+        {
+            if(entity.getSlot4() == null) return entity;
+
+            scriptName = entity.getSlot4().getJavaScriptName();
+            entity.setSlot4(null);
+        }
+        else if(slotID == 5)
+        {
+            if(entity.getSlot5() == null) return entity;
+
+            scriptName = entity.getSlot5().getJavaScriptName();
+            entity.setSlot5(null);
+        }
+        else if(slotID == 6)
+        {
+            if(entity.getSlot6() == null) return entity;
+
+            scriptName = entity.getSlot6().getJavaScriptName();
+            entity.setSlot6(null);
+        }
+        else if(slotID == 7)
+        {
+            if(entity.getSlot7() == null) return entity;
+
+            scriptName = entity.getSlot7().getJavaScriptName();
+            entity.setSlot7(null);
+        }
+        else if(slotID == 8)
+        {
+            if(entity.getSlot8() == null) return entity;
+
+            scriptName = entity.getSlot8().getJavaScriptName();
+            entity.setSlot8(null);
+        }
+        else if(slotID == 9)
+        {
+            if(entity.getSlot9() == null) return entity;
+
+            scriptName = entity.getSlot9().getJavaScriptName();
+            entity.setSlot9(null);
+        }
+        else if(slotID == 10)
+        {
+            if(entity.getSlot10() == null) return entity;
+
+            scriptName = entity.getSlot10().getJavaScriptName();
+            entity.setSlot10(null);
+        }
+
+        ability = (IAbility) ScriptHelper.GetClassByName("Abilities." + scriptName);
+        ability.OnUnequip(oPC);
+        repo.Save(entity);
+
+        return entity;
+    }
 
 }
