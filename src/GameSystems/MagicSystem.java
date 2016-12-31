@@ -36,7 +36,7 @@ public class MagicSystem {
         AbilityEntity entity = repo.GetAbilityByFeatID(featID);
 
         if(entity == null) return;
-        IAbility ability = (IAbility) ScriptHelper.GetClassByName(entity.getJavaScriptName());
+        IAbility ability = (IAbility) ScriptHelper.GetClassByName("Abilities." + entity.getJavaScriptName());
         if(ability == null) return;
 
         PlayerEntity playerEntity = playerRepo.getByUUID(pcGO.getUUID());
