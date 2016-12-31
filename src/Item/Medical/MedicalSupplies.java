@@ -1,6 +1,8 @@
 package Item.Medical;
 
+import Enumerations.AbilityType;
 import GameObject.PlayerGO;
+import GameSystems.MagicSystem;
 import Helper.ItemHelper;
 import Common.IScriptEventHandler;
 import NWNX.NWNX_Events;
@@ -48,8 +50,16 @@ public class MedicalSupplies implements IScriptEventHandler {
         }
 
         int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_FIRST_AID);
-        final float duration = 30.0f + (skill * 6.0f);
+        float duration = 30.0f + (skill * 6.0f);
+        if(MagicSystem.IsAbilityEquipped(oPC, AbilityType.Medic))
+        {
+            duration *= 1.25f;
+        }
+
+        final float finalDuration = duration;
         final float delay = 12.0f - (skill * 0.5f);
+
+
         final NWObject item = NWNX_Events.GetEventItem();
         final int restoreAmount = 1 + NWScript.getLocalInt(item, "ENHANCED_AMOUNT");
 
@@ -84,7 +94,7 @@ public class MedicalSupplies implements IScriptEventHandler {
                 targetGO.removeEffect(EffectType.REGENERATE);
 
                 NWEffect regeneration = NWScript.effectRegenerate(restoreAmount, 6.0f);
-                NWScript.applyEffectToObject(DurationType.TEMPORARY, regeneration, oTarget, duration);
+                NWScript.applyEffectToObject(DurationType.TEMPORARY, regeneration, oTarget, finalDuration);
                 ItemHelper.ReduceItemStack(item);
 
                 NWScript.sendMessageToPC(oPC, "You successfully treat " + NWScript.getName(oTarget, false) + "'s wounds.");

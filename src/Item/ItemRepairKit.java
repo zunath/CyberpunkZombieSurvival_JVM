@@ -1,7 +1,9 @@
 package Item;
 
 import Common.IScriptEventHandler;
+import Enumerations.AbilityType;
 import GameSystems.DurabilitySystem;
+import GameSystems.MagicSystem;
 import GameSystems.ProgressionSystem;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
@@ -36,6 +38,12 @@ public class ItemRepairKit implements IScriptEventHandler {
         {
             iRepairAmount = 35 + (int)((iSkill * 3.5));
             if(iRepairAmount > 75) iRepairAmount = 75;
+        }
+
+        // Fixer ability increases repair amount by 25%
+        if(MagicSystem.IsAbilityEquipped(oPC, AbilityType.Fixer))
+        {
+            iRepairAmount *= 1.25;
         }
 
         // Run the repair function
