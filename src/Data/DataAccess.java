@@ -52,6 +52,7 @@ public class DataAccess {
         _configuration.setProperty("hibernate.c3p0.min_size", "10");
 
         // Link all DB entities to the configuration here.
+        _configuration.addAnnotatedClass(AbilityEntity.class);
         _configuration.addAnnotatedClass(ActivePlayerEntity.class);
         _configuration.addAnnotatedClass(AuthorizedDMEntity.class);
         _configuration.addAnnotatedClass(BadgeEntity.class);
@@ -71,7 +72,7 @@ public class DataAccess {
         _configuration.addAnnotatedClass(LootTableEntity.class);
         _configuration.addAnnotatedClass(LootTableItemEntity.class);
         _configuration.addAnnotatedClass(PCAuthorizedCDKeyEntity.class);
-        _configuration.addAnnotatedClass(PCAbilityEntity.class);
+        _configuration.addAnnotatedClass(PCLearnedAbilityEntity.class);
         _configuration.addAnnotatedClass(PCBadgeEntity.class);
         _configuration.addAnnotatedClass(PCBlueprintEntity.class);
         _configuration.addAnnotatedClass(PCKeyItemEntity.class);
@@ -81,6 +82,7 @@ public class DataAccess {
         _configuration.addAnnotatedClass(PCCorpseItemEntity.class);
         _configuration.addAnnotatedClass(PCCraftEntity.class);
         _configuration.addAnnotatedClass(PCCustomEffectEntity.class);
+        _configuration.addAnnotatedClass(PCEquippedAbilityEntity.class);
         _configuration.addAnnotatedClass(PCOutfitEntity.class);
         _configuration.addAnnotatedClass(PCOverflowItemEntity.class);
         _configuration.addAnnotatedClass(PCSearchSiteEntity.class);

@@ -1,11 +1,13 @@
 package GameSystems;
 
-import Abilities.Cure;
 import Abilities.IAbility;
 import Bioware.Position;
+import Data.Repository.MagicRepository;
 import Data.Repository.PlayerRepository;
+import Entities.AbilityEntity;
 import Entities.PlayerEntity;
 import GameObject.PlayerGO;
+import Helper.ScriptHelper;
 import NWNX.NWNX_Events;
 import NWNX.NWNX_Funcs;
 import org.nwnx.nwnx2.jvm.NWObject;
@@ -16,41 +18,26 @@ import org.nwnx.nwnx2.jvm.constants.Animation;
 import org.nwnx.nwnx2.jvm.constants.DurationType;
 import org.nwnx.nwnx2.jvm.constants.VfxDur;
 
-import java.util.HashMap;
 import java.util.UUID;
 
 public class MagicSystem {
 
     private static int SPELL_STATUS_STARTED = 1;
     private static int SPELL_STATUS_INTERRUPTED = 2;
-    private static HashMap<Integer, IAbility> AbilityRegistration;
-
-    static{
-        AbilityRegistration = new HashMap<>();
-        RegisterAbilities();
-    }
-
-    private static void RegisterAbilities()
-    {
-        AbilityRegistration.put(0, new Cure());
-    }
-
-    public static IAbility GetAbilityByFeatID(int featID)
-    {
-        if(!AbilityRegistration.containsKey(featID)) return null;
-
-        return AbilityRegistration.get(featID);
-    }
 
     public static void OnFeatUsed(NWObject pc)
     {
         PlayerRepository playerRepo = new PlayerRepository();
+        MagicRepository repo = new MagicRepository();
         PlayerGO pcGO = new PlayerGO(pc);
         int featID = NWNX_Events.GetEventSubType();
         NWObject target = NWNX_Events.GetEventTarget();
+        AbilityEntity entity = repo.GetAbilityByFeatID(featID);
 
-        if(!AbilityRegistration.containsKey(featID)) return;
-        IAbility ability = AbilityRegistration.get(featID);
+        if(entity == null) return;
+        IAbility ability = (IAbility) ScriptHelper.GetClassByName(entity.getJavaScriptName());
+        if(ability == null) return;
+
         PlayerEntity playerEntity = playerRepo.getByUUID(pcGO.getUUID());
 
         if(!ability.CanCastSpell())
@@ -62,7 +49,7 @@ public class MagicSystem {
             return;
         }
 
-        if(playerEntity.getCurrentMana() < ability.ManaCost())
+        if(playerEntity.getCurrentMana() < ability.ManaCost(pc, entity.getBaseManaCost()))
         {
             NWScript.sendMessageToPC(pc, "You do not have enough mana.");
             return;
@@ -74,36 +61,42 @@ public class MagicSystem {
             return;
         }
 
-        if(ability.CastingTime() > 0.0f)
+        if(ability.CastingTime(pc, entity.getBaseCastingTime()) > 0.0f)
         {
-            CastSpell(pc, target, ability);
+            CastSpell(pc, target, ability, entity.getBaseManaCost(), entity.getBaseCastingTime(), entity.getBaseCooldownTime());
         }
         else
         {
             ability.OnImpact(pc, target);
-            playerEntity.setCurrentMana(playerEntity.getCurrentMana() - ability.ManaCost());
+            playerEntity.setCurrentMana(playerEntity.getCurrentMana() - ability.ManaCost(pc, entity.getBaseManaCost()));
             playerRepo.save(playerEntity);
         }
     }
 
-    private static void CastSpell(final NWObject pc, final NWObject target, final IAbility ability)
+    private static void CastSpell(final NWObject pc,
+                                  final NWObject target,
+                                  final IAbility ability,
+                                  final int baseManaCost,
+                                  final float baseCastingTime,
+                                  final float baseCooldownTime)
     {
         final String spellUUID = UUID.randomUUID().toString();
         final PlayerGO pcGO = new PlayerGO(pc);
+
         NWScript.clearAllActions(false);
         Position.TurnToFaceObject(target, pc);
         NWScript.applyEffectToObject(DurationType.TEMPORARY,
                 NWScript.effectVisualEffect(VfxDur.ELEMENTAL_SHIELD, false),
                 pc,
-                ability.CastingTime() + 0.2f);
-        NWScript.actionPlayAnimation(Animation.LOOPING_CONJURE1, 1.0f, ability.CastingTime() - 0.1f);
+                ability.CastingTime(pc, baseManaCost) + 0.2f);
+        NWScript.actionPlayAnimation(Animation.LOOPING_CONJURE1, 1.0f, ability.CastingTime(pc, baseCastingTime) - 0.1f);
 
         pcGO.setIsBusy(true);
         CheckForSpellInterruption(pc, spellUUID, NWScript.getPosition(pc));
         NWScript.setLocalInt(pc, spellUUID, SPELL_STATUS_STARTED);
 
-        NWNX_Funcs.StartTimingBar(pc, (int)ability.CastingTime(), "");
-        Scheduler.delay(pc, (int)(1050 * ability.CastingTime()), new Runnable() {
+        NWNX_Funcs.StartTimingBar(pc, (int)ability.CastingTime(pc, baseCastingTime), "");
+        Scheduler.delay(pc, (int)(1050 * ability.CastingTime(pc, baseCastingTime)), new Runnable() {
             @Override
             public void run() {
                 if(NWScript.getLocalInt(pc, spellUUID) == SPELL_STATUS_INTERRUPTED)
@@ -118,7 +111,7 @@ public class MagicSystem {
                 PlayerEntity entity = repo.getByUUID(pcGO.getUUID());
 
                 ability.OnImpact(pc, target);
-                entity.setCurrentMana(entity.getCurrentMana() - ability.ManaCost());
+                entity.setCurrentMana(entity.getCurrentMana() - ability.ManaCost(pc, baseManaCost));
                 repo.save(entity);
 
                 pcGO.setIsBusy(false);

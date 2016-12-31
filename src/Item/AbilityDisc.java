@@ -1,11 +1,9 @@
 package Item;
 
-import Abilities.IAbility;
 import Common.IScriptEventHandler;
 import Data.Repository.MagicRepository;
+import Entities.AbilityEntity;
 import GameObject.PlayerGO;
-import GameSystems.MagicSystem;
-import GameSystems.ProgressionSystem;
 import NWNX.NWNX_Events;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
@@ -15,25 +13,21 @@ public class AbilityDisc implements IScriptEventHandler{
     public void runScript(NWObject oPC) {
         PlayerGO pcGO = new PlayerGO(oPC);
         NWObject oItem = NWNX_Events.GetEventItem();
-        int featID = NWScript.getLocalInt(oItem, "MAGIC_FEAT_ID");
-        IAbility ability = MagicSystem.GetAbilityByFeatID(featID);
-
-        if(featID <= 0)
-        {
-            NWScript.sendMessageToPC(oPC, "Unable to learn ability");
-        }
-
+        String resref = NWScript.getResRef(oItem);
         MagicRepository repo = new MagicRepository();
-        boolean success = repo.AddAbilityToPC(pcGO.getUUID(), featID);
+
+        int abilityID = Integer.parseInt(resref.substring(13));
+        AbilityEntity entity = repo.GetAbilityByID(abilityID);
+        boolean success = repo.AddAbilityToPC(pcGO.getUUID(), abilityID);
 
         if(success)
         {
             NWScript.destroyObject(oItem, 0.0f);
-            NWScript.sendMessageToPC(oPC, "You learn " + ability.Name() + "!");
+            NWScript.sendMessageToPC(oPC, "You learn " + entity.getName() + "!");
         }
         else
         {
-            NWScript.sendMessageToPC(oPC, "You already know " + ability.Name() + ".");
+            NWScript.sendMessageToPC(oPC, "You already know " + entity.getName() + ".");
         }
     }
 }

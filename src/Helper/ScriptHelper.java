@@ -21,4 +21,17 @@ public class ScriptHelper {
         }
     }
 
+    public static Object GetClassByName(String className)
+    {
+        try
+        {
+            return Class.forName(className).newInstance();
+        }
+        catch (Exception ex)
+        {
+            ErrorHelper.HandleException(ex, "Unable to run GetClassByName for class name: " + className);
+            return null;
+        }
+    }
+
 }

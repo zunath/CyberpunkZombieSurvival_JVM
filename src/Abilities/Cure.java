@@ -21,23 +21,18 @@ public class Cure implements IAbility {
     }
 
     @Override
-    public String Name() {
-        return "Cure";
+    public int ManaCost(NWObject oPC, int baseManaCost) {
+        return baseManaCost;
     }
 
     @Override
-    public int ManaCost() {
-        return 5;
+    public float CastingTime(NWObject oPC, float baseCastingTime) {
+        return baseCastingTime;
     }
 
     @Override
-    public float CastingTime() {
-        return 2.0f;
-    }
-
-    @Override
-    public float CooldownTime() {
-        return 1.0f;
+    public float CooldownTime(NWObject oPC, float baseCooldownTime) {
+        return baseCooldownTime;
     }
 
     @Override
@@ -54,5 +49,15 @@ public class Cure implements IAbility {
 
         NWScript.applyEffectToObject(DURATION_TYPE_INSTANT, NWScript.effectVisualEffect(visualID, false), oTarget, 0.0f);
         NWScript.applyEffectToObject(DURATION_TYPE_INSTANT, NWScript.effectHeal(hp), oTarget, 0.0f);
+    }
+
+    @Override
+    public void OnEquip(NWObject oPC) {
+
+    }
+
+    @Override
+    public void OnUnequip(NWObject oPC) {
+
     }
 }

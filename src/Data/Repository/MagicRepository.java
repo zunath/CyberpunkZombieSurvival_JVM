@@ -1,9 +1,8 @@
 package Data.Repository;
 
 import Data.DataContext;
-import Entities.CraftBlueprintEntity;
-import Entities.PCAbilityEntity;
-import Entities.PCBlueprintEntity;
+import Entities.AbilityEntity;
+import Entities.PCLearnedAbilityEntity;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.joda.time.DateTime;
@@ -13,23 +12,45 @@ import java.sql.Timestamp;
 
 public class MagicRepository {
 
-    public boolean AddAbilityToPC(String uuid, int featID)
+    public AbilityEntity GetAbilityByFeatID(int featID)
+    {
+        try(DataContext context = new DataContext())
+        {
+            Criteria criteria = context.getSession()
+                    .createCriteria(AbilityEntity.class)
+                    .add(Restrictions.eq("featID", featID));
+            return (AbilityEntity)criteria.uniqueResult();
+        }
+    }
+
+    public AbilityEntity GetAbilityByID(int abilityID)
+    {
+        try(DataContext context = new DataContext())
+        {
+            Criteria criteria = context.getSession()
+                    .createCriteria(AbilityEntity.class)
+                    .add(Restrictions.eq("abilityID", abilityID));
+            return (AbilityEntity)criteria.uniqueResult();
+        }
+    }
+
+    public boolean AddAbilityToPC(String uuid, int abilityID)
     {
         boolean addedSuccessfully = false;
 
         try(DataContext context = new DataContext())
         {
             Criteria criteria = context.getSession()
-                    .createCriteria(PCAbilityEntity.class)
-                    .add(Restrictions.eq("featID", featID))
+                    .createCriteria(PCLearnedAbilityEntity.class)
+                    .add(Restrictions.eq("abilityID", abilityID))
                     .add(Restrictions.eq("playerID", uuid));
-            PCAbilityEntity entity = (PCAbilityEntity) criteria.uniqueResult();
+            PCLearnedAbilityEntity entity = (PCLearnedAbilityEntity) criteria.uniqueResult();
 
             if(entity == null)
             {
-                entity = new PCAbilityEntity();
+                entity = new PCLearnedAbilityEntity();
                 entity.setPlayerID(uuid);
-                entity.setFeatID(featID);
+                entity.setAbilityID(abilityID);
                 DateTime dt = new DateTime(DateTimeZone.UTC);
                 entity.setAcquiredDate(new Timestamp(dt.getMillis()));
 

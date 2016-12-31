@@ -22,24 +22,20 @@ public class BoostSTR implements IAbility {
     }
 
     @Override
-    public String Name() {
-        return "Boost STR";
+    public int ManaCost(NWObject oPC, int baseManaCost) {
+        return baseManaCost;
     }
 
     @Override
-    public int ManaCost() {
-        return 7;
+    public float CastingTime(NWObject oPC, float baseCastingTime) {
+        return baseCastingTime;
     }
 
     @Override
-    public float CastingTime() {
-        return 4.0f;
+    public float CooldownTime(NWObject oPC, float baseCooldownTime) {
+        return baseCooldownTime;
     }
 
-    @Override
-    public float CooldownTime() {
-        return 3.0f;
-    }
 
     @Override
     public void OnImpact(NWObject oPC, NWObject oTarget) {
@@ -62,5 +58,15 @@ public class BoostSTR implements IAbility {
 
         NWScript.applyEffectToObject(DURATION_TYPE_INSTANT, NWScript.effectVisualEffect(visualID, false), oTarget, 0.0f);
         NWScript.applyEffectToObject(DURATION_TYPE_TEMPORARY, abilityEffect, oTarget, totalLength);
+    }
+
+    @Override
+    public void OnEquip(NWObject oPC) {
+
+    }
+
+    @Override
+    public void OnUnequip(NWObject oPC) {
+
     }
 }

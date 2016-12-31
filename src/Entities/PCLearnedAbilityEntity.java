@@ -4,11 +4,11 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name="PCAbilities")
-public class PCAbilityEntity {
+@Table(name="PCLearnedAbilities")
+public class PCLearnedAbilityEntity {
 
     @Id
-    @Column(name = "PCAbilityID")
+    @Column(name = "PCLearnedAbilityID")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int pcAbilityID;
 
@@ -18,8 +18,8 @@ public class PCAbilityEntity {
     @Column(name = "AcquiredDate")
     private Timestamp acquiredDate;
 
-    @Column(name = "FeatID")
-    private int featID;
+    @Column(name = "AbilityID")
+    private int abilityID;
 
     public int getPcBlueprintID() {
         return pcAbilityID;
@@ -45,12 +45,11 @@ public class PCAbilityEntity {
         this.acquiredDate = acquiredDate;
     }
 
-    public int getFeatID() {
-        return featID;
+    public int getAbilityID() {
+        return abilityID;
     }
 
-    public void setFeatID(int featID){
-        this.featID = featID;
+    public void setAbilityID(int abilityID) {
+        this.abilityID = abilityID;
     }
-
 }
