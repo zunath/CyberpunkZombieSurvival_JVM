@@ -19,18 +19,18 @@ public class StartingDoor extends DialogBase implements IDialogHandler {
                 ColorToken.Red() + "WARNING: " + ColorToken.End() +
                         "You are about to enter the game world. You cannot come back here once you've entered.\n\n" +
                         "If you're ready to start playing please select a location from the list below.",
-                "City Hall"
+                "Ruby Outpost"
         );
 
         DialogPage cityHallPage = new DialogPage(
-                "City Hall\n\n" + ColorToken.Green() + "Description: " + ColorToken.End() +
-                "This once-bustling district for city affairs now serves as a respite for the remaining survivors of Ether City.",
+                "Ruby Outpost\n\n" + ColorToken.Green() + "Description: " + ColorToken.End() +
+                "The home of an old lady named Ruby. It has since been reinforced to keep the undead out.",
                 "Select this location (ENTER THE GAME WORLD)",
                 "Back"
         );
 
         dialog.addPage("MainPage", mainPage);
-        dialog.addPage("CityHallPage", cityHallPage);
+        dialog.addPage("RubyOutpostPage", cityHallPage);
         return dialog;
     }
 
@@ -46,19 +46,19 @@ public class StartingDoor extends DialogBase implements IDialogHandler {
             case "MainPage":
                 switch (responseID)
                 {
-                    case 1: // City Hall
-                        ChangePage("CityHallPage");
+                    case 1: // Ruby Outpost
+                        ChangePage("RubyOutpostPage");
                         break;
                 }
                 break;
-            case "CityHallPage":
+            case "RubyOutpostPage":
                 switch (responseID)
                 {
                     case 1: // Select this location
                         Scheduler.assign(oPC, new Runnable() {
                             @Override
                             public void run() {
-                                NWLocation location = NWScript.getLocation(NWScript.getWaypointByTag("CITY_HALL_STARTING_LOCATION"));
+                                NWLocation location = NWScript.getLocation(NWScript.getWaypointByTag("RUBY_OUTPOST_STARTING_LOCATION"));
                                 NWScript.actionJumpToLocation(location);
                                 EndConversation();
                             }

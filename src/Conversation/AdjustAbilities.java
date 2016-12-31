@@ -22,7 +22,7 @@ public class AdjustAbilities extends DialogBase implements IDialogHandler {
         PlayerDialog dialog = new PlayerDialog();
 
         DialogPage mainPage = new DialogPage(
-                "You may adjust your equipped abilities here. Please select an option.",
+                "The cybernetic amplifier embedded into your brain allows you to equip abilities. All abilities must be installed by using Ability Discs. Once installed you may equip them here at this terminal.",
                 "Equip Abilities",
                 "Unequip Abilities"
 

@@ -271,6 +271,13 @@ public class MagicSystem {
     {
         MagicRepository repo = new MagicRepository();
         PlayerGO pcGO = new PlayerGO(oPC);
+        PlayerRepository playerRepo = new PlayerRepository();
+
+        PlayerEntity playerEntity = playerRepo.getByUUID(pcGO.getUUID());
+        if(pcGO.GetDatabaseItem() == NWObject.INVALID ||
+           playerEntity == null)
+            return false;
+
         PCEquippedAbilityEntity entity = repo.GetPCEquippedAbilities(pcGO.getUUID());
 
         return (entity.getSlot1() != null && entity.getSlot1().getAbilityID() == abilityID) ||

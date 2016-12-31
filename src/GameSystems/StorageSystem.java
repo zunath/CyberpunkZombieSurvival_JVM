@@ -60,7 +60,7 @@ public class StorageSystem {
         {
             itemCount++;
 
-            if(itemCount < itemLimit)
+            if(itemCount <= itemLimit)
             {
                 StorageItemEntity itemEntity = new StorageItemEntity();
                 itemEntity.setItemName(NWScript.getName(item, false));

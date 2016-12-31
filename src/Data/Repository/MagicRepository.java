@@ -78,17 +78,21 @@ public class MagicRepository {
             Criteria criteria = context.getSession()
                     .createCriteria(PCEquippedAbilityEntity.class)
                     .add(Restrictions.eq("playerID", uuid));
-            PCEquippedAbilityEntity entity = (PCEquippedAbilityEntity)criteria.uniqueResult();
+            List<PCEquippedAbilityEntity> entityList = (List<PCEquippedAbilityEntity>)criteria.list();
 
-            if(entity == null)
+
+            if(entityList.size() > 0)
             {
-                entity = new PCEquippedAbilityEntity();
-                entity.setPlayerID(uuid);
-
-                context.getSession().saveOrUpdate(entity);
+                return entityList.get(0);
             }
+            else
+            {
+                PCEquippedAbilityEntity entity = new PCEquippedAbilityEntity();
+                entity.setPlayerID(uuid);
+                context.getSession().saveOrUpdate(entity);
 
-            return entity;
+                return entity;
+            }
         }
     }
 
