@@ -1,6 +1,7 @@
 package Abilities.Passive;
 
 import Abilities.IAbility;
+import GameSystems.InventorySystem;
 import org.nwnx.nwnx2.jvm.NWObject;
 
 public class StrongBack implements IAbility {
@@ -36,11 +37,11 @@ public class StrongBack implements IAbility {
 
     @Override
     public void OnEquip(NWObject oPC) {
-
+        InventorySystem.RunItemLimitCheck(oPC);
     }
 
     @Override
     public void OnUnequip(NWObject oPC) {
-
+        InventorySystem.RunItemLimitCheck(oPC);
     }
 }

@@ -140,6 +140,12 @@ public class InventorySystem {
     private static void RunItemLimitCheck(NWObject oPC, NWObject oItem)
     {
         if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC) || IsItemExempt(oItem)) return;
+        RunItemLimitCheck(oPC);
+    }
+
+    public static void RunItemLimitCheck(NWObject oPC)
+    {
+        if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return;
 
         int numberOfItems = GetItemCount(oPC);
         int limit = GetPlayerInventoryLimit(oPC);

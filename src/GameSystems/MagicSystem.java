@@ -161,8 +161,8 @@ public class MagicSystem {
 
         IAbility ability = (IAbility) ScriptHelper.GetClassByName("Abilities." + abilityEntity.getJavaScriptName());
         NWNX_Funcs.AddKnownFeat(oPC, abilityEntity.getFeatID(), 0);
-        ability.OnEquip(oPC);
         repo.Save(entity);
+        ability.OnEquip(oPC);
 
         return entity;
     }
@@ -260,8 +260,8 @@ public class MagicSystem {
         ability = (IAbility) ScriptHelper.GetClassByName("Abilities." + scriptName);
 
         NWNX_Funcs.RemoveKnownFeat(oPC, featID);
-        ability.OnUnequip(oPC);
         repo.Save(entity);
+        ability.OnUnequip(oPC);
 
         return entity;
     }
