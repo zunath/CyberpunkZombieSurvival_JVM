@@ -10,6 +10,8 @@ import GameSystems.SpawnSystem;
 import org.nwnx.nwnx2.jvm.*;
 import org.nwnx.nwnx2.jvm.constants.*;
 
+import java.util.Objects;
+
 @SuppressWarnings("UnusedDeclaration")
 public class OnEnter implements IScriptEventHandler {
     @Override
@@ -33,7 +35,14 @@ public class OnEnter implements IScriptEventHandler {
     {
         if(!NWScript.getIsObjectValid(oPC) || NWScript.getIsDead(oPC)) return;
 
-        if(NWScript.getLocation(oPC) != location)
+        NWLocation currentLocation = NWScript.getLocation(oPC);
+        String areaResref = NWScript.getResRef(NWScript.getArea(oPC));
+
+        if(!Objects.equals(areaResref, NWScript.getResRef(location.getArea())) ||
+           currentLocation.getFacing() != location.getFacing() ||
+           currentLocation.getX() != location.getX() ||
+           currentLocation.getY() != location.getY() ||
+           currentLocation.getZ() != location.getZ())
         {
             for(NWEffect effect : NWScript.getEffects(oPC))
             {
