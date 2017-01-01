@@ -20,11 +20,11 @@ public class OmniTool implements IScriptEventHandler {
 
         if(castSpellType == 0)
         {
-            HandleCheckInfectionLevel(oPC);
+            HandleAutoFollow(oPC);
         }
         else if(castSpellType == 1)
         {
-            HandleAutoFollow(oPC);
+            HandleCheckInfectionLevel(oPC);
         }
         else if(castSpellType == 2)
         {

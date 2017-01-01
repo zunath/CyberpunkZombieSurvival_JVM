@@ -31,4 +31,7 @@ public class AbilityType {
     public static int SpeedyCrafter = 28;
     public static int SnakeEater = 29;
     public static int AntiqueCollector = 30;
+    public static int PatchUp = 31;
+    public static int Lumberjack = 32;
+    public static int Miner = 33;
 }
