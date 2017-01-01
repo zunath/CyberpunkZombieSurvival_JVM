@@ -7,6 +7,8 @@ import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.Scheduler;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class DurabilitySystem {
     private static final int DurabilityLossChance = 2;
 
@@ -39,7 +41,7 @@ public class DurabilitySystem {
         
         int iDurability = itemGO.getDurability();
         
-        int iRoll = NWScript.random(100) + 1;
+        int iRoll = ThreadLocalRandom.current().nextInt(1, 100);
         String sItemName = NWScript.getName(oItem, true);
         // Take the base decay loss chance and subtract it by player's skill in Maintenance.
         int iDC = DurabilityLossChance + decayChanceModifier;

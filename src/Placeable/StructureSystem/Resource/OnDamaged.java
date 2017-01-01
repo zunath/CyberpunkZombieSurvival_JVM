@@ -33,17 +33,24 @@ public class OnDamaged implements IScriptEventHandler {
             return;
         }
 
-        DurabilitySystem.RunItemDecay(oPC, oWeapon, 3, 1, true);
+        int baseDurabilityChance = 20;
+        int durabilityChanceReduction = 0;
+
 
         if(activityID == 1) // 1 = Logging
         {
             abilityID = AbilityType.Lumberjack;
+            durabilityChanceReduction = MagicSystem.IsAbilityEquipped(oPC, AbilityType.ToolExpertLogging) ? 10 : 0;
         }
         else if(activityID == 2) // Mining
         {
             abilityID = AbilityType.Miner;
+            durabilityChanceReduction = MagicSystem.IsAbilityEquipped(oPC, AbilityType.ToolExpertMining) ? 10 : 0;
         }
         else return;
+
+        int durabilityLossChance = baseDurabilityChance - durabilityChanceReduction;
+        DurabilitySystem.RunItemDecay(oPC, oWeapon, durabilityLossChance, 1, true);
 
         int baseChance = 10;
         int bonusChance = MagicSystem.IsAbilityEquipped(oPC, abilityID) ? 10 : 0;

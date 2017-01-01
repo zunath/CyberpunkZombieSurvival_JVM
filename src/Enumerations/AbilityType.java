@@ -34,4 +34,6 @@ public class AbilityType {
     public static int PatchUp = 31;
     public static int Lumberjack = 32;
     public static int Miner = 33;
+    public static int ToolExpertLogging = 34;
+    public static int ToolExpertMining = 35;
 }
