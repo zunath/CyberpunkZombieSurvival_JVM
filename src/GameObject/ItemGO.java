@@ -43,7 +43,7 @@ public class ItemGO {
 
     public int getDurability()
     {
-        if(!canHaveDurability()) return -1;
+        addDurabilityIfNotExist();
 
         NWItemProperty[] itemProperties = NWScript.getItemProperties(item);
         for(NWItemProperty ip : itemProperties)
@@ -61,7 +61,7 @@ public class ItemGO {
 
     public void setDurability(int durability)
     {
-        if(!canHaveDurability()) return;
+        addDurabilityIfNotExist();
 
         if(durability < 0) durability = 0;
         else if(durability > 100) durability = 100;
@@ -70,20 +70,22 @@ public class ItemGO {
         ItemPropertyHelper.AddCustomItemProperty(item, CustomItemProperty.ItemDurability, 0, 35, row2DA, 0, 0);
     }
 
-
-    private boolean canHaveDurability()
+    private void addDurabilityIfNotExist()
     {
-        NWItemProperty[] itemProperties = NWScript.getItemProperties(item);
-
-        for(NWItemProperty ip : itemProperties)
+        boolean foundIP = false;
+        for(NWItemProperty ip : NWScript.getItemProperties(item))
         {
             if(NWScript.getItemPropertyType(ip) == CustomItemProperty.ItemDurability)
             {
-                return true;
+                foundIP = true;
+                break;
             }
         }
 
-        return false;
+        if(!foundIP)
+        {
+            ItemPropertyHelper.AddCustomItemProperty(item, CustomItemProperty.ItemDurability, 0, 35, 1, 0, 0);
+        }
     }
 
 
