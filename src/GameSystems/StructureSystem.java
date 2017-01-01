@@ -265,6 +265,7 @@ public class StructureSystem {
         entity.setMetalRequired(blueprint.getMetalRequired());
         entity.setNailsRequired(blueprint.getNailsRequired());
         entity.setWoodRequired(blueprint.getWoodRequired());
+        entity.setIronRequired(blueprint.getIronRequired());
 
         if(IsWithinRangeOfTerritoryFlag(constructionSite))
         {
@@ -517,12 +518,14 @@ public class StructureSystem {
                 int nails = entity.getBlueprint().getNailsRequired() - entity.getNailsRequired();
                 int cloth = entity.getBlueprint().getClothRequired() - entity.getClothRequired();
                 int leather = entity.getBlueprint().getLeatherRequired() - entity.getLeatherRequired();
+                int iron = entity.getBlueprint().getIronRequired() - entity.getIronRequired();
 
                 for(int w = 1; w <= wood; w++) NWScript.createItemOnObject("reo_wood", oPC, 1, "");
                 for(int m = 1; m <= metal; m++) NWScript.createItemOnObject("reo_metal", oPC, 1, "");
                 for(int n = 1; n <= nails; n++) NWScript.createItemOnObject("reo_nails", oPC, 1, "");
                 for(int c = 1; c <= cloth; c++) NWScript.createItemOnObject("reo_cloth", oPC, 1, "");
                 for(int l = 1; l <= leather; l++) NWScript.createItemOnObject("reo_leather", oPC, 1, "");
+                for(int i = 1; i <= iron; i++) NWScript.createItemOnObject("reo_iron", oPC, 1, "");
 
             }
 

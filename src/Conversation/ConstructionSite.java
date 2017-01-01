@@ -227,6 +227,7 @@ public class ConstructionSite extends DialogBase implements IDialogHandler {
             header += entity.getMetalRequired() > 0 ? entity.getMetalRequired() + "x Metal" + "\n" : "";
             header += entity.getClothRequired() > 0 ? entity.getClothRequired() + "x Cloth" + "\n" : "";
             header += entity.getLeatherRequired() > 0 ? entity.getLeatherRequired() + "x Leather" + "\n" : "";
+            header += entity.getIronRequired() > 0 ? entity.getIronRequired() + "x Iron" + "\n" : "";
 
             page.addResponse("Quick Build", PlayerAuthorizationSystem.IsPCRegisteredAsDM(GetPC()));
             page.addResponse("Preview", true);
@@ -317,6 +318,7 @@ public class ConstructionSite extends DialogBase implements IDialogHandler {
         header += entity.getMetalRequired() > 0 ? entity.getMetalRequired() + "x Metal" + "\n" : "";
         header += entity.getClothRequired() > 0 ? entity.getClothRequired() + "x Cloth" + "\n" : "";
         header += entity.getLeatherRequired() > 0 ? entity.getLeatherRequired() + "x Leather" + "\n" : "";
+        header += entity.getIronRequired() > 0 ? entity.getIronRequired() + "x Iron" + "\n" : "";
 
         SetPageHeader("BlueprintDetailsPage", header);
 

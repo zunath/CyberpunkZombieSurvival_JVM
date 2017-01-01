@@ -71,6 +71,8 @@ public class OnAttacked implements IScriptEventHandler {
         NWObject metal = NWScript.getItemPossessedBy(oPC, "reo_metal");
         NWObject cloth = NWScript.getItemPossessedBy(oPC, "reo_cloth");
         NWObject leather = NWScript.getItemPossessedBy(oPC, "reo_leather");
+        NWObject iron = NWScript.getItemPossessedBy(oPC, "reo_iron");
+
         boolean foundResource = false;
         String updateMessage;
 
@@ -109,6 +111,13 @@ public class OnAttacked implements IScriptEventHandler {
             updateMessage = "You need " + entity.getLeatherRequired() + " leather to complete this project.";
             foundResource = true;
         }
+        else if(entity.getIronRequired() > 0 && !iron.equals(NWObject.INVALID))
+        {
+            entity.setIronRequired(entity.getIronRequired() - 1);
+            NWScript.destroyObject(iron, 0.0f);
+            updateMessage = "You need " + entity.getIronRequired() + " iron to complete this project.";
+            foundResource = true;
+        }
         else
         {
             updateMessage = "You lack the necessary resources...\n\n";
@@ -117,6 +126,7 @@ public class OnAttacked implements IScriptEventHandler {
             if(entity.getMetalRequired() > 0) updateMessage += "Metal Required: " + entity.getMetalRequired() + "\n";
             if(entity.getClothRequired() > 0) updateMessage += "Cloth Required: " + entity.getClothRequired() + "\n";
             if(entity.getLeatherRequired() > 0) updateMessage += "Leather Required: " + entity.getLeatherRequired() + "\n";
+            if(entity.getIronRequired() > 0) updateMessage += "Iron Required: " + entity.getIronRequired() + "\n";
         }
 
         final String messageCopy = updateMessage;
@@ -131,7 +141,8 @@ public class OnAttacked implements IScriptEventHandler {
                 entity.getClothRequired() <= 0 &&
                 entity.getNailsRequired() <= 0 &&
                 entity.getMetalRequired() <= 0 &&
-                entity.getLeatherRequired() <= 0)
+                entity.getLeatherRequired() <= 0 &&
+                entity.getIronRequired() <= 0)
         {
             StructureSystem.CompleteStructure(oSite);
         }
