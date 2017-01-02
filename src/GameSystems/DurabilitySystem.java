@@ -19,7 +19,7 @@ public class DurabilitySystem {
         ItemGO itemGO = new ItemGO(oItem);
         int iDurability = itemGO.getDurability();
 
-        if(iDurability == 0)
+        if(iDurability <= 0)
         {
             Scheduler.assign(oPC, new Runnable() {
                 @Override
