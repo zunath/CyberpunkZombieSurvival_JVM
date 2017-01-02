@@ -45,7 +45,7 @@ public class Blind implements IAbility {
     public void OnImpact(NWObject oPC, NWObject oTarget) {
         int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_EVOCATION_AFFINITY);
         int intelligence = NWScript.getAbilityScore(oPC, Ability.INTELLIGENCE, false) - 10;
-        float baseDuration = 60.0f;
+        float baseDuration = 30.0f;
         float bonusDuration = (skill * 6.0f) + (intelligence * 12.0f);
         float duration = baseDuration + bonusDuration;
         NWEffect effect = NWScript.effectAttackDecrease(2, ATTACK_BONUS_MISC);
