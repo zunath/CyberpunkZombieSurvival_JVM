@@ -260,53 +260,43 @@ public class Outfit extends DialogBase implements IDialogHandler {
 
         String responseText = (entity.getOutfit1() == null ? ColorToken.Red() :
                 ColorToken.Green()) + "Save in Slot 1" + ColorToken.End();
-        NWScript.setCustomToken(9001, responseText);
-        page.getResponses().add(new DialogResponse("<CUSTOM9001>"));
+        page.getResponses().add(new DialogResponse(responseText));
 
         responseText = (entity.getOutfit2() == null ? ColorToken.Red() :
                 ColorToken.Green()) + "Save in Slot 2" + ColorToken.End();
-        NWScript.setCustomToken(9002, responseText);
-        page.getResponses().add(new DialogResponse("<CUSTOM9002>"));
+        page.getResponses().add(new DialogResponse(responseText));
 
         responseText = (entity.getOutfit3() == null ? ColorToken.Red() :
                 ColorToken.Green()) + "Save in Slot 3" + ColorToken.End();
-        NWScript.setCustomToken(9003, responseText);
-        page.getResponses().add(new DialogResponse("<CUSTOM9003>"));
+        page.getResponses().add(new DialogResponse(responseText));
 
         responseText = (entity.getOutfit4() == null ? ColorToken.Red() :
                 ColorToken.Green()) + "Save in Slot 4" + ColorToken.End();
-        NWScript.setCustomToken(9004, responseText);
-        page.getResponses().add(new DialogResponse("<CUSTOM9004>"));
+        page.getResponses().add(new DialogResponse(responseText));
 
         responseText = (entity.getOutfit5() == null ? ColorToken.Red() :
                 ColorToken.Green()) + "Save in Slot 5" + ColorToken.End();
-        NWScript.setCustomToken(9005, responseText);
-        page.getResponses().add(new DialogResponse("<CUSTOM9005>"));
+        page.getResponses().add(new DialogResponse(responseText));
 
         responseText = (entity.getOutfit6() == null ? ColorToken.Red() :
                 ColorToken.Green()) + "Save in Slot 6" + ColorToken.End();
-        NWScript.setCustomToken(9006, responseText);
-        page.getResponses().add(new DialogResponse("<CUSTOM9006>"));
+        page.getResponses().add(new DialogResponse(responseText));
 
         responseText = (entity.getOutfit7() == null ? ColorToken.Red() :
                 ColorToken.Green()) + "Save in Slot 7" + ColorToken.End();
-        NWScript.setCustomToken(9007, responseText);
-        page.getResponses().add(new DialogResponse("<CUSTOM9007>"));
+        page.getResponses().add(new DialogResponse(responseText));
 
         responseText = (entity.getOutfit8() == null ? ColorToken.Red() :
                 ColorToken.Green()) + "Save in Slot 8" + ColorToken.End();
-        NWScript.setCustomToken(9008, responseText);
-        page.getResponses().add(new DialogResponse("<CUSTOM9008>"));
+        page.getResponses().add(new DialogResponse(responseText));
 
         responseText = (entity.getOutfit9() == null ? ColorToken.Red() :
                 ColorToken.Green()) + "Save in Slot 9" + ColorToken.End();
-        NWScript.setCustomToken(9009, responseText);
-        page.getResponses().add(new DialogResponse("<CUSTOM9009>"));
+        page.getResponses().add(new DialogResponse(responseText));
 
         responseText = (entity.getOutfit10() == null ? ColorToken.Red() :
                 ColorToken.Green()) + "Save in Slot 10" + ColorToken.End();
-        NWScript.setCustomToken(9010, responseText);
-        page.getResponses().add(new DialogResponse("<CUSTOM9010>"));
+        page.getResponses().add(new DialogResponse(responseText));
 
         page.getResponses().add(new DialogResponse("Back"));
 

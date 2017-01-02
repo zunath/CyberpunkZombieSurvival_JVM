@@ -32,7 +32,6 @@ public class RestMenu extends DialogBase implements IDialogHandler {
                 "View Crafts",
                 "View Key Items",
                 "Modify Clothes",
-                "Dye Clothes",
                 "Character Management");
 
         dialog.addPage("MainPage", mainPage);
@@ -119,18 +118,8 @@ public class RestMenu extends DialogBase implements IDialogHandler {
                             }
                         });
                         break;
-                    // Dye Clothes
-                    case 9:
-                        Scheduler.assign(oPC, new Runnable() {
-                            @Override
-                            public void run() {
-                                NWScript.actionStartConversation(oPC, "dye_dyekit", true, false);
-                            }
-                        });
-
-                        break;
                     // Character Management
-                    case 10:
+                    case 9:
                         SwitchConversation("CharacterManagement");
                         break;
                 }
