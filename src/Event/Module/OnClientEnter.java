@@ -74,8 +74,14 @@ public class OnClientEnter implements IScriptEventHandler {
             });
 
             NWScript.createItemOnObject("fky_chat_target", oPC, 1, "");
-            NWScript.createItemOnObject("food_bread", oPC, 1, "");
+            NWObject bread = NWScript.createItemOnObject("food_bread", oPC, 1, "");
+            NWScript.setName(bread, "Starting Bread");
+            NWScript.setItemCursedFlag(bread, true);
             NWScript.createItemOnObject("combat_knife", oPC, 1, "");
+
+            NWObject darts = NWScript.createItemOnObject("nw_wthdt001", oPC, 50, ""); // 50x Dart
+            NWScript.setName(darts, "Starting Darts");
+            NWScript.setItemCursedFlag(darts, true);
 
             Scheduler.assign(oPC, new Runnable() {
                 @Override
