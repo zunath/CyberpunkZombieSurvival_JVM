@@ -46,7 +46,7 @@ public class TurnUndead implements IAbility {
     public void OnImpact(NWObject oPC, NWObject oTarget) {
         int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_HOLY_AFFINITY);
         int wisdom = NWScript.getAbilityScore(oPC, Ability.WISDOM, false) - 10;
-        float baseDuration = 12.0f;
+        float baseDuration = 6.0f;
         float bonusDuration = ((skill / 3) + wisdom);
         float duration = baseDuration + bonusDuration;
         int willSaveDC = 10 + wisdom;
