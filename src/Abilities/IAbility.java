@@ -11,5 +11,6 @@ public interface IAbility {
     void OnImpact(NWObject oPC, NWObject oTarget);
     void OnEquip(NWObject oPC);
     void OnUnequip(NWObject oPC);
+    boolean IsHostile();
 
 }

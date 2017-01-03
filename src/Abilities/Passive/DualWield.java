@@ -78,4 +78,9 @@ public class DualWield implements IAbility {
         }
 
     }
+
+    @Override
+    public boolean IsHostile() {
+        return false;
+    }
 }

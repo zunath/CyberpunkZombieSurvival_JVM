@@ -64,4 +64,9 @@ public class Blind implements IAbility {
     public void OnUnequip(NWObject oPC) {
 
     }
+
+    @Override
+    public boolean IsHostile() {
+        return true;
+    }
 }

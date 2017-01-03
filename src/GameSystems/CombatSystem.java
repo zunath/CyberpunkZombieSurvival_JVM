@@ -193,38 +193,8 @@ public class CombatSystem {
     public void OnModuleAttack(final NWObject oAttacker)
     {
         final NWObject oTarget = NWNX_Events.GetEventTarget();
-        PlayerGO attackerGO = new PlayerGO(oAttacker);
-        PlayerGO targetGO = new PlayerGO(oTarget);
 
-        // Check for sanctuary if this attack is PC versus PC
-        if(NWScript.getIsPC(oTarget) && !NWScript.getIsDMPossessed(oTarget) && NWScript.getIsPC(oAttacker))
-        {
-            // Either the attacker or target has sanctuary - prevent combat from happening
-            if(attackerGO.hasPVPSanctuary())
-            {
-                NWScript.floatingTextStringOnCreature(ColorToken.Red() + "You are under the effects of PVP sanctuary and cannot engage in PVP. To disable this feature permanently refer to the 'Disable PVP Sanctuary' option in your rest menu." + ColorToken.End(), oAttacker, false);
-                Scheduler.delay(oAttacker, 1, new Runnable() {
-                    @Override
-                    public void run() {
-                        NWScript.clearAllActions(false);
-                    }
-                });
-                return;
-            }
-            else if(targetGO.hasPVPSanctuary())
-            {
-                NWScript.floatingTextStringOnCreature(ColorToken.Red() + "Your target is under the effects of PVP sanctuary and cannot engage in PVP combat." + ColorToken.End(), oAttacker, false);
-
-                Scheduler.delay(oAttacker, 1, new Runnable() {
-                    @Override
-                    public void run() {
-                        NWScript.clearAllActions(false);
-                    }
-                });
-                return;
-            }
-        }
-
+        if(!PVPSanctuarySystem.IsPVPAttackAllowed(oAttacker, oTarget)) return;
 
         // PC is too busy to make an attack right now
         if(NWScript.getLocalInt(oAttacker, "RELOADING_GUN") == 1 || NWScript.getCurrentAction(oAttacker) == Action.SIT || NWScript.getLocalInt(oAttacker, "LOCKPICK_TEMPORARY_CURRENTLY_PICKING_LOCK") == 1)

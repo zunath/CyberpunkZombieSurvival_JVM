@@ -41,4 +41,9 @@ public class SpeedyCrafter implements IAbility {
     @Override
     public void OnUnequip(NWObject oPC) {
     }
+
+    @Override
+    public boolean IsHostile() {
+        return false;
+    }
 }

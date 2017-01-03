@@ -44,4 +44,9 @@ public class StrongBack implements IAbility {
     public void OnUnequip(NWObject oPC) {
         InventorySystem.RunItemLimitCheck(oPC);
     }
+
+    @Override
+    public boolean IsHostile() {
+        return false;
+    }
 }

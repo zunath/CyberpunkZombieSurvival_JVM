@@ -41,6 +41,11 @@ public class MagicSystem {
 
         PlayerEntity playerEntity = playerRepo.getByUUID(pcGO.getUUID());
 
+        if(ability.IsHostile())
+        {
+            if(!PVPSanctuarySystem.IsPVPAttackAllowed(pc, target)) return;
+        }
+
         if(!ability.CanCastSpell(pc))
         {
             NWScript.sendMessageToPC(pc,
