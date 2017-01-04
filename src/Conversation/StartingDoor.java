@@ -25,14 +25,14 @@ public class StartingDoor extends DialogBase implements IDialogHandler {
 
         DialogPage zodiacOutpostPage = new DialogPage(
                 "Zodiac Outpost\n\n" + ColorToken.Green() + "Description: " + ColorToken.End() +
-                        "A run-down outpost maintained by a small group of Mason City police officers. You will start in the middle of the city.",
+                        "A run-down outpost maintained by a small group of Mason City police officers. You will start in the middle of the city. There are plenty of supplies to find but few natural resources for building items and structures.",
                 "Select this location (ENTER THE GAME WORLD)",
                 "Back"
         );
 
         DialogPage rubyOutpostPage = new DialogPage(
                 "Ruby Outpost\n\n" + ColorToken.Green() + "Description: " + ColorToken.End() +
-                "The home of an old lady named Ruby. It has since been reinforced to keep the undead out. You will start in the wilderness, outside of town.",
+                "The home of an old lady named Ruby. It has since been reinforced to keep the undead out. You will start in the wilderness, outside of town. There are fewer supplies but an abundance of natural resources for building items and structures.",
                 "Select this location (ENTER THE GAME WORLD)",
                 "Back"
         );
