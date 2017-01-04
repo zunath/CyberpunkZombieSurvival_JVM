@@ -63,6 +63,7 @@ public class StartingDoor extends DialogBase implements IDialogHandler {
                                 EndConversation();
                             }
                         });
+                        NWScript.takeGoldFromCreature(NWScript.getGold(oPC), oPC, true);
                         break;
                     case 2: // Back
                         ChangePage("MainPage");
