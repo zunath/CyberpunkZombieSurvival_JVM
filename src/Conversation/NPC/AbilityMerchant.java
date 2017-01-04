@@ -60,27 +60,27 @@ public class AbilityMerchant extends DialogBase implements IDialogHandler {
                 ChangePage("QuestionsPage");
                 break;
             case 2: // Evocation Magic
-                store = NWScript.getObjectByTag("abil_store1", 0);
+                store = NWScript.getNearestObjectByTag("abil_store1", oPC, 1);
                 NWScript.openStore(store, oPC, 0, 0);
                 DialogManager.endConversation(oPC);
                 break;
             case 3: // Enhancing Magic
-                store = NWScript.getObjectByTag("abil_store2", 0);
+                store = NWScript.getNearestObjectByTag("abil_store2", oPC, 1);
                 NWScript.openStore(store, oPC, 0, 0);
                 DialogManager.endConversation(oPC);
                 break;
             case 4: // Holy Magic
-                store = NWScript.getObjectByTag("abil_store3", 0);
+                store = NWScript.getNearestObjectByTag("abil_store3", oPC, 1);
                 NWScript.openStore(store, oPC, 0, 0);
                 DialogManager.endConversation(oPC);
                 break;
             case 5: // Passive Abilities
-                store = NWScript.getObjectByTag("abil_store4", 0);
+                store = NWScript.getNearestObjectByTag("abil_store4", oPC, 1);
                 NWScript.openStore(store, oPC, 0, 0);
                 DialogManager.endConversation(oPC);
                 break;
             case 6: // Crafting Abilities
-                store = NWScript.getObjectByTag("abil_store5", 0);
+                store = NWScript.getNearestObjectByTag("abil_store5", oPC, 1);
                 NWScript.openStore(store, oPC, 0, 0);
                 DialogManager.endConversation(oPC);
                 break;

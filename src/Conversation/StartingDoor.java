@@ -19,18 +19,28 @@ public class StartingDoor extends DialogBase implements IDialogHandler {
                 ColorToken.Red() + "WARNING: " + ColorToken.End() +
                         "You are about to enter the game world. You cannot come back here once you've entered.\n\n" +
                         "If you're ready to start playing please select a location from the list below.",
+                "Zodiac Outpost",
                 "Ruby Outpost"
         );
 
-        DialogPage cityHallPage = new DialogPage(
-                "Ruby Outpost\n\n" + ColorToken.Green() + "Description: " + ColorToken.End() +
-                "The home of an old lady named Ruby. It has since been reinforced to keep the undead out.",
+        DialogPage zodiacOutpostPage = new DialogPage(
+                "Zodiac Outpost\n\n" + ColorToken.Green() + "Description: " + ColorToken.End() +
+                        "A run-down outpost maintained by a small group of Mason City police officers. You will start in the middle of the city.",
                 "Select this location (ENTER THE GAME WORLD)",
                 "Back"
         );
 
+        DialogPage rubyOutpostPage = new DialogPage(
+                "Ruby Outpost\n\n" + ColorToken.Green() + "Description: " + ColorToken.End() +
+                "The home of an old lady named Ruby. It has since been reinforced to keep the undead out. You will start in the wilderness, outside of town.",
+                "Select this location (ENTER THE GAME WORLD)",
+                "Back"
+        );
+
+
         dialog.addPage("MainPage", mainPage);
-        dialog.addPage("RubyOutpostPage", cityHallPage);
+        dialog.addPage("ZodiacOutpostPage", zodiacOutpostPage);
+        dialog.addPage("RubyOutpostPage", rubyOutpostPage);
         return dialog;
     }
 
@@ -46,8 +56,31 @@ public class StartingDoor extends DialogBase implements IDialogHandler {
             case "MainPage":
                 switch (responseID)
                 {
-                    case 1: // Ruby Outpost
+                    case 1: // Zodiac Outpost
+                        ChangePage("ZodiacOutpostPage");
+                        break;
+                    case 2: // Ruby Outpost
                         ChangePage("RubyOutpostPage");
+                        break;
+                }
+                break;
+
+            case "ZodiacOutpostPage":
+                switch(responseID)
+                {
+                    case 1: // Select this location
+                        Scheduler.assign(oPC, new Runnable() {
+                            @Override
+                            public void run() {
+                                NWLocation location = NWScript.getLocation(NWScript.getWaypointByTag("ZODIAC_OUTPOST_STARTING_LOCATION"));
+                                NWScript.actionJumpToLocation(location);
+                                EndConversation();
+                            }
+                        });
+                        NWScript.takeGoldFromCreature(NWScript.getGold(oPC), oPC, true);
+                        break;
+                    case 2: // Back
+                        ChangePage("MainPage");
                         break;
                 }
                 break;

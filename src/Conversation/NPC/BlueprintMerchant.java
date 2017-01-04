@@ -57,12 +57,12 @@ public class BlueprintMerchant extends DialogBase implements IDialogHandler {
         switch(responseID)
         {
             case 1: // Engineering Blueprints
-                store = NWScript.getObjectByTag("mch_blueprints1", 0);
+                store = NWScript.getNearestObjectByTag("mch_blueprints1", oPC, 1);
                 NWScript.openStore(store, oPC, 0, 0);
                 DialogManager.endConversation(oPC);
                 break;
             case 2: // Smithery Blueprints
-                store = NWScript.getObjectByTag("mch_blueprints2", 0);
+                store = NWScript.getNearestObjectByTag("mch_blueprints2", oPC, 1);
                 NWScript.openStore(store, oPC, 0, 0);
                 DialogManager.endConversation(oPC);
                 break;
