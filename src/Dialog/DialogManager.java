@@ -2,11 +2,13 @@ package Dialog;
 
 import GameObject.PlayerGO;
 import Helper.ErrorHelper;
+import NWNX.NWNX_Funcs;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.Scheduler;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 public class DialogManager {
 
@@ -69,12 +71,17 @@ public class DialogManager {
         try {
             loadConversation(oPC, oTalkTo, conversationName);
 
-            Scheduler.assign(oPC, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.actionStartConversation(oTalkTo, "dialog", true, false);
-                }
-            });
+            String convo = NWNX_Funcs.GetConversation(oTalkTo);
+
+            if(Objects.equals(convo, "") || Objects.equals(convo, "0"))
+            {
+                Scheduler.assign(oPC, new Runnable() {
+                    @Override
+                    public void run() {
+                        NWScript.actionStartConversation(oTalkTo, "dialog", true, false);
+                    }
+                });
+            }
         }
         catch(Exception ex) {
             ErrorHelper.HandleException(ex, "DialogStart was unable to execute class method: Conversation." + conversationName + ".Initialize()");
