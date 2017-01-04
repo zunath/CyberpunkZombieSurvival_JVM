@@ -2,10 +2,12 @@ package Event.Module;
 
 import Bioware.XP2;
 import Common.IScriptEventHandler;
+import GameSystems.InventorySystem;
 import Helper.ScriptHelper;
 import NWNX.NWNX_Events;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
+import org.nwnx.nwnx2.jvm.Scheduler;
 import org.nwnx.nwnx2.jvm.constants.IpConst;
 
 @SuppressWarnings("UnusedDeclaration")
@@ -18,7 +20,7 @@ public class OnUseItem implements IScriptEventHandler {
 
     }
 
-    private void HandleGeneralItemUses(NWObject oPC)
+    private void HandleGeneralItemUses(final NWObject oPC)
     {
         NWObject oItem = NWNX_Events.GetEventItem();
 
@@ -27,6 +29,13 @@ public class OnUseItem implements IScriptEventHandler {
 
         NWNX_Events.BypassEvent();
         ScriptHelper.RunJavaScript(oPC, "Item." + className);
+
+        Scheduler.delay(oPC, 1, new Runnable() {
+            @Override
+            public void run() {
+                InventorySystem.RunItemLimitCheck(oPC);
+            }
+        });
     }
 
     private void HandleSpecificItemUses(NWObject oPC)
