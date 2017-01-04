@@ -137,12 +137,12 @@ public class ProgressionSystem {
 
         playerRepo.save(entity);
 
-        ApplyProfessionStatBonuses(oPC);
+        entity = ApplyProfessionStatBonuses(oPC);
 
         return entity;
     }
 
-    static void ApplyProfessionStatBonuses(NWObject oPC)
+    static PlayerEntity ApplyProfessionStatBonuses(NWObject oPC)
     {
         PlayerRepository repo = new PlayerRepository();
         PlayerProgressionSkillsRepository skillRepo = new PlayerProgressionSkillsRepository();
@@ -168,7 +168,7 @@ public class ProgressionSystem {
                 skillEntity = skillRepo.GetByUUIDAndSkillID(pcGO.getUUID(), SkillType_SEARCH);
                 skillEntity.setUpgradeLevel(skillEntity.getUpgradeLevel() + 1);
                 skillRepo.save(skillEntity);
-                ApplyCustomUpgradeEffects(oPC, SkillType_SEARCH);
+                entity = ApplyCustomUpgradeEffects(oPC, SkillType_SEARCH);
                 break;
             case ProfessionType.HolyMage:
             case ProfessionType.EvocationMage:
@@ -179,10 +179,11 @@ public class ProgressionSystem {
                 skillEntity = skillRepo.GetByUUIDAndSkillID(pcGO.getUUID(), SkillType_MANA);
                 skillEntity.setUpgradeLevel(skillEntity.getUpgradeLevel() + 1);
                 skillRepo.save(skillEntity);
-                ApplyCustomUpgradeEffects(oPC, SkillType_MANA);
+                entity = ApplyCustomUpgradeEffects(oPC, SkillType_MANA);
                 break;
         }
 
+        return entity;
     }
 
     public static void GiveExperienceToPC(NWObject oPC, int amount)
@@ -273,7 +274,7 @@ public class ProgressionSystem {
     }
 
 
-    private static  void ApplyCustomUpgradeEffects(NWObject oPC, int skillID)
+    private static PlayerEntity ApplyCustomUpgradeEffects(NWObject oPC, int skillID)
     {
         PlayerGO pcGO = new PlayerGO(oPC);
         PlayerRepository repo = new PlayerRepository();
@@ -329,6 +330,8 @@ public class ProgressionSystem {
                 break;
 
         }
+
+        return entity;
     }
 
     public static boolean DoesPlayerMeetItemSkillRequirements(NWObject oPC, NWObject oItem)
