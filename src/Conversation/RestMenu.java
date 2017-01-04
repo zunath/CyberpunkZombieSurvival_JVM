@@ -6,6 +6,7 @@ import Dialog.IDialogHandler;
 import Dialog.PlayerDialog;
 import Entities.PlayerEntity;
 import GameObject.PlayerGO;
+import GameSystems.ProgressionSystem;
 import Helper.ColorToken;
 import Helper.MenuHelper;
 import Data.Repository.OverflowItemRepository;
@@ -142,7 +143,7 @@ public class RestMenu extends DialogBase implements IDialogHandler {
         int requiredExp = levelRepo.getByLevel(entity.getLevel()).getExperience();
 
         String header = ColorToken.Green() + "Name: " + ColorToken.End() + NWScript.getName(oPC, false) + "\n\n";
-        header += ColorToken.Green() + "Level: " + ColorToken.End() + entity.getLevel() + "\n";
+        header += ColorToken.Green() + "Level: " + ColorToken.End() + entity.getLevel() + " / " + ProgressionSystem.LevelCap + "\n";
         header += ColorToken.Green() + "Skill Points: " + ColorToken.End() + entity.getUnallocatedSP() + "\n";
         header += ColorToken.Green() + "Exp:         " + ColorToken.End() + MenuHelper.BuildBar(entity.getExperience(), requiredExp, 100) + "\n";
         header += ColorToken.Green() + "Hunger:   " + ColorToken.End() + MenuHelper.BuildBar(entity.getCurrentHunger(), entity.getMaxHunger(), 100) + "\n";
