@@ -71,6 +71,8 @@ public class PlayerEntity {
     private int currentMana;
     @Column(name="CurrentManaTick")
     private int currentManaTick;
+    @Column(name = "ProfessionID")
+    private int professionID;
 
     public PlayerEntity()
     {
@@ -333,4 +335,15 @@ public class PlayerEntity {
     public void setCurrentManaTick(int currentManaTick){
         this.currentManaTick = currentManaTick;
     }
+
+    public int getProfessionID()
+    {
+        return professionID;
+    }
+
+    public void setProfessionID(int professionID)
+    {
+        this.professionID = professionID;
+    }
+
 }

@@ -13,7 +13,8 @@ public class Blueprint implements IScriptEventHandler {
     public void runScript(NWObject oPC) {
         PlayerGO pcGO = new PlayerGO(oPC);
         NWObject oItem = NWNX_Events.GetEventItem();
-        int blueprintID = NWScript.getLocalInt(oItem, "CRAFT_BLUEPRINT_ID");
+        String resref = NWScript.getResRef(oItem);
+        int blueprintID = Integer.parseInt(resref.substring(10));
 
         if(blueprintID <= 0)
         {

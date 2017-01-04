@@ -6,6 +6,7 @@ import Common.IScriptEventHandler;
 import Data.Repository.PlayerRepository;
 import GameSystems.KeyItemSystem;
 import GameSystems.MigrationSystem;
+import GameSystems.ProfessionSystem;
 import GameSystems.SpawnSystem;
 import org.nwnx.nwnx2.jvm.*;
 import org.nwnx.nwnx2.jvm.constants.*;
@@ -26,6 +27,7 @@ public class OnEnter implements IScriptEventHandler {
         SaveLocation(oPC, oArea);
         spawnSystem.ZSS_OnAreaEnter(oArea);
         AdjustCamera(oPC);
+        ProfessionSystem.OnAreaEnter(oArea);
 
         if(NWScript.getIsObjectValid(oPC) && NWScript.getIsPC(oPC) && !NWScript.getIsDM(oPC))
             NWScript.exportSingleCharacter(oPC);

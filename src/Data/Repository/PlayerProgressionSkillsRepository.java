@@ -35,6 +35,14 @@ public class PlayerProgressionSkillsRepository {
             entity = (PlayerProgressionSkillEntity)criteria
                     .add(Restrictions.eq("pcID", uuid))
                     .add(Restrictions.eq("progressionSkillID", skillID)).uniqueResult();
+
+
+            if(entity == null)
+            {
+                entity = new PlayerProgressionSkillEntity();
+                entity.setPcID(uuid);
+                entity.setProgressionSkillID(skillID);
+            }
         }
 
         return entity;

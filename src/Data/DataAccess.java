@@ -95,6 +95,7 @@ public class DataAccess {
         _configuration.addAnnotatedClass(PlayerEntity.class);
         _configuration.addAnnotatedClass(PlayerProgressionSkillEntity.class);
         _configuration.addAnnotatedClass(PortraitEntity.class);
+        _configuration.addAnnotatedClass(ProfessionEntity.class);
         _configuration.addAnnotatedClass(ProgressionLevelEntity.class);
         _configuration.addAnnotatedClass(ProgressionSkillEntity.class);
         _configuration.addAnnotatedClass(ServerConfigurationEntity.class);

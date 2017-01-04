@@ -36,7 +36,8 @@ public class DurabilitySystem {
     public static void RunItemDecay(NWObject oPC, NWObject oItem, int decayChanceModifier, int decayAmountModifier, boolean displayMessage)
     {
         // Item decay doesn't run for any items if Invincible is in effect
-        if(NWScript.getPlotFlag(oPC)) return;
+        // Or if the item is unbreakable (e.g profession items)
+        if(NWScript.getPlotFlag(oPC) || NWScript.getLocalInt(oItem, "UNBREAKABLE") == 1) return;
         ItemGO itemGO = new ItemGO(oItem);
         
         int iDurability = itemGO.getDurability();

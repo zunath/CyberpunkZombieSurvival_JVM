@@ -5,6 +5,7 @@ import Entities.PlayerEntity;
 import Entities.PlayerProgressionSkillEntity;
 import Enumerations.AbilityType;
 import Enumerations.CustomItemProperty;
+import Enumerations.ProfessionType;
 import GameObject.PlayerGO;
 import Helper.ColorToken;
 import Data.Repository.PlayerProgressionSkillsRepository;
@@ -107,6 +108,8 @@ public class InventorySystem {
         if(entity != null)
         {
             slots += entity.getInventorySpaceBonus();
+            // Merchant Profession grants +5 item slots.
+            slots += entity.getProfessionID() == ProfessionType.Merchant ? 10 : 0;
         }
 
         int equipBonusSlots = 0;
@@ -134,6 +137,7 @@ public class InventorySystem {
 
         // Strong Back ability grants +10 item slots.
         int abilityBonusSlots = MagicSystem.IsAbilityEquipped(oPC, AbilityType.StrongBack) ? 10 : 0;
+
 
         return slots + equipBonusSlots + abilityBonusSlots;
     }

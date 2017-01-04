@@ -4,6 +4,7 @@ import Common.Constants;
 import Data.Repository.ServerConfigurationRepository;
 import Entities.PlayerEntity;
 import Entities.ServerConfigurationEntity;
+import GameSystems.ProfessionSystem;
 import Helper.ColorToken;
 import GameObject.PlayerGO;
 import Common.IScriptEventHandler;
@@ -37,6 +38,8 @@ public class OnClientEnter implements IScriptEventHandler {
         ApplyGhostwalk();
         // Validate CD Key
         PlayerAuthorizationSystem.OnModuleEnter();
+        // Profession System
+        ProfessionSystem.OnModuleEnter();
     }
 
     private void ApplyGhostwalk()

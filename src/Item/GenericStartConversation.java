@@ -1,17 +1,17 @@
 package Item;
 
 import Common.IScriptEventHandler;
-import GameSystems.MagicSystem;
+import Dialog.DialogManager;
 import NWNX.NWNX_Events;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 
-public class AbilityDisc implements IScriptEventHandler{
+public class GenericStartConversation implements IScriptEventHandler {
     @Override
     public void runScript(NWObject oPC) {
         NWObject oItem = NWNX_Events.GetEventItem();
-        String resref = NWScript.getResRef(oItem);
-        int abilityID = Integer.parseInt(resref.substring(13));
-        MagicSystem.LearnAbility(oPC, oItem, abilityID);
+        String conversation = NWScript.getLocalString(oItem, "CONVERSATION");
+
+        DialogManager.startConversation(oPC, oPC, conversation);
     }
 }

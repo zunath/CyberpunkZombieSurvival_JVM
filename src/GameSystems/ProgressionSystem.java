@@ -7,6 +7,7 @@ import Entities.ProgressionLevelEntity;
 import Entities.ProgressionSkillEntity;
 import Enumerations.CustomFeat;
 import Enumerations.CustomItemProperty;
+import Enumerations.ProfessionType;
 import GameObject.PlayerGO;
 import Helper.ColorToken;
 import NWNX.NWNX_Funcs;
@@ -136,9 +137,53 @@ public class ProgressionSystem {
 
         playerRepo.save(entity);
 
+        ApplyProfessionStatBonuses(oPC);
+
         return entity;
     }
 
+    static void ApplyProfessionStatBonuses(NWObject oPC)
+    {
+        PlayerRepository repo = new PlayerRepository();
+        PlayerProgressionSkillsRepository skillRepo = new PlayerProgressionSkillsRepository();
+        PlayerGO pcGO = new PlayerGO(oPC);
+        PlayerEntity entity = repo.getByUUID(pcGO.getUUID());
+        PlayerProgressionSkillEntity skillEntity;
+
+        switch(entity.getProfessionID())
+        {
+            case ProfessionType.Vagabond:
+                entity.setUnallocatedSP(entity.getUnallocatedSP() + 10);
+                repo.save(entity);
+                break;
+            case ProfessionType.ForestWarden:
+                NWNX_Funcs.SetMaxHitPointsByLevel(oPC, 1, NWScript.getMaxHitPoints(oPC) + 3);
+                break;
+            case ProfessionType.PoliceOfficer:
+                skillEntity = skillRepo.GetByUUIDAndSkillID(pcGO.getUUID(), SkillType_HANDGUN_PROFICIENCY);
+                skillEntity.setUpgradeLevel(skillEntity.getUpgradeLevel() + 1);
+                skillRepo.save(skillEntity);
+                break;
+            case ProfessionType.Cartographer:
+                skillEntity = skillRepo.GetByUUIDAndSkillID(pcGO.getUUID(), SkillType_SEARCH);
+                skillEntity.setUpgradeLevel(skillEntity.getUpgradeLevel() + 1);
+                skillRepo.save(skillEntity);
+                ApplyCustomUpgradeEffects(oPC, SkillType_SEARCH);
+                break;
+            case ProfessionType.HolyMage:
+            case ProfessionType.EvocationMage:
+                skillEntity = skillRepo.GetByUUIDAndSkillID(pcGO.getUUID(), SkillType_ABILITY_SLOTS);
+                skillEntity.setUpgradeLevel(skillEntity.getUpgradeLevel() + 1);
+                skillRepo.save(skillEntity);
+
+                skillEntity = skillRepo.GetByUUIDAndSkillID(pcGO.getUUID(), SkillType_MANA);
+                skillEntity.setUpgradeLevel(skillEntity.getUpgradeLevel() + 1);
+                skillRepo.save(skillEntity);
+                ApplyCustomUpgradeEffects(oPC, SkillType_MANA);
+                break;
+        }
+
+    }
 
     public static void GiveExperienceToPC(NWObject oPC, int amount)
     {
@@ -204,13 +249,6 @@ public class ProgressionSystem {
         PlayerProgressionSkillsRepository playerSkillRepo = new PlayerProgressionSkillsRepository();
         PlayerProgressionSkillEntity playerSkillEntity = playerSkillRepo.GetByUUIDAndSkillID(pcGO.getUUID(), skillID);
 
-        if(playerSkillEntity == null)
-        {
-            playerSkillEntity = new PlayerProgressionSkillEntity();
-            playerSkillEntity.setPcID(pcGO.getUUID());
-            playerSkillEntity.setProgressionSkillID(skillID);
-        }
-
         int requiredSP = skillEntity.getInitialPrice() + playerSkillEntity.getUpgradeLevel();
         int upgradeCap = playerSkillEntity.isSoftCapUnlocked() ? skillEntity.getMaxUpgrades() : skillEntity.getSoftCap();
 
@@ -228,10 +266,10 @@ public class ProgressionSystem {
 
         playerEntity.setUnallocatedSP(playerEntity.getUnallocatedSP() - requiredSP);
         playerSkillEntity.setUpgradeLevel(playerSkillEntity.getUpgradeLevel() + 1);
-        ApplyCustomUpgradeEffects(oPC, skillID);
-
         playerRepo.save(playerEntity);
         playerSkillRepo.save(playerSkillEntity);
+
+        ApplyCustomUpgradeEffects(oPC, skillID);
     }
 
 

@@ -298,4 +298,22 @@ public class MagicSystem {
 
     }
 
+    public static void LearnAbility(NWObject oPC, NWObject oItem, int abilityID)
+    {
+        MagicRepository repo = new MagicRepository();
+        PlayerGO pcGO = new PlayerGO(oPC);
+        AbilityEntity entity = repo.GetAbilityByID(abilityID);
+        boolean success = repo.AddAbilityToPC(pcGO.getUUID(), abilityID);
+
+        if(success)
+        {
+            NWScript.destroyObject(oItem, 0.0f);
+            NWScript.sendMessageToPC(oPC, "You learn " + entity.getName() + "!");
+        }
+        else
+        {
+            NWScript.sendMessageToPC(oPC, "You already know " + entity.getName() + ".");
+        }
+    }
+
 }
