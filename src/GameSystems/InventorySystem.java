@@ -108,8 +108,8 @@ public class InventorySystem {
         if(entity != null)
         {
             slots += entity.getInventorySpaceBonus();
-            // Merchant Profession grants +5 item slots.
-            slots += entity.getProfessionID() == ProfessionType.Merchant ? 10 : 0;
+            // Merchant Profession grants +4 item slots.
+            slots += entity.getProfessionID() == ProfessionType.Merchant ? 4 : 0;
         }
 
         int equipBonusSlots = 0;
