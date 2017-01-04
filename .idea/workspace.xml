@@ -4,10 +4,7 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55f71d37-d50c-4fcd-b436-870e366cc7df" name="Default" comment="Add mining/logging for resource gathering. Add Lumberjack / Miner abilities. Fix bug with swapped functionality on the OmniTool.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameSystems/InventorySystem.java" afterPath="$PROJECT_DIR$/src/GameSystems/InventorySystem.java" />
-    </list>
+    <list default="true" id="55f71d37-d50c-4fcd-b436-870e366cc7df" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -51,11 +48,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GenericOnConversation.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GenericOnConversation.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Creature/GenericOnConversation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="31" lean-forward="false" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
+            <state relative-caret-position="306">
+              <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OnUseItem.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Event/Module/OnUseItem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="263">
+              <caret line="27" column="40" lean-forward="true" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -66,16 +73,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="529">
               <caret line="51" column="18" lean-forward="false" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OnOpened.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Placeable/TrashCan/OnOpened.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="130" lean-forward="true" selection-start-line="10" selection-start-column="130" selection-end-line="10" selection-end-column="130" />
               <folding />
             </state>
           </provider>
@@ -167,7 +164,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Abilities/EvocationMagic/Flame.java" />
         <option value="$PROJECT_DIR$/src/Abilities/EvocationMagic/Stun.java" />
         <option value="$PROJECT_DIR$/src/Abilities/HolyMagic/Antidote.java" />
         <option value="$PROJECT_DIR$/src/Abilities/HolyMagic/Cure.java" />
@@ -218,6 +214,7 @@
         <option value="$PROJECT_DIR$/src/Placeable/TrashCan/OnDisturbed.java" />
         <option value="$PROJECT_DIR$/src/Conversation/StartingDoor.java" />
         <option value="$PROJECT_DIR$/src/GameSystems/InventorySystem.java" />
+        <option value="$PROJECT_DIR$/src/Event/Module/OnUseItem.java" />
       </list>
     </option>
   </component>
@@ -283,11 +280,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Placeable" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TrashCan" />
+              <option name="myItemId" value="GameSystems" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -301,7 +294,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="GameSystems" />
+              <option name="myItemId" value="Event" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CyberpunkZombieSurvival_JVM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Event" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Module" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -819,7 +830,14 @@
       <option name="project" value="LOCAL" />
       <updated>1483564722094</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Recalculate item limits after using items.">
+      <created>1483574094635</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1483574094635</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -861,7 +879,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Ability equipping menu" />
     <MESSAGE value="Implemented 29 abilities" />
     <MESSAGE value="Add Patch Up ability. Fix impact script namespacing" />
     <MESSAGE value="Implement functionality for Medic and Fixer abilities." />
@@ -886,7 +903,8 @@
     <MESSAGE value="Force profession selection before entering the game. Take all gold from player when they select a starting location." />
     <MESSAGE value="Add option for starting at Zodiac Outpost. Change BP and ability disc merchants to look for NEAREST merchant object by tag." />
     <MESSAGE value="Change flavor text for starting locations. Add Trash Can script events." />
-    <option name="LAST_COMMIT_MESSAGE" value="Change flavor text for starting locations. Add Trash Can script events." />
+    <MESSAGE value="Recalculate item limits after using items." />
+    <option name="LAST_COMMIT_MESSAGE" value="Recalculate item limits after using items." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -907,22 +925,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Conversation/AdjustAbilities.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="488">
-          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Dialog/DialogStart.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Common/StartUp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -1309,8 +1311,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Creature/GenericOnConversation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="31" lean-forward="false" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
+        <state relative-caret-position="306">
+          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Helper/ScriptHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="23" lean-forward="false" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Event/Module/OnUseItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="27" column="40" lean-forward="true" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="40" />
           <folding />
         </state>
       </provider>
