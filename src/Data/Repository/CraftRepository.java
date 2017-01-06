@@ -211,7 +211,6 @@ public class CraftRepository {
         return entities;
     }
 
-
     public List<PCBlueprintEntity> GetPCBlueprintsByCategoryID(String uuid, int categoryID)
     {
         List<PCBlueprintEntity> entities;
@@ -224,6 +223,29 @@ public class CraftRepository {
                     .createAlias("bp.category", "c")
                     .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
                     .add(Restrictions.eq("playerID", uuid))
+                    .add(Restrictions.eq("c.craftBlueprintCategoryID", categoryID));
+
+            entities = criteria.list();
+
+        }
+
+        return entities;
+    }
+
+    public List<PCBlueprintEntity> GetPCBlueprintsForCraftByCategoryID(String uuid, int craftID, int categoryID)
+    {
+        List<PCBlueprintEntity> entities;
+
+        try(DataContext context = new DataContext())
+        {
+            Criteria criteria = context.getSession()
+                    .createCriteria(PCBlueprintEntity.class)
+                    .createAlias("blueprint", "bp")
+                    .createAlias("bp.category", "c")
+                    .createAlias("bp.craft", "cr")
+                    .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
+                    .add(Restrictions.eq("playerID", uuid))
+                    .add(Restrictions.eq("cr.craftID", craftID))
                     .add(Restrictions.eq("c.craftBlueprintCategoryID", categoryID));
 
             entities = criteria.list();

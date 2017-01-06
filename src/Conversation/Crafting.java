@@ -83,7 +83,9 @@ public class Crafting extends DialogBase implements IDialogHandler {
     {
         PlayerGO pcGO = new PlayerGO(GetPC());
         CraftRepository repo = new CraftRepository();
-        List<PCBlueprintEntity> blueprints = repo.GetPCBlueprintsByCategoryID(pcGO.getUUID(), categoryID);
+        int craftID = NWScript.getLocalInt(GetDialogTarget(), "CRAFT_ID");
+
+        List<PCBlueprintEntity> blueprints = repo.GetPCBlueprintsForCraftByCategoryID(pcGO.getUUID(), craftID, categoryID);
         DialogPage page = GetPageByName("BlueprintListPage");
         page.getResponses().clear();
 
