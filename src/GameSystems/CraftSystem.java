@@ -31,6 +31,7 @@ public class CraftSystem {
 
         if(pcGO.isBusy())
         {
+            NWScript.sendMessageToPC(oPC, "You are too busy right now.");
             return;
         }
         pcGO.setIsBusy(true);
@@ -350,17 +351,17 @@ public class CraftSystem {
     {
         PlayerGO pcGO = new PlayerGO(oPC);
         CraftRepository repo = new CraftRepository();
-        PCBlueprintEntity blueprint = repo.GetPCBlueprintByID(pcGO.getUUID(), blueprintID);
-        CraftEntity craft = blueprint.getBlueprint().getCraft();
+        CraftBlueprintEntity blueprint = repo.GetBlueprintByID(blueprintID);
+        CraftEntity craft = blueprint.getCraft();
         PCCraftEntity pcCraft = repo.GetPCCraftByID(pcGO.getUUID(), craft.getCraftID());
         NWObject tempStorage = NWScript.getObjectByTag("craft_temp_storage", 0);
 
-        String header = ColorToken.Green() + "Blueprint: " + ColorToken.End() + ColorToken.White() + blueprint.getBlueprint().getItemName() + ColorToken.End() + "\n\n";
+        String header = ColorToken.Green() + "Blueprint: " + ColorToken.End() + ColorToken.White() + blueprint.getItemName() + ColorToken.End() + "\n\n";
         header += ColorToken.Green() + "Skill: " + ColorToken.End() + ColorToken.White() + craft.getName() + " (" + pcCraft.getLevel() + ")" + ColorToken.End() + "\n";
-        header += ColorToken.Green() + "Difficulty: " + ColorToken.End() + CalculateDifficulty(pcCraft.getLevel(), blueprint.getBlueprint().getLevel()) + "\n\n";
+        header += ColorToken.Green() + "Difficulty: " + ColorToken.End() + CalculateDifficulty(pcCraft.getLevel(), blueprint.getLevel()) + "\n\n";
         header += ColorToken.Green() + "Components: " + ColorToken.End() + "\n\n";
 
-        for(CraftComponentEntity component : blueprint.getBlueprint().getComponents())
+        for(CraftComponentEntity component : blueprint.getComponents())
         {
             NWObject item = NWScript.createItemOnObject(component.getItemResref(), tempStorage, 1, "");
             header += ColorToken.White() + component.getQuantity() + "x " + NWScript.getName(item, false) + ColorToken.End() + "\n";
