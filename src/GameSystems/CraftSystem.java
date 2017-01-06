@@ -18,6 +18,7 @@ import org.nwnx.nwnx2.jvm.constants.VfxComBlood;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 
 public class CraftSystem {
@@ -143,8 +144,7 @@ public class CraftSystem {
         CraftBlueprintEntity blueprint = pcBlueprint.getBlueprint();
         PCCraftEntity craft = repo.GetPCCraftByID(pcGO.getUUID(), blueprint.getCraft().getCraftID());
         float chance = CalculateChanceToCreateItem(craft.getLevel(), blueprint.getLevel());
-        Random random = new Random();
-        float roll = random.nextFloat() * 100.0f;
+        float roll = ThreadLocalRandom.current().nextFloat() * 100.0f;
 
         if(roll <= chance)
         {
@@ -162,12 +162,10 @@ public class CraftSystem {
         {
             // Failure...
             NWObject[] items = NWScript.getItemsInInventory(tempStorage);
-            NWObject destroyItem = items[random.nextInt(items.length-1)];
-            NWScript.destroyObject(destroyItem, 0.0f);
 
             for(NWObject item : items)
             {
-                if(random.nextInt(100) > 20 && !item.equals(destroyItem))
+                if(ThreadLocalRandom.current().nextInt(100) > 20)
                 {
                     NWScript.copyItem(item, device, true);
                 }

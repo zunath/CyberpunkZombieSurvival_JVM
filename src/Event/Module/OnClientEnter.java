@@ -156,5 +156,7 @@ public class OnClientEnter implements IScriptEventHandler {
         {
             NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectDamage(damage, DamageType.MAGICAL, DamagePower.NORMAL), oPC, 0.0f);
         }
+
+        pcGO.setIsBusy(false); // Just in case player logged out in the middle of an action.
     }
 }
