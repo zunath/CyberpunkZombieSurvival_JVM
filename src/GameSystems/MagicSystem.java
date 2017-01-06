@@ -15,6 +15,7 @@ import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.NWVector;
 import org.nwnx.nwnx2.jvm.Scheduler;
+import org.nwnx.nwnx2.jvm.constants.ActionMode;
 import org.nwnx.nwnx2.jvm.constants.Animation;
 import org.nwnx.nwnx2.jvm.constants.DurationType;
 import org.nwnx.nwnx2.jvm.constants.VfxDur;
@@ -88,6 +89,9 @@ public class MagicSystem {
     {
         final String spellUUID = UUID.randomUUID().toString();
         final PlayerGO pcGO = new PlayerGO(pc);
+
+        if(NWScript.getActionMode(pc, ActionMode.STEALTH))
+            NWScript.setActionMode(pc, ActionMode.STEALTH, false);
 
         NWScript.clearAllActions(false);
         Position.TurnToFaceObject(target, pc);
