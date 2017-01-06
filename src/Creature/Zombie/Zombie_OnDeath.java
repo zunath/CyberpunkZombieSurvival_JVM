@@ -8,6 +8,7 @@ import GameSystems.ProgressionSystem;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 
+import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
 
 @SuppressWarnings("unused")
@@ -19,7 +20,7 @@ public class Zombie_OnDeath implements IScriptEventHandler {
         NWScript.setIsDestroyable(false, true, false);
         NWScript.executeScript("gb_loot_corpse", objSelf);
         IncrementKillCount();
-        GiveExperienceToPC();
+        GiveExperienceToPCParty(objSelf);
     }
 
     private void IncrementKillCount()
@@ -43,18 +44,31 @@ public class Zombie_OnDeath implements IScriptEventHandler {
         }
     }
 
-    private void GiveExperienceToPC()
+    private void GiveExperienceToPCParty(NWObject objSelf)
     {
         NWObject oPC = NWScript.getLastKiller();
         if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return;
 
-        int level = ProgressionSystem.GetPlayerLevel(oPC);
+        String zombieAreaResref = NWScript.getResRef(NWScript.getArea(objSelf));
+        NWObject[] partyMembers = NWScript.getFactionMembers(oPC, true);
 
-        if(level <= 20)
+        for(NWObject member : partyMembers)
         {
-            int exp = ThreadLocalRandom.current().nextInt(50, 100);
-            ProgressionSystem.GiveExperienceToPC(oPC, exp);
+            String areaResref = NWScript.getResRef(NWScript.getArea(member));
+            float distance = NWScript.getDistanceBetween(member, objSelf);
+            if(distance <= 20.0f && Objects.equals(areaResref, zombieAreaResref))
+            {
+                int level = ProgressionSystem.GetPlayerLevel(member);
+
+                if(level <= 20)
+                {
+                    int exp = ThreadLocalRandom.current().nextInt(50, 100);
+                    ProgressionSystem.GiveExperienceToPC(member, exp);
+                }
+            }
+
         }
+
 
     }
 
