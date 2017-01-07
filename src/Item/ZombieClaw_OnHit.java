@@ -16,7 +16,9 @@ import java.util.Random;
 public class ZombieClaw_OnHit implements IScriptEventHandler {
     @Override
     public void runScript(final NWObject oZombie) {
+
         NWObject oPC = NWScript.getSpellTargetObject();
+
         NWObject oBite = NWScript.getSpellCastItem();
         String itemTag = NWScript.getTag(oBite);
         if (!NWScript.getIsPC(oPC) || !itemTag.equals("reo_zombie_claw") || NWScript.getIsDM(oPC)) return;
@@ -30,7 +32,7 @@ public class ZombieClaw_OnHit implements IScriptEventHandler {
         Random random = new Random();
         int iChanceToInfect = random.nextInt(100) + 1;
 
-        if (iChanceToInfect <= 80 && !NWScript.getHasSpellEffect(Spell.SANCTUARY, oPC))
+        if (iChanceToInfect <= 20 && !NWScript.getHasSpellEffect(Spell.SANCTUARY, oPC))
         {
             int iDiseaseCheck = NWScript.random(20) + 1;
             int iDiseaseDC = DiseaseSystem.DCCheck + random.nextInt(6);
@@ -49,7 +51,7 @@ public class ZombieClaw_OnHit implements IScriptEventHandler {
                 DiseaseSystem.IncreaseDiseaseLevel(oPC, random.nextInt(12) + 1);
 
                 // 10% Chance to get Infection Over Time (IOT)
-                if(random.nextInt(100) <= 10)
+                if(random.nextInt(100) <= 2)
                 {
                     CustomEffectSystem.ApplyCustomEffect(oPC, CustomEffectType.InfectionOverTime, 6);
                 }
@@ -62,7 +64,7 @@ public class ZombieClaw_OnHit implements IScriptEventHandler {
     {
         Random random = new Random();
 
-        if(random.nextInt(100) <= 25)
+        if(random.nextInt(100) <= 5)
         {
             CustomEffectSystem.ApplyCustomEffect(oPC, CustomEffectType.Bleeding, 6);
         }
