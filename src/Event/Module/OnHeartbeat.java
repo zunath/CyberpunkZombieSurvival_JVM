@@ -84,6 +84,13 @@ public class OnHeartbeat implements IScriptEventHandler {
 					amount += 2;
 				}
 
+				// Safe zones grant +5 HP regen
+				boolean isInSafeZone = NWScript.getLocalInt(NWScript.getArea(oPC), "SAFE_ZONE") == 1;
+				if(isInSafeZone)
+				{
+					amount += 5;
+				}
+
 				NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectHeal(amount), oPC, 0.0f);
 			}
 
@@ -107,6 +114,13 @@ public class OnHeartbeat implements IScriptEventHandler {
 				if(MagicSystem.IsAbilityEquipped(oPC, AbilityType.Clarity))
 				{
 					amount += 2;
+				}
+
+				// Safe zones grant +5 mana regen
+				boolean isInSafeZone = NWScript.getLocalInt(NWScript.getArea(oPC), "SAFE_ZONE") == 1;
+				if(isInSafeZone)
+				{
+					amount += 5;
 				}
 
 				entity.setCurrentMana(entity.getCurrentMana() + amount);

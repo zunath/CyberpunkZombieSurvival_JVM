@@ -9,8 +9,7 @@ import GameSystems.ProgressionSystem;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.constants.Spell;
-
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 @SuppressWarnings("UnusedDeclaration")
 public class ZombieClaw_OnHit implements IScriptEventHandler {
@@ -29,42 +28,31 @@ public class ZombieClaw_OnHit implements IScriptEventHandler {
 
     private void RunInfectionRoutine(NWObject oPC)
     {
-        Random random = new Random();
-        int iChanceToInfect = random.nextInt(100) + 1;
+        int iChanceToInfect = ThreadLocalRandom.current().nextInt(100) + 1;
 
         if (iChanceToInfect <= 20 && !NWScript.getHasSpellEffect(Spell.SANCTUARY, oPC))
         {
-            int iDiseaseCheck = NWScript.random(20) + 1;
-            int iDiseaseDC = DiseaseSystem.DCCheck + random.nextInt(6);
-
-            // Disease Resistance grants a bonus of +1 infection resistance per point
+            int iDiseaseCheck = ThreadLocalRandom.current().nextInt(20) + 1;
+            int iDiseaseDC = DiseaseSystem.DCCheck + ThreadLocalRandom.current().nextInt(6);
             int iDiseaseResistance = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_DISEASE_RESISTANCE);
-
-            // Add the bonus to the initial roll
             iDiseaseCheck = iDiseaseCheck + iDiseaseResistance;
 
             NWScript.sendMessageToPC(oPC, ColorToken.SkillCheck() + "Resist disease roll: " + iDiseaseCheck + " VS " + iDiseaseDC + ColorToken.End());
-
-            // Player failed the DC, give them 1% - 12% infection increase
             if (iDiseaseCheck < iDiseaseDC)
             {
-                DiseaseSystem.IncreaseDiseaseLevel(oPC, random.nextInt(12) + 1);
+                DiseaseSystem.IncreaseDiseaseLevel(oPC, ThreadLocalRandom.current().nextInt(5) + 1);
 
-                // 10% Chance to get Infection Over Time (IOT)
-                if(random.nextInt(100) <= 2)
+                if(ThreadLocalRandom.current().nextInt(100) <= 2)
                 {
                     CustomEffectSystem.ApplyCustomEffect(oPC, CustomEffectType.InfectionOverTime, 6);
                 }
-
             }
         }
     }
 
     private void RunBleedingRoutine(NWObject oPC, NWObject oZombie)
     {
-        Random random = new Random();
-
-        if(random.nextInt(100) <= 5)
+        if(ThreadLocalRandom.current().nextInt(100) <= 5)
         {
             CustomEffectSystem.ApplyCustomEffect(oPC, CustomEffectType.Bleeding, 6);
         }
