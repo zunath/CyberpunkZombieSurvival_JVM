@@ -125,6 +125,13 @@ public class ProgressionSystem {
         NWNX_Funcs.SetSavingThrowBonus(oPC, SavingThrow.REFLEX, 0);
         NWNX_Funcs.SetSavingThrowBonus(oPC, SavingThrow.WILL, 0);
 
+        int classID = NWScript.getClassByPosition(1, oPC);
+
+        // Removing known spells doesn't work, so I clear memorized spells instead.
+        for(int index = 0; index <= 255; index++)
+        {
+            NWNX_Funcs.ClearMemorizedSpell(oPC, classID, 0, index);
+        }
 
         playerSkillRepo.deleteAllByPlayerUUID(pcGO.getUUID());
         entity.setUnallocatedSP(SPEarnedOnLevelUp * entity.getLevel());
