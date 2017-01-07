@@ -6,10 +6,8 @@ import GameObject.PlayerGO;
 import Helper.ColorToken;
 import Data.Repository.PlayerRepository;
 import Data.Repository.StructureRepository;
-import org.nwnx.nwnx2.jvm.NWLocation;
-import org.nwnx.nwnx2.jvm.NWObject;
-import org.nwnx.nwnx2.jvm.NWScript;
-import org.nwnx.nwnx2.jvm.NWVector;
+import org.nwnx.nwnx2.jvm.*;
+import org.nwnx.nwnx2.jvm.constants.Duration;
 import org.nwnx.nwnx2.jvm.constants.ObjectType;
 
 import java.util.ArrayList;
@@ -45,6 +43,9 @@ public class StructureSystem {
             NWObject constructionSite = NWScript.createObject(ObjectType.PLACEABLE, ConstructionSiteResref, location, false, "");
             NWScript.setLocalInt(constructionSite, ConstructionSiteIDVariableName, entity.getConstructionSiteID());
             NWScript.setName(constructionSite, "Construction Site: " + entity.getBlueprint().getName());
+
+            NWEffect eGhostWalk = NWScript.effectCutsceneGhost();
+            NWScript.applyEffectToObject(Duration.TYPE_PERMANENT, eGhostWalk, constructionSite, 0.0f);
         }
 
         List<PCTerritoryFlagEntity> territoryFlags = repo.GetAllTerritoryFlags();
@@ -219,7 +220,10 @@ public class StructureSystem {
         }
         else if(buildStatus == 1) // 1 = Success
         {
-            NWScript.createObject(ObjectType.PLACEABLE, ConstructionSiteResref, location, false, "");
+            NWObject constructionSite = NWScript.createObject(ObjectType.PLACEABLE, ConstructionSiteResref, location, false, "");
+            NWEffect eGhostWalk = NWScript.effectCutsceneGhost();
+            NWScript.applyEffectToObject(Duration.TYPE_PERMANENT, eGhostWalk, constructionSite, 0.0f);
+
             NWScript.floatingTextStringOnCreature("Construction site created! Use the construction site to select a blueprint.", oPC, false);
         }
         else if(buildStatus == 2) // 2 = Territory can't hold any more structures.
