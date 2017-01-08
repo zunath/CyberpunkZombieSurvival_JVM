@@ -48,7 +48,7 @@ public class CraftSystem {
             // Speedy Crafter grants 80% crafting speed bonus.
             boolean hasAbility = MagicSystem.IsAbilityEquipped(oPC, AbilityType.SpeedyCrafter);
             final float modifiedCraftDelay = hasAbility ?
-                    CraftDelay * 0.80f :
+                    CraftDelay * 0.20f :
                     CraftDelay;
 
             NWScript.applyEffectToObject(DurationType.TEMPORARY, NWScript.effectCutsceneImmobilize(), oPC, modifiedCraftDelay + 0.1f);
