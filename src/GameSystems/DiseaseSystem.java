@@ -67,7 +67,7 @@ public class DiseaseSystem {
         {
             if(entity.getCurrentInfection() > 0)
             {
-                int infection = entity.getCurrentInfection() - NWScript.random(10) + 5;
+                int infection = entity.getCurrentInfection() - (NWScript.random(10) + 5);
                 if(infection < 0) infection = 0;
 
                 entity.setCurrentInfection(infection);
