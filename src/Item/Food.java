@@ -18,7 +18,7 @@ public class Food implements IScriptEventHandler {
         // Snake Eater ability grants +50% to hunger restore.
         if(MagicSystem.IsAbilityEquipped(oPC, AbilityType.SnakeEater))
         {
-            amount *= 0.5f;
+            amount *= 1.5f;
         }
 
         FoodSystem.IncreaseHungerLevel(oPC, amount);
