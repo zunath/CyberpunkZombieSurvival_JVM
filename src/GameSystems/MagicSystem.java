@@ -20,6 +20,7 @@ import org.nwnx.nwnx2.jvm.constants.Animation;
 import org.nwnx.nwnx2.jvm.constants.DurationType;
 import org.nwnx.nwnx2.jvm.constants.VfxDur;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class MagicSystem {
@@ -45,6 +46,13 @@ public class MagicSystem {
         if(ability.IsHostile())
         {
             if(!PVPSanctuarySystem.IsPVPAttackAllowed(pc, target)) return;
+        }
+
+        if(!Objects.equals(NWScript.getResRef(NWScript.getArea(pc)), NWScript.getResRef(NWScript.getArea(target))) ||
+                NWScript.lineOfSightObject(pc, target) == 0)
+        {
+            NWScript.sendMessageToPC(pc, "You cannot see your target.");
+            return;
         }
 
         if(!ability.CanCastSpell(pc))
