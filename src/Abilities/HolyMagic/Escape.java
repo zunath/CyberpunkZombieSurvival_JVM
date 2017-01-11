@@ -54,6 +54,7 @@ public class Escape implements IAbility {
     @Override
     public void OnImpact(NWObject oPC, NWObject oTarget) {
         NWObject oArea = NWScript.getArea(oTarget);
+        String castedArea = NWScript.getResRef(oArea);
         String waypointTag = NWScript.getLocalString(oArea, "ESCAPE_POINT");
         final NWLocation location = NWScript.getLocation(NWScript.getWaypointByTag(waypointTag));
 
@@ -61,7 +62,8 @@ public class Escape implements IAbility {
 
         for(NWObject member : members)
         {
-            if(NWScript.getArea(member) == oArea && NWScript.getDistanceBetween(member, oPC) <= 5.0f)
+            if(Objects.equals(castedArea, NWScript.getResRef(NWScript.getArea(member))) &&
+                    NWScript.getDistanceBetween(member, oPC) <= 5.0f)
             {
                 final NWObject memberFinal = member;
                 NWScript.applyEffectToObject(DurationType.TEMPORARY, NWScript.effectVisualEffect(0, false), member, 1.9f);
