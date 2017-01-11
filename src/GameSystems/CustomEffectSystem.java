@@ -7,9 +7,11 @@ import GameObject.PlayerGO;
 import Data.Repository.CustomEffectRepository;
 import Helper.ErrorHelper;
 import Helper.ScriptHelper;
+import org.nwnx.nwnx2.jvm.NWEffect;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.Scheduler;
+import org.nwnx.nwnx2.jvm.constants.EffectType;
 
 import java.util.List;
 
@@ -64,6 +66,13 @@ public class CustomEffectSystem {
 
     public static void ApplyCustomEffect(NWObject oPC, int customEffectID, int ticks)
     {
+        // No custom effects can be applied if player is under the effect of sanctuary.
+        for(NWEffect effect : NWScript.getEffects(oPC))
+        {
+            int type = NWScript.getEffectType(effect);
+            if(type == EffectType.SANCTUARY) return;
+        }
+
         PlayerGO pcGO = new PlayerGO(oPC);
         CustomEffectRepository repo = new CustomEffectRepository();
         PCCustomEffectEntity entity = repo.GetPCEffectByID(pcGO.getUUID(), customEffectID);
