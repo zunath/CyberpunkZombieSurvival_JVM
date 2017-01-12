@@ -1,6 +1,7 @@
 package GameObject;
 
 import Enumerations.CustomItemProperty;
+import GameSystems.DurabilitySystem;
 import Helper.ItemPropertyHelper;
 import org.nwnx.nwnx2.jvm.NWItemProperty;
 import org.nwnx.nwnx2.jvm.NWObject;
@@ -43,6 +44,10 @@ public class ItemGO {
 
     public int getDurability()
     {
+        int itemType = NWScript.getBaseItemType(item);
+        if(!DurabilitySystem.GetValidDurabilityTypes().contains(itemType))
+            return -1;
+
         addDurabilityIfNotExist();
 
         NWItemProperty[] itemProperties = NWScript.getItemProperties(item);
@@ -61,6 +66,10 @@ public class ItemGO {
 
     public void setDurability(int durability)
     {
+        int itemType = NWScript.getBaseItemType(item);
+        if(!DurabilitySystem.GetValidDurabilityTypes().contains(itemType))
+            return;
+
         addDurabilityIfNotExist();
 
         if(durability < 0) durability = 0;
