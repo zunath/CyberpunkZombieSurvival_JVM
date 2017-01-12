@@ -9,6 +9,7 @@ import org.nwnx.nwnx2.jvm.constants.BaseItem;
 import org.nwnx.nwnx2.jvm.constants.InventorySlot;
 
 import java.util.Objects;
+import java.util.concurrent.ThreadLocalRandom;
 
 @SuppressWarnings("UnusedDeclaration")
 public class OnHitCastSpell implements IScriptEventHandler {
@@ -18,14 +19,20 @@ public class OnHitCastSpell implements IScriptEventHandler {
 
         if(!oTarget.equals(NWObject.INVALID))
         {
+            String name =NWScript.getName(oSpellOrigin, false);
+            int itemType = NWScript.getBaseItemType(oSpellOrigin);
             // Durability system
-            if(NWScript.getBaseItemType(oSpellOrigin) == BaseItem.ARMOR)
+            if(itemType == BaseItem.ARMOR)
             {
-                NWObject oBelt = NWScript.getItemInSlot(InventorySlot.BELT, oSpellOrigin);
+                NWObject oBelt = NWScript.getItemInSlot(InventorySlot.BELT, oTarget);
                 if(!oBelt.equals(NWObject.INVALID))
                 {
-                    DurabilitySystem.RunItemDecay(oSpellOrigin, oBelt, 3, NWScript.random(2), true);
+                    DurabilitySystem.RunItemDecay(oTarget, oBelt, 3, ThreadLocalRandom.current().nextInt(2), true);
                 }
+            }
+            else if(DurabilitySystem.GetValidDurabilityTypes().contains(itemType))
+            {
+                DurabilitySystem.RunItemDecay(oTarget, oSpellOrigin, 3, ThreadLocalRandom.current().nextInt(2), true);
             }
 
             // Item specific

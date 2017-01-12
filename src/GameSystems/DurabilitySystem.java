@@ -1,12 +1,17 @@
 package GameSystems;
 
+import Bioware.AddItemPropertyPolicy;
+import Bioware.XP2;
 import Common.Constants;
 import GameObject.ItemGO;
 import Helper.ColorToken;
+import org.nwnx.nwnx2.jvm.NWItemProperty;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.Scheduler;
 import org.nwnx.nwnx2.jvm.constants.BaseItem;
+import org.nwnx.nwnx2.jvm.constants.IpConst;
+import org.nwnx.nwnx2.jvm.constants.ItemProperty;
 
 import java.util.Arrays;
 import java.util.List;
@@ -32,6 +37,26 @@ public class DurabilitySystem {
 
             NWScript.floatingTextStringOnCreature(ColorToken.Red() + "That item is broken and must be repaired before you can use it." + ColorToken.End(), oPC, false);
         }
+
+        if(GetValidDurabilityTypes().contains(NWScript.getBaseItemType(oItem)))
+        {
+            boolean hasProperty = false;
+            for(NWItemProperty ip : NWScript.getItemProperties(oItem))
+            {
+               if(NWScript.getItemPropertyType(ip) == ItemProperty.ONHITCASTSPELL)
+               {
+                   hasProperty = true;
+                   break;
+               }
+            }
+
+            // If item doesn't have on hit cast spell, give it to it.
+            if(!hasProperty)
+            {
+                XP2.IPSafeAddItemProperty(oItem, NWScript.itemPropertyOnHitCastSpell(IpConst.ONHIT_CASTSPELL_ONHIT_UNIQUEPOWER, 40), 0.0f, AddItemPropertyPolicy.ReplaceExisting, true, true);
+            }
+        }
+
     }
 
     public static void RunItemDecay(NWObject oPC, NWObject oItem, int decayChanceModifier, int decayAmountModifier, boolean displayMessage) {
@@ -101,7 +126,7 @@ public class DurabilitySystem {
     }
 
 
-    private static List<Integer> GetValidDurabilityTypes() {
+    public static List<Integer> GetValidDurabilityTypes() {
         Integer[] result = {
                 BaseItem.ARMOR,
                 BaseItem.BASTARDSWORD,

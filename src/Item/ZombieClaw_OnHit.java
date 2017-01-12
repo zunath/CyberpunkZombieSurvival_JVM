@@ -1,13 +1,12 @@
 package Item;
 
 import Enumerations.CustomEffectType;
+import GameSystems.*;
 import Helper.ColorToken;
 import Common.IScriptEventHandler;
-import GameSystems.CustomEffectSystem;
-import GameSystems.DiseaseSystem;
-import GameSystems.ProgressionSystem;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
+import org.nwnx.nwnx2.jvm.constants.InventorySlot;
 import org.nwnx.nwnx2.jvm.constants.Spell;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -24,6 +23,7 @@ public class ZombieClaw_OnHit implements IScriptEventHandler {
 
         RunInfectionRoutine(oPC);
         RunBleedingRoutine(oPC, oZombie);
+        RunDurabilityRoutine(oPC);
     }
 
     private void RunInfectionRoutine(NWObject oPC)
@@ -55,6 +55,16 @@ public class ZombieClaw_OnHit implements IScriptEventHandler {
         if(ThreadLocalRandom.current().nextInt(100) <= 5)
         {
             CustomEffectSystem.ApplyCustomEffect(oPC, CustomEffectType.Bleeding, 6);
+        }
+    }
+
+    private void RunDurabilityRoutine(NWObject oPC)
+    {
+        NWObject belt = NWScript.getItemInSlot(InventorySlot.BELT, oPC);
+
+        if(NWScript.getIsObjectValid(belt))
+        {
+            DurabilitySystem.RunItemDecay(oPC, belt, 18, 2, true);
         }
     }
 }
