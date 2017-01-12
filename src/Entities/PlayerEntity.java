@@ -73,6 +73,19 @@ public class PlayerEntity {
     private int currentManaTick;
     @Column(name = "ProfessionID")
     private int professionID;
+    @Column(name = "RevivalStoneCount")
+    private int revivalStoneCount;
+
+    @Column(name="RespawnAreaTag")
+    private String respawnAreaTag;
+    @Column(name="RespawnLocationX")
+    private float respawnLocationX;
+    @Column(name="RespawnLocationY")
+    private float respawnLocationY;
+    @Column(name="RespawnLocationZ")
+    private float respawnLocationZ;
+    @Column(name="RespawnLocationOrientation")
+    private float respawnLocationOrientation;
 
     public PlayerEntity()
     {
@@ -344,6 +357,57 @@ public class PlayerEntity {
     public void setProfessionID(int professionID)
     {
         this.professionID = professionID;
+    }
+
+    public int getRevivalStoneCount()
+    {
+        return revivalStoneCount;
+    }
+
+    public void setRevivalStoneCount(int revivalStoneCount)
+    {
+        this.revivalStoneCount = revivalStoneCount;
+    }
+
+
+    public String getRespawnAreaTag() {
+        return respawnAreaTag;
+    }
+
+    public void setRespawnAreaTag(String respawnAreaTag) {
+        this.respawnAreaTag = respawnAreaTag;
+    }
+
+    public float getRespawnLocationX() {
+        return respawnLocationX;
+    }
+
+    public void setRespawnLocationX(float respawnLocationX) {
+        this.respawnLocationX = respawnLocationX;
+    }
+
+    public float getRespawnLocationY() {
+        return respawnLocationY;
+    }
+
+    public void setRespawnLocationY(float respawnLocationY) {
+        this.respawnLocationY = respawnLocationY;
+    }
+
+    public float getRespawnLocationZ() {
+        return respawnLocationZ;
+    }
+
+    public void setRespawnLocationZ(float respawnLocationZ) {
+        this.respawnLocationZ = respawnLocationZ;
+    }
+
+    public float getRespawnLocationOrientation() {
+        return respawnLocationOrientation;
+    }
+
+    public void setRespawnLocationOrientation(float respawnLocationOrientation) {
+        this.respawnLocationOrientation = respawnLocationOrientation;
     }
 
 }

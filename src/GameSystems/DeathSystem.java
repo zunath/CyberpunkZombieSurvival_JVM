@@ -1,14 +1,19 @@
 package GameSystems;
 
+import Data.Repository.PlayerRepository;
 import Entities.PCCorpseEntity;
 import Entities.PCCorpseItemEntity;
 import Data.Repository.PCCorpseRepository;
+import Entities.PlayerEntity;
+import GameObject.PlayerGO;
+import Helper.ColorToken;
 import org.nwnx.nwnx2.jvm.*;
 import org.nwnx.nwnx2.jvm.constants.DurationType;
 import org.nwnx.nwnx2.jvm.constants.InventoryDisturbType;
 import org.nwnx.nwnx2.jvm.constants.ObjectType;
 
 import java.util.List;
+import java.util.Objects;
 
 public class DeathSystem {
     // Resref and tag of the player corpse placeable
@@ -170,5 +175,67 @@ public class DeathSystem {
             repo.Delete(entity);
             NWScript.destroyObject(corpse, 0.0f);
         }
+    }
+
+    public static void BindSoul(NWObject oPC)
+    {
+        PlayerRepository repo = new PlayerRepository();
+        PlayerGO pcGO = new PlayerGO(oPC);
+        PlayerEntity entity = repo.getByUUID(pcGO.getUUID());
+        NWObject area = NWScript.getArea(oPC);
+        String areaTag = NWScript.getTag(area);
+        float facing = NWScript.getFacing(oPC);
+        NWVector position = NWScript.getPosition(oPC);
+
+        entity.setRespawnAreaTag(areaTag);
+        entity.setRespawnLocationOrientation(facing);
+        entity.setRespawnLocationX(position.getX());
+        entity.setRespawnLocationY(position.getY());
+        entity.setRespawnLocationZ(position.getZ());
+
+        repo.save(entity);
+
+        NWScript.floatingTextStringOnCreature("Your soul has been bound to this location.", oPC, false);
+    }
+
+    public static void RespawnPlayer(NWObject oPC)
+    {
+        PlayerRepository repo = new PlayerRepository();
+        PlayerGO pcGO = new PlayerGO(oPC);
+        final PlayerEntity entity = repo.getByUUID(pcGO.getUUID());
+
+        if(entity.getRevivalStoneCount() <= 0)
+        {
+            NWScript.floatingTextStringOnCreature(ColorToken.Red() + "You do not have enough revival stones to respawn." + ColorToken.End(), oPC, false);
+            return;
+        }
+
+        entity.setRevivalStoneCount(entity.getRevivalStoneCount() - 1);
+
+        if(Objects.equals(entity.getRespawnAreaTag(), ""))
+        {
+            NWObject defaultRespawn = NWScript.getWaypointByTag("RUBY_OUTPOST_STARTING_LOCATION");
+            final NWLocation location = NWScript.getLocation(defaultRespawn);
+
+            Scheduler.assign(oPC, new Runnable() {
+                @Override
+                public void run() {
+                    NWScript.actionJumpToLocation(location);
+                }
+            });
+        }
+        else {
+            Scheduler.assign(oPC, new Runnable() {
+                @Override
+                public void run() {
+                    NWObject area = NWScript.getObjectByTag(entity.getRespawnAreaTag(), 0);
+                    NWVector position = NWScript.vector(entity.getRespawnLocationX(), entity.getRespawnLocationY(), entity.getRespawnLocationZ());
+                    NWLocation location = NWScript.location(area, position, entity.getRespawnLocationOrientation());
+                    NWScript.actionJumpToLocation(location);
+                }
+            });
+        }
+
+        repo.save(entity);
     }
 }

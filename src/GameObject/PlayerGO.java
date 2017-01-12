@@ -80,6 +80,7 @@ public class PlayerGO {
         entity.setNumberOfSPResets(0);
         entity.setVersionNumber(Constants.PlayerVersionNumber);
         entity.setResetTokens(3);
+        entity.setRevivalStoneCount(3);
 
         return entity;
     }
