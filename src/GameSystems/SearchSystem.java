@@ -13,6 +13,7 @@ import Helper.LocalVariableHelper;
 import Data.Repository.LootTableRepository;
 import Data.Repository.SearchSiteRepository;
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 import org.nwnx.nwnx2.jvm.*;
 import org.nwnx.nwnx2.jvm.constants.*;
 
@@ -93,7 +94,7 @@ public class SearchSystem {
         int skillRank = NWScript.getSkillRank(Skill.SEARCH, oPC, false);
         int numberOfSearches = (skillRank / ExtraSearchPerNumberLevels) + 1;
         PCSearchSiteEntity searchEntity = repo.GetSearchSiteByID(chestID, pcGO.getUUID());
-        DateTime timeLock = new DateTime();
+        DateTime timeLock = new DateTime(DateTimeZone.UTC);
 
         if(numberOfSearches <= 0) numberOfSearches = 1;
 
@@ -109,7 +110,7 @@ public class SearchSystem {
 
         QuestSystem.SpawnQuestItems(oChest, oPC);
 
-        if(timeLock.isBefore(DateTime.now().minus(1)) || searchEntity == null)
+        if(timeLock.isBefore(DateTime.now(DateTimeZone.UTC)) || searchEntity == null)
         {
             int dc = NWScript.getLocalInt(oChest, SearchSiteDCVariableName);
 
@@ -128,7 +129,7 @@ public class SearchSystem {
                 dc += NWScript.random(3) + 1;
             }
 
-            SaveChestInventory(oPC, oChest, true);
+            SaveChestInventory(oPC, oChest, false);
         }
         else
         {
