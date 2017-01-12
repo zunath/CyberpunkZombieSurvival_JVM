@@ -22,9 +22,9 @@ public class OnEnter implements IScriptEventHandler {
         NWObject oPC = NWScript.getEnteringObject();
         MigrationSystem.OnAreaEnter(oPC);
 
-        ApplySanctuaryEffects(oPC);
         LoadLocation(oPC, oArea);
         SaveLocation(oPC, oArea);
+        ApplySanctuaryEffects(oPC);
         spawnSystem.ZSS_OnAreaEnter(oArea);
         AdjustCamera(oPC);
         ProfessionSystem.OnAreaEnter(oArea);
@@ -69,6 +69,7 @@ public class OnEnter implements IScriptEventHandler {
     private void ApplySanctuaryEffects(final NWObject oPC)
     {
         if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return;
+        if(NWScript.getCurrentHitPoints(oPC) <= 0) return;
 
         NWScript.applyEffectToObject(DurationType.PERMANENT, NWScript.effectSanctuary(99), oPC, 0.0f);
         NWScript.applyEffectToObject(DurationType.PERMANENT, NWScript.effectDamageReduction(50, DamagePowerPlus.TWENTY, 0), oPC, 0.0f);
