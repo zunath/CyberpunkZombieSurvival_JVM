@@ -212,6 +212,9 @@ public class DeathSystem {
 
         entity.setRevivalStoneCount(entity.getRevivalStoneCount() - 1);
 
+        if(entity.getCurrentHunger() < 50)
+            entity.setCurrentHunger(50);
+
         if(Objects.equals(entity.getRespawnAreaTag(), ""))
         {
             NWObject defaultRespawn = NWScript.getWaypointByTag("RUBY_OUTPOST_STARTING_LOCATION");
