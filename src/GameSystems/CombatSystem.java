@@ -1167,7 +1167,7 @@ public class CombatSystem {
         iFirearmSkill = iFirearmSkill + 1;
         float fMultiplier = ((NWScript.random(30) + 40)) * 0.001f + (iFirearmSkill * 0.005f);
         float fMaxRange = 0.0f;
-        int iCriticalChance = 1 + NWScript.random(5) + NWScript.floatToInt(((iFirearmSkill) * 0.5f)) + stGunInfo.getCriticalRating();
+        int iCriticalChance = 1 + stGunInfo.getCriticalRating();
         int iChanceToHit = 100;
 
         // Each weapon has a "sweet spot". When a player is within this range they receive a 0.02 multiplier bonus.
@@ -1214,7 +1214,6 @@ public class CombatSystem {
         {
             fMaxRange = Math.abs(fMaxRange - fDistance);
             fMultiplier = fMultiplier - (0.005f * (fMaxRange / 0.5f));
-            iCriticalChance = iCriticalChance - NWScript.floatToInt((2 * (fMaxRange / 0.5f)));
             if(iCriticalChance < 0) iCriticalChance = 0;
             iChanceToHit = iChanceToHit - NWScript.floatToInt((3 * (fMaxRange / 0.5f)));
         }
