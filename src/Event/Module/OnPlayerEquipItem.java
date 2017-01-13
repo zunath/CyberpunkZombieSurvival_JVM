@@ -7,6 +7,7 @@ import org.joda.time.DateTimeZone;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.nwnx.nwnx2.jvm.*;
+import org.nwnx.nwnx2.jvm.constants.InventorySlot;
 
 import java.util.Objects;
 
@@ -33,7 +34,11 @@ public class OnPlayerEquipItem implements IScriptEventHandler {
 	{
 		NWObject oPC = NWScript.getPCItemLastEquippedBy();
 		final NWObject oItem = NWScript.getPCItemLastEquipped();
+		NWObject rightHand = NWScript.getItemInSlot(InventorySlot.RIGHTHAND, oPC);
+		NWObject leftHand = NWScript.getItemInSlot(InventorySlot.LEFTHAND, oPC);
+
 		if(!NWScript.getIsInCombat(oPC)) return;
+		if(oItem != rightHand && oItem != leftHand) return;
 
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ssz");
 		String delayUntilTimestamp = NWScript.getLocalString(oPC, "TEMP_DELAY_WEAPON_SWITCHING");

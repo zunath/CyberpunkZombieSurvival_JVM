@@ -70,7 +70,7 @@ public class MagicSystem {
             return;
         }
 
-        if(pcGO.isBusy() || pcGO.isBusy())
+        if(pcGO.isBusy() || NWScript.getCurrentHitPoints(pc) <= 0)
         {
             NWScript.sendMessageToPC(pc, "You are too busy to activate that ability.");
             return;
