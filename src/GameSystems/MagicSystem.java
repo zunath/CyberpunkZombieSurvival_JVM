@@ -15,10 +15,7 @@ import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.NWVector;
 import org.nwnx.nwnx2.jvm.Scheduler;
-import org.nwnx.nwnx2.jvm.constants.ActionMode;
-import org.nwnx.nwnx2.jvm.constants.Animation;
-import org.nwnx.nwnx2.jvm.constants.DurationType;
-import org.nwnx.nwnx2.jvm.constants.VfxDur;
+import org.nwnx.nwnx2.jvm.constants.*;
 
 import java.util.Objects;
 import java.util.UUID;
@@ -326,6 +323,21 @@ public class MagicSystem {
         {
             NWScript.sendMessageToPC(oPC, "You already know " + entity.getName() + ".");
         }
+    }
+
+    public static void OnModuleExamine(NWObject oExaminer, NWObject oExaminedObject)
+    {
+        if(!NWScript.getIsPC(oExaminer)) return;
+        if(NWScript.getObjectType(oExaminedObject) != ObjectType.ITEM) return;
+        String resref = NWScript.getResRef(oExaminedObject);
+        if(!resref.startsWith("ability_disc_")) return;
+        int abilityID = Integer.parseInt(resref.substring(13));
+
+        MagicRepository repo = new MagicRepository();
+        AbilityEntity entity = repo.GetAbilityByID(abilityID);
+
+        NWScript.setDescription(oExaminedObject, entity.getDescription(), true);
+        NWScript.setDescription(oExaminedObject, entity.getDescription(), false);
     }
 
 }

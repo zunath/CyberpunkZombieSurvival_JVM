@@ -31,6 +31,9 @@ public class AbilityEntity {
     @Column(name = "BaseCooldownTime")
     private float baseCooldownTime;
 
+    @Column(name = "Description")
+    private String description;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "AbilityCategoryID")
     private AbilityCategoryEntity category;
@@ -105,5 +108,13 @@ public class AbilityEntity {
 
     public void setCategory(AbilityCategoryEntity category) {
         this.category = category;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
