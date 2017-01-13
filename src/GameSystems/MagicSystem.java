@@ -336,8 +336,11 @@ public class MagicSystem {
         MagicRepository repo = new MagicRepository();
         AbilityEntity entity = repo.GetAbilityByID(abilityID);
 
-        NWScript.setDescription(oExaminedObject, entity.getDescription(), true);
-        NWScript.setDescription(oExaminedObject, entity.getDescription(), false);
+        String fullDescription = entity.getDescription() + "\n\n";
+        fullDescription += "Mana Cost: " + entity.getBaseManaCost();
+
+        NWScript.setDescription(oExaminedObject, fullDescription, true);
+        NWScript.setDescription(oExaminedObject, fullDescription, false);
     }
 
 }

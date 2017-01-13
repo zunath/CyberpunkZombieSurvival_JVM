@@ -17,6 +17,8 @@ public class AdjustAbilitiesViewModel {
 
     private List<AbilityCategoryEntity> categories;
 
+    private int selectedAbilityID;
+
     public int getNumberOfAbilitySlots() {
         return numberOfAbilitySlots;
     }
@@ -55,5 +57,13 @@ public class AdjustAbilitiesViewModel {
 
     public void setCategories(List<AbilityCategoryEntity> categories) {
         this.categories = categories;
+    }
+
+    public int getSelectedAbilityID() {
+        return selectedAbilityID;
+    }
+
+    public void setSelectedAbilityID(int selectedAbilityID) {
+        this.selectedAbilityID = selectedAbilityID;
     }
 }

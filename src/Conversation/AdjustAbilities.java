@@ -4,6 +4,7 @@ import Conversation.ViewModels.AdjustAbilitiesViewModel;
 import Data.Repository.MagicRepository;
 import Dialog.*;
 import Entities.AbilityCategoryEntity;
+import Entities.AbilityEntity;
 import Entities.PCEquippedAbilityEntity;
 import Entities.PCLearnedAbilityEntity;
 import GameObject.PlayerGO;
@@ -40,10 +41,17 @@ public class AdjustAbilities extends DialogBase implements IDialogHandler {
                 "Select an ability to equip."
         );
 
+        DialogPage confirmAbilityPage = new DialogPage(
+                "<SET LATER>",
+                "Equip this ability",
+                "Back"
+        );
+
         dialog.addPage("MainPage", mainPage);
         dialog.addPage("SelectSlotPage", selectSlotPage);
         dialog.addPage("SelectCategoryPage", selectCategoryPage);
         dialog.addPage("SelectAbilityPage", selectAbilityPage);
+        dialog.addPage("ConfirmAbilityPage", confirmAbilityPage);
 
         return dialog;
     }
@@ -78,6 +86,9 @@ public class AdjustAbilities extends DialogBase implements IDialogHandler {
                 break;
             case "SelectAbilityPage":
                 HandleSelectAbilityPage(responseID);
+                break;
+            case "ConfirmAbilityPage":
+                HandleConfirmAbilityPage(responseID);
                 break;
         }
     }
@@ -255,7 +266,6 @@ public class AdjustAbilities extends DialogBase implements IDialogHandler {
 
     private void HandleSelectAbilityPage(int responseID)
     {
-        NWObject oPC = GetPC();
         AdjustAbilitiesViewModel model = GetModel();
         DialogResponse response = GetResponseByID("SelectAbilityPage", responseID);
         String responseText = response.getText();
@@ -267,27 +277,61 @@ public class AdjustAbilities extends DialogBase implements IDialogHandler {
         }
 
         int abilityID = (int)response.getCustomData();
-        PCEquippedAbilityEntity entity = model.getEquippedAbilities();
-        if(   (entity.getSlot1() != null && entity.getSlot1().getAbilityID() == abilityID) ||
-                (entity.getSlot2() != null && entity.getSlot2().getAbilityID() == abilityID) ||
-                (entity.getSlot3() != null && entity.getSlot3().getAbilityID() == abilityID) ||
-                (entity.getSlot4() != null && entity.getSlot4().getAbilityID() == abilityID) ||
-                (entity.getSlot5() != null && entity.getSlot5().getAbilityID() == abilityID) ||
-                (entity.getSlot6() != null && entity.getSlot6().getAbilityID() == abilityID) ||
-                (entity.getSlot7() != null && entity.getSlot7().getAbilityID() == abilityID) ||
-                (entity.getSlot8() != null && entity.getSlot8().getAbilityID() == abilityID) ||
-                (entity.getSlot9() != null && entity.getSlot9().getAbilityID() == abilityID) ||
-                (entity.getSlot10() != null && entity.getSlot10().getAbilityID() == abilityID))
-        {
-            NWScript.floatingTextStringOnCreature(ColorToken.Red() + "That ability is already equipped." + ColorToken.End(), oPC, false);
-            return;
+        model.setSelectedAbilityID(abilityID);
+
+        SetPageHeader("ConfirmAbilityPage", BuildAbilityDetailsHeader(abilityID));
+        ChangePage("ConfirmAbilityPage");
+    }
+
+    private String BuildAbilityDetailsHeader(int abilityID)
+    {
+        MagicRepository repo = new MagicRepository();
+        AbilityEntity entity = repo.GetAbilityByID(abilityID);
+        String header = ColorToken.Green() + "Ability: " + ColorToken.End() + entity.getName() + "\n\n";
+        header += ColorToken.Green() + "Description: " + ColorToken.End() + entity.getDescription() + "\n\n";
+
+        if(entity.getBaseManaCost() > 0) {
+            header += ColorToken.Green() + "Mana Cost: " + ColorToken.End() + entity.getBaseManaCost();
         }
 
+        return header;
+    }
 
-        entity = MagicSystem.EquipAbility(oPC, model.getCurrentSlot(), abilityID);
-        model.setEquippedAbilities(entity);
-        LoadSlotPageResponses();
-        ChangePage("SelectSlotPage");
+    private void HandleConfirmAbilityPage(int responseID)
+    {
+        switch(responseID)
+        {
+            case 1: // Equip ability
+
+                AdjustAbilitiesViewModel model = GetModel();
+                int abilityID = model.getSelectedAbilityID();
+                PCEquippedAbilityEntity entity = model.getEquippedAbilities();
+                if(   (entity.getSlot1() != null && entity.getSlot1().getAbilityID() == abilityID) ||
+                        (entity.getSlot2() != null && entity.getSlot2().getAbilityID() == abilityID) ||
+                        (entity.getSlot3() != null && entity.getSlot3().getAbilityID() == abilityID) ||
+                        (entity.getSlot4() != null && entity.getSlot4().getAbilityID() == abilityID) ||
+                        (entity.getSlot5() != null && entity.getSlot5().getAbilityID() == abilityID) ||
+                        (entity.getSlot6() != null && entity.getSlot6().getAbilityID() == abilityID) ||
+                        (entity.getSlot7() != null && entity.getSlot7().getAbilityID() == abilityID) ||
+                        (entity.getSlot8() != null && entity.getSlot8().getAbilityID() == abilityID) ||
+                        (entity.getSlot9() != null && entity.getSlot9().getAbilityID() == abilityID) ||
+                        (entity.getSlot10() != null && entity.getSlot10().getAbilityID() == abilityID))
+                {
+                    NWScript.floatingTextStringOnCreature(ColorToken.Red() + "That ability is already equipped." + ColorToken.End(), GetPC(), false);
+                    return;
+                }
+
+
+                entity = MagicSystem.EquipAbility(GetPC(), model.getCurrentSlot(), abilityID);
+                model.setEquippedAbilities(entity);
+                LoadSlotPageResponses();
+                ChangePage("SelectSlotPage");
+                break;
+            case 2: // Back
+                ChangePage("SelectAbilityPage");
+                break;
+        }
+
     }
 
     @Override
