@@ -1309,6 +1309,8 @@ public class CombatSystem {
 
         int iShotgunSkill = ProgressionSystem.GetPlayerSkillLevel(oAttacker, ProgressionSystem.SkillType_SHOTGUN_PROFICIENCY);
         int iShotgunAccuracy = ProgressionSystem.GetPlayerSkillLevel(oAttacker, ProgressionSystem.SkillType_SHOTGUN_ACCURACY);
+
+        int numberAttacked = 0;
         NWObject[] shapeTargets = NWScript.getObjectsInShape(Shape.SPELLCYLINDER, fRangeDistance, lTarget, true, ObjectType.CREATURE, vOrigin);
         for(NWObject oShapeTarget : shapeTargets)
         {
@@ -1318,7 +1320,7 @@ public class CombatSystem {
             {
                 if(oShapeTarget != oAttacker && !NWScript.getIsDead(oShapeTarget) && !NWScript.getIsDead(oAttacker))
                 {
-                    if(NWScript.random(30) + 3 > NWScript.getAC(oShapeTarget) - iShotgunAccuracy)
+                    if(NWScript.random(30) > (NWScript.getAC(oShapeTarget) + (numberAttacked*2)) - iShotgunAccuracy)
                     {
                         int iDamage = CalculateDamage(oAttacker, oShapeTarget, stGunInfo, iShotgunSkill);
 
@@ -1334,6 +1336,8 @@ public class CombatSystem {
                     {
                         isMiss = true;
                     }
+
+                    numberAttacked++;
                 }
             }
         }
