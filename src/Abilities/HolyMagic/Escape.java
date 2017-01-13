@@ -66,7 +66,6 @@ public class Escape implements IAbility {
                     NWScript.getDistanceBetween(member, oPC) <= 5.0f)
             {
                 final NWObject memberFinal = member;
-                NWScript.applyEffectToObject(DurationType.TEMPORARY, NWScript.effectVisualEffect(0, false), member, 1.9f);
                 Scheduler.delay(memberFinal, 2000, new Runnable() {
                     @Override
                     public void run() {
