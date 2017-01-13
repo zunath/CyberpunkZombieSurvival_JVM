@@ -27,7 +27,7 @@ public class OnHitCastSpell implements IScriptEventHandler {
                 NWObject oBelt = NWScript.getItemInSlot(InventorySlot.BELT, oTarget);
                 if(!oBelt.equals(NWObject.INVALID))
                 {
-                    DurabilitySystem.RunItemDecay(oTarget, oBelt, 3, ThreadLocalRandom.current().nextInt(2), true);
+                    DurabilitySystem.RunItemDecay(oTarget, oBelt, 18, ThreadLocalRandom.current().nextInt(2), true);
                 }
             }
             else if(DurabilitySystem.GetValidDurabilityTypes().contains(itemType))

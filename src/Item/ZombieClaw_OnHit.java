@@ -23,7 +23,6 @@ public class ZombieClaw_OnHit implements IScriptEventHandler {
 
         RunInfectionRoutine(oPC);
         RunBleedingRoutine(oPC, oZombie);
-        RunDurabilityRoutine(oPC);
     }
 
     private void RunInfectionRoutine(NWObject oPC)
@@ -55,16 +54,6 @@ public class ZombieClaw_OnHit implements IScriptEventHandler {
         if(ThreadLocalRandom.current().nextInt(100) <= 5)
         {
             CustomEffectSystem.ApplyCustomEffect(oPC, CustomEffectType.Bleeding, 6);
-        }
-    }
-
-    private void RunDurabilityRoutine(NWObject oPC)
-    {
-        NWObject belt = NWScript.getItemInSlot(InventorySlot.BELT, oPC);
-
-        if(NWScript.getIsObjectValid(belt))
-        {
-            DurabilitySystem.RunItemDecay(oPC, belt, 18, 2, true);
         }
     }
 }
