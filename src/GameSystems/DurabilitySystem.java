@@ -3,6 +3,7 @@ package GameSystems;
 import Bioware.AddItemPropertyPolicy;
 import Bioware.XP2;
 import Common.Constants;
+import Enumerations.CustomBaseItemType;
 import GameObject.ItemGO;
 import Helper.ColorToken;
 import org.nwnx.nwnx2.jvm.NWItemProperty;
@@ -26,7 +27,7 @@ public class DurabilitySystem {
         ItemGO itemGO = new ItemGO(oItem);
         int iDurability = itemGO.getDurability();
 
-        if (iDurability <= 0) {
+        if (iDurability <= 0 && iDurability != -1) {
             Scheduler.assign(oPC, new Runnable() {
                 @Override
                 public void run() {
@@ -174,7 +175,12 @@ public class DurabilitySystem {
                 BaseItem.TRIDENT,
                 BaseItem.TWOBLADEDSWORD,
                 BaseItem.WARHAMMER,
-                BaseItem.WHIP
+                BaseItem.WHIP,
+                CustomBaseItemType.HeavyWeapon,
+                CustomBaseItemType.Longarm,
+                CustomBaseItemType.SmallArmD6,
+                CustomBaseItemType.SmallArmD6_2,
+                CustomBaseItemType.SmallArmD8
         };
 
         return Arrays.asList(result);
