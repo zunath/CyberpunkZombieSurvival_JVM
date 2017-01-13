@@ -81,6 +81,12 @@ public class PlayerGO {
         entity.setVersionNumber(Constants.PlayerVersionNumber);
         entity.setResetTokens(3);
         entity.setRevivalStoneCount(3);
+        entity.setRespawnLocationOrientation(0.0f);
+        entity.setRespawnAreaTag("");
+        entity.setRespawnLocationX(0.0f);
+        entity.setRespawnLocationY(0.0f);
+        entity.setRespawnLocationZ(0.0f);
+
 
         return entity;
     }
