@@ -5,6 +5,7 @@ import Entities.*;
 import GameObject.PlayerGO;
 import Data.Repository.CraftRepository;
 import GameSystems.CraftSystem;
+import Helper.ColorToken;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.Scheduler;
@@ -22,6 +23,7 @@ public class Crafting extends DialogBase implements IDialogHandler {
         );
         DialogPage blueprintPage = new DialogPage(
                 "<SET LATER>",
+                ColorToken.Green() + "Examine Item" + ColorToken.End(),
                 "Select Blueprint",
                 "Back"
         );
@@ -142,11 +144,26 @@ public class Crafting extends DialogBase implements IDialogHandler {
     private void HandleBlueprintResponse(int responseID)
     {
         DialogResponse response = GetResponseByID("BlueprintPage", responseID);
+        int blueprintID = (int)response.getCustomData();
 
         switch (responseID)
         {
-            case 1: // Select Blueprint
-                int blueprintID = (int)response.getCustomData();
+            case 1: // Examine item
+                CraftRepository repo = new CraftRepository();
+                CraftBlueprintEntity entity = repo.GetBlueprintByID(blueprintID);
+                NWObject tempContainer = NWScript.getObjectByTag("craft_temp_storage", 0);
+                final NWObject examineItem = NWScript.createItemOnObject(entity.getItemResref(), tempContainer, 1, "");
+                NWScript.destroyObject(examineItem, 0.1f);
+
+                Scheduler.assign(GetPC(), new Runnable() {
+                    @Override
+                    public void run() {
+                        NWScript.actionExamine(examineItem);
+                    }
+                });
+
+                break;
+            case 2: // Select Blueprint
                 NWScript.sendMessageToPC(GetPC(), "Blueprint selected. Add necessary resources to the device and click the 'Craft Item' option.");
 
                 final NWObject device = GetDialogTarget();
@@ -161,7 +178,7 @@ public class Crafting extends DialogBase implements IDialogHandler {
 
                 EndConversation();
                 break;
-            case 2: // Back
+            case 3: // Back
                 ChangePage("BlueprintListPage");
                 break;
         }
