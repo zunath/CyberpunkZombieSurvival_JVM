@@ -1233,9 +1233,18 @@ public class CombatSystem {
             fMultiplier = fMultiplier + 0.015f;
         }
 
-        // Convert durability to a decimal, then multiply that value with the Firepower
-        // Finally, multiply that value with the multiplier.
-        int iFirepower = NWScript.floatToInt(stGunInfo.getFirepower() * (0.01f * stGunInfo.getDurability()));
+        float durabilityReductionMultiplier = 1.0f;
+
+        if (stGunInfo.getDurability() <= 10)
+            durabilityReductionMultiplier = 0.1f;
+        else if(stGunInfo.getDurability() <= 30)
+            durabilityReductionMultiplier = 0.3f;
+        else if(stGunInfo.getDurability() <= 60)
+            durabilityReductionMultiplier = 0.6f;
+        else if(stGunInfo.getDurability() <= 90)
+            durabilityReductionMultiplier = 0.8f;
+
+        int iFirepower = NWScript.floatToInt(stGunInfo.getFirepower() * durabilityReductionMultiplier);
         int iDamage = NWScript.floatToInt(iFirepower * fMultiplier);
 
         if(bIsCriticalHit == 1){
