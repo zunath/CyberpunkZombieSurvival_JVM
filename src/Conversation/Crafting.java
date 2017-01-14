@@ -144,11 +144,12 @@ public class Crafting extends DialogBase implements IDialogHandler {
     private void HandleBlueprintResponse(int responseID)
     {
         DialogResponse response = GetResponseByID("BlueprintPage", responseID);
-        int blueprintID = (int)response.getCustomData();
+        int blueprintID;
 
         switch (responseID)
         {
             case 1: // Examine item
+                blueprintID = (int)response.getCustomData();
                 CraftRepository repo = new CraftRepository();
                 CraftBlueprintEntity entity = repo.GetBlueprintByID(blueprintID);
                 NWObject tempContainer = NWScript.getObjectByTag("craft_temp_storage", 0);
@@ -164,6 +165,7 @@ public class Crafting extends DialogBase implements IDialogHandler {
 
                 break;
             case 2: // Select Blueprint
+                blueprintID = (int)response.getCustomData();
                 NWScript.sendMessageToPC(GetPC(), "Blueprint selected. Add necessary resources to the device and click the 'Craft Item' option.");
 
                 final NWObject device = GetDialogTarget();

@@ -25,7 +25,7 @@ public class OnPlayerEquipItem implements IScriptEventHandler {
 		ArmorSystem.OnModuleEquipItem();
 		InventorySystem.OnModuleEquipItem();
 
-		//HandleEquipmentSwappingDelay();
+		HandleEquipmentSwappingDelay();
 	}
 
 	// Players abuse a bug in NWN which allows them to gain an extra attack.
@@ -40,6 +40,14 @@ public class OnPlayerEquipItem implements IScriptEventHandler {
 		if(!NWScript.getIsInCombat(oPC)) return;
 		if(Objects.equals(oItem, rightHand) && Objects.equals(oItem, leftHand)) return;
 
+		Scheduler.assign(oPC, new Runnable() {
+            @Override
+            public void run() {
+                NWScript.clearAllActions(false);
+            }
+        });
+
+		/*
 		DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ssz");
 		String delayUntilTimestamp = NWScript.getLocalString(oPC, "TEMP_DELAY_WEAPON_SWITCHING");
 		long delayMillis = 0;
@@ -66,6 +74,7 @@ public class OnPlayerEquipItem implements IScriptEventHandler {
 
 
 		NWScript.sendMessageToPC(oPC, delayUntilTimestamp);
+		*/
 	}
 
 }
