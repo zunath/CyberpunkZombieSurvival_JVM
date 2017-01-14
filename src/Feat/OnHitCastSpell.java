@@ -40,6 +40,9 @@ public class OnHitCastSpell implements IScriptEventHandler {
 
             if(!Objects.equals(javaScript, ""))
             {
+                // Remove "Item." prefix if it exists.
+                if(javaScript.startsWith("Item."))
+                    javaScript = javaScript.substring(5);
                 ScriptHelper.RunJavaScript(oTarget, "Item." + javaScript);
             }
         }

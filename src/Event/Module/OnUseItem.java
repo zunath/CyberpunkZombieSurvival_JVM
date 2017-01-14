@@ -28,6 +28,10 @@ public class OnUseItem implements IScriptEventHandler {
         if(className.equals("")) return;
 
         NWNX_Events.BypassEvent();
+
+        // Remove "Item." prefix if it exists.
+        if(className.startsWith("Item."))
+            className = className.substring(5);
         ScriptHelper.RunJavaScript(oPC, "Item." + className);
 
         Scheduler.delay(oPC, 1, new Runnable() {
