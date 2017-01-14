@@ -103,8 +103,8 @@ public class Crafting extends DialogBase implements IDialogHandler {
     {
         DialogPage page = GetPageByName("BlueprintPage");
         SetPageHeader("BlueprintPage", CraftSystem.BuildBlueprintHeader(GetPC(), blueprintID));
-        DialogResponse response = GetResponseByID("BlueprintPage", 2);
-        response.setCustomData(blueprintID);
+        GetResponseByID("BlueprintPage", 1).setCustomData(blueprintID);
+        GetResponseByID("BlueprintPage", 2).setCustomData(blueprintID);
     }
 
     private void HandleCategoryResponse(int responseID)
