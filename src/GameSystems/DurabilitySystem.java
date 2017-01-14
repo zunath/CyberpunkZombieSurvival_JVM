@@ -180,7 +180,10 @@ public class DurabilitySystem {
                 CustomBaseItemType.Longarm,
                 CustomBaseItemType.SmallArmD6,
                 CustomBaseItemType.SmallArmD6_2,
-                CustomBaseItemType.SmallArmD8
+                CustomBaseItemType.SmallArmD8,
+                CustomBaseItemType.D20HeavyWeapon,
+                CustomBaseItemType.D20SmallArms6,
+                CustomBaseItemType.MZS3Handgun
         };
 
         return Arrays.asList(result);
