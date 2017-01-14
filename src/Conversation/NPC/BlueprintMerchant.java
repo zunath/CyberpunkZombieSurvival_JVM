@@ -12,9 +12,10 @@ public class BlueprintMerchant extends DialogBase implements IDialogHandler {
 
         DialogPage mainPage = new DialogPage(
                 "Our supplies have run low so we've resorted to building most of the things we need. Please take a look at my collection of blueprints and let me know if you'd like to buy anything.",
+                "I have questions...",
                 "Engineering Blueprints",
                 "Smithery Blueprints",
-                "I have questions..."
+                "Mixing Blueprints"
         );
 
         DialogPage questionsPage = new DialogPage(
@@ -56,18 +57,23 @@ public class BlueprintMerchant extends DialogBase implements IDialogHandler {
         NWObject store;
         switch(responseID)
         {
-            case 1: // Engineering Blueprints
+            case 1: // Questions
+                ChangePage("QuestionsPage");
+                break;
+            case 2: // Engineering Blueprints
                 store = NWScript.getNearestObjectByTag("mch_blueprints1", oPC, 1);
                 NWScript.openStore(store, oPC, 0, 0);
                 DialogManager.endConversation(oPC);
                 break;
-            case 2: // Smithery Blueprints
+            case 3: // Smithery Blueprints
                 store = NWScript.getNearestObjectByTag("mch_blueprints2", oPC, 1);
                 NWScript.openStore(store, oPC, 0, 0);
                 DialogManager.endConversation(oPC);
                 break;
-            case 3: // Questions
-                ChangePage("QuestionsPage");
+            case 4: // Mixing Blueprints
+                store = NWScript.getNearestObjectByTag("mch_blueprints3", oPC, 1);
+                NWScript.openStore(store, oPC, 0, 0);
+                DialogManager.endConversation(oPC);
                 break;
         }
     }
