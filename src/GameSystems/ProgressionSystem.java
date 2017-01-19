@@ -446,6 +446,11 @@ public class ProgressionSystem {
 
         repo.save(entity);
 
+        for(int index = 1; index <= 10; index++)
+        {
+            MagicSystem.UnequipAbility(oPC, index);
+        }
+
         NWScript.floatingTextStringOnCreature(ColorToken.Green() + "Skill reset completed successfully." + ColorToken.End(), oPC, false);
     }
 
