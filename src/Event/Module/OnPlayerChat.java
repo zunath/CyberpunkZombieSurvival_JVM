@@ -11,6 +11,7 @@ public class OnPlayerChat implements IScriptEventHandler {
 
 	@Override
 	public void runScript(final NWObject objSelf) {
-
+        // DMFI
+        NWScript.executeScript("dmfi_onplychat", objSelf);
 	}
 }

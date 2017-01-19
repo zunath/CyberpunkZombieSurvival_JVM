@@ -40,6 +40,9 @@ public class OnClientEnter implements IScriptEventHandler {
         PlayerAuthorizationSystem.OnModuleEnter();
         // Profession System
         ProfessionSystem.OnModuleEnter();
+
+        // DMFI
+        NWScript.executeScript("dmfi_onclienter", objSelf);
     }
 
     private void ApplyGhostwalk()
