@@ -193,11 +193,15 @@ public class CombatSystem {
     public void OnModuleAttack(final NWObject oAttacker)
     {
         final NWObject oTarget = NWNX_Events.GetEventTarget();
+        PlayerGO pcGO = new PlayerGO(oAttacker);
 
         if(!PVPSanctuarySystem.IsPVPAttackAllowed(oAttacker, oTarget)) return;
 
         // PC is too busy to make an attack right now
-        if(NWScript.getLocalInt(oAttacker, "RELOADING_GUN") == 1 || NWScript.getCurrentAction(oAttacker) == Action.SIT || NWScript.getLocalInt(oAttacker, "LOCKPICK_TEMPORARY_CURRENTLY_PICKING_LOCK") == 1)
+        if(NWScript.getLocalInt(oAttacker, "RELOADING_GUN") == 1 ||
+           NWScript.getCurrentAction(oAttacker) == Action.SIT ||
+           NWScript.getLocalInt(oAttacker, "LOCKPICK_TEMPORARY_CURRENTLY_PICKING_LOCK") == 1 ||
+           pcGO.isBusy())
         {
             NWScript.floatingTextStringOnCreature(ColorToken.Red() + "You are too busy to attack right now.", oAttacker, false);
             Scheduler.delay(oAttacker, 1, new Runnable() {
