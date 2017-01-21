@@ -432,6 +432,7 @@ public class CombatSystem {
             if(ThreadLocalRandom.current().nextInt(0, 100) <= 10)
             {
                 fDelay = 0.01f;
+                fAnimationSpeed = 2.0f;
             }
         }
 
