@@ -26,6 +26,7 @@ public class Herb implements IScriptEventHandler {
         else if(type.equals("Blue"))
         {
             CustomEffectSystem.RemoveCustomEffect(oPC, CustomEffectType.Poison);
+            ItemHelper.ReduceItemStack(item);
             return;
         }
         else if(type.equals("Mixed"))
