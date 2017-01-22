@@ -1,5 +1,7 @@
 package Item.Medical;
 
+import Enumerations.CustomEffectType;
+import GameSystems.CustomEffectSystem;
 import Helper.ItemHelper;
 import Common.IScriptEventHandler;
 import NWNX.NWNX_Events;
@@ -20,6 +22,11 @@ public class Herb implements IScriptEventHandler {
         if(type.equals("Green"))
         {
             recoverPercentage = 10.0f;
+        }
+        else if(type.equals("Blue"))
+        {
+            CustomEffectSystem.RemoveCustomEffect(oPC, CustomEffectType.Poison);
+            return;
         }
         else if(type.equals("Mixed"))
         {
