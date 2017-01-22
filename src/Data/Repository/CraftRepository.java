@@ -272,9 +272,9 @@ public class CraftRepository {
 
     public void Save(Object entity)
     {
-        try(DataContext contex = new DataContext())
+        try(DataContext context = new DataContext())
         {
-            contex.getSession().saveOrUpdate(entity);
+            context.getSession().saveOrUpdate(entity);
         }
     }
 

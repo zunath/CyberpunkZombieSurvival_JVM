@@ -111,7 +111,7 @@ public class ResetSkillPoints extends DialogBase implements IDialogHandler {
         if(entity.getNextSPResetDate() != null)
         {
             DateTime resetDate = new DateTime(entity.getNextSPResetDate());
-            DateTime now = DateTime.now();
+            DateTime now = DateTime.now(DateTimeZone.UTC);
 
 
             if(resetDate.isAfter(now))

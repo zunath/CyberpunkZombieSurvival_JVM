@@ -90,6 +90,7 @@ public class DataAccess {
         _configuration.addAnnotatedClass(PCSearchSiteItemEntity.class);
         _configuration.addAnnotatedClass(PCTerritoryFlagEntity.class);
         _configuration.addAnnotatedClass(PCTerritoryFlagPermissionEntity.class);
+        _configuration.addAnnotatedClass(PCTerritoryFlagsStructuresResearchQueueEntity.class);
         _configuration.addAnnotatedClass(PCTerritoryFlagStructureEntity.class);
         _configuration.addAnnotatedClass(PCTerritoryFlagStructureItemEntity.class);
         _configuration.addAnnotatedClass(PlayerEntity.class);
@@ -98,6 +99,7 @@ public class DataAccess {
         _configuration.addAnnotatedClass(ProfessionEntity.class);
         _configuration.addAnnotatedClass(ProgressionLevelEntity.class);
         _configuration.addAnnotatedClass(ProgressionSkillEntity.class);
+        _configuration.addAnnotatedClass(ResearchBlueprintEntity.class);
         _configuration.addAnnotatedClass(ServerConfigurationEntity.class);
         _configuration.addAnnotatedClass(StorageContainerEntity.class);
         _configuration.addAnnotatedClass(StorageItemEntity.class);

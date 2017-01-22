@@ -58,6 +58,12 @@ public class StructureBlueprintEntity {
     @Column(name = "MaxBuildDistance")
     private double maxBuildDistance;
 
+    @Column(name = "ResearchSlots")
+    private int researchSlots;
+
+    @Column(name = "RPPerSecond")
+    private int rpPerSecond;
+
     public int getStructureBlueprintID() {
         return structureBlueprintID;
     }
@@ -192,5 +198,21 @@ public class StructureBlueprintEntity {
 
     public void setIronRequired(int ironRequired) {
         this.ironRequired = ironRequired;
+    }
+
+    public int getResearchSlots() {
+        return researchSlots;
+    }
+
+    public void setResearchSlots(int researchSlots) {
+        this.researchSlots = researchSlots;
+    }
+
+    public int getRpPerSecond() {
+        return rpPerSecond;
+    }
+
+    public void setRpPerSecond(int rpPerSecond) {
+        this.rpPerSecond = rpPerSecond;
     }
 }

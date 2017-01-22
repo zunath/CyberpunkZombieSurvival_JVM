@@ -24,6 +24,7 @@ public class AllocateSkillPoints extends DialogBase implements IDialogHandler {
                 "Proficiencies",
                 "Utility",
                 "Magic",
+                "Crafting",
                 "Back"
         );
 
@@ -76,6 +77,11 @@ public class AllocateSkillPoints extends DialogBase implements IDialogHandler {
                 "Back"
         );
 
+        DialogPage craftingPage = new DialogPage(
+                "Please select an upgrade.",
+                "Researching",
+                "Back"
+        );
 
         DialogPage upgradePage = new DialogPage(
                 "<REPLACED LATER>",
@@ -89,6 +95,7 @@ public class AllocateSkillPoints extends DialogBase implements IDialogHandler {
         dialog.addPage("ProficienciesPage", proficienciesPage);
         dialog.addPage("UtilityPage", utilityPage);
         dialog.addPage("MagicPage", magicPage);
+        dialog.addPage("CraftingPage", craftingPage);
         dialog.addPage("UpgradePage", upgradePage);
 
         return dialog;
@@ -125,7 +132,12 @@ public class AllocateSkillPoints extends DialogBase implements IDialogHandler {
                         NWScript.setLocalString(oPC, "TEMP_MENU_CATEGORY_PAGE", "MagicPage");
                         ChangePage("MagicPage");
                         break;
-                    case 5: // "Back to Main Menu"
+                    // Crafting
+                    case 5:
+                        NWScript.setLocalString(oPC, "TEMP_MENU_CATEGORY_PAGE", "CraftingPage");
+                        ChangePage("CraftingPage");
+                        break;
+                    case 6: // "Back to Main Menu"
                         ClearTempVariables();
                         SwitchConversation("RestMenu");
                         break;
@@ -247,6 +259,18 @@ public class AllocateSkillPoints extends DialogBase implements IDialogHandler {
                         LoadSkillUpgradePage(ProgressionSystem.SkillType_ENHANCEMENT_AFFINITY);
                         break;
                     case 4: // "Back"
+                        ClearTempVariables();
+                        ChangePage("MainPage");
+                        break;
+                }
+                break;
+            }
+            case "CraftingPage": {
+                switch (responseID) {
+                    case 1:
+                        LoadSkillUpgradePage(ProgressionSystem.SkillType_RESEARCHING);
+                        break;
+                    case 2: // Back
                         ClearTempVariables();
                         ChangePage("MainPage");
                         break;

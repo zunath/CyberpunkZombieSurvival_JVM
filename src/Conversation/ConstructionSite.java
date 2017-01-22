@@ -219,6 +219,14 @@ public class ConstructionSite extends DialogBase implements IDialogHandler {
             {
                 header += ColorToken.Green() + "Item Storage: " + ColorToken.End() + entity.getBlueprint().getItemStorageCount() + " items" + "\n";
             }
+            if(entity.getBlueprint().getResearchSlots() > 0)
+            {
+                header += ColorToken.Green() + "Research Slots: "  + ColorToken.End() + entity.getBlueprint().getResearchSlots() + " slots" + "\n";
+            }
+            if(entity.getBlueprint().getRpPerSecond() > 0)
+            {
+                header += ColorToken.Green() + "RP/Sec: " + ColorToken.End() + entity.getBlueprint().getRpPerSecond() + "\n";
+            }
 
             header += ColorToken.Green() + "Resources Required: " + ColorToken.End() + "\n\n";
 

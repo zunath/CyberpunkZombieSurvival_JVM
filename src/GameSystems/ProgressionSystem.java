@@ -79,7 +79,7 @@ public class ProgressionSystem {
     public static final int SkillType_HOLY_AFFINITY              = 38;
     public static final int SkillType_EVOCATION_AFFINITY         = 39;
     public static final int SkillType_ENHANCEMENT_AFFINITY       = 40;
-
+    public static final int SkillType_RESEARCHING                = 41;
 
 
 
