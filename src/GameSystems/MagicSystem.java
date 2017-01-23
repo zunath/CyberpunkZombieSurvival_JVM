@@ -8,6 +8,7 @@ import Entities.AbilityEntity;
 import Entities.PCEquippedAbilityEntity;
 import Entities.PlayerEntity;
 import GameObject.PlayerGO;
+import Helper.ColorToken;
 import Helper.ScriptHelper;
 import NWNX.NWNX_Events;
 import NWNX.NWNX_Funcs;
@@ -128,6 +129,8 @@ public class MagicSystem {
                 ability.OnImpact(pc, target);
                 entity.setCurrentMana(entity.getCurrentMana() - ability.ManaCost(pc, baseManaCost));
                 repo.save(entity);
+
+                NWScript.sendMessageToPC(pc, ColorToken.Custom(32,223,219) + "Mana: " + entity.getCurrentMana() + " / " + entity.getMaxMana());
 
                 pcGO.setIsBusy(false);
             }
