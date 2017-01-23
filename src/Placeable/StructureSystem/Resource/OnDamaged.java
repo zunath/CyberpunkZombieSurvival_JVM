@@ -35,17 +35,19 @@ public class OnDamaged implements IScriptEventHandler {
 
         int baseDurabilityChance = 20;
         int durabilityChanceReduction = 0;
-
+        int weaponChanceBonus = 0;
 
         if(activityID == 1) // 1 = Logging
         {
             abilityID = AbilityType.Lumberjack;
             durabilityChanceReduction = MagicSystem.IsAbilityEquipped(oPC, AbilityType.ToolExpertLogging) ? 10 : 0;
+            weaponChanceBonus = NWScript.getLocalInt(oWeapon, "LOGGING_BONUS");
         }
         else if(activityID == 2) // Mining
         {
             abilityID = AbilityType.Miner;
             durabilityChanceReduction = MagicSystem.IsAbilityEquipped(oPC, AbilityType.ToolExpertMining) ? 10 : 0;
+            weaponChanceBonus = NWScript.getLocalInt(oWeapon, "MINING_BONUS");
         }
         else return;
 
@@ -54,7 +56,7 @@ public class OnDamaged implements IScriptEventHandler {
 
         int baseChance = 10;
         int bonusChance = MagicSystem.IsAbilityEquipped(oPC, abilityID) ? 10 : 0;
-        int chance = baseChance + bonusChance;
+        int chance = baseChance + bonusChance + weaponChanceBonus;
 
         if(ThreadLocalRandom.current().nextInt(100) <= chance)
         {

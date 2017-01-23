@@ -11,11 +11,12 @@ public class AbilityMerchant extends DialogBase implements IDialogHandler {
         DialogPage mainPage = new DialogPage(
                 "My scanner detects that you've been implanted with an AMP. I've got ability discs you can install if you would like to take a look. Which would you like to see?",
                 "I have some questions first.",
-                "Evocation Magic",
-                "Enhancing Magic",
-                "Holy Magic",
-                "Passive Abilities",
-                "Crafting Abilities"
+                "Buy Evocation Magic",
+                "Buy Enhancing Magic",
+                "Buy Holy Magic",
+                "Buy Passive Abilities",
+                "Buy Crafting Abilities",
+                "Buy/Sell General Items"
         );
 
         DialogPage questionsPage = new DialogPage(
@@ -81,6 +82,11 @@ public class AbilityMerchant extends DialogBase implements IDialogHandler {
                 break;
             case 6: // Crafting Abilities
                 store = NWScript.getNearestObjectByTag("abil_store5", oPC, 1);
+                NWScript.openStore(store, oPC, 0, 0);
+                DialogManager.endConversation(oPC);
+                break;
+            case 7: // Buy/Sell General Items
+                store = NWScript.getNearestObjectByTag("general_items", oPC, 1);
                 NWScript.openStore(store, oPC, 0, 0);
                 DialogManager.endConversation(oPC);
                 break;
