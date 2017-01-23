@@ -1,10 +1,9 @@
 package Item.Repair;
 
-import Enumerations.CustomBaseItemType;
 import Common.IScriptEventHandler;
-import NWNX.NWNX_Events;
 import GameSystems.DurabilitySystem;
 import GameSystems.ProgressionSystem;
+import NWNX.NWNX_Events;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.constants.BaseItem;
@@ -14,7 +13,7 @@ import java.util.List;
 import java.util.Random;
 
 @SuppressWarnings("unused")
-public class FirearmRepairKit implements IScriptEventHandler {
+public class BluntRepairKit implements IScriptEventHandler {
     @Override
     public void runScript(NWObject oPC) {
         NWObject target = NWNX_Events.GetEventTarget();
@@ -37,23 +36,21 @@ public class FirearmRepairKit implements IScriptEventHandler {
     }
 
 
-
     private List<Integer> BuildValidTypes()
     {
         ArrayList<Integer> validTypes = new ArrayList<>();
-        validTypes.add(CustomBaseItemType.HeavyWeapon);
-        validTypes.add(CustomBaseItemType.Longarm);
-        validTypes.add(CustomBaseItemType.SmallArmD6);
-        validTypes.add(CustomBaseItemType.SmallArmD6_2);
-        validTypes.add(CustomBaseItemType.SmallArmD8);
-        validTypes.add(CustomBaseItemType.D20HeavyWeapon);
-        validTypes.add(CustomBaseItemType.D20SmallArms6);
-        validTypes.add(CustomBaseItemType.MZS3Handgun);
-        validTypes.add(BaseItem.HEAVYCROSSBOW);
-        validTypes.add(BaseItem.LIGHTCROSSBOW);
-        validTypes.add(BaseItem.LONGBOW);
-        validTypes.add(BaseItem.SHORTBOW);
+        validTypes.add(BaseItem.CLUB);
+        validTypes.add(BaseItem.DIREMACE);
+        validTypes.add(BaseItem.HEAVYFLAIL);
+        validTypes.add(BaseItem.LIGHTFLAIL);
+        validTypes.add(BaseItem.LIGHTHAMMER);
+        validTypes.add(BaseItem.LIGHTMACE);
+        validTypes.add(BaseItem.MORNINGSTAR);
+        validTypes.add(BaseItem.QUARTERSTAFF);
+        validTypes.add(BaseItem.WARHAMMER);
+        validTypes.add(BaseItem.WHIP);
 
         return validTypes;
     }
+
 }
