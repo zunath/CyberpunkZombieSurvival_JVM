@@ -4,6 +4,7 @@ package Placeable.StructureSystem.ConstructionSite;
 import Entities.ConstructionSiteEntity;
 import Common.IScriptEventHandler;
 import Data.Repository.StructureRepository;
+import GameSystems.DurabilitySystem;
 import GameSystems.StructureSystem;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
@@ -149,6 +150,7 @@ public class OnAttacked implements IScriptEventHandler {
         else if(foundResource)
         {
             repo.Save(entity);
+            DurabilitySystem.RunItemDecay(oPC, weapon, 4, 0, true);
         }
         else
         {
