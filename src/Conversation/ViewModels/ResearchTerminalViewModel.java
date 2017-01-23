@@ -14,6 +14,8 @@ public class ResearchTerminalViewModel {
 
     private boolean isConfirmingBlueprintSelection;
 
+    private boolean isConfirmingCancelResearch;
+
     public int getSelectedSlot() {
         return selectedSlot;
     }
@@ -60,5 +62,13 @@ public class ResearchTerminalViewModel {
 
     public void setConfirmingBlueprintSelection(boolean confirmingBlueprintSelection) {
         isConfirmingBlueprintSelection = confirmingBlueprintSelection;
+    }
+
+    public boolean isConfirmingCancelResearch() {
+        return isConfirmingCancelResearch;
+    }
+
+    public void setConfirmingCancelResearch(boolean confirmingCancelResearch) {
+        isConfirmingCancelResearch = confirmingCancelResearch;
     }
 }

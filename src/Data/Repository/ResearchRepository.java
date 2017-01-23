@@ -29,6 +29,21 @@ public class ResearchRepository {
         return entities;
     }
 
+    public PCTerritoryFlagsStructuresResearchQueueEntity GetResearchJobInQueueForSlot(int pcStructureID, int slotID)
+    {
+        try(DataContext context = new DataContext())
+        {
+            Criteria criteria = context.getSession()
+                    .createCriteria(PCTerritoryFlagsStructuresResearchQueueEntity.class)
+                    .add(Restrictions.eq("pcStructureID", pcStructureID))
+                    .add(Restrictions.eq("isCanceled", false))
+                    .add(Restrictions.isNull("deliverDateTime"))
+                    .add(Restrictions.eq("researchSlot", slotID));
+
+            return (PCTerritoryFlagsStructuresResearchQueueEntity) criteria.uniqueResult();
+        }
+    }
+
     public List<CraftBlueprintCategoryEntity> GetResearchCategoriesAvailableForCraftAndLevel(int craftID, int researchLevel)
     {
         List<CraftBlueprintCategoryEntity> entities = new ArrayList<>();

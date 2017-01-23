@@ -7,7 +7,6 @@ import Data.Repository.ResearchRepository;
 import Data.Repository.StructureRepository;
 import Dialog.*;
 import Entities.*;
-import GameObject.PlayerGO;
 import GameSystems.ProgressionSystem;
 import GameSystems.StructureSystem;
 import Helper.ColorToken;
@@ -19,6 +18,7 @@ import org.nwnx.nwnx2.jvm.NWScript;
 
 import java.util.List;
 
+@SuppressWarnings("unused")
 public class ResearchTerminal extends DialogBase implements IDialogHandler {
     @Override
     public PlayerDialog SetUp(NWObject oPC) {
@@ -108,6 +108,12 @@ public class ResearchTerminal extends DialogBase implements IDialogHandler {
                 break;
             case "BlueprintDetailsPage":
                 HandleBlueprintDetailsPageResponses(responseID);
+                break;
+            case "DeliverBlueprintPage":
+                HandleDeliverBlueprintPageResponses(responseID);
+                break;
+            case "ResearchInProgressPage":
+                HandleResearchInProgressPageResponses(responseID);
                 break;
         }
     }
@@ -221,16 +227,30 @@ public class ResearchTerminal extends DialogBase implements IDialogHandler {
         }
         else
         {
+            ResearchRepository repo = new ResearchRepository();
             DialogResponse response = GetResponseByID("MainPage", responseID);
             ResearchTerminalResponse responseModel = (ResearchTerminalResponse) response.getCustomData();
             ResearchTerminalViewModel model = GetModel();
-
-            if(responseModel.isReadyToDeliver())
-            {
-
-            }
             model.setSelectedSlot(responseModel.getSlotNumber());
-            ChangePage("SelectCraftPage");
+
+            if(responseModel.isResearching())
+            {
+                if(responseModel.isReadyToDeliver())
+                {
+                    ChangePage("DeliverBlueprintPage");
+                }
+                else{
+                    int structureID = StructureSystem.GetPlaceableStructureID(GetDialogTarget());
+                    PCTerritoryFlagsStructuresResearchQueueEntity queue = repo.GetResearchJobInQueueForSlot(structureID, responseModel.getSlotNumber());
+                    SetPageHeader("ResearchInProgressPage", BuildBlueprintDetailsHeaderString(queue.getBlueprint().getResearchBlueprintID()));
+                    ChangePage("ResearchInProgressPage");
+                }
+            }
+
+            else {
+
+                ChangePage("SelectCraftPage");
+            }
         }
     }
 
@@ -361,11 +381,10 @@ public class ResearchTerminal extends DialogBase implements IDialogHandler {
         ChangePage("BlueprintDetailsPage");
     }
 
-    private void SetBlueprintDetailsHeader()
+    private String BuildBlueprintDetailsHeaderString(int blueprintID)
     {
-        ResearchTerminalViewModel model = GetModel();
         ResearchRepository researchRepo = new ResearchRepository();
-        ResearchBlueprintEntity bp = researchRepo.GetResearchBlueprintByID(model.getSelectedBlueprintID());
+        ResearchBlueprintEntity bp = researchRepo.GetResearchBlueprintByID(blueprintID);
         long secondsToResearch = CalculateNumberOfSecondsToResearch(bp);
         DateTime completionDate = DateTime.now(DateTimeZone.UTC).plusSeconds((int)secondsToResearch);
 
@@ -374,8 +393,14 @@ public class ResearchTerminal extends DialogBase implements IDialogHandler {
         header += ColorToken.Green() + "Skill Required: " + ColorToken.End() + bp.getSkillRequired() + "\n";
         header += ColorToken.Green() + "Research Time: " + ColorToken.End() + BuildCompletionDelayString(completionDate) + "\n";
 
-        SetPageHeader("BlueprintDetailsPage", header);
 
+        return header;
+    }
+
+    private void SetBlueprintDetailsHeader()
+    {
+        ResearchTerminalViewModel model = GetModel();
+        SetPageHeader("BlueprintDetailsPage", BuildBlueprintDetailsHeaderString(model.getSelectedBlueprintID()));
     }
 
     private long CalculateNumberOfSecondsToResearch(ResearchBlueprintEntity blueprint)
@@ -399,6 +424,8 @@ public class ResearchTerminal extends DialogBase implements IDialogHandler {
             case 1:
                 if(model.isConfirmingBlueprintSelection())
                 {
+                    model.setConfirmingBlueprintSelection(false);
+                    SetResponseText("BlueprintDetailsPage", 1, "Select Blueprint");
                     DoSelectBlueprint();
                 }
                 else {
@@ -454,9 +481,11 @@ public class ResearchTerminal extends DialogBase implements IDialogHandler {
     {
         switch (responseID)
         {
-            case 1:
+            case 1: // Deliver Blueprint
+                DoDeliverBlueprint();
                 break;
-            case 2:
+            case 2: // Back
+                LoadSlotResponses();
                 ChangePage("MainPage");
                 break;
         }
@@ -464,6 +493,60 @@ public class ResearchTerminal extends DialogBase implements IDialogHandler {
 
     private void DoDeliverBlueprint()
     {
+        ResearchTerminalViewModel model = GetModel();
+        int structureID = StructureSystem.GetPlaceableStructureID(GetDialogTarget());
+        ResearchRepository repo = new ResearchRepository();
+        PCTerritoryFlagsStructuresResearchQueueEntity queue = repo.GetResearchJobInQueueForSlot(structureID, model.getSelectedSlot());
 
+        String resref = "blueprint_" + queue.getBlueprint().getCraftBlueprint().getCraftBlueprintID();
+        NWScript.createItemOnObject(resref, GetPC(), 1, "");
+
+        queue.setDeliverDateTime(DateTime.now(DateTimeZone.UTC).toDate());
+        repo.Save(queue);
+
+        LoadSlotResponses();
+        ChangePage("MainPage");
+    }
+
+    private void HandleResearchInProgressPageResponses(int responseID)
+    {
+        ResearchTerminalViewModel model = GetModel();
+
+        switch(responseID)
+        {
+            case 1: // Cancel Blueprint
+                if(model.isConfirmingCancelResearch())
+                {
+                    model.setConfirmingCancelResearch(false);
+                    SetResponseText("ResearchInProgressPage", 1, "Cancel Research");
+                    DoCancelResearch();
+                    LoadSlotResponses();
+                    ChangePage("MainPage");
+                }
+                else {
+                    model.setConfirmingCancelResearch(true);
+                    SetResponseText("ResearchInProgressPage", 1, "CONFIRM CANCEL RESEARCH");
+                }
+                break;
+            case 2: // Back
+                model.setConfirmingCancelResearch(false);
+                SetResponseText("ResearchInProgressPage", 1, "Cancel Research");
+                LoadSlotResponses();
+                ChangePage("MainPage");
+                break;
+        }
+    }
+
+    private void DoCancelResearch()
+    {
+        ResearchTerminalViewModel model = GetModel();
+        int structureID = StructureSystem.GetPlaceableStructureID(GetDialogTarget());
+        ResearchRepository repo = new ResearchRepository();
+        PCTerritoryFlagsStructuresResearchQueueEntity queue = repo.GetResearchJobInQueueForSlot(structureID, model.getSelectedSlot());
+        queue.setCanceled(true);
+        repo.Save(queue);
+
+        LoadSlotResponses();
+        ChangePage("MainPage");
     }
 }
