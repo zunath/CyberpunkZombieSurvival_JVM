@@ -123,11 +123,7 @@ public class OnHeartbeat implements IScriptEventHandler {
 					amount += 5;
 				}
 
-				entity.setCurrentMana(entity.getCurrentMana() + amount);
-				if(entity.getCurrentMana() > entity.getMaxMana())
-					entity.setCurrentMana(entity.getMaxMana());
-
-				NWScript.sendMessageToPC(oPC, ColorToken.Custom(32,223,219) + "Mana: " + entity.getCurrentMana() + " / " + entity.getMaxMana());
+				MagicSystem.RestoreMana(oPC, amount);
 			}
 
 			entity.setCurrentManaTick(rate);
