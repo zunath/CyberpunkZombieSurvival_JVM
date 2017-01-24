@@ -1,5 +1,6 @@
 package Conversation;
 
+import Data.Repository.ResearchRepository;
 import Dialog.*;
 import Entities.PCTerritoryFlagStructureEntity;
 import Enumerations.StructurePermission;
@@ -311,7 +312,9 @@ public class BuildToolMenu extends DialogBase implements IDialogHandler {
             model.setIsConfirmingRaze(false);
             SetResponseText("RazeStructurePage", 1, ColorToken.Red() + "Raze Structure" + ColorToken.End());
             StructureRepository repo = new StructureRepository();
+            ResearchRepository researchRepo = new ResearchRepository();
             PCTerritoryFlagStructureEntity entity = repo.GetPCStructureByID(structureID);
+            researchRepo.DeleteAllByStructureID(structureID);
             repo.Delete(entity);
 
             NWScript.destroyObject(NWScript.getLocalObject(model.getActiveStructure(), "GateBlock"), 0.0f);

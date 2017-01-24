@@ -114,4 +114,22 @@ public class ResearchRepository {
             context.getSession().saveOrUpdate(entity);
         }
     }
+
+    public void DeleteAllByStructureID(int pcStructureID)
+    {
+        try(DataContext context = new DataContext())
+        {
+            Criteria criteria = context.getSession()
+                    .createCriteria(PCTerritoryFlagsStructuresResearchQueueEntity.class)
+                    .add(Restrictions.eq("pcStructureID", pcStructureID));
+
+            List<PCTerritoryFlagsStructuresResearchQueueEntity> entities = criteria.list();
+
+            for(PCTerritoryFlagsStructuresResearchQueueEntity entity : entities)
+            {
+                context.getSession().delete(entity);
+            }
+
+        }
+    }
 }
