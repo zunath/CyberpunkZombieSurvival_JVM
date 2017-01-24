@@ -123,7 +123,7 @@ public class OnHeartbeat implements IScriptEventHandler {
 					amount += 5;
 				}
 
-				MagicSystem.RestoreMana(oPC, amount);
+				entity = MagicSystem.RestoreMana(oPC, amount, entity);
 			}
 
 			entity.setCurrentManaTick(rate);

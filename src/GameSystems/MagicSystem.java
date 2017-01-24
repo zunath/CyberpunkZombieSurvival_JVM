@@ -346,6 +346,17 @@ public class MagicSystem {
         NWScript.setDescription(oExaminedObject, fullDescription, false);
     }
 
+    public static PlayerEntity RestoreMana(NWObject oPC, int amount, PlayerEntity entity)
+    {
+        entity.setCurrentMana(entity.getCurrentMana() + amount);
+        if(entity.getCurrentMana() > entity.getMaxMana())
+            entity.setCurrentMana(entity.getMaxMana());
+
+        NWScript.sendMessageToPC(oPC, ColorToken.Custom(32,223,219) + "Mana: " + entity.getCurrentMana() + " / " + entity.getMaxMana());
+
+        return entity;
+    }
+
     public static void RestoreMana(NWObject oPC, int amount)
     {
         PlayerGO pcGO = new PlayerGO(oPC);
