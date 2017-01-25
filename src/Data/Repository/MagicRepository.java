@@ -1,10 +1,7 @@
 package Data.Repository;
 
 import Data.DataContext;
-import Entities.AbilityCategoryEntity;
-import Entities.AbilityEntity;
-import Entities.PCEquippedAbilityEntity;
-import Entities.PCLearnedAbilityEntity;
+import Entities.*;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.joda.time.DateTime;
@@ -130,7 +127,40 @@ public class MagicRepository {
         return entities;
     }
 
+    public PCAbilityCooldownEntity GetPCCooldownByID(String uuid, int cooldownCategoryID)
+    {
+        PCAbilityCooldownEntity entity;
+
+        try(DataContext context = new DataContext())
+        {
+            Criteria criteria = context.getSession()
+                    .createCriteria(PCAbilityCooldownEntity.class)
+                    .add(Restrictions.eq("playerID", uuid))
+                    .add(Restrictions.eq("abilityCooldownCategoryID", cooldownCategoryID));
+
+            entity = (PCAbilityCooldownEntity)criteria.uniqueResult();
+
+            if(entity == null)
+            {
+                entity = new PCAbilityCooldownEntity();
+                entity.setAbilityCooldownCategoryID(cooldownCategoryID);
+                entity.setDateUnlocked(DateTime.now(DateTimeZone.UTC).minusSeconds(1).toDate());
+                entity.setPlayerID(uuid);
+            }
+        }
+
+        return entity;
+    }
+
     public void Save(PCEquippedAbilityEntity entity)
+    {
+        try(DataContext context = new DataContext())
+        {
+            context.getSession().saveOrUpdate(entity);
+        }
+    }
+
+    public void Save(PCAbilityCooldownEntity entity)
     {
         try(DataContext context = new DataContext())
         {

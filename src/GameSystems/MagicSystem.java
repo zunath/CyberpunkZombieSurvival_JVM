@@ -4,14 +4,15 @@ import Abilities.IAbility;
 import Bioware.Position;
 import Data.Repository.MagicRepository;
 import Data.Repository.PlayerRepository;
-import Entities.AbilityEntity;
-import Entities.PCEquippedAbilityEntity;
-import Entities.PlayerEntity;
+import Entities.*;
 import GameObject.PlayerGO;
 import Helper.ColorToken;
 import Helper.ScriptHelper;
+import Helper.TimeHelper;
 import NWNX.NWNX_Events;
 import NWNX.NWNX_Funcs;
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.NWVector;
@@ -53,7 +54,7 @@ public class MagicSystem {
             return;
         }
 
-        if(!ability.CanCastSpell(pc))
+        if(!ability.CanCastSpell(pc, target))
         {
             NWScript.sendMessageToPC(pc,
                     ability.CannotCastSpellMessage() == null ?
@@ -62,9 +63,10 @@ public class MagicSystem {
             return;
         }
 
-        if(playerEntity.getCurrentMana() < ability.ManaCost(pc, entity.getBaseManaCost()))
+        int manaCost = ability.ManaCost(pc, ability.ManaCost(pc, entity.getBaseManaCost()));
+        if(playerEntity.getCurrentMana() < manaCost)
         {
-            NWScript.sendMessageToPC(pc, "You do not have enough mana.");
+            NWScript.sendMessageToPC(pc, "You do not have enough mana. (Required: " + manaCost + ". You have: " + playerEntity.getCurrentMana() + ")");
             return;
         }
 
@@ -74,14 +76,27 @@ public class MagicSystem {
             return;
         }
 
+        // Check cooldown
+        PCAbilityCooldownEntity pcCooldown = repo.GetPCCooldownByID(pcGO.getUUID(), entity.getCooldown().getAbilityCooldownCategoryID());
+        DateTime unlockDateTime = new DateTime(pcCooldown.getDateUnlocked());
+        DateTime now = DateTime.now(DateTimeZone.UTC);
+
+        if(unlockDateTime.isAfter(now))
+        {
+            String timeToWait = TimeHelper.GetTimeToWaitLongIntervals(now, unlockDateTime, false);
+            NWScript.sendMessageToPC(pc, "That ability can be used again in " + timeToWait + ".");
+            return;
+        }
+
+
         if(ability.CastingTime(pc, entity.getBaseCastingTime()) > 0.0f)
         {
-            CastSpell(pc, target, ability, entity.getBaseManaCost(), entity.getBaseCastingTime(), entity.getBaseCooldownTime());
+            CastSpell(pc, target, ability, manaCost, entity.getBaseCastingTime(), entity.getCooldown());
         }
         else
         {
             ability.OnImpact(pc, target);
-            playerEntity.setCurrentMana(playerEntity.getCurrentMana() - ability.ManaCost(pc, entity.getBaseManaCost()));
+            playerEntity.setCurrentMana(playerEntity.getCurrentMana() - manaCost);
             playerRepo.save(playerEntity);
         }
     }
@@ -91,7 +106,7 @@ public class MagicSystem {
                                   final IAbility ability,
                                   final int baseManaCost,
                                   final float baseCastingTime,
-                                  final float baseCooldownTime)
+                                  final AbilityCooldownCategoryEntity cooldown)
     {
         final String spellUUID = UUID.randomUUID().toString();
         final PlayerGO pcGO = new PlayerGO(pc);
@@ -127,10 +142,25 @@ public class MagicSystem {
                 PlayerEntity entity = repo.getByUUID(pcGO.getUUID());
 
                 ability.OnImpact(pc, target);
-                entity.setCurrentMana(entity.getCurrentMana() - ability.ManaCost(pc, baseManaCost));
-                repo.save(entity);
 
-                NWScript.sendMessageToPC(pc, ColorToken.Custom(32,223,219) + "Mana: " + entity.getCurrentMana() + " / " + entity.getMaxMana());
+                // Adjust mana only if spell cost > 0
+                if(ability.ManaCost(pc, baseManaCost) > 0)
+                {
+                    entity.setCurrentMana(entity.getCurrentMana() - ability.ManaCost(pc, baseManaCost));
+                    repo.save(entity);
+                    NWScript.sendMessageToPC(pc, ColorToken.Custom(32,223,219) + "Mana: " + entity.getCurrentMana() + " / " + entity.getMaxMana());
+                }
+
+                // Mark cooldown on ability category
+                MagicRepository magicRepo = new MagicRepository();
+                float finalCooldown = ability.CooldownTime(pc, cooldown.getBaseCooldownTime());
+                int cooldownSeconds = (int)finalCooldown;
+                int cooldownMillis = (int)((finalCooldown - cooldownSeconds) * 100);
+
+                PCAbilityCooldownEntity pcCooldown = magicRepo.GetPCCooldownByID(pcGO.getUUID(), cooldown.getAbilityCooldownCategoryID());
+                DateTime unlockDate = DateTime.now(DateTimeZone.UTC).plusSeconds(cooldownSeconds).plusMillis(cooldownMillis);
+                pcCooldown.setDateUnlocked(unlockDate.toDate());
+                magicRepo.Save(pcCooldown);
 
                 pcGO.setIsBusy(false);
             }

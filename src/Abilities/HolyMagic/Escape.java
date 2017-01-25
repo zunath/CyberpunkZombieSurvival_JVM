@@ -13,7 +13,7 @@ import static org.nwnx.nwnx2.jvm.constants.All.*;
 
 public class Escape implements IAbility {
     @Override
-    public boolean CanCastSpell(NWObject oPC) {
+    public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {
         NWObject oArea = NWScript.getArea(oPC);
         String escapePoint = NWScript.getLocalString(oArea, "ESCAPE_POINT");
         return !Objects.equals(escapePoint, "");

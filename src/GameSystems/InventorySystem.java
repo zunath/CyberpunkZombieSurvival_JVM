@@ -141,7 +141,6 @@ public class InventorySystem {
         // Strong Back ability grants +10 item slots.
         int abilityBonusSlots = MagicSystem.IsAbilityEquipped(oPC, AbilityType.StrongBack) ? 10 : 0;
 
-
         return slots + equipBonusSlots + abilityBonusSlots;
     }
 

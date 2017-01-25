@@ -15,7 +15,7 @@ import static org.nwnx.nwnx2.jvm.constants.All.VFX_IMP_STUN;
 
 public class Stun implements IAbility {
     @Override
-    public boolean CanCastSpell(NWObject oPC) {
+    public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {
         return true;
     }
 

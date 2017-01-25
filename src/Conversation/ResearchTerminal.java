@@ -7,9 +7,12 @@ import Data.Repository.ResearchRepository;
 import Data.Repository.StructureRepository;
 import Dialog.*;
 import Entities.*;
+import Enumerations.AbilityType;
+import GameSystems.MagicSystem;
 import GameSystems.ProgressionSystem;
 import GameSystems.StructureSystem;
 import Helper.ColorToken;
+import Helper.TimeHelper;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.Period;
@@ -32,6 +35,7 @@ public class ResearchTerminal extends DialogBase implements IDialogHandler {
                 "How long do blueprints take to research?",
                 "What are 'Research Slots'?",
                 "What is RP/Sec?",
+                "What happens when a research job is canceled?",
                 "Back"
         );
 
@@ -191,14 +195,7 @@ public class ResearchTerminal extends DialogBase implements IDialogHandler {
     private String BuildCompletionDelayString(DateTime completionDateTime)
     {
         DateTime now = DateTime.now(DateTimeZone.UTC);
-        Period period = new Period(now, completionDateTime);
-        String completionDelay = "";
-        completionDelay += period.getDays() + "D, ";
-        completionDelay += period.getHours() + "H, ";
-        completionDelay += period.getMinutes() + "M, ";
-        completionDelay += period.getSeconds() + "S";
-
-        return completionDelay;
+        return TimeHelper.GetTimeToWaitShortIntervals(now, completionDateTime, true);
     }
 
     private void LoadSelectCraftPageResponses()
@@ -288,7 +285,13 @@ public class ResearchTerminal extends DialogBase implements IDialogHandler {
                 header += "Additionally, the RP/Sec may be increased via 'Booster' structures as well as upgrades available to your character.";
                 SetPageHeader("InstructionsPage", header);
                 break;
-            case 5:
+            case 5: // What happens when a research job is canceled?
+                header += "If you choose to cancel a research job, all progress on that blueprint will immediately stop.\n\n";
+                header += "The slot which was in use will now be free and another job can take its place.\n\n";
+                header += "No refunds will be given if a job is canceled so be absolutely positive before taking that action.";
+                SetPageHeader("InstructionsPage", header);
+                break;
+            case 6:
                 SetPageHeader("InstructionsPage", "Please select a topic.");
                 ChangePage("MainPage");
                 break;
@@ -387,9 +390,21 @@ public class ResearchTerminal extends DialogBase implements IDialogHandler {
         ResearchBlueprintEntity bp = researchRepo.GetResearchBlueprintByID(blueprintID);
         long secondsToResearch = CalculateNumberOfSecondsToResearch(bp);
         DateTime completionDate = DateTime.now(DateTimeZone.UTC).plusSeconds((int)secondsToResearch);
+        int defaultPrice = bp.getPrice();
+        int adjustedPrice = bp.getPrice();
+
+        if(MagicSystem.IsAbilityEquipped(GetPC(), AbilityType.ResearchEfficiency))
+        {
+            adjustedPrice *= 0.90f;
+        }
 
         String header = ColorToken.Green() + "Blueprint: " + ColorToken.End() + bp.getCraftBlueprint().getItemName() + "\n";
-        header += ColorToken.Green() + "Price: " + ColorToken.End() +  bp.getPrice() + "\n";
+        header += ColorToken.Green() + "Price: " + ColorToken.End() +  defaultPrice  + "\n";
+        if(defaultPrice != adjustedPrice)
+        {
+            header += ColorToken.Green() + "Your Price: " + ColorToken.End() + adjustedPrice + "\n";
+        }
+
         header += ColorToken.Green() + "Skill Required: " + ColorToken.End() + bp.getSkillRequired() + "\n";
         header += ColorToken.Green() + "Research Time: " + ColorToken.End() + BuildCompletionDelayString(completionDate) + "\n";
 
@@ -448,8 +463,15 @@ public class ResearchTerminal extends DialogBase implements IDialogHandler {
         int gold = NWScript.getGold(oPC);
         ResearchRepository repo = new ResearchRepository();
         ResearchBlueprintEntity bp = repo.GetResearchBlueprintByID(model.getSelectedBlueprintID());
+        int finalPrice = bp.getPrice();
 
-        if(gold < bp.getPrice())
+        if(MagicSystem.IsAbilityEquipped(oPC, AbilityType.ResearchEfficiency))
+        {
+            finalPrice *= 0.90f;
+        }
+
+
+        if(gold < finalPrice)
         {
             NWScript.floatingTextStringOnCreature(ColorToken.Red() + "You do not have enough money to research that blueprint." + ColorToken.End(), oPC, false);
             model.setConfirmingBlueprintSelection(false);
@@ -457,7 +479,7 @@ public class ResearchTerminal extends DialogBase implements IDialogHandler {
             return;
         }
 
-        NWScript.takeGoldFromCreature(bp.getPrice(), oPC, true);
+        NWScript.takeGoldFromCreature(finalPrice, oPC, true);
         int structureID = StructureSystem.GetPlaceableStructureID(GetDialogTarget());
         long secondsToResearch = CalculateNumberOfSecondsToResearch(bp);
         DateTime completionDate = DateTime.now(DateTimeZone.UTC).plusSeconds((int)secondsToResearch);

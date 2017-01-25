@@ -10,7 +10,7 @@ import org.nwnx.nwnx2.jvm.constants.InventorySlot;
 
 public class DualWield implements IAbility {
     @Override
-    public boolean CanCastSpell(NWObject oPC) {
+    public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {
         return false;
     }
 

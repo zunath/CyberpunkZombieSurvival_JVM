@@ -28,15 +28,16 @@ public class AbilityEntity {
     @Column(name = "BaseCastingTime")
     private float baseCastingTime;
 
-    @Column(name = "BaseCooldownTime")
-    private float baseCooldownTime;
-
     @Column(name = "Description")
     private String description;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "AbilityCategoryID")
     private AbilityCategoryEntity category;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "AbilityCooldownCategoryID")
+    private AbilityCooldownCategoryEntity cooldown;
 
     public int getAbilityID() {
         return abilityID;
@@ -94,14 +95,6 @@ public class AbilityEntity {
         this.baseCastingTime = baseCastingTime;
     }
 
-    public float getBaseCooldownTime() {
-        return baseCooldownTime;
-    }
-
-    public void setBaseCooldownTime(float baseCooldownTime) {
-        this.baseCooldownTime = baseCooldownTime;
-    }
-
     public AbilityCategoryEntity getCategory() {
         return category;
     }
@@ -116,5 +109,13 @@ public class AbilityEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public AbilityCooldownCategoryEntity getCooldown() {
+        return cooldown;
+    }
+
+    public void setCooldown(AbilityCooldownCategoryEntity cooldown) {
+        this.cooldown = cooldown;
     }
 }

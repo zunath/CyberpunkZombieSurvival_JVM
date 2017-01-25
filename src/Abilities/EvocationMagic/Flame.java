@@ -18,7 +18,7 @@ import static org.nwnx.nwnx2.jvm.constants.All.VFX_IMP_FLAME_M;
 
 public class Flame implements IAbility {
     @Override
-    public boolean CanCastSpell(NWObject oPC) {
+    public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {
         return true;
     }
 

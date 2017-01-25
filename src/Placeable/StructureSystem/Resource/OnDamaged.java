@@ -36,18 +36,36 @@ public class OnDamaged implements IScriptEventHandler {
         int baseDurabilityChance = 20;
         int durabilityChanceReduction = 0;
         int weaponChanceBonus = 0;
+        boolean createSecondItem = false;
 
         if(activityID == 1) // 1 = Logging
         {
             abilityID = AbilityType.Lumberjack;
             durabilityChanceReduction = MagicSystem.IsAbilityEquipped(oPC, AbilityType.ToolExpertLogging) ? 10 : 0;
             weaponChanceBonus = NWScript.getLocalInt(oWeapon, "LOGGING_BONUS");
+
+            if(MagicSystem.IsAbilityEquipped(oPC, AbilityType.LumberCollector))
+            {
+                if(ThreadLocalRandom.current().nextInt(1, 100) <= 5)
+                {
+                    createSecondItem = true;
+                }
+            }
+
         }
         else if(activityID == 2) // Mining
         {
             abilityID = AbilityType.Miner;
             durabilityChanceReduction = MagicSystem.IsAbilityEquipped(oPC, AbilityType.ToolExpertMining) ? 10 : 0;
             weaponChanceBonus = NWScript.getLocalInt(oWeapon, "MINING_BONUS");
+
+            if(MagicSystem.IsAbilityEquipped(oPC, AbilityType.IronCollector))
+            {
+                if(ThreadLocalRandom.current().nextInt(1, 100) <= 5)
+                {
+                    createSecondItem = true;
+                }
+            }
         }
         else return;
 
@@ -61,6 +79,13 @@ public class OnDamaged implements IScriptEventHandler {
         if(ThreadLocalRandom.current().nextInt(100) <= chance)
         {
             NWScript.createObject(ObjectType.ITEM, resourceItemResref, location, false, "");
+
+            if(createSecondItem)
+            {
+                NWScript.createObject(ObjectType.ITEM, resourceItemResref, location, false, "");
+            }
+
+
             NWScript.floatingTextStringOnCreature("You break off some " + resourceName + ".", oPC, false);
             NWScript.setLocalInt(objSelf, "RESOURCE_COUNT", --resourceCount);
             NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectHeal(10000), objSelf, 0.0f);

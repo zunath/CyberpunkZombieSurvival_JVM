@@ -15,7 +15,7 @@ import static org.nwnx.nwnx2.jvm.constants.All.DURATION_TYPE_TEMPORARY;
 
 public class BoostWIS implements IAbility {
     @Override
-    public boolean CanCastSpell(NWObject oPC) {
+    public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {
         return true;
     }
 

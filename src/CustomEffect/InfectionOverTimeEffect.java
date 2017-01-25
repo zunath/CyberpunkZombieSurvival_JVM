@@ -2,6 +2,7 @@ package CustomEffect;
 
 import GameSystems.DiseaseSystem;
 import org.nwnx.nwnx2.jvm.NWObject;
+import org.nwnx.nwnx2.jvm.NWScript;
 
 import java.util.Random;
 
@@ -9,8 +10,10 @@ import java.util.Random;
 public class InfectionOverTimeEffect implements ICustomEffectHandler {
     @Override
     public void run(NWObject oPC) {
-        Random random = new Random();
 
+        if(!NWScript.getIsPC(oPC)) return;
+
+        Random random = new Random();
         DiseaseSystem.IncreaseDiseaseLevel(oPC, random.nextInt(5));
     }
 }

@@ -14,7 +14,7 @@ import static org.nwnx.nwnx2.jvm.constants.All.DURATION_TYPE_INSTANT;
 
 public class Cure implements IAbility {
     @Override
-    public boolean CanCastSpell(NWObject oPC) {
+    public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {
         return true;
     }
 

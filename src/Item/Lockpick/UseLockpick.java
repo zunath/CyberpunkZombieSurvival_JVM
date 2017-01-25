@@ -13,6 +13,8 @@ import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.Scheduler;
 import org.nwnx.nwnx2.jvm.constants.Animation;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 @SuppressWarnings("UnusedDeclaration")
 public class UseLockpick implements IScriptEventHandler {
 
@@ -84,6 +86,16 @@ public class UseLockpick implements IScriptEventHandler {
                     fMultiplier = 0.75f;
 
                 fSeconds = fSeconds * fMultiplier;
+
+                // Quick Pick occasionally grants near-instant unlock.
+                if(MagicSystem.IsAbilityEquipped(oPC, AbilityType.QuickPick))
+                {
+                    if(ThreadLocalRandom.current().nextInt(1, 100) <= 5)
+                    {
+                        fSeconds = 1.0f;
+                    }
+                }
+
                 iSeconds = (int)fSeconds;
             }
 

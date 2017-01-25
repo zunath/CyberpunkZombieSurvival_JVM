@@ -12,7 +12,7 @@ import org.nwnx.nwnx2.jvm.constants.Ability;
 
 public class PatchUp implements IAbility {
     @Override
-    public boolean CanCastSpell(NWObject oPC) {
+    public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {
         return true;
     }
 

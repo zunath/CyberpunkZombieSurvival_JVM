@@ -5,7 +5,7 @@ import org.nwnx.nwnx2.jvm.NWObject;
 
 public class SpeedyCrafter implements IAbility {
     @Override
-    public boolean CanCastSpell(NWObject oPC) {
+    public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {
         return false;
     }
 

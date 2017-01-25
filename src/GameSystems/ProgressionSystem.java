@@ -164,7 +164,7 @@ public class ProgressionSystem {
                 repo.save(entity);
                 break;
             case ProfessionType.ForestWarden:
-                NWNX_Funcs.SetMaxHitPointsByLevel(oPC, 1, NWScript.getMaxHitPoints(oPC) + 3);
+                NWNX_Funcs.SetMaxHitPointsByLevel(oPC, 1, NWScript.getMaxHitPoints(oPC) + 9);
                 break;
             case ProfessionType.PoliceOfficer:
                 skillEntity = skillRepo.GetByUUIDAndSkillID(pcGO.getUUID(), SkillType_HANDGUN_PROFICIENCY);
@@ -175,7 +175,7 @@ public class ProgressionSystem {
                 skillEntity = skillRepo.GetByUUIDAndSkillID(pcGO.getUUID(), SkillType_SEARCH);
                 skillEntity.setUpgradeLevel(skillEntity.getUpgradeLevel() + 1);
                 skillRepo.save(skillEntity);
-                entity = ApplyCustomUpgradeEffects(oPC, SkillType_SEARCH);
+                entity = ApplyCustomUpgradeEffects(oPC, SkillType_SEARCH, skillEntity.getUpgradeLevel());
                 break;
             case ProfessionType.HolyMage:
             case ProfessionType.EvocationMage:
@@ -186,7 +186,7 @@ public class ProgressionSystem {
                 skillEntity = skillRepo.GetByUUIDAndSkillID(pcGO.getUUID(), SkillType_MANA);
                 skillEntity.setUpgradeLevel(skillEntity.getUpgradeLevel() + 1);
                 skillRepo.save(skillEntity);
-                entity = ApplyCustomUpgradeEffects(oPC, SkillType_MANA);
+                entity = ApplyCustomUpgradeEffects(oPC, SkillType_MANA, skillEntity.getUpgradeLevel());
                 break;
         }
 
@@ -277,11 +277,11 @@ public class ProgressionSystem {
         playerRepo.save(playerEntity);
         playerSkillRepo.save(playerSkillEntity);
 
-        ApplyCustomUpgradeEffects(oPC, skillID);
+        ApplyCustomUpgradeEffects(oPC, skillID, playerSkillEntity.getUpgradeLevel());
     }
 
 
-    private static PlayerEntity ApplyCustomUpgradeEffects(NWObject oPC, int skillID)
+    private static PlayerEntity ApplyCustomUpgradeEffects(NWObject oPC, int skillID, int rank)
     {
         PlayerGO pcGO = new PlayerGO(oPC);
         PlayerRepository repo = new PlayerRepository();
@@ -290,16 +290,24 @@ public class ProgressionSystem {
         switch (skillID)
         {
             case SkillType_HP:
-                NWNX_Funcs.SetMaxHitPointsByLevel(oPC, 1, NWNX_Funcs.GetMaxHitPointsByLevel(oPC, 1) + 1);
+                NWNX_Funcs.SetMaxHitPointsByLevel(oPC, 1, NWNX_Funcs.GetMaxHitPointsByLevel(oPC, 1) + 3);
                 break;
             case SkillType_STRENGTH:
                 NWNX_Funcs.ModifyAbilityScore(oPC, Ability.STRENGTH, 1);
+                if(rank % 2 != 0)
+                {
+                    entity.setInventorySpaceBonus(entity.getInventorySpaceBonus() + 1);
+                }
                 break;
             case SkillType_CONSTITUTION:
                 NWNX_Funcs.ModifyAbilityScore(oPC, Ability.CONSTITUTION, 1);
                 break;
             case SkillType_DEXTERITY:
                 NWNX_Funcs.ModifyAbilityScore(oPC, Ability.DEXTERITY, 1);
+                if(rank % 2 != 0)
+                {
+                    NWNX_Funcs.ModifySkillRank(oPC, Skill.TUMBLE, 1);
+                }
                 break;
             case SkillType_WISDOM:
                 NWNX_Funcs.ModifyAbilityScore(oPC, Ability.WISDOM, 1);

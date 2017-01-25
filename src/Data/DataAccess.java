@@ -53,6 +53,7 @@ public class DataAccess {
 
         // Link all DB entities to the configuration here.
         _configuration.addAnnotatedClass(AbilityCategoryEntity.class);
+        _configuration.addAnnotatedClass(AbilityCooldownCategoryEntity.class);
         _configuration.addAnnotatedClass(AbilityEntity.class);
         _configuration.addAnnotatedClass(ActivePlayerEntity.class);
         _configuration.addAnnotatedClass(AuthorizedDMEntity.class);
@@ -74,6 +75,7 @@ public class DataAccess {
         _configuration.addAnnotatedClass(KeyItemEntity.class);
         _configuration.addAnnotatedClass(LootTableEntity.class);
         _configuration.addAnnotatedClass(LootTableItemEntity.class);
+        _configuration.addAnnotatedClass(PCAbilityCooldownEntity.class);
         _configuration.addAnnotatedClass(PCAuthorizedCDKeyEntity.class);
         _configuration.addAnnotatedClass(PCLearnedAbilityEntity.class);
         _configuration.addAnnotatedClass(PCBadgeEntity.class);

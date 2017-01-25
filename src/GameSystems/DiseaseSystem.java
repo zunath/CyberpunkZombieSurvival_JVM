@@ -1,7 +1,10 @@
 package GameSystems;
 
 import Entities.PlayerEntity;
+import Enumerations.AbilityType;
+import Enumerations.CustomEffectType;
 import GameObject.PlayerGO;
+import Helper.ColorToken;
 import Helper.MenuHelper;
 import NWNX.CreatureEvent;
 import NWNX.MovementRate;
@@ -13,6 +16,8 @@ import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.Scheduler;
 import org.nwnx.nwnx2.jvm.constants.*;
 import org.nwnx.nwnx2.jvm.constants.Package;
+
+import java.util.concurrent.ThreadLocalRandom;
 
 public class DiseaseSystem {
 
@@ -67,7 +72,13 @@ public class DiseaseSystem {
         {
             if(entity.getCurrentInfection() > 0)
             {
-                int infection = entity.getCurrentInfection() - (NWScript.random(5) + 1);
+                int infectionToRemove = ThreadLocalRandom.current().nextInt(1, 5);
+                if(MagicSystem.IsAbilityEquipped(oPC, AbilityType.InfectionRecovery))
+                {
+                    infectionToRemove += 3;
+                }
+
+                int infection = entity.getCurrentInfection() - infectionToRemove;
                 if(infection < 0) infection = 0;
 
                 entity.setCurrentInfection(infection);
@@ -215,6 +226,48 @@ public class DiseaseSystem {
         pcGO.destroyAllEquippedItems();
 
         NWScript.executeScript("zom_clonefight", oClone);
+    }
+
+    public static void RunDiseaseDCCheck(NWObject oPC, int chanceModifier, int dcModifier, int infectionOverTimeChanceModifier)
+    {
+        int iChanceToInfect = ThreadLocalRandom.current().nextInt(100);
+        int percentChanceToInfect = 20 + chanceModifier;
+
+        if (iChanceToInfect <= percentChanceToInfect && !NWScript.getHasSpellEffect(Spell.SANCTUARY, oPC))
+        {
+            int iDiseaseCheck = ThreadLocalRandom.current().nextInt(0,20);
+            int iDiseaseDC = DiseaseSystem.DCCheck + ThreadLocalRandom.current().nextInt(6) + dcModifier;
+            int iDiseaseResistance = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_DISEASE_RESISTANCE);
+            int conBonus = (NWScript.getAbilityScore(oPC, Ability.CONSTITUTION, false) - 10) / 2;
+            iDiseaseCheck = iDiseaseCheck + iDiseaseResistance + conBonus;
+
+            if(MagicSystem.IsAbilityEquipped(oPC, AbilityType.ImmuneSystem))
+            {
+                iDiseaseCheck += 3;
+            }
+
+            NWScript.sendMessageToPC(oPC, ColorToken.SkillCheck() + "Resist disease roll: " + iDiseaseCheck + " VS " + iDiseaseDC + ColorToken.End());
+            if (iDiseaseCheck < iDiseaseDC)
+            {
+                DiseaseSystem.IncreaseDiseaseLevel(oPC, ThreadLocalRandom.current().nextInt(5) + 1);
+                int iotChance = 2 + infectionOverTimeChanceModifier;
+
+                if(ThreadLocalRandom.current().nextInt(100) <= iotChance)
+                {
+                    int ticks = 6;
+
+                    if(MagicSystem.IsAbilityEquipped(oPC, AbilityType.SlowedInfection))
+                    {
+                        if(ThreadLocalRandom.current().nextInt(1, 100) <= 5)
+                        {
+                            ticks = 3;
+                        }
+                    }
+
+                    CustomEffectSystem.ApplyCustomEffect(oPC, CustomEffectType.InfectionOverTime, ticks);
+                }
+            }
+        }
     }
 
 }

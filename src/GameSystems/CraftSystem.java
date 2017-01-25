@@ -162,10 +162,16 @@ public class CraftSystem {
         {
             // Failure...
             NWObject[] items = NWScript.getItemsInInventory(tempStorage);
+            int chanceToLoseItems = 20;
+
+            if(MagicSystem.IsAbilityEquipped(oPC, AbilityType.CarefulHands))
+            {
+                chanceToLoseItems -= 5;
+            }
 
             for(NWObject item : items)
             {
-                if(ThreadLocalRandom.current().nextInt(100) > 20)
+                if(ThreadLocalRandom.current().nextInt(100) > chanceToLoseItems)
                 {
                     NWScript.copyItem(item, device, true);
                 }
