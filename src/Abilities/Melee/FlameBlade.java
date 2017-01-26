@@ -1,7 +1,16 @@
 package Abilities.Melee;
 
 import Abilities.IAbility;
+import Enumerations.CustomEffectType;
+import GameSystems.CustomEffectSystem;
+import Helper.ItemHelper;
 import org.nwnx.nwnx2.jvm.NWObject;
+import org.nwnx.nwnx2.jvm.NWScript;
+import org.nwnx.nwnx2.jvm.constants.DamagePower;
+import org.nwnx.nwnx2.jvm.constants.DamageType;
+import org.nwnx.nwnx2.jvm.constants.Duration;
+
+import java.util.concurrent.ThreadLocalRandom;
 
 public class FlameBlade implements IAbility {
     @Override
@@ -31,6 +40,19 @@ public class FlameBlade implements IAbility {
 
     @Override
     public void OnImpact(NWObject oPC, NWObject oTarget) {
+        NWObject oItem = NWScript.getSpellCastItem();
+
+        if(!ItemHelper.IsBlade(oItem))
+        {
+            NWScript.sendMessageToPC(oPC, "Flame Blade can only be used with blade weapons.");
+            return;
+        }
+
+        int ticks = ThreadLocalRandom.current().nextInt(1, 3);
+        CustomEffectSystem.ApplyCustomEffect(oPC, oTarget, CustomEffectType.Burn, ticks);
+
+        int damage = ThreadLocalRandom.current().nextInt(6, 12);
+        NWScript.applyEffectToObject(Duration.TYPE_INSTANT, NWScript.effectDamage(damage, DamageType.FIRE, DamagePower.NORMAL), oTarget, 0.0f);
 
     }
 

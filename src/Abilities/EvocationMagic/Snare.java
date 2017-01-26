@@ -9,6 +9,7 @@ import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.constants.Ability;
 import org.nwnx.nwnx2.jvm.constants.DurationType;
+import org.nwnx.nwnx2.jvm.constants.Vfx;
 
 public class Snare implements IAbility {
     @Override
@@ -48,6 +49,7 @@ public class Snare implements IAbility {
         NWEffect effect = NWScript.effectMovementSpeedDecrease(75);
 
         NWScript.applyEffectToObject(DurationType.TEMPORARY, effect, oTarget, length);
+        NWScript.applyEffectToObject(DurationType.TEMPORARY, NWScript.effectVisualEffect(Vfx.IMP_ACID_L, false), oPC, length);
     }
 
     @Override

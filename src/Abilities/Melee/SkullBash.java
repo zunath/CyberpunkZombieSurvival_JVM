@@ -1,7 +1,16 @@
 package Abilities.Melee;
 
 import Abilities.IAbility;
+import Enumerations.CustomEffectType;
+import GameSystems.CustomEffectSystem;
+import Helper.ItemHelper;
 import org.nwnx.nwnx2.jvm.NWObject;
+import org.nwnx.nwnx2.jvm.NWScript;
+import org.nwnx.nwnx2.jvm.constants.DamagePower;
+import org.nwnx.nwnx2.jvm.constants.DamageType;
+import org.nwnx.nwnx2.jvm.constants.Duration;
+
+import java.util.concurrent.ThreadLocalRandom;
 
 public class SkullBash implements IAbility {
     @Override
@@ -31,7 +40,19 @@ public class SkullBash implements IAbility {
 
     @Override
     public void OnImpact(NWObject oPC, NWObject oTarget) {
+        NWObject oItem = NWScript.getSpellCastItem();
 
+        if(!ItemHelper.IsBlade(oItem))
+        {
+            NWScript.sendMessageToPC(oPC, "Skull Bash can only be used with blunt weapons.");
+            return;
+        }
+
+        int damage = ThreadLocalRandom.current().nextInt(3, 8);
+        NWScript.applyEffectToObject(Duration.TYPE_INSTANT, NWScript.effectDamage(damage, DamageType.BLUDGEONING, DamagePower.NORMAL), oTarget, 0.0f);
+
+        float duration = (float)ThreadLocalRandom.current().nextDouble(1.0, 4.0);
+        NWScript.applyEffectToObject(Duration.TYPE_TEMPORARY, NWScript.effectKnockdown(), oTarget, duration);
     }
 
     @Override

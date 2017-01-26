@@ -1,16 +1,13 @@
 package Item.Repair;
 
-import Enumerations.CustomBaseItemType;
 import Common.IScriptEventHandler;
-import NWNX.NWNX_Events;
 import GameSystems.DurabilitySystem;
 import GameSystems.ProgressionSystem;
+import Helper.ItemHelper;
+import NWNX.NWNX_Events;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
-import org.nwnx.nwnx2.jvm.constants.BaseItem;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 @SuppressWarnings("unused")
@@ -19,10 +16,8 @@ public class FirearmRepairKit implements IScriptEventHandler {
     public void runScript(NWObject oPC) {
         NWObject target = NWNX_Events.GetEventTarget();
         NWObject item = NWNX_Events.GetEventItem();
-        int targetType = NWScript.getBaseItemType(target);
-        List<Integer> validTypes = BuildValidTypes();
 
-        if(!validTypes.contains(targetType))
+        if(!ItemHelper.IsFirearm(target))
         {
             NWScript.sendMessageToPC(oPC, "You cannot repair that item with this kit.");
             return;
@@ -34,26 +29,5 @@ public class FirearmRepairKit implements IScriptEventHandler {
         DurabilitySystem.RunItemRepair(oPC, item, repairAmount);
 
         NWScript.destroyObject(item, 0.0f);
-    }
-
-
-
-    private List<Integer> BuildValidTypes()
-    {
-        ArrayList<Integer> validTypes = new ArrayList<>();
-        validTypes.add(CustomBaseItemType.HeavyWeapon);
-        validTypes.add(CustomBaseItemType.Longarm);
-        validTypes.add(CustomBaseItemType.SmallArmD6);
-        validTypes.add(CustomBaseItemType.SmallArmD6_2);
-        validTypes.add(CustomBaseItemType.SmallArmD8);
-        validTypes.add(CustomBaseItemType.D20HeavyWeapon);
-        validTypes.add(CustomBaseItemType.D20SmallArms6);
-        validTypes.add(CustomBaseItemType.MZS3Handgun);
-        validTypes.add(BaseItem.HEAVYCROSSBOW);
-        validTypes.add(BaseItem.LIGHTCROSSBOW);
-        validTypes.add(BaseItem.LONGBOW);
-        validTypes.add(BaseItem.SHORTBOW);
-
-        return validTypes;
     }
 }

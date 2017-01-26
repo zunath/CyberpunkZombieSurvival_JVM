@@ -1,8 +1,16 @@
 package Abilities.Melee;
 
 import Abilities.IAbility;
+import Enumerations.CustomEffectType;
+import GameSystems.CustomEffectSystem;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
+import org.nwnx.nwnx2.jvm.constants.BaseItem;
+import org.nwnx.nwnx2.jvm.constants.DamagePower;
+import org.nwnx.nwnx2.jvm.constants.DamageType;
+import org.nwnx.nwnx2.jvm.constants.Duration;
+
+import java.util.concurrent.ThreadLocalRandom;
 
 public class ElectricFist implements IAbility {
     @Override
@@ -32,7 +40,20 @@ public class ElectricFist implements IAbility {
 
     @Override
     public void OnImpact(NWObject oPC, NWObject oTarget) {
+        NWObject oItem = NWScript.getSpellCastItem();
+        int itemType = NWScript.getBaseItemType(oItem);
 
+        if(itemType != BaseItem.GLOVES)
+        {
+            NWScript.sendMessageToPC(oPC, "Electric Fist can only be used with gauntlets.");
+            return;
+        }
+
+        int ticks = ThreadLocalRandom.current().nextInt(3, 5);
+        CustomEffectSystem.ApplyCustomEffect(oPC, oTarget, CustomEffectType.Shock, ticks);
+
+        int damage = ThreadLocalRandom.current().nextInt(8, 15);
+        NWScript.applyEffectToObject(Duration.TYPE_INSTANT, NWScript.effectDamage(damage, DamageType.ELECTRICAL, DamagePower.NORMAL), oTarget, 0.0f);
     }
 
     @Override

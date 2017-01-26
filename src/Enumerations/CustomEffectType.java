@@ -7,4 +7,6 @@ public class CustomEffectType {
     public static final int Poison = 3;
     public static final int ManaKit = 4;
     public static final int Refresh = 5;
+    public static final int Shock = 6;
+    public static final int Burn = 7;
 }

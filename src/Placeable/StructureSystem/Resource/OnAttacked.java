@@ -2,6 +2,7 @@ package Placeable.StructureSystem.Resource;
 
 import Common.IScriptEventHandler;
 import Helper.ColorToken;
+import Helper.ItemHelper;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.Scheduler;
@@ -29,32 +30,10 @@ public class OnAttacked implements IScriptEventHandler {
         if(type == BaseItem.INVALID)
         {
             oWeapon = NWScript.getItemInSlot(InventorySlot.RIGHTHAND, oPC);
-            type = NWScript.getBaseItemType(oWeapon);
         }
 
-        Integer[] allowedWeaponTypes = {
-                BaseItem.BASTARDSWORD,
-                BaseItem.BATTLEAXE,
-                BaseItem.DOUBLEAXE,
-                BaseItem.DWARVENWARAXE,
-                BaseItem.GREATAXE,
-                BaseItem.GREATSWORD,
-                BaseItem.HALBERD,
-                BaseItem.DAGGER,
-                BaseItem.HANDAXE,
-                BaseItem.KAMA,
-                BaseItem.KATANA,
-                BaseItem.KUKRI,
-                BaseItem.LONGSWORD,
-                BaseItem.RAPIER,
-                BaseItem.SCIMITAR,
-                BaseItem.SCYTHE,
-                BaseItem.SHORTSWORD,
-                BaseItem.TWOBLADEDSWORD
-        };
-
         // Weapon used isn't one of the allowed types.
-        if(!Arrays.asList(allowedWeaponTypes).contains(type))
+        if(!ItemHelper.IsBlade(oWeapon))
         {
             NWScript.setPlotFlag(objSelf, true);
             NWScript.sendMessageToPC(oPC, ColorToken.Red() + "You must be using a blade to harvest this object." + ColorToken.End());
