@@ -39,6 +39,9 @@ public class AbilityEntity {
     @JoinColumn(name = "AbilityCooldownCategoryID")
     private AbilityCooldownCategoryEntity cooldown;
 
+    @Column(name = "IsQueuedWeaponSkill")
+    private boolean isQueuedWeaponSkill;
+
     public int getAbilityID() {
         return abilityID;
     }
@@ -117,5 +120,13 @@ public class AbilityEntity {
 
     public void setCooldown(AbilityCooldownCategoryEntity cooldown) {
         this.cooldown = cooldown;
+    }
+
+    public boolean isQueuedWeaponSkill() {
+        return isQueuedWeaponSkill;
+    }
+
+    public void setQueuedWeaponSkill(boolean queuedWeaponSkill) {
+        isQueuedWeaponSkill = queuedWeaponSkill;
     }
 }

@@ -87,6 +87,9 @@ public class SearchSystem {
         NWObject oPC = NWScript.getLastOpenedBy();
         if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return;
 
+        if(NWScript.getActionMode(oPC, ActionMode.STEALTH))
+            NWScript.setActionMode(oPC, ActionMode.STEALTH, false);
+
         PlayerGO pcGO = new PlayerGO(oPC);
         SearchSiteRepository repo = new SearchSiteRepository();
         String resref = NWScript.getResRef(oChest);

@@ -2,9 +2,8 @@ package Abilities.Melee;
 
 import Abilities.IAbility;
 import org.nwnx.nwnx2.jvm.NWObject;
-import org.nwnx.nwnx2.jvm.NWScript;
 
-public class ElectricFist implements IAbility {
+public class FlameBlade implements IAbility {
     @Override
     public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {
         return true;

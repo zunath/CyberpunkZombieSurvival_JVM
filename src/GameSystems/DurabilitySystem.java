@@ -11,6 +11,7 @@ import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.Scheduler;
 import org.nwnx.nwnx2.jvm.constants.BaseItem;
+import org.nwnx.nwnx2.jvm.constants.InventorySlot;
 import org.nwnx.nwnx2.jvm.constants.IpConst;
 import org.nwnx.nwnx2.jvm.constants.ItemProperty;
 
@@ -187,6 +188,25 @@ public class DurabilitySystem {
         };
 
         return Arrays.asList(result);
+    }
+
+    public static void OnHitCastSpell(NWObject oTarget)
+    {
+        NWObject oSpellOrigin = NWScript.getSpellCastItem();
+        int itemType = NWScript.getBaseItemType(oSpellOrigin);
+        // Durability system
+        if(itemType == BaseItem.ARMOR)
+        {
+            NWObject oBelt = NWScript.getItemInSlot(InventorySlot.BELT, oTarget);
+            if(!oBelt.equals(NWObject.INVALID))
+            {
+                DurabilitySystem.RunItemDecay(oTarget, oBelt, 18, ThreadLocalRandom.current().nextInt(2), true);
+            }
+        }
+        else if(DurabilitySystem.GetValidDurabilityTypes().contains(itemType))
+        {
+            DurabilitySystem.RunItemDecay(oTarget, oSpellOrigin, 3, ThreadLocalRandom.current().nextInt(2), true);
+        }
     }
 
 }
