@@ -32,7 +32,7 @@ public class Bandage implements IScriptEventHandler {
             return;
         }
 
-        if(!CustomEffectSystem.HasCustomEffect(target, CustomEffectType.Bleeding))
+        if(!CustomEffectSystem.DoesPCHaveCustomEffect(target, CustomEffectType.Bleeding))
         {
             NWScript.sendMessageToPC(oPC, "Your target is not bleeding.");
             return;
@@ -80,7 +80,7 @@ public class Bandage implements IScriptEventHandler {
                     return;
                 }
 
-                CustomEffectSystem.RemoveCustomEffect(target, CustomEffectType.Bleeding);
+                CustomEffectSystem.RemovePCCustomEffect(target, CustomEffectType.Bleeding);
                 ItemHelper.ReduceItemStack(item);
 
                 NWScript.sendMessageToPC(oPC, "You successfully bandage " + NWScript.getName(target, false) + ".");

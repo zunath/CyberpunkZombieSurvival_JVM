@@ -39,7 +39,7 @@ public class BleederClaw implements IScriptEventHandler {
         if(roll <= bleedDC)
         {
             int ticks = ThreadLocalRandom.current().nextInt(3, 12);
-            CustomEffectSystem.ApplyCustomEffect(oPC, CustomEffectType.Bleeding, ticks);
+            CustomEffectSystem.ApplyCustomEffect(oZombie, oPC, CustomEffectType.Bleeding, ticks);
         }
     }
 }

@@ -14,6 +14,6 @@ public class InfectorClaw implements IScriptEventHandler {
         String itemTag = NWScript.getTag(oBite);
         if (!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return;
 
-        DiseaseSystem.RunDiseaseDCCheck(oPC, 65, 5, 5);
+        DiseaseSystem.RunDiseaseDCCheck(oZombie, oPC, 65, 5, 5);
     }
 }

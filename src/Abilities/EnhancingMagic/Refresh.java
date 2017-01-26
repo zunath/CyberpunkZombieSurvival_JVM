@@ -48,7 +48,7 @@ public class Refresh implements IAbility {
         int bonusTicks = skill + wisdom;
         int ticks = baseTicks + bonusTicks;
 
-        CustomEffectSystem.ApplyCustomEffect(oTarget, CustomEffectType.Refresh, ticks);
+        CustomEffectSystem.ApplyCustomEffect(oPC, oTarget, CustomEffectType.Refresh, ticks);
     }
 
     @Override

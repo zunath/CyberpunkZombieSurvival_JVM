@@ -51,13 +51,13 @@ public class PatchUp implements IAbility {
     @Override
     public void OnImpact(NWObject oPC, NWObject oTarget) {
 
-        if(!CustomEffectSystem.HasCustomEffect(oTarget, CustomEffectType.Bleeding))
+        if(!CustomEffectSystem.DoesPCHaveCustomEffect(oTarget, CustomEffectType.Bleeding))
         {
             NWScript.sendMessageToPC(oPC, "Your target is not bleeding.");
             return;
         }
 
-        CustomEffectSystem.RemoveCustomEffect(oTarget, CustomEffectType.Bleeding);
+        CustomEffectSystem.RemovePCCustomEffect(oTarget, CustomEffectType.Bleeding);
     }
 
     @Override

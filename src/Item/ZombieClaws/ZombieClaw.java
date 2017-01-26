@@ -19,7 +19,7 @@ public class ZombieClaw implements IScriptEventHandler {
         String itemTag = NWScript.getTag(oBite);
         if (!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return;
 
-        DiseaseSystem.RunDiseaseDCCheck(oPC, 0, 0, 0);
+        DiseaseSystem.RunDiseaseDCCheck(oZombie, oPC, 0, 0, 0);
         RunBleedingRoutine(oPC, oZombie);
     }
 
@@ -37,7 +37,7 @@ public class ZombieClaw implements IScriptEventHandler {
 
         if(roll <= bleedDC)
         {
-            CustomEffectSystem.ApplyCustomEffect(oPC, CustomEffectType.Bleeding, 6);
+            CustomEffectSystem.ApplyCustomEffect(oZombie, oPC, CustomEffectType.Bleeding, 6);
         }
     }
 }

@@ -9,11 +9,11 @@ import java.util.Random;
 @SuppressWarnings("unused")
 public class InfectionOverTimeEffect implements ICustomEffectHandler {
     @Override
-    public void run(NWObject oPC) {
+    public void run(NWObject oCaster, NWObject oTarget) {
 
-        if(!NWScript.getIsPC(oPC)) return;
+        if(!NWScript.getIsPC(oTarget)) return;
 
         Random random = new Random();
-        DiseaseSystem.IncreaseDiseaseLevel(oPC, random.nextInt(5));
+        DiseaseSystem.IncreaseDiseaseLevel(oTarget, random.nextInt(5));
     }
 }

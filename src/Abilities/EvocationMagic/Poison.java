@@ -1,4 +1,4 @@
-package Abilities.HolyMagic;
+package Abilities.EvocationMagic;
 
 import Abilities.IAbility;
 import Enumerations.AbilityType;
@@ -6,11 +6,14 @@ import Enumerations.CustomEffectType;
 import GameSystems.CustomEffectSystem;
 import GameSystems.MagicSystem;
 import GameSystems.ProgressionSystem;
+import org.nwnx.nwnx2.jvm.NWEffect;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.constants.Ability;
 
-public class Antidote implements IAbility {
+import static org.nwnx.nwnx2.jvm.constants.All.*;
+
+public class Poison implements IAbility {
     @Override
     public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {
         return true;
@@ -23,7 +26,7 @@ public class Antidote implements IAbility {
 
     @Override
     public int ManaCost(NWObject oPC, int baseManaCost) {
-        if(MagicSystem.IsAbilityEquipped(oPC, AbilityType.TouchedByHoly))
+        if(MagicSystem.IsAbilityEquipped(oPC, AbilityType.TouchedByEvocation))
             baseManaCost--;
 
         return baseManaCost;
@@ -31,15 +34,7 @@ public class Antidote implements IAbility {
 
     @Override
     public float CastingTime(NWObject oPC, float baseCastingTime) {
-        int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_HOLY_AFFINITY);
-        int wisdom = NWScript.getAbilityScore(oPC, Ability.WISDOM, false) - 10;
-        float castingTimeReduction = (skill + wisdom) * 0.5f;
-        float castingTime = baseCastingTime - castingTimeReduction;
-
-        if(castingTime < 0.5f)
-            castingTime = 0.5f;
-
-        return castingTime;
+        return baseCastingTime;
     }
 
     @Override
@@ -50,14 +45,14 @@ public class Antidote implements IAbility {
 
     @Override
     public void OnImpact(NWObject oPC, NWObject oTarget) {
+        int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_EVOCATION_AFFINITY);
+        int intelligence = NWScript.getAbilityScore(oPC, Ability.INTELLIGENCE, false) - 10;
+        int baseTicks = 6;
+        int bonusTicks = (skill * 2) + (intelligence * 3);
+        int durationTicks = baseTicks + bonusTicks;
 
-        if(!CustomEffectSystem.DoesPCHaveCustomEffect(oTarget, CustomEffectType.Poison))
-        {
-            NWScript.sendMessageToPC(oPC, "Your target is not afflicted by poison.");
-            return;
-        }
+        CustomEffectSystem.ApplyCustomEffect(oPC, oTarget, CustomEffectType.Poison, durationTicks);
 
-        CustomEffectSystem.RemovePCCustomEffect(oTarget, CustomEffectType.Poison);
     }
 
     @Override
@@ -72,6 +67,6 @@ public class Antidote implements IAbility {
 
     @Override
     public boolean IsHostile() {
-        return false;
+        return true;
     }
 }

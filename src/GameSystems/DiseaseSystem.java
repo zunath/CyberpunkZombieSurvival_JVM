@@ -228,7 +228,7 @@ public class DiseaseSystem {
         NWScript.executeScript("zom_clonefight", oClone);
     }
 
-    public static void RunDiseaseDCCheck(NWObject oPC, int chanceModifier, int dcModifier, int infectionOverTimeChanceModifier)
+    public static void RunDiseaseDCCheck(NWObject oAttacker, NWObject oPC, int chanceModifier, int dcModifier, int infectionOverTimeChanceModifier)
     {
         int iChanceToInfect = ThreadLocalRandom.current().nextInt(100);
         int percentChanceToInfect = 20 + chanceModifier;
@@ -264,7 +264,7 @@ public class DiseaseSystem {
                         }
                     }
 
-                    CustomEffectSystem.ApplyCustomEffect(oPC, CustomEffectType.InfectionOverTime, ticks);
+                    CustomEffectSystem.ApplyCustomEffect(oAttacker, oPC, CustomEffectType.InfectionOverTime, ticks);
                 }
             }
         }

@@ -7,10 +7,7 @@ import GameObject.PlayerGO;
 import Common.IScriptEventHandler;
 import Data.Repository.ActivePlayerRepository;
 import Data.Repository.PlayerRepository;
-import GameSystems.DiseaseSystem;
-import GameSystems.FoodSystem;
-import GameSystems.MagicSystem;
-import GameSystems.ProgressionSystem;
+import GameSystems.*;
 import Helper.ColorToken;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
@@ -52,6 +49,7 @@ public class OnHeartbeat implements IScriptEventHandler {
 
 		SaveCharacters();
 		RefreshActivePlayers();
+        CustomEffectSystem.OnModuleHeartbeat();
 	}
 
 	// Export all characters every minute.

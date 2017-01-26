@@ -32,7 +32,7 @@ public class Antibiotics implements IScriptEventHandler {
             return;
         }
 
-        if(!CustomEffectSystem.HasCustomEffect(target, CustomEffectType.InfectionOverTime))
+        if(!CustomEffectSystem.DoesPCHaveCustomEffect(target, CustomEffectType.InfectionOverTime))
         {
             NWScript.sendMessageToPC(oPC, "Your target is not suffering from an infection.");
             return;
@@ -79,7 +79,7 @@ public class Antibiotics implements IScriptEventHandler {
                     return;
                 }
 
-                CustomEffectSystem.RemoveCustomEffect(target, CustomEffectType.InfectionOverTime);
+                CustomEffectSystem.RemovePCCustomEffect(target, CustomEffectType.InfectionOverTime);
                 ItemHelper.ReduceItemStack(item);
 
                 NWScript.sendMessageToPC(oPC, "You successfully administer antibiotics to " + NWScript.getName(target, false) + ".");

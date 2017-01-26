@@ -71,7 +71,7 @@ public class ManaKit implements IScriptEventHandler {
                     NWScript.sendMessageToPC(oPC, "Your target is too far away.");
                     return;
                 }
-                CustomEffectSystem.ApplyCustomEffect(oTarget, CustomEffectType.ManaKit, durationTicks);
+                CustomEffectSystem.ApplyCustomEffect(oPC, oTarget, CustomEffectType.ManaKit, durationTicks);
                 ItemHelper.ReduceItemStack(item);
                 NWScript.sendMessageToPC(oPC, "You successfully apply a mana kit to " + NWScript.getName(oTarget, false) + ".");
             }
