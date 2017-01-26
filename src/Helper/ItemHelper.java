@@ -93,6 +93,19 @@ public class ItemHelper {
         return Arrays.asList(allowedWeaponTypes).contains(itemType);
     }
 
+    public static boolean IsThrowing(NWObject item)
+    {
+        int itemType = NWScript.getBaseItemType(item);
+
+        Integer[] allowedWeaponTypes = {
+                BaseItem.THROWINGAXE,
+                BaseItem.SHURIKEN,
+                BaseItem.DART
+        };
+
+        return Arrays.asList(allowedWeaponTypes).contains(itemType);
+    }
+
     public static boolean IsArmor(NWObject item)
     {
         int itemType = NWScript.getBaseItemType(item);

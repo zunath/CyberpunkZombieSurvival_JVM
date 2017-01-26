@@ -9,4 +9,5 @@ public class CustomEffectType {
     public static final int Refresh = 5;
     public static final int Shock = 6;
     public static final int Burn = 7;
+    public static final int PiercingTossBleeding = 8;
 }
