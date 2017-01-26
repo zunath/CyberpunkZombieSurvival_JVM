@@ -1,7 +1,12 @@
 package Abilities.Passive;
 
 import Abilities.IAbility;
+import Enumerations.CustomItemProperty;
+import GameObject.ItemGO;
 import org.nwnx.nwnx2.jvm.NWObject;
+import org.nwnx.nwnx2.jvm.NWScript;
+import org.nwnx.nwnx2.jvm.Scheduler;
+import org.nwnx.nwnx2.jvm.constants.InventorySlot;
 
 public class EnergyBladeAdept implements IAbility {
     @Override
@@ -41,7 +46,32 @@ public class EnergyBladeAdept implements IAbility {
 
     @Override
     public void OnUnequip(NWObject oPC) {
+        final NWObject rightHand = NWScript.getItemInSlot(InventorySlot.RIGHTHAND, oPC);
+        final NWObject leftHand = NWScript.getItemInSlot(InventorySlot.LEFTHAND, oPC);
+        ItemGO rightGO = new ItemGO(rightHand);
+        ItemGO leftGO = new ItemGO(leftHand);
 
+        if(rightGO.HasItemProperty(CustomItemProperty.EnergyBlade))
+        {
+            Scheduler.assign(oPC, new Runnable() {
+                @Override
+                public void run() {
+                    NWScript.clearAllActions(false);
+                    NWScript.actionUnequipItem(rightHand);
+                }
+            });
+        }
+
+        if(leftGO.HasItemProperty(CustomItemProperty.EnergyBlade))
+        {
+            Scheduler.assign(oPC, new Runnable() {
+                @Override
+                public void run() {
+                    NWScript.clearAllActions(false);
+                    NWScript.actionUnequipItem(leftHand);
+                }
+            });
+        }
     }
 
     @Override

@@ -2,6 +2,12 @@ package Enumerations;
 
 public class CustomItemProperty {
 
+    public static final int EnergyBlade = 132;
+    public static final int CastingSpeedPenalty = 133;
+    public static final int CastingSpeedBonus = 134;
+    public static final int EvocationBonus = 135;
+    public static final int EnhancementBonus = 136;
+    public static final int HolyBonus = 137;
     public static final int SkillRequirement = 138;
     public static final int InventorySpaceBonus = 140;
     public static final int ItemDurability = 141;

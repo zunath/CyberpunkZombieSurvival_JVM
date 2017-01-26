@@ -5,6 +5,9 @@ import Bioware.Position;
 import Data.Repository.MagicRepository;
 import Data.Repository.PlayerRepository;
 import Entities.*;
+import Enumerations.AbilityType;
+import Enumerations.CustomItemProperty;
+import GameObject.ItemGO;
 import GameObject.PlayerGO;
 import Helper.ColorToken;
 import Helper.ScriptHelper;
@@ -13,10 +16,7 @@ import NWNX.NWNX_Events;
 import NWNX.NWNX_Funcs;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
-import org.nwnx.nwnx2.jvm.NWObject;
-import org.nwnx.nwnx2.jvm.NWScript;
-import org.nwnx.nwnx2.jvm.NWVector;
-import org.nwnx.nwnx2.jvm.Scheduler;
+import org.nwnx.nwnx2.jvm.*;
 import org.nwnx.nwnx2.jvm.constants.*;
 
 import java.util.Objects;
@@ -400,6 +400,105 @@ public class MagicSystem {
         repo.save(entity);
 
         NWScript.sendMessageToPC(oPC, ColorToken.Custom(32,223,219) + "Mana: " + entity.getCurrentMana() + " / " + entity.getMaxMana());
+    }
+
+    public static void OnModuleEquipItem()
+    {
+        HandleEnergyBladeEquipped();
+        HandleItemEquippedWithEnergyBladeAlreadyEquipped();
+
+    }
+
+    private static void HandleEnergyBladeEquipped()
+    {
+        NWObject oPC = NWScript.getPCItemLastEquippedBy();
+        final NWObject oItem = NWScript.getPCItemLastEquipped();
+        ItemGO itemGO = new ItemGO(oItem);
+
+        if(!itemGO.HasItemProperty(CustomItemProperty.EnergyBlade)) return;
+
+        if(!MagicSystem.IsAbilityEquipped(oPC, AbilityType.EnergyBladeAdept))
+        {
+            Scheduler.assign(oPC, new Runnable() {
+                @Override
+                public void run() {
+                    NWScript.clearAllActions(false);
+                    NWScript.actionUnequipItem(oItem);
+                }
+            });
+
+            NWScript.floatingTextStringOnCreature(ColorToken.Red() + "You must have the Energy Blade Adept ability equipped in order to use that weapon." + ColorToken.End(), oPC, false);
+            return;
+        }
+
+        // Unequip anything in right/left hand that isn't the energy blade which was just equipped.
+        final NWObject rightHand = NWScript.getItemInSlot(InventorySlot.RIGHTHAND, oPC);
+        final NWObject leftHand = NWScript.getItemInSlot(InventorySlot.LEFTHAND, oPC);
+
+        if(!Objects.equals(rightHand, oItem) && NWScript.getIsObjectValid(rightHand))
+        {
+            Scheduler.assign(oPC, new Runnable() {
+                @Override
+                public void run() {
+                    NWScript.clearAllActions(false);
+                    NWScript.actionUnequipItem(rightHand);
+                }
+            });
+        }
+        if(!Objects.equals(leftHand, oItem) && NWScript.getIsObjectValid(leftHand))
+        {
+            Scheduler.assign(oPC, new Runnable() {
+                @Override
+                public void run() {
+                    NWScript.clearAllActions(false);
+                    NWScript.actionUnequipItem(leftHand);
+                }
+            });
+        }
+
+    }
+
+    private static void HandleItemEquippedWithEnergyBladeAlreadyEquipped()
+    {
+        NWObject oPC = NWScript.getPCItemLastEquippedBy();
+        final NWObject oItem = NWScript.getPCItemLastEquipped();
+        ItemGO itemGO = new ItemGO(oItem);
+
+        if(itemGO.HasItemProperty(CustomItemProperty.EnergyBlade)) return; // Energy Blades already get handled earlier on in this process.
+
+        final NWObject rightHand = NWScript.getItemInSlot(InventorySlot.RIGHTHAND, oPC);
+        ItemGO rightHandGO = new ItemGO(rightHand);
+        final NWObject leftHand = NWScript.getItemInSlot(InventorySlot.LEFTHAND, oPC);
+        ItemGO leftHandGO = new ItemGO(leftHand);
+        boolean anItemWasUnequipped = false;
+
+        if(!Objects.equals(oItem, rightHand) && NWScript.getIsObjectValid(rightHand) && rightHandGO.HasItemProperty(CustomItemProperty.EnergyBlade))
+        {
+            Scheduler.assign(oPC, new Runnable() {
+                @Override
+                public void run() {
+                    NWScript.clearAllActions(false);
+                    NWScript.actionUnequipItem(rightHand);
+                }
+            });
+            anItemWasUnequipped = true;
+        }
+        if(!Objects.equals(oItem, leftHand) && NWScript.getIsObjectValid(leftHand) && leftHandGO.HasItemProperty(CustomItemProperty.EnergyBlade))
+        {
+            Scheduler.assign(oPC, new Runnable() {
+                @Override
+                public void run() {
+                    NWScript.clearAllActions(false);
+                    NWScript.actionUnequipItem(leftHand);
+                }
+            });
+            anItemWasUnequipped = true;
+        }
+
+        if(anItemWasUnequipped)
+        {
+            NWScript.sendMessageToPC(oPC, ColorToken.Red() + "Energy blades require your off-hand to be empty." + ColorToken.End());
+        }
     }
 
 }

@@ -106,5 +106,19 @@ public class ItemGO {
         }
     }
 
+    public boolean HasItemProperty(int itemPropertyID)
+    {
+        boolean hasItemProperty = false;
+        for(NWItemProperty ip : NWScript.getItemProperties(item))
+        {
+            if(NWScript.getItemPropertyType(ip) == itemPropertyID)
+            {
+                hasItemProperty = true;
+                break;
+            }
+        }
+
+        return hasItemProperty;
+    }
 
 }

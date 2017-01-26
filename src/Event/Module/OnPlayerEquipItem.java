@@ -19,7 +19,7 @@ public class OnPlayerEquipItem implements IScriptEventHandler {
         DurabilitySystem.OnModuleEquip();
 		ArmorSystem.OnModuleEquipItem();
 		InventorySystem.OnModuleEquipItem();
-
+		MagicSystem.OnModuleEquipItem();
 		HandleEquipmentSwappingDelay();
 	}
 
@@ -35,6 +35,7 @@ public class OnPlayerEquipItem implements IScriptEventHandler {
 
 		if(!NWScript.getIsInCombat(oPC)) return;
 		if(Objects.equals(oItem, rightHand) && Objects.equals(oItem, leftHand)) return;
+		if(!Objects.equals(oItem, leftHand)) return;
 
 		Scheduler.assign(oPC, new Runnable() {
             @Override
