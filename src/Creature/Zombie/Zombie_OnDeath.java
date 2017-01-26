@@ -36,11 +36,6 @@ public class Zombie_OnDeath implements IScriptEventHandler {
         {
             entity.setZombieKillCount(entity.getZombieKillCount() + 1);
             repo.save(entity);
-
-            if(entity.getZombieKillCount() % 10 == 0)
-            {
-                ProgressionSystem.GiveExperienceToPC(oPC, 200);
-            }
         }
     }
 
@@ -62,7 +57,7 @@ public class Zombie_OnDeath implements IScriptEventHandler {
 
                 if(level <= 20)
                 {
-                    int exp = ThreadLocalRandom.current().nextInt(50, 100);
+                    int exp = ThreadLocalRandom.current().nextInt(25, 50);
                     ProgressionSystem.GiveExperienceToPC(member, exp);
                 }
             }
