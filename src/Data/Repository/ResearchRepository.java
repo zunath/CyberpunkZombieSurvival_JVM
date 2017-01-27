@@ -3,6 +3,7 @@ package Data.Repository;
 import Data.DataContext;
 import Entities.*;
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
@@ -87,7 +88,8 @@ public class ResearchRepository {
                     .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
                     .add(Restrictions.eq("cr.craftID", craftID))
                     .add(Restrictions.eq("c.craftBlueprintCategoryID", categoryID))
-                    .add(Restrictions.le("skillRequired", researchLevel));
+                    .add(Restrictions.le("skillRequired", researchLevel))
+                    .addOrder(Order.asc("bp.itemName"));
 
             entities = criteria.list();
         }

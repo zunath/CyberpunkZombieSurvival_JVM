@@ -3,6 +3,7 @@ package Data.Repository;
 import Data.DataContext;
 import Entities.*;
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.joda.time.DateTime;
@@ -246,7 +247,8 @@ public class CraftRepository {
                     .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
                     .add(Restrictions.eq("playerID", uuid))
                     .add(Restrictions.eq("cr.craftID", craftID))
-                    .add(Restrictions.eq("c.craftBlueprintCategoryID", categoryID));
+                    .add(Restrictions.eq("c.craftBlueprintCategoryID", categoryID))
+                    .addOrder(Order.asc("bp.itemName"));
 
             entities = criteria.list();
 

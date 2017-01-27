@@ -3,6 +3,7 @@ package Data.Repository;
 import Data.DataContext;
 import Entities.*;
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
@@ -120,7 +121,8 @@ public class MagicRepository {
                     .createAlias("ability", "a")
                     .createAlias("a.category", "c")
                     .add(Restrictions.eq("c.abilityCategoryID", categoryID))
-                    .add(Restrictions.eq("playerID", uuid));
+                    .add(Restrictions.eq("playerID", uuid))
+                    .addOrder(Order.asc("a.name"));
             entities = criteria.list();
         }
 

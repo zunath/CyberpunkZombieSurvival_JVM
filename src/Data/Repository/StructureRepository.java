@@ -132,7 +132,8 @@ public class StructureRepository {
                     .createCriteria(StructureCategoryEntity.class)
                     .add(Restrictions.eq("isActive", true))
                     .add(Restrictions.eq("isTerritoryFlagCategory", isTerritoryFlagCategory))
-                    .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+                    .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
+                    .addOrder(Order.asc("name"));
 
             categories = criteria.list();
         }
@@ -150,7 +151,8 @@ public class StructureRepository {
                     .createCriteria(StructureBlueprintEntity.class)
                     .add(Restrictions.eq("isActive", true))
                     .add(Restrictions.eq("structureCategoryID", categoryID))
-                    .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+                    .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
+                    .addOrder(Order.asc("name"));
 
             entities = criteria.list();
         }
