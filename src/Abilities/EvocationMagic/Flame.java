@@ -7,6 +7,7 @@ import GameSystems.MagicSystem;
 import GameSystems.ProgressionSystem;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
+import org.nwnx.nwnx2.jvm.Scheduler;
 import org.nwnx.nwnx2.jvm.constants.Ability;
 import org.nwnx.nwnx2.jvm.constants.DamagePower;
 import org.nwnx.nwnx2.jvm.constants.DamageType;
@@ -48,7 +49,7 @@ public class Flame implements IAbility {
 
 
     @Override
-    public void OnImpact(NWObject oPC, NWObject oTarget) {
+    public void OnImpact(final NWObject oPC, final NWObject oTarget) {
         PlayerGO pcGO = new PlayerGO(oPC);
         int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_EVOCATION_AFFINITY);
         int intelligence = NWScript.getAbilityScore(oPC, Ability.INTELLIGENCE, false) - 10;
@@ -56,10 +57,16 @@ public class Flame implements IAbility {
         int minimumDamage = 2 + (int)((skill + intelligence + (itemBonus * 2)) * 0.25f);
         int maximumDamage = 6 + (int)((skill + intelligence + (itemBonus * 2)) * 0.50f);
 
-        int damage = ThreadLocalRandom.current().nextInt(minimumDamage, maximumDamage + 1);
-
+        final int damage = ThreadLocalRandom.current().nextInt(minimumDamage, maximumDamage + 1);
         NWScript.applyEffectToObject(DURATION_TYPE_INSTANT, NWScript.effectVisualEffect(VFX_IMP_FLAME_M, false), oTarget, 0.0f);
-        NWScript.applyEffectToObject(DURATION_TYPE_TEMPORARY, NWScript.effectDamage(damage, DamageType.MAGICAL, DamagePower.NORMAL), oTarget, 0.0f);
+
+        Scheduler.delay(oPC, 50, new Runnable() {
+            @Override
+            public void run() {
+                NWScript.applyEffectToObject(DURATION_TYPE_INSTANT, NWScript.effectDamage(damage, DamageType.MAGICAL, DamagePower.NORMAL), oTarget, 0.0f);
+            }
+        });
+
     }
 
     @Override
