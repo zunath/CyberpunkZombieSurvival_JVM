@@ -2,6 +2,7 @@ package Abilities.EnhancingMagic;
 
 import Abilities.IAbility;
 import Enumerations.AbilityType;
+import GameObject.PlayerGO;
 import GameSystems.MagicSystem;
 import GameSystems.ProgressionSystem;
 import org.nwnx.nwnx2.jvm.NWEffect;
@@ -45,13 +46,16 @@ public class BoostCON implements IAbility {
 
     @Override
     public void OnImpact(NWObject oPC, NWObject oTarget) {
+        PlayerGO pcGO = new PlayerGO(oPC);
         int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_ENHANCEMENT_AFFINITY);
         int wisdom = NWScript.getAbilityScore(oPC, Ability.WISDOM, false) - 10;
+        int itemBonus = pcGO.CalculateEnhancementBonus();
         float baseLengthSeconds = 120;
-        float extensionSeconds = 20 * (wisdom + skill);
+        float extensionSeconds = 20 * (wisdom + skill + itemBonus);
         float totalLength = baseLengthSeconds + extensionSeconds;
         int visualID = 0;
-        NWEffect abilityEffect = NWScript.effectAbilityIncrease(Ability.CONSTITUTION, 2);
+        int amount = 2 + (itemBonus / 3);
+        NWEffect abilityEffect = NWScript.effectAbilityIncrease(Ability.CONSTITUTION, amount);
 
         // Remove existing bonuses to prevent stacking.
         for(NWEffect effect : NWScript.getEffects(oTarget))

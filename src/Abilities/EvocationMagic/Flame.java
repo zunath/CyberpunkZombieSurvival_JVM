@@ -2,6 +2,7 @@ package Abilities.EvocationMagic;
 
 import Abilities.IAbility;
 import Enumerations.AbilityType;
+import GameObject.PlayerGO;
 import GameSystems.MagicSystem;
 import GameSystems.ProgressionSystem;
 import org.nwnx.nwnx2.jvm.NWObject;
@@ -48,10 +49,12 @@ public class Flame implements IAbility {
 
     @Override
     public void OnImpact(NWObject oPC, NWObject oTarget) {
+        PlayerGO pcGO = new PlayerGO(oPC);
         int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_EVOCATION_AFFINITY);
         int intelligence = NWScript.getAbilityScore(oPC, Ability.INTELLIGENCE, false) - 10;
-        int minimumDamage = 2 + (int)((skill + intelligence) * 0.25f);
-        int maximumDamage = 6 + (int)((skill + intelligence) * 0.50f);
+        int itemBonus = pcGO.CalculateEvocationBonus();
+        int minimumDamage = 2 + (int)((skill + intelligence + (itemBonus * 2)) * 0.25f);
+        int maximumDamage = 6 + (int)((skill + intelligence + (itemBonus * 2)) * 0.50f);
 
         int damage = ThreadLocalRandom.current().nextInt(minimumDamage, maximumDamage + 1);
 

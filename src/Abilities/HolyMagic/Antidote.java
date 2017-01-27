@@ -3,6 +3,7 @@ package Abilities.HolyMagic;
 import Abilities.IAbility;
 import Enumerations.AbilityType;
 import Enumerations.CustomEffectType;
+import GameObject.PlayerGO;
 import GameSystems.CustomEffectSystem;
 import GameSystems.MagicSystem;
 import GameSystems.ProgressionSystem;
@@ -31,9 +32,11 @@ public class Antidote implements IAbility {
 
     @Override
     public float CastingTime(NWObject oPC, float baseCastingTime) {
+        PlayerGO pcGO = new PlayerGO(oPC);
         int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_HOLY_AFFINITY);
         int wisdom = NWScript.getAbilityScore(oPC, Ability.WISDOM, false) - 10;
-        float castingTimeReduction = (skill + wisdom) * 0.5f;
+        int itemBonus = pcGO.CalculateHolyBonus();
+        float castingTimeReduction = (skill + itemBonus + wisdom) * 0.5f;
         float castingTime = baseCastingTime - castingTimeReduction;
 
         if(castingTime < 0.5f)

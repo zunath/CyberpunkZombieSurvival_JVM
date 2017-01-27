@@ -2,6 +2,7 @@ package Abilities.EvocationMagic;
 
 import Abilities.IAbility;
 import Enumerations.AbilityType;
+import GameObject.PlayerGO;
 import GameSystems.MagicSystem;
 import GameSystems.ProgressionSystem;
 import org.nwnx.nwnx2.jvm.NWEffect;
@@ -45,10 +46,12 @@ public class Stun implements IAbility {
 
     @Override
     public void OnImpact(NWObject oPC, NWObject oTarget) {
+        PlayerGO pcGO = new PlayerGO(oPC);
         int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_EVOCATION_AFFINITY);
         int stat = NWScript.getAbilityScore(oPC, Ability.INTELLIGENCE, false) - 10;
+        int itemBonus = pcGO.CalculateEvocationBonus();
         float baseDuration = 1.0f;
-        float bonusDuration = (skill * 0.20f) + (stat * 0.50f);
+        float bonusDuration = (skill * 0.20f) + (stat * 0.50f) + (itemBonus * 0.20f);
         float duration = baseDuration + bonusDuration;
 
         NWEffect effect = NWScript.effectStunned();

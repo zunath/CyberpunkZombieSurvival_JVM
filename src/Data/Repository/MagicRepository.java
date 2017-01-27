@@ -102,7 +102,8 @@ public class MagicRepository {
         {
             Criteria criteria = context.getSession()
                     .createCriteria(AbilityCategoryEntity.class)
-                    .add(Restrictions.eq("isActive", true));
+                    .add(Restrictions.eq("isActive", true))
+                    .addOrder(Order.asc("name"));
 
             entities = criteria.list();
         }

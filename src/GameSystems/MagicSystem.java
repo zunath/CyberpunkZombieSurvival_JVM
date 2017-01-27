@@ -121,6 +121,25 @@ public class MagicSystem {
     {
         final String spellUUID = UUID.randomUUID().toString();
         final PlayerGO pcGO = new PlayerGO(pc);
+        int itemBonus = pcGO.CalculateCastingSpeed();
+        float castingTime = ability.CastingTime(pc, entity.getBaseCastingTime());
+
+        // Casting Bonus % - Shorten casting time.
+        if(itemBonus < 0)
+        {
+            float castingPercentageBonus = Math.abs(itemBonus) * 0.01f;
+            castingTime = castingTime - (castingTime * castingPercentageBonus);
+        }
+        // Casting Penalty % - Increase casting time.
+        else if(itemBonus > 0)
+        {
+            float castingPercentageBonus = Math.abs(itemBonus) * 0.01f;
+            castingTime = castingTime + (castingTime * castingPercentageBonus);
+        }
+
+        if(castingTime < 0.5f)
+            castingTime = 0.5f;
+
 
         if(NWScript.getActionMode(pc, ActionMode.STEALTH))
             NWScript.setActionMode(pc, ActionMode.STEALTH, false);
@@ -130,15 +149,15 @@ public class MagicSystem {
         NWScript.applyEffectToObject(DurationType.TEMPORARY,
                 NWScript.effectVisualEffect(VfxDur.ELEMENTAL_SHIELD, false),
                 pc,
-                ability.CastingTime(pc, entity.getBaseCastingTime()) + 0.2f);
-        NWScript.actionPlayAnimation(Animation.LOOPING_CONJURE1, 1.0f, ability.CastingTime(pc, entity.getBaseCastingTime()) - 0.1f);
+                castingTime + 0.2f);
+        NWScript.actionPlayAnimation(Animation.LOOPING_CONJURE1, 1.0f, castingTime - 0.1f);
 
         pcGO.setIsBusy(true);
         CheckForSpellInterruption(pc, spellUUID, NWScript.getPosition(pc));
         NWScript.setLocalInt(pc, spellUUID, SPELL_STATUS_STARTED);
 
-        NWNX_Funcs.StartTimingBar(pc, (int)ability.CastingTime(pc, entity.getBaseCastingTime()), "");
-        Scheduler.delay(pc, (int)(1050 * ability.CastingTime(pc, entity.getBaseCastingTime())), new Runnable() {
+        NWNX_Funcs.StartTimingBar(pc, (int)castingTime, "");
+        Scheduler.delay(pc, (int)(1050 * castingTime), new Runnable() {
             @Override
             public void run() {
                 if(NWScript.getLocalInt(pc, spellUUID) == SPELL_STATUS_INTERRUPTED)

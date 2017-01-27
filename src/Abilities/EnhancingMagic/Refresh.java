@@ -3,6 +3,7 @@ package Abilities.EnhancingMagic;
 import Abilities.IAbility;
 import Enumerations.AbilityType;
 import Enumerations.CustomEffectType;
+import GameObject.PlayerGO;
 import GameSystems.CustomEffectSystem;
 import GameSystems.MagicSystem;
 import GameSystems.ProgressionSystem;
@@ -42,10 +43,12 @@ public class Refresh implements IAbility {
 
     @Override
     public void OnImpact(NWObject oPC, NWObject oTarget) {
+        PlayerGO pcGO = new PlayerGO(oPC);
         int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_HOLY_AFFINITY);
         int wisdom = NWScript.getAbilityScore(oPC, Ability.WISDOM, false) - 10;
+        int itemBonus = pcGO.CalculateEnhancementBonus();
         int baseTicks = 3;
-        int bonusTicks = skill + wisdom;
+        int bonusTicks = skill + wisdom + (itemBonus / 2);
         int ticks = baseTicks + bonusTicks;
 
         CustomEffectSystem.ApplyCustomEffect(oPC, oTarget, CustomEffectType.Refresh, ticks);

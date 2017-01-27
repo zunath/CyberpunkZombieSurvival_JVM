@@ -2,6 +2,7 @@ package Abilities.HolyMagic;
 
 import Abilities.IAbility;
 import Enumerations.AbilityType;
+import GameObject.PlayerGO;
 import GameSystems.MagicSystem;
 import GameSystems.ProgressionSystem;
 import org.nwnx.nwnx2.jvm.NWEffect;
@@ -43,10 +44,12 @@ public class Regenerate implements IAbility {
 
     @Override
     public void OnImpact(NWObject oPC, NWObject oTarget) {
+        PlayerGO pcGO = new PlayerGO(oPC);
         int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_HOLY_AFFINITY);
         int wisdom = NWScript.getAbilityScore(oPC, Ability.WISDOM, false) - 10;
+        int itemBonus = pcGO.CalculateHolyBonus();
         float baseDuration = 60.0f;
-        float bonusDuration = ((skill / 2) + wisdom) * 20.0f;
+        float bonusDuration = ((skill / 2) + wisdom + itemBonus) * 20.0f;
         float duration = baseDuration + bonusDuration;
         NWEffect effect = NWScript.effectRegenerate(1, 10.0f);
 

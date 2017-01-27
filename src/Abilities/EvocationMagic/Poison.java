@@ -3,6 +3,7 @@ package Abilities.EvocationMagic;
 import Abilities.IAbility;
 import Enumerations.AbilityType;
 import Enumerations.CustomEffectType;
+import GameObject.PlayerGO;
 import GameSystems.CustomEffectSystem;
 import GameSystems.MagicSystem;
 import GameSystems.ProgressionSystem;
@@ -45,10 +46,12 @@ public class Poison implements IAbility {
 
     @Override
     public void OnImpact(NWObject oPC, NWObject oTarget) {
+        PlayerGO pcGO = new PlayerGO(oPC);
         int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_EVOCATION_AFFINITY);
         int intelligence = NWScript.getAbilityScore(oPC, Ability.INTELLIGENCE, false) - 10;
+        int itemBonus = pcGO.CalculateEvocationBonus();
         int baseTicks = 6;
-        int bonusTicks = (skill * 2) + (intelligence * 3);
+        int bonusTicks = (skill * 2) + (intelligence * 3) + itemBonus;
         int durationTicks = baseTicks + bonusTicks;
 
         CustomEffectSystem.ApplyCustomEffect(oPC, oTarget, CustomEffectType.Poison, durationTicks);

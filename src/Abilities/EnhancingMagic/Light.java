@@ -2,6 +2,7 @@ package Abilities.EnhancingMagic;
 
 import Abilities.IAbility;
 import Enumerations.AbilityType;
+import GameObject.PlayerGO;
 import GameSystems.MagicSystem;
 import GameSystems.ProgressionSystem;
 import org.nwnx.nwnx2.jvm.NWEffect;
@@ -43,12 +44,29 @@ public class Light implements IAbility {
 
     @Override
     public void OnImpact(NWObject oPC, NWObject oTarget) {
+        PlayerGO pcGO = new PlayerGO(oPC);
         int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_HOLY_AFFINITY);
         int wisdom = NWScript.getAbilityScore(oPC, Ability.WISDOM, false) - 10;
+        int itemBonus = pcGO.CalculateEnhancementBonus();
         float baseDuration = 120.0f;
-        float bonusDuration = (skill + wisdom) * 20.0f;
+        float bonusDuration = (skill + wisdom + itemBonus) * 20.0f;
         float duration = baseDuration + bonusDuration;
-        NWEffect effect = NWScript.effectVisualEffect(VFX_DUR_LIGHT_WHITE_5, false);
+        int vfxID = VFX_DUR_LIGHT_WHITE_5;
+
+        if(itemBonus >= 5)
+        {
+            vfxID = VFX_DUR_LIGHT_WHITE_10;
+        }
+        else if(itemBonus >= 10)
+        {
+            vfxID = VFX_DUR_LIGHT_WHITE_15;
+        }
+        else if(itemBonus >= 20)
+        {
+            vfxID = VFX_DUR_LIGHT_WHITE_20;
+        }
+
+        NWEffect effect = NWScript.effectVisualEffect(vfxID, false);
 
         NWScript.applyEffectToObject(DURATION_TYPE_TEMPORARY, effect, oTarget, duration);
     }

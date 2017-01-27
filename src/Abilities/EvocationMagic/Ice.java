@@ -2,6 +2,7 @@ package Abilities.EvocationMagic;
 
 import Abilities.IAbility;
 import Enumerations.AbilityType;
+import GameObject.PlayerGO;
 import GameSystems.MagicSystem;
 import GameSystems.ProgressionSystem;
 import org.nwnx.nwnx2.jvm.NWObject;
@@ -45,10 +46,12 @@ public class Ice implements IAbility {
 
     @Override
     public void OnImpact(NWObject oPC, NWObject oTarget) {
+        PlayerGO pcGO = new PlayerGO(oPC);
         int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_EVOCATION_AFFINITY);
         int intelligence = NWScript.getAbilityScore(oPC, Ability.INTELLIGENCE, false) - 10;
-        int minimumDamage = 1 + (int)((skill + intelligence) * 0.10f);
-        int maximumDamage = 4 + (int)((skill + intelligence) * 0.25f);
+        int itemBonus = pcGO.CalculateEvocationBonus();
+        int minimumDamage = 1 + (int)((skill + intelligence + (itemBonus * 2)) * 0.10f);
+        int maximumDamage = 4 + (int)((skill + intelligence + (itemBonus * 2)) * 0.25f);
         int damage = ThreadLocalRandom.current().nextInt(minimumDamage, maximumDamage + 1);
 
         float slowLength = 2.0f + (skill * 0.5f) + (intelligence * 0.75f);

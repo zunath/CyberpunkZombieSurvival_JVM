@@ -2,6 +2,7 @@ package Abilities.EnhancingMagic;
 
 import Abilities.IAbility;
 import Enumerations.AbilityType;
+import GameObject.PlayerGO;
 import GameSystems.MagicSystem;
 import GameSystems.ProgressionSystem;
 import org.nwnx.nwnx2.jvm.NWEffect;
@@ -45,13 +46,15 @@ public class BoostStealth implements IAbility {
 
     @Override
     public void OnImpact(NWObject oPC, NWObject oTarget) {
+        PlayerGO pcGO = new PlayerGO(oPC);
         int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_ENHANCEMENT_AFFINITY);
         int wisdom = NWScript.getAbilityScore(oPC, Ability.WISDOM, false) - 10;
+        int itemBonus = pcGO.CalculateEnhancementBonus();
         float baseLengthSeconds = 60;
-        float extensionSeconds = 20 * (wisdom + skill);
+        float extensionSeconds = 20 * (wisdom + skill + itemBonus);
         float totalLength = baseLengthSeconds + extensionSeconds;
         int visualID = 0;
-        NWEffect skillEffect = NWScript.effectSkillIncrease(Skill.HIDE, 1);
+        int amount = 2 + (itemBonus / 3);
 
         // Remove existing bonuses to prevent stacking.
         for(NWEffect effect : NWScript.getEffects(oTarget))
@@ -63,7 +66,8 @@ public class BoostStealth implements IAbility {
         }
 
         NWScript.applyEffectToObject(DURATION_TYPE_INSTANT, NWScript.effectVisualEffect(visualID, false), oTarget, 0.0f);
-        NWScript.applyEffectToObject(DURATION_TYPE_TEMPORARY, skillEffect, oTarget, totalLength);
+        NWScript.applyEffectToObject(DURATION_TYPE_TEMPORARY, NWScript.effectSkillIncrease(Skill.HIDE, amount), oTarget, totalLength);
+        NWScript.applyEffectToObject(DURATION_TYPE_TEMPORARY, NWScript.effectSkillIncrease(Skill.MOVE_SILENTLY, amount), oTarget, totalLength);
     }
 
     @Override

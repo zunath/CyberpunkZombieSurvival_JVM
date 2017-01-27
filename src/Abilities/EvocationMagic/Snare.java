@@ -2,6 +2,7 @@ package Abilities.EvocationMagic;
 
 import Abilities.IAbility;
 import Enumerations.AbilityType;
+import GameObject.PlayerGO;
 import GameSystems.MagicSystem;
 import GameSystems.ProgressionSystem;
 import org.nwnx.nwnx2.jvm.NWEffect;
@@ -42,10 +43,12 @@ public class Snare implements IAbility {
 
     @Override
     public void OnImpact(NWObject oPC, NWObject oTarget) {
+        PlayerGO pcGO = new PlayerGO(oPC);
         int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_EVOCATION_AFFINITY);
         int intelligence = NWScript.getAbilityScore(oPC, Ability.INTELLIGENCE, false) - 10;
+        int itemBonus = pcGO.CalculateEvocationBonus();
 
-        float length = 30.0f + skill + intelligence;
+        float length = 30.0f + ((skill + intelligence + itemBonus) * 5.0f);
         NWEffect effect = NWScript.effectMovementSpeedDecrease(75);
 
         NWScript.applyEffectToObject(DurationType.TEMPORARY, effect, oTarget, length);

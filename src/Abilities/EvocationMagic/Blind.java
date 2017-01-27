@@ -2,6 +2,7 @@ package Abilities.EvocationMagic;
 
 import Abilities.IAbility;
 import Enumerations.AbilityType;
+import GameObject.PlayerGO;
 import GameSystems.MagicSystem;
 import GameSystems.ProgressionSystem;
 import org.nwnx.nwnx2.jvm.NWEffect;
@@ -43,12 +44,15 @@ public class Blind implements IAbility {
 
     @Override
     public void OnImpact(NWObject oPC, NWObject oTarget) {
+        PlayerGO pcGO = new PlayerGO(oPC);
         int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_EVOCATION_AFFINITY);
         int intelligence = NWScript.getAbilityScore(oPC, Ability.INTELLIGENCE, false) - 10;
+        int itemBonus = pcGO.CalculateEvocationBonus();
         float baseDuration = 30.0f;
-        float bonusDuration = (skill * 6.0f) + (intelligence * 12.0f);
+        float bonusDuration = (skill * 6.0f) + (intelligence * 12.0f) + (itemBonus * 3.0f);
         float duration = baseDuration + bonusDuration;
-        NWEffect effect = NWScript.effectAttackDecrease(2, ATTACK_BONUS_MISC);
+        int amount = 2 + (itemBonus / 3);
+        NWEffect effect = NWScript.effectAttackDecrease(amount, ATTACK_BONUS_MISC);
 
         NWScript.applyEffectToObject(DURATION_TYPE_TEMPORARY, effect, oTarget, duration);
         NWScript.applyEffectToObject(DURATION_TYPE_INSTANT, NWScript.effectVisualEffect(VFX_IMP_BLIND_DEAF_M, false), oTarget, 0.0f);

@@ -2,6 +2,7 @@ package GameObject;
 
 import Common.Constants;
 import Entities.PlayerEntity;
+import Enumerations.CustomItemProperty;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.format.DateTimeFormat;
@@ -230,4 +231,75 @@ public class PlayerGO {
             }
         }
     }
+
+    public int CalculateCastingSpeed()
+    {
+        int castingSpeed = 0;
+
+        for(int itemSlot = 0; itemSlot < Constants.NumberOfInventorySlots; itemSlot++)
+        {
+            NWObject item = NWScript.getItemInSlot(itemSlot, _pc);
+
+            for(NWItemProperty ip : NWScript.getItemProperties(item))
+            {
+                int ipType = NWScript.getItemPropertyType(ip);
+
+                if(ipType == CustomItemProperty.CastingSpeedBonus)
+                {
+                    int amount = 100 - NWScript.getItemPropertyCostTableValue(ip);
+                    castingSpeed -= amount;
+                }
+                else if(ipType == CustomItemProperty.CastingSpeedPenalty)
+                {
+                    int amount = 100 - NWScript.getItemPropertyCostTableValue(ip);
+                    castingSpeed += amount;
+                }
+            }
+        }
+
+        if(castingSpeed < -99)
+            castingSpeed = -99;
+        else if(castingSpeed > 99)
+            castingSpeed = 99;
+
+        return castingSpeed;
+    }
+
+    public int CalculateEvocationBonus()
+    {
+        return CalculateSpellBonus(CustomItemProperty.EvocationBonus);
+    }
+
+    public int CalculateEnhancementBonus()
+    {
+        return CalculateSpellBonus(CustomItemProperty.EnhancementBonus);
+    }
+
+    public int CalculateHolyBonus()
+    {
+        return CalculateSpellBonus(CustomItemProperty.HolyBonus);
+    }
+
+    private int CalculateSpellBonus(int ipID)
+    {
+        int spellBonus = 0;
+
+        for(int itemSlot = 0; itemSlot < Constants.NumberOfInventorySlots; itemSlot++)
+        {
+            NWObject item = NWScript.getItemInSlot(itemSlot, _pc);
+
+            for(NWItemProperty ip : NWScript.getItemProperties(item))
+            {
+                int ipType = NWScript.getItemPropertyType(ip);
+                if(ipType == ipID)
+                {
+                    int amount = NWScript.getItemPropertyCostTableValue(ip);
+                    spellBonus += amount;
+                }
+            }
+        }
+
+        return spellBonus;
+    }
+
 }

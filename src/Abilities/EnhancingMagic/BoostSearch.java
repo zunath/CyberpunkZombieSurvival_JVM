@@ -2,6 +2,7 @@ package Abilities.EnhancingMagic;
 
 import Abilities.IAbility;
 import Enumerations.AbilityType;
+import GameObject.PlayerGO;
 import GameSystems.MagicSystem;
 import GameSystems.ProgressionSystem;
 import org.nwnx.nwnx2.jvm.NWEffect;
@@ -45,13 +46,16 @@ public class BoostSearch implements IAbility {
 
     @Override
     public void OnImpact(NWObject oPC, NWObject oTarget) {
+        PlayerGO pcGO = new PlayerGO(oPC);
         int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_ENHANCEMENT_AFFINITY);
         int wisdom = NWScript.getAbilityScore(oPC, Ability.WISDOM, false) - 10;
+        int itemBonus = pcGO.CalculateEnhancementBonus();
         float baseLengthSeconds = 60;
         float extensionSeconds = 20 * (wisdom + skill);
         float totalLength = baseLengthSeconds + extensionSeconds;
         int visualID = 0;
-        NWEffect skillEffect = NWScript.effectSkillIncrease(Skill.SEARCH, 1);
+        int amount = 1 + (itemBonus / 5);
+        NWEffect skillEffect = NWScript.effectSkillIncrease(Skill.SEARCH, amount);
 
         // Remove existing bonuses to prevent stacking.
         for(NWEffect effect : NWScript.getEffects(oTarget))

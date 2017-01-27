@@ -2,6 +2,7 @@ package Abilities.HolyMagic;
 
 import Abilities.IAbility;
 import Enumerations.AbilityType;
+import GameObject.PlayerGO;
 import GameSystems.MagicSystem;
 import GameSystems.ProgressionSystem;
 import org.nwnx.nwnx2.jvm.NWObject;
@@ -9,8 +10,10 @@ import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.constants.Ability;
 
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import static org.nwnx.nwnx2.jvm.constants.All.DURATION_TYPE_INSTANT;
+import static org.nwnx.nwnx2.jvm.constants.All.VFX_IMP_HEALING_L;
 
 public class Cure implements IAbility {
     @Override
@@ -43,17 +46,17 @@ public class Cure implements IAbility {
 
     @Override
     public void OnImpact(NWObject oPC, NWObject oTarget) {
-        Random random = new Random();
+        PlayerGO pcGO = new PlayerGO(oPC);
         int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_HOLY_AFFINITY);
         int wisdom = NWScript.getAbilityScore(oPC, Ability.WISDOM, false) - 10;
-        int baseRecovery = 4 + (skill / 2) + (wisdom / 2);
-        int hp = random.nextInt(10 + (skill / 2) + wisdom) + 1;
-        int visualID = 0;
+        int itemBonus = pcGO.CalculateHolyBonus();
 
-        if(hp < baseRecovery) hp = baseRecovery;
+        int minimum = 2 + (skill / 2) + (wisdom / 2) + (itemBonus / 3);
+        int maximum = 8 + (skill / 2) + (wisdom / 2) + (itemBonus / 3);
 
+        int hp = ThreadLocalRandom.current().nextInt(minimum, maximum);
 
-        NWScript.applyEffectToObject(DURATION_TYPE_INSTANT, NWScript.effectVisualEffect(visualID, false), oTarget, 0.0f);
+        NWScript.applyEffectToObject(DURATION_TYPE_INSTANT, NWScript.effectVisualEffect(VFX_IMP_HEALING_L, false), oTarget, 0.0f);
         NWScript.applyEffectToObject(DURATION_TYPE_INSTANT, NWScript.effectHeal(hp), oTarget, 0.0f);
     }
 
