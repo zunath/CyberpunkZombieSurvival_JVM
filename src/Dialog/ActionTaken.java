@@ -16,18 +16,21 @@ public class ActionTaken implements IScriptEventHandler {
         String uuid = pcGO.getUUID();
         PlayerDialog dialog = DialogManager.loadPlayerDialog(uuid);
         int gender = NWScript.getGender(oPC);
+        int nodeID = NWNX_Events.GetSelectedNodeID();
+        int selectionNumber = nodeID + 1;
         String nodeText = NWNX_Events.GetSelectedNodeText(NWNX_Events.LANGUAGE_ENGLISH, gender);
         int responseID = NWNX_Events.GetSelectedNodeID() + (DialogManager.NumberOfResponsesPerPage * dialog.getPageOffset());
 
-        if(nodeText.equals("Next"))
+        if(selectionNumber == DialogManager.NumberOfResponsesPerPage + 1) // Next Page
         {
             dialog.setPageOffset(dialog.getPageOffset() + 1);
         }
-        else if(nodeText.equals("Previous"))
+        else if(selectionNumber == DialogManager.NumberOfResponsesPerPage + 2) // Previous Page
         {
             dialog.setPageOffset(dialog.getPageOffset() - 1);
         }
-        else if(!nodeText.equals("End")) {
+        else if(selectionNumber != DialogManager.NumberOfResponsesPerPage + 3) // End
+        {
 
             // Try to locate a matching class name based on the event passed in from NWN JVM_EVENT call.
             try {

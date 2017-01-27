@@ -18,15 +18,14 @@ public class AppearsWhen implements IScriptEventHandler {
         PlayerDialog dialog = DialogManager.loadPlayerDialog(uuid);
         DialogPage page = dialog.getCurrentPage();
         int nodeID = NWNX_Events.GetCurrentNodeID();
+        int currentSelectionNumber = nodeID + 1;
         int nodeType = NWNX_Events.GetCurrentNodeType();
         int gender = NWScript.getGender(oPC);
         boolean displayNode = false;
         String nodeText = NWNX_Events.GetCurrentNodeText(NWNX_Events.LANGUAGE_ENGLISH, gender);
         String newNodeText = nodeText;
 
-
-
-        if(nodeText.equals("Next"))
+        if(currentSelectionNumber == DialogManager.NumberOfResponsesPerPage + 1) // Next Page
         {
             int displayCount = page.getNumberOfResponses() - (DialogManager.NumberOfResponsesPerPage * dialog.getPageOffset());
 
@@ -35,7 +34,7 @@ public class AppearsWhen implements IScriptEventHandler {
                 displayNode = true;
             }
         }
-        else if(nodeText.equals("Previous"))
+        else if(currentSelectionNumber == DialogManager.NumberOfResponsesPerPage + 2) // Previous Page
         {
             if(dialog.getPageOffset() > 0)
             {
