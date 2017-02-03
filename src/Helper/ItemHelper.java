@@ -45,7 +45,9 @@ public class ItemHelper {
                 BaseItem.SCIMITAR,
                 BaseItem.SCYTHE,
                 BaseItem.SHORTSWORD,
-                BaseItem.TWOBLADEDSWORD
+                BaseItem.TWOBLADEDSWORD,
+                CustomBaseItemType.LightPick,
+                CustomBaseItemType.HeavyPick
         };
 
         return Arrays.asList(allowedWeaponTypes).contains(itemType);

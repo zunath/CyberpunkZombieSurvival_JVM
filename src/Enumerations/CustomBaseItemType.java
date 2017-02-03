@@ -10,4 +10,6 @@ public class CustomBaseItemType {
     public static int D20HeavyWeapon = 201;
     public static int D20SmallArms6 = 213;
     public static int MZS3Handgun = 510;
+    public static int HeavyPick = 301;
+    public static int LightPick = 302;
 }
