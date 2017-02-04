@@ -49,7 +49,7 @@ public class SpawnSystem {
     private final String PlayerCount = "ZSS_PLAYER_COUNT";
 
 
-    private void CreateCreature(String creatureResref, NWLocation waypointLocation, String areaResref, int lootTableID)
+    private void CreateCreature(String creatureResref, NWLocation waypointLocation, String areaResref, int lootTableID, int difficultyRating)
     {
         NWObject oArea = null;
 
@@ -73,6 +73,7 @@ public class SpawnSystem {
             final NWObject creature = NWScript.createObject(ObjectType.CREATURE, creatureResref, waypointLocation, false, "");
             NWScript.setLocalInt(creature, IsCreatureSpawned, 1);
             CreateLoot(creature, lootTableID);
+            NWScript.setLocalInt(creature, "DIFFICULTY_RATING", difficultyRating);
 
             Scheduler.assign(creature, new Runnable() {
                 @Override
@@ -131,6 +132,8 @@ public class SpawnSystem {
                 final NWObject creature = NWScript.createObject(ObjectType.CREATURE, model.getResref(), lLocation, false, "");
                 NWScript.setLocalInt(creature, IsCreatureSpawned, 1);
                 CreateLoot(creature, model.getLootTableID());
+                NWScript.setLocalInt(creature, "DIFFICULTY_RATING", model.getDifficultyRating());
+
                 Scheduler.assign(creature, new Runnable() {
                     @Override
                     public void run() {
@@ -243,7 +246,7 @@ public class SpawnSystem {
             Scheduler.delay(creature, 120 * 1000, new Runnable() {
                 @Override
                 public void run() {
-                    CreateCreature(model.getResref(), lLocation, areaResref, model.getLootTableID());
+                    CreateCreature(model.getResref(), lLocation, areaResref, model.getLootTableID(), model.getDifficultyRating());
                 }
             });
 
@@ -265,7 +268,7 @@ public class SpawnSystem {
         int randomIndex = MathHelper.GetRandomWeightedIndex(weights);
         SpawnTableCreatureEntity creatureEntity = entity.getSpawnTableCreatures().get(randomIndex);
 
-        return new SpawnModel(creatureEntity.getResref(), creatureEntity.getLootTableID());
+        return new SpawnModel(creatureEntity.getResref(), creatureEntity.getLootTableID(), creatureEntity.getDifficultyRating());
     }
 
     private void CreateLoot(NWObject creature, Integer lootTableID)

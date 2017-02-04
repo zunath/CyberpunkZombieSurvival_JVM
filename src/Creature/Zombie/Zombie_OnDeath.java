@@ -39,23 +39,25 @@ public class Zombie_OnDeath implements IScriptEventHandler {
         }
     }
 
-    private void GiveExperienceToPCParty(NWObject objSelf)
+    private void GiveExperienceToPCParty(NWObject creature)
     {
         NWObject oPC = NWScript.getLastKiller();
         if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return;
 
-        String zombieAreaResref = NWScript.getResRef(NWScript.getArea(objSelf));
+        String creatureAreaResref = NWScript.getResRef(NWScript.getArea(creature));
         NWObject[] partyMembers = NWScript.getFactionMembers(oPC, true);
+        int difficultyRating = NWScript.getLocalInt(creature, "DIFFICULTY_RATING"); // This value is set in the SpawnSystem.java class
+        int maxLevelToGainExp = difficultyRating * 10;
 
         for(NWObject member : partyMembers)
         {
             String areaResref = NWScript.getResRef(NWScript.getArea(member));
-            float distance = NWScript.getDistanceBetween(member, objSelf);
-            if(distance <= 20.0f && Objects.equals(areaResref, zombieAreaResref))
+            float distance = NWScript.getDistanceBetween(member, creature);
+            if(distance <= 20.0f && Objects.equals(areaResref, creatureAreaResref))
             {
                 int level = ProgressionSystem.GetPlayerLevel(member);
 
-                if(level <= 20)
+                if(level <= maxLevelToGainExp)
                 {
                     int exp = ThreadLocalRandom.current().nextInt(25, 50);
                     ProgressionSystem.GiveExperienceToPC(member, exp);
