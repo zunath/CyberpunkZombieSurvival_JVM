@@ -30,7 +30,7 @@ public class OnLoad implements IScriptEventHandler {
         DeathSystem.OnModuleLoad();
 		StructureSystem.OnModuleLoad();
 		// Spawn system
-		spawnSystem.ZSS_OnModuleLoad();
+		spawnSystem.OnModuleLoad();
 		AreaInstanceSystem.OnModuleLoad();
 
 	}

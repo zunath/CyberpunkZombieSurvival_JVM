@@ -14,7 +14,7 @@ public class OnDeath implements IScriptEventHandler {
     public void runScript(NWObject oDead) {
         NWObject oKiller = NWScript.getLastKiller();
         SpawnSystem spawnSystem = new SpawnSystem();
-        spawnSystem.ZSS_OnZombieDeath(oDead);
+        spawnSystem.OnCreatureDeath(oDead);
 
         // only continue if killer is valid and not from same faction...
         if ((oKiller==NWObject.INVALID) || (NWScript.getFactionEqual(oKiller, oDead))) return;

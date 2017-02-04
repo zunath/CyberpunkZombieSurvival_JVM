@@ -27,6 +27,9 @@ public class SpawnTableCreatureEntity {
     @JoinColumn(name = "SpawnTableID")
     private SpawnTableEntity spawnTable;
 
+    @Column(name = "LootTableID")
+    private int lootTableID;
+
 
     public int getSpawnTableCreatureID() {
         return spawnTableCreatureID;
@@ -74,5 +77,13 @@ public class SpawnTableCreatureEntity {
 
     public void setSpawnTable(SpawnTableEntity spawnTable) {
         this.spawnTable = spawnTable;
+    }
+
+    public int getLootTableID() {
+        return lootTableID;
+    }
+
+    public void setLootTableID(int lootTableID) {
+        this.lootTableID = lootTableID;
     }
 }

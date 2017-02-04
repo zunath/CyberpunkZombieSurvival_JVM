@@ -11,6 +11,6 @@ public class OnExit implements IScriptEventHandler {
         SpawnSystem spawnSystem = new SpawnSystem();
 
         // Spawn GameSystems
-        spawnSystem.ZSS_OnAreaExit(objSelf);
+        spawnSystem.OnAreaExit(objSelf);
     }
 }

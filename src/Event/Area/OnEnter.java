@@ -25,7 +25,7 @@ public class OnEnter implements IScriptEventHandler {
         LoadLocation(oPC, oArea);
         SaveLocation(oPC, oArea);
         ApplySanctuaryEffects(oPC);
-        spawnSystem.ZSS_OnAreaEnter(oArea);
+        spawnSystem.OnAreaEnter(oArea);
         AdjustCamera(oPC);
         ProfessionSystem.OnAreaEnter(oArea);
 
