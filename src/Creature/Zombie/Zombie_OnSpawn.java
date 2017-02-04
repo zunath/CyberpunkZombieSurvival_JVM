@@ -11,6 +11,9 @@ import org.nwnx.nwnx2.jvm.constants.DamageType;
 import org.nwnx.nwnx2.jvm.constants.DurationType;
 import org.nwnx.nwnx2.jvm.constants.InventorySlot;
 
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
+
 @SuppressWarnings("unused")
 public class Zombie_OnSpawn implements IScriptEventHandler {
     @Override
@@ -50,7 +53,9 @@ public class Zombie_OnSpawn implements IScriptEventHandler {
     private void SpawnRandomClothes(NWObject oZombie)
     {
         ZombieClothesRepository repo = new ZombieClothesRepository();
-        ZombieClothesEntity entity = repo.GetRandomClothes();
+        List<ZombieClothesEntity> entities = repo.GetRandomClothes();
+        int randomIndex = ThreadLocalRandom.current().nextInt(0, entities.size()-1);
+        ZombieClothesEntity entity = entities.get(randomIndex);
 
         if(entity != null)
         {

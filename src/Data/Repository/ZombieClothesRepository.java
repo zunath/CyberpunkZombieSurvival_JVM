@@ -5,25 +5,27 @@ import Entities.ZombieClothesEntity;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
+import java.util.List;
+
 public class ZombieClothesRepository {
 
-    public ZombieClothesEntity GetRandomClothes()
+    public List<ZombieClothesEntity> GetRandomClothes()
     {
-        ZombieClothesEntity entity;
+        List<ZombieClothesEntity> entities;
 
         try(DataContext context = new DataContext())
         {
             Criteria criteria = context.getSession()
                     .createCriteria(ZombieClothesEntity.class);
 
-            entity = (ZombieClothesEntity)criteria
-                    .add(Restrictions.eq("resref", ""))
-                    .add(Restrictions.sqlRestriction("1=1 order by rand()"))
-                    .setMaxResults(1)
-                    .uniqueResult();
+            entities = criteria
+                    .add(Restrictions.ne("resref", ""))
+                    .add(Restrictions.eq("isActive", true))
+                    .list();
+
         }
 
-        return entity;
+        return entities;
     }
 
 }
