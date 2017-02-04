@@ -1,5 +1,8 @@
 package GameSystems;
 
+import Data.Repository.SpawnTableRepository;
+import Entities.SpawnTableCreatureEntity;
+import Entities.SpawnTableEntity;
 import Helper.LocalArray;
 import NWNX.NWNX_Funcs;
 import NWNX.NWNX_TMI;
@@ -23,7 +26,7 @@ public class SpawnSystem {
 
     // The name of the variable which determines which group to pull spawn resrefs from.
     // This variable is stored on the area object
-    final String ZSS_GROUP_ID = "ZSS_GROUP_ID";
+    final String ZSS_GROUP_ID = "SPAWN_TABLE";
 
     // The name of the variable which determines how many spawn points there are in an area
     // This variable is stored on the area object
@@ -105,8 +108,6 @@ public class SpawnSystem {
         // Only spawn zombies if this is the first PC in the area
         if(iPCCount == 1)
         {
-            boolean bUnique = true;
-
             for(int iCurrentZombie = 1; iCurrentZombie <= iZombieCount; iCurrentZombie++)
             {
                 int iWaypoint;
@@ -121,7 +122,7 @@ public class SpawnSystem {
                     iWaypoint = iCurrentZombie;
                 }
 
-                String sResref = ZSS_GetZombieToSpawn(iGroupID, bUnique);
+                String sResref = ZSS_GetZombieToSpawn(iGroupID);
                 NWLocation lLocation = LocalArray.GetLocalArrayLocation(oArea, ZSS_SPAWN_WAYPOINT_LOCATION_ARRAY, iWaypoint);
 
                 final NWObject oZombie = NWScript.createObject(ObjectType.CREATURE, sResref, lLocation, false, "");
@@ -136,9 +137,6 @@ public class SpawnSystem {
                         NWScript.setFacing(0.01f * NWScript.random(3600));
                     }
                 });
-
-                // No more chances to spawn a unique creature
-                bUnique = false;
             }
         }
 
@@ -238,7 +236,7 @@ public class SpawnSystem {
         if(iPCCount > 0)
         {
             int iWaypoint = NWScript.random(iWaypointCount) + 1;
-            final String sResref = ZSS_GetZombieToSpawn(iGroupID, false);
+            final String sResref = ZSS_GetZombieToSpawn(iGroupID);
             final NWLocation lLocation = LocalArray.GetLocalArrayLocation(oArea, ZSS_RESPAWN_WAYPOINT_LOCATION_ARRAY, iWaypoint);
 
             Scheduler.delay(oZombie, ZSS_SPAWN_DELAY * 1000, new Runnable() {
@@ -252,82 +250,31 @@ public class SpawnSystem {
     }
 
 
-    private String ZSS_GetZombieToSpawn(int iGroupID, boolean bUnique)
+    private String ZSS_GetZombieToSpawn(int spawnTableID)
     {
-        String sResref = "";
+        SpawnTableRepository repo = new SpawnTableRepository();
+        SpawnTableEntity entity = repo.GetBySpawnTableID(spawnTableID);
 
-        switch(iGroupID)
+        int totalWeight = 0;
+        for(SpawnTableCreatureEntity creature : entity.getSpawnTableCreatures())
         {
-            // Group #1 - Basic Zombies (Tier 1)
-            case 1:
-            {
-                int iNumberOfChoices = 15;
-
-                switch(NWScript.random(iNumberOfChoices) + 1)
-                {
-                    case 1:  sResref = "reo_zombie_1";  break;
-                    case 2:  sResref = "reo_zombie_2";  break;
-                    case 3:  sResref = "reo_zombie_3";  break;
-                    case 4:  sResref = "reo_zombie_4";  break;
-                    case 5:  sResref = "reo_zombie_5";  break;
-                    case 6:  sResref = "reo_zombie_6";  break;
-                    case 7:  sResref = "reo_zombie_7";  break;
-                    case 8:  sResref = "reo_zombie_8";  break;
-                    case 9:  sResref = "reo_zombie_9";  break;
-                    case 10: sResref = "reo_zombie_10"; break;
-                    case 11: sResref = "reo_zombie_11"; break;
-                    case 12: sResref = "reo_zombie_12"; break;
-                    case 13: sResref = "reo_zombie_13"; break;
-                    case 14: sResref = "reo_zombie_14"; break;
-                    case 15: sResref = "reo_zombie_15"; break;
-                }
-                break;
-            }
-
-            // Group #2 - Walkers and MA-121 Hunter Alphas (Tier 2)
-            case 2:
-            {
-                if(bUnique)
-                {
-                    int iChance = NWScript.random(100) + 1;
-
-                    // 15% to spawn a Hunter
-                    if(iChance <= 15)
-                    {
-                        sResref = "reo_hunter_1";
-                    }
-                }
-
-                if(Objects.equals(sResref, ""))
-                {
-                    int iNumberOfChoices = 15;
-
-                    // In all other cases, spawn normal Walkers
-                    switch(NWScript.random(iNumberOfChoices) + 1)
-                    {
-                        case 1:  sResref = "reo_walker_1";  break;
-                        case 2:  sResref = "reo_walker_2";  break;
-                        case 3:  sResref = "reo_walker_3";  break;
-                        case 4:  sResref = "reo_walker_4";  break;
-                        case 5:  sResref = "reo_walker_5";  break;
-                        case 6:  sResref = "reo_walker_6";  break;
-                        case 7:  sResref = "reo_walker_7";  break;
-                        case 8:  sResref = "reo_walker_8";  break;
-                        case 9:  sResref = "reo_walker_9";  break;
-                        case 10: sResref = "reo_walker_10"; break;
-                        case 11: sResref = "reo_walker_11"; break;
-                        case 12: sResref = "reo_walker_12"; break;
-                        case 13: sResref = "reo_walker_13"; break;
-                        case 14: sResref = "reo_walker_14"; break;
-                        case 15: sResref = "reo_walker_15"; break;
-                    }
-                }
-                break;
-            }
-
+            totalWeight += creature.getWeight();
         }
 
-        return sResref;
+        int randomIndex = -1;
+        double random = Math.random() * totalWeight;
+        for(int i= 0; i < entity.getSpawnTableCreatures().size(); ++i)
+        {
+            random -= entity.getSpawnTableCreatures().get(i).getWeight();
+            if(random <= 0.0d)
+            {
+                randomIndex = i;
+                break;
+            }
+        }
+
+        SpawnTableCreatureEntity creatureEntity = entity.getSpawnTableCreatures().get(randomIndex);
+        return creatureEntity.getResref();
     }
     
 

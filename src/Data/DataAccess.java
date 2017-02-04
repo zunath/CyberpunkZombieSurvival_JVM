@@ -105,6 +105,8 @@ public class DataAccess {
         _configuration.addAnnotatedClass(ProgressionSkillEntity.class);
         _configuration.addAnnotatedClass(ResearchBlueprintEntity.class);
         _configuration.addAnnotatedClass(ServerConfigurationEntity.class);
+        _configuration.addAnnotatedClass(SpawnTableCreatureEntity.class);
+        _configuration.addAnnotatedClass(SpawnTableEntity.class);
         _configuration.addAnnotatedClass(StorageContainerEntity.class);
         _configuration.addAnnotatedClass(StorageItemEntity.class);
         _configuration.addAnnotatedClass(StructureCategoryEntity.class);
