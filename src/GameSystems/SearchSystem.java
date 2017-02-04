@@ -12,6 +12,7 @@ import Helper.ColorToken;
 import Helper.LocalVariableHelper;
 import Data.Repository.LootTableRepository;
 import Data.Repository.SearchSiteRepository;
+import Helper.MathHelper;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.nwnx.nwnx2.jvm.*;
@@ -240,24 +241,13 @@ public class SearchSystem {
     {
         LootTableRepository repo = new LootTableRepository();
         LootTableEntity entity = repo.GetByLootTableID(lootTable);
+        int weights[] = new int[entity.getLootTableItems().size()];
 
-        int totalWeight = 0;
-        for(LootTableItemEntity item : entity.getLootTableItems())
+        for(int x = 0; x < entity.getLootTableItems().size(); x++)
         {
-            totalWeight += item.getWeight();
+            weights[x] = entity.getLootTableItems().get(x).getWeight();
         }
-
-        int randomIndex = -1;
-        double random = Math.random() * totalWeight;
-        for(int i = 0; i < entity.getLootTableItems().size(); ++i)
-        {
-            random -= entity.getLootTableItems().get(i).getWeight();
-            if(random <= 0.0d)
-            {
-                randomIndex = i;
-                break;
-            }
-        }
+        int randomIndex = MathHelper.GetRandomWeightedIndex(weights);
 
         LootTableItemEntity itemEntity = entity.getLootTableItems().get(randomIndex);
         Random rand = new Random();

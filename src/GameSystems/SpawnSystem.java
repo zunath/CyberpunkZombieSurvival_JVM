@@ -4,6 +4,7 @@ import Data.Repository.SpawnTableRepository;
 import Entities.SpawnTableCreatureEntity;
 import Entities.SpawnTableEntity;
 import Helper.LocalArray;
+import Helper.MathHelper;
 import NWNX.NWNX_Funcs;
 import NWNX.NWNX_TMI;
 import org.nwnx.nwnx2.jvm.NWLocation;
@@ -254,25 +255,14 @@ public class SpawnSystem {
     {
         SpawnTableRepository repo = new SpawnTableRepository();
         SpawnTableEntity entity = repo.GetBySpawnTableID(spawnTableID);
+        int weights[] = new int[entity.getSpawnTableCreatures().size()];
 
-        int totalWeight = 0;
-        for(SpawnTableCreatureEntity creature : entity.getSpawnTableCreatures())
+        for(int x = 0; x < entity.getSpawnTableCreatures().size(); x++)
         {
-            totalWeight += creature.getWeight();
+            weights[x] = entity.getSpawnTableCreatures().get(x).getWeight();
         }
 
-        int randomIndex = -1;
-        double random = Math.random() * totalWeight;
-        for(int i= 0; i < entity.getSpawnTableCreatures().size(); ++i)
-        {
-            random -= entity.getSpawnTableCreatures().get(i).getWeight();
-            if(random <= 0.0d)
-            {
-                randomIndex = i;
-                break;
-            }
-        }
-
+        int randomIndex = MathHelper.GetRandomWeightedIndex(weights);
         SpawnTableCreatureEntity creatureEntity = entity.getSpawnTableCreatures().get(randomIndex);
         return creatureEntity.getResref();
     }
