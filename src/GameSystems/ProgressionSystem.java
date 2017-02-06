@@ -6,8 +6,10 @@ import Entities.*;
 import Enumerations.CustomFeat;
 import Enumerations.CustomItemProperty;
 import Enumerations.ProfessionType;
+import GameObject.ItemGO;
 import GameObject.PlayerGO;
 import Helper.ColorToken;
+import Helper.ItemHelper;
 import NWNX.NWNX_Funcs;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
@@ -15,10 +17,7 @@ import org.nwnx.nwnx2.jvm.NWItemProperty;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.Scheduler;
-import org.nwnx.nwnx2.jvm.constants.Ability;
-import org.nwnx.nwnx2.jvm.constants.Feat;
-import org.nwnx.nwnx2.jvm.constants.SavingThrow;
-import org.nwnx.nwnx2.jvm.constants.Skill;
+import org.nwnx.nwnx2.jvm.constants.*;
 
 import java.util.List;
 import java.util.Objects;
@@ -404,9 +403,16 @@ public class ProgressionSystem {
 
         if(!DoesPlayerMeetItemSkillRequirements(oPC, oItem))
         {
-            Scheduler.assign(oPC, new Runnable() {
+            Scheduler.delay(oPC, 100, new Runnable() {
                 @Override
                 public void run() {
+
+                    for(NWObject item : NWScript.getItemsInInventory(oPC))
+                    {
+                        if(NWScript.getBaseItemType(item) == BaseItem.ARROW)
+                            NWScript.destroyObject(item, 0.0f);
+                    }
+
                     NWScript.clearAllActions(false);
                     NWScript.actionUnequipItem(oItem);
                 }

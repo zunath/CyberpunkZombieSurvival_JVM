@@ -486,7 +486,7 @@ public class MagicSystem {
 
         if(!MagicSystem.IsAbilityEquipped(oPC, AbilityType.EnergyBladeAdept))
         {
-            Scheduler.assign(oPC, new Runnable() {
+            Scheduler.delay(oPC, 50, new Runnable() {
                 @Override
                 public void run() {
                     NWScript.clearAllActions(false);
