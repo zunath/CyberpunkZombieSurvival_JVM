@@ -51,8 +51,8 @@ public class Ice implements IAbility {
         int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_EVOCATION_AFFINITY);
         int intelligence = NWScript.getAbilityScore(oPC, Ability.INTELLIGENCE, false) - 10;
         int itemBonus = pcGO.CalculateEvocationBonus();
-        int minimumDamage = 1 + (int)((skill + intelligence + (itemBonus * 2)) * 0.10f);
-        int maximumDamage = 4 + (int)((skill + intelligence + (itemBonus * 2)) * 0.25f);
+        int minimumDamage = 1 + (int)((skill + intelligence + (itemBonus * 4)) * 0.10f);
+        int maximumDamage = 4 + (int)((skill + intelligence + (itemBonus * 4)) * 0.25f);
         final int damage = ThreadLocalRandom.current().nextInt(minimumDamage, maximumDamage + 1);
 
         float slowLength = 2.0f + (skill * 0.5f) + (intelligence * 0.75f);

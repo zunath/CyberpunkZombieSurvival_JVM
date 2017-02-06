@@ -54,8 +54,8 @@ public class Flame implements IAbility {
         int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_EVOCATION_AFFINITY);
         int intelligence = NWScript.getAbilityScore(oPC, Ability.INTELLIGENCE, false) - 10;
         int itemBonus = pcGO.CalculateEvocationBonus();
-        int minimumDamage = 2 + (int)((skill + intelligence + (itemBonus * 2)) * 0.25f);
-        int maximumDamage = 6 + (int)((skill + intelligence + (itemBonus * 2)) * 0.50f);
+        int minimumDamage = 2 + (int)((skill + intelligence + (itemBonus * 4)) * 0.25f);
+        int maximumDamage = 6 + (int)((skill + intelligence + (itemBonus * 4)) * 0.50f);
 
         final int damage = ThreadLocalRandom.current().nextInt(minimumDamage, maximumDamage + 1);
         NWScript.applyEffectToObject(DURATION_TYPE_INSTANT, NWScript.effectVisualEffect(VFX_IMP_FLAME_M, false), oTarget, 0.0f);
