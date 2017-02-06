@@ -287,7 +287,9 @@ public class SpawnSystem {
 
         int randomIndex = MathHelper.GetRandomWeightedIndex(weights);
         LootTableItemEntity itemEntity = entity.getLootTableItems().get(randomIndex);
-        int quantity = ThreadLocalRandom.current().nextInt(1, itemEntity.getMaxQuantity());
+        int quantity =
+                itemEntity.getMaxQuantity() == 1 ? 1 :
+                ThreadLocalRandom.current().nextInt(1, itemEntity.getMaxQuantity());
 
         if(!itemEntity.getResref().equals("") && quantity > 0)
         {

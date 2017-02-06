@@ -28,7 +28,7 @@ public class SpawnTableCreatureEntity {
     private SpawnTableEntity spawnTable;
 
     @Column(name = "LootTableID")
-    private int lootTableID;
+    private Integer lootTableID;
 
     @Column(name = "DifficultyRating")
     private int difficultyRating;
@@ -82,11 +82,11 @@ public class SpawnTableCreatureEntity {
         this.spawnTable = spawnTable;
     }
 
-    public int getLootTableID() {
+    public Integer getLootTableID() {
         return lootTableID;
     }
 
-    public void setLootTableID(int lootTableID) {
+    public void setLootTableID(Integer lootTableID) {
         this.lootTableID = lootTableID;
     }
 
