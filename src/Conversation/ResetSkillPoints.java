@@ -172,7 +172,7 @@ public class ResetSkillPoints extends DialogBase implements IDialogHandler {
         {
             NWScript.deleteLocalInt(oPC, "TEMP_MENU_REALLY_CONFIRM");
             SetResponseText("ConfirmResetPage", 1, "Confirm Reset Skill Points");
-            ProgressionSystem.PerformSkillReset(oPC);
+            ProgressionSystem.PerformSkillReset(oPC, false);
             HandleResetTokenConferrence();
             SetPageHeader("MainPage", BuildHeader());
             BuildDialogResponses();

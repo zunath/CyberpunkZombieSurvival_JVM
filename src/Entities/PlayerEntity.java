@@ -3,7 +3,6 @@ package Entities;
 import javax.persistence.*;
 import java.util.Date;
 
-@SuppressWarnings("UnusedDeclaration")
 @Entity
 @Table(name="PlayerCharacters")
 public class PlayerEntity {
@@ -86,6 +85,9 @@ public class PlayerEntity {
     private float respawnLocationZ;
     @Column(name="RespawnLocationOrientation")
     private float respawnLocationOrientation;
+
+    @Column(name = "DateLastForcedSPReset")
+    private Date dateLastForcedSPReset;
 
     public PlayerEntity()
     {
@@ -410,4 +412,11 @@ public class PlayerEntity {
         this.respawnLocationOrientation = respawnLocationOrientation;
     }
 
+    public Date getDateLastForcedSPReset() {
+        return dateLastForcedSPReset;
+    }
+
+    public void setDateLastForcedSPReset(Date dateLastForcedSPReset) {
+        this.dateLastForcedSPReset = dateLastForcedSPReset;
+    }
 }

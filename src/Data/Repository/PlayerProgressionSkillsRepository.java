@@ -8,21 +8,6 @@ import java.util.List;
 
 public class PlayerProgressionSkillsRepository {
 
-    public List<PlayerProgressionSkillEntity> getByPlayerUUID(String uuid)
-    {
-        List<PlayerProgressionSkillEntity> entities;
-
-        try(DataContext context = new DataContext())
-        {
-            Criteria criteria = context.getSession()
-                    .createCriteria(PlayerProgressionSkillEntity.class);
-
-            entities = criteria.add(Restrictions.eq("pcID", uuid)).list();
-        }
-
-        return entities;
-    }
-
     public PlayerProgressionSkillEntity GetByUUIDAndSkillID(String uuid, int skillID)
     {
         PlayerProgressionSkillEntity entity;

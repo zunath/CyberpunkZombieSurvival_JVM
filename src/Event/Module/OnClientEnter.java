@@ -40,6 +40,8 @@ public class OnClientEnter implements IScriptEventHandler {
         PlayerAuthorizationSystem.OnModuleEnter();
         // Profession System
         ProfessionSystem.OnModuleEnter();
+        // Progression System
+        ProgressionSystem.OnModuleEnter();
 
         // DMFI
         NWScript.executeScript("dmfi_onclienter", objSelf);

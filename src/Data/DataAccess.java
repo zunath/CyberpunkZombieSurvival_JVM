@@ -70,6 +70,7 @@ public class DataAccess {
         _configuration.addAnnotatedClass(CraftLevelEntity.class);
         _configuration.addAnnotatedClass(CustomEffectEntity.class);
         _configuration.addAnnotatedClass(DMRoleEntity.class);
+        _configuration.addAnnotatedClass(ForcedSPResetEntity.class);
         _configuration.addAnnotatedClass(ItemCombinationEntity.class);
         _configuration.addAnnotatedClass(KeyItemCategoryEntity.class);
         _configuration.addAnnotatedClass(KeyItemEntity.class);

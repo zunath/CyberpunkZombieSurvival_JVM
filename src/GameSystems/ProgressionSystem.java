@@ -1,21 +1,16 @@
 package GameSystems;
 
 import Common.Constants;
-import Entities.PlayerEntity;
-import Entities.PlayerProgressionSkillEntity;
-import Entities.ProgressionLevelEntity;
-import Entities.ProgressionSkillEntity;
+import Data.Repository.*;
+import Entities.*;
 import Enumerations.CustomFeat;
 import Enumerations.CustomItemProperty;
 import Enumerations.ProfessionType;
 import GameObject.PlayerGO;
 import Helper.ColorToken;
 import NWNX.NWNX_Funcs;
-import Data.Repository.PlayerProgressionSkillsRepository;
-import Data.Repository.PlayerRepository;
-import Data.Repository.ProgressionLevelRepository;
-import Data.Repository.ProgressionSkillRepository;
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 import org.nwnx.nwnx2.jvm.NWItemProperty;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
@@ -397,7 +392,7 @@ public class ProgressionSystem {
 
     public static void OnModuleEquip()
     {
-        NWObject oPC = NWScript.getPCItemLastEquippedBy();
+        final NWObject oPC = NWScript.getPCItemLastEquippedBy();
 
         if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return;
 
@@ -417,6 +412,30 @@ public class ProgressionSystem {
                 }
             });
         }
+    }
+
+    public static void OnModuleEnter()
+    {
+        NWObject oPC = NWScript.getEnteringObject();
+
+        if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return;
+        PlayerGO pcGO = new PlayerGO(oPC);
+        PlayerRepository playerRepo = new PlayerRepository();
+        ForcedSPResetRepository spRepo = new ForcedSPResetRepository();
+
+        PlayerEntity playerEntity = playerRepo.getByUUID(pcGO.getUUID());
+        ForcedSPResetEntity spEntity = spRepo.GetLatestForcedSPResetDate();
+
+        if(spEntity == null) return;
+
+        if(playerEntity.getDateLastForcedSPReset() == null ||
+                playerEntity.getDateLastForcedSPReset().before(spEntity.getDateOfReset()))
+        {
+            PerformSkillReset(oPC, true);
+            playerEntity = playerRepo.getByUUID(pcGO.getUUID());
+            playerEntity.setDateLastForcedSPReset(DateTime.now(DateTimeZone.UTC).toDate());
+            playerRepo.save(playerEntity);
+        }
 
     }
 
@@ -434,11 +453,11 @@ public class ProgressionSystem {
 
     }
 
-    public static void PerformSkillReset(NWObject oPC)
+    public static void PerformSkillReset(final NWObject oPC, boolean forceReset)
     {
         PlayerGO pcGO = new PlayerGO(oPC);
 
-        if(!CanResetSkills(oPC))
+        if(!CanResetSkills(oPC) && !forceReset)
         {
             NWScript.sendMessageToPC(oPC, "You cannot reset your skills yet.");
             return;
@@ -447,10 +466,14 @@ public class ProgressionSystem {
         pcGO.UnequipAllItems();
         PlayerRepository repo = new PlayerRepository();
         PlayerEntity entity = InitializePlayer(oPC);
-        DateTime nextReset = DateTime.now().plusDays(ResetCooldownDays);
-        entity.setResetTokens(entity.getResetTokens() - 1);
-        entity.setNextSPResetDate(nextReset.toDate());
-        entity.setNumberOfSPResets(entity.getNumberOfSPResets() + 1);
+
+        if(!forceReset)
+        {
+            DateTime nextReset = DateTime.now().plusDays(ResetCooldownDays);
+            entity.setResetTokens(entity.getResetTokens() - 1);
+            entity.setNextSPResetDate(nextReset.toDate());
+            entity.setNumberOfSPResets(entity.getNumberOfSPResets() + 1);
+        }
 
         repo.save(entity);
 
@@ -459,7 +482,20 @@ public class ProgressionSystem {
             MagicSystem.UnequipAbility(oPC, index);
         }
 
-        NWScript.floatingTextStringOnCreature(ColorToken.Green() + "Skill reset completed successfully." + ColorToken.End(), oPC, false);
+        if(forceReset)
+        {
+            Scheduler.delay(oPC, 8000, new Runnable() {
+                @Override
+                public void run() {
+                    NWScript.floatingTextStringOnCreature(ColorToken.Green() + "You have received a free skill reset due to changes in the skill list." + ColorToken.End(), oPC, false);
+                }
+            });
+        }
+        else
+        {
+            NWScript.floatingTextStringOnCreature(ColorToken.Green() + "Skill reset completed successfully." + ColorToken.End(), oPC, false);
+        }
+
     }
 
     public static int GetLevelExperienceRequired(int level)
