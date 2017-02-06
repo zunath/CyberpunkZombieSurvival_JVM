@@ -1,14 +1,16 @@
 package Item.Repair;
 
 import Common.IScriptEventHandler;
-import NWNX.NWNX_Events;
+import Enumerations.AbilityType;
 import GameSystems.DurabilitySystem;
+import GameSystems.MagicSystem;
 import GameSystems.ProgressionSystem;
+import NWNX.NWNX_Events;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.constants.BaseItem;
 
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 @SuppressWarnings("unused")
 public class ArmorRepairKit implements IScriptEventHandler {
@@ -25,8 +27,13 @@ public class ArmorRepairKit implements IScriptEventHandler {
         }
 
         int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_ITEM_REPAIR) * 2;
-        Random random = new Random();
-        int repairAmount = random.nextInt(20) + skill + 5;
+        int repairAmount = ThreadLocalRandom.current().nextInt(20) + skill + 5;
+
+        if(MagicSystem.IsAbilityEquipped(oPC, AbilityType.Fixer))
+        {
+            repairAmount *= 1.25f;
+        }
+
         DurabilitySystem.RunItemRepair(oPC, item, repairAmount);
 
         NWScript.destroyObject(item, 0.0f);
