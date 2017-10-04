@@ -5,6 +5,8 @@ Game: Neverwinter Nights 1
 
 Forums: http://czs.boards.net/
 
+Discord: https://discord.gg/Mt25sk8
+
 # Project Description
 
 This project contains the Java source code used on the Cyberpunk Zombie Survival server. 
