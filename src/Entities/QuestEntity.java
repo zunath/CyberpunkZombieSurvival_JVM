@@ -17,11 +17,13 @@ public class QuestEntity {
     @Column(name = "JournalTag")
     private String journalTag;
 
-    @Column(name = "QuestTypeID")
-    private int questTypeID;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "QuestTypeID", updatable = false, insertable = false)
+    private QuestTypeEntity questType;
 
-    @Column(name = "FameRegionID")
-    private int fameRegionID;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "FameRegionID", updatable = false, insertable = false)
+    private FameRegionEntity fameRegion;
 
     @Column(name = "RequiredFameAmount")
     private int requiredFameAmount;
@@ -35,8 +37,9 @@ public class QuestEntity {
     @Column(name = "RewardXP")
     private int rewardXP;
 
-    @Column(name = "RewardKeyItemID")
-    private int rewardKeyItemID;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "RewardKeyItemID", updatable = false, insertable = false)
+    private KeyItemEntity rewardKeyItem;
 
     @Column(name = "RewardFame")
     private int rewardFame;
@@ -50,8 +53,10 @@ public class QuestEntity {
     @Column(name = "MapNoteTag")
     private String mapNoteTag;
 
-    @Column(name = "StartKeyItemID")
-    private int startKeyItemID;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "StartKeyItemID", updatable = false, insertable = false)
+    private KeyItemEntity startKeyItemID;
 
     @Column(name = "RemoveStartKeyItemAfterCompletion")
     private boolean removeStartKeyItemAfterCompletion;
@@ -79,22 +84,6 @@ public class QuestEntity {
 
     public void setJournalTag(String journalTag) {
         this.journalTag = journalTag;
-    }
-
-    public int getQuestTypeID() {
-        return questTypeID;
-    }
-
-    public void setQuestTypeID(int questTypeID) {
-        this.questTypeID = questTypeID;
-    }
-
-    public int getFameRegionID() {
-        return fameRegionID;
-    }
-
-    public void setFameRegionID(int fameRegionID) {
-        this.fameRegionID = fameRegionID;
     }
 
     public int getRequiredFameAmount() {
@@ -129,14 +118,6 @@ public class QuestEntity {
         this.rewardXP = rewardXP;
     }
 
-    public int getRewardKeyItemID() {
-        return rewardKeyItemID;
-    }
-
-    public void setRewardKeyItemID(int rewardKeyItemID) {
-        this.rewardKeyItemID = rewardKeyItemID;
-    }
-
     public int getRewardFame() {
         return rewardFame;
     }
@@ -169,14 +150,6 @@ public class QuestEntity {
         this.mapNoteTag = mapNoteTag;
     }
 
-    public int getStartKeyItemID() {
-        return startKeyItemID;
-    }
-
-    public void setStartKeyItemID(int startKeyItemID) {
-        this.startKeyItemID = startKeyItemID;
-    }
-
     public boolean isRemoveStartKeyItemAfterCompletion() {
         return removeStartKeyItemAfterCompletion;
     }
@@ -184,4 +157,38 @@ public class QuestEntity {
     public void setRemoveStartKeyItemAfterCompletion(boolean removeStartKeyItemAfterCompletion) {
         this.removeStartKeyItemAfterCompletion = removeStartKeyItemAfterCompletion;
     }
+
+    public QuestTypeEntity getQuestType() {
+        return questType;
+    }
+
+    public void setQuestType(QuestTypeEntity questType) {
+        this.questType = questType;
+    }
+
+
+    public FameRegionEntity getFameRegion() {
+        return fameRegion;
+    }
+
+    public void setFameRegion(FameRegionEntity fameRegion) {
+        this.fameRegion = fameRegion;
+    }
+
+    public KeyItemEntity getRewardKeyItem() {
+        return rewardKeyItem;
+    }
+
+    public void setRewardKeyItem(KeyItemEntity rewardKeyItem) {
+        this.rewardKeyItem = rewardKeyItem;
+    }
+
+    public KeyItemEntity getStartKeyItemID() {
+        return startKeyItemID;
+    }
+
+    public void setStartKeyItemID(KeyItemEntity startKeyItemID) {
+        this.startKeyItemID = startKeyItemID;
+    }
+
 }

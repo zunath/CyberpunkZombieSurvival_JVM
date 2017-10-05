@@ -8,21 +8,21 @@ import javax.persistence.Table;
 
 @SuppressWarnings("UnusedDeclaration")
 @Entity
-@Table(name="QuestNPCGroups")
-public class QuestNPCGroupEntity {
+@Table(name="NPCGroups")
+public class NPCGroupEntity {
     @Id
-    @Column(name = "QuestNPCGroupID")
-    private int questNPCGroupID;
+    @Column(name = "NPCGroupID")
+    private int npcGroupID;
 
     @Column(name = "Name")
     private String name;
 
-    public int getQuestNPCGroupID() {
-        return questNPCGroupID;
+    public int getNPCGroupID() {
+        return npcGroupID;
     }
 
-    public void setQuestNPCGroupID(int questNPCGroupID) {
-        this.questNPCGroupID = questNPCGroupID;
+    public void setNPCGroupID(int npcGroupID) {
+        this.npcGroupID = npcGroupID;
     }
     public String getName() {
         return name;

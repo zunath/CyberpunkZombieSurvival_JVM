@@ -12,33 +12,35 @@ public class QuestPrerequisiteEntity {
     @Column(name = "QuestPrerequisiteID")
     private int questPrerequisiteID;
 
-    @Column(name = "QuestID")
-    private int questID;
 
-    @Column(name = "RequiredQuestID")
-    private int requiredQuestID;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "QuestID", updatable = false, insertable = false)
+    private QuestEntity quest;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "RequiredQuestID", updatable = false, insertable = false)
+    private QuestEntity requiredQuest;
 
     public int getQuestPrerequisiteID() {
         return questPrerequisiteID;
     }
 
+    public QuestEntity getQuest() {
+        return quest;
+    }
+
+    public void setQuest(QuestEntity quest) {
+        this.quest = quest;
+    }
     public void setQuestPrerequisiteID(int questPrerequisiteID) {
         this.questPrerequisiteID = questPrerequisiteID;
     }
 
-    public int getQuestID() {
-        return questID;
+    public QuestEntity getRequiredQuest() {
+        return requiredQuest;
     }
 
-    public void setQuestID(int questID) {
-        this.questID = questID;
-    }
-
-    public int getRequiredQuestID() {
-        return requiredQuestID;
-    }
-
-    public void setRequiredQuestID(int requiredQuestID) {
-        this.requiredQuestID = requiredQuestID;
+    public void setRequiredQuest(QuestEntity requiredQuest) {
+        this.requiredQuest = requiredQuest;
     }
 }

@@ -7,12 +7,12 @@ import javax.persistence.Table;
 
 @SuppressWarnings("UnusedDeclaration")
 @Entity
-@Table(name="QuestFameRegions")
-public class QuestFameRegionEntity {
+@Table(name="FameRegions")
+public class FameRegionEntity {
 
 
     @Id
-    @Column(name="QuestFameRegionID")
+    @Column(name="FameRegionID")
     private int fameRegionID;
 
     @Column(name="Name")

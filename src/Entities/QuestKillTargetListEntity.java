@@ -15,8 +15,9 @@ public class QuestKillTargetListEntity {
     @Column(name = "QuestID")
     private int questID;
 
-    @Column(name = "QuestNPCGroupID")
-    private int questNPCGroupID;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "npcGroupID", updatable = false, insertable = false)
+    private NPCGroupEntity npcGroup;
 
     @Column(name = "Quantity")
     private int quantity;
@@ -37,19 +38,19 @@ public class QuestKillTargetListEntity {
         this.questID = questID;
     }
 
-    public int getQuestNPCGroupID() {
-        return questNPCGroupID;
-    }
-
-    public void setQuestNPCGroupID(int questNPCGroupID) {
-        this.questNPCGroupID = questNPCGroupID;
-    }
-
     public int getQuantity() {
         return quantity;
     }
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public NPCGroupEntity getNpcGroup() {
+        return npcGroup;
+    }
+
+    public void setNpcGroup(NPCGroupEntity npcGroup) {
+        this.npcGroup = npcGroup;
     }
 }

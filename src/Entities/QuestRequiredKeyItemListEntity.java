@@ -13,11 +13,14 @@ public class QuestRequiredKeyItemListEntity {
     @Column(name = "QuestRequiredKeyItemID")
     private int questRequiredKeyItemID;
 
-    @Column(name = "QuestID")
-    private int questID;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "QuestID", updatable = false, insertable = false)
+    private QuestEntity quest;
 
-    @Column(name = "KeyItemID")
-    private int keyItemID;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "KeyItemID", updatable = false, insertable = false)
+    private KeyItemEntity keyItem;
 
     public int getQuestRequiredKeyItemID() {
         return questRequiredKeyItemID;
@@ -27,20 +30,20 @@ public class QuestRequiredKeyItemListEntity {
         this.questRequiredKeyItemID = questRequiredKeyItemID;
     }
 
-    public int getQuestID() {
-        return questID;
+    public QuestEntity getQuest() {
+        return quest;
     }
 
-    public void setQuestID(int questID) {
-        this.questID = questID;
+    public void setQuest(QuestEntity quest) {
+        this.quest = quest;
     }
 
-    public int getKeyItemID() {
-        return keyItemID;
+    public KeyItemEntity getKeyItem() {
+        return keyItem;
     }
 
-    public void setKeyItemID(int keyItemID) {
-        this.keyItemID = keyItemID;
+    public void setKeyItem(KeyItemEntity keyItem) {
+        this.keyItem = keyItem;
     }
 
 }

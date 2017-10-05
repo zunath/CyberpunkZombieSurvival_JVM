@@ -105,9 +105,9 @@ public class DataAccess {
         _configuration.addAnnotatedClass(ProgressionLevelEntity.class);
         _configuration.addAnnotatedClass(ProgressionSkillEntity.class);
         _configuration.addAnnotatedClass(QuestEntity.class);
-        _configuration.addAnnotatedClass(QuestFameRegionEntity.class);
+        _configuration.addAnnotatedClass(FameRegionEntity.class);
         _configuration.addAnnotatedClass(QuestKillTargetListEntity.class);
-        _configuration.addAnnotatedClass(QuestNPCGroupEntity.class);
+        _configuration.addAnnotatedClass(NPCGroupEntity.class);
         _configuration.addAnnotatedClass(QuestPrerequisiteEntity.class);
         _configuration.addAnnotatedClass(QuestRequiredItemListEntity.class);
         _configuration.addAnnotatedClass(QuestRequiredKeyItemListEntity.class);

@@ -12,8 +12,9 @@ public class QuestRewardListEntity {
     @Column(name = "QuestRewardListID")
     private int questRewardListID;
 
-    @Column(name = "QuestID")
-    private int questID;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "QuestID", updatable = false, insertable = false)
+    private QuestEntity quest;
 
     @Column(name = "Resref")
     private String resref;
@@ -29,13 +30,6 @@ public class QuestRewardListEntity {
         this.questRewardListID = questRewardListID;
     }
 
-    public int getQuestID() {
-        return questID;
-    }
-
-    public void setQuestID(int questID) {
-        this.questID = questID;
-    }
 
     public String getResref() {
         return resref;
@@ -51,5 +45,13 @@ public class QuestRewardListEntity {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public QuestEntity getQuest() {
+        return quest;
+    }
+
+    public void setQuest(QuestEntity quest) {
+        this.quest = quest;
     }
 }

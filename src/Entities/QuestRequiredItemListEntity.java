@@ -12,8 +12,10 @@ public class QuestRequiredItemListEntity {
     @Column(name = "QuestRequiredItemListID")
     private int questRequiredItemListID;
 
-    @Column(name = "QuestID")
-    private int questID;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "QuestID", updatable = false, insertable = false)
+    private QuestEntity quest;
 
     @Column(name = "Resref")
     private String resref;
@@ -25,18 +27,16 @@ public class QuestRequiredItemListEntity {
         return questRequiredItemListID;
     }
 
+    public QuestEntity getQuest() {
+        return quest;
+    }
+
+    public void setQuest(QuestEntity quest) {
+        this.quest = quest;
+    }
     public void setQuestRequiredItemListID(int questRequiredItemListID) {
         this.questRequiredItemListID = questRequiredItemListID;
     }
-
-    public int getQuestID() {
-        return questID;
-    }
-
-    public void setQuestID(int questID) {
-        this.questID = questID;
-    }
-
     public String getResref() {
         return resref;
     }
