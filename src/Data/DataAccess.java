@@ -104,6 +104,15 @@ public class DataAccess {
         _configuration.addAnnotatedClass(ProfessionEntity.class);
         _configuration.addAnnotatedClass(ProgressionLevelEntity.class);
         _configuration.addAnnotatedClass(ProgressionSkillEntity.class);
+        _configuration.addAnnotatedClass(QuestEntity.class);
+        _configuration.addAnnotatedClass(QuestFameRegionEntity.class);
+        _configuration.addAnnotatedClass(QuestKillTargetListEntity.class);
+        _configuration.addAnnotatedClass(QuestNPCGroupEntity.class);
+        _configuration.addAnnotatedClass(QuestPrerequisiteEntity.class);
+        _configuration.addAnnotatedClass(QuestRequiredItemListEntity.class);
+        _configuration.addAnnotatedClass(QuestRequiredKeyItemListEntity.class);
+        _configuration.addAnnotatedClass(QuestRewardListEntity.class);
+        _configuration.addAnnotatedClass(QuestTypeEntity.class);
         _configuration.addAnnotatedClass(ResearchBlueprintEntity.class);
         _configuration.addAnnotatedClass(ServerConfigurationEntity.class);
         _configuration.addAnnotatedClass(SpawnTableCreatureEntity.class);
