@@ -91,6 +91,8 @@ public class DataAccess {
         _configuration.addAnnotatedClass(PCEquippedAbilityEntity.class);
         _configuration.addAnnotatedClass(PCOutfitEntity.class);
         _configuration.addAnnotatedClass(PCOverflowItemEntity.class);
+        _configuration.addAnnotatedClass(PCQuestStatusEntity.class);
+        _configuration.addAnnotatedClass(PCRegionalFameEntity.class);
         _configuration.addAnnotatedClass(PCSearchSiteEntity.class);
         _configuration.addAnnotatedClass(PCSearchSiteItemEntity.class);
         _configuration.addAnnotatedClass(PCTerritoryFlagEntity.class);
@@ -111,7 +113,8 @@ public class DataAccess {
         _configuration.addAnnotatedClass(QuestPrerequisiteEntity.class);
         _configuration.addAnnotatedClass(QuestRequiredItemListEntity.class);
         _configuration.addAnnotatedClass(QuestRequiredKeyItemListEntity.class);
-        _configuration.addAnnotatedClass(QuestRewardListEntity.class);
+        _configuration.addAnnotatedClass(QuestRewardItemEntity.class);
+        _configuration.addAnnotatedClass(QuestStateEntity.class);
         _configuration.addAnnotatedClass(QuestTypeEntity.class);
         _configuration.addAnnotatedClass(ResearchBlueprintEntity.class);
         _configuration.addAnnotatedClass(ServerConfigurationEntity.class);

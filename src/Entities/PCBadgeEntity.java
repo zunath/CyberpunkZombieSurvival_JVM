@@ -10,7 +10,7 @@ public class PCBadgeEntity {
     @Id
     @Column(name = "PCBadgeID")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String pcBadgeID;
+    private Long pcBadgeID;
 
     @Column(name ="PlayerID")
     private String playerID;
@@ -34,11 +34,11 @@ public class PCBadgeEntity {
     @JoinColumn(name = "BadgeID", updatable = false, insertable = false)
     private BadgeEntity badge;
 
-    public String getPcBadgeID() {
+    public Long getPcBadgeID() {
         return pcBadgeID;
     }
 
-    public void setPcBadgeID(String pcBadgeID) {
+    public void setPcBadgeID(Long pcBadgeID) {
         this.pcBadgeID = pcBadgeID;
     }
 

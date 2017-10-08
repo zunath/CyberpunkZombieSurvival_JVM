@@ -1,6 +1,7 @@
 package Entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @SuppressWarnings("UnusedDeclaration")
 @Entity
@@ -16,10 +17,6 @@ public class QuestEntity {
 
     @Column(name = "JournalTag")
     private String journalTag;
-
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "QuestTypeID", updatable = false, insertable = false)
-    private QuestTypeEntity questType;
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "FameRegionID", updatable = false, insertable = false)
@@ -44,9 +41,6 @@ public class QuestEntity {
     @Column(name = "RewardFame")
     private int rewardFame;
 
-    @Column(name = "FinishStateID")
-    private int finishStateID;
-
     @Column(name = "IsRepeatable")
     private boolean isRepeatable;
 
@@ -60,6 +54,23 @@ public class QuestEntity {
 
     @Column(name = "RemoveStartKeyItemAfterCompletion")
     private boolean removeStartKeyItemAfterCompletion;
+
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quest", fetch = FetchType.EAGER, orphanRemoval = true)
+    private List<QuestKillTargetListEntity> killTargets;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quest", fetch = FetchType.EAGER, orphanRemoval = true)
+    private List<QuestRewardItemEntity> rewardItems;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quest", fetch = FetchType.EAGER, orphanRemoval = true)
+    private List<QuestRequiredItemListEntity> requiredItems;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quest", fetch = FetchType.EAGER, orphanRemoval = true)
+    private List<QuestRequiredKeyItemListEntity> requiredKeyItems;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quest", fetch = FetchType.EAGER, orphanRemoval = true)
+    private List<QuestPrerequisiteEntity> prerequisiteQuests;
+
 
 
     public int getQuestID() {
@@ -126,14 +137,6 @@ public class QuestEntity {
         this.rewardFame = rewardFame;
     }
 
-    public int getFinishStateID() {
-        return finishStateID;
-    }
-
-    public void setFinishStateID(int finishStateID) {
-        this.finishStateID = finishStateID;
-    }
-
     public boolean isRepeatable() {
         return isRepeatable;
     }
@@ -157,15 +160,6 @@ public class QuestEntity {
     public void setRemoveStartKeyItemAfterCompletion(boolean removeStartKeyItemAfterCompletion) {
         this.removeStartKeyItemAfterCompletion = removeStartKeyItemAfterCompletion;
     }
-
-    public QuestTypeEntity getQuestType() {
-        return questType;
-    }
-
-    public void setQuestType(QuestTypeEntity questType) {
-        this.questType = questType;
-    }
-
 
     public FameRegionEntity getFameRegion() {
         return fameRegion;
@@ -191,4 +185,43 @@ public class QuestEntity {
         this.startKeyItemID = startKeyItemID;
     }
 
+    public List<QuestKillTargetListEntity> getKillTargets() {
+        return killTargets;
+    }
+
+    public void setKillTargets(List<QuestKillTargetListEntity> killTargets) {
+        this.killTargets = killTargets;
+    }
+
+    public List<QuestRewardItemEntity> getRewardItems() {
+        return rewardItems;
+    }
+
+    public void setRewardItems(List<QuestRewardItemEntity> rewardItems) {
+        this.rewardItems = rewardItems;
+    }
+
+    public List<QuestRequiredItemListEntity> getRequiredItems() {
+        return requiredItems;
+    }
+
+    public void setRequiredItems(List<QuestRequiredItemListEntity> requiredItems) {
+        this.requiredItems = requiredItems;
+    }
+
+    public List<QuestRequiredKeyItemListEntity> getRequiredKeyItems() {
+        return requiredKeyItems;
+    }
+
+    public void setRequiredKeyItems(List<QuestRequiredKeyItemListEntity> requiredKeyItems) {
+        this.requiredKeyItems = requiredKeyItems;
+    }
+
+    public List<QuestPrerequisiteEntity> getPrerequisiteQuests() {
+        return prerequisiteQuests;
+    }
+
+    public void setPrerequisiteQuests(List<QuestPrerequisiteEntity> prerequisiteQuests) {
+        this.prerequisiteQuests = prerequisiteQuests;
+    }
 }

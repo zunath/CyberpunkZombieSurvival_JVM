@@ -13,7 +13,7 @@ public class QuestRequiredItemListEntity {
     private int questRequiredItemListID;
 
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "QuestID", updatable = false, insertable = false)
     private QuestEntity quest;
 

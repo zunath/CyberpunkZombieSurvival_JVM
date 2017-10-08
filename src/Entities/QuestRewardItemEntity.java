@@ -4,15 +4,15 @@ import javax.persistence.*;
 
 @SuppressWarnings("UnusedDeclaration")
 @Entity
-@Table(name="QuestRewardList")
-public class QuestRewardListEntity {
+@Table(name="QuestRewardItems")
+public class QuestRewardItemEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "QuestRewardListID")
-    private int questRewardListID;
+    @Column(name = "QuestRewardItemID")
+    private int questRewardItemID;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "QuestID", updatable = false, insertable = false)
     private QuestEntity quest;
 
@@ -23,11 +23,11 @@ public class QuestRewardListEntity {
     private int quantity;
 
     public int getQuestRewardListID() {
-        return questRewardListID;
+        return questRewardItemID;
     }
 
     public void setQuestRewardListID(int questRewardListID) {
-        this.questRewardListID = questRewardListID;
+        this.questRewardItemID = questRewardListID;
     }
 
 

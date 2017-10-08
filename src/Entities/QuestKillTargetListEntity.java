@@ -12,11 +12,12 @@ public class QuestKillTargetListEntity {
     @Column(name = "QuestKillTargetListID")
     private int questKillTargetListID;
 
-    @Column(name = "QuestID")
-    private int questID;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "QuestID", updatable = false, insertable = false)
+    private QuestEntity quest;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "npcGroupID", updatable = false, insertable = false)
+    @JoinColumn(name = "NPCGroupID", updatable = false, insertable = false)
     private NPCGroupEntity npcGroup;
 
     @Column(name = "Quantity")
@@ -30,12 +31,12 @@ public class QuestKillTargetListEntity {
         this.questKillTargetListID = questKillTargetListID;
     }
 
-    public int getQuestID() {
-        return questID;
+    public QuestEntity getQuest() {
+        return quest;
     }
 
-    public void setQuestID(int questID) {
-        this.questID = questID;
+    public void setQuest(QuestEntity questID) {
+        this.quest = questID;
     }
 
     public int getQuantity() {
