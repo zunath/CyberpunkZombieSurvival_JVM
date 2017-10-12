@@ -91,7 +91,7 @@ public class DataAccess {
         _configuration.addAnnotatedClass(PCEquippedAbilityEntity.class);
         _configuration.addAnnotatedClass(PCOutfitEntity.class);
         _configuration.addAnnotatedClass(PCOverflowItemEntity.class);
-        _configuration.addAnnotatedClass(PCQuestStatusEntity.class);
+        //_configuration.addAnnotatedClass(PCQuestStatusEntity.class);
         _configuration.addAnnotatedClass(PCRegionalFameEntity.class);
         _configuration.addAnnotatedClass(PCSearchSiteEntity.class);
         _configuration.addAnnotatedClass(PCSearchSiteItemEntity.class);
@@ -106,16 +106,16 @@ public class DataAccess {
         _configuration.addAnnotatedClass(ProfessionEntity.class);
         _configuration.addAnnotatedClass(ProgressionLevelEntity.class);
         _configuration.addAnnotatedClass(ProgressionSkillEntity.class);
-        _configuration.addAnnotatedClass(QuestEntity.class);
+        //_configuration.addAnnotatedClass(QuestEntity.class);
         _configuration.addAnnotatedClass(FameRegionEntity.class);
-        _configuration.addAnnotatedClass(QuestKillTargetListEntity.class);
+        //_configuration.addAnnotatedClass(QuestKillTargetListEntity.class);
         _configuration.addAnnotatedClass(NPCGroupEntity.class);
-        _configuration.addAnnotatedClass(QuestPrerequisiteEntity.class);
-        _configuration.addAnnotatedClass(QuestRequiredItemListEntity.class);
-        _configuration.addAnnotatedClass(QuestRequiredKeyItemListEntity.class);
-        _configuration.addAnnotatedClass(QuestRewardItemEntity.class);
-        _configuration.addAnnotatedClass(QuestStateEntity.class);
-        _configuration.addAnnotatedClass(QuestTypeEntity.class);
+        //_configuration.addAnnotatedClass(QuestPrerequisiteEntity.class);
+        //_configuration.addAnnotatedClass(QuestRequiredItemListEntity.class);
+        //_configuration.addAnnotatedClass(QuestRequiredKeyItemListEntity.class);
+        //_configuration.addAnnotatedClass(QuestRewardItemEntity.class);
+        //_configuration.addAnnotatedClass(QuestStateEntity.class);
+        //_configuration.addAnnotatedClass(QuestTypeEntity.class);
         _configuration.addAnnotatedClass(ResearchBlueprintEntity.class);
         _configuration.addAnnotatedClass(ServerConfigurationEntity.class);
         _configuration.addAnnotatedClass(SpawnTableCreatureEntity.class);
@@ -127,12 +127,10 @@ public class DataAccess {
         _configuration.addAnnotatedClass(TerritoryFlagPermissionEntity.class);
         _configuration.addAnnotatedClass(ZombieClothesEntity.class);
 
-
         ServiceRegistry _serviceRegistry = new ServiceRegistryBuilder().applySettings(
                 _configuration.getProperties()).buildServiceRegistry();
 
         _sessionFactory = _configuration.buildSessionFactory(_serviceRegistry);
-
     }
 
     public static Session getSession()

@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="com.mchange:mchange-commons-java:0.2.12" type="repository">
+    <properties maven-id="com.mchange:mchange-commons-java:0.2.12" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/mchange-commons-java-0.2.12.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
