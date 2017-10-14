@@ -167,7 +167,7 @@ public class PlayerGO {
     {
         NWObject database = GetDatabaseItem();
         String dateString = NWScript.getLocalString(database, "PC_CREATE_DATE");
-        DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ssz");
+        DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss");
         return formatter.withZone(DateTimeZone.UTC).parseDateTime(dateString);
     }
 
@@ -179,7 +179,7 @@ public class PlayerGO {
 
     public void setCreateDate(NWObject databaseItem)
     {
-        DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ssz");
+        DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss");
         DateTime dt = new DateTime(DateTimeZone.UTC);
         String timestamp = dt.toString(formatter);
         NWScript.setLocalString(databaseItem, "PC_CREATE_DATE", timestamp);

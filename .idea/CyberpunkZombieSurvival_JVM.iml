@@ -11,5 +11,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="libs" level="project" />
     <orderEntry type="library" name="com.mchange:mchange-commons-java:0.2.12" level="project" />
+    <orderEntry type="library" name="joda-time:joda-time:2.9.9" level="project" />
   </component>
 </module>
