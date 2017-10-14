@@ -125,7 +125,9 @@ public abstract class DialogBase {
             NWScript.writeTimestampedLogEntry(exceptionAsString);
         }
         dialog = DialogManager.loadPlayerDialog(pcGO.getUUID());
+
         dialog.resetPage();
+
         ChangePage(dialog.getCurrentPageName());
 
         try

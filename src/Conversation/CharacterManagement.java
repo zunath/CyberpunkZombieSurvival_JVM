@@ -12,7 +12,7 @@ public class CharacterManagement extends DialogBase implements IDialogHandler {
     @Override
     public PlayerDialog SetUp(NWObject oPC) {
 
-        PlayerDialog dialog = new PlayerDialog();
+        PlayerDialog dialog = new PlayerDialog("MainPage");
         DialogPage characterManagementPage = new DialogPage(
                 "Character Management & Information Page",
                 "Disable PVP Protection",

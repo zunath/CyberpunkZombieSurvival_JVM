@@ -8,7 +8,7 @@ import org.nwnx.nwnx2.jvm.Scheduler;
 public class BlueprintMerchant extends DialogBase implements IDialogHandler {
     @Override
     public PlayerDialog SetUp(NWObject oPC) {
-        PlayerDialog dialog = new PlayerDialog();
+        PlayerDialog dialog = new PlayerDialog("MainPage");
 
         DialogPage mainPage = new DialogPage(
                 "Our supplies have run low so we've resorted to building most of the things we need. Please take a look at my collection of blueprints and let me know if you'd like to buy anything.",

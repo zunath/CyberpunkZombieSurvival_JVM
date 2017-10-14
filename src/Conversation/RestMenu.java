@@ -22,7 +22,7 @@ public class RestMenu extends DialogBase implements IDialogHandler {
     @Override
     public PlayerDialog SetUp(NWObject oPC) {
 
-        PlayerDialog dialog = new PlayerDialog();
+        PlayerDialog dialog = new PlayerDialog("MainPage");
         DialogPage mainPage = new DialogPage(
                 BuildMainPageHeader(oPC),
                 ColorToken.Green() + "Open Overflow Inventory" + ColorToken.End(),

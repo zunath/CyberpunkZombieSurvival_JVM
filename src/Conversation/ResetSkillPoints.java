@@ -15,7 +15,7 @@ import org.nwnx.nwnx2.jvm.NWScript;
 public class ResetSkillPoints extends DialogBase implements IDialogHandler {
     @Override
     public PlayerDialog SetUp(NWObject oPC) {
-        PlayerDialog dialog = new PlayerDialog();
+        PlayerDialog dialog = new PlayerDialog("MainPage");
         DialogPage mainPage = new DialogPage();
         DialogPage confirmResetPage = new DialogPage(
                 "Are you sure you want to reset your skills? All purchases will be reset and your skill points will be returned to you.\n\nIn addition, all items will be unequipped from you.",

@@ -13,7 +13,7 @@ import java.util.List;
 public class ManageCDKeys extends DialogBase implements IDialogHandler {
     @Override
     public PlayerDialog SetUp(NWObject oPC) {
-        PlayerDialog dialog = new PlayerDialog();
+        PlayerDialog dialog = new PlayerDialog("MainPage");
         DialogPage mainPage = new DialogPage(
                 "This menu may be used to manage CD keys which are allowed to access the characters on your account.\n\n" +
                         "Note that actions taken here will affect your entire account.",

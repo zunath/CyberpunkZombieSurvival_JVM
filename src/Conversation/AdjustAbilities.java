@@ -20,7 +20,7 @@ import java.util.Objects;
 public class AdjustAbilities extends DialogBase implements IDialogHandler {
     @Override
     public PlayerDialog SetUp(NWObject oPC) {
-        PlayerDialog dialog = new PlayerDialog();
+        PlayerDialog dialog = new PlayerDialog("MainPage");
 
         DialogPage mainPage = new DialogPage(
                 "The cybernetic amplifier embedded into your brain allows you to equip abilities. All abilities must be installed by using Ability Discs. Once installed you may equip them here at this terminal.",

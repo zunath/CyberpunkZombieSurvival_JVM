@@ -15,7 +15,7 @@ import org.nwnx.nwnx2.jvm.constants.CreaturePart;
 public class ChangeHead extends DialogBase implements IDialogHandler {
     @Override
     public PlayerDialog SetUp(NWObject oPC) {
-        PlayerDialog dialog = new PlayerDialog();
+        PlayerDialog dialog = new PlayerDialog("MainPage");
         DialogPage mainPage = new DialogPage(
                 "<SET LATER>",
                 "Advance Head ID by 1",

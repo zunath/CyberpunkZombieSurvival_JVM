@@ -16,7 +16,7 @@ import org.nwnx.nwnx2.jvm.constants.ObjectType;
 public class StructureStorage extends DialogBase implements IDialogHandler {
     @Override
     public PlayerDialog SetUp(NWObject oPC) {
-        PlayerDialog dialog = new PlayerDialog();
+        PlayerDialog dialog = new PlayerDialog("MainPage");
         DialogPage mainPage = new DialogPage(
                 ColorToken.Green() + "Persistent Storage Menu" + ColorToken.End() + "\n\nPlease select an option.",
                 "Open Storage"

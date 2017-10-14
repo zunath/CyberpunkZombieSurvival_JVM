@@ -7,7 +7,7 @@ import org.nwnx.nwnx2.jvm.NWScript;
 public class AbilityMerchant extends DialogBase implements IDialogHandler {
     @Override
     public PlayerDialog SetUp(NWObject oPC) {
-        PlayerDialog dialog = new PlayerDialog();
+        PlayerDialog dialog = new PlayerDialog("MainPage");
         DialogPage mainPage = new DialogPage(
                 "My scanner detects that you've been implanted with an AMP. I've got ability discs you can install if you would like to take a look. Which would you like to see?",
                 "I have some questions first.",

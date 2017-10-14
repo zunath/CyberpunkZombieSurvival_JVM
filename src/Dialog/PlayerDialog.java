@@ -13,12 +13,14 @@ public class PlayerDialog {
     private NWObject dialogTarget;
     private Object dialogCustomData;
     private boolean isEnding;
+    private String defaultPageName;
 
-    public PlayerDialog()
+    public PlayerDialog(String defaultPageName)
     {
         dialogPages = new HashMap<>();
         currentPageName = "";
         pageOffset = 0;
+        this.defaultPageName = defaultPageName;
     }
 
     public void addPage(String pageName, DialogPage page)
@@ -64,7 +66,7 @@ public class PlayerDialog {
 
     public void resetPage()
     {
-        currentPageName = (String)dialogPages.keySet().toArray()[0];
+        currentPageName = defaultPageName;
     }
 
     public NWObject getDialogTarget() {

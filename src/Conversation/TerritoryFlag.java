@@ -21,7 +21,7 @@ import java.util.List;
 public class TerritoryFlag extends DialogBase implements IDialogHandler {
     @Override
     public PlayerDialog SetUp(NWObject oPC) {
-        PlayerDialog dialog = new PlayerDialog();
+        PlayerDialog dialog = new PlayerDialog("MainPage");
         DialogPage mainPage = new DialogPage(
                 ColorToken.Green() + "Territory Management Menu" + ColorToken.End() + "\n\nPlease select an option.",
                 "Manage Permissions",

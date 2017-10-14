@@ -15,7 +15,7 @@ import org.nwnx.nwnx2.jvm.NWScript;
 public class ChangePortrait extends DialogBase implements IDialogHandler {
     @Override
     public PlayerDialog SetUp(NWObject oPC) {
-        PlayerDialog dialog = new PlayerDialog();
+        PlayerDialog dialog = new PlayerDialog("MainPage");
         DialogPage mainPage = new DialogPage(
                 "<SET LATER>",
                 "Advance Portrait ID by 1",

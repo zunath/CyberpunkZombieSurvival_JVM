@@ -20,7 +20,7 @@ import java.util.List;
 public class ConstructionSite extends DialogBase implements IDialogHandler {
     @Override
     public PlayerDialog SetUp(NWObject oPC) {
-        PlayerDialog dialog = new PlayerDialog();
+        PlayerDialog dialog = new PlayerDialog("MainPage");
         DialogPage mainPage = new DialogPage("<SET LATER>");
         DialogPage blueprintCategoryPage = new DialogPage(
                 "Please select a blueprint category."

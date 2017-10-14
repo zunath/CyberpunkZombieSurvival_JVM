@@ -15,7 +15,7 @@ public class Outfit extends DialogBase implements IDialogHandler {
 
     @Override
     public PlayerDialog SetUp(NWObject oPC) {
-        PlayerDialog dialog = new PlayerDialog();
+        PlayerDialog dialog = new PlayerDialog("MainPage");
 
         DialogPage mainPage = new DialogPage(
                 "Please select an option.",
