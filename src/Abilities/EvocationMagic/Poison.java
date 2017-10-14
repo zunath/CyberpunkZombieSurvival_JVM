@@ -50,8 +50,8 @@ public class Poison implements IAbility {
         int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_EVOCATION_AFFINITY);
         int intelligence = NWScript.getAbilityScore(oPC, Ability.INTELLIGENCE, false) - 10;
         int itemBonus = pcGO.CalculateEvocationBonus();
-        int baseTicks = 6;
-        int bonusTicks = (skill * 2) + (intelligence * 3) + itemBonus;
+        int baseTicks = 3;
+        int bonusTicks = (skill / 2 ) + (intelligence / 2) + itemBonus;
         int durationTicks = baseTicks + bonusTicks;
 
         CustomEffectSystem.ApplyCustomEffect(oPC, oTarget, CustomEffectType.Poison, durationTicks);
