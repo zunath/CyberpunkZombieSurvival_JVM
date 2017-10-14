@@ -1,5 +1,6 @@
 package Event.Module;
 import Common.Constants;
+import Data.Repository.DatabaseRepository;
 import Entities.ActivePlayerEntity;
 import Entities.PlayerEntity;
 import Enumerations.AbilityType;
@@ -50,6 +51,9 @@ public class OnHeartbeat implements IScriptEventHandler {
 		SaveCharacters();
 		RefreshActivePlayers();
         CustomEffectSystem.OnModuleHeartbeat();
+
+		DatabaseRepository databaseRepo = new DatabaseRepository();
+		databaseRepo.KeepAlive();
 	}
 
 	// Export all characters every minute.

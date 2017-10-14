@@ -1,4 +1,5 @@
 package Data;
+import Data.Repository.DatabaseRepository;
 import Entities.*;
 import Helper.ErrorHelper;
 import org.hibernate.Session;
@@ -69,6 +70,7 @@ public class DataAccess {
         _configuration.addAnnotatedClass(CraftEntity.class);
         _configuration.addAnnotatedClass(CraftLevelEntity.class);
         _configuration.addAnnotatedClass(CustomEffectEntity.class);
+        _configuration.addAnnotatedClass(DatabaseRepository.class);
         _configuration.addAnnotatedClass(DMRoleEntity.class);
         _configuration.addAnnotatedClass(ForcedSPResetEntity.class);
         _configuration.addAnnotatedClass(ItemCombinationEntity.class);
