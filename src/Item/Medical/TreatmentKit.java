@@ -56,31 +56,25 @@ public class TreatmentKit implements IScriptEventHandler {
 
         NWNX_Funcs.StartTimingBar(oPC, (int) delay, "");
 
-        Scheduler.assign(oPC, new Runnable() {
-            @Override
-            public void run() {
-                pcGO.setIsBusy(true);
-                NWScript.setFacingPoint(NWScript.getPosition(target));
-                NWScript.actionPlayAnimation(Animation.LOOPING_GET_MID, 1.0f, delay);
-                NWScript.setCommandable(false, oPC);
-            }
+        Scheduler.assign(oPC, () -> {
+            pcGO.setIsBusy(true);
+            NWScript.setFacingPoint(NWScript.getPosition(target));
+            NWScript.actionPlayAnimation(Animation.LOOPING_GET_MID, 1.0f, delay);
+            NWScript.setCommandable(false, oPC);
         });
 
-        Scheduler.delay(oPC, (int) (delay * 1000), new Runnable() {
-            @Override
-            public void run() {
-                pcGO.setIsBusy(false);
-                NWScript.setCommandable(true, oPC);
-                float distance = NWScript.getDistanceBetween(oPC, target);
+        Scheduler.delay(oPC, (int) (delay * 1000), () -> {
+            pcGO.setIsBusy(false);
+            NWScript.setCommandable(true, oPC);
+            float distance1 = NWScript.getDistanceBetween(oPC, target);
 
-                if (distance > 3.5f) {
-                    NWScript.sendMessageToPC(oPC, "Your target is too far away.");
-                    return;
-                }
-
-                DiseaseSystem.DecreaseDiseaseLevel(target, restoreAmount);
-                ItemHelper.ReduceItemStack(item);
+            if (distance1 > 3.5f) {
+                NWScript.sendMessageToPC(oPC, "Your target is too far away.");
+                return;
             }
+
+            DiseaseSystem.DecreaseDiseaseLevel(target, restoreAmount);
+            ItemHelper.ReduceItemStack(item);
         });
     }
 }

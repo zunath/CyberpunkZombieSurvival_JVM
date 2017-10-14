@@ -908,12 +908,7 @@ public class NWNX_Funcs {
     public static void StartTimingBar(final NWObject oCreature, int nSeconds, final String sJavaScript) {
         NWScript.setLocalString(oCreature, "NWNX!FUNCSEXT!STARTTIMINGBAR", nSeconds * 1000 + "    ");
         NWScript.deleteLocalString(oCreature, "NWNX!FUNCSEXT!STARTTIMINGBAR");
-        Scheduler.delay(oCreature, nSeconds * 1000, new Runnable() {
-            @Override
-            public void run() {
-                StopTimingBar(oCreature, sJavaScript);
-            }
-        });
+        Scheduler.delay(oCreature, nSeconds * 1000, () -> StopTimingBar(oCreature, sJavaScript));
     }
 
     public static void StopTimingBar(NWObject oCreature, String sJavaScript) {

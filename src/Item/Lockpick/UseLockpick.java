@@ -104,32 +104,19 @@ public class UseLockpick implements IScriptEventHandler {
             Position.TurnToFaceObject(oTarget, oPC);
 
             final float fSecondsCopy = fSeconds;
-            Scheduler.assign(oPC, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.playAnimation(Animation.LOOPING_GET_MID, 1.0f, fSecondsCopy);
-                    NWScript.setCommandable(false, oPC);
-                }
+            Scheduler.assign(oPC, () -> {
+                NWScript.playAnimation(Animation.LOOPING_GET_MID, 1.0f, fSecondsCopy);
+                NWScript.setCommandable(false, oPC);
             });
 
-            Scheduler.delay(oPC, (int) (fSeconds * 1000), new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.setCommandable(true, oPC);
-                }
-            });
+            Scheduler.delay(oPC, (int) (fSeconds * 1000), () -> NWScript.setCommandable(true, oPC));
 
             // Show timing bar, set PC's current action status, and inform PC they're picking a lock.
             NWNX_Funcs.StartTimingBar(oPC, iSeconds, "Item.Lockpick.PerformLockpick");
             NWScript.setLocalObject(oPC, UnlockingObjectVariable, oTarget);
             NWScript.setLocalInt(oPC, CurrentStatusVariable, 1);
 
-            Scheduler.delay(oPC, (int)(1000 * (fSeconds + 0.2)), new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.deleteLocalInt(oPC, CurrentStatusVariable);
-                }
-            });
+            Scheduler.delay(oPC, (int)(1000 * (fSeconds + 0.2)), () -> NWScript.deleteLocalInt(oPC, CurrentStatusVariable));
 
             NWScript.floatingTextStringOnCreature(ColorToken.Purple() + "You begin picking the lock..." + ColorToken.End(), oPC, false);
         }

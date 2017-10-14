@@ -157,42 +157,39 @@ public class MagicSystem {
         NWScript.setLocalInt(pc, spellUUID, SPELL_STATUS_STARTED);
 
         NWNX_Funcs.StartTimingBar(pc, (int)castingTime, "");
-        Scheduler.delay(pc, (int)(1050 * castingTime), new Runnable() {
-            @Override
-            public void run() {
-                if(NWScript.getLocalInt(pc, spellUUID) == SPELL_STATUS_INTERRUPTED)
-                {
-                    NWScript.deleteLocalInt(pc, spellUUID);
-                    NWScript.sendMessageToPC(pc, "Your spell has been interrupted.");
-                    return;
-                }
-
+        Scheduler.delay(pc, (int)(1050 * castingTime), () -> {
+            if(NWScript.getLocalInt(pc, spellUUID) == SPELL_STATUS_INTERRUPTED)
+            {
                 NWScript.deleteLocalInt(pc, spellUUID);
-                PlayerRepository repo = new PlayerRepository();
-                PlayerEntity pcEntity = repo.getByUUID(pcGO.getUUID());
-
-                if(!entity.isQueuedWeaponSkill())
-                {
-                    ability.OnImpact(pc, target);
-                }
-                else
-                {
-                    HandleQueueWeaponSkill(pc, entity, ability);
-                }
-
-                // Adjust mana only if spell cost > 0
-                if(ability.ManaCost(pc, entity.getBaseManaCost()) > 0)
-                {
-                    pcEntity.setCurrentMana(pcEntity.getCurrentMana() - ability.ManaCost(pc, entity.getBaseManaCost()));
-                    repo.save(pcEntity);
-                    NWScript.sendMessageToPC(pc, ColorToken.Custom(32,223,219) + "Mana: " + pcEntity.getCurrentMana() + " / " + pcEntity.getMaxMana());
-                }
-
-                // Mark cooldown on ability category
-                ApplyCooldown(pc, cooldown, ability);
-
-                pcGO.setIsBusy(false);
+                NWScript.sendMessageToPC(pc, "Your spell has been interrupted.");
+                return;
             }
+
+            NWScript.deleteLocalInt(pc, spellUUID);
+            PlayerRepository repo = new PlayerRepository();
+            PlayerEntity pcEntity = repo.getByUUID(pcGO.getUUID());
+
+            if(!entity.isQueuedWeaponSkill())
+            {
+                ability.OnImpact(pc, target);
+            }
+            else
+            {
+                HandleQueueWeaponSkill(pc, entity, ability);
+            }
+
+            // Adjust mana only if spell cost > 0
+            if(ability.ManaCost(pc, entity.getBaseManaCost()) > 0)
+            {
+                pcEntity.setCurrentMana(pcEntity.getCurrentMana() - ability.ManaCost(pc, entity.getBaseManaCost()));
+                repo.save(pcEntity);
+                NWScript.sendMessageToPC(pc, ColorToken.Custom(32,223,219) + "Mana: " + pcEntity.getCurrentMana() + " / " + pcEntity.getMaxMana());
+            }
+
+            // Mark cooldown on ability category
+            ApplyCooldown(pc, cooldown, ability);
+
+            pcGO.setIsBusy(false);
         });
     }
 
@@ -223,12 +220,7 @@ public class MagicSystem {
             return;
         }
 
-        Scheduler.delay(pc, 1000, new Runnable() {
-            @Override
-            public void run() {
-                CheckForSpellInterruption(pc, spellUUID, position);
-            }
-        });
+        Scheduler.delay(pc, 1000, () -> CheckForSpellInterruption(pc, spellUUID, position));
     }
 
     private static void HandleQueueWeaponSkill(final NWObject pc, final AbilityEntity entity, IAbility ability)
@@ -241,16 +233,13 @@ public class MagicSystem {
         ApplyCooldown(pc, entity.getCooldown(), ability);
 
         // Player must attack within 30 seconds after queueing or else it wears off.
-        Scheduler.delay(pc, 30000, new Runnable() {
-            @Override
-            public void run() {
+        Scheduler.delay(pc, 30000, () -> {
 
-                if(Objects.equals(NWScript.getLocalString(pc, "ACTIVE_WEAPON_SKILL_UUID"), queueUUID))
-                {
-                    NWScript.deleteLocalInt(pc, "ACTIVE_WEAPON_SKILL");
-                    NWScript.deleteLocalString(pc, "ACTIVE_WEAPON_SKILL_UUID");
-                    NWScript.sendMessageToPC(pc, "Your weapon skill '" + entity.getName() + "' is no longer queued.");
-                }
+            if(Objects.equals(NWScript.getLocalString(pc, "ACTIVE_WEAPON_SKILL_UUID"), queueUUID))
+            {
+                NWScript.deleteLocalInt(pc, "ACTIVE_WEAPON_SKILL");
+                NWScript.deleteLocalString(pc, "ACTIVE_WEAPON_SKILL_UUID");
+                NWScript.sendMessageToPC(pc, "Your weapon skill '" + entity.getName() + "' is no longer queued.");
             }
         });
     }
@@ -486,12 +475,9 @@ public class MagicSystem {
 
         if(!MagicSystem.IsAbilityEquipped(oPC, AbilityType.EnergyBladeAdept))
         {
-            Scheduler.delay(oPC, 50, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.clearAllActions(false);
-                    NWScript.actionUnequipItem(oItem);
-                }
+            Scheduler.delay(oPC, 50, () -> {
+                NWScript.clearAllActions(false);
+                NWScript.actionUnequipItem(oItem);
             });
 
             NWScript.floatingTextStringOnCreature(ColorToken.Red() + "You must have the Energy Blade Adept ability equipped in order to use that weapon." + ColorToken.End(), oPC, false);
@@ -504,22 +490,16 @@ public class MagicSystem {
 
         if(!Objects.equals(rightHand, oItem) && NWScript.getIsObjectValid(rightHand))
         {
-            Scheduler.assign(oPC, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.clearAllActions(false);
-                    NWScript.actionUnequipItem(rightHand);
-                }
+            Scheduler.assign(oPC, () -> {
+                NWScript.clearAllActions(false);
+                NWScript.actionUnequipItem(rightHand);
             });
         }
         if(!Objects.equals(leftHand, oItem) && NWScript.getIsObjectValid(leftHand))
         {
-            Scheduler.assign(oPC, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.clearAllActions(false);
-                    NWScript.actionUnequipItem(leftHand);
-                }
+            Scheduler.assign(oPC, () -> {
+                NWScript.clearAllActions(false);
+                NWScript.actionUnequipItem(leftHand);
             });
         }
 
@@ -541,23 +521,17 @@ public class MagicSystem {
 
         if(!Objects.equals(oItem, rightHand) && NWScript.getIsObjectValid(rightHand) && rightHandGO.HasItemProperty(CustomItemProperty.EnergyBlade))
         {
-            Scheduler.assign(oPC, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.clearAllActions(false);
-                    NWScript.actionUnequipItem(rightHand);
-                }
+            Scheduler.assign(oPC, () -> {
+                NWScript.clearAllActions(false);
+                NWScript.actionUnequipItem(rightHand);
             });
             anItemWasUnequipped = true;
         }
         if(!Objects.equals(oItem, leftHand) && NWScript.getIsObjectValid(leftHand) && leftHandGO.HasItemProperty(CustomItemProperty.EnergyBlade))
         {
-            Scheduler.assign(oPC, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.clearAllActions(false);
-                    NWScript.actionUnequipItem(leftHand);
-                }
+            Scheduler.assign(oPC, () -> {
+                NWScript.clearAllActions(false);
+                NWScript.actionUnequipItem(leftHand);
             });
             anItemWasUnequipped = true;
         }

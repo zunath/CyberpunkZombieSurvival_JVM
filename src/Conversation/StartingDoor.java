@@ -69,13 +69,10 @@ public class StartingDoor extends DialogBase implements IDialogHandler {
                 switch(responseID)
                 {
                     case 1: // Select this location
-                        Scheduler.assign(oPC, new Runnable() {
-                            @Override
-                            public void run() {
-                                NWLocation location = NWScript.getLocation(NWScript.getWaypointByTag("ZODIAC_OUTPOST_STARTING_LOCATION"));
-                                NWScript.actionJumpToLocation(location);
-                                EndConversation();
-                            }
+                        Scheduler.assign(oPC, () -> {
+                            NWLocation location = NWScript.getLocation(NWScript.getWaypointByTag("ZODIAC_OUTPOST_STARTING_LOCATION"));
+                            NWScript.actionJumpToLocation(location);
+                            EndConversation();
                         });
                         NWScript.takeGoldFromCreature(NWScript.getGold(oPC), oPC, true);
                         break;
@@ -88,13 +85,10 @@ public class StartingDoor extends DialogBase implements IDialogHandler {
                 switch (responseID)
                 {
                     case 1: // Select this location
-                        Scheduler.assign(oPC, new Runnable() {
-                            @Override
-                            public void run() {
-                                NWLocation location = NWScript.getLocation(NWScript.getWaypointByTag("RUBY_OUTPOST_STARTING_LOCATION"));
-                                NWScript.actionJumpToLocation(location);
-                                EndConversation();
-                            }
+                        Scheduler.assign(oPC, () -> {
+                            NWLocation location = NWScript.getLocation(NWScript.getWaypointByTag("RUBY_OUTPOST_STARTING_LOCATION"));
+                            NWScript.actionJumpToLocation(location);
+                            EndConversation();
                         });
                         NWScript.takeGoldFromCreature(NWScript.getGold(oPC), oPC, true);
                         break;

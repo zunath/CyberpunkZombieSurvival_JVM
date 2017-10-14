@@ -63,12 +63,7 @@ public class TeleportMason implements IAbility {
             NWObject waypoint = NWScript.getWaypointByTag(waypointTag);
             final NWLocation location = NWScript.getLocation(waypoint);
 
-            Scheduler.assign(member, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.actionJumpToLocation(location);
-                }
-            });
+            Scheduler.assign(member, () -> NWScript.actionJumpToLocation(location));
         }
     }
 

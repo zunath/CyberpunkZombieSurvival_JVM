@@ -75,12 +75,7 @@ public class DialogManager {
 
             if(Objects.equals(convo, "") || Objects.equals(convo, "0"))
             {
-                Scheduler.assign(oPC, new Runnable() {
-                    @Override
-                    public void run() {
-                        NWScript.actionStartConversation(oTalkTo, "dialog", true, false);
-                    }
-                });
+                Scheduler.assign(oPC, () -> NWScript.actionStartConversation(oTalkTo, "dialog", true, false));
             }
         }
         catch(Exception ex) {

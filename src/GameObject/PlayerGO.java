@@ -152,13 +152,10 @@ public class PlayerGO {
 
     public void UnequipAllItems()
     {
-        Scheduler.assign(_pc, new Runnable() {
-            @Override
-            public void run() {
-                for(int slot = 0; slot < 14; slot++)
-                {
-                    NWScript.actionUnequipItem(NWScript.getItemInSlot(slot, _pc));
-                }
+        Scheduler.assign(_pc, () -> {
+            for(int slot = 0; slot < 14; slot++)
+            {
+                NWScript.actionUnequipItem(NWScript.getItemInSlot(slot, _pc));
             }
         });
     }

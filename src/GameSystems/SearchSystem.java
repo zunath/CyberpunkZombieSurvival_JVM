@@ -61,12 +61,7 @@ public class SearchSystem {
             String itemName = NWScript.getName(oItem, false);
             if(itemName.equals("")) itemName = "money";
 
-            Scheduler.assign(oPC, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.actionPlayAnimation(Animation.LOOPING_GET_LOW, 1.0f, 1.5f);
-                }
-            });
+            Scheduler.assign(oPC, () -> NWScript.actionPlayAnimation(Animation.LOOPING_GET_LOW, 1.0f, 1.5f));
             NWScript.applyEffectToObject(DurationType.TEMPORARY, NWScript.effectCutsceneImmobilize(), oPC, 1.5f);
 
             // Notify party members in the vicinity
@@ -166,12 +161,7 @@ public class SearchSystem {
 
         LocalVariableHelper.CopyVariables(oChest, oCopy);
 
-        Scheduler.assign(oPC, new Runnable() {
-            @Override
-            public void run() {
-                NWScript.actionInteractObject(oCopy);
-            }
-        });
+        Scheduler.assign(oPC, () -> NWScript.actionInteractObject(oCopy));
     }
 
     private static void SaveChestInventory(NWObject oPC, NWObject oChest, boolean resetTimeLock)

@@ -75,12 +75,9 @@ public class SpawnSystem {
             CreateLoot(creature, lootTableID);
             NWScript.setLocalInt(creature, "DIFFICULTY_RATING", difficultyRating);
 
-            Scheduler.assign(creature, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.setFacing(0.01f * NWScript.random(3600));
-                    NWScript.actionRandomWalk();
-                }
+            Scheduler.assign(creature, () -> {
+                NWScript.setFacing(0.01f * NWScript.random(3600));
+                NWScript.actionRandomWalk();
             });
         }
     }
@@ -134,12 +131,7 @@ public class SpawnSystem {
                 CreateLoot(creature, model.getLootTableID());
                 NWScript.setLocalInt(creature, "DIFFICULTY_RATING", model.getDifficultyRating());
 
-                Scheduler.assign(creature, new Runnable() {
-                    @Override
-                    public void run() {
-                        NWScript.setFacing(0.01f * NWScript.random(3600));
-                    }
-                });
+                Scheduler.assign(creature, () -> NWScript.setFacing(0.01f * NWScript.random(3600)));
             }
         }
 
@@ -243,12 +235,7 @@ public class SpawnSystem {
             final NWLocation lLocation = LocalArray.GetLocalArrayLocation(oArea, RespawnWaypointLocationArray, iWaypoint);
 
             // 120 * 1000 = 2 Minutes
-            Scheduler.delay(creature, 120 * 1000, new Runnable() {
-                @Override
-                public void run() {
-                    CreateCreature(model.getResref(), lLocation, areaResref, model.getLootTableID(), model.getDifficultyRating());
-                }
-            });
+            Scheduler.delay(creature, 120 * 1000, () -> CreateCreature(model.getResref(), lLocation, areaResref, model.getLootTableID(), model.getDifficultyRating()));
 
         }
     }

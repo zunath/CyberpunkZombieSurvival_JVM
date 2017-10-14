@@ -79,12 +79,7 @@ public class MigrationSystem {
             final String message = ColorToken.Green() + "Your character has been updated!" +
                     (overflowCount > 0 ? " Items which could not be created have been placed into overflow inventory. You can access this from the rest menu." : "") +
                     ColorToken.End();
-            Scheduler.delay(oPC, 8000, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.floatingTextStringOnCreature(message, oPC, false);
-                }
-            });
+            Scheduler.delay(oPC, 8000, () -> NWScript.floatingTextStringOnCreature(message, oPC, false));
         }
     }
 

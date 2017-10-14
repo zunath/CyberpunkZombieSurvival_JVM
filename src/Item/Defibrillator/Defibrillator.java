@@ -12,8 +12,8 @@ import org.nwnx.nwnx2.jvm.constants.Animation;
 
 @SuppressWarnings("UnusedDeclaration")
 public class Defibrillator implements IScriptEventHandler {
-    final String DefibInUseStatusVariable = "DEFIB_TEMP_IN_USE";
-    final String TemporaryTargetObjectVariable = "DEFIB_TEMP_TARGET_OBJECT";
+    private final String DefibInUseStatusVariable = "DEFIB_TEMP_IN_USE";
+    private final String TemporaryTargetObjectVariable = "DEFIB_TEMP_TARGET_OBJECT";
 
     @Override
     public void runScript(NWObject objSelf) {
@@ -49,23 +49,15 @@ public class Defibrillator implements IScriptEventHandler {
                 NWScript.setLocalObject(oPC, TemporaryTargetObjectVariable, oTarget);
                 NWScript.setLocalInt(oPC, DefibInUseStatusVariable, 1);
 
-                Scheduler.delay(oPC, iDelayTime * 1000, new Runnable() {
-                    @Override
-                    public void run() {
-                        NWScript.deleteLocalInt(oPC, DefibInUseStatusVariable);
-                    }
-                });
+                Scheduler.delay(oPC, iDelayTime * 1000, () -> NWScript.deleteLocalInt(oPC, DefibInUseStatusVariable));
 
                 NWScript.floatingTextStringOnCreature(ColorToken.Purple() + "You begin using the defibrillator..." + ColorToken.End(), oPC, false);
 
                 Position.TurnToFaceObject(oTarget, oPC);
 
-                Scheduler.assign(oPC, new Runnable() {
-                    @Override
-                    public void run() {
-                        NWScript.playAnimation(Animation.LOOPING_GET_LOW, 1.0f, (float) iDelayTime);
-                        NWScript.setCommandable(false, oPC);
-                    }
+                Scheduler.assign(oPC, () -> {
+                    NWScript.playAnimation(Animation.LOOPING_GET_LOW, 1.0f, (float) iDelayTime);
+                    NWScript.setCommandable(false, oPC);
                 });
 
             }

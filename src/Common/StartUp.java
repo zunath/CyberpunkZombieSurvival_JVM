@@ -32,22 +32,9 @@ public class StartUp {
 		/* Add some default handlers that don't do any
 		 * custom wrapping at all.
 		 */
-		NWObject.registerObjectHandler(new NWObject.ObjectHandler() {
-			public NWObject handleObjectClass(NWObject obj, boolean valid,
-					int objectType, String resRef, String tag) {
-				return obj;
-			}
-		});
-		NWEffect.registerEffectHandler(new NWEffect.EffectHandler() {
-			public NWEffect handleEffectClass(NWEffect eff) {
-				return eff;
-			}
-		});
-		NWItemProperty.registerItemPropertyHandler(new NWItemProperty.ItemPropertyHandler() {
-			public NWItemProperty handleItemPropertyClass(NWItemProperty prp) {
-				return prp;
-			}
-		});
+		NWObject.registerObjectHandler((obj, valid, objectType, resRef, tag) -> obj);
+		NWEffect.registerEffectHandler(eff -> eff);
+		NWItemProperty.registerItemPropertyHandler(prp -> prp);
 
 	}
 

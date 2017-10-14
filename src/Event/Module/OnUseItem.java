@@ -34,12 +34,7 @@ public class OnUseItem implements IScriptEventHandler {
             className = className.substring(5);
         ScriptHelper.RunJavaScript(oPC, "Item." + className);
 
-        Scheduler.delay(oPC, 1, new Runnable() {
-            @Override
-            public void run() {
-                InventorySystem.RunItemLimitCheck(oPC);
-            }
-        });
+        Scheduler.delay(oPC, 1, () -> InventorySystem.RunItemLimitCheck(oPC));
     }
 
     private void HandleSpecificItemUses(NWObject oPC)

@@ -17,12 +17,9 @@ public class OnUsed implements IScriptEventHandler {
             NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectVisualEffect(visualEffectID, false), oPC, 0.0f);
         }
 
-        Scheduler.assign(oPC, new Runnable() {
-            @Override
-            public void run() {
-                NWLocation location = NWScript.getLocation(NWScript.getWaypointByTag(destination));
-                NWScript.actionJumpToLocation(location);
-            }
+        Scheduler.assign(oPC, () -> {
+            NWLocation location = NWScript.getLocation(NWScript.getWaypointByTag(destination));
+            NWScript.actionJumpToLocation(location);
         });
 
     }

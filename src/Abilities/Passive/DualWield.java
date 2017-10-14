@@ -46,14 +46,11 @@ public class DualWield implements IAbility {
 
         final NWObject offHand = NWScript.getItemInSlot(InventorySlot.LEFTHAND, oPC);
 
-        if(offHand != NWObject.INVALID.INVALID)
+        if(offHand != NWObject.INVALID)
         {
-            Scheduler.assign(oPC, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.actionUnequipItem(offHand);
-                    NWScript.actionEquipItem(offHand, InventorySlot.LEFTHAND);
-                }
+            Scheduler.assign(oPC, () -> {
+                NWScript.actionUnequipItem(offHand);
+                NWScript.actionEquipItem(offHand, InventorySlot.LEFTHAND);
             });
         }
 
@@ -68,12 +65,9 @@ public class DualWield implements IAbility {
 
         if(offHand != NWObject.INVALID)
         {
-            Scheduler.assign(oPC, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.actionUnequipItem(offHand);
-                    NWScript.actionEquipItem(offHand, InventorySlot.LEFTHAND);
-                }
+            Scheduler.assign(oPC, () -> {
+                NWScript.actionUnequipItem(offHand);
+                NWScript.actionEquipItem(offHand, InventorySlot.LEFTHAND);
             });
         }
 

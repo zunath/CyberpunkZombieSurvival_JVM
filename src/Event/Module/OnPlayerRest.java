@@ -15,12 +15,7 @@ public class OnPlayerRest implements IScriptEventHandler {
                 oPC.equals(NWObject.INVALID) ||
                 NWScript.getIsDM(oPC)) return;
 
-        Scheduler.assignNow(oPC, new Runnable() {
-            @Override
-            public void run() {
-                NWScript.clearAllActions(false);
-            }
-        });
+        Scheduler.assignNow(oPC, () -> NWScript.clearAllActions(false));
         DialogManager.startConversation(oPC, oPC, "RestMenu");
 	}
 }

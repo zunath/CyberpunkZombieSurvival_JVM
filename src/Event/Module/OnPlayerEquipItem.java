@@ -37,12 +37,7 @@ public class OnPlayerEquipItem implements IScriptEventHandler {
 		if(Objects.equals(oItem, rightHand) && Objects.equals(oItem, leftHand)) return;
 		if(!Objects.equals(oItem, leftHand)) return;
 
-		Scheduler.assign(oPC, new Runnable() {
-            @Override
-            public void run() {
-                NWScript.clearAllActions(false);
-            }
-        });
+		Scheduler.assign(oPC, () -> NWScript.clearAllActions(false));
 	}
 
 }

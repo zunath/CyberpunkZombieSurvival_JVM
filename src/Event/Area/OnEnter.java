@@ -58,12 +58,7 @@ public class OnEnter implements IScriptEventHandler {
             return;
         }
 
-        Scheduler.delay(oPC, 1000, new Runnable() {
-            @Override
-            public void run() {
-                CheckForMovement(oPC, location);
-            }
-        });
+        Scheduler.delay(oPC, 1000, () -> CheckForMovement(oPC, location));
     }
 
     private void ApplySanctuaryEffects(final NWObject oPC)
@@ -75,12 +70,7 @@ public class OnEnter implements IScriptEventHandler {
         NWScript.applyEffectToObject(DurationType.PERMANENT, NWScript.effectDamageReduction(50, DamagePowerPlus.TWENTY, 0), oPC, 0.0f);
         final NWLocation location = NWScript.getLocation(oPC);
 
-        Scheduler.delay(oPC, 3500, new Runnable() {
-            @Override
-            public void run() {
-                CheckForMovement(oPC, location);
-            }
-        });
+        Scheduler.delay(oPC, 3500, () -> CheckForMovement(oPC, location));
     }
 
     private void SaveLocation(NWObject oPC, NWObject oArea)
@@ -119,12 +109,7 @@ public class OnEnter implements IScriptEventHandler {
                     entity.getLocationZ(),
                     entity.getLocationOrientation());
 
-            Scheduler.assign(oPC, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.actionJumpToLocation(location);
-                }
-            });
+            Scheduler.assign(oPC, () -> NWScript.actionJumpToLocation(location));
         }
     }
 

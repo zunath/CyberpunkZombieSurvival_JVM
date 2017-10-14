@@ -62,12 +62,7 @@ public class Outfit extends DialogBase implements IDialogHandler {
                         ChangePage("LoadOutfitPage");
                         break;
                     case 3: // Back
-                        Scheduler.assign(oPC, new Runnable() {
-                            @Override
-                            public void run() {
-                                NWScript.actionStartConversation(oPC, "x0_skill_ctrap", false, false);
-                            }
-                        });
+                        Scheduler.assign(oPC, () -> NWScript.actionStartConversation(oPC, "x0_skill_ctrap", false, false));
                         break;
                 }
                 break;
@@ -227,12 +222,7 @@ public class Outfit extends DialogBase implements IDialogHandler {
             NWScript.destroyObject(oClothes, 0.0f);
             NWScript.destroyObject(storedClothes, 0.0f);
 
-            Scheduler.assign(oPC, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.actionEquipItem(oFinal, InventorySlot.CHEST);
-                }
-            });
+            Scheduler.assign(oPC, () -> NWScript.actionEquipItem(oFinal, InventorySlot.CHEST));
 
             for(NWObject item : NWScript.getItemsInInventory(oTempStorage))
             {

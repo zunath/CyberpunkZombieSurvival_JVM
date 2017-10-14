@@ -56,12 +56,7 @@ public class PlayerAuthorizationSystem {
 
         if(CDKeyExistsForAccount(entity, cdKey))
         {
-            Scheduler.delay(oPC, 8000, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.floatingTextStringOnCreature(ColorToken.Red() + "Unable to add CD key to account. CD key already exists!" + ColorToken.End(), oPC, false);
-                }
-            });
+            Scheduler.delay(oPC, 8000, () -> NWScript.floatingTextStringOnCreature(ColorToken.Red() + "Unable to add CD key to account. CD key already exists!" + ColorToken.End(), oPC, false));
         }
         else
         {
@@ -82,12 +77,7 @@ public class PlayerAuthorizationSystem {
                 return;
             }
 
-            Scheduler.delay(oPC, 8000, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.floatingTextStringOnCreature(ColorToken.Green() + "CD key added to your account successfully. ( " + cdKey + " )" + ColorToken.End(), oPC, false);
-                }
-            });
+            Scheduler.delay(oPC, 8000, () -> NWScript.floatingTextStringOnCreature(ColorToken.Green() + "CD key added to your account successfully. ( " + cdKey + " )" + ColorToken.End(), oPC, false));
         }
 
         repo.Save(entity);

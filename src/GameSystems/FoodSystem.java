@@ -55,12 +55,7 @@ public class FoodSystem {
         entity.setCurrentHunger(entity.getCurrentHunger() + amount);
         if(entity.getCurrentHunger() > entity.getMaxHunger()) entity.setCurrentHunger(entity.getMaxHunger());
 
-        Scheduler.assign(oPC, new Runnable() {
-            @Override
-            public void run() {
-                NWScript.actionPlayAnimation(Animation.FIREFORGET_SALUTE, 1.0f, 0.0f);
-            }
-        });
+        Scheduler.assign(oPC, () -> NWScript.actionPlayAnimation(Animation.FIREFORGET_SALUTE, 1.0f, 0.0f));
 
         NWScript.sendMessageToPC(oPC, "Hunger: " + MenuHelper.BuildBar(entity.getCurrentHunger(), entity.getMaxHunger(), 100));
         repo.save(entity);

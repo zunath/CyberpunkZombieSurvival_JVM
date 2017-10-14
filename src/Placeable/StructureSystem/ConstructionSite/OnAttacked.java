@@ -23,12 +23,7 @@ public class OnAttacked implements IScriptEventHandler {
         if(constructionSiteID <= 0)
         {
             NWScript.floatingTextStringOnCreature("You must select a blueprint before you can build.", oPC, false);
-            Scheduler.assign(oPC, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.clearAllActions(false);
-                }
-            });
+            Scheduler.assign(oPC, () -> NWScript.clearAllActions(false));
             return;
         }
 
@@ -38,12 +33,7 @@ public class OnAttacked implements IScriptEventHandler {
         if(weaponType != BaseItem.LIGHTHAMMER)
         {
             NWScript.floatingTextStringOnCreature("A hammer must be equipped to build this structure.", oPC, false);
-            Scheduler.assign(oPC, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.clearAllActions(false);
-                }
-            });
+            Scheduler.assign(oPC, () -> NWScript.clearAllActions(false));
             return;
         }
 
@@ -56,12 +46,7 @@ public class OnAttacked implements IScriptEventHandler {
         if(!StructureSystem.IsConstructionSiteValid(oSite))
         {
             NWScript.floatingTextStringOnCreature("Construction site is invalid. Please click the construction site to find out more.", oPC, false);
-            Scheduler.assign(oPC, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.clearAllActions(false);
-                }
-            });
+            Scheduler.assign(oPC, () -> NWScript.clearAllActions(false));
             return;
         }
 
@@ -131,12 +116,7 @@ public class OnAttacked implements IScriptEventHandler {
         }
 
         final String messageCopy = updateMessage;
-        Scheduler.delay(oPC, 750, new Runnable() {
-            @Override
-            public void run() {
-                NWScript.sendMessageToPC(oPC, messageCopy);
-            }
-        });
+        Scheduler.delay(oPC, 750, () -> NWScript.sendMessageToPC(oPC, messageCopy));
 
         if(entity.getWoodRequired() <= 0 &&
                 entity.getClothRequired() <= 0 &&
@@ -154,12 +134,7 @@ public class OnAttacked implements IScriptEventHandler {
         }
         else
         {
-            Scheduler.assign(oPC, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.clearAllActions(false);
-                }
-            });
+            Scheduler.assign(oPC, () -> NWScript.clearAllActions(false));
         }
     }
 }

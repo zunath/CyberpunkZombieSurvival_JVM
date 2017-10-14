@@ -37,11 +37,6 @@ public class PerformDefibrillator implements IScriptEventHandler {
         NWScript.deleteLocalObject(oPC, "DEFIB_TEMP_TARGET_OBJECT");
         NWScript.destroyObject(oItem, 0.0f);
 
-        Scheduler.assign(oPC, new Runnable() {
-            @Override
-            public void run() {
-                NWScript.setCommandable(true, oPC);
-            }
-        });
+        Scheduler.assign(oPC, () -> NWScript.setCommandable(true, oPC));
     }
 }

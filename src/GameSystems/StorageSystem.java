@@ -75,12 +75,7 @@ public class StorageSystem {
             {
                 reachedLimit = true;
 
-                Scheduler.assign(oChest, new Runnable() {
-                    @Override
-                    public void run() {
-                        NWScript.actionGiveItem(item, oPC);
-                    }
-                });
+                Scheduler.assign(oChest, () -> NWScript.actionGiveItem(item, oPC));
             }
         }
 

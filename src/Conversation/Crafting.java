@@ -113,12 +113,7 @@ public class Crafting extends DialogBase implements IDialogHandler {
         if(response.getCustomData() == null)
         {
             final NWObject device = GetDialogTarget();
-            Scheduler.assign(GetPC(), new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.actionInteractObject(device);
-                }
-            });
+            Scheduler.assign(GetPC(), () -> NWScript.actionInteractObject(device));
             return;
         }
 
@@ -156,12 +151,7 @@ public class Crafting extends DialogBase implements IDialogHandler {
                 final NWObject examineItem = NWScript.createItemOnObject(entity.getItemResref(), tempContainer, 1, "");
                 NWScript.destroyObject(examineItem, 0.1f);
 
-                Scheduler.assign(GetPC(), new Runnable() {
-                    @Override
-                    public void run() {
-                        NWScript.actionExamine(examineItem);
-                    }
-                });
+                Scheduler.assign(GetPC(), () -> NWScript.actionExamine(examineItem));
 
                 break;
             case 2: // Select Blueprint
@@ -171,12 +161,7 @@ public class Crafting extends DialogBase implements IDialogHandler {
                 final NWObject device = GetDialogTarget();
                 NWScript.setLocalInt(device, "CRAFT_BLUEPRINT_ID", blueprintID);
 
-                Scheduler.assign(GetPC(), new Runnable() {
-                    @Override
-                    public void run() {
-                        NWScript.actionInteractObject(device);
-                    }
-                });
+                Scheduler.assign(GetPC(), () -> NWScript.actionInteractObject(device));
 
                 EndConversation();
                 break;

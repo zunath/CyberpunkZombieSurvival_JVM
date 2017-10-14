@@ -60,12 +60,7 @@ public class Flame implements IAbility {
         final int damage = ThreadLocalRandom.current().nextInt(minimumDamage, maximumDamage + 1);
         NWScript.applyEffectToObject(DURATION_TYPE_INSTANT, NWScript.effectVisualEffect(VFX_IMP_FLAME_M, false), oTarget, 0.0f);
 
-        Scheduler.delay(oPC, 50, new Runnable() {
-            @Override
-            public void run() {
-                NWScript.applyEffectToObject(DURATION_TYPE_INSTANT, NWScript.effectDamage(damage, DamageType.MAGICAL, DamagePower.NORMAL), oTarget, 0.0f);
-            }
-        });
+        Scheduler.delay(oPC, 50, () -> NWScript.applyEffectToObject(DURATION_TYPE_INSTANT, NWScript.effectDamage(damage, DamageType.MAGICAL, DamagePower.NORMAL), oTarget, 0.0f));
 
     }
 

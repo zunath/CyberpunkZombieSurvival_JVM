@@ -122,12 +122,9 @@ public class CombatSystem {
             NWScript.setItemCursedFlag(oAmmo, true);
             NWScript.setLocalInt(oAmmo, GUN_TEMP_AMMO_TYPE, stGunInfo.getAmmoType());
 
-            Scheduler.assign(oPC, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.clearAllActions(false);
-                    NWScript.actionEquipItem(oAmmo, InventorySlot.ARROWS);
-                }
+            Scheduler.assign(oPC, () -> {
+                NWScript.clearAllActions(false);
+                NWScript.actionEquipItem(oAmmo, InventorySlot.ARROWS);
             });
 
             // Prevent this from firing on module entry
@@ -204,23 +201,13 @@ public class CombatSystem {
            pcGO.isBusy())
         {
             NWScript.floatingTextStringOnCreature(ColorToken.Red() + "You are too busy to attack right now.", oAttacker, false);
-            Scheduler.delay(oAttacker, 1, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.clearAllActions(false);
-                }
-            });
+            Scheduler.delay(oAttacker, 1, () -> NWScript.clearAllActions(false));
             return;
         }
         // PC is dead or dying
         if(NWScript.getCurrentHitPoints(oAttacker) <= 0)
         {
-            Scheduler.delay(oAttacker, 1, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.clearAllActions(false);
-                }
-            });
+            Scheduler.delay(oAttacker, 1, () -> NWScript.clearAllActions(false));
             return;
         }
 
@@ -229,12 +216,7 @@ public class CombatSystem {
         // Area is designated as "No PVP"
         if(NWScript.getIsPC(oTarget) && NWScript.getLocalInt(oArea, "NO_PVP") == 1 && NWScript.getIsPC(oAttacker))
         {
-            Scheduler.delay(oAttacker, 1, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.clearAllActions(false);
-                }
-            });
+            Scheduler.delay(oAttacker, 1, () -> NWScript.clearAllActions(false));
             NWScript.floatingTextStringOnCreature(ColorToken.Red() + "You cannot engage in PVP in this area." + ColorToken.End(), oAttacker, false);
             return;
         }
@@ -242,12 +224,7 @@ public class CombatSystem {
         // Stop trying to attack a DM, dumbass
         if(NWScript.getIsDM(oTarget))
         {
-            Scheduler.delay(oAttacker, 1, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.clearAllActions(false);
-                }
-            });
+            Scheduler.delay(oAttacker, 1, () -> NWScript.clearAllActions(false));
             return;
         }
 
@@ -285,12 +262,7 @@ public class CombatSystem {
             // Prevent from continuing.
             if(!bLineOfSight || NWScript.getLocalInt(oAttacker, "TEMP_DISABLE_FIRING") == 1)
             {
-                Scheduler.delay(oAttacker, 1, new Runnable() {
-                    @Override
-                    public void run() {
-                        NWScript.clearAllActions(false);
-                    }
-                });
+                Scheduler.delay(oAttacker, 1, () -> NWScript.clearAllActions(false));
                 return;
             }
             SetAttackAllowed(oAttacker, 1);
@@ -324,12 +296,7 @@ public class CombatSystem {
                 {
                     if (NWScript.getCommandable(oAttacker) && NWScript.getIsObjectValid(oTarget))
                     {
-                        Scheduler.delay(oAttacker, 1, new Runnable() {
-                            @Override
-                            public void run() {
-                                NWScript.clearAllActions(true);
-                            }
-                        });
+                        Scheduler.delay(oAttacker, 1, () -> NWScript.clearAllActions(true));
 
                         NWVector attackerVector = NWScript.getPosition(oAttacker);
                         NWVector targetVector = NWScript.getPosition(oTarget);
@@ -348,12 +315,9 @@ public class CombatSystem {
                         // Quick players can sometimes get more than one cycle of shots off each attack. This should stop that.
                         NWScript.setLocalInt(oAttacker, "TEMP_DISABLE_FIRING", 1);
 
-                        Scheduler.delay(oAttacker, (int) (fDelay * 1000.0f), new Runnable() {
-                            @Override
-                            public void run() {
-                                MainAttack(oAttacker, oTarget);
-                                NWScript.deleteLocalInt(oAttacker, "TEMP_DISABLE_FIRING");
-                            }
+                        Scheduler.delay(oAttacker, (int) (fDelay * 1000.0f), () -> {
+                            MainAttack(oAttacker, oTarget);
+                            NWScript.deleteLocalInt(oAttacker, "TEMP_DISABLE_FIRING");
                         });
                     }
                 }
@@ -466,40 +430,24 @@ public class CombatSystem {
         final int animationID = iAnimation;
         final float animationSpeed = fAnimationSpeed;
         final float animationLength = fAnimationLength;
-        Scheduler.assign(oPC, new Runnable() {
-            @Override
-            public void run() {
-                NWScript.clearAllActions(true);
-                NWScript.playAnimation(animationID, animationSpeed, animationLength);
-                NWScript.setCommandable(false, oPC);
-            }
+        Scheduler.assign(oPC, () -> {
+            NWScript.clearAllActions(true);
+            NWScript.playAnimation(animationID, animationSpeed, animationLength);
+            NWScript.setCommandable(false, oPC);
         });
 
-        Scheduler.delay(oPC, (int) (fDelay * 1000), new Runnable() {
-            @Override
-            public void run() {
-                NWScript.setCommandable(true, oPC);
-            }
-        });
+        Scheduler.delay(oPC, (int) (fDelay * 1000), () -> NWScript.setCommandable(true, oPC));
 
         NWScript.applyEffectAtLocation(DurationType.INSTANT, eSound, lLocation, 0.0f);
         if (bDualWield)
         {
-            Scheduler.delay(oPC, (int) (fSoundDelay * 1000), new Runnable() {
-                @Override
-                public void run() {
-                    NWEffect eSound = NWScript.effectVisualEffect(CBT_OVR_SOUND_GUN_RELOAD, false);
-                    NWScript.applyEffectAtLocation(DurationType.INSTANT, eSound, NWScript.getLocation(oPC), 0.0f);
-                }
+            Scheduler.delay(oPC, (int) (fSoundDelay * 1000), () -> {
+                NWEffect eSound1 = NWScript.effectVisualEffect(CBT_OVR_SOUND_GUN_RELOAD, false);
+                NWScript.applyEffectAtLocation(DurationType.INSTANT, eSound1, NWScript.getLocation(oPC), 0.0f);
             });
         }
 
-        Scheduler.delay(oPC, (int) (fDelay * 1000), new Runnable() {
-            @Override
-            public void run() {
-                LoadAmmo(oPC, oGun, -1);
-            }
-        });
+        Scheduler.delay(oPC, (int) (fDelay * 1000), () -> LoadAmmo(oPC, oGun, -1));
     }
 
     private void LoadAmmo(final NWObject oPC, final NWObject oGun, int iAmmoOverride)
@@ -605,13 +553,10 @@ public class CombatSystem {
         }
         else
         {
-            Scheduler.assign(oPC, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.clearAllActions(false);
-                    NWScript.actionEquipItem(oAmmo, InventorySlot.ARROWS);
-                    NWScript.deleteLocalInt(oPC, GUN_TEMP_RELOADING_GUN);
-                }
+            Scheduler.assign(oPC, () -> {
+                NWScript.clearAllActions(false);
+                NWScript.actionEquipItem(oAmmo, InventorySlot.ARROWS);
+                NWScript.deleteLocalInt(oPC, GUN_TEMP_RELOADING_GUN);
             });
 
             // Mark ammunition type (basic, enhanced, etc)
@@ -772,23 +717,13 @@ public class CombatSystem {
             // Out of ammo or have no target and not at max ammo.
             if(iBulletCount <= 0 || (iBulletCount < stGunInfo.getMagazineSize() && oFinalTarget == NWObject.INVALID))
             {
-                Scheduler.assign(oNPC, new Runnable() {
-                    @Override
-                    public void run() {
-                        NWScript.actionUseFeat(1116, oNPC);
-                    }
-                });
+                Scheduler.assign(oNPC, () -> NWScript.actionUseFeat(1116, oNPC));
             }
             else
             {
                 if(NWScript.getIsEnemy(oFinalTarget, oNPC) && oFinalTarget != NWObject.INVALID)
                 {
-                    Scheduler.assign(oNPC, new Runnable() {
-                        @Override
-                        public void run() {
-                            NWScript.actionAttack(oFinalTarget, true);
-                        }
-                    });
+                    Scheduler.assign(oNPC, () -> NWScript.actionAttack(oFinalTarget, true));
                 }
             }
         }
@@ -973,22 +908,14 @@ public class CombatSystem {
         final float animationLength = fAnimationLength * iShots + fAnimationDelay;
 
 
-        Scheduler.assign(oAttacker, new Runnable() {
-            @Override
-            public void run() {
-                NWScript.clearAllActions(true);
-                NWScript.setFacingPoint(NWScript.getPosition(oTarget));
-                NWScript.playAnimation(animationID, animationSpeed, animationLength);
-                NWScript.setCommandable(false, oAttacker);
-            }
+        Scheduler.assign(oAttacker, () -> {
+            NWScript.clearAllActions(true);
+            NWScript.setFacingPoint(NWScript.getPosition(oTarget));
+            NWScript.playAnimation(animationID, animationSpeed, animationLength);
+            NWScript.setCommandable(false, oAttacker);
         });
 
-        Scheduler.delay(oAttacker, (int) ((fAnimationLength + fNextAttackDelay) * 1000), new Runnable() {
-            @Override
-            public void run() {
-                NWScript.setCommandable(true, oAttacker);
-            }
-        });
+        Scheduler.delay(oAttacker, (int) ((fAnimationLength + fNextAttackDelay) * 1000), () -> NWScript.setCommandable(true, oAttacker));
 
         // Loop for attack
         for (iCurrentShot = 1; iCurrentShot < iShots+1; iCurrentShot++)
@@ -1030,12 +957,7 @@ public class CombatSystem {
             final NWObject weapon2 = oWeapon2;
             final int animation = iAnimation;
 
-            Scheduler.delay(oAttacker, (int) (fShotDelay * 1000), new Runnable() {
-                @Override
-                public void run() {
-                    FireShot(oAttacker, oTarget, weapon1, animation);
-                }
-            });
+            Scheduler.delay(oAttacker, (int) (fShotDelay * 1000), () -> FireShot(oAttacker, oTarget, weapon1, animation));
 
 
             // Second Shot for dual-pistols/SMGs
@@ -1054,12 +976,7 @@ public class CombatSystem {
                     NWScript.setLocalInt(oAttacker, GUN_TEMP_PREVENT_AMMO_BOX_BUG, 1);
                     NWScript.destroyObject(oMagazine, 0.0f);
 
-                    Scheduler.delay(oAttacker, 100, new Runnable() {
-                        @Override
-                        public void run() {
-                            NWScript.deleteLocalInt(oAttacker, GUN_TEMP_PREVENT_AMMO_BOX_BUG);
-                        }
-                    });
+                    Scheduler.delay(oAttacker, 100, () -> NWScript.deleteLocalInt(oAttacker, GUN_TEMP_PREVENT_AMMO_BOX_BUG));
                 }
                 else
                 {
@@ -1067,12 +984,7 @@ public class CombatSystem {
                     NWScript.setItemStackSize(oMagazine, iMagazineSize);
                 }
 
-                Scheduler.delay(oAttacker, (int)((fDualDelay + fShotDelay) * 1000), new Runnable() {
-                    @Override
-                    public void run() {
-                        FireShot(oAttacker, oTarget, weapon2, animation);
-                    }
-                });
+                Scheduler.delay(oAttacker, (int)((fDualDelay + fShotDelay) * 1000), () -> FireShot(oAttacker, oTarget, weapon2, animation));
             }
         }
 
@@ -1272,12 +1184,7 @@ public class CombatSystem {
             // one already going
             if(bCurrentlyOnFire == 0)
             {
-                Scheduler.delay(oAttacker, 1000, new Runnable() {
-                    @Override
-                    public void run() {
-                        IncendiaryDamage(oAttacker, oTarget, NWScript.random(3) + 3);
-                    }
-                });
+                Scheduler.delay(oAttacker, 1000, () -> IncendiaryDamage(oAttacker, oTarget, NWScript.random(3) + 3));
             }
         }
 
@@ -1290,12 +1197,7 @@ public class CombatSystem {
         if(NWScript.getIsDead(oTarget) || !NWScript.getIsObjectValid(oTarget)) return;
 
         int iCounter = NWScript.getLocalInt(oTarget, "INCENDIARY_DAMAGE_COUNTER") - 1;
-        Scheduler.assign(oAttacker, new Runnable() {
-            @Override
-            public void run() {
-                NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectDamage(iDamage, DamageType.FIRE, DamagePower.NORMAL), oTarget, 0.0f);
-            }
-        });
+        Scheduler.assign(oAttacker, () -> NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectDamage(iDamage, DamageType.FIRE, DamagePower.NORMAL), oTarget, 0.0f));
 
         // Exit when the incendiary NWEffect wears off
         if(iCounter <= 0) return;
@@ -1303,12 +1205,7 @@ public class CombatSystem {
         // Otherwise update the counter and call this function again in one second
         NWScript.setLocalInt(oTarget, "INCENDIARY_DAMAGE_COUNTER", iCounter);
 
-        Scheduler.delay(oAttacker, 1000, new Runnable() {
-            @Override
-            public void run() {
-                IncendiaryDamage(oAttacker, oTarget, NWScript.random(3) + 3);
-            }
-        });
+        Scheduler.delay(oAttacker, 1000, () -> IncendiaryDamage(oAttacker, oTarget, NWScript.random(3) + 3));
         
     }
 

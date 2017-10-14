@@ -59,12 +59,7 @@ public class Ice implements IAbility {
 
         NWScript.applyEffectToObject(DURATION_TYPE_INSTANT, NWScript.effectVisualEffect(VFX_FNF_ICESTORM, false), oTarget, 0.0f);
 
-        Scheduler.delay(oPC, 50, new Runnable() {
-            @Override
-            public void run() {
-                NWScript.applyEffectToObject(DURATION_TYPE_TEMPORARY, NWScript.effectDamage(damage, DamageType.COLD, DamagePower.NORMAL), oTarget, 0.0f);
-            }
-        });
+        Scheduler.delay(oPC, 50, () -> NWScript.applyEffectToObject(DURATION_TYPE_TEMPORARY, NWScript.effectDamage(damage, DamageType.COLD, DamagePower.NORMAL), oTarget, 0.0f));
 
         NWScript.applyEffectToObject(DURATION_TYPE_TEMPORARY, NWScript.effectSlow(), oTarget, slowLength);
     }

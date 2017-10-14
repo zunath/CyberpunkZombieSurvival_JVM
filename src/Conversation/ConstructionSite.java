@@ -503,12 +503,7 @@ public class ConstructionSite extends DialogBase implements IDialogHandler {
         NWScript.setPlotFlag(preview, true);
         NWScript.destroyObject(preview, 6.0f);
 
-        Scheduler.delay(preview, 6000, new Runnable() {
-            @Override
-            public void run() {
-                model.setIsPreviewing(false);
-            }
-        });
+        Scheduler.delay(preview, 6000, () -> model.setIsPreviewing(false));
 
     }
 
@@ -524,12 +519,7 @@ public class ConstructionSite extends DialogBase implements IDialogHandler {
         NWScript.setPlotFlag(preview, true);
         NWScript.destroyObject(preview, 6.0f);
 
-        Scheduler.delay(preview, 6000, new Runnable() {
-            @Override
-            public void run() {
-                model.setIsPreviewing(false);
-            }
-        });
+        Scheduler.delay(preview, 6000, () -> model.setIsPreviewing(false));
     }
 
     private void DoRaze()
@@ -610,12 +600,7 @@ public class ConstructionSite extends DialogBase implements IDialogHandler {
 
         repo.Save(entity);
 
-        Scheduler.assign(GetDialogTarget(), new Runnable() {
-            @Override
-            public void run() {
-                NWScript.setFacing((float) entity.getLocationOrientation());
-            }
-        });
+        Scheduler.assign(GetDialogTarget(), () -> NWScript.setFacing((float) entity.getLocationOrientation()));
 
     }
 

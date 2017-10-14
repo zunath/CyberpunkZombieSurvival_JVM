@@ -69,17 +69,7 @@ public class Escape implements IAbility {
                     NWScript.getDistanceBetween(member, oPC) <= 5.0f)
             {
                 final NWObject memberFinal = member;
-                Scheduler.delay(memberFinal, 2000, new Runnable() {
-                    @Override
-                    public void run() {
-                        Scheduler.assign(memberFinal, new Runnable() {
-                            @Override
-                            public void run() {
-                                NWScript.actionJumpToLocation(location);
-                            }
-                        });
-                    }
-                });
+                Scheduler.delay(memberFinal, 2000, () -> Scheduler.assign(memberFinal, () -> NWScript.actionJumpToLocation(location)));
             }
         }
 

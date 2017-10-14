@@ -24,12 +24,7 @@ public class GasCanister_OnDeath implements IScriptEventHandler {
             if(fDistance > 6.5 || fDistance == 0.0) break;
 
             final NWObject oTargetCopy = oTarget;
-            Scheduler.assign(oKiller, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectDamage(NWScript.random(10) + 5, DamageType.FIRE, DamagePower.NORMAL), oTargetCopy, 0.0f);
-                }
-            });
+            Scheduler.assign(oKiller, () -> NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectDamage(NWScript.random(10) + 5, DamageType.FIRE, DamagePower.NORMAL), oTargetCopy, 0.0f));
 
             int iNumberOfTicks = NWScript.random(4) + 1;
             int bCurrentlyOnFire = NWScript.getLocalInt(oTarget, "INCENDIARY_DAMAGE_COUNTER");
@@ -38,12 +33,7 @@ public class GasCanister_OnDeath implements IScriptEventHandler {
 
             if(bCurrentlyOnFire == 0)
             {
-                Scheduler.delay(oKiller, 1000, new Runnable() {
-                    @Override
-                    public void run() {
-                        CombatSystem.IncendiaryDamage(oKiller, oTargetCopy, NWScript.random(3) + 3);
-                    }
-                });
+                Scheduler.delay(oKiller, 1000, () -> CombatSystem.IncendiaryDamage(oKiller, oTargetCopy, NWScript.random(3) + 3));
             }
 
             // Fix the reputation - prevents zombies from bashing gas canisters

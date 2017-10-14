@@ -39,24 +39,18 @@ public class ArmorSystem {
             {
                 NWScript.sendMessageToPC(oPC, ColorToken.Red() + "You cannot equip armor during combat." + ColorToken.End());
 
-                Scheduler.assign(oPC, new Runnable() {
-                    @Override
-                    public void run() {
-                        NWScript.clearAllActions(false);
-                        NWScript.actionUnequipItem(oItem);
-                    }
+                Scheduler.assign(oPC, () -> {
+                    NWScript.clearAllActions(false);
+                    NWScript.actionUnequipItem(oItem);
                 });
             }
             else if(!NWScript.getIsObjectValid(NWScript.getItemInSlot(InventorySlot.CHEST, oPC)))
             {
                 NWScript.sendMessageToPC(oPC, ColorToken.Red() + "You must have clothes equipped before armor can be equipped." + ColorToken.End());
 
-                Scheduler.assign(oPC, new Runnable() {
-                    @Override
-                    public void run() {
-                        NWScript.clearAllActions(false);
-                        NWScript.actionUnequipItem(oItem);
-                    }
+                Scheduler.assign(oPC, () -> {
+                    NWScript.clearAllActions(false);
+                    NWScript.actionUnequipItem(oItem);
                 });
             }
         }
@@ -75,20 +69,12 @@ public class ArmorSystem {
             NWScript.setLocalInt(oItem, "ARMOR_SKIP_MODULE_ON_EQUIP", 1);
             NWScript.sendMessageToPC(oPC, ColorToken.Red() + "You cannot unequip armor during combat." + ColorToken.End());
 
-            Scheduler.assign(oPC, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.clearAllActions(false);
-                    NWScript.actionEquipItem(oItem, InventorySlot.CHEST);
-                }
+            Scheduler.assign(oPC, () -> {
+                NWScript.clearAllActions(false);
+                NWScript.actionEquipItem(oItem, InventorySlot.CHEST);
             });
 
-            Scheduler.delay(oPC, 1000, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.deleteLocalInt(oItem, "ARMOR_SKIP_MODULE_ON_EQUIP");
-                }
-            });
+            Scheduler.delay(oPC, 1000, () -> NWScript.deleteLocalInt(oItem, "ARMOR_SKIP_MODULE_ON_EQUIP"));
         }
         else if(baseItemType == BaseItem.ARMOR)
         {
@@ -96,12 +82,9 @@ public class ArmorSystem {
 
             if(NWScript.getIsObjectValid(oBelt))
             {
-                Scheduler.assign(oPC, new Runnable() {
-                    @Override
-                    public void run() {
-                        NWScript.clearAllActions(false);
-                        NWScript.actionUnequipItem(oBelt);
-                    }
+                Scheduler.assign(oPC, () -> {
+                    NWScript.clearAllActions(false);
+                    NWScript.actionUnequipItem(oBelt);
                 });
             }
         }

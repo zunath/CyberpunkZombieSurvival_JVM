@@ -10,12 +10,7 @@ public class Sit implements IScriptEventHandler {
     public void runScript(final NWObject objSelf) {
         NWObject oPC = NWScript.getLastUsedBy();
 
-        Scheduler.assign(oPC, new Runnable() {
-            @Override
-            public void run() {
-                NWScript.actionSit(objSelf);
-            }
-        });
+        Scheduler.assign(oPC, () -> NWScript.actionSit(objSelf));
 
     }
 }

@@ -47,12 +47,7 @@ public class InventorySystem {
     {
         final NWObject oPC = NWScript.getPCItemLastUnequippedBy();
         final NWObject oItem = NWScript.getPCItemLastUnequipped();
-        Scheduler.delay(oPC, 100, new Runnable() {
-            @Override
-            public void run() {
-                RunItemLimitCheck(oPC, oItem);
-            }
-        });
+        Scheduler.delay(oPC, 100, () -> RunItemLimitCheck(oPC, oItem));
     }
 
     private static int GetItemCount(NWObject oPC)

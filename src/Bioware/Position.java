@@ -9,12 +9,7 @@ public class Position {
 
     public static void TurnToFaceObject(final NWObject oObjectToFace, NWObject oTarget)
     {
-        Scheduler.assign(oTarget, new Runnable() {
-            @Override
-            public void run() {
-                NWScript.setFacingPoint(NWScript.getPosition(oObjectToFace));
-            }
-        });
+        Scheduler.assign(oTarget, () -> NWScript.setFacingPoint(NWScript.getPosition(oObjectToFace)));
     }
 
     public static float GetChangeInX(float fDistance, float fAngle)

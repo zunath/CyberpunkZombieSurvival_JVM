@@ -40,12 +40,7 @@ public class DiseaseSystem {
             NWScript.applyEffectToObject(Duration.TYPE_INSTANT, NWScript.effectHeal(NWScript.getMaxHitPoints(oPC)), oPC, 0.0f);
             NWScript.applyEffectToObject(Duration.TYPE_TEMPORARY, NWScript.effectCutsceneImmobilize(), oPC, 6.0f);
 
-            Scheduler.assign(oPC, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.actionJumpToLocation(NWScript.getLocation(NWScript.getWaypointByTag("DEATH_REALM_LOST_SOULS")));
-                }
-            });
+            Scheduler.assign(oPC, () -> NWScript.actionJumpToLocation(NWScript.getLocation(NWScript.getWaypointByTag("DEATH_REALM_LOST_SOULS"))));
 
             NWScript.floatingTextStringOnCreature("The infection has taken over your body!", oPC, false);
         }
@@ -129,12 +124,7 @@ public class DiseaseSystem {
             if(!NWScript.getItemCursedFlag(oInventory))
             {
                 NWScript.setDroppableFlag(oInventory, true);
-                Scheduler.assign(oClone, new Runnable() {
-                    @Override
-                    public void run() {
-                        NWScript.actionUnequipItem(oInventory);
-                    }
-                });
+                Scheduler.assign(oClone, () -> NWScript.actionUnequipItem(oInventory));
 
             }
             else
@@ -146,62 +136,34 @@ public class DiseaseSystem {
         // Zombie Claws and Hide needs to be equipped
         final NWObject belt = NWScript.createItemOnObject("ZombieCloneBelt", oClone, 1, "");
         NWScript.setDroppableFlag(belt, false);
-        Scheduler.assign(oClone, new Runnable() {
-            @Override
-            public void run() {
-                NWScript.actionEquipItem(belt, InventorySlot.BELT);
-            }
-        });
+        Scheduler.assign(oClone, () -> NWScript.actionEquipItem(belt, InventorySlot.BELT));
 
         final NWObject claw1 = NWScript.createItemOnObject(sClawResref, oClone, 1, "");
         NWScript.setDroppableFlag(claw1, false);
-        Scheduler.assign(oClone, new Runnable() {
-            @Override
-            public void run() {
-                NWScript.actionEquipItem(claw1, InventorySlot.CWEAPON_B);
-            }
-        });
+        Scheduler.assign(oClone, () -> NWScript.actionEquipItem(claw1, InventorySlot.CWEAPON_B));
 
 
         final NWObject claw2 = NWScript.createItemOnObject(sClawResref, oClone, 1, "");
         NWScript.setDroppableFlag(claw2, false);
-        Scheduler.assign(oClone, new Runnable() {
-            @Override
-            public void run() {
-                NWScript.actionEquipItem(claw2, InventorySlot.CWEAPON_L);
-            }
-        });
+        Scheduler.assign(oClone, () -> NWScript.actionEquipItem(claw2, InventorySlot.CWEAPON_L));
 
         final NWObject claw3 = NWScript.createItemOnObject(sClawResref, oClone, 1, "");
         NWScript.setDroppableFlag(claw3, false);
-        Scheduler.assign(oClone, new Runnable() {
-            @Override
-            public void run() {
-                NWScript.actionEquipItem(claw3, InventorySlot.CWEAPON_R);
-            }
-        });
+        Scheduler.assign(oClone, () -> NWScript.actionEquipItem(claw3, InventorySlot.CWEAPON_R));
 
         final NWObject creatureArmor = NWScript.createItemOnObject("rotd_zombieprop", oClone, 1, "");
         NWScript.setDroppableFlag(creatureArmor, false);
-        Scheduler.assign(oClone, new Runnable() {
-            @Override
-            public void run() {
-                NWScript.actionEquipItem(claw1, InventorySlot.CARMOUR);
-            }
-        });
+        Scheduler.assign(oClone, () -> NWScript.actionEquipItem(claw1, InventorySlot.CARMOUR));
 
         NWScript.applyEffectToObject(DurationType.PERMANENT, NWScript.supernaturalEffect(NWScript.effectMovementSpeedDecrease(15)), oClone, 0.0f);
         NWScript.levelUpHenchman(oClone, ClassType.UNDEAD, false, Package.UNDEAD);
 
         NWScript.changeToStandardFaction(oClone, StandardFaction.HOSTILE);
 
-        Scheduler.assign(oClone, new Runnable() {
-            @Override
-            public void run() {
-                NWScript.clearAllActions(false);
-                NWScript.actionUnequipItem(NWScript.getItemInSlot(InventorySlot.LEFTHAND, oClone));
-                NWScript.actionUnequipItem(NWScript.getItemInSlot(InventorySlot.RIGHTHAND, oClone));
-            }
+        Scheduler.assign(oClone, () -> {
+            NWScript.clearAllActions(false);
+            NWScript.actionUnequipItem(NWScript.getItemInSlot(InventorySlot.LEFTHAND, oClone));
+            NWScript.actionUnequipItem(NWScript.getItemInSlot(InventorySlot.RIGHTHAND, oClone));
         });
 
         NWScript.setName(oClone, "(Zombie) " + NWScript.getName(oPC, false));

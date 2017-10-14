@@ -283,12 +283,7 @@ public class BuildToolMenu extends DialogBase implements IDialogHandler {
 
         repo.Save(entity);
 
-        Scheduler.assign(model.getActiveStructure(), new Runnable() {
-            @Override
-            public void run() {
-                NWScript.setFacing((float)entity.getLocationOrientation());
-            }
-        });
+        Scheduler.assign(model.getActiveStructure(), () -> NWScript.setFacing((float)entity.getLocationOrientation()));
     }
 
     private void HandleRazeStructure()

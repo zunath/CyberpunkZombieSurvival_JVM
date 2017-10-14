@@ -31,12 +31,7 @@ public class HerbalRemedy implements IScriptEventHandler {
             return;
         }
 
-        Scheduler.assign(oPC, new Runnable() {
-            @Override
-            public void run() {
-                NWScript.actionPlayAnimation(Animation.FIREFORGET_SALUTE, 1.0f, 0.0f);
-            }
-        });
+        Scheduler.assign(oPC, () -> NWScript.actionPlayAnimation(Animation.FIREFORGET_SALUTE, 1.0f, 0.0f));
 
         DiseaseSystem.DecreaseDiseaseLevel(oPC, NWScript.random(10) + 1 + NWScript.random(skillLevel * 2));
         ItemHelper.ReduceItemStack(oItem);

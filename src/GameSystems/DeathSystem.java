@@ -71,12 +71,7 @@ public class DeathSystem {
 
         if(NWScript.getGold(oPC) > 0)
         {
-            Scheduler.assign(corpse, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.takeGoldFromCreature(NWScript.getGold(oPC), oPC, false);
-                }
-            });
+            Scheduler.assign(corpse, () -> NWScript.takeGoldFromCreature(NWScript.getGold(oPC), oPC, false));
 
             hasItems = true;
         }
@@ -121,12 +116,9 @@ public class DeathSystem {
         NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectResurrection(), oPC, 0.0f);
         NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectHeal(1), oPC, 0.0f);
 
-        Scheduler.assign(oPC, new Runnable() {
-            @Override
-            public void run() {
-                NWLocation lLocation = NWScript.getLocation(NWScript.getWaypointByTag("DEATH_WP"));
-                NWScript.actionJumpToLocation(lLocation);
-            }
+        Scheduler.assign(oPC, () -> {
+            NWLocation lLocation = NWScript.getLocation(NWScript.getWaypointByTag("DEATH_WP"));
+            NWScript.actionJumpToLocation(lLocation);
         });
     }
 
@@ -220,22 +212,14 @@ public class DeathSystem {
             NWObject defaultRespawn = NWScript.getWaypointByTag("RUBY_OUTPOST_STARTING_LOCATION");
             final NWLocation location = NWScript.getLocation(defaultRespawn);
 
-            Scheduler.assign(oPC, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.actionJumpToLocation(location);
-                }
-            });
+            Scheduler.assign(oPC, () -> NWScript.actionJumpToLocation(location));
         }
         else {
-            Scheduler.assign(oPC, new Runnable() {
-                @Override
-                public void run() {
-                    NWObject area = NWScript.getObjectByTag(entity.getRespawnAreaTag(), 0);
-                    NWVector position = NWScript.vector(entity.getRespawnLocationX(), entity.getRespawnLocationY(), entity.getRespawnLocationZ());
-                    NWLocation location = NWScript.location(area, position, entity.getRespawnLocationOrientation());
-                    NWScript.actionJumpToLocation(location);
-                }
+            Scheduler.assign(oPC, () -> {
+                NWObject area = NWScript.getObjectByTag(entity.getRespawnAreaTag(), 0);
+                NWVector position = NWScript.vector(entity.getRespawnLocationX(), entity.getRespawnLocationY(), entity.getRespawnLocationZ());
+                NWLocation location = NWScript.location(area, position, entity.getRespawnLocationOrientation());
+                NWScript.actionJumpToLocation(location);
             });
         }
 

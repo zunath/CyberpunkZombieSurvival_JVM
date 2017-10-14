@@ -55,35 +55,29 @@ public class Antibiotics implements IScriptEventHandler {
 
         NWNX_Funcs.StartTimingBar(oPC, (int) delay, "");
 
-        Scheduler.assign(oPC, new Runnable() {
-            @Override
-            public void run() {
-                pcGO.setIsBusy(true);
+        Scheduler.assign(oPC, () -> {
+            pcGO.setIsBusy(true);
 
-                NWScript.setFacingPoint(NWScript.getPosition(target));
-                NWScript.actionPlayAnimation(Animation.LOOPING_GET_MID, 1.0f, delay);
-                NWScript.setCommandable(false, oPC);
-            }
+            NWScript.setFacingPoint(NWScript.getPosition(target));
+            NWScript.actionPlayAnimation(Animation.LOOPING_GET_MID, 1.0f, delay);
+            NWScript.setCommandable(false, oPC);
         });
 
-        Scheduler.delay(oPC, (int) (delay * 1000), new Runnable() {
-            @Override
-            public void run() {
-                float distance = NWScript.getDistanceBetween(oPC, target);
-                NWScript.setCommandable(true, oPC);
-                pcGO.setIsBusy(false);
+        Scheduler.delay(oPC, (int) (delay * 1000), () -> {
+            float distance1 = NWScript.getDistanceBetween(oPC, target);
+            NWScript.setCommandable(true, oPC);
+            pcGO.setIsBusy(false);
 
-                if(distance > 3.5f)
-                {
-                    NWScript.sendMessageToPC(oPC, "Your target is too far away.");
-                    return;
-                }
-
-                CustomEffectSystem.RemovePCCustomEffect(target, CustomEffectType.InfectionOverTime);
-                ItemHelper.ReduceItemStack(item);
-
-                NWScript.sendMessageToPC(oPC, "You successfully administer antibiotics to " + NWScript.getName(target, false) + ".");
+            if(distance1 > 3.5f)
+            {
+                NWScript.sendMessageToPC(oPC, "Your target is too far away.");
+                return;
             }
+
+            CustomEffectSystem.RemovePCCustomEffect(target, CustomEffectType.InfectionOverTime);
+            ItemHelper.ReduceItemStack(item);
+
+            NWScript.sendMessageToPC(oPC, "You successfully administer antibiotics to " + NWScript.getName(target, false) + ".");
         });
     }
 }

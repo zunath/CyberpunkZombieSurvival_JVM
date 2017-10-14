@@ -52,34 +52,23 @@ public class CraftSystem {
                     CraftDelay;
 
             NWScript.applyEffectToObject(DurationType.TEMPORARY, NWScript.effectCutsceneImmobilize(), oPC, modifiedCraftDelay + 0.1f);
-            Scheduler.assign(oPC, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.clearAllActions(false);
-                    NWScript.actionPlayAnimation(Animation.LOOPING_GET_MID, 1.0f, modifiedCraftDelay);
-                }
+            Scheduler.assign(oPC, () -> {
+                NWScript.clearAllActions(false);
+                NWScript.actionPlayAnimation(Animation.LOOPING_GET_MID, 1.0f, modifiedCraftDelay);
             });
-            Scheduler.delay(device, 1000 * NWScript.floatToInt(modifiedCraftDelay / 2.0f), new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectVisualEffect(VfxComBlood.SPARK_MEDIUM, false), device, 0.0f);
-                }
-            });
+            Scheduler.delay(device, 1000 * NWScript.floatToInt(modifiedCraftDelay / 2.0f), () -> NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectVisualEffect(VfxComBlood.SPARK_MEDIUM, false), device, 0.0f));
 
             NWNX_Funcs.StartTimingBar(oPC, NWScript.floatToInt(modifiedCraftDelay), "");
 
-            Scheduler.delay(oPC, NWScript.floatToInt(modifiedCraftDelay * 1000), new Runnable() {
-                @Override
-                public void run() {
-                    try
-                    {
-                        RunCreateItem(oPC, device, blueprintID);
-                        pcGO.setIsBusy(false);
-                    }
-                    catch (Exception ex)
-                    {
-                        ErrorHelper.HandleException(ex, "");
-                    }
+            Scheduler.delay(oPC, NWScript.floatToInt(modifiedCraftDelay * 1000), () -> {
+                try
+                {
+                    RunCreateItem(oPC, device, blueprintID);
+                    pcGO.setIsBusy(false);
+                }
+                catch (Exception ex)
+                {
+                    ErrorHelper.HandleException(ex, "");
                 }
             });
         }

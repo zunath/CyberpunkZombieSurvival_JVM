@@ -38,19 +38,9 @@ public class OnAttacked implements IScriptEventHandler {
             NWScript.setPlotFlag(objSelf, true);
             NWScript.sendMessageToPC(oPC, ColorToken.Red() + "You must be using a blade to harvest this object." + ColorToken.End());
             NWScript.setLocalInt(oPC, "NOT_USING_CORRECT_WEAPON", 1);
-            Scheduler.assign(oPC, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.clearAllActions(false);
-                }
-            });
+            Scheduler.assign(oPC, () -> NWScript.clearAllActions(false));
 
-            Scheduler.delay(oPC, 1000, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.setPlotFlag(objSelf, false);
-                }
-            });
+            Scheduler.delay(oPC, 1000, () -> NWScript.setPlotFlag(objSelf, false));
         }
 
     }

@@ -37,26 +37,20 @@ public class Stimulant implements IScriptEventHandler {
 
         NWNX_Funcs.StartTimingBar(oPC, (int) delay, "");
 
-        Scheduler.assign(oPC, new Runnable() {
-            @Override
-            public void run() {
-                pcGO.setIsBusy(true);
-                NWScript.actionPlayAnimation(Animation.LOOPING_GET_MID, 1.0f, delay);
-                NWScript.setCommandable(false, oPC);
-            }
+        Scheduler.assign(oPC, () -> {
+            pcGO.setIsBusy(true);
+            NWScript.actionPlayAnimation(Animation.LOOPING_GET_MID, 1.0f, delay);
+            NWScript.setCommandable(false, oPC);
         });
 
-        Scheduler.delay(oPC, (int) (delay * 1000), new Runnable() {
-            @Override
-            public void run() {
-                pcGO.setIsBusy(false);
-                NWScript.setCommandable(true, oPC);
-                pcGO.removeEffect(EffectType.ABILITY_INCREASE);
-                NWEffect effect = NWScript.effectAbilityIncrease(attribute, power);
-                NWScript.applyEffectToObject(DurationType.TEMPORARY, effect, oPC, duration);
+        Scheduler.delay(oPC, (int) (delay * 1000), () -> {
+            pcGO.setIsBusy(false);
+            NWScript.setCommandable(true, oPC);
+            pcGO.removeEffect(EffectType.ABILITY_INCREASE);
+            NWEffect effect = NWScript.effectAbilityIncrease(attribute, power);
+            NWScript.applyEffectToObject(DurationType.TEMPORARY, effect, oPC, duration);
 
-                ItemHelper.ReduceItemStack(item);
-            }
+            ItemHelper.ReduceItemStack(item);
         });
 
 

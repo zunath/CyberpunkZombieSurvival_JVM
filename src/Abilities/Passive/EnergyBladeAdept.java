@@ -53,23 +53,17 @@ public class EnergyBladeAdept implements IAbility {
 
         if(rightGO.HasItemProperty(CustomItemProperty.EnergyBlade))
         {
-            Scheduler.assign(oPC, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.clearAllActions(false);
-                    NWScript.actionUnequipItem(rightHand);
-                }
+            Scheduler.assign(oPC, () -> {
+                NWScript.clearAllActions(false);
+                NWScript.actionUnequipItem(rightHand);
             });
         }
 
         if(leftGO.HasItemProperty(CustomItemProperty.EnergyBlade))
         {
-            Scheduler.assign(oPC, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.clearAllActions(false);
-                    NWScript.actionUnequipItem(leftHand);
-                }
+            Scheduler.assign(oPC, () -> {
+                NWScript.clearAllActions(false);
+                NWScript.actionUnequipItem(leftHand);
             });
         }
     }

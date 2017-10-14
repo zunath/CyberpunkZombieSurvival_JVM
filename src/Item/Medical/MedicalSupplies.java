@@ -68,38 +68,32 @@ public class MedicalSupplies implements IScriptEventHandler {
         if(!oPC.equals(oTarget))
             NWScript.sendMessageToPC(oTarget, NWScript.getName(oPC, false) + " begins treating your wounds.");
 
-        Scheduler.assign(oPC, new Runnable() {
-            @Override
-            public void run() {
-                pcGO.setIsBusy(true);
-                NWScript.setFacingPoint(NWScript.getPosition(oTarget));
-                NWScript.actionPlayAnimation(Animation.LOOPING_GET_MID, 1.0f, delay);
-                NWScript.setCommandable(false, oPC);
-            }
+        Scheduler.assign(oPC, () -> {
+            pcGO.setIsBusy(true);
+            NWScript.setFacingPoint(NWScript.getPosition(oTarget));
+            NWScript.actionPlayAnimation(Animation.LOOPING_GET_MID, 1.0f, delay);
+            NWScript.setCommandable(false, oPC);
         });
 
-        Scheduler.delay(oPC, (int) (1000 * delay), new Runnable() {
-            @Override
-            public void run() {
-                pcGO.setIsBusy(false);
-                NWScript.setCommandable(true, oPC);
-                float distance = NWScript.getDistanceBetween(oPC, oTarget);
+        Scheduler.delay(oPC, (int) (1000 * delay), () -> {
+            pcGO.setIsBusy(false);
+            NWScript.setCommandable(true, oPC);
+            float distance1 = NWScript.getDistanceBetween(oPC, oTarget);
 
-                if(distance > 3.5f)
-                {
-                    NWScript.sendMessageToPC(oPC, "Your target is too far away.");
-                    return;
-                }
-                PlayerGO targetGO = new PlayerGO(oTarget);
-                targetGO.removeEffect(EffectType.REGENERATE);
-
-                NWEffect regeneration = NWScript.effectRegenerate(restoreAmount, 6.0f);
-                NWScript.applyEffectToObject(DurationType.TEMPORARY, regeneration, oTarget, finalDuration);
-                ItemHelper.ReduceItemStack(item);
-
-                NWScript.sendMessageToPC(oPC, "You successfully treat " + NWScript.getName(oTarget, false) + "'s wounds.");
-
+            if(distance1 > 3.5f)
+            {
+                NWScript.sendMessageToPC(oPC, "Your target is too far away.");
+                return;
             }
+            PlayerGO targetGO = new PlayerGO(oTarget);
+            targetGO.removeEffect(EffectType.REGENERATE);
+
+            NWEffect regeneration = NWScript.effectRegenerate(restoreAmount, 6.0f);
+            NWScript.applyEffectToObject(DurationType.TEMPORARY, regeneration, oTarget, finalDuration);
+            ItemHelper.ReduceItemStack(item);
+
+            NWScript.sendMessageToPC(oPC, "You successfully treat " + NWScript.getName(oTarget, false) + "'s wounds.");
+
         });
     }
 }

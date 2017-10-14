@@ -18,12 +18,7 @@ public class Zombie_OnBlocked implements IScriptEventHandler {
 
         if(isLocked)
         {
-            Scheduler.assign(oZombie, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.clearAllActions(false);
-                }
-            });
+            Scheduler.assign(oZombie, () -> NWScript.clearAllActions(false));
         }
         else if(iType == ObjectType.DOOR && !NWScript.getIsOpen(oDoor))
         {

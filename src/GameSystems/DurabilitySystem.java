@@ -29,12 +29,9 @@ public class DurabilitySystem {
         int iDurability = itemGO.getDurability();
 
         if (iDurability <= 0 && iDurability != -1) {
-            Scheduler.assign(oPC, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.clearAllActions(false);
-                    NWScript.actionUnequipItem(oItem);
-                }
+            Scheduler.assign(oPC, () -> {
+                NWScript.clearAllActions(false);
+                NWScript.actionUnequipItem(oItem);
             });
 
             NWScript.floatingTextStringOnCreature(ColorToken.Red() + "That item is broken and must be repaired before you can use it." + ColorToken.End(), oPC, false);

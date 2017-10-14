@@ -61,12 +61,7 @@ public class RestMenu extends DialogBase implements IDialogHandler {
                     // Open Overflow Inventory
                     case 1:
                         final NWObject storage = NWScript.createObject(ObjectType.PLACEABLE, "overflow_storage", NWScript.getLocation(oPC), false, "");
-                        Scheduler.assign(oPC, new Runnable() {
-                            @Override
-                            public void run() {
-                                NWScript.actionInteractObject(storage);
-                            }
-                        });
+                        Scheduler.assign(oPC, () -> NWScript.actionInteractObject(storage));
                         break;
                     // Allocate Skill Points
                     case 2:
@@ -77,12 +72,9 @@ public class RestMenu extends DialogBase implements IDialogHandler {
                         NWScript.setLocalObject(oPC, "dmfi_univ_target", oPC);
                         NWScript.setLocalLocation(oPC, "dmfi_univ_location", NWScript.getLocation(oPC));
                         NWScript.setLocalString(oPC, "dmfi_univ_conv", "pc_dicebag");
-                        Scheduler.assign(oPC, new Runnable() {
-                            @Override
-                            public void run() {
-                                NWScript.clearAllActions(false);
-                                NWScript.actionStartConversation(oPC, "dmfi_universal", true, false);
-                            }
+                        Scheduler.assign(oPC, () -> {
+                            NWScript.clearAllActions(false);
+                            NWScript.actionStartConversation(oPC, "dmfi_universal", true, false);
                         });
                         break;
                     // Emote Menu
@@ -90,12 +82,9 @@ public class RestMenu extends DialogBase implements IDialogHandler {
                         NWScript.setLocalObject(oPC, "dmfi_univ_target", oPC);
                         NWScript.setLocalLocation(oPC, "dmfi_univ_location", NWScript.getLocation(oPC));
                         NWScript.setLocalString(oPC, "dmfi_univ_conv", "pc_emote");
-                        Scheduler.assign(oPC, new Runnable() {
-                            @Override
-                            public void run() {
-                                NWScript.clearAllActions(false);
-                                NWScript.actionStartConversation(oPC, "dmfi_universal", true, false);
-                            }
+                        Scheduler.assign(oPC, () -> {
+                            NWScript.clearAllActions(false);
+                            NWScript.actionStartConversation(oPC, "dmfi_universal", true, false);
                         });
                         break;
                     // View Badges
@@ -112,12 +101,7 @@ public class RestMenu extends DialogBase implements IDialogHandler {
                         break;
                     // Modify Clothes
                     case 8:
-                        Scheduler.assign(oPC, new Runnable() {
-                            @Override
-                            public void run() {
-                                NWScript.actionStartConversation(oPC, "x0_skill_ctrap", true, false);
-                            }
-                        });
+                        Scheduler.assign(oPC, () -> NWScript.actionStartConversation(oPC, "x0_skill_ctrap", true, false));
                         break;
                     // Character Management
                     case 9:

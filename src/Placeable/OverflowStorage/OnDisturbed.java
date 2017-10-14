@@ -18,12 +18,7 @@ public class OnDisturbed implements IScriptEventHandler {
 
         if(type == InventoryDisturbType.ADDED)
         {
-            Scheduler.assign(objSelf, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.actionGiveItem(oItem, oPC);
-                }
-            });
+            Scheduler.assign(objSelf, () -> NWScript.actionGiveItem(oItem, oPC));
 
             return;
         }

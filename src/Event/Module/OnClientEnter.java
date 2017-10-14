@@ -61,6 +61,9 @@ public class OnClientEnter implements IScriptEventHandler {
     private void InitializeNewCharacter()
     {
         final NWObject oPC = NWScript.getEnteringObject();
+
+        if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return;
+
         PlayerGO pcGO = new PlayerGO(oPC);
         NWObject oDatabase = pcGO.GetDatabaseItem();
 
@@ -73,12 +76,9 @@ public class OnClientEnter implements IScriptEventHandler {
 
             oDatabase = NWScript.createItemOnObject(Constants.PCDatabaseTag, oPC, 1, "");
 
-            Scheduler.assign(oPC, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.takeGoldFromCreature(NWScript.getGold(oPC), oPC, true);
-                    NWScript.giveGoldToCreature(oPC, 10);
-                }
+            Scheduler.assign(oPC, () -> {
+                NWScript.takeGoldFromCreature(NWScript.getGold(oPC), oPC, true);
+                NWScript.giveGoldToCreature(oPC, 10);
             });
 
             NWScript.createItemOnObject("fky_chat_target", oPC, 1, "");
@@ -91,12 +91,9 @@ public class OnClientEnter implements IScriptEventHandler {
             NWScript.setName(darts, "Starting Darts");
             NWScript.setItemCursedFlag(darts, true);
 
-            Scheduler.assign(oPC, new Runnable() {
-                @Override
-                public void run() {
-                    NWObject oClothes = NWScript.createItemOnObject("starting_shirt", oPC, 1, "");
-                    NWScript.actionEquipItem(oClothes, InventorySlot.CHEST);
-                }
+            Scheduler.assign(oPC, () -> {
+                NWObject oClothes = NWScript.createItemOnObject("starting_shirt", oPC, 1, "");
+                NWScript.actionEquipItem(oClothes, InventorySlot.CHEST);
             });
 
             for(int slot = 0; slot <= 10; slot++)
@@ -113,12 +110,7 @@ public class OnClientEnter implements IScriptEventHandler {
 
             ProgressionSystem.InitializePlayer(oPC);
             NWNX_Funcs.SetRawQuickBarSlot(oPC, "1 4 0 1116 0");
-            Scheduler.delay(oPC, 1000, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectHeal(999), oPC, 0.0f);
-                }
-            });
+            Scheduler.delay(oPC, 1000, () -> NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectHeal(999), oPC, 0.0f));
         }
     }
 
@@ -129,12 +121,7 @@ public class OnClientEnter implements IScriptEventHandler {
         final NWObject oPC = NWScript.getEnteringObject();
         final String message = ColorToken.Green() + "Welcome to " + config.getServerName() + "!\n\nMOTD:" + ColorToken.White() +  config.getMessageOfTheDay() + ColorToken.End();
 
-        Scheduler.delay(oPC, 6500, new Runnable() {
-            @Override
-            public void run() {
-                NWScript.sendMessageToPC(oPC, message);
-            }
-        });
+        Scheduler.delay(oPC, 6500, () -> NWScript.sendMessageToPC(oPC, message));
     }
 
     private void LoadCharacter()

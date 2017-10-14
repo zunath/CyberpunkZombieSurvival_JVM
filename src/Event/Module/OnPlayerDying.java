@@ -11,13 +11,10 @@ public class OnPlayerDying implements IScriptEventHandler {
 
 		final NWObject oPC = NWScript.getLastPlayerDying();
 
-		Scheduler.assign(oPC, new Runnable() {
-			@Override
-			public void run() {
-				NWScript.clearAllActions(false);
-				DeathFunction(oPC, 8);
-			}
-		});
+		Scheduler.assign(oPC, () -> {
+            NWScript.clearAllActions(false);
+            DeathFunction(oPC, 8);
+        });
 	}
 
 
@@ -56,12 +53,7 @@ public class OnPlayerDying implements IScriptEventHandler {
 				NWScript.applyEffectToObject(DurationType.INSTANT, eResult, oPC, 0.0f);
 
 				final int dcCopy = nDC;
-				Scheduler.delay(oPC, 3000, new Runnable() {
-					@Override
-					public void run() {
-						DeathFunction(oPC, dcCopy);
-					}
-				});
+				Scheduler.delay(oPC, 3000, () -> DeathFunction(oPC, dcCopy));
 			}
 		}
 	}

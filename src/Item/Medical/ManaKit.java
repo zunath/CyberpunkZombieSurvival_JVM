@@ -49,32 +49,26 @@ public class ManaKit implements IScriptEventHandler {
         if(!oPC.equals(oTarget))
             NWScript.sendMessageToPC(oTarget, NWScript.getName(oPC, false) + " begins applying a mana kit to you.");
 
-        Scheduler.assign(oPC, new Runnable() {
-            @Override
-            public void run() {
-                pcGO.setIsBusy(true);
-                NWScript.setFacingPoint(NWScript.getPosition(oTarget));
-                NWScript.actionPlayAnimation(Animation.LOOPING_GET_MID, 1.0f, delay);
-                NWScript.setCommandable(false, oPC);
-            }
+        Scheduler.assign(oPC, () -> {
+            pcGO.setIsBusy(true);
+            NWScript.setFacingPoint(NWScript.getPosition(oTarget));
+            NWScript.actionPlayAnimation(Animation.LOOPING_GET_MID, 1.0f, delay);
+            NWScript.setCommandable(false, oPC);
         });
 
-        Scheduler.delay(oPC, (int) (1000 * delay), new Runnable() {
-            @Override
-            public void run() {
-                pcGO.setIsBusy(false);
-                NWScript.setCommandable(true, oPC);
-                float distance = NWScript.getDistanceBetween(oPC, oTarget);
+        Scheduler.delay(oPC, (int) (1000 * delay), () -> {
+            pcGO.setIsBusy(false);
+            NWScript.setCommandable(true, oPC);
+            float distance1 = NWScript.getDistanceBetween(oPC, oTarget);
 
-                if(distance > 3.5f)
-                {
-                    NWScript.sendMessageToPC(oPC, "Your target is too far away.");
-                    return;
-                }
-                CustomEffectSystem.ApplyCustomEffect(oPC, oTarget, CustomEffectType.ManaKit, durationTicks);
-                ItemHelper.ReduceItemStack(item);
-                NWScript.sendMessageToPC(oPC, "You successfully apply a mana kit to " + NWScript.getName(oTarget, false) + ".");
+            if(distance1 > 3.5f)
+            {
+                NWScript.sendMessageToPC(oPC, "Your target is too far away.");
+                return;
             }
+            CustomEffectSystem.ApplyCustomEffect(oPC, oTarget, CustomEffectType.ManaKit, durationTicks);
+            ItemHelper.ReduceItemStack(item);
+            NWScript.sendMessageToPC(oPC, "You successfully apply a mana kit to " + NWScript.getName(oTarget, false) + ".");
         });
     }
 }

@@ -8,16 +8,6 @@ import org.nwnx.nwnx2.jvm.Scheduler;
 public class AutoClose implements IScriptEventHandler {
     @Override
     public void runScript(final NWObject objSelf) {
-        Scheduler.delay(objSelf, 6000, new Runnable() {
-            @Override
-            public void run() {
-                Scheduler.assign(objSelf, new Runnable() {
-                    @Override
-                    public void run() {
-                        NWScript.actionCloseDoor(objSelf);
-                    }
-                });
-            }
-        });
+        Scheduler.delay(objSelf, 6000, () -> Scheduler.assign(objSelf, () -> NWScript.actionCloseDoor(objSelf)));
     }
 }

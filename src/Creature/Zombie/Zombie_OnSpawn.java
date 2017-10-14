@@ -41,12 +41,9 @@ public class Zombie_OnSpawn implements IScriptEventHandler {
             SpawnRandomClothes(oZombie);
         }
 
-        Scheduler.assign(oZombie, new Runnable() {
-            @Override
-            public void run() {
-                NWScript.setFacing((float)NWScript.random(361));
-                NWScript.actionRandomWalk();
-            }
+        Scheduler.assign(oZombie, () -> {
+            NWScript.setFacing((float)NWScript.random(361));
+            NWScript.actionRandomWalk();
         });
     }
 

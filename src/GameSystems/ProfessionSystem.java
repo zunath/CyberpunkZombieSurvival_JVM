@@ -20,6 +20,8 @@ public class ProfessionSystem {
     {
         PlayerRepository repo = new PlayerRepository();
         NWObject oPC = NWScript.getEnteringObject();
+        if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return;
+
         PlayerGO pcGO = new PlayerGO(oPC);
         NWObject token = NWScript.getItemPossessedBy(oPC, "prof_token");
         PlayerEntity entity = repo.getByUUID(pcGO.getUUID());

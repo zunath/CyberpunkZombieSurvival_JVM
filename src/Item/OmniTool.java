@@ -53,12 +53,7 @@ public class OmniTool implements IScriptEventHandler {
         }
 
         NWScript.floatingTextStringOnCreature("Now following " + NWScript.getName(oTarget, false) + ".", oPC, false);
-        Scheduler.delay(oPC, 2000, new Runnable() {
-            @Override
-            public void run() {
-                NWScript.actionForceFollowObject(oTarget, 2.0f);
-            }
-        });
+        Scheduler.delay(oPC, 2000, () -> NWScript.actionForceFollowObject(oTarget, 2.0f));
     }
 
     private void HandleOpenRestMenu(NWObject oPC)

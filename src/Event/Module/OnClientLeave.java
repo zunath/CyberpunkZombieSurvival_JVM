@@ -11,9 +11,13 @@ public class OnClientLeave implements IScriptEventHandler {
 	@Override
 	public void runScript(NWObject objSelf) {
 		RadioSystem radioSystem = new RadioSystem();
-
 		NWObject pc = NWScript.getExitingObject();
-		NWScript.exportSingleCharacter(pc);
+
+		if(NWScript.getIsPC(pc))
+        {
+            NWScript.exportSingleCharacter(pc);
+        }
+
 		SaveCharacter(pc);
 
 		// SimTools

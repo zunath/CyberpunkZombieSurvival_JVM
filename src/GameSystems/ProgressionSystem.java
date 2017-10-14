@@ -403,19 +403,16 @@ public class ProgressionSystem {
 
         if(!DoesPlayerMeetItemSkillRequirements(oPC, oItem))
         {
-            Scheduler.delay(oPC, 100, new Runnable() {
-                @Override
-                public void run() {
+            Scheduler.delay(oPC, 100, () -> {
 
-                    for(NWObject item : NWScript.getItemsInInventory(oPC))
-                    {
-                        if(NWScript.getBaseItemType(item) == BaseItem.ARROW)
-                            NWScript.destroyObject(item, 0.0f);
-                    }
-
-                    NWScript.clearAllActions(false);
-                    NWScript.actionUnequipItem(oItem);
+                for(NWObject item : NWScript.getItemsInInventory(oPC))
+                {
+                    if(NWScript.getBaseItemType(item) == BaseItem.ARROW)
+                        NWScript.destroyObject(item, 0.0f);
                 }
+
+                NWScript.clearAllActions(false);
+                NWScript.actionUnequipItem(oItem);
             });
         }
     }
@@ -490,12 +487,7 @@ public class ProgressionSystem {
 
         if(forceReset)
         {
-            Scheduler.delay(oPC, 8000, new Runnable() {
-                @Override
-                public void run() {
-                    NWScript.floatingTextStringOnCreature(ColorToken.Green() + "You have received a free skill reset due to changes in the skill list." + ColorToken.End(), oPC, false);
-                }
-            });
+            Scheduler.delay(oPC, 8000, () -> NWScript.floatingTextStringOnCreature(ColorToken.Green() + "You have received a free skill reset due to changes in the skill list." + ColorToken.End(), oPC, false));
         }
         else
         {

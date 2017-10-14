@@ -42,12 +42,7 @@ public class OnDisturbed implements IScriptEventHandler {
             {
                 reachedLimit = true;
 
-                Scheduler.assign(objSelf, new Runnable() {
-                    @Override
-                    public void run() {
-                        NWScript.actionGiveItem(inventory, oPC);
-                    }
-                });
+                Scheduler.assign(objSelf, () -> NWScript.actionGiveItem(inventory, oPC));
             }
         }
 

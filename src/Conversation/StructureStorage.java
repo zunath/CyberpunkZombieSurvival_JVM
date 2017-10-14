@@ -65,22 +65,12 @@ public class StructureStorage extends DialogBase implements IDialogHandler {
         final NWObject copy = NWScript.createObject(ObjectType.PLACEABLE, "str_storage_copy", location, false, "");
         NWScript.setName(copy, NWScript.getName(chest, false));
 
-        Scheduler.assign(copy, new Runnable() {
-            @Override
-            public void run() {
-                NWScript.setFacingPoint(NWScript.getPosition(oPC));
-            }
-        });
+        Scheduler.assign(copy, () -> NWScript.setFacingPoint(NWScript.getPosition(oPC)));
         NWScript.setLocalObject(chest, "STRUCTURE_TEMP_INVENTORY_OPENED", copy);
         NWScript.setLocalObject(copy, "STRUCTURE_TEMP_PARENT", chest);
         NWScript.setLocalInt(copy, "STRUCTURE_TEMP_STRUCTURE_ID", structureID);
 
-        Scheduler.assign(oPC, new Runnable() {
-            @Override
-            public void run() {
-                NWScript.actionInteractObject(copy);
-            }
-        });
+        Scheduler.assign(oPC, () -> NWScript.actionInteractObject(copy));
     }
 
 }
