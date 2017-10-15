@@ -4,12 +4,12 @@ import Data.Repository.DatabaseRepository;
 import Entities.ActivePlayerEntity;
 import Entities.PlayerEntity;
 import Enumerations.AbilityType;
+import Enumerations.ProfessionType;
 import GameObject.PlayerGO;
 import Common.IScriptEventHandler;
 import Data.Repository.ActivePlayerRepository;
 import Data.Repository.PlayerRepository;
 import GameSystems.*;
-import Helper.ColorToken;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.nwnx.nwnx2.jvm.*;
@@ -95,6 +95,12 @@ public class OnHeartbeat implements IScriptEventHandler {
 					amount += 5;
 				}
 
+				// Forest Wardens receive +1 to HP regen
+				if(entity.getProfessionID() == ProfessionType.ForestWarden)
+				{
+					amount++;
+				}
+
 				NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectHeal(amount), oPC, 0.0f);
 			}
 
@@ -125,6 +131,13 @@ public class OnHeartbeat implements IScriptEventHandler {
 				if(isInSafeZone)
 				{
 					amount += 5;
+				}
+
+				// Mages get an innate +1 mana regeneration
+				if(entity.getProfessionID() == ProfessionType.EvocationMage ||
+						entity.getProfessionID() == ProfessionType.HolyMage)
+				{
+					amount += 1;
 				}
 
 				entity = MagicSystem.RestoreMana(oPC, amount, entity);

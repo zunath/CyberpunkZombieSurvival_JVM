@@ -139,6 +139,16 @@ public class SearchSystem {
                 dc += NWScript.random(3) + 1;
             }
 
+            // Merchants occasionally find additional gold in search sites.
+            if(playerEntity.getProfessionID() == ProfessionType.Merchant)
+            {
+                if(ThreadLocalRandom.current().nextInt(0, 100) <= 10)
+                {
+                    int goldAmount = ThreadLocalRandom.current().nextInt(1, 10);
+                    NWScript.createItemOnObject("nw_it_gold001", oChest, goldAmount, "");
+                }
+            }
+
             SaveChestInventory(oPC, oChest, false);
         }
         else

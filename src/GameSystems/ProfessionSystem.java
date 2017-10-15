@@ -78,7 +78,8 @@ public class ProfessionSystem {
         switch(professionID)
         {
             case ProfessionType.Merchant:
-                // No actions necessary - check is made in the inventory system.
+                // Inventory upgrade is handled by inventory system.
+                // Additional gold while searching is handled by search system.
                 break;
             case ProfessionType.Vagabond:
                 // No actions necessary - progression system handles the bonus
@@ -86,6 +87,7 @@ public class ProfessionSystem {
             case ProfessionType.ForestWarden:
                 NWScript.createItemOnObject("cleiyraforest_ke", oPC, 1, "");
                 // HP upgrade is handled by progression system
+                // HP regen upgrade is handled in module heartbeat.
                 break;
             case ProfessionType.PoliceOfficer:
                 NWScript.createItemOnObject("cop_gun", oPC, 1, "");
@@ -98,10 +100,12 @@ public class ProfessionSystem {
                 break;
             case ProfessionType.HolyMage:
                 // Mana upgrade is handled by progression system.
+                // Mana regen bonus is handled in module heartbeat.
                 MagicSystem.LearnAbility(oPC, NWObject.INVALID, AbilityType.Cure);
                 break;
             case ProfessionType.EvocationMage:
                 // Mana upgrades is handled by progression system.
+                // Mana regen bonus is handled in module heartbeat.
                 MagicSystem.LearnAbility(oPC, NWObject.INVALID, AbilityType.Flame);
                 break;
         }
