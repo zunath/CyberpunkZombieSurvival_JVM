@@ -5,6 +5,7 @@ import GameObject.PlayerGO;
 import Common.IScriptEventHandler;
 import Data.Repository.PlayerRepository;
 import GameSystems.ProgressionSystem;
+import GameSystems.SpawnSystem;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 
@@ -15,12 +16,15 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Zombie_OnDeath implements IScriptEventHandler {
     @Override
     public void runScript(NWObject objSelf) {
+        SpawnSystem spawnSystem = new SpawnSystem();
 
         NWScript.executeScript("nw_c2_default7", objSelf);
         NWScript.setIsDestroyable(false, true, false);
         NWScript.executeScript("gb_loot_corpse", objSelf);
         IncrementKillCount();
         GiveExperienceToPCParty(objSelf);
+
+        spawnSystem.OnCreatureDeath(objSelf);
     }
 
     private void IncrementKillCount()
