@@ -122,7 +122,7 @@ public class CustomEffectSystem {
         CustomEffectEntity effectEntity = repo.GetEffectByID(customEffectID);
 
         // PC custom effects are tracked in the database.
-        if(NWScript.getIsPC(oTarget))
+        if(NWScript.getIsPC(oTarget) && !NWScript.getIsDM(oTarget) && !NWScript.getIsDMPossessed(oTarget))
         {
             PlayerGO pcGO = new PlayerGO(oTarget);
             PCCustomEffectEntity entity = repo.GetPCEffectByID(pcGO.getUUID(), customEffectID);
