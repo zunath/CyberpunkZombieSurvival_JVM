@@ -20,8 +20,6 @@ public class Zombie_OnSpawn implements IScriptEventHandler {
     public void runScript(NWObject oZombie) {
         String sName = NWScript.getName(oZombie, false);
 
-        NWScript.executeScript("ss_treasure_spwn", oZombie);
-
         if(NWScript.getLocalInt(oZombie, "BYPASS_SPAWN_DAMAGE") == 0)
         {
             int randomDamage = (int)(NWScript.getMaxHitPoints(oZombie) * 0.33);
