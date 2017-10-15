@@ -90,16 +90,18 @@ public class ProfessionSystem {
             case ProfessionType.PoliceOfficer:
                 NWScript.createItemOnObject("cop_gun", oPC, 1, "");
                 // Handgun proficiency upgrade is handled by progression system
+                // +3 critical chance is handled by combat system
                 break;
             case ProfessionType.Cartographer:
                 // Search Upgrade is handled by progression system.
+                // Additional search chance is handled by search system.
                 break;
             case ProfessionType.HolyMage:
-                // Ability Disc + Mana upgrades are handled by progression system.
+                // Mana upgrade is handled by progression system.
                 MagicSystem.LearnAbility(oPC, NWObject.INVALID, AbilityType.Cure);
                 break;
             case ProfessionType.EvocationMage:
-                // Ability Disc + Mana upgrades are handled by progression system.
+                // Mana upgrades is handled by progression system.
                 MagicSystem.LearnAbility(oPC, NWObject.INVALID, AbilityType.Flame);
                 break;
         }

@@ -154,11 +154,11 @@ public class ProgressionSystem {
         switch(entity.getProfessionID())
         {
             case ProfessionType.Vagabond:
-                entity.setUnallocatedSP(entity.getUnallocatedSP() + 10);
+                entity.setUnallocatedSP(entity.getUnallocatedSP() + 6);
                 repo.save(entity);
                 break;
             case ProfessionType.ForestWarden:
-                NWNX_Funcs.SetMaxHitPointsByLevel(oPC, 1, NWScript.getMaxHitPoints(oPC) + 9);
+                NWNX_Funcs.SetMaxHitPointsByLevel(oPC, 1, NWScript.getMaxHitPoints(oPC) + 5);
                 break;
             case ProfessionType.PoliceOfficer:
                 skillEntity = skillRepo.GetByUUIDAndSkillID(pcGO.getUUID(), SkillType_HANDGUN_PROFICIENCY);
@@ -173,9 +173,6 @@ public class ProgressionSystem {
                 break;
             case ProfessionType.HolyMage:
             case ProfessionType.EvocationMage:
-                skillEntity = skillRepo.GetByUUIDAndSkillID(pcGO.getUUID(), SkillType_ABILITY_SLOTS);
-                skillEntity.setUpgradeLevel(skillEntity.getUpgradeLevel() + 1);
-                skillRepo.save(skillEntity);
 
                 skillEntity = skillRepo.GetByUUIDAndSkillID(pcGO.getUUID(), SkillType_MANA);
                 skillEntity.setUpgradeLevel(skillEntity.getUpgradeLevel() + 1);

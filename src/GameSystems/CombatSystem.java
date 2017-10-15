@@ -1,9 +1,12 @@
 package GameSystems;
 
 import Bioware.Position;
+import Data.Repository.PlayerRepository;
+import Entities.PlayerEntity;
 import Enumerations.AbilityType;
 import Enumerations.CustomAnimationType;
 import Enumerations.GunType;
+import Enumerations.ProfessionType;
 import GameObject.GunGO;
 import GameObject.ItemGO;
 import GameObject.PlayerGO;
@@ -812,7 +815,7 @@ public class CombatSystem {
             fAnimationSpeed = 2.0f; // 7.0 very decent
         }
         // Handguns
-        else if (stGun1Info.getGunType() == GunType.Hangun && stGun2Info.getGunType() == GunType.Invalid)
+        else if (stGun1Info.getGunType() == GunType.Handgun && stGun2Info.getGunType() == GunType.Invalid)
         {
             iAnimation = CustomAnimationType.Pistol;
             fNextAttackDelay = 0.5f;
@@ -834,7 +837,7 @@ public class CombatSystem {
             fAnimationSpeed = 2.0f; // 7.0 very decent
         }
         // Dual Handguns or Dual Magnums (but not 1 handgun, 1 magnum)
-        else if (stGun1Info.getGunType() == GunType.Hangun && stGun2Info.getGunType() == GunType.Hangun ||
+        else if (stGun1Info.getGunType() == GunType.Handgun && stGun2Info.getGunType() == GunType.Handgun ||
                 stGun1Info.getGunType() == GunType.Magnum && stGun2Info.getGunType() == GunType.Magnum)
         {
             iAnimation = CustomAnimationType.PistolDual;
@@ -1075,7 +1078,7 @@ public class CombatSystem {
     }
 
     int bIsCriticalHit = 0;
-    int CalculateDamage(final NWObject oAttacker, final NWObject oTarget, GunGO stGunInfo, int iFirearmSkill)
+    int CalculateDamage(final NWObject oAttacker, final NWObject oTarget, GunGO stGunInfo, int iFirearmSkill, boolean isPoliceOfficerProfession)
     {
         bIsCriticalHit = 0;
 
@@ -1085,6 +1088,10 @@ public class CombatSystem {
         float fMultiplier = ((NWScript.random(30) + 40)) * 0.001f + (iFirearmSkill * 0.005f);
         float fMaxRange = 0.0f;
         int iCriticalChance = 1 + stGunInfo.getCriticalRating();
+
+        if(isPoliceOfficerProfession && stGunInfo.getGunType() == GunType.Handgun)
+            iCriticalChance += 3;
+
         int iChanceToHit = 100;
 
         // Each weapon has a "sweet spot". When a player is within this range they receive a 0.02 multiplier bonus.
@@ -1232,7 +1239,7 @@ public class CombatSystem {
                 {
                     if(NWScript.random(30) > (NWScript.getAC(oShapeTarget) + (numberAttacked*2)) - iShotgunAccuracy)
                     {
-                        int iDamage = CalculateDamage(oAttacker, oShapeTarget, stGunInfo, iShotgunSkill);
+                        int iDamage = CalculateDamage(oAttacker, oShapeTarget, stGunInfo, iShotgunSkill, false);
 
                         if(iDamage > 0)
                         {
@@ -1265,6 +1272,16 @@ public class CombatSystem {
 
     void FireBullet(NWObject oAttacker, NWObject oTarget, NWObject oWeapon, GunGO stGunInfo)
     {
+        boolean isPoliceOfficerProfession = false;
+        if(NWScript.getIsPC(oAttacker))
+        {
+            PlayerGO pcGO = new PlayerGO(oAttacker);
+            PlayerRepository pcRepo = new PlayerRepository();
+            PlayerEntity pcEntity = pcRepo.getByUUID(pcGO.getUUID());
+
+            isPoliceOfficerProfession = pcEntity.getProfessionID() == ProfessionType.PoliceOfficer;
+        }
+
         NWVector vPosition = NWScript.getPosition(oAttacker);
         NWLocation lTargetLocation = NWScript.getLocation(oTarget);
         int bMiss;
@@ -1278,7 +1295,7 @@ public class CombatSystem {
         int iAccuracySkill = 0;
         switch(stGunInfo.getGunType())
         {
-            case GunType.Hangun:
+            case GunType.Handgun:
                 iProficiencySkill = ProgressionSystem.GetPlayerSkillLevel(oAttacker, ProgressionSystem.SkillType_HANDGUN_PROFICIENCY);
                 iAccuracySkill = ProgressionSystem.GetPlayerSkillLevel(oAttacker, ProgressionSystem.SkillType_HANDGUN_ACCURACY);
                 fStunDuration = 2.0f;
@@ -1350,7 +1367,7 @@ public class CombatSystem {
         }
 
         // Calculate damage
-        int iDamage = CalculateDamage(oAttacker, oTarget, stGunInfo, iProficiencySkill);
+        int iDamage = CalculateDamage(oAttacker, oTarget, stGunInfo, iProficiencySkill, isPoliceOfficerProfession);
         if(iDamage <= 0) bMiss = 1;
 
         if(bMiss == 0)

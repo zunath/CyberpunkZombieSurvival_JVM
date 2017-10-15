@@ -62,7 +62,7 @@ public class AdjustAbilities extends DialogBase implements IDialogHandler {
         AdjustAbilitiesViewModel model = new AdjustAbilitiesViewModel();
         NWObject oPC = GetPC();
         PlayerGO pcGO = new PlayerGO(oPC);
-        model.setNumberOfAbilitySlots(ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_ABILITY_SLOTS));
+        model.setNumberOfAbilitySlots(ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_ABILITY_SLOTS) + 1);
         model.setEquippedAbilities(repo.GetPCEquippedAbilities(pcGO.getUUID()));
         model.setCategories(repo.GetActiveAbilityCategories());
         SetDialogCustomData(model);

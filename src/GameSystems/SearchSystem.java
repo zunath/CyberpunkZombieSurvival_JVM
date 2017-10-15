@@ -1,11 +1,10 @@
 package GameSystems;
 
 import Conversation.ViewModels.ItemViewModel;
-import Entities.LootTableEntity;
-import Entities.LootTableItemEntity;
-import Entities.PCSearchSiteEntity;
-import Entities.PCSearchSiteItemEntity;
+import Data.Repository.PlayerRepository;
+import Entities.*;
 import Enumerations.AbilityType;
+import Enumerations.ProfessionType;
 import GameObject.ItemGO;
 import GameObject.PlayerGO;
 import Helper.ColorToken;
@@ -87,15 +86,27 @@ public class SearchSystem {
             NWScript.setActionMode(oPC, ActionMode.STEALTH, false);
 
         PlayerGO pcGO = new PlayerGO(oPC);
-        SearchSiteRepository repo = new SearchSiteRepository();
+
+        PlayerRepository playerRepo = new PlayerRepository();
+        PlayerEntity playerEntity = playerRepo.getByUUID(pcGO.getUUID());
+
+        SearchSiteRepository searchRepo = new SearchSiteRepository();
         String resref = NWScript.getResRef(oChest);
         int chestID = NWScript.getLocalInt(oChest, SearchSiteIDVariableName);
         int skillRank = NWScript.getSkillRank(Skill.SEARCH, oPC, false);
         int numberOfSearches = (skillRank / ExtraSearchPerNumberLevels) + 1;
-        PCSearchSiteEntity searchEntity = repo.GetSearchSiteByID(chestID, pcGO.getUUID());
+        PCSearchSiteEntity searchEntity = searchRepo.GetSearchSiteByID(chestID, pcGO.getUUID());
         DateTime timeLock = new DateTime(DateTimeZone.UTC);
 
         if(numberOfSearches <= 0) numberOfSearches = 1;
+
+        if(playerEntity.getProfessionID() == ProfessionType.Cartographer)
+        {
+            if(ThreadLocalRandom.current().nextInt(0, 100) <= 15)
+            {
+                numberOfSearches++;
+            }
+        }
 
         if(searchEntity != null)
         {
