@@ -100,7 +100,7 @@ public class StructureSystem {
         }
     }
 
-    public static void SetPlaceableStructureID(NWObject structure, int structureID)
+    private static void SetPlaceableStructureID(NWObject structure, int structureID)
     {
         NWScript.setLocalInt(structure, StructureIDVariableName, structureID);
     }
@@ -195,7 +195,7 @@ public class StructureSystem {
     }
 
 
-    public static boolean IsWithinRangeOfTerritoryFlag(NWObject oCheck)
+    private static boolean IsWithinRangeOfTerritoryFlag(NWObject oCheck)
     {
         NWLocation location = NWScript.getLocation(oCheck);
         NWObject flag = GetTerritoryFlagOwnerOfLocation(location);
@@ -237,7 +237,7 @@ public class StructureSystem {
         return NWScript.getLocalInt(site, ConstructionSiteIDVariableName);
     }
 
-    public static void SetConstructionSiteID(NWObject site, int constructionSiteID)
+    private static void SetConstructionSiteID(NWObject site, int constructionSiteID)
     {
         NWScript.setLocalInt(site, ConstructionSiteIDVariableName, constructionSiteID);
     }

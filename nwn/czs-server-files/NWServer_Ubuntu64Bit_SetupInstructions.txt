@@ -54,7 +54,7 @@ YOU WILL GET ERRORS ABOUT PROC
 umount /proc
 mount -t proc proc /proc
 schroot apt-get install openjdk-8-jdk (NO SUDO)
-
+schroot apt-get install oracle-java8-installer
 
 sudo schroot apt-get install nano
 sudo schroot nano /etc/environment

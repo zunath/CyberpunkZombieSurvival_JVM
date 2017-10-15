@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AnalysisUIOptions">
-    <option name="SCOPE_TYPE" value="3" />
-  </component>
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
       <artifact name="CyberpunkZombieSurvival_JVM" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55f71d37-d50c-4fcd-b436-870e366cc7df" name="Default" comment="Rename a few entities, add foreign key references" />
+    <list default="true" id="55f71d37-d50c-4fcd-b436-870e366cc7df" name="Default" comment="Change spawn system to despawn creatures after 2 minutes of no PC being in the area instead of immediately. This also fixes #34">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameSystems/StructureSystem.java" afterPath="$PROJECT_DIR$/src/GameSystems/StructureSystem.java" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,92 +21,22 @@
     <option name="PATCH_PATH" value="" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="OnNWNXChat.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Event/Module/OnNWNXChat.java">
+    <leaf>
+      <file leaf-file-name="StructureSystem.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GameSystems/StructureSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+            <state relative-caret-position="-2772">
+              <caret line="239" column="11" lean-forward="false" selection-start-line="239" selection-start-column="11" selection-end-line="239" selection-end-column="11" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Poison.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Abilities/EvocationMagic/Poison.java">
+      <file leaf-file-name="TerritoryFlag.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Conversation/TerritoryFlag.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-105">
-              <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CustomEffectSystem.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GameSystems/CustomEffectSystem.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
-              <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Zombie_OnDeath.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Creature/Zombie/Zombie_OnDeath.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="21" column="29" lean-forward="true" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Zombie_OnSpawn.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Creature/Zombie/Zombie_OnSpawn.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-21">
-              <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SpawnSystem.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GameSystems/SpawnSystem.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="106">
-              <caret line="256" column="23" lean-forward="false" selection-start-line="256" selection-start-column="23" selection-end-line="256" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FlameBlade.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Abilities/Melee/FlameBlade.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="25" column="13" lean-forward="true" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MagicSystem.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/GameSystems/MagicSystem.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="570" column="28" lean-forward="true" selection-start-line="570" selection-start-column="28" selection-end-line="570" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OnLoad.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Event/Module/OnLoad.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-198">
-              <caret line="28" column="40" lean-forward="false" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="40" />
+            <state relative-caret-position="-928">
+              <caret line="337" column="17" lean-forward="false" selection-start-line="337" selection-start-column="17" selection-end-line="337" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -123,25 +53,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>managePlayerPermissionsPage</find>
-      <find>getcustom</find>
-      <find>getdialogcus</find>
-      <find>&quot;Back&quot;</find>
-      <find>CraftDelay</find>
-      <find>buildable</find>
-      <find>complete</find>
-      <find>22</find>
-      <find>destroy</find>
-      <find>wood</find>
-      <find>SearchSiteID</find>
-      <find>setMaxMana</find>
-      <find>x</find>
-      <find>bullet</find>
-      <find>GUN_MAGAZINE_BULLET_COUNT</find>
-      <find>RADIO_POWER</find>
-      <find>RADIO_PC_ID_ENABLED_BY</find>
-      <find>BadgeEntity</find>
-      <find>OneTo</find>
       <find>protected</find>
       <find>odbc</find>
       <find>quest</find>
@@ -153,6 +64,25 @@
       <find>IAbility</find>
       <find>ACTIVE_WEAPON_SKILL</find>
       <find>ACTIVE_WEAPON_SKILL_UUID</find>
+      <find>dialogPages</find>
+      <find>DEBUG</find>
+      <find>GetNextArea</find>
+      <find>system.out</find>
+      <find>Skilltype_abilit</find>
+      <find>SkillType_ABILITY_SLOTS</find>
+      <find>ForestWarden</find>
+      <find>critical</find>
+      <find>PROFESSION</find>
+      <find>playerent</find>
+      <find>GunType.Han</find>
+      <find>GunType</find>
+      <find>entity</find>
+      <find>random</find>
+      <find>ActionStartconversation</find>
+      <find>sanctuary</find>
+      <find>after spawn</find>
+      <find>debug</find>
+      <find>AddPlayerPermissionsListPage</find>
     </findStrings>
     <replaceStrings>
       <replace>Feat.CombineItem</replace>
@@ -170,63 +100,63 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Item/Blueprint.java" />
-        <option value="$PROJECT_DIR$/src/Item/ProfessionToken.java" />
-        <option value="$PROJECT_DIR$/src/Creature/GenericOnConversation.java" />
-        <option value="$PROJECT_DIR$/src/Entities/PlayerEntity.java" />
-        <option value="$PROJECT_DIR$/src/Event/Module/OnClientEnter.java" />
-        <option value="$PROJECT_DIR$/src/Entities/ProfessionEntity.java" />
-        <option value="$PROJECT_DIR$/src/Data/Repository/ProfessionRepository.java" />
-        <option value="$PROJECT_DIR$/src/Conversation/ViewModels/ProfessionViewModel.java" />
-        <option value="$PROJECT_DIR$/src/Conversation/ProfessionMenu.java" />
-        <option value="$PROJECT_DIR$/src/Enumerations/ProfessionType.java" />
-        <option value="$PROJECT_DIR$/src/GameSystems/DurabilitySystem.java" />
-        <option value="$PROJECT_DIR$/src/Event/Area/OnEnter.java" />
-        <option value="$PROJECT_DIR$/src/Data/Repository/PlayerProgressionSkillsRepository.java" />
-        <option value="$PROJECT_DIR$/src/GameSystems/MagicSystem.java" />
-        <option value="$PROJECT_DIR$/src/Item/AbilityDisc.java" />
-        <option value="$PROJECT_DIR$/src/Item/GenericStartConversation.java" />
-        <option value="$PROJECT_DIR$/src/GameSystems/ProfessionSystem.java" />
-        <option value="$PROJECT_DIR$/src/Conversation/RestMenu.java" />
-        <option value="$PROJECT_DIR$/src/GameSystems/ProgressionSystem.java" />
-        <option value="$PROJECT_DIR$/src/Placeable/StartingDoor.java" />
-        <option value="$PROJECT_DIR$/src/Conversation/NPC/AbilityMerchant.java" />
-        <option value="$PROJECT_DIR$/src/Conversation/NPC/BlueprintMerchant.java" />
-        <option value="$PROJECT_DIR$/src/Placeable/TrashCan/OnOpened.java" />
-        <option value="$PROJECT_DIR$/src/Placeable/TrashCan/OnDisturbed.java" />
-        <option value="$PROJECT_DIR$/src/Conversation/StartingDoor.java" />
-        <option value="$PROJECT_DIR$/src/GameSystems/InventorySystem.java" />
-        <option value="$PROJECT_DIR$/src/Event/Module/OnUseItem.java" />
-        <option value="$PROJECT_DIR$/src/Entities/QuestTypeEntity.java" />
-        <option value="$PROJECT_DIR$/src/Entities/QuestNPCGroupEntity.java" />
-        <option value="$PROJECT_DIR$/src/Entities/QuestRequiredKeyItemEntity.java" />
-        <option value="$PROJECT_DIR$/src/Entities/QuestFameRegionEntity.java" />
-        <option value="$PROJECT_DIR$/src/Entities/FameRegionEntity.java" />
-        <option value="$PROJECT_DIR$/src/Dialog/QuestDialogBase.java" />
-        <option value="$PROJECT_DIR$/src/Entities/NPCGroupEntity.java" />
-        <option value="$PROJECT_DIR$/src/Entities/QuestRewardListEntity.java" />
-        <option value="$PROJECT_DIR$/src/Entities/PCQuestStatusEntity.java" />
-        <option value="$PROJECT_DIR$/src/Entities/PCBadgeEntity.java" />
-        <option value="$PROJECT_DIR$/src/Entities/PCRegionalFameEntity.java" />
-        <option value="$PROJECT_DIR$/src/Data/Repository/FameRepository.java" />
-        <option value="$PROJECT_DIR$/src/Data/Repository/QuestRepository.java" />
-        <option value="$PROJECT_DIR$/src/Entities/QuestRequiredKeyItemListEntity.java" />
-        <option value="$PROJECT_DIR$/src/Entities/QuestKillTargetListEntity.java" />
-        <option value="$PROJECT_DIR$/src/Entities/QuestRewardItemEntity.java" />
-        <option value="$PROJECT_DIR$/src/Entities/QuestRequiredItemListEntity.java" />
-        <option value="$PROJECT_DIR$/src/Entities/QuestPrerequisiteEntity.java" />
-        <option value="$PROJECT_DIR$/src/GameSystems/QuestSystem.java" />
-        <option value="$PROJECT_DIR$/src/Entities/QuestEntity.java" />
         <option value="$PROJECT_DIR$/src/Entities/QuestStateEntity.java" />
+        <option value="$PROJECT_DIR$/src/Abilities/EvocationMagic/Poison.java" />
+        <option value="$PROJECT_DIR$/src/Dialog/ActionTaken.java" />
+        <option value="$PROJECT_DIR$/src/Dialog/PlayerDialog.java" />
+        <option value="$PROJECT_DIR$/src/Conversation/TerritoryFlag.java" />
+        <option value="$PROJECT_DIR$/src/Conversation/ManageCDKeys.java" />
+        <option value="$PROJECT_DIR$/src/Conversation/ProfessionMenu.java" />
+        <option value="$PROJECT_DIR$/src/Conversation/NPC/RevivalWizard.java" />
+        <option value="$PROJECT_DIR$/src/Conversation/KeyItems.java" />
+        <option value="$PROJECT_DIR$/src/Conversation/ViewCrafts.java" />
+        <option value="$PROJECT_DIR$/src/Conversation/NPC/AbilityMerchant.java" />
+        <option value="$PROJECT_DIR$/src/Conversation/ResetSkillPoints.java" />
+        <option value="$PROJECT_DIR$/src/Conversation/StructureStorage.java" />
+        <option value="$PROJECT_DIR$/src/Conversation/ChangePortrait.java" />
+        <option value="$PROJECT_DIR$/src/Conversation/ChangeHead.java" />
+        <option value="$PROJECT_DIR$/src/Conversation/RestMenu.java" />
+        <option value="$PROJECT_DIR$/src/Conversation/Crafting.java" />
+        <option value="$PROJECT_DIR$/src/Conversation/NPC/BlueprintMerchant.java" />
+        <option value="$PROJECT_DIR$/src/Conversation/AllocateSkillPoints.java" />
+        <option value="$PROJECT_DIR$/src/Conversation/ConstructionSite.java" />
+        <option value="$PROJECT_DIR$/src/Conversation/ViewBadges.java" />
+        <option value="$PROJECT_DIR$/src/Conversation/BuildToolMenu.java" />
+        <option value="$PROJECT_DIR$/src/Conversation/StartingDoor.java" />
+        <option value="$PROJECT_DIR$/src/Conversation/ResearchTerminal.java" />
+        <option value="$PROJECT_DIR$/src/Conversation/CharacterManagement.java" />
+        <option value="$PROJECT_DIR$/src/Dialog/DialogBase.java" />
+        <option value="$PROJECT_DIR$/src/Event/Module/OnClientLeave.java" />
+        <option value="$PROJECT_DIR$/src/GameSystems/PVPSanctuarySystem.java" />
+        <option value="$PROJECT_DIR$/src/Item/Defibrillator/Defibrillator.java" />
+        <option value="$PROJECT_DIR$/src/Abilities/Passive/DualWield.java" />
+        <option value="$PROJECT_DIR$/src/Data/DataContext.java" />
         <option value="$PROJECT_DIR$/src/Data/DataAccess.java" />
-        <option value="$PROJECT_DIR$/src/GameObject/PlayerGO.java" />
+        <option value="$PROJECT_DIR$/src/Data/Repository/DatabaseRepository.java" />
+        <option value="$PROJECT_DIR$/src/Creature/Zombie/Zombie_OnSpawn.java" />
         <option value="$PROJECT_DIR$/src/GameSystems/CustomEffectSystem.java" />
+        <option value="$PROJECT_DIR$/src/Event/Area/OnExit.java" />
+        <option value="$PROJECT_DIR$/src/Creature/Zombie/Zombie_OnDeath.java" />
+        <option value="$PROJECT_DIR$/src/GameSystems/ProgressionSystem.java" />
+        <option value="$PROJECT_DIR$/src/Conversation/AdjustAbilities.java" />
+        <option value="$PROJECT_DIR$/src/GameSystems/InventorySystem.java" />
+        <option value="$PROJECT_DIR$/src/GameSystems/CombatSystem.java" />
+        <option value="$PROJECT_DIR$/src/GameSystems/ProfessionSystem.java" />
+        <option value="$PROJECT_DIR$/src/Event/Module/OnHeartbeat.java" />
+        <option value="$PROJECT_DIR$/src/GameSystems/SearchSystem.java" />
+        <option value="$PROJECT_DIR$/src/GameSystems/MagicSystem.java" />
+        <option value="$PROJECT_DIR$/src/Conversation/Outfit.java" />
+        <option value="$PROJECT_DIR$/src/GameObject/PlayerGO.java" />
+        <option value="$PROJECT_DIR$/src/Event/Module/OnClientEnter.java" />
+        <option value="$PROJECT_DIR$/src/GameSystems/SpawnSystem.java" />
+        <option value="$PROJECT_DIR$/src/Entities/PlayerEntity.java" />
+        <option value="$PROJECT_DIR$/src/GameSystems/StructureSystem.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="width" value="1704" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="952" />
+    <option name="width" value="976" />
     <option name="height" value="1038" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -324,8 +254,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -336,13 +265,30 @@
             <path>
               <item name="CyberpunkZombieSurvival_JVM" type="b2602c69:ProjectViewProjectNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Abilities" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CyberpunkZombieSurvival_JVM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Abilities" type="462c0819:PsiDirectoryNode" />
+              <item name="EvocationMagic" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CyberpunkZombieSurvival_JVM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Conversation" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CyberpunkZombieSurvival_JVM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="GameSystems" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -836,28 +782,126 @@
       <option name="project" value="LOCAL" />
       <updated>1507212872944</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Reduce maximum ticks for Poison">
+      <created>1507977920271</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1507977920271</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Add a &quot;Default Page&quot; value for conversations to fix a bug caused by upgrading from Java 7 to Java 8. This corrects #47">
+      <created>1507986654640</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1507986654640</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Update source to use Java 8 features: Lambda expressions. Also prevent DMs from adding entries to the PlayerCharacters table.">
+      <created>1507989182633</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1507989182633</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Add workaround to keep database connection alive while server is idle.">
+      <created>1508023173426</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1508023173426</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Remove dead nwscript call on zombie death script">
+      <created>1508027220205</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1508027220205</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Treat DMs/DM Possessed creatures as NPCs for the custom effect system.">
+      <created>1508027437896</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1508027437896</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Change spawn system to despawn creatures after 2 minutes of no PC being in the area instead of immediately. This also fixes #34">
+      <created>1508030710541</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1508030710541</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Fix zombie respawning.">
+      <created>1508032242884</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1508032242884</updated>
+    </task>
+    <task id="LOCAL-00043" summary="All characters now get +1 ability slot.&#10;&#10;Profession changes:&#10;&#10;- Vagabonds now receive +6 SP instead of +10.&#10;- Forest Wardens now receive +5 HP instead of +9.&#10;- Evocation and Holy Mages no longer receive +1 ability slot.&#10;- Police Officers receive +3% critical chance with all handguns.&#10;- Cartographers can occasionally get an additional search chance.&#10;- Merchants now receive +8 inventory slots instead of +4.">
+      <created>1508035552902</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1508035552902</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Give additional gold while searching for merchants. Give mana regen bonus to mages. Give HP regen bonus to forest wardens.">
+      <created>1508042063162</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1508042063162</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Fix the targets of custom effects when generated from melee weapon skills. Fixes #46">
+      <created>1508043784580</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1508043784580</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Make all conversations private. Fixes #15">
+      <created>1508043961867</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1508043961867</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Remove debug messages. Move PVP Sanctuary values to the database. Fixes #24">
+      <created>1508045659919</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1508045659919</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Fix hibernate annotation to use SQL server default value.">
+      <created>1508048368368</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1508048368368</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="1704" height="1038" extended-state="0" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289183" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32781458" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.388521" sideWeight="0.5042373" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924107" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14472124" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3247768" sideWeight="0.4957627" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12708333" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3245033" sideWeight="0.4957627" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -870,28 +914,55 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924107" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.388521" sideWeight="0.5042373" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924107" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3941998" sideWeight="0.4957627" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328125" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32924107" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12708333" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3247768" sideWeight="0.4957627" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Implement functionality for Medic and Fixer abilities." />
-    <MESSAGE value="Run OnEquip and OnUnequip ability methods after ability data is persisted to DB. Recalc inventory limits after equipping or unequipping Strong Back ability." />
-    <MESSAGE value="Updated starting door conversation. Fix issue with magic system on new chars (erroring out because PlayerCharacter not in DB). Fixed off by one issue on the storage chest. Added generic store script. Added sit script." />
-    <MESSAGE value="Add mining/logging for resource gathering. Add Lumberjack / Miner abilities. Fix bug with swapped functionality on the OmniTool." />
-    <MESSAGE value="Fix sanctuary granting" />
-    <MESSAGE value="Add iron as a possible required resource for structure system" />
-    <MESSAGE value="Grant the Item Durability item property to any item automatically if it's missing it whenever SetDurability or GetDurability are called." />
-    <MESSAGE value="Add abilities for reducing durability loss chance while mining and logging." />
-    <MESSAGE value="Grant EXP when zombies are killed." />
-    <MESSAGE value="Fix outfit menu text. Remove dye clothes option from rest menu since it's already in the modify clothes menu." />
-    <MESSAGE value="Dual Wield: Unequip and re-equip any off hand weapon after unequipping or equipping the ability." />
-    <MESSAGE value="Change base time for blind from 60 seconds to 30 seconds." />
-    <MESSAGE value="Reduce base duration of Turn Undead ability" />
-    <MESSAGE value="Add IsHostile method to all abilities. Check PVP Sanctuary setting on attacker and target for hostile abilities." />
     <MESSAGE value="Give 50 Darts to new characters. Make starting bread undroppable and make all cursed items exempt from inventory limits." />
     <MESSAGE value="Add Blueprint Merchant conversation" />
     <MESSAGE value="Added profession system. Fixed bug with PlayerEntity changes being overwritten on some upgrade purchases. Added convo for ability merchant. Integrated profession bonuses into existing systems." />
@@ -903,7 +974,21 @@
     <MESSAGE value="Recalculate item limits after using items." />
     <MESSAGE value="Stub out database entities for the quest system" />
     <MESSAGE value="Rename a few entities, add foreign key references" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rename a few entities, add foreign key references" />
+    <MESSAGE value="Reduce maximum ticks for Poison" />
+    <MESSAGE value="Add a &quot;Default Page&quot; value for conversations to fix a bug caused by upgrading from Java 7 to Java 8. This corrects #47" />
+    <MESSAGE value="Update source to use Java 8 features: Lambda expressions. Also prevent DMs from adding entries to the PlayerCharacters table." />
+    <MESSAGE value="Add workaround to keep database connection alive while server is idle." />
+    <MESSAGE value="Remove dead nwscript call on zombie death script" />
+    <MESSAGE value="Treat DMs/DM Possessed creatures as NPCs for the custom effect system." />
+    <MESSAGE value="Change spawn system to despawn creatures after 2 minutes of no PC being in the area instead of immediately. This also fixes #34" />
+    <MESSAGE value="Fix zombie respawning." />
+    <MESSAGE value="All characters now get +1 ability slot.&#10;&#10;Profession changes:&#10;&#10;- Vagabonds now receive +6 SP instead of +10.&#10;- Forest Wardens now receive +5 HP instead of +9.&#10;- Evocation and Holy Mages no longer receive +1 ability slot.&#10;- Police Officers receive +3% critical chance with all handguns.&#10;- Cartographers can occasionally get an additional search chance.&#10;- Merchants now receive +8 inventory slots instead of +4." />
+    <MESSAGE value="Give additional gold while searching for merchants. Give mana regen bonus to mages. Give HP regen bonus to forest wardens." />
+    <MESSAGE value="Fix the targets of custom effects when generated from melee weapon skills. Fixes #46" />
+    <MESSAGE value="Make all conversations private. Fixes #15" />
+    <MESSAGE value="Remove debug messages. Move PVP Sanctuary values to the database. Fixes #24" />
+    <MESSAGE value="Fix hibernate annotation to use SQL server default value." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix hibernate annotation to use SQL server default value." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -924,388 +1009,419 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/GameSystems/RadioSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="824">
-          <caret line="192" column="82" lean-forward="false" selection-start-line="192" selection-start-column="60" selection-end-line="192" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GameSystems/StorageSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entities/FameRegionEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entities/NPCGroupEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entities/QuestTypeEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="10" column="30" lean-forward="false" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Data/Repository/ActivePlayerRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entities/PCOverflowItemEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="5" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entities/PCBlueprintEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="7" lean-forward="true" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entities/PCOutfitEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entities/PCCraftEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entities/PCBadgeEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="651">
-          <caret line="40" column="34" lean-forward="false" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entities/PCRegionalFameEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="22" column="38" lean-forward="false" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Data/Repository/FameRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="554">
-          <caret line="31" column="41" lean-forward="false" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entities/KeyItemCategoryEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entities/KeyItemEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="26" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="11" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entities/LootTableEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entities/PCQuestStatusEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="36" column="35" lean-forward="true" selection-start-line="36" selection-start-column="35" selection-end-line="36" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entities/PCCorpseItemEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entities/PCCorpseEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entities/QuestKillTargetListEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entities/QuestRewardItemEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="14" column="9" lean-forward="false" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entities/QuestRequiredKeyItemListEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entities/QuestPrerequisiteEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="17" column="9" lean-forward="false" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Data/Repository/SearchSiteRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="34" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Data/Repository/PortraitRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="31" column="39" lean-forward="true" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Data/Repository/QuestRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="24" column="9" lean-forward="false" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entities/QuestRequiredItemListEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="15" column="4" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="16" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entities/QuestStateEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entities/QuestEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="7" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GameSystems/QuestSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1155">
-          <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Common/StartUp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="11" column="30" lean-forward="false" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Data/DataContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Data/DataAccess.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Conversation/CharacterManagement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="568">
-          <caret line="81" column="23" lean-forward="false" selection-start-line="81" selection-start-column="23" selection-end-line="81" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GameObject/PlayerGO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="154" column="40" lean-forward="false" selection-start-line="154" selection-start-column="40" selection-end-line="154" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Event/Area/OnEnter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1218">
-          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Conversation/AllocateSkillPoints.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1470">
-          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Dialog/DialogBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="99" column="19" lean-forward="false" selection-start-line="99" selection-start-column="19" selection-end-line="99" selection-end-column="19" />
+        <state relative-caret-position="2415">
+          <caret line="127" column="8" lean-forward="false" selection-start-line="127" selection-start-column="8" selection-end-line="127" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Conversation/RestMenu.java">
+    <entry file="file://$PROJECT_DIR$/src/GameSystems/RadioSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="91" column="16" lean-forward="false" selection-start-line="91" selection-start-column="16" selection-end-line="91" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Authorization/ValidateCDKey.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="32" column="111" lean-forward="true" selection-start-line="32" selection-start-column="111" selection-end-line="32" selection-end-column="111" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Authorization/ValidateDM.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="9" lean-forward="true" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Event/Module/OnClientLeaving.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Event/Module/OnClientLeave.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Authorization/ValidateAdmin.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
-          <caret line="72" column="36" lean-forward="false" selection-start-line="72" selection-start-column="36" selection-end-line="72" selection-end-column="36" />
-          <folding />
+          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Abilities/EvocationMagic/Stun.java">
+    <entry file="file://$PROJECT_DIR$/src/CustomEffect/PoisonEffect.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-42">
-          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        <state relative-caret-position="84">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Event/Module/OnCCMessage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1052">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Event/Module/OnLoad.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-198">
-          <caret line="28" column="40" lean-forward="false" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Event/Module/OnNWNXChat.java">
+    <entry file="file://$PROJECT_DIR$/src/CustomEffect/RefreshEffect.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CustomEffect/ShockEffect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Abilities/EvocationMagic/Poison.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-105">
-          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        <state relative-caret-position="320">
+          <caret line="53" column="40" lean-forward="true" selection-start-line="53" selection-start-column="40" selection-end-line="53" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GameSystems/CustomEffectSystem.java">
+    <entry file="file://$PROJECT_DIR$/src/Abilities/EvocationMagic/Flame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
+        <state relative-caret-position="-168">
           <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Creature/Zombie/Zombie_OnDeath.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="21" column="29" lean-forward="true" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Creature/Zombie/Zombie_OnSpawn.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-21">
-          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GameSystems/SpawnSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="256" column="23" lean-forward="false" selection-start-line="256" selection-start-column="23" selection-end-line="256" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Abilities/Melee/FlameBlade.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="25" column="13" lean-forward="true" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+        <state relative-caret-position="357">
+          <caret line="51" column="34" lean-forward="true" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
+          <folding>
+            <element signature="e#972#973#0" expanded="false" />
+            <element signature="e#1011#1012#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Item/Defibrillator/Defibrillator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="15" column="12" lean-forward="false" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Event/Module/OnPlayerDying.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="36" column="4" lean-forward="false" selection-start-line="36" selection-start-column="4" selection-end-line="36" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Abilities/Passive/DualWield.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="55" column="0" lean-forward="true" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Data/Repository/ActivePlayerRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Data/DataContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+          <folding>
+            <element signature="e#378#379#0" expanded="false" />
+            <element signature="e#407#408#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Data/Repository/CustomEffectRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Data/DataAccess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="659">
+          <caret line="72" column="67" lean-forward="false" selection-start-line="72" selection-start-column="67" selection-end-line="72" selection-end-column="67" />
+          <folding>
+            <element signature="e#7621#7622#0" expanded="false" />
+            <element signature="e#7679#7680#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Data/Repository/DatabaseRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" column="28" lean-forward="false" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Data/Repository/SpawnTableRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="9" column="28" lean-forward="false" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Creature/Zombie/Zombie_OnSpawn.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Event/Area/OnExit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/OpenJDK/OpenJDK8/src.zip!/java/lang/Runnable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="411">
+          <caret line="67" column="25" lean-forward="false" selection-start-line="67" selection-start-column="25" selection-end-line="67" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Event/Creature/OnDeath.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="14" column="52" lean-forward="true" selection-start-line="14" selection-start-column="52" selection-end-line="16" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Creature/Zombie/Zombie_OnDeath.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Conversation/AdjustAbilities.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="63" column="42" lean-forward="true" selection-start-line="63" selection-start-column="42" selection-end-line="63" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameSystems/InventorySystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="109" column="76" lean-forward="false" selection-start-line="109" selection-start-column="76" selection-end-line="109" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameSystems/ProgressionSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="409">
+          <caret line="158" column="22" lean-forward="true" selection-start-line="158" selection-start-column="22" selection-end-line="158" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameSystems/CombatSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="1241" column="110" lean-forward="false" selection-start-line="1241" selection-start-column="110" selection-end-line="1241" selection-end-column="110" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entities/LootTableItemEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="588">
+          <caret line="47" column="5" lean-forward="true" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameSystems/ProfessionSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="554">
+          <caret line="107" column="67" lean-forward="false" selection-start-line="107" selection-start-column="67" selection-end-line="107" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Event/Module/OnHeartbeat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="554">
+          <caret line="101" column="17" lean-forward="false" selection-start-line="101" selection-start-column="17" selection-end-line="101" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameSystems/SearchSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="458">
+          <caret line="147" column="62" lean-forward="false" selection-start-line="147" selection-start-column="62" selection-end-line="147" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CustomEffect/BleedingEffect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CustomEffect/BurnEffect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="11" column="41" lean-forward="false" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameSystems/CustomEffectSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="99" column="12" lean-forward="false" selection-start-line="99" selection-start-column="12" selection-end-line="99" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Abilities/IAbility.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="10" column="9" lean-forward="false" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Feat/OnHitCastSpell.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="17" column="48" lean-forward="true" selection-start-line="17" selection-start-column="48" selection-end-line="17" selection-end-column="48" />
+        <state relative-caret-position="194">
+          <caret line="17" column="32" lean-forward="true" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GameSystems/MagicSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="570" column="28" lean-forward="true" selection-start-line="570" selection-start-column="28" selection-end-line="570" selection-end-column="28" />
+        <state relative-caret-position="226">
+          <caret line="546" column="59" lean-forward="false" selection-start-line="546" selection-start-column="59" selection-end-line="546" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Conversation/Outfit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="64" column="100" lean-forward="true" selection-start-line="64" selection-start-column="100" selection-end-line="64" selection-end-column="100" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameSystems/PVPSanctuarySystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="19" column="35" lean-forward="false" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Conversation/CharacterManagement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="81" column="22" lean-forward="false" selection-start-line="81" selection-start-column="22" selection-end-line="81" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameObject/PlayerGO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-149">
+          <caret line="178" column="8" lean-forward="false" selection-start-line="178" selection-start-column="8" selection-end-line="178" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Event/Module/OnClientEnter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="97" column="0" lean-forward="true" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameSystems/SpawnSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="105" column="68" lean-forward="true" selection-start-line="105" selection-start-column="68" selection-end-line="105" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entities/PlayerEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="91" column="77" lean-forward="false" selection-start-line="91" selection-start-column="77" selection-end-line="91" selection-end-column="77" />
+          <folding>
+            <element signature="e#10618#10619#0" expanded="true" />
+            <element signature="e#10645#10646#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Abilities/EvocationMagic/Stun.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="54" column="41" lean-forward="false" selection-start-line="54" selection-start-column="41" selection-end-line="54" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameSystems/StructureSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2772">
+          <caret line="239" column="11" lean-forward="false" selection-start-line="239" selection-start-column="11" selection-end-line="239" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Conversation/TerritoryFlag.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-928">
+          <caret line="337" column="17" lean-forward="false" selection-start-line="337" selection-start-column="17" selection-end-line="337" selection-end-column="17" />
           <folding />
         </state>
       </provider>
