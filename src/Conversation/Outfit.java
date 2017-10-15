@@ -62,7 +62,7 @@ public class Outfit extends DialogBase implements IDialogHandler {
                         ChangePage("LoadOutfitPage");
                         break;
                     case 3: // Back
-                        Scheduler.assign(oPC, () -> NWScript.actionStartConversation(oPC, "x0_skill_ctrap", false, false));
+                        Scheduler.assign(oPC, () -> NWScript.actionStartConversation(oPC, "x0_skill_ctrap", true, false));
                         break;
                 }
                 break;
