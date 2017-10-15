@@ -28,7 +28,6 @@ public class SearchSystem {
     private static final String SearchSiteDCVariableName = "SearchSiteDC";
     private static final String SearchSiteLootTableVariableName = "SearchLootTable";
     private static final int ExtraSearchPerNumberLevels = 5;
-    private static final int SearchLockTimeHours = 2;
 
     public static void OnChestClose(NWObject oChest)
     {
@@ -194,7 +193,9 @@ public class SearchSystem {
         SearchSiteRepository repo = new SearchSiteRepository();
         int chestID = NWScript.getLocalInt(oChest, SearchSiteIDVariableName);
         PCSearchSiteEntity entity = repo.GetSearchSiteByID(chestID, pcGO.getUUID());
-        Timestamp lockTime = new Timestamp(DateTime.now().plusHours(SearchLockTimeHours).getMillis());
+
+        int lockHours = ThreadLocalRandom.current().nextInt(2, 5);
+        Timestamp lockTime = new Timestamp(DateTime.now().plusHours(lockHours).getMillis());
         if(entity != null)
         {
             if(resetTimeLock)
