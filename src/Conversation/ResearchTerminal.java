@@ -82,8 +82,17 @@ public class ResearchTerminal extends DialogBase implements IDialogHandler {
 
     @Override
     public void Initialize() {
+        NWObject oPC = GetPC();
+
+        if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC))
+        {
+            NWScript.sendMessageToPC(oPC, "Only player characters may use this terminal.");
+            EndDialog();
+            return;
+        }
+
         ResearchTerminalViewModel model = new ResearchTerminalViewModel();
-        int researchLevel = ProgressionSystem.GetPlayerSkillLevel(GetPC(),ProgressionSystem.SkillType_RESEARCHING);
+        int researchLevel = ProgressionSystem.GetPlayerSkillLevel(oPC,ProgressionSystem.SkillType_RESEARCHING);
         model.setPlayerResearchLevel(researchLevel);
         SetDialogCustomData(model);
 

@@ -58,9 +58,18 @@ public class AdjustAbilities extends DialogBase implements IDialogHandler {
 
     @Override
     public void Initialize() {
+        NWObject oPC = GetPC();
+
+        if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC))
+        {
+            NWScript.sendMessageToPC(oPC, "Only player characters may use this terminal.");
+            EndDialog();
+            return;
+        }
+
         MagicRepository repo = new MagicRepository();
         AdjustAbilitiesViewModel model = new AdjustAbilitiesViewModel();
-        NWObject oPC = GetPC();
+
         PlayerGO pcGO = new PlayerGO(oPC);
         model.setNumberOfAbilitySlots(ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_ABILITY_SLOTS) + 1);
         model.setEquippedAbilities(repo.GetPCEquippedAbilities(pcGO.getUUID()));
