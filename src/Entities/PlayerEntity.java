@@ -89,7 +89,7 @@ public class PlayerEntity {
     @Column(name = "DateLastForcedSPReset")
     private Date dateLastForcedSPReset;
 
-    @Column(name = "DateSanctuaryEnds")
+    @Column(name = "DateSanctuaryEnds", insertable = false, updatable = false)
     private Date dateSanctuaryEnds;
 
     @Column(name = "IsSanctuaryOverrideEnabled")
