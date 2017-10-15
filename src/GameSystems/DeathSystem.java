@@ -171,6 +171,8 @@ public class DeathSystem {
 
     public static void BindSoul(NWObject oPC)
     {
+        if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return;
+
         PlayerRepository repo = new PlayerRepository();
         PlayerGO pcGO = new PlayerGO(oPC);
         PlayerEntity entity = repo.getByUUID(pcGO.getUUID());

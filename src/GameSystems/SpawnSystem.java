@@ -127,7 +127,7 @@ public class SpawnSystem {
 
     public void OnModuleHeartbeat()
     {
-        final int MaxDespawnTicks = 120 / 6; // (120 seconds / 6 seconds per tick = Despawn after 2 minutes
+        final int MaxDespawnTicks = 1800 / 6; // (1800 seconds / 6 seconds per tick = Despawn after 30 minutes
         HashSet<String> pcAreas = new HashSet<>();
 
         for(NWObject pc : NWScript.getPCs())
