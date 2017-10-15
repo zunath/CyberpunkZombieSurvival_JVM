@@ -60,8 +60,11 @@ public class SearchSystem {
             String itemName = NWScript.getName(oItem, false);
             if(itemName.equals("")) itemName = "money";
 
-            Scheduler.assign(oPC, () -> NWScript.actionPlayAnimation(Animation.LOOPING_GET_LOW, 1.0f, 1.5f));
-            NWScript.applyEffectToObject(DurationType.TEMPORARY, NWScript.effectCutsceneImmobilize(), oPC, 1.5f);
+            float minSearchSeconds = 1.5f;
+            float maxSearchSeconds = 4.5f;
+            float searchDelay = ThreadLocalRandom.current().nextFloat() * (maxSearchSeconds - minSearchSeconds) + minSearchSeconds;
+            Scheduler.assign(oPC, () -> NWScript.actionPlayAnimation(Animation.LOOPING_GET_LOW, 1.0f, searchDelay));
+            NWScript.applyEffectToObject(DurationType.TEMPORARY, NWScript.effectCutsceneImmobilize(), oPC, searchDelay);
 
             // Notify party members in the vicinity
             NWObject[] players = NWScript.getPCs();

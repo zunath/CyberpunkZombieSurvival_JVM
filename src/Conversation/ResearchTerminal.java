@@ -87,7 +87,7 @@ public class ResearchTerminal extends DialogBase implements IDialogHandler {
         if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC))
         {
             NWScript.sendMessageToPC(oPC, "Only player characters may use this terminal.");
-            EndDialog();
+            EndConversation();
             return;
         }
 
