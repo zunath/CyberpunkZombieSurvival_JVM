@@ -27,6 +27,7 @@ public class OnHeartbeat implements IScriptEventHandler {
 	@Override
 	public void runScript(NWObject objSelf) {
 
+		SpawnSystem spawnSystem = new SpawnSystem();
 		playerRepo = new PlayerRepository();
 
 		NWObject[] players = NWScript.getPCs();
@@ -51,6 +52,7 @@ public class OnHeartbeat implements IScriptEventHandler {
 		SaveCharacters();
 		RefreshActivePlayers();
         CustomEffectSystem.OnModuleHeartbeat();
+		spawnSystem.OnModuleHeartbeat();
 
 		DatabaseRepository databaseRepo = new DatabaseRepository();
 		databaseRepo.KeepAlive();

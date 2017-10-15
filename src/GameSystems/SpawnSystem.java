@@ -18,6 +18,8 @@ import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.Scheduler;
 import org.nwnx.nwnx2.jvm.constants.ObjectType;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -45,9 +47,8 @@ public class SpawnSystem {
     // as opposed to being spawned by a DM.
     private final String IsCreatureSpawned = "ZSS_ZOMBIE_SPAWNED";
 
-    // Name of the variable which keeps track of the number of players in an area
-    private final String PlayerCount = "ZSS_PLAYER_COUNT";
-
+    // Name of the variable which tracks whether an area has spawned.
+    private final String AreaHasSpawned = "ZSS_AREA_HAS_SPAWNED";
 
     private void CreateCreature(String creatureResref, NWLocation waypointLocation, String areaResref, int lootTableID, int difficultyRating)
     {
@@ -67,8 +68,7 @@ public class SpawnSystem {
 
         if(oArea == null) return;
 
-        // Only respawn if there's PCs in the area
-        if(NWScript.getLocalInt(oArea, PlayerCount) > 0)
+        if(NWScript.getLocalInt(oArea, AreaHasSpawned) == 1)
         {
             final NWObject creature = NWScript.createObject(ObjectType.CREATURE, creatureResref, waypointLocation, false, "");
             NWScript.setLocalInt(creature, IsCreatureSpawned, 1);
@@ -93,21 +93,8 @@ public class SpawnSystem {
         int spawnTableID = NWScript.getLocalInt(oArea, SpawnTable);
         if(spawnTableID < 1) spawnTableID = 1;
 
-
-        // Determine if this is the first PC in the area
-        int iPCCount = 0;
-        NWObject[] players = NWScript.getPCs();
-
-        for(NWObject pc : players)
-        {
-            if(oArea.equals(NWScript.getArea(pc)))
-            {
-                iPCCount++;
-            }
-        }
-
-        // Only spawn zombies if this is the first PC in the area
-        if(iPCCount == 1)
+        boolean hasSpawned = NWScript.getLocalInt(oArea, AreaHasSpawned) == 1;
+        if(!hasSpawned)
         {
             for(int iCurrentZombie = 1; iCurrentZombie <= iZombieCount; iCurrentZombie++)
             {
@@ -133,45 +120,63 @@ public class SpawnSystem {
 
                 Scheduler.assign(creature, () -> NWScript.setFacing(0.01f * NWScript.random(3600)));
             }
-        }
 
-        // Update PC counter
-        NWScript.setLocalInt(oArea, PlayerCount, iPCCount);
+            NWScript.setLocalInt(oArea, AreaHasSpawned, 1);
+        }
     }
 
-    public void OnAreaExit(NWObject oArea)
+    public void OnModuleHeartbeat()
     {
-        NWObject oPC = NWScript.getExitingObject();
+        final int MaxDespawnTicks = 120 / 6; // (120 seconds / 6 seconds per tick = Despawn after 2 minutes
+        HashSet<String> pcAreas = new HashSet<>();
 
-        if(!NWScript.getIsPC(oPC)) return;
-
-        int iPCCount = 0;
-        NWObject[] players = NWScript.getPCs();
-
-        for(NWObject pc : players)
+        for(NWObject pc : NWScript.getPCs())
         {
-            if(oArea.equals(NWScript.getArea(pc)))
-            {
-                iPCCount++;
-            }
+            String areaResref = NWScript.getResRef(NWScript.getArea(pc));
+            if(!pcAreas.contains(areaResref))
+                pcAreas.add(areaResref);
         }
 
-        // Last PC exited the area. Despawn all zombies.
-        if(iPCCount <= 0)
+        NWObject area = NWNX_Funcs.GetFirstArea();
+        while(NWScript.getIsObjectValid(area))
         {
-            NWObject[] objects = NWScript.getObjectsInArea(oArea);
+            String areaResref = NWScript.getResRef(area);
 
-            for(NWObject currentObject : objects)
+            if(NWScript.getLocalInt(area, AreaHasSpawned) == 1)
             {
-                if(NWScript.getLocalInt(currentObject, IsCreatureSpawned) == 1)
+                int currentDespawnTicks = 0;
+                String currentAreaDespawnTick = "ZSS_CURRENT_DESPAWN_TICK";
+                if(!pcAreas.contains(areaResref))
                 {
-                    NWScript.destroyObject(currentObject, 0.0f);
+                    currentDespawnTicks = NWScript.getLocalInt(area, currentAreaDespawnTick) + 1;
+
+                    if(currentDespawnTicks >= MaxDespawnTicks)
+                    {
+                        ClearSpawns(area);
+                        currentDespawnTicks = 0;
+                        NWScript.deleteLocalInt(area, AreaHasSpawned);
+                    }
                 }
+
+                NWScript.setLocalInt(area, currentAreaDespawnTick, currentDespawnTicks);
+            }
+
+
+            area = NWNX_Funcs.GetNextArea();
+        }
+    }
+
+    private void ClearSpawns(NWObject oArea)
+    {
+        NWObject[] objects = NWScript.getObjectsInArea(oArea);
+
+        for(NWObject currentObject : objects)
+        {
+            if(NWScript.getLocalInt(currentObject, IsCreatureSpawned) == 1)
+            {
+                NWScript.destroyObject(currentObject, 0.0f);
             }
         }
-
-        // Update PC counter
-        NWScript.setLocalInt(oArea, PlayerCount, iPCCount);
     }
 
     public void OnModuleLoad()
@@ -224,11 +229,10 @@ public class SpawnSystem {
         int iWaypointCount = NWScript.getLocalInt(oArea, RespawnWaypointCount);
         if(NWScript.getLocalInt(creature, IsCreatureSpawned) != 1 || iWaypointCount <= 0) return;
 
-        int iPCCount = NWScript.getLocalInt(oArea, PlayerCount);
         int iGroupID = NWScript.getLocalInt(oArea, SpawnTable);
         if(iGroupID <= 0) iGroupID = 1;
 
-        if(iPCCount > 0)
+        if(NWScript.getLocalInt(oArea, AreaHasSpawned) == 1)
         {
             int iWaypoint = NWScript.random(iWaypointCount) + 1;
             final SpawnModel model = GetCreatureToSpawn(iGroupID);
