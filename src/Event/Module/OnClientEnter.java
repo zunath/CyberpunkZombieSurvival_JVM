@@ -106,8 +106,6 @@ public class OnClientEnter implements IScriptEventHandler {
             PlayerEntity entity = pcGO.createEntity();
             repo.save(entity);
 
-            pcGO.setCreateDate();
-
             ProgressionSystem.InitializePlayer(oPC);
             NWNX_Funcs.SetRawQuickBarSlot(oPC, "1 4 0 1116 0");
             Scheduler.delay(oPC, 1000, () -> NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectHeal(999), oPC, 0.0f));

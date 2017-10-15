@@ -52,8 +52,6 @@ public class SpawnSystem {
 
     private void CreateCreature(String creatureResref, NWLocation waypointLocation, String areaResref, int lootTableID, int difficultyRating)
     {
-        System.out.println("CreateCreature start"); // DEBUG
-
         NWObject oArea = null;
 
         NWObject area = NWNX_Funcs.GetFirstArea();
@@ -68,7 +66,6 @@ public class SpawnSystem {
             area = NWNX_Funcs.GetNextArea();
         }
 
-        System.out.println("oArea = " + NWScript.getResRef(oArea)); // DEBUG
         if(oArea == null) return;
 
         if(NWScript.getLocalInt(oArea, AreaHasSpawned) == 1)
@@ -82,8 +79,6 @@ public class SpawnSystem {
                 NWScript.setFacing(0.01f * NWScript.random(3600));
                 NWScript.actionRandomWalk();
             });
-
-            System.out.println("After spawning is done"); // DEBUG
         }
     }
 

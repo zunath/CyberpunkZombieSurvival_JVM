@@ -1,6 +1,7 @@
 package GameObject;
 
 import Common.Constants;
+import Data.Repository.PlayerRepository;
 import Entities.PlayerEntity;
 import Enumerations.CustomItemProperty;
 import org.joda.time.DateTime;
@@ -160,49 +161,24 @@ public class PlayerGO {
         });
     }
 
-    public DateTime getCreateDate()
-    {
-        NWObject database = GetDatabaseItem();
-        String dateString = NWScript.getLocalString(database, "PC_CREATE_DATE");
-        DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss");
-        return formatter.withZone(DateTimeZone.UTC).parseDateTime(dateString);
-    }
-
-    public void setCreateDate()
-    {
-        NWObject database = GetDatabaseItem();
-        setCreateDate(database);
-    }
-
-    public void setCreateDate(NWObject databaseItem)
-    {
-        DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss");
-        DateTime dt = new DateTime(DateTimeZone.UTC);
-        String timestamp = dt.toString(formatter);
-        NWScript.setLocalString(databaseItem, "PC_CREATE_DATE", timestamp);
-    }
-
     public void setHasPVPSanctuaryOverride(boolean value)
     {
-        NWObject database = GetDatabaseItem();
-        int isEnabled = value ? 1 : 0;
-        NWScript.setLocalInt(database, "PVP_SANCTUARY_OVERRIDE_ENABLED", isEnabled);
-    }
+        PlayerRepository repo = new PlayerRepository();
+        PlayerEntity entity = repo.getByUUID(getUUID());
 
-    public boolean getHasPVPSanctuaryOverride()
-    {
-        NWObject database = GetDatabaseItem();
-        int isEnabled = NWScript.getLocalInt(database, "PVP_SANCTUARY_OVERRIDE_ENABLED");
-
-        return isEnabled == 1;
+        entity.setSanctuaryOverrideEnabled(value);
+        repo.save(entity);
     }
 
     public boolean hasPVPSanctuary()
     {
         if(NWScript.getIsDM(_pc) || !NWScript.getIsPC(_pc)) return false;
 
-        DateTime createDate = getCreateDate();
-        boolean hasOverride = getHasPVPSanctuaryOverride();
+        PlayerRepository repo = new PlayerRepository();
+        PlayerEntity entity = repo.getByUUID(getUUID());
+        
+        DateTime createDate = new DateTime(entity.getCreateTimestamp());
+        boolean hasOverride = entity.isSanctuaryOverrideEnabled();
         DateTime currentTime = new DateTime(DateTimeZone.UTC);
 
         return !(hasOverride || createDate.isAfter(currentTime));

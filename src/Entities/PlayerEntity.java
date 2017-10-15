@@ -89,6 +89,12 @@ public class PlayerEntity {
     @Column(name = "DateLastForcedSPReset")
     private Date dateLastForcedSPReset;
 
+    @Column(name = "DateSanctuaryEnds")
+    private Date dateSanctuaryEnds;
+
+    @Column(name = "IsSanctuaryOverrideEnabled")
+    private boolean isSanctuaryOverrideEnabled;
+
     public PlayerEntity()
     {
 
@@ -418,5 +424,29 @@ public class PlayerEntity {
 
     public void setDateLastForcedSPReset(Date dateLastForcedSPReset) {
         this.dateLastForcedSPReset = dateLastForcedSPReset;
+    }
+
+    public String getPcID() {
+        return pcID;
+    }
+
+    public void setPcID(String pcID) {
+        this.pcID = pcID;
+    }
+
+    public Date getDateSanctuaryEnds() {
+        return dateSanctuaryEnds;
+    }
+
+    public void setDateSanctuaryEnds(Date dateSanctuaryEnds) {
+        this.dateSanctuaryEnds = dateSanctuaryEnds;
+    }
+
+    public boolean isSanctuaryOverrideEnabled() {
+        return isSanctuaryOverrideEnabled;
+    }
+
+    public void setSanctuaryOverrideEnabled(boolean sanctuaryOverrideEnabled) {
+        isSanctuaryOverrideEnabled = sanctuaryOverrideEnabled;
     }
 }
