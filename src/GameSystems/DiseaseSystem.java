@@ -21,7 +21,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class DiseaseSystem {
 
-    public static int DCCheck = 10;
+    private static int DCCheck = 10;
+    private static String CrudResref = "infection_crud";
 
 
     public static void IncreaseDiseaseLevel(final NWObject oPC, int iIncreaseBy)
@@ -33,6 +34,7 @@ public class DiseaseSystem {
 
         NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectVisualEffect(Vfx.IMP_DISEASE_S, false), oPC, 0.0f);
         NWScript.sendMessageToPC(oPC, "Infection Level: " + MenuHelper.BuildBar(entity.getCurrentInfection(), 100, 100));
+        ModifyInfectionCrudItems(oPC, entity.getCurrentInfection());
 
         if(entity.getCurrentInfection() >= entity.getInfectionCap())
         {
@@ -57,6 +59,9 @@ public class DiseaseSystem {
 
         NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectVisualEffect(VfxImp.REMOVE_CONDITION, false), oPC, 0.0f);
         NWScript.sendMessageToPC(oPC, "Infection Level: " + MenuHelper.BuildBar(entity.getCurrentInfection(), 100, 100));
+
+        repo.save(entity);
+        ModifyInfectionCrudItems(oPC, entity.getCurrentInfection());
     }
 
     public static PlayerEntity RunDiseaseRemovalProcess(NWObject oPC, PlayerEntity entity)
@@ -230,6 +235,42 @@ public class DiseaseSystem {
                 }
             }
         }
+    }
+
+    private static void ModifyInfectionCrudItems(NWObject oPC, int infectionAmount)
+    {
+        int numberOfCruds = infectionAmount / 10;
+
+        int crudsOwned = 0;
+        for(NWObject item: NWScript.getItemsInInventory(oPC))
+        {
+            String resref = NWScript.getResRef(item);
+            if(resref.equals(CrudResref))
+            {
+                crudsOwned++;
+            }
+        }
+
+        if(numberOfCruds == crudsOwned) return;
+
+        if(numberOfCruds > crudsOwned)
+        {
+            int numberToAdd = numberOfCruds - crudsOwned;
+            for(int cruds = 1; cruds <= numberToAdd; cruds++)
+            {
+                NWScript.createItemOnObject(CrudResref, oPC, 1, "");
+            }
+        }
+        else
+        {
+            int numberToRemove = crudsOwned - numberOfCruds;
+            for(int cruds = 1; cruds <= numberToRemove; cruds++)
+            {
+                NWObject item = NWScript.getItemPossessedBy(oPC, CrudResref);
+                NWScript.destroyObject(item, 0.0f);
+            }
+        }
+
     }
 
 }

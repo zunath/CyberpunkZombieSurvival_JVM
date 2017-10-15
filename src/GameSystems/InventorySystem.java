@@ -83,6 +83,7 @@ public class InventorySystem {
                 Objects.equals(sResref, "") ||  // Item doesn't have a resref
                 Objects.equals(sResref, "cft_choose_bp") || // Craft system "Choose Blueprint"
                 Objects.equals(sResref, "cft_craft_item") || // Craft system "Craft Item"
+                Objects.equals(sResref, "infection_crud") || // Infection system "Infection Item"
                 NWScript.getLocalInt(oItem, "ZEP_CR_TEMPITEM") != 0 ||  // CEP Crafting GameSystems - Prevents a bug when PC tries to craft armor appearance on full inventory
                 Objects.equals(sName, "PC Properties") ||               // Patch 1.69 PC properties skin. Can't get the tag of this for whatever reason so I use its name.
                 Objects.equals(NWScript.getStringLeft(sTag, 8), "KEYITEM_") || // Key items
