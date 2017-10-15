@@ -135,6 +135,7 @@ public class ProgressionSystem {
         entity.setMaxMana(0);
         entity.setCurrentManaTick(20);
         entity.setCurrentMana(0);
+        entity.setHitPoints(NWScript.getMaxHitPoints(oPC));
 
         playerRepo.save(entity);
 
