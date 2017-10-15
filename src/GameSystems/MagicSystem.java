@@ -542,10 +542,9 @@ public class MagicSystem {
         }
     }
 
-    public static void OnHitCastSpell(NWObject oTarget)
+    public static void OnHitCastSpell(NWObject oPC)
     {
-        NWObject oSpellOrigin = NWScript.getSpellCastItem();
-        NWObject oPC = NWScript.getItemPossessor(oSpellOrigin);
+        NWObject oTarget = NWScript.getSpellTargetObject();
         int activeWeaponSkillID = NWScript.getLocalInt(oPC, "ACTIVE_WEAPON_SKILL");
         if(activeWeaponSkillID <= 0) return;
 
