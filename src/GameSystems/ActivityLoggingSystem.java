@@ -26,32 +26,48 @@ public class ActivityLoggingSystem {
         PlayerGO senderGO = new PlayerGO(sender);
         String senderCDKey = NWScript.getPCPublicCDKey(sender, false);
         String senderAccountName = NWScript.getPCPlayerName(sender);
-        String senderPlayerID = senderGO.getUUID();
+        String senderPlayerID = null;
+        String senderDMName = null;
+
+        // DMs do not have PlayerIDs so store their name in another field.
+        if(NWScript.getIsDM(sender))
+            senderDMName = "[DM: " + NWScript.getName(sender, false) + " (" + senderCDKey + ")]";
+        else
+            senderPlayerID = senderGO.getUUID();
 
         // Receiver - may or may not have the data.
 
         String receiverCDKey = null;
         String receiverAccountName = null;
         String receiverPlayerID = null;
+        String receiverDMName = null;
 
         if(NWScript.getIsObjectValid(chatMessage.getRecipient()))
         {
             PlayerGO receiverGO = new PlayerGO(chatMessage.getRecipient());
             receiverCDKey = NWScript.getPCPublicCDKey(chatMessage.getRecipient(), false);
             receiverAccountName = NWScript.getPCPlayerName(chatMessage.getRecipient());
-            receiverPlayerID = receiverGO.getUUID();
+
+            // DMs do not have PlayerIDs so store their name in another field.
+            if(NWScript.getIsDM(chatMessage.getRecipient()))
+                receiverDMName = "[DM: " + NWScript.getName(chatMessage.getRecipient(), false) + " (" + senderCDKey + ")]";
+            else
+                receiverPlayerID = receiverGO.getUUID();
         }
 
         entity.setMessage(text);
         entity.setSenderCDKey(senderCDKey);
         entity.setSenderAccountName(senderAccountName);
         entity.setSenderPlayerID(senderPlayerID);
+        entity.setSenderDMName(senderDMName);
 
         entity.setReceiverCDKey(receiverCDKey);
         entity.setReceiverAccountName(receiverAccountName);
         entity.setReceiverPlayerID(receiverPlayerID);
+        entity.setReceiverDMName(receiverDMName);
 
         entity.setChatChannel(channelEntity);
+
         repo.Save(entity);
 
     }

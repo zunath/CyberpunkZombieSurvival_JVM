@@ -36,6 +36,12 @@ public class ChatLogEntity {
     @Column(name = "Message")
     private String message;
 
+    @Column(name = "SenderDMName")
+    private String senderDMName;
+
+    @Column(name = "ReceiverDMName")
+    private String receiverDMName;
+
     public int getChatLogID() {
         return chatLogID;
     }
@@ -106,5 +112,21 @@ public class ChatLogEntity {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getSenderDMName() {
+        return senderDMName;
+    }
+
+    public void setSenderDMName(String senderDMName) {
+        this.senderDMName = senderDMName;
+    }
+
+    public String getReceiverDMName() {
+        return receiverDMName;
+    }
+
+    public void setReceiverDMName(String receiverDMName) {
+        this.receiverDMName = receiverDMName;
     }
 }
