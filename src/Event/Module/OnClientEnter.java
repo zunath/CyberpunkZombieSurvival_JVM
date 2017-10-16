@@ -45,6 +45,8 @@ public class OnClientEnter implements IScriptEventHandler {
 
         // DMFI
         NWScript.executeScript("dmfi_onclienter", objSelf);
+
+        WriteConnectionAttemptToConsole();
     }
 
     private void ApplyGhostwalk()
@@ -148,5 +150,14 @@ public class OnClientEnter implements IScriptEventHandler {
         }
 
         pcGO.setIsBusy(false); // Just in case player logged out in the middle of an action.
+    }
+
+    private void WriteConnectionAttemptToConsole()
+    {
+        NWObject oPC = NWScript.getEnteringObject();
+        String name = NWScript.getName(oPC, false);
+        String cdKey = NWScript.getPCPublicCDKey(oPC, false);
+
+        System.out.println(name + " (" + cdKey + ") connected to the server.");
     }
 }

@@ -56,19 +56,19 @@ public class QuestEntity {
     private boolean removeStartKeyItemAfterCompletion;
 
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quest", fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quest", fetch = FetchType.LAZY, orphanRemoval = true)
     private List<QuestKillTargetListEntity> killTargets;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quest", fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quest", fetch = FetchType.LAZY, orphanRemoval = true)
     private List<QuestRewardItemEntity> rewardItems;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quest", fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quest", fetch = FetchType.LAZY, orphanRemoval = true)
     private List<QuestRequiredItemListEntity> requiredItems;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quest", fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quest", fetch = FetchType.LAZY, orphanRemoval = true)
     private List<QuestRequiredKeyItemListEntity> requiredKeyItems;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quest", fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quest", fetch = FetchType.LAZY, orphanRemoval = true)
     private List<QuestPrerequisiteEntity> prerequisiteQuests;
 
 

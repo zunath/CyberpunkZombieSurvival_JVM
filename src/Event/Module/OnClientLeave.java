@@ -24,6 +24,8 @@ public class OnClientLeave implements IScriptEventHandler {
 		NWScript.executeScript("fky_chat_clexit", objSelf);
 		// Radio GameSystems - Also used for NWNX chat (Different from SimTools)
 		radioSystem.OnModuleLeave();
+
+		WriteConnectionDisconnectToConsole();
 	}
 
 	private void SaveCharacter(NWObject pc) {
@@ -39,5 +41,14 @@ public class OnClientLeave implements IScriptEventHandler {
 		entity.setHitPoints(NWScript.getCurrentHitPoints(pc));
 
 		repo.save(entity);
+	}
+
+	private void WriteConnectionDisconnectToConsole()
+	{
+		NWObject oPC = NWScript.getExitingObject();
+		String name = NWScript.getName(oPC, false);
+		String cdKey = NWScript.getPCPublicCDKey(oPC, false);
+
+		System.out.println(name + " (" + cdKey + ") left the server.");
 	}
 }
