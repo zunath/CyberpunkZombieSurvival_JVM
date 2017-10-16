@@ -30,5 +30,17 @@ public class KeyItemSystem {
         }
     }
 
+    public static void RemovePlayerKeyItem(NWObject oPC, int keyItemID)
+    {
+        if(PlayerHasKeyItem(oPC, keyItemID))
+        {
+            PlayerGO pcGO = new PlayerGO(oPC);
+
+            KeyItemRepository repo = new KeyItemRepository();
+            PCKeyItemEntity entity = repo.GetPCKeyItemByKeyItemID(pcGO.getUUID(), keyItemID);
+            repo.Delete(entity);
+        }
+    }
+
 
 }

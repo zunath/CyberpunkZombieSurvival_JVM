@@ -1,7 +1,7 @@
 package Entities;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.util.Date;
 
 @Entity
 @Table(name = "PCQuestStatus")
@@ -24,7 +24,7 @@ public class PCQuestStatusEntity {
     private QuestStateEntity currentQuestState;
 
     @Column(name = "CompletionDate")
-    private Timestamp completionDate;
+    private Date completionDate;
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "SelectedItemRewardID")
@@ -54,11 +54,11 @@ public class PCQuestStatusEntity {
         this.currentQuestState = currentQuestState;
     }
 
-    public Timestamp getCompletionDate() {
+    public Date getCompletionDate() {
         return completionDate;
     }
 
-    public void setCompletionDate(Timestamp completionDate) {
+    public void setCompletionDate(Date completionDate) {
         this.completionDate = completionDate;
     }
 

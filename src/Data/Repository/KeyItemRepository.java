@@ -4,6 +4,7 @@ import Data.DataContext;
 import Entities.KeyItemEntity;
 import Entities.PCKeyItemEntity;
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
@@ -48,6 +49,30 @@ public class KeyItemRepository {
                     .add(Restrictions.eq("keyItemID", keyItemID))
                     .add(Restrictions.eq("playerID", uuid));
             return (PCKeyItemEntity)criteria.uniqueResult();
+        }
+    }
+
+    public List<Integer> GetListOfPCKeyItemIDs(String uuid)
+    {
+        List<Integer> keyItemIDs;
+
+        try(DataContext context = new DataContext())
+        {
+            Criteria criteria = context.getSession()
+                    .createCriteria(PCKeyItemEntity.class)
+                    .add(Restrictions.eq("playerID", uuid))
+                    .setProjection(Projections.distinct(Projections.property("keyItemID")));
+            keyItemIDs = criteria.list();
+        }
+
+        return keyItemIDs;
+    }
+
+    public void Delete(PCKeyItemEntity entity)
+    {
+        try(DataContext context = new DataContext())
+        {
+            context.getSession().delete(entity);
         }
     }
 

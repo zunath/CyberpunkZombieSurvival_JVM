@@ -1,13 +1,17 @@
 package GameSystems;
 
 import Data.Repository.FameRepository;
+import Data.Repository.KeyItemRepository;
 import Data.Repository.QuestRepository;
 import Dialog.DialogPage;
 import Entities.*;
 import GameObject.PlayerGO;
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class QuestSystem {
@@ -15,6 +19,9 @@ public class QuestSystem {
     public static void OnClientEnter()
     {
         NWObject oPC = NWScript.getEnteringObject();
+
+        if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return;
+
         PlayerGO pcGO = new PlayerGO(oPC);
         QuestRepository questRepo = new QuestRepository();
         List<PCQuestStatusEntity> pcQuests = questRepo.GetAllPCQuestStatusesByID(pcGO.getUUID());
@@ -27,6 +34,8 @@ public class QuestSystem {
 
     public static void AcceptQuest(NWObject oPC, int questID)
     {
+        if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return;
+
         PlayerGO pcGO = new PlayerGO(oPC);
         String uuid = pcGO.getUUID();
         QuestRepository questRepo = new QuestRepository();
@@ -50,9 +59,15 @@ public class QuestSystem {
 
 
         QuestEntity quest = questRepo.GetQuestByID(questID);
-        if(!DoesPlayerMeetPrerequisites(quest.getPrerequisiteQuests()))
+        if(!DoesPlayerMeetPrerequisites(oPC, quest.getPrerequisiteQuests()))
         {
             NWScript.sendMessageToPC(oPC, "You do not meet the prerequisites necessary to accept this quest.");
+            return;
+        }
+
+        if(!DoesPlayerHaveRequiredKeyItems(oPC, quest.getRequiredKeyItems()))
+        {
+            NWScript.sendMessageToPC(oPC, "You do not have the required key items to accept this quest.");
             return;
         }
 
@@ -91,6 +106,8 @@ public class QuestSystem {
 
     public static void AdvanceQuestState(NWObject oPC, int questID)
     {
+        if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return;
+
         PlayerGO pcGO = new PlayerGO(oPC);
         QuestRepository repo = new QuestRepository();
         PCQuestStatusEntity questStatus = repo.GetPCQuestStatusByID(pcGO.getUUID(), questID);
@@ -132,12 +149,75 @@ public class QuestSystem {
 
     public static void CompleteQuest(NWObject oPC, int questID)
     {
+        if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return;
+
         PlayerGO pcGO = new PlayerGO(oPC);
         String uuid = pcGO.getUUID();
         QuestRepository questRepo = new QuestRepository();
         QuestEntity quest = questRepo.GetQuestByID(questID);
+        PCQuestStatusEntity pcState = questRepo.GetPCQuestStatusByID(uuid, questID);
 
+        if(quest.allowRewardSelection())
+        {
+            // TODO: Launch conversation for selecting reward.
 
+            return;
+        }
+
+        QuestStateEntity finalState = null;
+        for(QuestStateEntity questState : quest.getQuestStates())
+        {
+            if(questState.isFinalState())
+            {
+                finalState = questState;
+                break;
+            }
+        }
+
+        if(finalState == null)
+        {
+            NWScript.sendMessageToPC(oPC, "Could not find final state of quest. Please notify an admin this quest is bugged. (QuestID: " + questID + ")");
+            return;
+        }
+
+        pcState.setCurrentQuestState(finalState);
+        pcState.setCompletionDate(DateTime.now(DateTimeZone.UTC).toDate());
+
+        for(QuestRewardItemEntity reward : quest.getRewardItems())
+        {
+            NWScript.createItemOnObject(reward.getResref(), oPC, reward.getQuantity(), "");
+        }
+
+        if(quest.getRewardGold() > 0)
+        {
+            NWScript.giveGoldToCreature(oPC, quest.getRewardGold());
+        }
+
+        if(quest.getRewardXP() > 0)
+        {
+            ProgressionSystem.GiveExperienceToPC(oPC, quest.getRewardXP());
+        }
+
+        if(quest.getRewardKeyItem() != null)
+        {
+            KeyItemSystem.GivePlayerKeyItem(oPC, quest.getRewardKeyItem().getKeyItemID());
+        }
+
+        if(quest.removeStartKeyItemAfterCompletion())
+        {
+            KeyItemSystem.RemovePlayerKeyItem(oPC, quest.getStartKeyItemID().getKeyItemID());
+        }
+
+        if(quest.getRewardFame() > 0)
+        {
+            FameRepository fameRepo = new FameRepository();
+            PCRegionalFameEntity fame = fameRepo.GetPCFameByID(uuid, quest.getFameRegion().getFameRegionID());
+            fame.setAmount(fame.getAmount() + quest.getRewardFame());
+            fameRepo.Save(fame);
+        }
+
+        NWScript.sendMessageToPC(oPC, "Quest '" + quest.getName() + "' complete!");
+        questRepo.Save(pcState);
     }
 
     public static DialogPage BuildRewardItemPage(int questID)
@@ -152,11 +232,40 @@ public class QuestSystem {
         return false;
     }
 
-    private static boolean DoesPlayerMeetPrerequisites(List<QuestPrerequisiteEntity> prereqs)
+    private static boolean DoesPlayerMeetPrerequisites(NWObject oPC, List<QuestPrerequisiteEntity> prereqs)
     {
+        if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return false;
+        if(prereqs.isEmpty()) return true;
 
+        PlayerGO pcGO = new PlayerGO(oPC);
+        QuestRepository questRepo = new QuestRepository();
+        List<Integer> completedQuestIDs = questRepo.GetAllCompletedQuestIDs(pcGO.getUUID());
 
-        return true;
+        ArrayList<Integer> prereqIDs = new ArrayList<>();
+        for(QuestPrerequisiteEntity prereq : prereqs)
+        {
+            prereqIDs.add(prereq.getRequiredQuest().getQuestID());
+        }
+
+        return completedQuestIDs.containsAll(prereqIDs);
+    }
+
+    private static boolean DoesPlayerHaveRequiredKeyItems(NWObject oPC, List<QuestRequiredKeyItemListEntity> requiredKeyItems)
+    {
+        if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return false;
+        if(requiredKeyItems.isEmpty()) return true;
+
+        PlayerGO pcGO = new PlayerGO(oPC);
+        KeyItemRepository keyItemRepo = new KeyItemRepository();
+        List<Integer> keyItemIDs = keyItemRepo.GetListOfPCKeyItemIDs(pcGO.getUUID());
+
+        ArrayList<Integer> requiredKeyItemIDs = new ArrayList<>();
+        for(QuestRequiredKeyItemListEntity ki : requiredKeyItems)
+        {
+            requiredKeyItemIDs.add(ki.getKeyItem().getKeyItemID());
+        }
+
+        return keyItemIDs.containsAll(requiredKeyItemIDs);
     }
 
     public static void SpawnQuestItems(NWObject oChest, NWObject oPC)

@@ -17,7 +17,7 @@ public class PCKeyItemEntity {
     private String playerID;
 
     @Column(name="KeyItemID")
-    private int keyitemID;
+    private int keyItemID;
 
     @Column(name="AcquiredDate")
     private Timestamp acquiredDate;
@@ -43,11 +43,11 @@ public class PCKeyItemEntity {
     }
 
     public int getKeyItemID() {
-        return keyitemID;
+        return keyItemID;
     }
 
-    public void setKeyItemID(int keyitemID) {
-        this.keyitemID = keyitemID;
+    public void setKeyItemID(int keyItemID) {
+        this.keyItemID = keyItemID;
     }
 
     public KeyItemEntity getKeyItem() {

@@ -116,7 +116,7 @@ public class QuestEntity {
         this.requiredFameAmount = requiredFameAmount;
     }
 
-    public boolean isAllowRewardSelection() {
+    public boolean allowRewardSelection() {
         return allowRewardSelection;
     }
 
@@ -164,7 +164,7 @@ public class QuestEntity {
         this.mapNoteTag = mapNoteTag;
     }
 
-    public boolean isRemoveStartKeyItemAfterCompletion() {
+    public boolean removeStartKeyItemAfterCompletion() {
         return removeStartKeyItemAfterCompletion;
     }
 

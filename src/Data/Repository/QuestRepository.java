@@ -4,6 +4,8 @@ import Data.DataContext;
 import Entities.PCQuestStatusEntity;
 import Entities.QuestEntity;
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Projection;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
@@ -64,6 +66,23 @@ public class QuestRepository {
         return entities;
     }
 
+    public List<Integer> GetAllCompletedQuestIDs(String playerID)
+    {
+        List<Integer> questIDs;
+
+        try(DataContext context = new DataContext())
+        {
+            Criteria criteria = context.getSession()
+                    .createCriteria(PCQuestStatusEntity.class)
+                    .createAlias("quest", "q")
+                    .add(Restrictions.eq("playerID", playerID))
+                    .add(Restrictions.isNotNull("completionDate"))
+                    .setProjection(Projections.distinct(Projections.property("q.questID")));
+            questIDs = criteria.list();
+        }
+
+        return questIDs;
+    }
 
     public void Save(PCQuestStatusEntity entity)
     {
