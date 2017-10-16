@@ -1,5 +1,6 @@
 package GameSystems;
 
+import Conversation.KeyItems;
 import Data.Repository.FameRepository;
 import Data.Repository.KeyItemRepository;
 import Data.Repository.QuestRepository;
@@ -8,12 +9,15 @@ import Entities.*;
 import Enumerations.QuestType;
 import GameObject.PlayerGO;
 import Helper.ColorToken;
+import Helper.ItemHelper;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
+import org.nwnx.nwnx2.jvm.Scheduler;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class QuestSystem {
@@ -319,11 +323,141 @@ public class QuestSystem {
                     questRepo.Save(kt);
                 }
 
-                NWScript.sendMessageToPC(oPC, updateMessage);
+                final String finalMessage = updateMessage;
+                Scheduler.delay(oPC, 1000, () -> NWScript.sendMessageToPC(oPC, finalMessage));
             }
+        }
+    }
+
+    private static void HandleTriggerAndPlaceableQuestLogic(NWObject oPC, NWObject oObject)
+    {
+        if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return;
+        final String questMessage = NWScript.getLocalString(oObject, "QUEST_MESSAGE");
+        int questID = NWScript.getLocalInt(oObject, "QUEST_ID");
+        int questSequence = NWScript.getLocalInt(oObject, "QUEST_SEQUENCE");
+
+        if(questID <= 0)
+        {
+            NWScript.sendMessageToPC(oPC, "QUEST_ID variable not set on object. Please inform admin this quest is bugged.");
+            return;
+        }
+
+        if(questSequence <= 0)
+        {
+            NWScript.sendMessageToPC(oPC, "QUEST_SEQUENCE variable not set on object. Please inform admin this quest is bugged. (QuestID: " + questID + ")");
+            return;
+        }
+
+        PlayerGO pcGO = new PlayerGO(oPC);
+        QuestRepository questRepo = new QuestRepository();
+
+        PCQuestStatusEntity pcQuestStatus = questRepo.GetPCQuestStatusByID(pcGO.getUUID(), questID);
+        if(pcQuestStatus == null) return;
+
+        QuestStateEntity questState = pcQuestStatus.getCurrentQuestState();
+
+        if(questState.getQuestType().getQuestTypeID() != QuestType.UseObject &&
+                questState.getSequence() == questSequence)
+        {
+            return;
         }
 
 
+        if(!questMessage.equals(""))
+        {
+            Scheduler.delay(oPC, 1000, () -> NWScript.sendMessageToPC(oPC, questMessage));
+        }
+
+        AdvanceQuestState(oPC, questID);
     }
 
+    public static void OnQuestPlaceableUsed(NWObject oObject)
+    {
+        NWObject oPC = NWScript.getLastUsedBy();
+        HandleTriggerAndPlaceableQuestLogic(oPC, oObject);
+    }
+
+    public static void OnQuestTriggerEntered(NWObject oObject)
+    {
+        NWObject oPC = NWScript.getEnteringObject();
+        HandleTriggerAndPlaceableQuestLogic(oPC, oObject);
+    }
+
+    public static void TurnInQuestItems(NWObject oPC, NWObject oQuestGiver, int questID)
+    {
+        if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return;
+
+        PlayerGO pcGO = new PlayerGO(oPC);
+        QuestRepository questRepo = new QuestRepository();
+        PCQuestStatusEntity pcStatus = questRepo.GetPCQuestStatusByID(pcGO.getUUID(), questID);
+        QuestEntity quest = pcStatus.getQuest();
+
+        for(QuestRequiredKeyItemListEntity ki : quest.getRequiredKeyItems())
+        {
+            if(!KeyItemSystem.PlayerHasKeyItem(oPC, ki.getKeyItem().getKeyItemID()))
+            {
+                NWScript.sendMessageToPC(oPC, "You are missing a required key item.");
+                return;
+            }
+        }
+
+        List<QuestRequiredItemListEntity> requiredItems = quest.getRequiredItems();
+        HashMap<String, Integer> itemsFound = new HashMap<>();
+
+        for(QuestRequiredItemListEntity ri : requiredItems)
+        {
+            if(itemsFound.containsKey(ri.getResref()))
+            {
+                int count = itemsFound.get(ri.getResref()) + ri.getQuantity();
+                itemsFound.replace(ri.getResref(), count);
+            }
+            else
+            {
+                itemsFound.put(ri.getResref(), ri.getQuantity());
+            }
+        }
+
+        for(NWObject item : NWScript.getItemsInInventory(oPC))
+        {
+            String resref = NWScript.getResRef(item);
+            if(itemsFound.containsKey(resref))
+            {
+                if(itemsFound.get(resref) > 0)
+                {
+                    if(NWScript.getItemStackSize(item) == 1)
+                    {
+                        itemsFound.replace(resref, itemsFound.get(resref) - 1);
+                        NWScript.copyItem(item, oQuestGiver, true);
+                        NWScript.destroyObject(item, 0.0f);
+                    }
+                    else
+                    {
+                        // TODO: Handle stack sizes.
+                    }
+                }
+            }
+        }
+
+        for(String foundResref : itemsFound.keySet())
+        {
+            if(itemsFound.get(foundResref) > 0)
+            {
+                for(NWObject item : NWScript.getItemsInInventory(oQuestGiver))
+                {
+                    NWScript.copyItem(item, oPC, true);
+                    NWScript.destroyObject(item, 0.0f);
+                }
+
+                NWScript.sendMessageToPC(oPC, "You are missing a required item.");
+                return;
+            }
+        }
+
+        for(NWObject item : NWScript.getItemsInInventory(oQuestGiver))
+        {
+            NWScript.destroyObject(item, 0.0f);
+        }
+
+        AdvanceQuestState(oPC, questID);
+    }
 }
