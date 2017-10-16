@@ -1,5 +1,8 @@
 package Entities;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -56,21 +59,29 @@ public class QuestEntity {
     private boolean removeStartKeyItemAfterCompletion;
 
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quest", fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quest", fetch = FetchType.EAGER, orphanRemoval = true)
+    @Fetch(FetchMode.SELECT)
     private List<QuestKillTargetListEntity> killTargets;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quest", fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quest", fetch = FetchType.EAGER, orphanRemoval = true)
+    @Fetch(FetchMode.SELECT)
     private List<QuestRewardItemEntity> rewardItems;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quest", fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quest", fetch = FetchType.EAGER, orphanRemoval = true)
+    @Fetch(FetchMode.SELECT)
     private List<QuestRequiredItemListEntity> requiredItems;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quest", fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quest", fetch = FetchType.EAGER, orphanRemoval = true)
+    @Fetch(FetchMode.SELECT)
     private List<QuestRequiredKeyItemListEntity> requiredKeyItems;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quest", fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quest", fetch = FetchType.EAGER, orphanRemoval = true)
+    @Fetch(FetchMode.SELECT)
     private List<QuestPrerequisiteEntity> prerequisiteQuests;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quest", fetch = FetchType.EAGER, orphanRemoval = true)
+    @Fetch(FetchMode.SELECT)
+    private List<QuestStateEntity> questStates;
 
 
     public int getQuestID() {
@@ -223,5 +234,13 @@ public class QuestEntity {
 
     public void setPrerequisiteQuests(List<QuestPrerequisiteEntity> prerequisiteQuests) {
         this.prerequisiteQuests = prerequisiteQuests;
+    }
+
+    public List<QuestStateEntity> getQuestStates() {
+        return questStates;
+    }
+
+    public void setQuestStates(List<QuestStateEntity> questStates) {
+        this.questStates = questStates;
     }
 }

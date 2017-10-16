@@ -16,6 +16,9 @@ public class QuestStateEntity {
     @JoinColumn(name = "QuestID", updatable = false, insertable = false)
     private QuestEntity quest;
 
+    @Column(name = "Sequence")
+    private int sequence;
+
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "QuestTypeID", updatable = false, insertable = false)
     private QuestTypeEntity questType;
@@ -40,6 +43,14 @@ public class QuestStateEntity {
 
     public void setQuest(QuestEntity quest) {
         this.quest = quest;
+    }
+
+    public int getSequence() {
+        return sequence;
+    }
+
+    public void setSequence(int sequence) {
+        this.sequence = sequence;
     }
 
     public QuestTypeEntity getQuestType() {

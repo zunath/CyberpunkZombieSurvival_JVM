@@ -1,6 +1,7 @@
 package Data.Repository;
 
 import Data.DataContext;
+import Entities.FameRegionEntity;
 import Entities.PCQuestStatusEntity;
 import Entities.PCRegionalFameEntity;
 import org.hibernate.Criteria;
@@ -18,14 +19,35 @@ public class FameRepository {
                     .createCriteria(PCRegionalFameEntity.class);
 
             entity = (PCRegionalFameEntity) criteria
+                    .createAlias("fameRegion", "f")
                     .add(Restrictions.eq("playerID", playerID))
-                    .add(Restrictions.eq("fameRegionID", regionID))
+                    .add(Restrictions.eq("f.fameRegionID", regionID))
                     .uniqueResult();
 
         }
 
+        if(entity == null)
+        {
+            try(DataContext context = new DataContext())
+            {
+                Criteria criteria = context.getSession()
+                        .createCriteria(FameRegionEntity.class);
+
+                FameRegionEntity fameRegion = (FameRegionEntity) criteria
+                        .add(Restrictions.eq("fameRegionID", regionID))
+                        .uniqueResult();
+
+                entity = new PCRegionalFameEntity();
+                entity.setAmount(0);
+                entity.setPlayerID(playerID);
+                entity.setFameRegion(fameRegion);
+                context.getSession().saveOrUpdate(entity);
+            }
+        }
+
         return entity;
     }
+
 
 
 

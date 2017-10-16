@@ -4,6 +4,8 @@ import GameObject.PlayerGO;
 import Common.IScriptEventHandler;
 import Data.Repository.PlayerRepository;
 import GameSystems.RadioSystem;
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 import org.nwnx.nwnx2.jvm.*;
 
 @SuppressWarnings("unused")
@@ -47,8 +49,11 @@ public class OnClientLeave implements IScriptEventHandler {
 	{
 		NWObject oPC = NWScript.getExitingObject();
 		String name = NWScript.getName(oPC, false);
-		String cdKey = NWScript.getPCPublicCDKey(oPC, false);
+		String cdKey = NWScript.getLocalString(oPC, "PC_CD_KEY");
+        String account = NWScript.getLocalString(oPC, "PC_ACCOUNT");
+        DateTime now = new DateTime(DateTimeZone.UTC);
+        String nowString = now.toString("yyyy-MM-dd hh:mm:ss");
 
-		System.out.println(name + " (" + cdKey + ") left the server.");
+		System.out.println(nowString + ": " + name + " (" + account + "/" + cdKey + ") left the server.");
 	}
 }

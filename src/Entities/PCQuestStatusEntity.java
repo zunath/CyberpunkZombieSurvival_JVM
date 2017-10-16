@@ -12,18 +12,22 @@ public class PCQuestStatusEntity {
     @Column(name = "PCQuestStatusID")
     private int pcQuestStatusID;
 
+    @Column(name = "PlayerID")
+    private String playerID;
+
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "QuestID", updatable = false, insertable = false)
+    @JoinColumn(name = "QuestID")
     private QuestEntity quest;
 
-    @Column(name = "CurrentStateID")
-    private int currentStateID;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "CurrentQuestStateID")
+    private QuestStateEntity currentQuestState;
 
     @Column(name = "CompletionDate")
     private Timestamp completionDate;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "SelectedItemRewardID", updatable = false, insertable = false)
+    @JoinColumn(name = "SelectedItemRewardID")
     private QuestRewardItemEntity selectedItemReward;
 
     public int getPcQuestStatusID() {
@@ -42,12 +46,12 @@ public class PCQuestStatusEntity {
         this.quest = quest;
     }
 
-    public int getCurrentStateID() {
-        return currentStateID;
+    public QuestStateEntity getCurrentQuestState() {
+        return currentQuestState;
     }
 
-    public void setCurrentStateID(int currentStateID) {
-        this.currentStateID = currentStateID;
+    public void setCurrentQuestState(QuestStateEntity currentQuestState) {
+        this.currentQuestState = currentQuestState;
     }
 
     public Timestamp getCompletionDate() {
@@ -64,5 +68,13 @@ public class PCQuestStatusEntity {
 
     public void setSelectedItemReward(QuestRewardItemEntity selectedItemReward) {
         this.selectedItemReward = selectedItemReward;
+    }
+
+    public String getPlayerID() {
+        return playerID;
+    }
+
+    public void setPlayerID(String playerID) {
+        this.playerID = playerID;
     }
 }

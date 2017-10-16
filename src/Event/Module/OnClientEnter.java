@@ -4,15 +4,14 @@ import Common.Constants;
 import Data.Repository.ServerConfigurationRepository;
 import Entities.PlayerEntity;
 import Entities.ServerConfigurationEntity;
-import GameSystems.ProfessionSystem;
+import GameSystems.*;
 import Helper.ColorToken;
 import GameObject.PlayerGO;
 import Common.IScriptEventHandler;
 import NWNX.NWNX_Funcs;
 import Data.Repository.PlayerRepository;
-import GameSystems.PlayerAuthorizationSystem;
-import GameSystems.ProgressionSystem;
-import GameSystems.RadioSystem;
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 import org.nwnx.nwnx2.jvm.*;
 import org.nwnx.nwnx2.jvm.constants.*;
 
@@ -42,6 +41,8 @@ public class OnClientEnter implements IScriptEventHandler {
         ProfessionSystem.OnModuleEnter();
         // Progression System
         ProgressionSystem.OnModuleEnter();
+        // Quest system
+        QuestSystem.OnClientEnter();
 
         // DMFI
         NWScript.executeScript("dmfi_onclienter", objSelf);
@@ -157,7 +158,16 @@ public class OnClientEnter implements IScriptEventHandler {
         NWObject oPC = NWScript.getEnteringObject();
         String name = NWScript.getName(oPC, false);
         String cdKey = NWScript.getPCPublicCDKey(oPC, false);
+        String account = NWScript.getPCPlayerName(oPC);
+        DateTime now = new DateTime(DateTimeZone.UTC);
+        String nowString = now.toString("yyyy-MM-dd hh:mm:ss");
 
-        System.out.println(name + " (" + cdKey + ") connected to the server.");
+        // CD Key and accounts are stored as local strings on the PC
+        // because they cannot be retrieved using NWScript functions
+        // on the module OnClientLeave event.
+        NWScript.setLocalString(oPC, "PC_CD_KEY", cdKey);
+        NWScript.setLocalString(oPC, "PC_ACCOUNT", account);
+
+        System.out.println(nowString + ": " + name + " (" + account + "/" + cdKey + ") connected to the server.");
     }
 }

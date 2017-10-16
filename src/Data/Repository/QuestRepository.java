@@ -6,6 +6,8 @@ import Entities.QuestEntity;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
+import java.util.List;
+
 public class QuestRepository {
 
 
@@ -37,8 +39,9 @@ public class QuestRepository {
                     .createCriteria(PCQuestStatusEntity.class);
 
             entity = (PCQuestStatusEntity)criteria
+                    .createAlias("quest", "q")
                     .add(Restrictions.eq("playerID", playerID))
-                    .add(Restrictions.eq("questID", questID))
+                    .add(Restrictions.eq("q.questID", questID))
                     .uniqueResult();
 
         }
@@ -46,6 +49,20 @@ public class QuestRepository {
         return entity;
     }
 
+    public List<PCQuestStatusEntity> GetAllPCQuestStatusesByID(String playerID)
+    {
+        List<PCQuestStatusEntity> entities;
+
+        try(DataContext context = new DataContext())
+        {
+            Criteria criteria = context.getSession()
+                    .createCriteria(PCQuestStatusEntity.class)
+                    .add(Restrictions.eq("playerID", playerID));
+            entities = criteria.list();
+        }
+
+        return entities;
+    }
 
 
     public void Save(PCQuestStatusEntity entity)

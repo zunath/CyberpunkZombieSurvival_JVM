@@ -7,14 +7,15 @@ import javax.persistence.*;
 public class PCRegionalFameEntity {
 
     @Id
-    @Column(name = "RegionalFameID")
+    @Column(name = "PCRegionalFameID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int pcRegionalFameID;
 
     @Column(name = "PlayerID")
     private String playerID;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "FameRegionID", updatable = false, insertable = false)
+    @JoinColumn(name = "FameRegionID")
     private FameRegionEntity fameRegion;
 
     @Column(name = "Amount")
