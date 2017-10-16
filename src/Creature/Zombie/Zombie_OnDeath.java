@@ -5,6 +5,7 @@ import GameObject.PlayerGO;
 import Common.IScriptEventHandler;
 import Data.Repository.PlayerRepository;
 import GameSystems.ProgressionSystem;
+import GameSystems.QuestSystem;
 import GameSystems.SpawnSystem;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
@@ -25,6 +26,7 @@ public class Zombie_OnDeath implements IScriptEventHandler {
         GiveExperienceToPCParty(objSelf);
 
         spawnSystem.OnCreatureDeath(objSelf);
+        QuestSystem.OnCreatureDeath(objSelf);
     }
 
     private void IncrementKillCount()

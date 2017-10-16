@@ -2,6 +2,7 @@ package Entities;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "PCQuestStatus")
@@ -29,6 +30,9 @@ public class PCQuestStatusEntity {
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "SelectedItemRewardID")
     private QuestRewardItemEntity selectedItemReward;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pcQuestStatus", fetch = FetchType.EAGER, orphanRemoval = true)
+    private List<PCQuestKillTargetProgressEntity> pcKillTargets;
 
     public int getPcQuestStatusID() {
         return pcQuestStatusID;
@@ -76,5 +80,13 @@ public class PCQuestStatusEntity {
 
     public void setPlayerID(String playerID) {
         this.playerID = playerID;
+    }
+
+    public List<PCQuestKillTargetProgressEntity> getPcKillTargets() {
+        return pcKillTargets;
+    }
+
+    public void setPcKillTargets(List<PCQuestKillTargetProgressEntity> pcKillTargets) {
+        this.pcKillTargets = pcKillTargets;
     }
 }

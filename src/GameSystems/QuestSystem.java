@@ -5,7 +5,9 @@ import Data.Repository.KeyItemRepository;
 import Data.Repository.QuestRepository;
 import Dialog.DialogPage;
 import Entities.*;
+import Enumerations.QuestType;
 import GameObject.PlayerGO;
+import Helper.ColorToken;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.nwnx.nwnx2.jvm.NWObject;
@@ -100,6 +102,20 @@ public class QuestSystem {
         status.setQuest(quest);
 
         questRepo.Save(status);
+
+        // Create entries for the PC kill targets.
+        List<QuestKillTargetListEntity> killTargets = questRepo.GetQuestKillTargetsByQuestID(questID);
+        for(QuestKillTargetListEntity kt : killTargets)
+        {
+            PCQuestKillTargetProgressEntity pcKT = new PCQuestKillTargetProgressEntity();
+            pcKT.setRemainingToKill(kt.getQuantity());
+            pcKT.setNpcGroup(kt.getNpcGroup());
+            pcKT.setPcQuestStatus(status);
+            pcKT.setPlayerID(pcGO.getUUID());
+
+            questRepo.Save(pcKT);
+        }
+
         NWScript.addJournalQuestEntry(quest.getJournalTag(), 1, oPC, false, false, false);
         NWScript.sendMessageToPC(oPC, "Quest '" + quest.getName() + "' accepted. Refer to your journal for more information on this quest.");
     }
@@ -220,18 +236,6 @@ public class QuestSystem {
         questRepo.Save(pcState);
     }
 
-    public static DialogPage BuildRewardItemPage(int questID)
-    {
-
-        return null;
-    }
-
-    public static boolean DoesPlayerHaveRequiredItems(int questID)
-    {
-
-        return false;
-    }
-
     private static boolean DoesPlayerMeetPrerequisites(NWObject oPC, List<QuestPrerequisiteEntity> prereqs)
     {
         if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return false;
@@ -272,4 +276,54 @@ public class QuestSystem {
     {
 
     }
+
+    public static void OnCreatureDeath(NWObject creature)
+    {
+        int npcGroupID = NWScript.getLocalInt(creature, "NPC_GROUP");
+        if (npcGroupID <= 0) return;
+
+        NWObject oKiller = NWScript.getLastKiller();
+
+        if(!NWScript.getIsPC(oKiller) || NWScript.getIsDM(oKiller)) return;
+
+        String areaResref = NWScript.getResRef(NWScript.getArea(creature));
+
+        for(NWObject oPC : NWScript.getFactionMembers(oKiller, true))
+        {
+            if(!areaResref.equals(NWScript.getResRef(NWScript.getArea(oPC)))) continue;
+            if(NWScript.getDistanceBetween(creature, oPC) == 0.0f || NWScript.getDistanceBetween(creature, oPC) > 20.0f) continue;
+
+            PlayerGO pcGO = new PlayerGO(oPC);
+            QuestRepository questRepo = new QuestRepository();
+            List<PCQuestKillTargetProgressEntity> killTargets = questRepo.GetPlayerKillTargetsByID(pcGO.getUUID(), npcGroupID);
+
+            for(PCQuestKillTargetProgressEntity kt : killTargets)
+            {
+                kt.setRemainingToKill(kt.getRemainingToKill() - 1);
+                String targetGroupName = kt.getNpcGroup().getName();
+                String questName = kt.getPcQuestStatus().getQuest().getName();
+                String updateMessage = "[" + questName + "] " + targetGroupName + " remaining: " + kt.getRemainingToKill();
+
+                if(kt.getRemainingToKill() <= 0)
+                {
+                    questRepo.Delete(kt);
+                    updateMessage += " " + ColorToken.Green() + " {COMPLETE}";
+
+                    if(kt.getPcQuestStatus().getPcKillTargets().size()-1 <= 0)
+                    {
+                        AdvanceQuestState(oPC, kt.getPcQuestStatus().getQuest().getQuestID());
+                    }
+                }
+                else
+                {
+                    questRepo.Save(kt);
+                }
+
+                NWScript.sendMessageToPC(oPC, updateMessage);
+            }
+        }
+
+
+    }
+
 }
