@@ -9,6 +9,9 @@ import org.hibernate.criterion.Restrictions;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,19 +24,36 @@ public class CraftRepository {
 
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(PCBlueprintEntity.class)
-                    .createAlias("blueprint", "b")
-                    .add(Restrictions.eq("b.craftBlueprintID", blueprintID))
-                    .add(Restrictions.eq("playerID", uuid));
-            PCBlueprintEntity entity = (PCBlueprintEntity)criteria.uniqueResult();
+            CriteriaBuilder cb = context.getSession().getCriteriaBuilder();
+
+            CriteriaQuery<PCBlueprintEntity> query =
+                    cb.createQuery(PCBlueprintEntity.class);
+
+            Root<PCBlueprintEntity> root = query.from(PCBlueprintEntity.class);
+            query.select(root)
+                    .where(
+                            cb.equal(root.get("blueprint.craftBlueprintID"), blueprintID),
+                            cb.equal(root.get("playerID"), uuid)
+                    );
+
+            PCBlueprintEntity entity = context.getSession()
+                    .createQuery(query)
+                    .uniqueResult();
 
             if(entity == null)
             {
-                criteria = context.getSession()
-                        .createCriteria(CraftBlueprintEntity.class)
-                        .add(Restrictions.eq("craftBlueprintID", blueprintID));
-                CraftBlueprintEntity blueprint = (CraftBlueprintEntity)criteria.uniqueResult();
+                CriteriaQuery<CraftBlueprintEntity> pcceQuery =
+                        cb.createQuery(CraftBlueprintEntity.class);
+
+                Root<CraftBlueprintEntity> pcceRoot = query.from(CraftBlueprintEntity.class);
+                pcceQuery.select(pcceRoot)
+                        .where(
+                                cb.equal(pcceRoot.get("craftBlueprintID"), blueprintID)
+                        );
+
+                CraftBlueprintEntity blueprint = context.getSession()
+                        .createQuery(pcceQuery)
+                        .uniqueResult();
 
                 entity = new PCBlueprintEntity();
                 entity.setPlayerID(uuid);
@@ -55,12 +75,22 @@ public class CraftRepository {
 
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(PCBlueprintEntity.class)
-                    .createAlias("blueprint", "b")
-                    .add(Restrictions.eq("b.craftBlueprintID", blueprintID))
-                    .add(Restrictions.eq("playerID", uuid));
-            entity = (PCBlueprintEntity)criteria.uniqueResult();
+
+            CriteriaBuilder cb = context.getSession().getCriteriaBuilder();
+
+            CriteriaQuery<PCBlueprintEntity> query =
+                    cb.createQuery(PCBlueprintEntity.class);
+
+            Root<PCBlueprintEntity> root = query.from(PCBlueprintEntity.class);
+            query.select(root)
+                    .where(
+                            cb.equal(root.get("blueprint.craftBlueprintID"), blueprintID),
+                            cb.equal(root.get("playerID"), uuid)
+                    );
+
+            entity = context.getSession()
+                    .createQuery(query)
+                    .uniqueResult();
         }
 
         return entity;
@@ -72,11 +102,21 @@ public class CraftRepository {
 
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(CraftBlueprintEntity.class)
-                    .add(Restrictions.eq("craftBlueprintID", blueprintID));
 
-            entity = (CraftBlueprintEntity)criteria.uniqueResult();
+            CriteriaBuilder cb = context.getSession().getCriteriaBuilder();
+
+            CriteriaQuery<CraftBlueprintEntity> query =
+                    cb.createQuery(CraftBlueprintEntity.class);
+
+            Root<CraftBlueprintEntity> root = query.from(CraftBlueprintEntity.class);
+            query.select(root)
+                    .where(
+                            cb.equal(root.get("craftBlueprintID"), blueprintID)
+                    );
+
+            entity = context.getSession()
+                    .createQuery(query)
+                    .uniqueResult();
         }
 
         return entity;
@@ -88,11 +128,21 @@ public class CraftRepository {
 
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(PCCraftEntity.class)
-                    .add(Restrictions.eq("playerID", uuid))
-                    .add(Restrictions.eq("craftID", craftID));
-            entity = (PCCraftEntity)criteria.uniqueResult();
+            CriteriaBuilder cb = context.getSession().getCriteriaBuilder();
+
+            CriteriaQuery<PCCraftEntity> query =
+                    cb.createQuery(PCCraftEntity.class);
+
+            Root<PCCraftEntity> root = query.from(PCCraftEntity.class);
+            query.select(root)
+                    .where(
+                            cb.equal(root.get("playerID"), uuid),
+                            cb.equal(root.get("craftID"), craftID)
+                    );
+
+            entity = context.getSession()
+                    .createQuery(query)
+                    .uniqueResult();
 
             if(entity == null)
             {
@@ -116,11 +166,21 @@ public class CraftRepository {
 
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(CraftLevelEntity.class)
-                    .add(Restrictions.eq("craftID", craftID))
-                    .add(Restrictions.eq("level", level));
-            entity = (CraftLevelEntity)criteria.uniqueResult();
+            CriteriaBuilder cb = context.getSession().getCriteriaBuilder();
+
+            CriteriaQuery<CraftLevelEntity> query =
+                    cb.createQuery(CraftLevelEntity.class);
+
+            Root<CraftLevelEntity> root = query.from(CraftLevelEntity.class);
+            query.select(root)
+                    .where(
+                            cb.equal(root.get("craftID"), craftID),
+                            cb.equal(root.get("level"), level)
+                    );
+
+            entity = context.getSession()
+                    .createQuery(query)
+                    .uniqueResult();
         }
 
         return entity;
@@ -132,10 +192,20 @@ public class CraftRepository {
 
         try(DataContext context = new DataContext())
         {
-            maxLevel = (int)context.getSession()
-                    .createCriteria(CraftLevelEntity.class)
-                    .add(Restrictions.eq("craftID", craftID))
-                    .setProjection(Projections.max("level")).uniqueResult();
+            CriteriaBuilder cb = context.getSession().getCriteriaBuilder();
+
+            CriteriaQuery<Long> query =
+                    cb.createQuery(Long.class);
+
+            Root<CraftLevelEntity> root = query.from(CraftLevelEntity.class);
+            query.select(cb.max(root.get("level")))
+                    .where(
+                            cb.equal(root.get("craftID"), craftID)
+                    );
+
+            maxLevel = context.getSession()
+                    .createQuery(query)
+                    .getSingleResult();
         }
 
         return maxLevel;
@@ -147,11 +217,20 @@ public class CraftRepository {
 
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(CraftEntity.class)
-                    .add(Restrictions.eq("craftID", craftID));
+            CriteriaBuilder cb = context.getSession().getCriteriaBuilder();
 
-            entity = (CraftEntity)criteria.uniqueResult();
+            CriteriaQuery<CraftEntity> query =
+                    cb.createQuery(CraftEntity.class);
+
+            Root<CraftEntity> root = query.from(CraftEntity.class);
+            query.select(root)
+                    .where(
+                            cb.equal(root.get("craftID"), craftID)
+                    );
+
+            entity = context.getSession()
+                    .createQuery(query)
+                    .uniqueResult();
         }
 
         return entity;
@@ -163,6 +242,8 @@ public class CraftRepository {
 
         try(DataContext context = new DataContext())
         {
+
+            // TODO: Migrate to hibernate 5
             Criteria criteria = context.getSession()
                     .createCriteria(PCBlueprintEntity.class)
                     .createAlias("blueprint", "bp")
@@ -191,6 +272,8 @@ public class CraftRepository {
 
         try(DataContext context = new DataContext())
         {
+
+            // TODO: Migrate to hibernate 5
             Criteria criteria = context.getSession()
                     .createCriteria(PCBlueprintEntity.class)
                     .createAlias("blueprint", "bp")
@@ -218,6 +301,7 @@ public class CraftRepository {
 
         try(DataContext context = new DataContext())
         {
+            // TODO: Migrate to hibernate 5
             Criteria criteria = context.getSession()
                     .createCriteria(PCBlueprintEntity.class)
                     .createAlias("blueprint", "bp")
@@ -239,6 +323,7 @@ public class CraftRepository {
 
         try(DataContext context = new DataContext())
         {
+            // TODO: Migrate to hibernate 5
             Criteria criteria = context.getSession()
                     .createCriteria(PCBlueprintEntity.class)
                     .createAlias("blueprint", "bp")
@@ -263,10 +348,20 @@ public class CraftRepository {
 
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(CraftEntity.class)
-                    .add(Restrictions.eq("isActive", true));
-            entities = criteria.list();
+            CriteriaBuilder cb = context.getSession().getCriteriaBuilder();
+
+            CriteriaQuery<CraftEntity> query =
+                    cb.createQuery(CraftEntity.class);
+
+            Root<CraftEntity> root = query.from(CraftEntity.class);
+            query.select(root)
+                    .where(
+                            cb.equal(root.get("isActive"), true)
+                    );
+
+            entities = context.getSession()
+                    .createQuery(query)
+                    .list();
         }
 
         return entities;

@@ -8,7 +8,7 @@ public class ConstructionSiteEntity {
 
     @Id
     @Column(name = "ConstructionSiteID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int constructionSiteID;
 
     @Column(name = "PlayerID")

@@ -8,7 +8,7 @@ public class ChatLogEntity {
 
     @Id
     @Column(name = "ChatLogID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int chatLogID;
 
     @ManyToOne(fetch = FetchType.EAGER)

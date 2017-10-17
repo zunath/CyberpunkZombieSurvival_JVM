@@ -8,7 +8,7 @@ public class PCCraftEntity {
 
     @Id
     @Column(name = "PCCraftID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int pcCraftID;
 
     @Column(name = "PlayerID")

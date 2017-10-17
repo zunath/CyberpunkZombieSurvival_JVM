@@ -8,7 +8,7 @@ public class PCRegionalFameEntity {
 
     @Id
     @Column(name = "PCRegionalFameID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int pcRegionalFameID;
 
     @Column(name = "PlayerID")

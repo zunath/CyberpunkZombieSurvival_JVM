@@ -6,17 +6,30 @@ import Entities.ChatLogEntity;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
 public class ActivityLoggingRepository {
 
     public ChatChannelEntity GetChatChannelByID(int chatChannelID)
     {
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(ChatChannelEntity.class)
-                    .add(Restrictions.eq("chatChannelID", chatChannelID));
+            CriteriaBuilder cb = context.getSession().getCriteriaBuilder();
 
-            return (ChatChannelEntity)criteria.uniqueResult();
+            CriteriaQuery<ChatChannelEntity> query =
+                    cb.createQuery(ChatChannelEntity.class);
+
+            Root<ChatChannelEntity> root = query.from(ChatChannelEntity.class);
+            query.select(root)
+                .where(
+                    cb.equal(root.get("chatChannelID"), chatChannelID)
+                );
+
+            return context.getSession()
+                    .createQuery(query)
+                    .uniqueResult();
         }
     }
 

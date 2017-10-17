@@ -8,7 +8,7 @@ public class PCSearchSiteItemEntity {
 
     @Id
     @Column(name = "PCSearchSiteItemID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int searchItemID;
 
     @Lob

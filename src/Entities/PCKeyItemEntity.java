@@ -10,7 +10,7 @@ public class PCKeyItemEntity {
 
     @Id
     @Column(name="PCKeyItemID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int pcKeyItemID;
 
     @Column(name="PlayerID")

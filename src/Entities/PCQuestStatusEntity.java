@@ -9,7 +9,7 @@ import java.util.List;
 public class PCQuestStatusEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PCQuestStatusID")
     private int pcQuestStatusID;
 

@@ -10,7 +10,7 @@ public class PCAbilityCooldownEntity {
 
     @Id
     @Column(name = "PCAbilityCooldownID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int pcAbilityCooldownID;
 
     @Column(name = "PlayerID")

@@ -13,7 +13,7 @@ public class PCTerritoryFlagStructureEntity {
 
     @Id
     @Column(name = "PCTerritoryFlagStructureID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int pcTerritoryFlagStructureID;
 
     @Column(name = "LocationAreaTag")

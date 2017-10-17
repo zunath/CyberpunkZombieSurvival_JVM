@@ -11,7 +11,7 @@ public class PCCorpseEntity {
 
     @Id
     @Column(name="PCCorpseID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int pcCorpseID;
 
     @Column(name="Name")

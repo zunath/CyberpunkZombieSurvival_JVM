@@ -9,7 +9,7 @@ public class PCTerritoryFlagsStructuresResearchQueueEntity {
 
     @Id
     @Column(name = "PCStructureResearchID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int pcStructureResearchID;
 
     @Column(name = "PCStructureID")

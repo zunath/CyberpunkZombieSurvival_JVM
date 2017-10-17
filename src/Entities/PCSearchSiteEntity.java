@@ -12,7 +12,7 @@ public class PCSearchSiteEntity implements Serializable {
 
     @Id
     @Column(name = "PCSearchSiteID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int pcSearchSiteID;
 
     @Column(name = "PlayerID")

@@ -1,11 +1,15 @@
 package Data.Repository;
 
 import Data.DataContext;
+import Entities.AuthorizedDMEntity;
 import Entities.CustomEffectEntity;
 import Entities.PCCustomEffectEntity;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
 public class CustomEffectRepository {
@@ -16,11 +20,21 @@ public class CustomEffectRepository {
 
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(PCCustomEffectEntity.class)
-                    .add(Restrictions.eq("playerID", uuid));
 
-            entities = criteria.list();
+            CriteriaBuilder cb = context.getSession().getCriteriaBuilder();
+
+            CriteriaQuery<PCCustomEffectEntity> query =
+                    cb.createQuery(PCCustomEffectEntity.class);
+
+            Root<PCCustomEffectEntity> root = query.from(PCCustomEffectEntity.class);
+            query.select(root)
+                    .where(
+                            cb.equal(root.get("playerID"), uuid)
+                    );
+
+            entities = context.getSession()
+                    .createQuery(query)
+                    .list();
         }
 
         return entities;
@@ -32,12 +46,22 @@ public class CustomEffectRepository {
 
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(PCCustomEffectEntity.class)
-                    .createAlias("customEffect", "c")
-                    .add(Restrictions.eq("playerID", uuid))
-                    .add(Restrictions.eq("c.customEffectID", customEffectID));
-            entity = (PCCustomEffectEntity)criteria.uniqueResult();
+            CriteriaBuilder cb = context.getSession().getCriteriaBuilder();
+
+            CriteriaQuery<PCCustomEffectEntity> query =
+                    cb.createQuery(PCCustomEffectEntity.class);
+
+            Root<PCCustomEffectEntity> root = query.from(PCCustomEffectEntity.class);
+            query.select(root)
+                    .where(
+                            cb.equal(root.get("customEffect.customEffectID"), customEffectID),
+                            cb.equal(root.get("playerID"), uuid)
+                    );
+
+            entity = context.getSession()
+                    .createQuery(query)
+                    .uniqueResult();
+
         }
 
         return entity;
@@ -49,10 +73,21 @@ public class CustomEffectRepository {
 
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(CustomEffectEntity.class)
-                    .add(Restrictions.eq("customEffectID", customEffectID));
-            entity = (CustomEffectEntity)criteria.uniqueResult();
+            CriteriaBuilder cb = context.getSession().getCriteriaBuilder();
+
+            CriteriaQuery<CustomEffectEntity> query =
+                    cb.createQuery(CustomEffectEntity.class);
+
+            Root<CustomEffectEntity> root = query.from(CustomEffectEntity.class);
+            query.select(root)
+                    .where(
+                            cb.equal(root.get("customEffectID"), customEffectID)
+                    );
+
+            entity = context.getSession()
+                    .createQuery(query)
+                    .uniqueResult();
+
         }
 
         return entity;

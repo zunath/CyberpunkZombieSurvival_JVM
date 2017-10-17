@@ -2,8 +2,10 @@ package Data.Repository;
 
 import Data.DataContext;
 import Entities.AuthorizedDMEntity;
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Restrictions;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 public class AuthorizedDMRepository {
 
@@ -13,12 +15,20 @@ public class AuthorizedDMRepository {
 
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(AuthorizedDMEntity.class);
+            CriteriaBuilder cb = context.getSession().getCriteriaBuilder();
 
-            entity = (AuthorizedDMEntity)criteria
-                    .add(Restrictions.eq("cdKey", cdKey))
-                    .add(Restrictions.eq("isActive", true))
+            CriteriaQuery<AuthorizedDMEntity> query =
+                    cb.createQuery(AuthorizedDMEntity.class);
+
+            Root<AuthorizedDMEntity> root = query.from(AuthorizedDMEntity.class);
+            query.select(root)
+                    .where(
+                            cb.equal(root.get("cdKey"), cdKey),
+                            cb.equal(root.get("isActive"), true)
+                    );
+
+            entity = context.getSession()
+                    .createQuery(query)
                     .uniqueResult();
         }
 

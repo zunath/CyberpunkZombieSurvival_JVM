@@ -9,7 +9,7 @@ public class PCTerritoryFlagStructureItemEntity {
 
     @Id
     @Column(name = "PCStructureItemID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int pcStructureItemID;
 
     @Column(name = "ItemObject")

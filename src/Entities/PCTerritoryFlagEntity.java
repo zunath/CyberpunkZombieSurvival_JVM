@@ -12,7 +12,7 @@ public class PCTerritoryFlagEntity {
 
     @Id
     @Column(name = "PCTerritoryFlagID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int pcTerritoryFlagID;
 
     @Column(name = "PlayerID")

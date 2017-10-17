@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Table(name="PCCorpseItems")
 public class PCCorpseItemEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="PCCorpseItemID")
     private int pcCorpseItemID;
 

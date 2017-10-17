@@ -8,7 +8,7 @@ public class PCQuestKillTargetProgressEntity {
 
     @Id
     @Column(name = "PCQuestKillTargetProgressID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int pcQuestKillTargetProgressID;
 
     @Column(name = "PlayerID")

@@ -8,7 +8,7 @@ public class PCTerritoryFlagPermissionEntity {
 
     @Id
     @Column(name = "PCTerritoryFlagPermissionID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int pcTerritoryFlagPermissionID;
 
     @ManyToOne(fetch = FetchType.EAGER)

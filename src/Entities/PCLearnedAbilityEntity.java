@@ -9,7 +9,7 @@ public class PCLearnedAbilityEntity {
 
     @Id
     @Column(name = "PCLearnedAbilityID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int pcAbilityID;
 
     @Column(name = "PlayerID")

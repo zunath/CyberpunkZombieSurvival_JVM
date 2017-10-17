@@ -2,34 +2,24 @@ package Data.Repository;
 
 import Data.DataContext;
 import Entities.ActivePlayerEntity;
-import org.hibernate.Criteria;
-import org.hibernate.Query;
-
+import javax.persistence.criteria.CriteriaDelete;
 import java.util.List;
 
 public class ActivePlayerRepository {
-
-    public List<ActivePlayerEntity> GetAll()
-    {
-        List<ActivePlayerEntity> entities;
-
-        try(DataContext context = new DataContext())
-        {
-            Criteria criteria = context.getSession()
-                    .createCriteria(ActivePlayerEntity.class);
-
-            entities = criteria.list();
-        }
-
-        return entities;
-    }
 
     public void Save(List<ActivePlayerEntity> entities)
     {
         try(DataContext context = new DataContext())
         {
-            Query query = context.getSession().createQuery("DELETE FROM ActivePlayerEntity");
-            query.executeUpdate();
+            CriteriaDelete<ActivePlayerEntity> delete = context.getSession()
+                    .getCriteriaBuilder()
+                    .createCriteriaDelete(ActivePlayerEntity.class);
+
+            delete.from(ActivePlayerEntity.class);
+
+            context.getSession()
+                    .createQuery(delete)
+                    .executeUpdate();
 
             for(ActivePlayerEntity entity : entities)
             {

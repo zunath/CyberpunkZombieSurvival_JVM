@@ -8,7 +8,7 @@ public class PCCustomEffectEntity {
 
     @Id
     @Column(name = "PCCustomEffectID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int pcCustomEffectID;
 
     @Column(name = "PlayerID")

@@ -8,7 +8,7 @@ public class StructureCategoryEntity {
 
     @Id
     @Column(name = "StructureCategoryID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int structureCategoryID;
 
     @Column(name = "Name")

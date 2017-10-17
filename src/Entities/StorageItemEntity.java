@@ -9,7 +9,7 @@ public class StorageItemEntity {
 
     @Id
     @Column(name ="StorageItemID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int storageItemID;
 
     @Column(name = "ItemName")

@@ -8,7 +8,7 @@ public class CraftLevelEntity {
 
     @Id
     @Column(name = "CraftLevelID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int craftLevelID;
 
     @Column(name = "CraftID")

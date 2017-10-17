@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class QuestKillTargetListEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "QuestKillTargetListID")
     private int questKillTargetListID;
 

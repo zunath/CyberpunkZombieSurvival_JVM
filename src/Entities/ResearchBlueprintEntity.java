@@ -8,7 +8,7 @@ public class ResearchBlueprintEntity {
 
     @Id
     @Column(name = "ResearchBlueprintID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int researchBlueprintID;
 
     @ManyToOne(fetch = FetchType.EAGER)

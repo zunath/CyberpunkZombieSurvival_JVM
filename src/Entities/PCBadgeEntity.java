@@ -9,7 +9,7 @@ public class PCBadgeEntity {
 
     @Id
     @Column(name = "PCBadgeID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long pcBadgeID;
 
     @Column(name ="PlayerID")

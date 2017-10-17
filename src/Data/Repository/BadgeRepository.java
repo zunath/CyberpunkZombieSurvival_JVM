@@ -3,8 +3,10 @@ package Data.Repository;
 import Data.DataContext;
 import Entities.BadgeEntity;
 import Entities.PCBadgeEntity;
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Restrictions;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
 public class BadgeRepository {
@@ -15,11 +17,20 @@ public class BadgeRepository {
 
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(PCBadgeEntity.class)
-                    .add(Restrictions.eq("playerID", uuid));
+            CriteriaBuilder cb = context.getSession().getCriteriaBuilder();
 
-            entities = criteria.list();
+            CriteriaQuery<PCBadgeEntity> query =
+                    cb.createQuery(PCBadgeEntity.class);
+
+            Root<PCBadgeEntity> root = query.from(PCBadgeEntity.class);
+            query.select(root)
+                    .where(
+                            cb.equal(root.get("playerID"), uuid)
+                    );
+
+            entities = context.getSession()
+                    .createQuery(query)
+                    .list();
         }
 
         return entities;
@@ -31,12 +42,22 @@ public class BadgeRepository {
 
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(PCBadgeEntity.class)
-                    .add(Restrictions.eq("playerID", uuid))
-                    .add(Restrictions.eq("badgeID", badgeID));
+            CriteriaBuilder cb = context.getSession().getCriteriaBuilder();
 
-            entity = (PCBadgeEntity)criteria.uniqueResult();
+            CriteriaQuery<PCBadgeEntity> query =
+                    cb.createQuery(PCBadgeEntity.class);
+
+            Root<PCBadgeEntity> root = query.from(PCBadgeEntity.class);
+            query.select(root)
+                    .where(
+                            cb.equal(root.get("playerID"), uuid),
+                            cb.equal(root.get("badgeID"), badgeID)
+                    );
+
+            entity = context.getSession()
+                    .createQuery(query)
+                    .uniqueResult();
+
         }
 
         return entity;
@@ -48,11 +69,20 @@ public class BadgeRepository {
 
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(BadgeEntity.class)
-                    .add(Restrictions.eq("badgeID", badgeID));
+            CriteriaBuilder cb = context.getSession().getCriteriaBuilder();
 
-            entity = (BadgeEntity)criteria.uniqueResult();
+            CriteriaQuery<BadgeEntity> query =
+                    cb.createQuery(BadgeEntity.class);
+
+            Root<BadgeEntity> root = query.from(BadgeEntity.class);
+            query.select(root)
+                    .where(
+                            cb.equal(root.get("badgeID"), badgeID)
+                    );
+
+            entity = context.getSession()
+                    .createQuery(query)
+                    .uniqueResult();
         }
 
         return entity;

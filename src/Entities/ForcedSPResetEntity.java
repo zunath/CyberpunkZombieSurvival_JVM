@@ -9,7 +9,7 @@ public class ForcedSPResetEntity {
 
     @Id
     @Column(name = "ForcedSPResetDateID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int forcedSPResetDateID;
 
     @Column(name = "DateOfReset")
@@ -28,6 +28,6 @@ public class ForcedSPResetEntity {
     }
 
     public void setDateOfReset(Date dateOfReset) {
-        dateOfReset = dateOfReset;
+        this.dateOfReset = dateOfReset;
     }
 }

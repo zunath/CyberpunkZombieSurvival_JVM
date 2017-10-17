@@ -10,7 +10,7 @@ public class PCBlueprintEntity {
 
     @Id
     @Column(name = "PCBlueprintID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int pcBlueprintID;
 
     @Column(name = "PlayerID")

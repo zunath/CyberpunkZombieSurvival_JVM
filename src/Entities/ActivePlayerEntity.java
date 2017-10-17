@@ -9,7 +9,7 @@ public class ActivePlayerEntity {
 
     @Id
     @Column(name = "ActivePlayerID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int activePlayerID;
 
     @Column(name = "AccountName")

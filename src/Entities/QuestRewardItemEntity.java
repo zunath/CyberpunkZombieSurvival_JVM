@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class QuestRewardItemEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "QuestRewardItemID")
     private int questRewardItemID;
 

@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class PlayerProgressionSkillEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="PlayerProgressionSkillID")
     private int playerProgressionSkillID;
 
