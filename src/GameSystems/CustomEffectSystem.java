@@ -35,7 +35,7 @@ public class CustomEffectSystem {
 
         for(PCCustomEffectEntity effect : effects)
         {
-            if(NWScript.getCurrentHitPoints(oPC) <= 11 || areaResref.equals("death_realm"))
+            if(NWScript.getCurrentHitPoints(oPC) <= -11 || areaResref.equals("death_realm"))
             {
                 RemovePCCustomEffect(oPC, effect.getCustomEffect().getCustomEffectID());
                 return;
