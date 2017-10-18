@@ -18,39 +18,13 @@ public class CraftRepository {
     {
         boolean addedSuccessfully = false;
 
+        PCBlueprintEntity entity = GetPCBlueprintByID(uuid, blueprintID);
+        CraftBlueprintEntity blueprint = GetBlueprintByID(blueprintID);
+
         try(DataContext context = new DataContext())
         {
-            CriteriaBuilder cb = context.getSession().getCriteriaBuilder();
-
-            CriteriaQuery<PCBlueprintEntity> query =
-                    cb.createQuery(PCBlueprintEntity.class);
-
-            Root<PCBlueprintEntity> root = query.from(PCBlueprintEntity.class);
-            query.select(root)
-                    .where(
-                            cb.equal(root.get("blueprint.craftBlueprintID"), blueprintID),
-                            cb.equal(root.get("playerID"), uuid)
-                    );
-
-            PCBlueprintEntity entity = context.getSession()
-                    .createQuery(query)
-                    .uniqueResult();
-
             if(entity == null)
             {
-                CriteriaQuery<CraftBlueprintEntity> pcceQuery =
-                        cb.createQuery(CraftBlueprintEntity.class);
-
-                Root<CraftBlueprintEntity> pcceRoot = query.from(CraftBlueprintEntity.class);
-                pcceQuery.select(pcceRoot)
-                        .where(
-                                cb.equal(pcceRoot.get("craftBlueprintID"), blueprintID)
-                        );
-
-                CraftBlueprintEntity blueprint = context.getSession()
-                        .createQuery(pcceQuery)
-                        .uniqueResult();
-
                 entity = new PCBlueprintEntity();
                 entity.setPlayerID(uuid);
                 entity.setBlueprint(blueprint);
@@ -65,57 +39,23 @@ public class CraftRepository {
         return addedSuccessfully;
     }
 
-    public PCBlueprintEntity GetPCBlueprintByID(String uuid, int blueprintID)
+    public PCBlueprintEntity GetPCBlueprintByID(String uuid, int craftBlueprintID)
     {
-        PCBlueprintEntity entity;
-
         try(DataContext context = new DataContext())
         {
-
-            CriteriaBuilder cb = context.getSession().getCriteriaBuilder();
-
-            CriteriaQuery<PCBlueprintEntity> query =
-                    cb.createQuery(PCBlueprintEntity.class);
-
-            Root<PCBlueprintEntity> root = query.from(PCBlueprintEntity.class);
-            query.select(root)
-                    .where(
-                            cb.equal(root.get("blueprint.craftBlueprintID"), blueprintID),
-                            cb.equal(root.get("playerID"), uuid)
-                    );
-
-            entity = context.getSession()
-                    .createQuery(query)
-                    .uniqueResult();
+            return context.executeSQLSingle("Craft/GetPCBlueprintByID", PCBlueprintEntity.class,
+                    new SqlParameter("craftBlueprintID", craftBlueprintID),
+                    new SqlParameter("playerID", uuid));
         }
-
-        return entity;
     }
 
-    public CraftBlueprintEntity GetBlueprintByID(int blueprintID)
+    public CraftBlueprintEntity GetBlueprintByID(int craftBlueprintID)
     {
-        CraftBlueprintEntity entity;
-
         try(DataContext context = new DataContext())
         {
-
-            CriteriaBuilder cb = context.getSession().getCriteriaBuilder();
-
-            CriteriaQuery<CraftBlueprintEntity> query =
-                    cb.createQuery(CraftBlueprintEntity.class);
-
-            Root<CraftBlueprintEntity> root = query.from(CraftBlueprintEntity.class);
-            query.select(root)
-                    .where(
-                            cb.equal(root.get("craftBlueprintID"), blueprintID)
-                    );
-
-            entity = context.getSession()
-                    .createQuery(query)
-                    .uniqueResult();
+            return context.executeSQLSingle("Craft/GetBlueprintByID", CraftBlueprintEntity.class,
+                    new SqlParameter("craftBlueprintID", craftBlueprintID));
         }
-
-        return entity;
     }
 
     public PCCraftEntity GetPCCraftByID(String uuid, int craftID)
@@ -124,21 +64,9 @@ public class CraftRepository {
 
         try(DataContext context = new DataContext())
         {
-            CriteriaBuilder cb = context.getSession().getCriteriaBuilder();
-
-            CriteriaQuery<PCCraftEntity> query =
-                    cb.createQuery(PCCraftEntity.class);
-
-            Root<PCCraftEntity> root = query.from(PCCraftEntity.class);
-            query.select(root)
-                    .where(
-                            cb.equal(root.get("playerID"), uuid),
-                            cb.equal(root.get("craftID"), craftID)
-                    );
-
-            entity = context.getSession()
-                    .createQuery(query)
-                    .uniqueResult();
+            entity = context.executeSQLSingle("Craft/GetPCCraftByID", PCCraftEntity.class,
+                    new SqlParameter("playerID", uuid),
+                    new SqlParameter("craftID", craftID));
 
             if(entity == null)
             {
@@ -158,78 +86,30 @@ public class CraftRepository {
 
     public CraftLevelEntity GetCraftLevelByLevel(int craftID, int level)
     {
-        CraftLevelEntity entity;
-
         try(DataContext context = new DataContext())
         {
-            CriteriaBuilder cb = context.getSession().getCriteriaBuilder();
-
-            CriteriaQuery<CraftLevelEntity> query =
-                    cb.createQuery(CraftLevelEntity.class);
-
-            Root<CraftLevelEntity> root = query.from(CraftLevelEntity.class);
-            query.select(root)
-                    .where(
-                            cb.equal(root.get("craftID"), craftID),
-                            cb.equal(root.get("level"), level)
-                    );
-
-            entity = context.getSession()
-                    .createQuery(query)
-                    .uniqueResult();
+            return context.executeSQLSingle("Craft/GetCraftLevelByLevel", CraftLevelEntity.class,
+                    new SqlParameter("craftID", craftID),
+                    new SqlParameter("level", level));
         }
-
-        return entity;
     }
 
     public long GetCraftMaxLevel(int craftID)
     {
-        long maxLevel;
-
         try(DataContext context = new DataContext())
         {
-            CriteriaBuilder cb = context.getSession().getCriteriaBuilder();
-
-            CriteriaQuery<Long> query =
-                    cb.createQuery(Long.class);
-
-            Root<CraftLevelEntity> root = query.from(CraftLevelEntity.class);
-            query.select(cb.max(root.get("level")))
-                    .where(
-                            cb.equal(root.get("craftID"), craftID)
-                    );
-
-            maxLevel = context.getSession()
-                    .createQuery(query)
-                    .getSingleResult();
+            return context.executeSQLSingle("Craft/GetCraftMaxLevel", Long.class,
+                    new SqlParameter("craftID", craftID));
         }
-
-        return maxLevel;
     }
 
     public CraftEntity GetCraftByID(int craftID)
     {
-        CraftEntity entity;
-
         try(DataContext context = new DataContext())
         {
-            CriteriaBuilder cb = context.getSession().getCriteriaBuilder();
-
-            CriteriaQuery<CraftEntity> query =
-                    cb.createQuery(CraftEntity.class);
-
-            Root<CraftEntity> root = query.from(CraftEntity.class);
-            query.select(root)
-                    .where(
-                            cb.equal(root.get("craftID"), craftID)
-                    );
-
-            entity = context.getSession()
-                    .createQuery(query)
-                    .uniqueResult();
+            return context.executeSQLSingle("Craft/GetCraftByID", CraftEntity.class,
+                    new SqlParameter("craftID", craftID));
         }
-
-        return entity;
     }
 
     public List<CraftBlueprintCategoryEntity> GetCategoriesAvailableToPCByCraftID(String uuid, int craftID)
@@ -277,27 +157,10 @@ public class CraftRepository {
 
     public List<CraftEntity> GetAllCrafts()
     {
-        List<CraftEntity> entities;
-
         try(DataContext context = new DataContext())
         {
-            CriteriaBuilder cb = context.getSession().getCriteriaBuilder();
-
-            CriteriaQuery<CraftEntity> query =
-                    cb.createQuery(CraftEntity.class);
-
-            Root<CraftEntity> root = query.from(CraftEntity.class);
-            query.select(root)
-                    .where(
-                            cb.equal(root.get("isActive"), true)
-                    );
-
-            entities = context.getSession()
-                    .createQuery(query)
-                    .list();
+            return context.executeSQLList("Craft/GetAllCrafts", CraftEntity.class);
         }
-
-        return entities;
     }
 
     public void Save(Object entity)

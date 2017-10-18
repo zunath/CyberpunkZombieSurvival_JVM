@@ -1,23 +1,19 @@
 package Data.Repository;
 
 import Data.DataContext;
+import Data.SqlParameter;
 import Entities.PCMigrationEntity;
 import org.hibernate.criterion.Restrictions;
 
 public class PCMigrationRepository {
 
-    public PCMigrationEntity GetByMigrationID(int migrationID)
+    public PCMigrationEntity GetByMigrationID(int pcMigrationID)
     {
-        PCMigrationEntity entity;
-
         try(DataContext context = new DataContext())
         {
-            entity = (PCMigrationEntity)context.getSession()
-                    .createCriteria(PCMigrationEntity.class)
-                    .add(Restrictions.eq("pcMigrationID", migrationID)).uniqueResult();
+            return context.executeSQLSingle("PCMigration/GetByMigrationID", PCMigrationEntity.class,
+                    new SqlParameter("pcMigrationID", pcMigrationID));
         }
-
-        return entity;
     }
 
 

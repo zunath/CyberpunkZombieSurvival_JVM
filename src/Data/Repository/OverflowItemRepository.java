@@ -2,6 +2,8 @@ package Data.Repository;
 
 
 import Data.DataContext;
+import Data.SqlParameter;
+import Entities.PCOutfitEntity;
 import Entities.PCOverflowItemEntity;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Projections;
@@ -13,27 +15,19 @@ public class OverflowItemRepository {
 
     public List<PCOverflowItemEntity> GetAllByPlayerID(String uuid)
     {
-        List<PCOverflowItemEntity> entities;
-
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(PCOverflowItemEntity.class)
-                    .add(Restrictions.eq("playerID", uuid));
-            entities = criteria.list();
+            return context.executeSQLList("OverflowItem/GetAllByPlayerID", PCOverflowItemEntity.class,
+                    new SqlParameter("playerID", uuid));
         }
-
-        return entities;
     }
 
     public long GetPlayerOverflowItemCount(String uuid)
     {
         try(DataContext context = new DataContext())
         {
-            return (long)context.getSession()
-                    .createCriteria(PCOverflowItemEntity.class)
-                    .add(Restrictions.eq("playerID", uuid))
-                    .setProjection(Projections.rowCount()).uniqueResult();
+            return context.executeSQLSingle("OverflowItem/GetPlayerOverflowItemCount", Long.class,
+                    new SqlParameter("playerID", uuid));
         }
     }
 
@@ -49,15 +43,8 @@ public class OverflowItemRepository {
     {
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(PCOverflowItemEntity.class)
-                    .add(Restrictions.eq("pcOverflowItemID", entityID));
-            PCOverflowItemEntity item = (PCOverflowItemEntity)criteria.uniqueResult();
-
-            if(item != null)
-            {
-                context.getSession().delete(item);
-            }
+            context.executeUpdateOrDelete("OverflowItem/DeleteByID",
+                    new SqlParameter("pcOverflowItemID", entityID));
         }
     }
 }

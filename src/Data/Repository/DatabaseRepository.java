@@ -8,7 +8,7 @@ public class DatabaseRepository {
     {
         try(DataContext context = new DataContext())
         {
-            context.executeSQLSingle("KeepAlive", String.class);
+            context.executeSQLSingle("Database/KeepAlive");
         }
     }
 }

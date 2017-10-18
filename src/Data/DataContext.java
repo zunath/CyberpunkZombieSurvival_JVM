@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.NativeQuery;
 
+import javax.persistence.NoResultException;
 import java.io.*;
 import java.net.URL;
 import java.util.List;
@@ -55,16 +56,81 @@ public class DataContext implements AutoCloseable {
         return query;
     }
 
+    private <T> NativeQuery<T> buildQuery(String sqlFilePath, SqlParameter... params)
+    {
+        String sql = readSQL(sqlFilePath);
+        NativeQuery<T> query = getSession()
+                .createNativeQuery(sql);
+
+        for(SqlParameter p : params)
+        {
+            query.setParameter(p.getName(), p.getValue());
+        }
+
+        return query;
+    }
+
     public <T> List<T> executeSQLList(String sqlFilePath, Class c, SqlParameter... params)
     {
-        NativeQuery<T> query = buildQuery(sqlFilePath, c, params);
-        return query.getResultList();
+        List<T> result;
+
+        try
+        {
+            NativeQuery<T> query = buildQuery(sqlFilePath, c, params);
+            result = query.getResultList();
+        }
+        catch (NoResultException ex)
+        {
+            result = null;
+        }
+
+        return result;
     }
 
     public <T> T executeSQLSingle(String sqlFilePath, Class c, SqlParameter... params)
     {
-        NativeQuery<T> query = buildQuery(sqlFilePath, c, params);
-        return query.getSingleResult();
+        T result;
+        try
+        {
+            NativeQuery<T> query = buildQuery(sqlFilePath, c, params);
+            result = query.getSingleResult();
+        }
+        catch (NoResultException ex)
+        {
+            result = null;
+        }
+
+        return result;
+    }
+
+    public <T> T executeSQLSingle(String sqlFilePath, SqlParameter... params)
+    {
+        T result;
+        try
+        {
+            NativeQuery<T> query = buildQuery(sqlFilePath, params);
+            result =query.getSingleResult();
+        }
+        catch(NoResultException ex)
+        {
+            result = null;
+        }
+
+        return result;
+    }
+
+    public int executeUpdateOrDelete(String sqlFilePath, SqlParameter... params)
+    {
+        String sql = readSQL(sqlFilePath);
+        NativeQuery query = getSession()
+                .createNativeQuery(sql);
+
+        for(SqlParameter p : params)
+        {
+            query.setParameter(p.getName(), p.getValue());
+        }
+
+        return query.executeUpdate();
     }
 
     @Override

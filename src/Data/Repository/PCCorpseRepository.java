@@ -1,6 +1,7 @@
 package Data.Repository;
 
 import Data.DataContext;
+import Data.SqlParameter;
 import Entities.PCCorpseEntity;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
@@ -11,34 +12,19 @@ public class PCCorpseRepository {
 
     public PCCorpseEntity GetByID(int corpseID)
     {
-        PCCorpseEntity entity;
-
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(PCCorpseEntity.class);
-
-            entity = (PCCorpseEntity)criteria
-                    .add(Restrictions.eq("pcCorpseID", corpseID))
-                    .uniqueResult();
+            return context.executeSQLSingle("PCCorpse/GetByID", PCCorpseEntity.class,
+                    new SqlParameter("corpseID", corpseID));
         }
-
-        return entity;
     }
 
     public List<PCCorpseEntity> GetAll()
     {
-        List<PCCorpseEntity> entities;
-
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(PCCorpseEntity.class)
-                    .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-            entities = criteria.list();
+            return context.executeSQLList("PCCorpse/GetAll", PCCorpseEntity.class);
         }
-
-        return entities;
     }
 
     public void Delete(PCCorpseEntity entity)

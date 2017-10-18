@@ -3,9 +3,6 @@ package Data.Repository;
 import Data.DataContext;
 import Data.SqlParameter;
 import Entities.*;
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Restrictions;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
@@ -64,61 +61,36 @@ public class MagicRepository {
     {
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(PCEquippedAbilityEntity.class)
-                    .add(Restrictions.eq("playerID", uuid));
-            List<PCEquippedAbilityEntity> entityList = (List<PCEquippedAbilityEntity>)criteria.list();
+            PCEquippedAbilityEntity entity = context.executeSQLSingle("Magic/GetPCEquippedAbilities", PCEquippedAbilityEntity.class,
+                    new SqlParameter("playerID", uuid));
 
-
-            if(entityList.size() > 0)
+            if(entity == null)
             {
-                return entityList.get(0);
-            }
-            else
-            {
-                PCEquippedAbilityEntity entity = new PCEquippedAbilityEntity();
+                entity = new PCEquippedAbilityEntity();
                 entity.setPlayerID(uuid);
                 context.getSession().saveOrUpdate(entity);
-
-                return entity;
             }
+
+            return entity;
         }
     }
 
     public List<AbilityCategoryEntity> GetActiveAbilityCategories()
     {
-        List<AbilityCategoryEntity> entities;
-
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(AbilityCategoryEntity.class)
-                    .add(Restrictions.eq("isActive", true))
-                    .addOrder(Order.asc("name"));
-
-            entities = criteria.list();
+            return context.executeSQLList("Magic/GetActiveAbilityCategories", AbilityCategoryEntity.class);
         }
-
-        return entities;
     }
 
     public List<PCLearnedAbilityEntity> GetPCLearnedAbilitiesByCategoryID(String uuid, int categoryID)
     {
-        List<PCLearnedAbilityEntity> entities;
-
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(PCLearnedAbilityEntity.class)
-                    .createAlias("ability", "a")
-                    .createAlias("a.category", "c")
-                    .add(Restrictions.eq("c.abilityCategoryID", categoryID))
-                    .add(Restrictions.eq("playerID", uuid))
-                    .addOrder(Order.asc("a.name"));
-            entities = criteria.list();
+            return context.executeSQLList("Magic/GetPCLearnedAbilitiesByCategoryID", PCEquippedAbilityEntity.class,
+                    new SqlParameter("playerID", uuid),
+                    new SqlParameter("abilityCategoryID", categoryID));
         }
-
-        return entities;
     }
 
     public PCAbilityCooldownEntity GetPCCooldownByID(String uuid, int cooldownCategoryID)
@@ -127,12 +99,9 @@ public class MagicRepository {
 
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(PCAbilityCooldownEntity.class)
-                    .add(Restrictions.eq("playerID", uuid))
-                    .add(Restrictions.eq("abilityCooldownCategoryID", cooldownCategoryID));
-
-            entity = (PCAbilityCooldownEntity)criteria.uniqueResult();
+            entity = context.executeSQLSingle("Magic/GetPCCooldownByID", PCAbilityCooldownEntity.class,
+                    new SqlParameter("playerID", uuid),
+                    new SqlParameter("abilityCooldownCategoryID", cooldownCategoryID));
 
             if(entity == null)
             {

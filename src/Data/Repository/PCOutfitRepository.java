@@ -1,6 +1,8 @@
 package Data.Repository;
 
 import Data.DataContext;
+import Data.SqlParameter;
+import Entities.PCMigrationEntity;
 import Entities.PCOutfitEntity;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
@@ -10,19 +12,11 @@ public class PCOutfitRepository {
 
     public PCOutfitEntity GetByUUID(String uuid)
     {
-        PCOutfitEntity entity;
-
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(PCOutfitEntity.class);
-
-            entity = (PCOutfitEntity)criteria
-                    .add(Restrictions.eq("playerID", uuid))
-                    .uniqueResult();
+            return context.executeSQLSingle("PCMigration/GetByUUID", PCOutfitEntity.class,
+                    new SqlParameter("playerID", uuid));
         }
-
-        return entity;
     }
 
     public void Save(PCOutfitEntity entity)
