@@ -1,11 +1,8 @@
 package Data.Repository;
 
 import Data.DataContext;
+import Data.SqlParameter;
 import Entities.*;
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Projections;
-import org.hibernate.criterion.Restrictions;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
@@ -13,7 +10,6 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 
 public class CraftRepository {
@@ -238,108 +234,45 @@ public class CraftRepository {
 
     public List<CraftBlueprintCategoryEntity> GetCategoriesAvailableToPCByCraftID(String uuid, int craftID)
     {
-        List<CraftBlueprintCategoryEntity> entities = new ArrayList<>();
-
-        try(DataContext context = new DataContext())
-        {
-
-            // TODO: Migrate to hibernate 5
-            Criteria criteria = context.getSession()
-                    .createCriteria(PCBlueprintEntity.class)
-                    .createAlias("blueprint", "bp")
-                    .createAlias("bp.category", "c")
-                    .createAlias("bp.craft", "cr")
-                    .setProjection(Projections.distinct(Projections.property("c.craftBlueprintCategoryID")))
-                    .add(Restrictions.eq("playerID", uuid))
-                    .add(Restrictions.eq("cr.craftID", craftID));
-            List<Integer> categories = criteria.list();
-
-            if(categories.size() > 0)
-            {
-                criteria = context.getSession()
-                        .createCriteria(CraftBlueprintCategoryEntity.class)
-                        .add(Restrictions.in("craftBlueprintCategoryID", categories));
-                entities = criteria.list();
-            }
+        try(DataContext context = new DataContext()) {
+            return context.executeSQLList("Crafting/GetCraftCategoriesAvailableToPCByCraftID",
+                    CraftBlueprintCategoryEntity.class,
+                    new SqlParameter("playerID", uuid),
+                    new SqlParameter("craftID", craftID));
         }
-
-        return entities;
     }
 
     public List<CraftBlueprintCategoryEntity> GetCategoriesAvailableToPC(String uuid)
     {
-        List<CraftBlueprintCategoryEntity> entities = new ArrayList<>();
-
-        try(DataContext context = new DataContext())
-        {
-
-            // TODO: Migrate to hibernate 5
-            Criteria criteria = context.getSession()
-                    .createCriteria(PCBlueprintEntity.class)
-                    .createAlias("blueprint", "bp")
-                    .createAlias("bp.category", "c")
-                    .createAlias("bp.craft", "cr")
-                    .setProjection(Projections.distinct(Projections.property("c.craftBlueprintCategoryID")))
-                    .add(Restrictions.eq("playerID", uuid));
-            List<Integer> categories = criteria.list();
-
-            if(categories.size() > 0)
-            {
-                criteria = context.getSession()
-                        .createCriteria(CraftBlueprintCategoryEntity.class)
-                        .add(Restrictions.in("craftBlueprintCategoryID", categories));
-                entities = criteria.list();
-            }
+        try(DataContext context = new DataContext()) {
+            return context.executeSQLList("Crafting/GetCraftCategoriesAvailableToPC",
+                    CraftBlueprintCategoryEntity.class,
+                    new SqlParameter("playerID", uuid));
         }
-
-        return entities;
     }
 
     public List<PCBlueprintEntity> GetPCBlueprintsByCategoryID(String uuid, int categoryID)
     {
-        List<PCBlueprintEntity> entities;
-
         try(DataContext context = new DataContext())
         {
-            // TODO: Migrate to hibernate 5
-            Criteria criteria = context.getSession()
-                    .createCriteria(PCBlueprintEntity.class)
-                    .createAlias("blueprint", "bp")
-                    .createAlias("bp.category", "c")
-                    .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
-                    .add(Restrictions.eq("playerID", uuid))
-                    .add(Restrictions.eq("c.craftBlueprintCategoryID", categoryID));
-
-            entities = criteria.list();
-
+            return context.executeSQLList("Crafting/GetPCBlueprintsByCategoryID",
+                    PCBlueprintEntity.class,
+                    new SqlParameter("playerID", uuid),
+                    new SqlParameter("categoryID", categoryID));
         }
-
-        return entities;
     }
 
     public List<PCBlueprintEntity> GetPCBlueprintsForCraftByCategoryID(String uuid, int craftID, int categoryID)
     {
-        List<PCBlueprintEntity> entities;
-
         try(DataContext context = new DataContext())
         {
-            // TODO: Migrate to hibernate 5
-            Criteria criteria = context.getSession()
-                    .createCriteria(PCBlueprintEntity.class)
-                    .createAlias("blueprint", "bp")
-                    .createAlias("bp.category", "c")
-                    .createAlias("bp.craft", "cr")
-                    .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
-                    .add(Restrictions.eq("playerID", uuid))
-                    .add(Restrictions.eq("cr.craftID", craftID))
-                    .add(Restrictions.eq("c.craftBlueprintCategoryID", categoryID))
-                    .addOrder(Order.asc("bp.itemName"));
-
-            entities = criteria.list();
+            return context.executeSQLList("Crafting/GetPCBlueprintsForCraftByCategoryID",
+                    PCBlueprintEntity.class,
+                    new SqlParameter("playerID", uuid),
+                    new SqlParameter("categoryID", categoryID),
+                    new SqlParameter("craftID", craftID));
 
         }
-
-        return entities;
     }
 
     public List<CraftEntity> GetAllCrafts()

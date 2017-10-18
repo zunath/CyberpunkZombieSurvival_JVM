@@ -2,7 +2,6 @@ package Data.Repository;
 
 import Data.DataContext;
 import Entities.FameRegionEntity;
-import Entities.PCQuestStatusEntity;
 import Entities.PCRegionalFameEntity;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;

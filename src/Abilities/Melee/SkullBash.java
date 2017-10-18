@@ -1,8 +1,6 @@
 package Abilities.Melee;
 
 import Abilities.IAbility;
-import Enumerations.CustomEffectType;
-import GameSystems.CustomEffectSystem;
 import Helper.ItemHelper;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;

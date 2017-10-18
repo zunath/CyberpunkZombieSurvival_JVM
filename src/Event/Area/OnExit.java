@@ -1,7 +1,6 @@
 package Event.Area;
 
 import Common.IScriptEventHandler;
-import GameSystems.SpawnSystem;
 import org.nwnx.nwnx2.jvm.NWObject;
 
 @SuppressWarnings("UnusedDeclaration")

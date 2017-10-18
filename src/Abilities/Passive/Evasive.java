@@ -3,7 +3,6 @@ package Abilities.Passive;
 import Abilities.IAbility;
 import NWNX.NWNX_Funcs;
 import org.nwnx.nwnx2.jvm.NWObject;
-import org.nwnx.nwnx2.jvm.NWScript;
 
 public class Evasive implements IAbility {
     @Override

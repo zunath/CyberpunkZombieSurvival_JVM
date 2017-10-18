@@ -15,7 +15,6 @@ import org.nwnx.nwnx2.jvm.constants.DamageType;
 import java.util.concurrent.ThreadLocalRandom;
 
 import static org.nwnx.nwnx2.jvm.constants.All.DURATION_TYPE_INSTANT;
-import static org.nwnx.nwnx2.jvm.constants.All.DURATION_TYPE_TEMPORARY;
 import static org.nwnx.nwnx2.jvm.constants.All.VFX_IMP_FLAME_M;
 
 public class Flame implements IAbility {

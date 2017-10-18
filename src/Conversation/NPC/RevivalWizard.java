@@ -1,6 +1,5 @@
 package Conversation.NPC;
 
-import Common.IScriptEventHandler;
 import Data.Repository.PlayerRepository;
 import Dialog.DialogBase;
 import Dialog.DialogPage;

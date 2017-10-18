@@ -3,7 +3,6 @@ package Conversation.NPC;
 import Dialog.*;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
-import org.nwnx.nwnx2.jvm.Scheduler;
 
 public class BlueprintMerchant extends DialogBase implements IDialogHandler {
     @Override

@@ -9,7 +9,6 @@ import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.constants.Ability;
 
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 import static org.nwnx.nwnx2.jvm.constants.All.DURATION_TYPE_INSTANT;

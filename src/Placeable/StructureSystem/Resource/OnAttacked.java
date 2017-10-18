@@ -6,11 +6,9 @@ import Helper.ItemHelper;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.Scheduler;
-import org.nwnx.nwnx2.jvm.constants.Base;
 import org.nwnx.nwnx2.jvm.constants.BaseItem;
 import org.nwnx.nwnx2.jvm.constants.InventorySlot;
 
-import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class OnAttacked implements IScriptEventHandler {

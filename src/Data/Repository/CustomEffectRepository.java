@@ -1,11 +1,8 @@
 package Data.Repository;
 
 import Data.DataContext;
-import Entities.AuthorizedDMEntity;
 import Entities.CustomEffectEntity;
 import Entities.PCCustomEffectEntity;
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Restrictions;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;

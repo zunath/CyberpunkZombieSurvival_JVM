@@ -7,12 +7,10 @@ import Entities.ProfessionEntity;
 import Enumerations.AbilityType;
 import Enumerations.ProfessionType;
 import GameObject.PlayerGO;
-import NWNX.NWNX_Funcs;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 
 import java.util.List;
-import java.util.Objects;
 
 public class ProfessionSystem {
 

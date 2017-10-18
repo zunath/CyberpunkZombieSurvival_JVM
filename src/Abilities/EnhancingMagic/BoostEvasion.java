@@ -11,7 +11,6 @@ import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.constants.Ability;
 import org.nwnx.nwnx2.jvm.constants.Ac;
 import org.nwnx.nwnx2.jvm.constants.EffectType;
-import org.nwnx.nwnx2.jvm.constants.Skill;
 
 import static org.nwnx.nwnx2.jvm.constants.All.AC_VS_DAMAGE_TYPE_ALL;
 import static org.nwnx.nwnx2.jvm.constants.All.DURATION_TYPE_INSTANT;

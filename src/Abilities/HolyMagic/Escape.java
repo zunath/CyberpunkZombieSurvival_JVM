@@ -6,7 +6,6 @@ import GameObject.PlayerGO;
 import GameSystems.MagicSystem;
 import GameSystems.ProgressionSystem;
 import org.nwnx.nwnx2.jvm.*;
-import org.nwnx.nwnx2.jvm.constants.DurationType;
 
 import java.util.Objects;
 
