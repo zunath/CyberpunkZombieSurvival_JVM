@@ -32,6 +32,7 @@ public class MagicRepository {
     public boolean AddAbilityToPC(String uuid, int abilityID)
     {
         boolean addedSuccessfully = false;
+        AbilityEntity ability = GetAbilityByID(abilityID);
 
         try(DataContext context = new DataContext())
         {
@@ -41,8 +42,6 @@ public class MagicRepository {
 
             if(entity == null)
             {
-                AbilityEntity ability = GetAbilityByID(abilityID);
-
                 entity = new PCLearnedAbilityEntity();
                 entity.setPlayerID(uuid);
                 entity.setAbility(ability);
