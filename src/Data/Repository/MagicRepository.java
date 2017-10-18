@@ -86,7 +86,7 @@ public class MagicRepository {
     {
         try(DataContext context = new DataContext())
         {
-            return context.executeSQLList("Magic/GetPCLearnedAbilitiesByCategoryID", PCEquippedAbilityEntity.class,
+            return context.executeSQLList("Magic/GetPCLearnedAbilitiesByCategoryID", PCLearnedAbilityEntity.class,
                     new SqlParameter("playerID", uuid),
                     new SqlParameter("abilityCategoryID", categoryID));
         }
