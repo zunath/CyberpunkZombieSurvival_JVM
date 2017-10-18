@@ -1,25 +1,21 @@
 package Data.Repository;
 
 import Data.DataContext;
+import Data.SqlParameter;
+import Entities.ProgressionLevelEntity;
 import Entities.ProgressionSkillEntity;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
 public class ProgressionSkillRepository {
 
-    public ProgressionSkillEntity getByID(int skillID)
+    public ProgressionSkillEntity GetProgressionSkillByID(int skillID)
     {
-        ProgressionSkillEntity entity;
-
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(ProgressionSkillEntity.class);
-
-            entity = (ProgressionSkillEntity)criteria.add(Restrictions.eq("skillID", skillID)).uniqueResult();
+            return context.executeSQLSingle("ProgressionSkill/GetProgressionSkillByID", ProgressionSkillEntity.class,
+                    new SqlParameter("skillID", skillID));
         }
-
-        return entity;
     }
 
 }

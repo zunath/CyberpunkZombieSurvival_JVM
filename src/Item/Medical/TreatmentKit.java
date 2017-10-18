@@ -32,7 +32,7 @@ public class TreatmentKit implements IScriptEventHandler {
         PlayerGO targetGO = new PlayerGO(target);
         NWObject oItem = NWNX_Events.GetEventItem();
         PlayerRepository repo = new PlayerRepository();
-        PlayerEntity entity = repo.getByUUID(targetGO.getUUID());
+        PlayerEntity entity = repo.GetByPlayerID(targetGO.getUUID());
 
         if(!NWScript.getIsPC(target) || NWScript.getIsDM(target) || entity.getCurrentInfection() <= 0)
         {

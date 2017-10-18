@@ -5,10 +5,6 @@ import Data.SqlParameter;
 import Entities.ChatChannelEntity;
 import Entities.ChatLogEntity;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-
 public class ActivityLoggingRepository {
 
     public ChatChannelEntity GetChatChannelByID(int chatChannelID)

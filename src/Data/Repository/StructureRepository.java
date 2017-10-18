@@ -1,6 +1,8 @@
 package Data.Repository;
 
+import Conversation.ConstructionSite;
 import Data.DataContext;
+import Data.SqlParameter;
 import Entities.*;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
@@ -13,81 +15,139 @@ public class StructureRepository {
 
     public List<ConstructionSiteEntity> GetAllConstructionSites()
     {
-        List<ConstructionSiteEntity> entities;
-
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(ConstructionSiteEntity.class)
-                    .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-
-            entities = criteria.list();
+            return context.executeSQLList("Structure/GetAllConstructionSites", ConstructionSiteEntity.class);
         }
-
-        return entities;
     }
 
     public List<PCTerritoryFlagEntity> GetAllTerritoryFlags()
     {
-        List<PCTerritoryFlagEntity> flags;
-
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(PCTerritoryFlagEntity.class)
-                    .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-            flags = criteria.list();
+            return context.executeSQLList("Structure/GetAllTerritoryFlags", PCTerritoryFlagEntity.class);
         }
-
-        return flags;
     }
 
     public PCTerritoryFlagEntity GetPCTerritoryFlagByID(int pcTerritoryFlagID)
     {
-        PCTerritoryFlagEntity entity;
-
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(PCTerritoryFlagEntity.class)
-                    .add(Restrictions.eq("pcTerritoryFlagID", pcTerritoryFlagID));
-
-            entity = (PCTerritoryFlagEntity)criteria.uniqueResult();
+            return context.executeSQLSingle("Structure/GetPCTerritoryFlagByID", PCTerritoryFlagEntity.class,
+                    new SqlParameter("pcTerritoryFlagID", pcTerritoryFlagID));
         }
-
-        return entity;
     }
 
     public ConstructionSiteEntity GetConstructionSiteByID(int constructionSiteID)
     {
-        ConstructionSiteEntity entity;
-
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(ConstructionSiteEntity.class)
-                    .add(Restrictions.eq("constructionSiteID", constructionSiteID));
-            entity = (ConstructionSiteEntity)criteria.uniqueResult();
+            return context.executeSQLSingle("Structure/GetConstructionSiteByID", ConstructionSiteEntity.class,
+                    new SqlParameter("constructionSiteID", constructionSiteID));
         }
-
-        return entity;
     }
 
     public PCTerritoryFlagStructureEntity GetPCStructureByID(int territoryFlagStructureID)
     {
-        PCTerritoryFlagStructureEntity entity;
-
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(PCTerritoryFlagStructureEntity.class)
-                    .add(Restrictions.eq("pcTerritoryFlagStructureID", territoryFlagStructureID));
-
-            entity = (PCTerritoryFlagStructureEntity)criteria.uniqueResult();
+            return context.executeSQLSingle("Structure/GetPCStructureByID", PCTerritoryFlagStructureEntity.class,
+                    new SqlParameter("pcTerritoryFlagStructureID", territoryFlagStructureID));
         }
-
-        return entity;
     }
+
+    public StructureBlueprintEntity GetStructureBlueprintByID(int structureID)
+    {
+        try(DataContext context = new DataContext())
+        {
+            return context.executeSQLSingle("Structure/GetStructureBlueprintByID", StructureBlueprintEntity.class,
+                    new SqlParameter("structureBlueprintID", structureID));
+        }
+    }
+
+    public List<StructureCategoryEntity> GetStructureCategoriesByType(boolean isTerritoryFlagCategory)
+    {
+        try(DataContext context = new DataContext())
+        {
+            return context.executeSQLList("Structure/GetStructureCategoriesByType", StructureCategoryEntity.class,
+                    new SqlParameter("isTerritoryFlagCategory", isTerritoryFlagCategory));
+        }
+    }
+
+    public List<StructureBlueprintEntity> GetStructuresByCategoryID(int categoryID)
+    {
+        try(DataContext context = new DataContext())
+        {
+            return context.executeSQLList("Structure/GetStructuresByCategoryID", StructureBlueprintEntity.class,
+                    new SqlParameter("structureCategoryID", categoryID));
+        }
+    }
+
+    public List<PCTerritoryFlagPermissionEntity> GetPermissionsByFlagID(int flagID)
+    {
+        try(DataContext context = new DataContext())
+        {
+            return context.executeSQLList("Structure/GetPermissionsByFlagID", PCTerritoryFlagPermissionEntity.class,
+                    new SqlParameter("flagID", flagID));
+        }
+    }
+
+    public List<PCTerritoryFlagPermissionEntity> GetPermissionsByPlayerID(String playerID, int flagID)
+    {
+        try(DataContext context = new DataContext())
+        {
+            return context.executeSQLList("Structure/GetPermissionsByPlayerID", PCTerritoryFlagPermissionEntity.class,
+                    new SqlParameter("flagID", flagID),
+                    new SqlParameter("playerID", playerID));
+        }
+    }
+
+    public PCTerritoryFlagPermissionEntity GetPermissionByID(String playerID, int permissionID, int flagID)
+    {
+        try(DataContext context = new DataContext())
+        {
+            return context.executeSQLSingle("Structure/GetPermissionByID", PCTerritoryFlagPermissionEntity.class,
+                    new SqlParameter("flagID", flagID),
+                    new SqlParameter("playerID", playerID),
+                    new SqlParameter("permissionID", permissionID));
+        }
+    }
+
+    public List<TerritoryFlagPermissionEntity> GetAllTerritorySelectablePermissions()
+    {
+        try(DataContext context = new DataContext())
+        {
+            return context.executeSQLList("Structure/GetAllTerritorySelectablePermissions", TerritoryFlagPermissionEntity.class);
+        }
+    }
+
+    public TerritoryFlagPermissionEntity GetTerritoryPermissionByID(int territoryPermissionID)
+    {
+        try(DataContext context = new DataContext())
+        {
+            return context.executeSQLSingle("Structure/GetTerritoryPermissionByID", TerritoryFlagPermissionEntity.class,
+                    new SqlParameter("permissionID", territoryPermissionID));
+        }
+    }
+
+    public int GetNumberOfStructuresInTerritory(int flagID)
+    {
+        try(DataContext context = new DataContext())
+        {
+            return context.executeSQLSingle("Structure/GetNumberOfStructuresInTerritory",
+                    new SqlParameter("flagID", flagID));
+        }
+    }
+
+    public List<PCTerritoryFlagEntity> GetAllFlagsInArea(String areaTag)
+    {
+        try(DataContext context = new DataContext())
+        {
+            return context.executeSQLList("Structure/GetAllFlagsInArea", PCTerritoryFlagEntity.class,
+                    new SqlParameter("areaTag", areaTag));
+        }
+    }
+
 
     public void Save(Object entity)
     {
@@ -103,183 +163,6 @@ public class StructureRepository {
         {
             context.getSession().delete(entity);
         }
-    }
-
-
-    public StructureBlueprintEntity GetStructureBlueprintByID(int structureID)
-    {
-        StructureBlueprintEntity entity;
-
-        try(DataContext context = new DataContext())
-        {
-            Criteria criteria = context.getSession()
-                    .createCriteria(StructureBlueprintEntity.class)
-                    .add(Restrictions.eq("structureBlueprintID", structureID));
-
-            entity = (StructureBlueprintEntity)criteria.uniqueResult();
-        }
-
-        return entity;
-    }
-
-    public List<StructureCategoryEntity> GetStructureCategoriesByType(boolean isTerritoryFlagCategory)
-    {
-        List<StructureCategoryEntity> categories;
-
-        try(DataContext context = new DataContext())
-        {
-            Criteria criteria = context.getSession()
-                    .createCriteria(StructureCategoryEntity.class)
-                    .add(Restrictions.eq("isActive", true))
-                    .add(Restrictions.eq("isTerritoryFlagCategory", isTerritoryFlagCategory))
-                    .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
-                    .addOrder(Order.asc("name"));
-
-            categories = criteria.list();
-        }
-
-        return categories;
-    }
-
-    public List<StructureBlueprintEntity> GetStructuresByCategoryID(int categoryID)
-    {
-        List<StructureBlueprintEntity> entities;
-
-        try(DataContext context = new DataContext())
-        {
-            Criteria criteria = context.getSession()
-                    .createCriteria(StructureBlueprintEntity.class)
-                    .add(Restrictions.eq("isActive", true))
-                    .add(Restrictions.eq("structureCategoryID", categoryID))
-                    .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
-                    .addOrder(Order.asc("name"));
-
-            entities = criteria.list();
-        }
-
-        return entities;
-    }
-
-    public List<PCTerritoryFlagPermissionEntity> GetPermissionsByFlagID(int flagID)
-    {
-        List<PCTerritoryFlagPermissionEntity> entities;
-
-        try(DataContext context = new DataContext())
-        {
-            Criteria criteria = context.getSession()
-                    .createCriteria(PCTerritoryFlagPermissionEntity.class)
-                    .add(Restrictions.eq("pcTerritoryFlag.pcTerritoryFlagID", flagID))
-                    .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-
-            entities = criteria.list();
-        }
-
-        return entities;
-    }
-
-    public List<PCTerritoryFlagPermissionEntity> GetPermissionsByPlayerID(String playerID)
-    {
-        List<PCTerritoryFlagPermissionEntity> entities;
-
-        try(DataContext context = new DataContext())
-        {
-            Criteria criteria = context.getSession()
-                    .createCriteria(PCTerritoryFlagPermissionEntity.class)
-                    .add(Restrictions.eq("player.pcID", playerID))
-                    .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-
-            entities = criteria.list();
-        }
-
-        return entities;
-    }
-
-    public PCTerritoryFlagPermissionEntity GetPermissionByID(String playerID, int permissionID, int flagID)
-    {
-        PCTerritoryFlagPermissionEntity entity;
-
-        try(DataContext context = new DataContext())
-        {
-            Criteria criteria = context.getSession()
-                    .createCriteria(PCTerritoryFlagPermissionEntity.class)
-                    .add(Restrictions.eq("player.pcID", playerID))
-                    .add(Restrictions.eq("permission.territoryFlagPermissionID", permissionID))
-                    .add(Restrictions.eq("pcTerritoryFlag.pcTerritoryFlagID", flagID));
-            entity = (PCTerritoryFlagPermissionEntity)criteria.uniqueResult();
-        }
-
-        return entity;
-    }
-
-    public List<TerritoryFlagPermissionEntity> GetAllTerritorySelectablePermissions()
-    {
-        List<TerritoryFlagPermissionEntity> entities;
-
-        try(DataContext context = new DataContext())
-        {
-            Criteria criteria = context.getSession()
-                    .createCriteria(TerritoryFlagPermissionEntity.class)
-                    .add(Restrictions.eq("isActive", true))
-                    .add(Restrictions.eq("isSelectable", true))
-                    .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-
-            entities = criteria.list();
-        }
-
-        return entities;
-    }
-
-    public TerritoryFlagPermissionEntity GetTerritoryPermissionByID(int territoryPermissionID)
-    {
-        TerritoryFlagPermissionEntity entity;
-
-        try(DataContext context = new DataContext())
-        {
-            Criteria criteria = context.getSession()
-                    .createCriteria(TerritoryFlagPermissionEntity.class)
-                    .add(Restrictions.eq("territoryFlagPermissionID", territoryPermissionID))
-                    .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-
-            entity = (TerritoryFlagPermissionEntity)criteria.uniqueResult();
-        }
-
-        return entity;
-    }
-
-    public long GetNumberOfStructuresInTerritory(int flagID)
-    {
-        try(DataContext context = new DataContext())
-        {
-            long count =  (long)context.getSession()
-                    .createCriteria(PCTerritoryFlagStructureEntity.class)
-                    .add(Restrictions.eq("pcTerritoryFlag.pcTerritoryFlagID", flagID))
-                    .setProjection(Projections.rowCount()).uniqueResult();
-
-            count += (long)context.getSession()
-                    .createCriteria(ConstructionSiteEntity.class)
-                    .add(Restrictions.eq("pcTerritoryFlag.pcTerritoryFlagID", flagID))
-                    .setProjection(Projections.rowCount()).uniqueResult();
-
-            return count;
-        }
-    }
-
-    public List<PCTerritoryFlagEntity> GetAllFlagsInArea(String areaTag)
-    {
-        List<PCTerritoryFlagEntity> entities;
-
-        try(DataContext context = new DataContext())
-        {
-            Criteria criteria = context.getSession()
-                    .createCriteria(PCTerritoryFlagEntity.class)
-                    .add(Restrictions.eq("locationAreaTag", areaTag))
-                    .createAlias("blueprint", "bp")
-                    .addOrder(Order.desc("bp.maxBuildDistance"))
-                    .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-            entities = criteria.list();
-        }
-
-        return entities;
     }
 
 }

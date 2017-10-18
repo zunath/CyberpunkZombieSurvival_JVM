@@ -9,23 +9,12 @@ import java.util.List;
 
 public class ZombieClothesRepository {
 
-    public List<ZombieClothesEntity> GetRandomClothes()
+    public List<ZombieClothesEntity> GetAllZombieClothes()
     {
-        List<ZombieClothesEntity> entities;
-
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(ZombieClothesEntity.class);
-
-            entities = criteria
-                    .add(Restrictions.ne("resref", ""))
-                    .add(Restrictions.eq("isActive", true))
-                    .list();
-
+            return context.executeSQLList("ZombieClothes/GetAllZombieClothes", ZombieClothesEntity.class);
         }
-
-        return entities;
     }
 
 }

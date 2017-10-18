@@ -22,7 +22,7 @@ import java.util.List;
 @SuppressWarnings("unused")
 public class OnHeartbeat implements IScriptEventHandler {
 
-	PlayerRepository playerRepo;
+	private PlayerRepository playerRepo;
 
 	@Override
 	public void runScript(NWObject objSelf) {
@@ -36,7 +36,7 @@ public class OnHeartbeat implements IScriptEventHandler {
 			if(!NWScript.getIsDM(pc))
 			{
 				PlayerGO pcGO = new PlayerGO(pc);
-				PlayerEntity entity = playerRepo.getByUUID(pcGO.getUUID());
+				PlayerEntity entity = playerRepo.GetByPlayerID(pcGO.getUUID());
 
 				if(entity != null)
 				{
@@ -172,7 +172,7 @@ public class OnHeartbeat implements IScriptEventHandler {
 			{
 				if(!NWScript.getIsDM(pc))
 				{
-					PlayerEntity playerEntity = playerRepo.getByUUID(new PlayerGO(pc).getUUID());
+					PlayerEntity playerEntity = playerRepo.GetByPlayerID(new PlayerGO(pc).getUUID());
 					int level = ProgressionSystem.GetPlayerLevel(pc);
 					int expPercentage = (int) ((float) playerEntity.getExperience() / (float) ProgressionSystem.GetLevelExperienceRequired(level) * 100.0f);
 					ActivePlayerEntity entity = new ActivePlayerEntity();

@@ -1,6 +1,7 @@
 package Data.Repository;
 
 import Data.DataContext;
+import Data.SqlParameter;
 import Entities.PlayerEntity;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
@@ -8,26 +9,14 @@ import org.hibernate.criterion.Restrictions;
 @SuppressWarnings("UnusedDeclaration")
 public class PlayerRepository {
 
-    public PlayerEntity getByUUID(String uuid)
+    public PlayerEntity GetByPlayerID(String uuid)
     {
-        PlayerEntity entity;
-
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(PlayerEntity.class);
-
-            entity = (PlayerEntity)criteria
-                    .add(Restrictions.eq("pcID", uuid))
-                    .uniqueResult();
-
+            return context.executeSQLSingle("Player/GetByPlayerID", PlayerEntity.class,
+                    new SqlParameter("playerID", uuid));
         }
-
-
-        return entity;
     }
-
-
 
     public void save(PlayerEntity entity)
     {

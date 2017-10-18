@@ -54,7 +54,7 @@ public class StructureSystem {
             NWObject oArea = NWScript.getObjectByTag(flag.getLocationAreaTag(), 0);
             NWVector position = NWScript.vector((float) flag.getLocationX(), (float) flag.getLocationY(), (float) flag.getLocationZ());
             NWLocation location = NWScript.location(oArea, position, (float) flag.getLocationOrientation());
-            PlayerEntity playerEntity = playerRepo.getByUUID(flag.getPlayerID());
+            PlayerEntity playerEntity = playerRepo.GetByPlayerID(flag.getPlayerID());
 
             NWObject territoryFlag = NWScript.createObject(ObjectType.PLACEABLE, flag.getBlueprint().getResref(), location, false, "");
             NWScript.setLocalInt(territoryFlag, TerritoryFlagIDVariableName, flag.getPcTerritoryFlagID());
@@ -396,7 +396,7 @@ public class StructureSystem {
         if(blueprint.isTerritoryFlag())
         {
             PlayerRepository playerRepo = new PlayerRepository();
-            PlayerEntity playerEntity = playerRepo.getByUUID(entity.getPlayerID());
+            PlayerEntity playerEntity = playerRepo.GetByPlayerID(entity.getPlayerID());
             NWScript.setName(structurePlaceable, playerEntity.getCharacterName() + "'s Territory");
 
             PCTerritoryFlagEntity pcFlag = new PCTerritoryFlagEntity();
@@ -488,7 +488,7 @@ public class StructureSystem {
         PlayerRepository playerRepo = new PlayerRepository();
         StructureRepository repo = new StructureRepository();
         int pcFlagID = GetTerritoryFlagID(oFlag);
-        PlayerEntity playerEntity = playerRepo.getByUUID(newOwnerUUID);
+        PlayerEntity playerEntity = playerRepo.GetByPlayerID(newOwnerUUID);
         PCTerritoryFlagEntity entity = repo.GetPCTerritoryFlagByID(pcFlagID);
         entity.getPermissions().clear();
         entity.setPlayerID(newOwnerUUID);
@@ -584,7 +584,7 @@ public class StructureSystem {
         //              Site must be razed otherwise player would go over the cap.
         if(constructionSiteID <= 0)
         {
-            long structureCount = repo.GetNumberOfStructuresInTerritory(flagID);
+            int structureCount = repo.GetNumberOfStructuresInTerritory(flagID);
             if(structureCount >= flagEntity.getBlueprint().getMaxStructuresCount())
             {
                 return false;

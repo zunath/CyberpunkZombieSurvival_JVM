@@ -82,7 +82,7 @@ public class ResetSkillPoints extends DialogBase implements IDialogHandler {
     {
         PlayerGO pcGO = new PlayerGO(GetPC());
         PlayerRepository repo = new PlayerRepository();
-        PlayerEntity entity = repo.getByUUID(pcGO.getUUID());
+        PlayerEntity entity = repo.GetByPlayerID(pcGO.getUUID());
 
         DateTime nextTokenDate = entity.getNextResetTokenReceiveDate() == null ||
                 entity.getResetTokens() >= ProgressionSystem.ResetTokensMaxStock ?
@@ -104,7 +104,7 @@ public class ResetSkillPoints extends DialogBase implements IDialogHandler {
         NWObject oPC = GetPC();
         PlayerGO pcGO = new PlayerGO(oPC);
         PlayerRepository repo = new PlayerRepository();
-        PlayerEntity entity = repo.getByUUID(pcGO.getUUID());
+        PlayerEntity entity = repo.GetByPlayerID(pcGO.getUUID());
 
         String resetTime = "now.";
 

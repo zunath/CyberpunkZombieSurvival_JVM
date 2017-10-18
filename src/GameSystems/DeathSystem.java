@@ -175,7 +175,7 @@ public class DeathSystem {
 
         PlayerRepository repo = new PlayerRepository();
         PlayerGO pcGO = new PlayerGO(oPC);
-        PlayerEntity entity = repo.getByUUID(pcGO.getUUID());
+        PlayerEntity entity = repo.GetByPlayerID(pcGO.getUUID());
         NWObject area = NWScript.getArea(oPC);
         String areaTag = NWScript.getTag(area);
         float facing = NWScript.getFacing(oPC);
@@ -196,7 +196,7 @@ public class DeathSystem {
     {
         PlayerRepository repo = new PlayerRepository();
         PlayerGO pcGO = new PlayerGO(oPC);
-        final PlayerEntity entity = repo.getByUUID(pcGO.getUUID());
+        final PlayerEntity entity = repo.GetByPlayerID(pcGO.getUUID());
 
         if(entity.getRevivalStoneCount() <= 0)
         {

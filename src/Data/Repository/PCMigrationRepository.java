@@ -3,7 +3,6 @@ package Data.Repository;
 import Data.DataContext;
 import Data.SqlParameter;
 import Entities.PCMigrationEntity;
-import org.hibernate.criterion.Restrictions;
 
 public class PCMigrationRepository {
 

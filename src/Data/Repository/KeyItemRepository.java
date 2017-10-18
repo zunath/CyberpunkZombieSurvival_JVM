@@ -4,9 +4,6 @@ import Data.DataContext;
 import Data.SqlParameter;
 import Entities.KeyItemEntity;
 import Entities.PCKeyItemEntity;
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Projections;
-import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 
@@ -45,7 +42,7 @@ public class KeyItemRepository {
     {
         try(DataContext context = new DataContext())
         {
-            return context.executeSQLSingle("KeyItem/GetPCKeyItemByKeyItemID", Integer.class,
+            return context.executeSQLSingle("KeyItem/GetPCKeyItemByKeyItemID",
                     new SqlParameter("playerID", uuid));
         }
     }

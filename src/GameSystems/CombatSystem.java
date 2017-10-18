@@ -22,76 +22,76 @@ import java.util.concurrent.ThreadLocalRandom;
 public class CombatSystem {
 
     // CONSTANTS
-    final String CBT_OVR_SVAR_ATTACK_ALLOWED = "ATTACK_ALLOWED";
-    final String CBT_OVR_SVAR_ATTACK_TARGET = "ATTACK_TARGET";
-    final String CBT_OVR_SVAR_ATTACK_SHOTS_TO_FIRE = "ATTACK_SHOTS_TO_FIRE";
-    final String CBT_OVR_SVAR_ATTACK_SILENCED = "ATTACK_SILENCED";
-    final String CBT_OVR_SVAR_ATTACK_ANIMATION = "ATTACK_ANIMATION";
+    private final String CBT_OVR_SVAR_ATTACK_ALLOWED = "ATTACK_ALLOWED";
+    private final String CBT_OVR_SVAR_ATTACK_TARGET = "ATTACK_TARGET";
+    private final String CBT_OVR_SVAR_ATTACK_SHOTS_TO_FIRE = "ATTACK_SHOTS_TO_FIRE";
+    private final String CBT_OVR_SVAR_ATTACK_SILENCED = "ATTACK_SILENCED";
+    private final String CBT_OVR_SVAR_ATTACK_ANIMATION = "ATTACK_ANIMATION";
 
-    final int CBT_OVR_ANIMATION_NONE    = 0;
-    final int CBT_OVR_SOUND_SHOT_HEAVY_PISTOL_9MM = 8205;
-    final int CBT_OVR_SOUND_SHOT_SMG_762 = 8211;
-    final int CBT_OVR_SOUND_SHOT_ASSAULT_RIFLE_762 = 8213;
-    final int CBT_OVR_SOUND_SHOT_SHOTGUN_12G = 8218;
-    final int CBT_OVR_SOUND_SHOT_SILENCED_PISTOL = 8224;
-    final int CBT_OVR_SOUND_SHOT_SILENCED_RIFLE = 8225;
+    private final int CBT_OVR_ANIMATION_NONE    = 0;
+    private final int CBT_OVR_SOUND_SHOT_HEAVY_PISTOL_9MM = 8205;
+    private final int CBT_OVR_SOUND_SHOT_SMG_762 = 8211;
+    private final int CBT_OVR_SOUND_SHOT_ASSAULT_RIFLE_762 = 8213;
+    private final int CBT_OVR_SOUND_SHOT_SHOTGUN_12G = 8218;
+    private final int CBT_OVR_SOUND_SHOT_SILENCED_PISTOL = 8224;
+    private final int CBT_OVR_SOUND_SHOT_SILENCED_RIFLE = 8225;
 
-    final String GUN_LOW_AMMO_MESSAGE = "Low ammo!";
-    final String GUN_OUT_OF_AMMO_MESSAGE = "Out of ammo!";
+    private final String GUN_LOW_AMMO_MESSAGE = "Low ammo!";
+    private final String GUN_OUT_OF_AMMO_MESSAGE = "Out of ammo!";
 
-    final String GUN_TEMP_PREVENT_AMMO_BOX_BUG = "GUN_TEMP_PREVENT_AMMO_BOX_BUG";
-    final float GUN_LOW_AMMO_MESSAGE_DISPLAY_PERCENTAGE = 0.20f;
-    final String GUN_MAGAZINE_BULLET_COUNT = "GUN_MAGAZINE_BULLET_COUNT";
-    final int IP_CONST_FIREARM_RANGE_NEAR          = 1;
-    final int IP_CONST_FIREARM_RANGE_MID           = 2;
-    final int IP_CONST_FIREARM_RANGE_FAR           = 3;
+    private final String GUN_TEMP_PREVENT_AMMO_BOX_BUG = "GUN_TEMP_PREVENT_AMMO_BOX_BUG";
+    private final float GUN_LOW_AMMO_MESSAGE_DISPLAY_PERCENTAGE = 0.20f;
+    private final String GUN_MAGAZINE_BULLET_COUNT = "GUN_MAGAZINE_BULLET_COUNT";
+    private final int IP_CONST_FIREARM_RANGE_NEAR          = 1;
+    private final int IP_CONST_FIREARM_RANGE_MID           = 2;
+    private final int IP_CONST_FIREARM_RANGE_FAR           = 3;
 
 
-    final float GUN_RANGE_NEAR_MINIMUM = 3.5f;
-    final float GUN_RANGE_NEAR_MAXIMUM = 6.0f;
-    final float GUN_RANGE_MID_MINIMUM  = 5.5f;
-    final float GUN_RANGE_MID_MAXIMUM  = 8.5f;
-    final float GUN_RANGE_FAR_MINIMUM  = 14.0f;
-    final float GUN_RANGE_FAR_MAXIMUM  = 27.5f;
+    private final float GUN_RANGE_NEAR_MINIMUM = 3.5f;
+    private final float GUN_RANGE_NEAR_MAXIMUM = 6.0f;
+    private final float GUN_RANGE_MID_MINIMUM  = 5.5f;
+    private final float GUN_RANGE_MID_MAXIMUM  = 8.5f;
+    private final float GUN_RANGE_FAR_MINIMUM  = 14.0f;
+    private final float GUN_RANGE_FAR_MAXIMUM  = 27.5f;
 
-    final String GUN_TEMP_AMMO_LOADED_TYPE     = "GUN_TEMP_AMMO_LOADED_TYPE";
+    private final String GUN_TEMP_AMMO_LOADED_TYPE     = "GUN_TEMP_AMMO_LOADED_TYPE";
 
-    final int GUN_AMMUNITION_PRIORITY_BASIC = 0;
-    final int GUN_AMMUNITION_PRIORITY_ENHANCED = 1;
-    final int GUN_AMMUNITION_PRIORITY_INCENDIARY = 2;
-    final String GUN_GAS_CANISTER_TAG = "gas_canister";
-    final String GUN_TEMP_GUN_EQUIPPED = "GUN_EQUIPPED";
-    final String GUN_FIREARM_MAGAZINE_RESREF = "firearm_magazine";
-    final String GUN_ENHANCED_FIREARM_MAGAZINE_RESREF = "e_gun_mag";
-    final String GUN_INCENDIARY_FIREARM_MAGAZINE_RESREF = "i_gun_mag";
-    final String GUN_TEMP_AMMO_TYPE = "AMMO_TYPE";
-    final String GUN_TEMP_UNLOADING_AMMO = "UNLOADING_AMMO";
-    final String GUN_NORMAL_AMMO_BOX_PREFIX = "ammo_box_";
-    final String GUN_ENHANCED_AMMO_BOX_PREFIX = "e_ammo_box_";
-    final String GUN_INCENDIARY_AMMO_BOX_PREFIX = "i_ammo_box_";
-    final String GUN_TEMP_RELOADING_GUN = "RELOADING_GUN";
+    private final int GUN_AMMUNITION_PRIORITY_BASIC = 0;
+    private final int GUN_AMMUNITION_PRIORITY_ENHANCED = 1;
+    private final int GUN_AMMUNITION_PRIORITY_INCENDIARY = 2;
+    private final String GUN_GAS_CANISTER_TAG = "gas_canister";
+    private final String GUN_TEMP_GUN_EQUIPPED = "GUN_EQUIPPED";
+    private final String GUN_FIREARM_MAGAZINE_RESREF = "firearm_magazine";
+    private final String GUN_ENHANCED_FIREARM_MAGAZINE_RESREF = "e_gun_mag";
+    private final String GUN_INCENDIARY_FIREARM_MAGAZINE_RESREF = "i_gun_mag";
+    private final String GUN_TEMP_AMMO_TYPE = "AMMO_TYPE";
+    private final String GUN_TEMP_UNLOADING_AMMO = "UNLOADING_AMMO";
+    private final String GUN_NORMAL_AMMO_BOX_PREFIX = "ammo_box_";
+    private final String GUN_ENHANCED_AMMO_BOX_PREFIX = "e_ammo_box_";
+    private final String GUN_INCENDIARY_AMMO_BOX_PREFIX = "i_ammo_box_";
+    private final String GUN_TEMP_RELOADING_GUN = "RELOADING_GUN";
 
-    final int IP_CONST_FIREARM_RELOAD_SPEED_VERY_SLOW = 1;
-    final int IP_CONST_FIREARM_RELOAD_SPEED_SLOW      = 2;
-    final int IP_CONST_FIREARM_RELOAD_SPEED_MEDIUM    = 3;
-    final int IP_CONST_FIREARM_RELOAD_SPEED_FAST      = 4;
-    final int IP_CONST_FIREARM_RELOAD_SPEED_VERY_FAST = 5;
+    private final int IP_CONST_FIREARM_RELOAD_SPEED_VERY_SLOW = 1;
+    private final int IP_CONST_FIREARM_RELOAD_SPEED_SLOW      = 2;
+    private final int IP_CONST_FIREARM_RELOAD_SPEED_FAST      = 4;
+    private final int IP_CONST_FIREARM_RELOAD_SPEED_VERY_FAST = 5;
+    private final int IP_CONST_FIREARM_RELOAD_SPEED_MEDIUM    = 3;
 
-    final float GUN_RELOAD_SPEED_VERY_SLOW = 4.2f;
-    final float GUN_RELOAD_SPEED_SLOW = 3.6f;
-    final float GUN_RELOAD_SPEED_MEDIUM = 2.8f;
-    final float GUN_RELOAD_SPEED_FAST = 2.2f;
-    final float GUN_RELOAD_SPEED_VERY_FAST = 1.2f;
+    private final float GUN_RELOAD_SPEED_VERY_SLOW = 4.2f;
+    private final float GUN_RELOAD_SPEED_SLOW = 3.6f;
+    private final float GUN_RELOAD_SPEED_MEDIUM = 2.8f;
+    private final float GUN_RELOAD_SPEED_FAST = 2.2f;
+    private final float GUN_RELOAD_SPEED_VERY_FAST = 1.2f;
 
-    final int CBT_OVR_SOUND_GUN_RELOAD = 8200;
-    final String GUN_TEMP_AMMO_PRIORITY = "GUN_AMMO_PRIORITY";
+    private final int CBT_OVR_SOUND_GUN_RELOAD = 8200;
+    private final String GUN_TEMP_AMMO_PRIORITY = "GUN_AMMO_PRIORITY";
 
-    final String GUN_TEMP_CURRENT_RATE_OF_FIRE = "GUN_CUR_RATE_OF_FIRE";
-    final int IP_CONST_FIREARM_ROF_SEMI_AUTOMATIC = 1;
-    final int IP_CONST_FIREARM_ROF_AUTOMATIC      = 2;
+    private final String GUN_TEMP_CURRENT_RATE_OF_FIRE = "GUN_CUR_RATE_OF_FIRE";
+    private final int IP_CONST_FIREARM_ROF_SEMI_AUTOMATIC = 1;
+    private final int IP_CONST_FIREARM_ROF_AUTOMATIC      = 2;
 
-    final int GUN_WEAPON_MODE_THREE_ROUND_BURST = 1;
-    final int GUN_TYPE_INVALID = 0;
+    private final int GUN_WEAPON_MODE_THREE_ROUND_BURST = 1;
+    private final int GUN_TYPE_INVALID = 0;
 
     // END CONSTANTS
 
@@ -735,23 +735,23 @@ public class CombatSystem {
     }
 
 
-    void SetNumberShotsToFire(NWObject oAttacker, int iNumberOfShots)
+    private void SetNumberShotsToFire(NWObject oAttacker, int iNumberOfShots)
     {
         NWScript.setLocalInt(oAttacker, CBT_OVR_SVAR_ATTACK_SHOTS_TO_FIRE, iNumberOfShots);
     }
 
-    void SetTarget(NWObject oAttacker, NWObject oTarget)
+    private void SetTarget(NWObject oAttacker, NWObject oTarget)
     {
         NWScript.setLocalObject(oAttacker, CBT_OVR_SVAR_ATTACK_TARGET, oTarget);
         // Notify Target based on skill check???
     }
 
-    int GetAttackAllowed(NWObject oAttacker)
+    private int GetAttackAllowed(NWObject oAttacker)
     {
         return NWScript.getLocalInt(oAttacker, CBT_OVR_SVAR_ATTACK_ALLOWED);
     }
 
-    void SetAttackAllowed(NWObject oAttacker, int bAttackAllowed)
+    private void SetAttackAllowed(NWObject oAttacker, int bAttackAllowed)
     {
         NWScript.setLocalInt(oAttacker, CBT_OVR_SVAR_ATTACK_ALLOWED, bAttackAllowed);
     }
@@ -1002,7 +1002,7 @@ public class CombatSystem {
         {
             NWScript.floatingTextStringOnCreature(GUN_OUT_OF_AMMO_MESSAGE, oAttacker, false);
         }
-        else if(iMagazineSize <= iMaxMagazineSize && iMagazineSize > 0)
+        else if(iMagazineSize <= iMaxMagazineSize)
         {
             NWScript.floatingTextStringOnCreature(GUN_LOW_AMMO_MESSAGE, oAttacker, false);
         }
@@ -1014,7 +1014,7 @@ public class CombatSystem {
         DurabilitySystem.RunItemDecay(oAttacker, oWeapon1, 0, 0, true);
     }
 
-    void FireShot(NWObject oAttacker, NWObject oTarget, NWObject oWeapon, int iAnimation)
+    private void FireShot(NWObject oAttacker, NWObject oTarget, NWObject oWeapon, int iAnimation)
     {
         NWLocation lLocation = NWScript.getLocation(oAttacker);
         NWEffect eSound;
@@ -1077,8 +1077,8 @@ public class CombatSystem {
         }
     }
 
-    int bIsCriticalHit = 0;
-    int CalculateDamage(final NWObject oAttacker, final NWObject oTarget, GunGO stGunInfo, int iFirearmSkill, boolean isPoliceOfficerProfession)
+    private int bIsCriticalHit = 0;
+    private int CalculateDamage(final NWObject oAttacker, final NWObject oTarget, GunGO stGunInfo, int iFirearmSkill, boolean isPoliceOfficerProfession)
     {
         bIsCriticalHit = 0;
 
@@ -1216,7 +1216,7 @@ public class CombatSystem {
         
     }
 
-    void FireShotgun(NWObject oAttacker, NWObject oTarget, GunGO stGunInfo)
+    private void FireShotgun(NWObject oAttacker, NWObject oTarget, GunGO stGunInfo)
     {
         float fRangeDistance = 7.5f;
         NWVector vOrigin = NWScript.getPosition(oAttacker);
@@ -1270,14 +1270,14 @@ public class CombatSystem {
         }
     }
 
-    void FireBullet(NWObject oAttacker, NWObject oTarget, NWObject oWeapon, GunGO stGunInfo)
+    private void FireBullet(NWObject oAttacker, NWObject oTarget, NWObject oWeapon, GunGO stGunInfo)
     {
         boolean isPoliceOfficerProfession = false;
         if(NWScript.getIsPC(oAttacker))
         {
             PlayerGO pcGO = new PlayerGO(oAttacker);
             PlayerRepository pcRepo = new PlayerRepository();
-            PlayerEntity pcEntity = pcRepo.getByUUID(pcGO.getUUID());
+            PlayerEntity pcEntity = pcRepo.GetByPlayerID(pcGO.getUUID());
 
             isPoliceOfficerProfession = pcEntity.getProfessionID() == ProfessionType.PoliceOfficer;
         }
@@ -1379,31 +1379,28 @@ public class CombatSystem {
 
             NWEffect eSparkEffect = NWScript.effectVisualEffect(VfxComBloodSpark.LARGE, false);
 
-            if(iDamage > 0)
+            int iStoppingPower = 0;
+            NWItemProperty[] itemProperties = NWScript.getItemProperties(oWeapon);
+
+            for(NWItemProperty ipStoppingPower : itemProperties)
             {
-                int iStoppingPower = 0;
-                NWItemProperty[] itemProperties = NWScript.getItemProperties(oWeapon);
-                
-                for(NWItemProperty ipStoppingPower : itemProperties)
+                if(NWScript.getItemPropertyType(ipStoppingPower) == 139) // 139 = Stopping Power item property
                 {
-                    if(NWScript.getItemPropertyType(ipStoppingPower) == 139) // 139 = Stopping Power item property
-                    {
-                        iStoppingPower = NWScript.getItemPropertyCostTableValue(ipStoppingPower);
-                        break;
-                    }
+                    iStoppingPower = NWScript.getItemPropertyCostTableValue(ipStoppingPower);
+                    break;
                 }
-
-                if(iStoppingPower >= 100)
-                {
-                    NWScript.applyEffectToObject(DurationType.TEMPORARY, NWScript.effectCutsceneImmobilize(), oTarget, fStunDuration);
-                }
-                else if(iStoppingPower > 0)
-                {
-                    NWScript.applyEffectToObject(DurationType.TEMPORARY, NWScript.effectMovementSpeedDecrease(iStoppingPower), oTarget, fStunDuration);
-                }
-
-                NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectDamage(iDamage, DamageType.PIERCING, DamagePower.NORMAL), oTarget, 0.0f);
             }
+
+            if(iStoppingPower >= 100)
+            {
+                NWScript.applyEffectToObject(DurationType.TEMPORARY, NWScript.effectCutsceneImmobilize(), oTarget, fStunDuration);
+            }
+            else if(iStoppingPower > 0)
+            {
+                NWScript.applyEffectToObject(DurationType.TEMPORARY, NWScript.effectMovementSpeedDecrease(iStoppingPower), oTarget, fStunDuration);
+            }
+
+            NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectDamage(iDamage, DamageType.PIERCING, DamagePower.NORMAL), oTarget, 0.0f);
             NWScript.applyEffectToObject(DurationType.INSTANT, eSparkEffect, oTarget, 0.0f);
         }
         else

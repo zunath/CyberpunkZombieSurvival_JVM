@@ -48,7 +48,7 @@ public class Zombie_OnSpawn implements IScriptEventHandler {
     private void SpawnRandomClothes(NWObject oZombie)
     {
         ZombieClothesRepository repo = new ZombieClothesRepository();
-        List<ZombieClothesEntity> entities = repo.GetRandomClothes();
+        List<ZombieClothesEntity> entities = repo.GetAllZombieClothes();
         int randomIndex = ThreadLocalRandom.current().nextInt(0, entities.size()-1);
         ZombieClothesEntity entity = entities.get(randomIndex);
 

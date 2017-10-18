@@ -1,26 +1,20 @@
 package Data.Repository;
 
 import Data.DataContext;
+import Data.SqlParameter;
 import Entities.PlayerProgressionSkillEntity;
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Restrictions;
-import java.util.List;
 
 public class PlayerProgressionSkillsRepository {
 
-    public PlayerProgressionSkillEntity GetByUUIDAndSkillID(String uuid, int skillID)
+    public PlayerProgressionSkillEntity GetByPlayerIDAndSkillID(String uuid, int skillID)
     {
         PlayerProgressionSkillEntity entity;
 
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(PlayerProgressionSkillEntity.class);
-
-            entity = (PlayerProgressionSkillEntity)criteria
-                    .add(Restrictions.eq("pcID", uuid))
-                    .add(Restrictions.eq("progressionSkillID", skillID)).uniqueResult();
-
+            entity = context.executeSQLSingle("PlayerProgressionSkills/GetByPlayerIDAndSkillID", PlayerProgressionSkillEntity.class,
+                    new SqlParameter("playerID", uuid),
+                    new SqlParameter("progressionSkillID", skillID));
 
             if(entity == null)
             {
@@ -33,18 +27,12 @@ public class PlayerProgressionSkillsRepository {
         return entity;
     }
 
-    public void deleteAllByPlayerUUID(String uuid)
+    public void DeleteAllByPlayerID(String uuid)
     {
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(PlayerProgressionSkillEntity.class);
-
-            List<PlayerProgressionSkillEntity> entities = criteria.add(Restrictions.eq("pcID", uuid)).list();
-            for(PlayerProgressionSkillEntity entity : entities)
-            {
-                context.getSession().delete(entity);
-            }
+            context.executeUpdateOrDelete("PlayerProgressionSkills/DeleteAllByPlayerID",
+                    new SqlParameter("playerID", uuid));
         }
     }
 

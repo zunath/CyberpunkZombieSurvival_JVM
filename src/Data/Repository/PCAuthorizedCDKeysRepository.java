@@ -3,8 +3,6 @@ package Data.Repository;
 import Data.DataContext;
 import Data.SqlParameter;
 import Entities.PCAuthorizedCDKeyEntity;
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Restrictions;
 
 public class PCAuthorizedCDKeysRepository {
 

@@ -77,7 +77,7 @@ public class OnClientEnter implements IScriptEventHandler {
             pcGO.destroyAllEquippedItems();
             pcGO.destroyAllInventoryItems(true);
 
-            oDatabase = NWScript.createItemOnObject(Constants.PCDatabaseTag, oPC, 1, "");
+            NWScript.createItemOnObject(Constants.PCDatabaseTag, oPC, 1, "");
 
             Scheduler.assign(oPC, () -> {
                 NWScript.takeGoldFromCreature(NWScript.getGold(oPC), oPC, true);
@@ -130,7 +130,7 @@ public class OnClientEnter implements IScriptEventHandler {
         final NWObject oPC = NWScript.getEnteringObject();
         PlayerGO pcGO = new PlayerGO(oPC);
         PlayerRepository repo = new PlayerRepository();
-        PlayerEntity entity = repo.getByUUID(pcGO.getUUID());
+        PlayerEntity entity = repo.GetByPlayerID(pcGO.getUUID());
 
         if(entity == null) return;
 

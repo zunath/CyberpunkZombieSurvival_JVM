@@ -1,6 +1,7 @@
 package Data.Repository;
 
 import Data.DataContext;
+import Data.SqlParameter;
 import Entities.ProgressionLevelEntity;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
@@ -9,34 +10,21 @@ import java.util.List;
 
 public class ProgressionLevelRepository {
 
-    public List<ProgressionLevelEntity> getAll()
+    public List<ProgressionLevelEntity> GetAllProgressionLevels()
     {
-        List<ProgressionLevelEntity> entties;
-
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(ProgressionLevelEntity.class);
-            entties = criteria.list();
+            return context.executeSQLList("ProgressionLevel/GetAllProgressionLevels", ProgressionLevelEntity.class);
         }
-
-        return entties;
     }
 
-    public ProgressionLevelEntity getByLevel(int level)
+    public ProgressionLevelEntity GetProgressionLevelByLevel(int level)
     {
-        ProgressionLevelEntity entity;
-
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(ProgressionLevelEntity.class)
-                    .add(Restrictions.eq("level", level));
-
-            entity = (ProgressionLevelEntity)criteria.uniqueResult();
+            return context.executeSQLSingle("ProgressionLevel/GetProgressionLevelByLevel", ProgressionLevelEntity.class,
+                    new SqlParameter("level", level));
         }
-
-        return entity;
     }
 
 }

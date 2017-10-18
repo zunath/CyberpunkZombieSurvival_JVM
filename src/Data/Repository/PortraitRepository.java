@@ -1,6 +1,7 @@
 package Data.Repository;
 
 import Data.DataContext;
+import Data.SqlParameter;
 import Entities.PortraitEntity;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Projections;
@@ -12,64 +13,35 @@ public class PortraitRepository {
 
     public PortraitEntity GetByPortraitID(int portraitID)
     {
-        PortraitEntity entity;
-
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(PortraitEntity.class);
-
-            entity = (PortraitEntity)criteria.add(Restrictions.eq("portraitID", portraitID)).uniqueResult();
+            return context.executeSQLSingle("Portrait/GetByPortraitID", PortraitEntity.class,
+                    new SqlParameter("portraitID", portraitID));
         }
-
-        return entity;
     }
 
     public PortraitEntity GetBy2DAID(int _2daID)
     {
-        PortraitEntity entity;
-
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(PortraitEntity.class);
-
-            entity = (PortraitEntity)criteria.add(Restrictions.eq("_2daID", _2daID)).uniqueResult();
+            return context.executeSQLSingle("Portrait/GetBy2DAID", PortraitEntity.class,
+                    new SqlParameter("_2DAID", _2daID));
         }
-
-        return entity;
     }
 
     public PortraitEntity GetByResref(String portraitResref)
     {
-        PortraitEntity entity = null;
-
         try(DataContext context = new DataContext())
         {
-
-            Criteria criteria = context.getSession()
-                    .createCriteria(PortraitEntity.class)
-                    .add(Restrictions.eq("resref", portraitResref));
-
-            List<PortraitEntity> entities = criteria.list();
-            if(entities.size() > 0){
-                entity = entities.get(0);
-            }
+            return context.executeSQLSingle("Portrait/GetByResref", PortraitEntity.class,
+                    new SqlParameter("resref", portraitResref));
         }
-
-        return entity;
     }
     public int GetNumberOfPortraits()
     {
         try(DataContext context = new DataContext())
         {
-            long result = (long)context.getSession()
-                    .createCriteria(PortraitEntity.class)
-                    .setProjection(Projections.rowCount())
-                    .uniqueResult();
-
-            return (int)result;
-
+            return context.executeSQLSingle("Portrait/GetNumberOfPortraits");
         }
     }
 

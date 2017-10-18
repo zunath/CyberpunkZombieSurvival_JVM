@@ -5,9 +5,6 @@ import Data.SqlParameter;
 import Entities.BadgeEntity;
 import Entities.PCBadgeEntity;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import java.util.List;
 
 public class BadgeRepository {

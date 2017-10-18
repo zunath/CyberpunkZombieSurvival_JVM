@@ -22,7 +22,7 @@ public class ProfessionSystem {
 
         PlayerGO pcGO = new PlayerGO(oPC);
         NWObject token = NWScript.getItemPossessedBy(oPC, "prof_token");
-        PlayerEntity entity = repo.getByUUID(pcGO.getUUID());
+        PlayerEntity entity = repo.GetByPlayerID(pcGO.getUUID());
 
         if(entity.getProfessionID() > 0) return;
 
@@ -41,7 +41,7 @@ public class ProfessionSystem {
             if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return;
 
             PlayerGO pcGO = new PlayerGO(oPC);
-            PlayerEntity entity = repo.getByUUID(pcGO.getUUID());
+            PlayerEntity entity = repo.GetByPlayerID(pcGO.getUUID());
 
             if(entity.getProfessionID() == ProfessionType.Cartographer)
             {
@@ -60,7 +60,7 @@ public class ProfessionSystem {
     {
         PlayerRepository repo = new PlayerRepository();
         PlayerGO pcGO = new PlayerGO(oPC);
-        PlayerEntity pcEntity = repo.getByUUID(pcGO.getUUID());
+        PlayerEntity pcEntity = repo.GetByPlayerID(pcGO.getUUID());
         pcEntity.setProfessionID(entity.getProfessionID());
         repo.save(pcEntity);
         ApplyProfessionBonuses(oPC, entity.getProfessionID());

@@ -351,9 +351,9 @@ public class AllocateSkillPoints extends DialogBase implements IDialogHandler {
         ProgressionSkillRepository skillRepo = new ProgressionSkillRepository();
         PlayerRepository playerRepo = new PlayerRepository();
 
-        PlayerProgressionSkillEntity pcSkill = pcSkillRepo.GetByUUIDAndSkillID(pcGO.getUUID(), skillID);
-        ProgressionSkillEntity skill = skillRepo.getByID(skillID);
-        PlayerEntity playerEntity = playerRepo.getByUUID(pcGO.getUUID());
+        PlayerProgressionSkillEntity pcSkill = pcSkillRepo.GetByPlayerIDAndSkillID(pcGO.getUUID(), skillID);
+        ProgressionSkillEntity skill = skillRepo.GetProgressionSkillByID(skillID);
+        PlayerEntity playerEntity = playerRepo.GetByPlayerID(pcGO.getUUID());
 
         DialogResponse response = GetResponseByID("UpgradePage", 1);
         int upgradeLevel = pcSkill == null ? 0 : pcSkill.getUpgradeLevel();
@@ -378,9 +378,9 @@ public class AllocateSkillPoints extends DialogBase implements IDialogHandler {
         PlayerProgressionSkillsRepository pcSkillRepo = new PlayerProgressionSkillsRepository();
         ProgressionSkillRepository skillRepo = new ProgressionSkillRepository();
 
-        PlayerEntity pcEntity = pcRepo.getByUUID(pcGO.getUUID());
-        PlayerProgressionSkillEntity pcSkill = pcSkillRepo.GetByUUIDAndSkillID(pcGO.getUUID(), skillID);
-        ProgressionSkillEntity skill = skillRepo.getByID(skillID);
+        PlayerEntity pcEntity = pcRepo.GetByPlayerID(pcGO.getUUID());
+        PlayerProgressionSkillEntity pcSkill = pcSkillRepo.GetByPlayerIDAndSkillID(pcGO.getUUID(), skillID);
+        ProgressionSkillEntity skill = skillRepo.GetProgressionSkillByID(skillID);
 
         String upgradeName = skill.getName();
         String description = skill.getDescription();

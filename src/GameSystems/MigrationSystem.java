@@ -36,7 +36,7 @@ public class MigrationSystem {
         PlayerGO pcGO = new PlayerGO(oPC);
         PlayerRepository playerRepo = new PlayerRepository();
         PCMigrationRepository migrationRepo = new PCMigrationRepository();
-        PlayerEntity entity = playerRepo.getByUUID(pcGO.getUUID());
+        PlayerEntity entity = playerRepo.GetByPlayerID(pcGO.getUUID());
 
         for(int version = entity.getVersionNumber() + 1; version <= Constants.PlayerVersionNumber; version++)
         {
@@ -68,7 +68,7 @@ public class MigrationSystem {
             }
 
             RunCustomMigrationProcess(oPC, version);
-            entity = playerRepo.getByUUID(pcGO.getUUID());
+            entity = playerRepo.GetByPlayerID(pcGO.getUUID());
             entity.setVersionNumber(version);
             playerRepo.save(entity);
             NWScript.setLocalInt(oPC, "MIGRATION_SYSTEM_LOGGED_IN_ONCE", 1);

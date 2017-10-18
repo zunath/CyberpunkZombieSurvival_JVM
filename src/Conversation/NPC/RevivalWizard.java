@@ -29,7 +29,7 @@ public class RevivalWizard extends DialogBase implements IDialogHandler {
     public void Initialize() {
         PlayerRepository repo = new PlayerRepository();
         PlayerGO pcGO = new PlayerGO(GetPC());
-        PlayerEntity entity = repo.getByUUID(pcGO.getUUID());
+        PlayerEntity entity = repo.GetByPlayerID(pcGO.getUUID());
 
         String header = "Greetings, mortal. It appears you have left your dimension but your soul still has unfinished business. Should you desire to return to the land of the living I will request one Revival Stone.\n\n";
         header += "You have " + ColorToken.Green() + entity.getRevivalStoneCount() + ColorToken.End() + " revival stones.";

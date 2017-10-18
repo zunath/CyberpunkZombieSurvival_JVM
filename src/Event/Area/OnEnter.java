@@ -83,7 +83,7 @@ public class OnEnter implements IScriptEventHandler {
             PlayerGO pcGO = new PlayerGO(oPC);
             NWLocation location = NWScript.getLocation(oPC);
             PlayerRepository repo = new PlayerRepository();
-            PlayerEntity entity = repo.getByUUID(pcGO.getUUID());
+            PlayerEntity entity = repo.GetByPlayerID(pcGO.getUUID());
             entity.setLocationAreaTag(sTag);
             entity.setLocationX(location.getX());
             entity.setLocationY(location.getY());
@@ -101,7 +101,7 @@ public class OnEnter implements IScriptEventHandler {
         if(NWScript.getTag(oArea).equals("ooc_area"))
         {
             PlayerGO pcGO = new PlayerGO(oPC);
-            PlayerEntity entity = new PlayerRepository().getByUUID(pcGO.getUUID());
+            PlayerEntity entity = new PlayerRepository().GetByPlayerID(pcGO.getUUID());
             NWObject area = NWScript.getObjectByTag(entity.getLocationAreaTag(), 0);
             final NWLocation location = new NWLocation(area,
                     entity.getLocationX(),

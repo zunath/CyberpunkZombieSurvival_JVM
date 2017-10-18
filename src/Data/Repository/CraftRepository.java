@@ -6,9 +6,6 @@ import Entities.*;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -94,11 +91,11 @@ public class CraftRepository {
         }
     }
 
-    public long GetCraftMaxLevel(int craftID)
+    public int GetCraftMaxLevel(int craftID)
     {
         try(DataContext context = new DataContext())
         {
-            return context.executeSQLSingle("Craft/GetCraftMaxLevel", Long.class,
+            return context.executeSQLSingle("Craft/GetCraftMaxLevel",
                     new SqlParameter("craftID", craftID));
         }
     }

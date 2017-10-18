@@ -96,7 +96,7 @@ public class OmniTool implements IScriptEventHandler {
 
         PlayerGO targetGO = new PlayerGO(oTarget);
         PlayerRepository repo = new PlayerRepository();
-        PlayerEntity entity = repo.getByUUID(targetGO.getUUID());
+        PlayerEntity entity = repo.GetByPlayerID(targetGO.getUUID());
         int infection = entity.getCurrentInfection();
         String name = NWScript.getName(oTarget, false);
         String message;

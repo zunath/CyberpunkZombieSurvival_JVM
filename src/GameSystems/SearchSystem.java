@@ -90,7 +90,7 @@ public class SearchSystem {
         PlayerGO pcGO = new PlayerGO(oPC);
 
         PlayerRepository playerRepo = new PlayerRepository();
-        PlayerEntity playerEntity = playerRepo.getByUUID(pcGO.getUUID());
+        PlayerEntity playerEntity = playerRepo.GetByPlayerID(pcGO.getUUID());
 
         SearchSiteRepository searchRepo = new SearchSiteRepository();
         String resref = NWScript.getResRef(oChest);

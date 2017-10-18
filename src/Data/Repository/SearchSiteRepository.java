@@ -1,6 +1,7 @@
 package Data.Repository;
 
 import Data.DataContext;
+import Data.SqlParameter;
 import Entities.PCSearchSiteEntity;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
@@ -9,20 +10,12 @@ public class SearchSiteRepository {
 
     public PCSearchSiteEntity GetSearchSiteByID(int searchSiteID, String playerID)
     {
-        PCSearchSiteEntity entity;
-
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(PCSearchSiteEntity.class);
-
-            entity = (PCSearchSiteEntity)criteria
-                    .add(Restrictions.eq("playerID", playerID))
-                    .add(Restrictions.eq("searchSiteID", searchSiteID))
-                    .uniqueResult();
+            return context.executeSQLSingle("SearchSite/GetSearchSiteByID", PCSearchSiteEntity.class,
+                    new SqlParameter("searchSiteID", searchSiteID),
+                    new SqlParameter("playerID", playerID));
         }
-
-        return entity;
     }
 
     public void Save(PCSearchSiteEntity entity)

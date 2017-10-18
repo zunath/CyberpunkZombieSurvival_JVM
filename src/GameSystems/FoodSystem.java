@@ -54,7 +54,7 @@ public class FoodSystem {
 
         PlayerGO pcGO = new PlayerGO(oPC);
         PlayerRepository repo = new PlayerRepository();
-        PlayerEntity entity = repo.getByUUID(pcGO.getUUID());
+        PlayerEntity entity = repo.GetByPlayerID(pcGO.getUUID());
         entity.setCurrentHunger(entity.getCurrentHunger() + amount);
         if(entity.getCurrentHunger() > entity.getMaxHunger()) entity.setCurrentHunger(entity.getMaxHunger());
 

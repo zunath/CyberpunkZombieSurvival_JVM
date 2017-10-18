@@ -162,7 +162,7 @@ public class PlayerGO {
     public void setHasPVPSanctuaryOverride(boolean value)
     {
         PlayerRepository repo = new PlayerRepository();
-        PlayerEntity entity = repo.getByUUID(getUUID());
+        PlayerEntity entity = repo.GetByPlayerID(getUUID());
 
         entity.setSanctuaryOverrideEnabled(value);
         repo.save(entity);
@@ -173,7 +173,7 @@ public class PlayerGO {
         if(NWScript.getIsDM(_pc) || !NWScript.getIsPC(_pc)) return false;
 
         PlayerRepository repo = new PlayerRepository();
-        PlayerEntity entity = repo.getByUUID(getUUID());
+        PlayerEntity entity = repo.GetByPlayerID(getUUID());
         
         DateTime createDate = new DateTime(entity.getCreateTimestamp());
         boolean hasOverride = entity.isSanctuaryOverrideEnabled();

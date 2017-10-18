@@ -1,10 +1,7 @@
 package Data.Repository;
 
 import Data.DataContext;
-import Entities.CraftEntity;
 import Entities.ForcedSPResetEntity;
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Order;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;

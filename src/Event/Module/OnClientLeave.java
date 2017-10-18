@@ -38,7 +38,7 @@ public class OnClientLeave implements IScriptEventHandler {
 		PlayerRepository repo = new PlayerRepository();
 		String uuid = gameObject.getUUID();
 
-		PlayerEntity entity = repo.getByUUID(uuid);
+		PlayerEntity entity = repo.GetByPlayerID(uuid);
 		entity.setCharacterName(NWScript.getName(pc, false));
 		entity.setHitPoints(NWScript.getCurrentHitPoints(pc));
 

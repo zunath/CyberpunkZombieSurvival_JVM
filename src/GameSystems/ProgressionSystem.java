@@ -81,7 +81,7 @@ public class ProgressionSystem {
         PlayerGO pcGO = new PlayerGO(oPC);
         PlayerRepository playerRepo = new PlayerRepository();
         PlayerProgressionSkillsRepository playerSkillRepo = new PlayerProgressionSkillsRepository();
-        PlayerEntity entity = playerRepo.getByUUID(pcGO.getUUID());
+        PlayerEntity entity = playerRepo.GetByPlayerID(pcGO.getUUID());
 
         NWScript.setXP(oPC, 0);
         int numberOfFeats = NWNX_Funcs.GetTotalKnownFeats(oPC);
@@ -125,7 +125,7 @@ public class ProgressionSystem {
             NWNX_Funcs.ClearMemorizedSpell(oPC, classID, 0, index);
         }
 
-        playerSkillRepo.deleteAllByPlayerUUID(pcGO.getUUID());
+        playerSkillRepo.DeleteAllByPlayerID(pcGO.getUUID());
         entity.setUnallocatedSP(SPEarnedOnLevelUp * entity.getLevel());
         entity.setRegenerationTick(Constants.BaseHPRegenRate);
         entity.setHpRegenerationAmount(Constants.BaseHPRegenAmount);
@@ -147,7 +147,7 @@ public class ProgressionSystem {
         PlayerRepository repo = new PlayerRepository();
         PlayerProgressionSkillsRepository skillRepo = new PlayerProgressionSkillsRepository();
         PlayerGO pcGO = new PlayerGO(oPC);
-        PlayerEntity entity = repo.getByUUID(pcGO.getUUID());
+        PlayerEntity entity = repo.GetByPlayerID(pcGO.getUUID());
         PlayerProgressionSkillEntity skillEntity;
 
         switch(entity.getProfessionID())
@@ -160,12 +160,12 @@ public class ProgressionSystem {
                 NWNX_Funcs.SetMaxHitPointsByLevel(oPC, 1, NWScript.getMaxHitPoints(oPC) + 5);
                 break;
             case ProfessionType.PoliceOfficer:
-                skillEntity = skillRepo.GetByUUIDAndSkillID(pcGO.getUUID(), SkillType_HANDGUN_PROFICIENCY);
+                skillEntity = skillRepo.GetByPlayerIDAndSkillID(pcGO.getUUID(), SkillType_HANDGUN_PROFICIENCY);
                 skillEntity.setUpgradeLevel(skillEntity.getUpgradeLevel() + 1);
                 skillRepo.save(skillEntity);
                 break;
             case ProfessionType.Cartographer:
-                skillEntity = skillRepo.GetByUUIDAndSkillID(pcGO.getUUID(), SkillType_SEARCH);
+                skillEntity = skillRepo.GetByPlayerIDAndSkillID(pcGO.getUUID(), SkillType_SEARCH);
                 skillEntity.setUpgradeLevel(skillEntity.getUpgradeLevel() + 1);
                 skillRepo.save(skillEntity);
                 entity = ApplyCustomUpgradeEffects(oPC, SkillType_SEARCH, skillEntity.getUpgradeLevel());
@@ -173,7 +173,7 @@ public class ProgressionSystem {
             case ProfessionType.HolyMage:
             case ProfessionType.EvocationMage:
 
-                skillEntity = skillRepo.GetByUUIDAndSkillID(pcGO.getUUID(), SkillType_MANA);
+                skillEntity = skillRepo.GetByPlayerIDAndSkillID(pcGO.getUUID(), SkillType_MANA);
                 skillEntity.setUpgradeLevel(skillEntity.getUpgradeLevel() + 1);
                 skillRepo.save(skillEntity);
                 entity = ApplyCustomUpgradeEffects(oPC, SkillType_MANA, skillEntity.getUpgradeLevel());
@@ -189,11 +189,11 @@ public class ProgressionSystem {
 
         PlayerGO pcGO = new PlayerGO(oPC);
         PlayerRepository repo = new PlayerRepository();
-        PlayerEntity entity = repo.getByUUID(pcGO.getUUID());
+        PlayerEntity entity = repo.GetByPlayerID(pcGO.getUUID());
         entity.setExperience(entity.getExperience() + amount);
 
         ProgressionLevelRepository levelRepo = new ProgressionLevelRepository();
-        ProgressionLevelEntity levelEntity = levelRepo.getByLevel(entity.getLevel());
+        ProgressionLevelEntity levelEntity = levelRepo.GetProgressionLevelByLevel(entity.getLevel());
 
         NWScript.floatingTextStringOnCreature("You earned experience points.", oPC, false);
 
@@ -209,7 +209,7 @@ public class ProgressionSystem {
             entity.setLevel(entity.getLevel() + 1);
             NWScript.floatingTextStringOnCreature("You attained level " + entity.getLevel() + "!", oPC, false);
 
-            levelEntity = levelRepo.getByLevel(entity.getLevel());
+            levelEntity = levelRepo.GetProgressionLevelByLevel(entity.getLevel());
         }
 
         repo.save(entity);
@@ -224,8 +224,8 @@ public class ProgressionSystem {
         PlayerGO pcGO = new PlayerGO(oPC);
         PlayerRepository playerRepo = new PlayerRepository();
         ProgressionLevelRepository levelRepo = new ProgressionLevelRepository();
-        PlayerEntity entity = playerRepo.getByUUID(pcGO.getUUID());
-        List<ProgressionLevelEntity> levelList = levelRepo.getAll();
+        PlayerEntity entity = playerRepo.GetByPlayerID(pcGO.getUUID());
+        List<ProgressionLevelEntity> levelList = levelRepo.GetAllProgressionLevels();
 
         for(int x = entity.getLevel(); x < entity.getLevel() + givenLevels; x++)
         {
@@ -239,13 +239,13 @@ public class ProgressionSystem {
     {
         PlayerGO pcGO = new PlayerGO(oPC);
         PlayerRepository playerRepo = new PlayerRepository();
-        PlayerEntity playerEntity = playerRepo.getByUUID(pcGO.getUUID());
+        PlayerEntity playerEntity = playerRepo.GetByPlayerID(pcGO.getUUID());
 
         ProgressionSkillRepository skillRepo = new ProgressionSkillRepository();
-        ProgressionSkillEntity skillEntity = skillRepo.getByID(skillID);
+        ProgressionSkillEntity skillEntity = skillRepo.GetProgressionSkillByID(skillID);
 
         PlayerProgressionSkillsRepository playerSkillRepo = new PlayerProgressionSkillsRepository();
-        PlayerProgressionSkillEntity playerSkillEntity = playerSkillRepo.GetByUUIDAndSkillID(pcGO.getUUID(), skillID);
+        PlayerProgressionSkillEntity playerSkillEntity = playerSkillRepo.GetByPlayerIDAndSkillID(pcGO.getUUID(), skillID);
 
         int requiredSP = skillEntity.getInitialPrice() + playerSkillEntity.getUpgradeLevel();
         int upgradeCap = playerSkillEntity.isSoftCapUnlocked() ? skillEntity.getMaxUpgrades() : skillEntity.getSoftCap();
@@ -275,7 +275,7 @@ public class ProgressionSystem {
     {
         PlayerGO pcGO = new PlayerGO(oPC);
         PlayerRepository repo = new PlayerRepository();
-        PlayerEntity entity = repo.getByUUID(pcGO.getUUID());
+        PlayerEntity entity = repo.GetByPlayerID(pcGO.getUUID());
 
         switch (skillID)
         {
@@ -353,8 +353,8 @@ public class ProgressionSystem {
             {
                 int skillID = NWScript.getItemPropertySubType(ip);
                 int skillRequired = NWScript.getItemPropertyCostTableValue(ip);
-                PlayerProgressionSkillEntity playerSkillEntity = repo.GetByUUIDAndSkillID(pcGO.getUUID(), skillID);
-                ProgressionSkillEntity skillEntity = skillRepo.getByID(skillID);
+                PlayerProgressionSkillEntity playerSkillEntity = repo.GetByPlayerIDAndSkillID(pcGO.getUUID(), skillID);
+                ProgressionSkillEntity skillEntity = skillRepo.GetProgressionSkillByID(skillID);
 
                 if(playerSkillEntity == null || playerSkillEntity.getUpgradeLevel() < skillRequired)
                 {
@@ -371,7 +371,7 @@ public class ProgressionSystem {
     {
         PlayerGO pcGO = new PlayerGO(oPC);
         PlayerRepository repo = new PlayerRepository();
-        PlayerEntity entity = repo.getByUUID(pcGO.getUUID());
+        PlayerEntity entity = repo.GetByPlayerID(pcGO.getUUID());
 
         return entity.getLevel();
     }
@@ -380,7 +380,7 @@ public class ProgressionSystem {
     {
         PlayerGO pcGO = new PlayerGO(oPC);
         PlayerProgressionSkillsRepository repo = new PlayerProgressionSkillsRepository();
-        PlayerProgressionSkillEntity entity = repo.GetByUUIDAndSkillID(pcGO.getUUID(), skillID);
+        PlayerProgressionSkillEntity entity = repo.GetByPlayerIDAndSkillID(pcGO.getUUID(), skillID);
 
         return entity == null ? 0 : entity.getUpgradeLevel();
     }
@@ -422,7 +422,7 @@ public class ProgressionSystem {
         PlayerRepository playerRepo = new PlayerRepository();
         ForcedSPResetRepository spRepo = new ForcedSPResetRepository();
 
-        PlayerEntity playerEntity = playerRepo.getByUUID(pcGO.getUUID());
+        PlayerEntity playerEntity = playerRepo.GetByPlayerID(pcGO.getUUID());
         ForcedSPResetEntity spEntity = spRepo.GetLatestForcedSPResetDate();
 
         if(spEntity == null) return;
@@ -431,7 +431,7 @@ public class ProgressionSystem {
                 playerEntity.getDateLastForcedSPReset().before(spEntity.getDateOfReset()))
         {
             PerformSkillReset(oPC, true);
-            playerEntity = playerRepo.getByUUID(pcGO.getUUID());
+            playerEntity = playerRepo.GetByPlayerID(pcGO.getUUID());
             playerEntity.setDateLastForcedSPReset(DateTime.now(DateTimeZone.UTC).toDate());
             playerRepo.save(playerEntity);
         }
@@ -442,7 +442,7 @@ public class ProgressionSystem {
     {
         PlayerGO pcGO = new PlayerGO(oPC);
         PlayerRepository repo = new PlayerRepository();
-        PlayerEntity entity = repo.getByUUID(pcGO.getUUID());
+        PlayerEntity entity = repo.GetByPlayerID(pcGO.getUUID());
         DateTime resetDate = entity.getNextSPResetDate() == null ?
                 DateTime.now().minusSeconds(1) :
                 new DateTime(entity.getNextSPResetDate());
@@ -495,7 +495,7 @@ public class ProgressionSystem {
     public static int GetLevelExperienceRequired(int level)
     {
         ProgressionLevelRepository repo = new ProgressionLevelRepository();
-        ProgressionLevelEntity entity = repo.getByLevel(level);
+        ProgressionLevelEntity entity = repo.GetProgressionLevelByLevel(level);
 
         return entity.getExperience();
     }

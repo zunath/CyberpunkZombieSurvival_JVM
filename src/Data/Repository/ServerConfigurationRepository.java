@@ -1,6 +1,7 @@
 package Data.Repository;
 
 import Data.DataContext;
+import Data.SqlParameter;
 import Entities.ServerConfigurationEntity;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.DetachedCriteria;
@@ -11,21 +12,10 @@ public class ServerConfigurationRepository {
 
     public static ServerConfigurationEntity GetServerConfiguration()
     {
-        ServerConfigurationEntity entity;
-
         try(DataContext context = new DataContext())
         {
-            DetachedCriteria maxID = DetachedCriteria.forClass(ServerConfigurationEntity.class)
-                    .setProjection(Projections.max("serverConfigurationID"));
-
-            Criteria criteria = context.getSession()
-                    .createCriteria(ServerConfigurationEntity.class)
-                    .add(Property.forName("serverConfigurationID").eq(maxID));
-
-            entity = (ServerConfigurationEntity)criteria.uniqueResult();
+            return context.executeSQLSingle("ServerConfiguration/GetServerConfiguration", ServerConfigurationEntity.class);
         }
-
-        return entity;
     }
 
 }

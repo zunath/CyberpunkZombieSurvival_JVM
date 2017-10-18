@@ -123,8 +123,8 @@ public class RestMenu extends DialogBase implements IDialogHandler {
         PlayerGO pcGO = new PlayerGO(oPC);
         PlayerRepository repo = new PlayerRepository();
         ProgressionLevelRepository levelRepo = new ProgressionLevelRepository();
-        PlayerEntity entity = repo.getByUUID(pcGO.getUUID());
-        int requiredExp = levelRepo.getByLevel(entity.getLevel()).getExperience();
+        PlayerEntity entity = repo.GetByPlayerID(pcGO.getUUID());
+        int requiredExp = levelRepo.GetProgressionLevelByLevel(entity.getLevel()).getExperience();
 
         String header = ColorToken.Green() + "Name: " + ColorToken.End() + NWScript.getName(oPC, false) + "\n\n";
         header += ColorToken.Green() + "Level: " + ColorToken.End() + entity.getLevel() + " / " + ProgressionSystem.LevelCap + "\n";

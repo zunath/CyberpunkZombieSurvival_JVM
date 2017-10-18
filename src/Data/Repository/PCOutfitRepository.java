@@ -2,10 +2,7 @@ package Data.Repository;
 
 import Data.DataContext;
 import Data.SqlParameter;
-import Entities.PCMigrationEntity;
 import Entities.PCOutfitEntity;
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Restrictions;
 
 @SuppressWarnings("UnusedDeclaration")
 public class PCOutfitRepository {

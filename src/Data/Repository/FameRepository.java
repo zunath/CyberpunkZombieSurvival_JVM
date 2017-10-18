@@ -2,12 +2,8 @@ package Data.Repository;
 
 import Data.DataContext;
 import Data.SqlParameter;
-import Entities.CraftEntity;
 import Entities.FameRegionEntity;
-import Entities.PCBlueprintEntity;
 import Entities.PCRegionalFameEntity;
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Restrictions;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;

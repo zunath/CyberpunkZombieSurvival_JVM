@@ -40,7 +40,7 @@ public class MagicSystem {
         IAbility ability = (IAbility) ScriptHelper.GetClassByName("Abilities." + entity.getJavaScriptName());
         if(ability == null) return;
 
-        PlayerEntity playerEntity = playerRepo.getByUUID(pcGO.getUUID());
+        PlayerEntity playerEntity = playerRepo.GetByPlayerID(pcGO.getUUID());
 
         if(ability.IsHostile())
         {
@@ -167,7 +167,7 @@ public class MagicSystem {
 
             NWScript.deleteLocalInt(pc, spellUUID);
             PlayerRepository repo = new PlayerRepository();
-            PlayerEntity pcEntity = repo.getByUUID(pcGO.getUUID());
+            PlayerEntity pcEntity = repo.GetByPlayerID(pcGO.getUUID());
 
             if(!entity.isQueuedWeaponSkill())
             {
@@ -376,7 +376,7 @@ public class MagicSystem {
         PlayerGO pcGO = new PlayerGO(oPC);
         PlayerRepository playerRepo = new PlayerRepository();
 
-        PlayerEntity playerEntity = playerRepo.getByUUID(pcGO.getUUID());
+        PlayerEntity playerEntity = playerRepo.GetByPlayerID(pcGO.getUUID());
         if(pcGO.GetDatabaseItem() == NWObject.INVALID ||
            playerEntity == null)
             return false;
@@ -447,7 +447,7 @@ public class MagicSystem {
     {
         PlayerGO pcGO = new PlayerGO(oPC);
         PlayerRepository repo = new PlayerRepository();
-        PlayerEntity entity = repo.getByUUID(pcGO.getUUID());
+        PlayerEntity entity = repo.GetByPlayerID(pcGO.getUUID());
 
         entity.setCurrentMana(entity.getCurrentMana() + amount);
         if(entity.getCurrentMana() > entity.getMaxMana())

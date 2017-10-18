@@ -13,7 +13,7 @@ import java.util.List;
 
 public class DataContext implements AutoCloseable {
 
-    Transaction tran;
+    private Transaction tran;
 
     public DataContext()
     {
@@ -87,6 +87,23 @@ public class DataContext implements AutoCloseable {
         return result;
     }
 
+    public <T> List<T> executeSQLList(String sqlFilePath, SqlParameter... params)
+    {
+        List<T> result;
+
+        try
+        {
+            NativeQuery<T> query = buildQuery(sqlFilePath, params);
+            result = query.getResultList();
+        }
+        catch(NoResultException ex)
+        {
+            result = null;
+        }
+
+        return result;
+    }
+
     public <T> T executeSQLSingle(String sqlFilePath, Class c, SqlParameter... params)
     {
         T result;
@@ -119,7 +136,7 @@ public class DataContext implements AutoCloseable {
         return result;
     }
 
-    public int executeUpdateOrDelete(String sqlFilePath, SqlParameter... params)
+    public void executeUpdateOrDelete(String sqlFilePath, SqlParameter... params)
     {
         String sql = readSQL(sqlFilePath);
         NativeQuery query = getSession()
@@ -130,7 +147,7 @@ public class DataContext implements AutoCloseable {
             query.setParameter(p.getName(), p.getValue());
         }
 
-        return query.executeUpdate();
+        query.executeUpdate();
     }
 
     @Override

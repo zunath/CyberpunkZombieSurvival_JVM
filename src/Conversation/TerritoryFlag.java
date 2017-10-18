@@ -300,8 +300,8 @@ public class TerritoryFlag extends DialogBase implements IDialogHandler {
         TerritoryFlagMenuModel model = GetModel();
         PlayerRepository playerRepo = new PlayerRepository();
         StructureRepository structureRepo = new StructureRepository();
-        PlayerEntity playerEntity = playerRepo.getByUUID(model.getActivePermissionsUUID());
-        List<PCTerritoryFlagPermissionEntity> permissions = structureRepo.GetPermissionsByPlayerID(model.getActivePermissionsUUID());
+        PlayerEntity playerEntity = playerRepo.GetByPlayerID(model.getActivePermissionsUUID());
+        List<PCTerritoryFlagPermissionEntity> permissions = structureRepo.GetPermissionsByPlayerID(model.getActivePermissionsUUID(), model.getFlagID());
 
         String header = ColorToken.Green() + "Manage Player Permissions" + ColorToken.End() + "\n\n";
         header += ColorToken.Green() + "Player: " + ColorToken.End() + playerEntity.getCharacterName() + "\n\n";
@@ -340,8 +340,8 @@ public class TerritoryFlag extends DialogBase implements IDialogHandler {
         TerritoryFlagMenuModel model = GetModel();
         PlayerRepository playerRepo = new PlayerRepository();
         StructureRepository structureRepo = new StructureRepository();
-        PlayerEntity playerEntity = playerRepo.getByUUID(model.getActivePermissionsUUID());
-        List<PCTerritoryFlagPermissionEntity> playerPermissions = structureRepo.GetPermissionsByPlayerID(model.getActivePermissionsUUID());
+        PlayerEntity playerEntity = playerRepo.GetByPlayerID(model.getActivePermissionsUUID());
+        List<PCTerritoryFlagPermissionEntity> playerPermissions = structureRepo.GetPermissionsByPlayerID(model.getActivePermissionsUUID(), model.getFlagID());
         List<TerritoryFlagPermissionEntity> permissions = structureRepo.GetAllTerritorySelectablePermissions();
         DialogPage page = GetPageByName("ManagePlayerPermissionsPage");
         page.getResponses().clear();
@@ -385,7 +385,7 @@ public class TerritoryFlag extends DialogBase implements IDialogHandler {
 
         int permissionID = (int)response.getCustomData();
         StructureRepository repo = new StructureRepository();
-        List<PCTerritoryFlagPermissionEntity> pcPermissions = repo.GetPermissionsByPlayerID(model.getActivePermissionsUUID());
+        List<PCTerritoryFlagPermissionEntity> pcPermissions = repo.GetPermissionsByPlayerID(model.getActivePermissionsUUID(), model.getFlagID());
         PCTerritoryFlagPermissionEntity foundPerm = null;
 
         for(PCTerritoryFlagPermissionEntity perm : pcPermissions)
@@ -401,7 +401,7 @@ public class TerritoryFlag extends DialogBase implements IDialogHandler {
         {
             PlayerRepository playerRepo = new PlayerRepository();
             PCTerritoryFlagPermissionEntity perm = new PCTerritoryFlagPermissionEntity();
-            perm.setPlayer(playerRepo.getByUUID(model.getActivePermissionsUUID()));
+            perm.setPlayer(playerRepo.GetByPlayerID(model.getActivePermissionsUUID()));
             perm.setPermission(repo.GetTerritoryPermissionByID(permissionID));
             perm.setPcTerritoryFlag(repo.GetPCTerritoryFlagByID(model.getFlagID()));
 
@@ -500,7 +500,7 @@ public class TerritoryFlag extends DialogBase implements IDialogHandler {
     {
         TerritoryFlagMenuModel model = GetModel();
         PlayerRepository repo = new PlayerRepository();
-        PlayerEntity entity = repo.getByUUID(model.getTransferUUID());
+        PlayerEntity entity = repo.GetByPlayerID(model.getTransferUUID());
 
         String header = ColorToken.Red() + "WARNING: " + ColorToken.End() + "You are about to transfer ownership of this territory. This is your last chance to cancel this action.\n\n";
         header += "This territory will be transferred to the following player: " + ColorToken.Green() + entity.getCharacterName() + ColorToken.End() + "\n\n";

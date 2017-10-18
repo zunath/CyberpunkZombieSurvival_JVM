@@ -1,6 +1,7 @@
 package Data.Repository;
 
 import Data.DataContext;
+import Data.SqlParameter;
 import Entities.StorageContainerEntity;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
@@ -10,17 +11,11 @@ public class StorageRepository {
 
     public StorageContainerEntity GetByContainerID(int containerID)
     {
-        StorageContainerEntity entity;
-
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(StorageContainerEntity.class)
-                    .add(Restrictions.eq("storageContainerID", containerID));
-            entity = (StorageContainerEntity)criteria.uniqueResult();
+            return context.executeSQLSingle("Storage/GetByContainerID", StorageContainerEntity.class,
+                    new SqlParameter("containerID", containerID));
         }
-
-        return entity;
     }
 
     public void Save(StorageContainerEntity entity)

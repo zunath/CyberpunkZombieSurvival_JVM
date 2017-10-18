@@ -1,10 +1,7 @@
 package Data.Repository;
 
 import Data.DataContext;
-import Entities.CraftEntity;
 import Entities.ItemCombinationEntity;
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Restrictions;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;

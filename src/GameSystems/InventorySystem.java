@@ -99,8 +99,8 @@ public class InventorySystem {
         PlayerGO pcGO = new PlayerGO(oPC);
         String uuid = pcGO.getUUID();
 
-        PlayerEntity entity = new PlayerRepository().getByUUID(uuid);
-        PlayerProgressionSkillEntity skillEntity = new PlayerProgressionSkillsRepository().GetByUUIDAndSkillID(uuid, ProgressionSystem.SkillType_INVENTORY_SPACE);
+        PlayerEntity entity = new PlayerRepository().GetByPlayerID(uuid);
+        PlayerProgressionSkillEntity skillEntity = new PlayerProgressionSkillsRepository().GetByPlayerIDAndSkillID(uuid, ProgressionSystem.SkillType_INVENTORY_SPACE);
         int slots = BaseInventoryLimit + (skillEntity == null ? 0 : skillEntity.getUpgradeLevel());
 
         if(entity != null)

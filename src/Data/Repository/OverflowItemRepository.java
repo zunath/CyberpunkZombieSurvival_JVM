@@ -3,11 +3,7 @@ package Data.Repository;
 
 import Data.DataContext;
 import Data.SqlParameter;
-import Entities.PCOutfitEntity;
 import Entities.PCOverflowItemEntity;
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Projections;
-import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 
@@ -22,11 +18,11 @@ public class OverflowItemRepository {
         }
     }
 
-    public long GetPlayerOverflowItemCount(String uuid)
+    public int GetPlayerOverflowItemCount(String uuid)
     {
         try(DataContext context = new DataContext())
         {
-            return context.executeSQLSingle("OverflowItem/GetPlayerOverflowItemCount", Long.class,
+            return context.executeSQLSingle("OverflowItem/GetPlayerOverflowItemCount",
                     new SqlParameter("playerID", uuid));
         }
     }
