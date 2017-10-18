@@ -1,9 +1,14 @@
 package Data.Repository;
 
 import Data.DataContext;
+import Entities.CraftEntity;
 import Entities.ItemCombinationEntity;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 public class ItemCombinationRepository {
 
@@ -13,20 +18,33 @@ public class ItemCombinationRepository {
 
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(ItemCombinationEntity.class);
+            CriteriaBuilder cb = context.getSession().getCriteriaBuilder();
 
-            entity = (ItemCombinationEntity)criteria
-                    .add(Restrictions.eq("itemA", itemResrefA))
-                    .add(Restrictions.eq("itemB", itemResrefB))
+            CriteriaQuery<ItemCombinationEntity> query =
+                    cb.createQuery(ItemCombinationEntity.class);
+
+            Root<ItemCombinationEntity> root = query.from(ItemCombinationEntity.class);
+            query.select(root)
+                    .where(
+                            cb.equal(root.get("itemA"), itemResrefA),
+                            cb.equal(root.get("itemB"), itemResrefB)
+                    );
+
+            entity = context.getSession()
+                    .createQuery(query)
                     .uniqueResult();
 
             // Try the other way...
-            if(entity.equals(null))
+            if(entity == null)
             {
-                entity = (ItemCombinationEntity)criteria
-                        .add(Restrictions.eq("itemA", itemResrefB))
-                        .add(Restrictions.eq("itemB", itemResrefA))
+                query.select(root)
+                        .where(
+                                cb.equal(root.get("itemA"), itemResrefB),
+                                cb.equal(root.get("itemB"), itemResrefA)
+                        );
+
+                entity = context.getSession()
+                        .createQuery(query)
                         .uniqueResult();
             }
         }

@@ -1,10 +1,17 @@
 package Data.Repository;
 
 import Data.DataContext;
+import Data.SqlParameter;
+import Entities.CraftEntity;
 import Entities.FameRegionEntity;
+import Entities.PCBlueprintEntity;
 import Entities.PCRegionalFameEntity;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 public class FameRepository {
 
@@ -14,14 +21,10 @@ public class FameRepository {
 
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(PCRegionalFameEntity.class);
-
-            entity = (PCRegionalFameEntity) criteria
-                    .createAlias("fameRegion", "f")
-                    .add(Restrictions.eq("playerID", playerID))
-                    .add(Restrictions.eq("f.fameRegionID", regionID))
-                    .uniqueResult();
+            entity = context.executeSQLSingle("Fame/GetPCFameByID",
+                    PCRegionalFameEntity.class,
+                    new SqlParameter("playerID", playerID),
+                    new SqlParameter("fameRegionID", regionID));
 
         }
 
@@ -29,11 +32,16 @@ public class FameRepository {
         {
             try(DataContext context = new DataContext())
             {
-                Criteria criteria = context.getSession()
-                        .createCriteria(FameRegionEntity.class);
+                CriteriaBuilder cb = context.getSession().getCriteriaBuilder();
 
-                FameRegionEntity fameRegion = (FameRegionEntity) criteria
-                        .add(Restrictions.eq("fameRegionID", regionID))
+                CriteriaQuery<FameRegionEntity> query =
+                        cb.createQuery(FameRegionEntity.class);
+
+                Root<FameRegionEntity> root = query.from(FameRegionEntity.class);
+                query.select(root);
+
+                FameRegionEntity fameRegion = context.getSession()
+                        .createQuery(query)
                         .uniqueResult();
 
                 entity = new PCRegionalFameEntity();

@@ -235,7 +235,7 @@ public class CraftRepository {
     public List<CraftBlueprintCategoryEntity> GetCategoriesAvailableToPCByCraftID(String uuid, int craftID)
     {
         try(DataContext context = new DataContext()) {
-            return context.executeSQLList("Crafting/GetCraftCategoriesAvailableToPCByCraftID",
+            return context.executeSQLList("Craft/GetCraftCategoriesAvailableToPCByCraftID",
                     CraftBlueprintCategoryEntity.class,
                     new SqlParameter("playerID", uuid),
                     new SqlParameter("craftID", craftID));
@@ -245,7 +245,7 @@ public class CraftRepository {
     public List<CraftBlueprintCategoryEntity> GetCategoriesAvailableToPC(String uuid)
     {
         try(DataContext context = new DataContext()) {
-            return context.executeSQLList("Crafting/GetCraftCategoriesAvailableToPC",
+            return context.executeSQLList("Craft/GetCraftCategoriesAvailableToPC",
                     CraftBlueprintCategoryEntity.class,
                     new SqlParameter("playerID", uuid));
         }
@@ -255,7 +255,7 @@ public class CraftRepository {
     {
         try(DataContext context = new DataContext())
         {
-            return context.executeSQLList("Crafting/GetPCBlueprintsByCategoryID",
+            return context.executeSQLList("Craft/GetPCBlueprintsByCategoryID",
                     PCBlueprintEntity.class,
                     new SqlParameter("playerID", uuid),
                     new SqlParameter("categoryID", categoryID));
@@ -266,7 +266,7 @@ public class CraftRepository {
     {
         try(DataContext context = new DataContext())
         {
-            return context.executeSQLList("Crafting/GetPCBlueprintsForCraftByCategoryID",
+            return context.executeSQLList("Craft/GetPCBlueprintsForCraftByCategoryID",
                     PCBlueprintEntity.class,
                     new SqlParameter("playerID", uuid),
                     new SqlParameter("categoryID", categoryID),

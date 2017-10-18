@@ -1,6 +1,7 @@
 package Data.Repository;
 
 import Data.DataContext;
+import Data.SqlParameter;
 import Entities.CustomEffectEntity;
 import Entities.PCCustomEffectEntity;
 
@@ -13,81 +14,30 @@ public class CustomEffectRepository {
 
     public List<PCCustomEffectEntity> GetPCEffects(String uuid)
     {
-        List<PCCustomEffectEntity> entities;
-
         try(DataContext context = new DataContext())
         {
-
-            CriteriaBuilder cb = context.getSession().getCriteriaBuilder();
-
-            CriteriaQuery<PCCustomEffectEntity> query =
-                    cb.createQuery(PCCustomEffectEntity.class);
-
-            Root<PCCustomEffectEntity> root = query.from(PCCustomEffectEntity.class);
-            query.select(root)
-                    .where(
-                            cb.equal(root.get("playerID"), uuid)
-                    );
-
-            entities = context.getSession()
-                    .createQuery(query)
-                    .list();
+            return context.executeSQLList("CustomEffect/GetPCEffects", PCCustomEffectEntity.class,
+                    new SqlParameter("playerID", uuid));
         }
-
-        return entities;
     }
 
     public PCCustomEffectEntity GetPCEffectByID(String uuid, int customEffectID)
     {
-        PCCustomEffectEntity entity;
-
         try(DataContext context = new DataContext())
         {
-            CriteriaBuilder cb = context.getSession().getCriteriaBuilder();
-
-            CriteriaQuery<PCCustomEffectEntity> query =
-                    cb.createQuery(PCCustomEffectEntity.class);
-
-            Root<PCCustomEffectEntity> root = query.from(PCCustomEffectEntity.class);
-            query.select(root)
-                    .where(
-                            cb.equal(root.get("customEffect.customEffectID"), customEffectID),
-                            cb.equal(root.get("playerID"), uuid)
-                    );
-
-            entity = context.getSession()
-                    .createQuery(query)
-                    .uniqueResult();
-
+            return context.executeSQLSingle("CustomEffect/GetPCEffectByID", PCCustomEffectEntity.class,
+                    new SqlParameter("playerID", uuid),
+                    new SqlParameter("customEffectID", customEffectID));
         }
-
-        return entity;
     }
 
     public CustomEffectEntity GetEffectByID(int customEffectID)
     {
-        CustomEffectEntity entity;
-
         try(DataContext context = new DataContext())
         {
-            CriteriaBuilder cb = context.getSession().getCriteriaBuilder();
-
-            CriteriaQuery<CustomEffectEntity> query =
-                    cb.createQuery(CustomEffectEntity.class);
-
-            Root<CustomEffectEntity> root = query.from(CustomEffectEntity.class);
-            query.select(root)
-                    .where(
-                            cb.equal(root.get("customEffectID"), customEffectID)
-                    );
-
-            entity = context.getSession()
-                    .createQuery(query)
-                    .uniqueResult();
-
+            return context.executeSQLSingle("CustomEffect/GetPCEffectByID", PCCustomEffectEntity.class,
+                    new SqlParameter("customEffectID", customEffectID));
         }
-
-        return entity;
     }
 
     public void Save(Object entity)

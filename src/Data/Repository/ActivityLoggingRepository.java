@@ -1,6 +1,7 @@
 package Data.Repository;
 
 import Data.DataContext;
+import Data.SqlParameter;
 import Entities.ChatChannelEntity;
 import Entities.ChatLogEntity;
 
@@ -14,20 +15,8 @@ public class ActivityLoggingRepository {
     {
         try(DataContext context = new DataContext())
         {
-            CriteriaBuilder cb = context.getSession().getCriteriaBuilder();
-
-            CriteriaQuery<ChatChannelEntity> query =
-                    cb.createQuery(ChatChannelEntity.class);
-
-            Root<ChatChannelEntity> root = query.from(ChatChannelEntity.class);
-            query.select(root)
-                .where(
-                    cb.equal(root.get("chatChannelID"), chatChannelID)
-                );
-
-            return context.getSession()
-                    .createQuery(query)
-                    .uniqueResult();
+            return context.executeSQLSingle("ActivityLogging/GetChatChannelByID", ChatChannelEntity.class,
+                    new SqlParameter("chatChannelID", chatChannelID));
         }
     }
 

@@ -61,7 +61,7 @@ public class DataContext implements AutoCloseable {
         return query.getResultList();
     }
 
-    public <T> T executeSQLFileSingle(String sqlFilePath, Class c, SqlParameter... params)
+    public <T> T executeSQLSingle(String sqlFilePath, Class c, SqlParameter... params)
     {
         NativeQuery<T> query = buildQuery(sqlFilePath, c, params);
         return query.getSingleResult();

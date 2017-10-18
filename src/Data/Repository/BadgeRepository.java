@@ -1,6 +1,7 @@
 package Data.Repository;
 
 import Data.DataContext;
+import Data.SqlParameter;
 import Entities.BadgeEntity;
 import Entities.PCBadgeEntity;
 
@@ -11,81 +12,32 @@ import java.util.List;
 
 public class BadgeRepository {
 
-    public List<PCBadgeEntity> GetByUUID(String uuid)
+    public List<PCBadgeEntity> GetPCBadgeByPlayerID(String uuid)
     {
-        List<PCBadgeEntity> entities;
-
         try(DataContext context = new DataContext())
         {
-            CriteriaBuilder cb = context.getSession().getCriteriaBuilder();
-
-            CriteriaQuery<PCBadgeEntity> query =
-                    cb.createQuery(PCBadgeEntity.class);
-
-            Root<PCBadgeEntity> root = query.from(PCBadgeEntity.class);
-            query.select(root)
-                    .where(
-                            cb.equal(root.get("playerID"), uuid)
-                    );
-
-            entities = context.getSession()
-                    .createQuery(query)
-                    .list();
+            return context.executeSQLList("Badge/GetPCBadgeByPlayerID", PCBadgeEntity.class,
+                    new SqlParameter("playerID", uuid));
         }
-
-        return entities;
     }
 
-    public PCBadgeEntity GetByID(String uuid, int badgeID)
+    public PCBadgeEntity GetPCBadgeByBadgeID(String uuid, int badgeID)
     {
-        PCBadgeEntity entity;
-
         try(DataContext context = new DataContext())
         {
-            CriteriaBuilder cb = context.getSession().getCriteriaBuilder();
-
-            CriteriaQuery<PCBadgeEntity> query =
-                    cb.createQuery(PCBadgeEntity.class);
-
-            Root<PCBadgeEntity> root = query.from(PCBadgeEntity.class);
-            query.select(root)
-                    .where(
-                            cb.equal(root.get("playerID"), uuid),
-                            cb.equal(root.get("badgeID"), badgeID)
-                    );
-
-            entity = context.getSession()
-                    .createQuery(query)
-                    .uniqueResult();
-
+            return context.executeSQLSingle("Badge/GetPCBadgeByBadgeID", PCBadgeEntity.class,
+                    new SqlParameter("playerID", uuid),
+                    new SqlParameter("badgeID", badgeID));
         }
-
-        return entity;
     }
 
-    public BadgeEntity GetByID(int badgeID)
+    public BadgeEntity GetBadgeByID(int badgeID)
     {
-        BadgeEntity entity;
-
         try(DataContext context = new DataContext())
         {
-            CriteriaBuilder cb = context.getSession().getCriteriaBuilder();
-
-            CriteriaQuery<BadgeEntity> query =
-                    cb.createQuery(BadgeEntity.class);
-
-            Root<BadgeEntity> root = query.from(BadgeEntity.class);
-            query.select(root)
-                    .where(
-                            cb.equal(root.get("badgeID"), badgeID)
-                    );
-
-            entity = context.getSession()
-                    .createQuery(query)
-                    .uniqueResult();
+            return context.executeSQLSingle("Badge/GetBadgeByID", BadgeEntity.class,
+                    new SqlParameter("badgeID", badgeID));
         }
-
-        return entity;
     }
 
     public void Save(PCBadgeEntity entity)

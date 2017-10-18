@@ -21,7 +21,7 @@ public class ValidateCDKey implements IScriptEventHandler {
 
         if (NWScript.getIsDM(pc) || (NWScript.getIsDMPossessed(pc) && NWScript.getIsDM(NWScript.getMaster(pc))))
         {
-            AuthorizedDMEntity entity = repo.getByCDKey(sCDKey);
+            AuthorizedDMEntity entity = repo.GetDMByCDKey(sCDKey);
 
             if(entity != null && entity.getDMRole() > 0)
             {

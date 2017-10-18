@@ -1,6 +1,7 @@
 package Data.Repository;
 
 import Data.DataContext;
+import Data.SqlParameter;
 import Entities.*;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
@@ -17,10 +18,8 @@ public class MagicRepository {
     {
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(AbilityEntity.class)
-                    .add(Restrictions.eq("featID", featID));
-            return (AbilityEntity)criteria.uniqueResult();
+            return context.executeSQLSingle("Magic/GetAbilityByFeatID", AbilityEntity.class,
+                    new SqlParameter("featID", featID));
         }
     }
 
@@ -28,10 +27,8 @@ public class MagicRepository {
     {
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(AbilityEntity.class)
-                    .add(Restrictions.eq("abilityID", abilityID));
-            return (AbilityEntity)criteria.uniqueResult();
+            return context.executeSQLSingle("Magic/GetAbilityByID", AbilityEntity.class,
+                    new SqlParameter("abilityID", abilityID));
         }
     }
 
@@ -41,19 +38,13 @@ public class MagicRepository {
 
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(PCLearnedAbilityEntity.class)
-                    .createAlias("ability", "a")
-                    .add(Restrictions.eq("a.abilityID", abilityID))
-                    .add(Restrictions.eq("playerID", uuid));
-            PCLearnedAbilityEntity entity = (PCLearnedAbilityEntity) criteria.uniqueResult();
+            PCLearnedAbilityEntity entity = context.executeSQLSingle("Magic/GetPCLearnedAbilityByID", PCLearnedAbilityEntity.class,
+                    new SqlParameter("abilityID", abilityID),
+                    new SqlParameter("playerID", uuid));
 
             if(entity == null)
             {
-                criteria = context.getSession()
-                        .createCriteria(AbilityEntity.class)
-                        .add(Restrictions.eq("abilityID", abilityID));
-                AbilityEntity ability = (AbilityEntity) criteria.uniqueResult();
+                AbilityEntity ability = GetAbilityByID(abilityID);
 
                 entity = new PCLearnedAbilityEntity();
                 entity.setPlayerID(uuid);

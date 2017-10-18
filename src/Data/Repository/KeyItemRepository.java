@@ -1,6 +1,7 @@
 package Data.Repository;
 
 import Data.DataContext;
+import Data.SqlParameter;
 import Entities.KeyItemEntity;
 import Entities.PCKeyItemEntity;
 import org.hibernate.Criteria;
@@ -13,30 +14,20 @@ public class KeyItemRepository {
 
     public List<PCKeyItemEntity> GetPlayerKeyItemsByCategory(String uuid, int categoryID)
     {
-        List<PCKeyItemEntity> playerItems;
-
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(PCKeyItemEntity.class)
-                    .createAlias("keyItem", "k")
-                    .add(Restrictions.eq("playerID", uuid))
-                    .add(Restrictions.eq("k.keyItemCategoryID", categoryID));
-            playerItems = criteria.list();
+            return context.executeSQLList("KeyItem/GetPlayerKeyItemsByCategory", PCKeyItemEntity.class,
+                    new SqlParameter("playerID", uuid),
+                    new SqlParameter("categoryID", categoryID));
         }
-
-        return playerItems;
     }
 
     public KeyItemEntity GetKeyItemByID(int keyItemID)
     {
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(KeyItemEntity.class)
-                    .add(Restrictions.eq("keyItemID", keyItemID));
-
-            return (KeyItemEntity)criteria.uniqueResult();
+            return context.executeSQLSingle("KeyItem/GetPlayerKeyItemsByCategory", KeyItemEntity.class,
+                    new SqlParameter("keyItemID", keyItemID));
         }
     }
 
@@ -44,28 +35,19 @@ public class KeyItemRepository {
     {
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(PCKeyItemEntity.class)
-                    .add(Restrictions.eq("keyItemID", keyItemID))
-                    .add(Restrictions.eq("playerID", uuid));
-            return (PCKeyItemEntity)criteria.uniqueResult();
+            return context.executeSQLSingle("KeyItem/GetPCKeyItemByKeyItemID", PCKeyItemEntity.class,
+                    new SqlParameter("playerID", uuid),
+                    new SqlParameter("keyItemID", keyItemID));
         }
     }
 
     public List<Integer> GetListOfPCKeyItemIDs(String uuid)
     {
-        List<Integer> keyItemIDs;
-
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(PCKeyItemEntity.class)
-                    .add(Restrictions.eq("playerID", uuid))
-                    .setProjection(Projections.distinct(Projections.property("keyItemID")));
-            keyItemIDs = criteria.list();
+            return context.executeSQLSingle("KeyItem/GetPCKeyItemByKeyItemID", Integer.class,
+                    new SqlParameter("playerID", uuid));
         }
-
-        return keyItemIDs;
     }
 
     public void Delete(PCKeyItemEntity entity)

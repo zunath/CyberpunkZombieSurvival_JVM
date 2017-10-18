@@ -112,7 +112,7 @@ public class PlayerAuthorizationSystem {
         String cdKey = NWScript.getPCPublicCDKey(oPC, false);
         AuthorizedDMRepository repo = new AuthorizedDMRepository();
 
-        AuthorizedDMEntity entity = repo.getByCDKey(cdKey);
+        AuthorizedDMEntity entity = repo.GetDMByCDKey(cdKey);
         return entity != null;
 
     }

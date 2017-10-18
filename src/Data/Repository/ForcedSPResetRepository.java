@@ -1,9 +1,14 @@
 package Data.Repository;
 
 import Data.DataContext;
+import Entities.CraftEntity;
 import Entities.ForcedSPResetEntity;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 public class ForcedSPResetRepository {
 
@@ -13,12 +18,19 @@ public class ForcedSPResetRepository {
 
         try(DataContext context = new DataContext())
         {
-            Criteria criteria = context.getSession()
-                    .createCriteria(ForcedSPResetEntity.class)
-                    .addOrder(Order.desc("dateOfReset"))
-                    .setMaxResults(1);
+            CriteriaBuilder cb = context.getSession().getCriteriaBuilder();
 
-            entity = (ForcedSPResetEntity) criteria.uniqueResult();
+            CriteriaQuery<ForcedSPResetEntity> query =
+                    cb.createQuery(ForcedSPResetEntity.class);
+
+            Root<ForcedSPResetEntity> root = query.from(ForcedSPResetEntity.class);
+            query.select(root)
+                    .orderBy(cb.desc(root.get("dateOfReset")));
+
+            entity = context.getSession()
+                    .createQuery(query)
+                    .setMaxResults(1)
+                    .uniqueResult();
         }
 
         return entity;

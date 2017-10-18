@@ -8,9 +8,7 @@ public class DatabaseRepository {
     {
         try(DataContext context = new DataContext())
         {
-            context.getSession()
-                    .createSQLQuery("SELECT 'keep-alive'")
-                    .list();
+            context.executeSQLSingle("KeepAlive", String.class);
         }
     }
 }

@@ -51,7 +51,7 @@ public class ViewBadges extends DialogBase implements IDialogHandler {
         NWObject oPC = GetPC();
         PlayerGO pcGO = new PlayerGO(oPC);
         BadgeRepository repo = new BadgeRepository();
-        PCBadgeEntity entity = repo.GetByID(pcGO.getUUID(), badgeID);
+        PCBadgeEntity entity = repo.GetPCBadgeByBadgeID(pcGO.getUUID(), badgeID);
         String header = ColorToken.Green() + "Badge Name: " + ColorToken.End() + entity.getBadge().getName() + "\n";
         header += ColorToken.Green() + "Date: " + ColorToken.End() + entity.getAcquiredDate().toString() + "\n";
         header += ColorToken.Green() + "Acquired Area: " + ColorToken.End() + entity.getAcquiredAreaName() + "\n\n";
@@ -65,7 +65,7 @@ public class ViewBadges extends DialogBase implements IDialogHandler {
         NWObject oPC = GetPC();
         PlayerGO pcGO = new PlayerGO(oPC);
         BadgeRepository repo = new BadgeRepository();
-        List<PCBadgeEntity> badges = repo.GetByUUID(pcGO.getUUID());
+        List<PCBadgeEntity> badges = repo.GetPCBadgeByPlayerID(pcGO.getUUID());
         DialogPage page = GetPageByName("MainPage");
         page.getResponses().clear();
 

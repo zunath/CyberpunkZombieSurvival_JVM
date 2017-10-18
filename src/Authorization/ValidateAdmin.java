@@ -14,7 +14,7 @@ public class ValidateAdmin implements IScriptEventHandler {
         int isAdmin = 0;
         String cdKey = NWScript.getPCPublicCDKey(objSelf, false);
         AuthorizedDMRepository repo = new AuthorizedDMRepository();
-        AuthorizedDMEntity entity = repo.getByCDKey(cdKey);
+        AuthorizedDMEntity entity = repo.GetDMByCDKey(cdKey);
 
         if(entity != null && entity.getDMRole() == 2) // 2 = Admin
         {

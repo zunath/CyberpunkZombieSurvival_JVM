@@ -13,7 +13,7 @@ public class ValidateDM implements IScriptEventHandler {
 
         String cdKey = NWScript.getPCPublicCDKey(objSelf, false);
         AuthorizedDMRepository repo = new AuthorizedDMRepository();
-        AuthorizedDMEntity entity = repo.getByCDKey(cdKey);
+        AuthorizedDMEntity entity = repo.GetDMByCDKey(cdKey);
         int isDM = 0;
 
         if(entity != null && entity.getDMRole() == 1) // 1 = DM
