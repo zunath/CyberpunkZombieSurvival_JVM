@@ -7,658 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="486e3add-e013-4d47-abab-c86692a1ecb0" name="Default" comment="Standardize project structure, move sql code to resources directory.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.classpath" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/CZS.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.project" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.settings/org.eclipse.m2e.core.prefs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CZS_JVM.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Data/DataContext.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Item/Medical/TreatmentKit.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/CyberpunkZombieSurvival_JVM.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/artifacts/CyberpunkZombieSurvival_JVM.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/com_mchange_mchange_commons_java_0_2_12.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/joda_time_joda_time_2_9_9.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/org_jboss_logging_jboss_logging_3_3_1_Final.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/CyberpunkZombieSurvival_JVM.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/CyberpunkZombieSurvival_JVM/CyberpunkZombieSurvival_JVM.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/ActivityLogging/GetChatChannelByID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/AuthorizedDM/GetDMByCDKey.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Badge/GetBadgeByID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Badge/GetPCBadgeByBadgeID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Badge/GetPCBadgeByPlayerID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Craft/GetAllCrafts.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Craft/GetBlueprintByID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Craft/GetCraftByID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Craft/GetCraftCategoriesAvailableToPC.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Craft/GetCraftCategoriesAvailableToPCByCraftID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Craft/GetCraftLevelByLevel.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Craft/GetCraftMaxLevel.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Craft/GetPCBlueprintByID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Craft/GetPCBlueprintsByCategoryID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Craft/GetPCBlueprintsForCraftByCategoryID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Craft/GetPCCraftByID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/CustomEffect/GetEffectByID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/CustomEffect/GetPCEffectByID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/CustomEffect/GetPCEffects.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Database/KeepAlive.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Fame/GetPCFameByID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/KeyItem/GetKeyItemByID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/KeyItem/GetListOfPCKeyItemIDs.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/KeyItem/GetPCKeyItemByKeyItemID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/KeyItem/GetPlayerKeyItemsByCategory.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/LootTable/GetByLootTableID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Magic/GetAbilityByFeatID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Magic/GetAbilityByID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Magic/GetActiveAbilityCategories.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Magic/GetPCCooldownByID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Magic/GetPCEquippedAbilities.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Magic/GetPCLearnedAbilitiesByCategoryID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Magic/GetPCLearnedAbilityByID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/OverflowItem/DeleteByID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/OverflowItem/GetAllByPlayerID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/OverflowItem/GetPlayerOverflowItemCount.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/PCAuthorizedCDKeys/GetByAccountName.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/PCCorpse/GetAll.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/PCCorpse/GetByID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/PCMigration/GetByMigrationID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/PCOutfit/GetByUUID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Player/GetByPlayerID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/PlayerProgressionSkills/DeleteAllByPlayerID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/PlayerProgressionSkills/GetByPlayerIDAndSkillID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Portrait/GetBy2DAID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Portrait/GetByPortraitID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Portrait/GetByResref.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Portrait/GetNumberOfPortraits.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Profession/GetActiveProfessions.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/ProgressionLevel/GetAllProgressionLevels.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/ProgressionLevel/GetProgressionLevelByLevel.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/ProgressionSkill/GetProgressionSkillByID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Quest/GetAllCompletedQuestIDs.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Quest/GetAllPCQuestStatusesByID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Quest/GetPCQuestStatusByID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Quest/GetPlayerKillTargetsByID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Quest/GetQuestByID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Quest/GetQuestKillTargetsByQuestID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Research/DeleteAllByStructureID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Research/GetResearchBlueprintByID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Research/GetResearchBlueprintsForCategory.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Research/GetResearchCategoriesAvailableForCraftAndLevel.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Research/GetResearchJobInQueueForSlot.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Research/GetResearchJobsInQueue.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/SearchSite/GetSearchSiteByID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/ServerConfiguration/GetServerConfiguration.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/SpawnTable/GetBySpawnTableID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Storage/GetByContainerID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Structure/GetAllConstructionSites.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Structure/GetAllFlagsInArea.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Structure/GetAllTerritoryFlags.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Structure/GetAllTerritorySelectablePermissions.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Structure/GetConstructionSiteByID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Structure/GetNumberOfStructuresInTerritory.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Structure/GetPCStructureByID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Structure/GetPCTerritoryFlagByID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Structure/GetPermissionByID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Structure/GetPermissionsByFlagID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Structure/GetPermissionsByPlayerID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Structure/GetStructureBlueprintByID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Structure/GetStructureCategoriesByType.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Structure/GetStructuresByCategoryID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/Structure/GetTerritoryPermissionByID.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/Data/SQL/ZombieClothes/GetAllZombieClothes.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Item/Medical/TreatmentKit.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/src/Data/DataContext.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Crafting/CarefulHands.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Crafting/CarefulHands.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Crafting/IronCollector.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Crafting/IronCollector.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Crafting/LumberCollector.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Crafting/LumberCollector.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Crafting/Lumberjack.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Crafting/Lumberjack.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Crafting/Miner.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Crafting/Miner.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Crafting/ResearchEfficiency.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Crafting/ResearchEfficiency.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Crafting/ToolExpertLogging.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Crafting/ToolExpertLogging.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Crafting/ToolExpertMining.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Crafting/ToolExpertMining.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/EnhancingMagic/BoostCHA.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostCHA.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/EnhancingMagic/BoostCON.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostCON.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/EnhancingMagic/BoostDEX.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostDEX.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/EnhancingMagic/BoostEvasion.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostEvasion.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/EnhancingMagic/BoostINT.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostINT.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/EnhancingMagic/BoostSTR.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostSTR.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/EnhancingMagic/BoostSearch.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostSearch.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/EnhancingMagic/BoostStealth.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostStealth.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/EnhancingMagic/BoostWIS.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostWIS.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/EnhancingMagic/Light.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/Light.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/EnhancingMagic/Refresh.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/Refresh.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/EvocationMagic/Blind.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Blind.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/EvocationMagic/Flame.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Flame.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/EvocationMagic/Ice.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Ice.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/EvocationMagic/Poison.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Poison.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/EvocationMagic/Snare.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Snare.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/EvocationMagic/Stun.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Stun.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/HolyMagic/Antidote.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/Antidote.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/HolyMagic/Cure.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/Cure.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/HolyMagic/Escape.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/Escape.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/HolyMagic/PatchUp.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/PatchUp.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/HolyMagic/Regenerate.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/Regenerate.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/HolyMagic/TeleportCleiyra.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/TeleportCleiyra.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/HolyMagic/TeleportMason.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/TeleportMason.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/HolyMagic/TurnUndead.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/TurnUndead.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/IAbility.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/IAbility.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Melee/ElectricFist.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Melee/ElectricFist.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Melee/FlameBlade.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Melee/FlameBlade.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Melee/SkullBash.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Melee/SkullBash.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Passive/AntiqueCollector.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/AntiqueCollector.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Passive/Clarity.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Clarity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Passive/Deft.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Deft.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Passive/DualWield.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/DualWield.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Passive/EnergyBladeAdept.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/EnergyBladeAdept.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Passive/Evasive.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Evasive.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Passive/Fixer.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Fixer.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Passive/GoodEye.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/GoodEye.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Passive/ImmuneSystem.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/ImmuneSystem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Passive/InfectionRecovery.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/InfectionRecovery.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Passive/Insightful.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Insightful.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Passive/LizardRegeneration.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/LizardRegeneration.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Passive/MasterOfUnlocking.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/MasterOfUnlocking.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Passive/Medic.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Medic.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Passive/Personable.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Personable.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Passive/Powerful.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Powerful.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Passive/QuickPick.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/QuickPick.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Passive/QuickReload.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/QuickReload.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Passive/SlowedInfection.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/SlowedInfection.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Passive/Smart.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Smart.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Passive/SnakeEater.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/SnakeEater.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Passive/SpeedyCrafter.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/SpeedyCrafter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Passive/StrongBack.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/StrongBack.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Passive/Sturdiness.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Sturdiness.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Passive/SturdySkin.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/SturdySkin.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Passive/Thief.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Thief.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Passive/TouchedByEnhancement.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/TouchedByEnhancement.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Passive/TouchedByEvocation.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/TouchedByEvocation.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Passive/TouchedByHoly.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/TouchedByHoly.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Passive/Tough.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Tough.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Abilities/Ranged/PiercingToss.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Ranged/PiercingToss.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Authorization/ValidateAdmin.java" afterPath="$PROJECT_DIR$/src/main/java/Authorization/ValidateAdmin.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Authorization/ValidateCDKey.java" afterPath="$PROJECT_DIR$/src/main/java/Authorization/ValidateCDKey.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Authorization/ValidateDM.java" afterPath="$PROJECT_DIR$/src/main/java/Authorization/ValidateDM.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Bioware/AddItemPropertyPolicy.java" afterPath="$PROJECT_DIR$/src/main/java/Bioware/AddItemPropertyPolicy.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Bioware/Position.java" afterPath="$PROJECT_DIR$/src/main/java/Bioware/Position.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Bioware/XP2.java" afterPath="$PROJECT_DIR$/src/main/java/Bioware/XP2.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Common/Constants.java" afterPath="$PROJECT_DIR$/src/main/java/Common/Constants.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Common/EventReceiver.java" afterPath="$PROJECT_DIR$/src/main/java/Common/EventReceiver.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Common/IScriptEventHandler.java" afterPath="$PROJECT_DIR$/src/main/java/Common/IScriptEventHandler.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Common/StartUp.java" afterPath="$PROJECT_DIR$/src/main/java/Common/StartUp.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Conversation/AdjustAbilities.java" afterPath="$PROJECT_DIR$/src/main/java/Conversation/AdjustAbilities.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Conversation/AllocateSkillPoints.java" afterPath="$PROJECT_DIR$/src/main/java/Conversation/AllocateSkillPoints.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Conversation/BuildToolMenu.java" afterPath="$PROJECT_DIR$/src/main/java/Conversation/BuildToolMenu.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Conversation/ChangeHead.java" afterPath="$PROJECT_DIR$/src/main/java/Conversation/ChangeHead.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Conversation/ChangePortrait.java" afterPath="$PROJECT_DIR$/src/main/java/Conversation/ChangePortrait.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Conversation/CharacterManagement.java" afterPath="$PROJECT_DIR$/src/main/java/Conversation/CharacterManagement.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Conversation/ConstructionSite.java" afterPath="$PROJECT_DIR$/src/main/java/Conversation/ConstructionSite.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Conversation/Crafting.java" afterPath="$PROJECT_DIR$/src/main/java/Conversation/Crafting.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Conversation/KeyItems.java" afterPath="$PROJECT_DIR$/src/main/java/Conversation/KeyItems.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Conversation/ManageCDKeys.java" afterPath="$PROJECT_DIR$/src/main/java/Conversation/ManageCDKeys.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Conversation/NPC/AbilityMerchant.java" afterPath="$PROJECT_DIR$/src/main/java/Conversation/NPC/AbilityMerchant.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Conversation/NPC/BlueprintMerchant.java" afterPath="$PROJECT_DIR$/src/main/java/Conversation/NPC/BlueprintMerchant.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Conversation/NPC/RevivalWizard.java" afterPath="$PROJECT_DIR$/src/main/java/Conversation/NPC/RevivalWizard.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Conversation/Outfit.java" afterPath="$PROJECT_DIR$/src/main/java/Conversation/Outfit.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Conversation/ProfessionMenu.java" afterPath="$PROJECT_DIR$/src/main/java/Conversation/ProfessionMenu.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Conversation/ResearchTerminal.java" afterPath="$PROJECT_DIR$/src/main/java/Conversation/ResearchTerminal.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Conversation/ResetSkillPoints.java" afterPath="$PROJECT_DIR$/src/main/java/Conversation/ResetSkillPoints.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Conversation/ResponseModels/ResearchTerminalResponse.java" afterPath="$PROJECT_DIR$/src/main/java/Conversation/ResponseModels/ResearchTerminalResponse.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Conversation/RestMenu.java" afterPath="$PROJECT_DIR$/src/main/java/Conversation/RestMenu.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Conversation/StartingDoor.java" afterPath="$PROJECT_DIR$/src/main/java/Conversation/StartingDoor.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Conversation/StructureStorage.java" afterPath="$PROJECT_DIR$/src/main/java/Conversation/StructureStorage.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Conversation/TerritoryFlag.java" afterPath="$PROJECT_DIR$/src/main/java/Conversation/TerritoryFlag.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Conversation/ViewBadges.java" afterPath="$PROJECT_DIR$/src/main/java/Conversation/ViewBadges.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Conversation/ViewCrafts.java" afterPath="$PROJECT_DIR$/src/main/java/Conversation/ViewCrafts.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Conversation/ViewModels/AdjustAbilitiesViewModel.java" afterPath="$PROJECT_DIR$/src/main/java/Conversation/ViewModels/AdjustAbilitiesViewModel.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Conversation/ViewModels/BuildToolMenuModel.java" afterPath="$PROJECT_DIR$/src/main/java/Conversation/ViewModels/BuildToolMenuModel.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Conversation/ViewModels/CharacterManagementViewModel.java" afterPath="$PROJECT_DIR$/src/main/java/Conversation/ViewModels/CharacterManagementViewModel.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Conversation/ViewModels/ConstructionSiteMenuModel.java" afterPath="$PROJECT_DIR$/src/main/java/Conversation/ViewModels/ConstructionSiteMenuModel.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Conversation/ViewModels/HeadViewModel.java" afterPath="$PROJECT_DIR$/src/main/java/Conversation/ViewModels/HeadViewModel.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Conversation/ViewModels/ItemViewModel.java" afterPath="$PROJECT_DIR$/src/main/java/Conversation/ViewModels/ItemViewModel.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Conversation/ViewModels/PortraitViewModel.java" afterPath="$PROJECT_DIR$/src/main/java/Conversation/ViewModels/PortraitViewModel.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Conversation/ViewModels/ProfessionViewModel.java" afterPath="$PROJECT_DIR$/src/main/java/Conversation/ViewModels/ProfessionViewModel.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Conversation/ViewModels/ResearchTerminalViewModel.java" afterPath="$PROJECT_DIR$/src/main/java/Conversation/ViewModels/ResearchTerminalViewModel.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Conversation/ViewModels/TerritoryFlagMenuModel.java" afterPath="$PROJECT_DIR$/src/main/java/Conversation/ViewModels/TerritoryFlagMenuModel.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Creature/GasCanister_OnDeath.java" afterPath="$PROJECT_DIR$/src/main/java/Creature/GasCanister_OnDeath.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Creature/GenericOnConversation.java" afterPath="$PROJECT_DIR$/src/main/java/Creature/GenericOnConversation.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Creature/NPC_CombatRoutine.java" afterPath="$PROJECT_DIR$/src/main/java/Creature/NPC_CombatRoutine.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Creature/Zombie/Zombie_OnAttacked.java" afterPath="$PROJECT_DIR$/src/main/java/Creature/Zombie/Zombie_OnAttacked.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Creature/Zombie/Zombie_OnBlocked.java" afterPath="$PROJECT_DIR$/src/main/java/Creature/Zombie/Zombie_OnBlocked.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Creature/Zombie/Zombie_OnConversation.java" afterPath="$PROJECT_DIR$/src/main/java/Creature/Zombie/Zombie_OnConversation.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Creature/Zombie/Zombie_OnDamaged.java" afterPath="$PROJECT_DIR$/src/main/java/Creature/Zombie/Zombie_OnDamaged.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Creature/Zombie/Zombie_OnDeath.java" afterPath="$PROJECT_DIR$/src/main/java/Creature/Zombie/Zombie_OnDeath.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Creature/Zombie/Zombie_OnDisturbed.java" afterPath="$PROJECT_DIR$/src/main/java/Creature/Zombie/Zombie_OnDisturbed.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Creature/Zombie/Zombie_OnHeartbeat.java" afterPath="$PROJECT_DIR$/src/main/java/Creature/Zombie/Zombie_OnHeartbeat.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Creature/Zombie/Zombie_OnPerception.java" afterPath="$PROJECT_DIR$/src/main/java/Creature/Zombie/Zombie_OnPerception.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Creature/Zombie/Zombie_OnRested.java" afterPath="$PROJECT_DIR$/src/main/java/Creature/Zombie/Zombie_OnRested.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Creature/Zombie/Zombie_OnRoundEnd.java" afterPath="$PROJECT_DIR$/src/main/java/Creature/Zombie/Zombie_OnRoundEnd.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Creature/Zombie/Zombie_OnSpawn.java" afterPath="$PROJECT_DIR$/src/main/java/Creature/Zombie/Zombie_OnSpawn.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Creature/Zombie/Zombie_OnSpellCast.java" afterPath="$PROJECT_DIR$/src/main/java/Creature/Zombie/Zombie_OnSpellCast.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Creature/Zombie/Zombie_OnUserDefined.java" afterPath="$PROJECT_DIR$/src/main/java/Creature/Zombie/Zombie_OnUserDefined.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/CustomEffect/BleedingEffect.java" afterPath="$PROJECT_DIR$/src/main/java/CustomEffect/BleedingEffect.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/CustomEffect/BurnEffect.java" afterPath="$PROJECT_DIR$/src/main/java/CustomEffect/BurnEffect.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/CustomEffect/ICustomEffectHandler.java" afterPath="$PROJECT_DIR$/src/main/java/CustomEffect/ICustomEffectHandler.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/CustomEffect/InfectionOverTimeEffect.java" afterPath="$PROJECT_DIR$/src/main/java/CustomEffect/InfectionOverTimeEffect.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/CustomEffect/ManaKitEffect.java" afterPath="$PROJECT_DIR$/src/main/java/CustomEffect/ManaKitEffect.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/CustomEffect/PiercingTossBleedEffect.java" afterPath="$PROJECT_DIR$/src/main/java/CustomEffect/PiercingTossBleedEffect.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/CustomEffect/PoisonEffect.java" afterPath="$PROJECT_DIR$/src/main/java/CustomEffect/PoisonEffect.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/CustomEffect/RefreshEffect.java" afterPath="$PROJECT_DIR$/src/main/java/CustomEffect/RefreshEffect.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/CustomEffect/ShockEffect.java" afterPath="$PROJECT_DIR$/src/main/java/CustomEffect/ShockEffect.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/DataAccess.java" afterPath="$PROJECT_DIR$/src/main/java/Data/DataAccess.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/Repository/ActivePlayerRepository.java" afterPath="$PROJECT_DIR$/src/main/java/Data/Repository/ActivePlayerRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/Repository/ActivityLoggingRepository.java" afterPath="$PROJECT_DIR$/src/main/java/Data/Repository/ActivityLoggingRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/Repository/AuthorizedDMRepository.java" afterPath="$PROJECT_DIR$/src/main/java/Data/Repository/AuthorizedDMRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/Repository/BadgeRepository.java" afterPath="$PROJECT_DIR$/src/main/java/Data/Repository/BadgeRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/Repository/CraftRepository.java" afterPath="$PROJECT_DIR$/src/main/java/Data/Repository/CraftRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/Repository/CustomEffectRepository.java" afterPath="$PROJECT_DIR$/src/main/java/Data/Repository/CustomEffectRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/Repository/DatabaseRepository.java" afterPath="$PROJECT_DIR$/src/main/java/Data/Repository/DatabaseRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/Repository/FameRepository.java" afterPath="$PROJECT_DIR$/src/main/java/Data/Repository/FameRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/Repository/ForcedSPResetRepository.java" afterPath="$PROJECT_DIR$/src/main/java/Data/Repository/ForcedSPResetRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/Repository/ItemCombinationRepository.java" afterPath="$PROJECT_DIR$/src/main/java/Data/Repository/ItemCombinationRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/Repository/KeyItemRepository.java" afterPath="$PROJECT_DIR$/src/main/java/Data/Repository/KeyItemRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/Repository/LootTableRepository.java" afterPath="$PROJECT_DIR$/src/main/java/Data/Repository/LootTableRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/Repository/MagicRepository.java" afterPath="$PROJECT_DIR$/src/main/java/Data/Repository/MagicRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/Repository/OverflowItemRepository.java" afterPath="$PROJECT_DIR$/src/main/java/Data/Repository/OverflowItemRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/Repository/PCAuthorizedCDKeysRepository.java" afterPath="$PROJECT_DIR$/src/main/java/Data/Repository/PCAuthorizedCDKeysRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/Repository/PCCorpseRepository.java" afterPath="$PROJECT_DIR$/src/main/java/Data/Repository/PCCorpseRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/Repository/PCMigrationRepository.java" afterPath="$PROJECT_DIR$/src/main/java/Data/Repository/PCMigrationRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/Repository/PCOutfitRepository.java" afterPath="$PROJECT_DIR$/src/main/java/Data/Repository/PCOutfitRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/Repository/PlayerProgressionSkillsRepository.java" afterPath="$PROJECT_DIR$/src/main/java/Data/Repository/PlayerProgressionSkillsRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/Repository/PlayerRepository.java" afterPath="$PROJECT_DIR$/src/main/java/Data/Repository/PlayerRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/Repository/PortraitRepository.java" afterPath="$PROJECT_DIR$/src/main/java/Data/Repository/PortraitRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/Repository/ProfessionRepository.java" afterPath="$PROJECT_DIR$/src/main/java/Data/Repository/ProfessionRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/Repository/ProgressionLevelRepository.java" afterPath="$PROJECT_DIR$/src/main/java/Data/Repository/ProgressionLevelRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/Repository/ProgressionSkillRepository.java" afterPath="$PROJECT_DIR$/src/main/java/Data/Repository/ProgressionSkillRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/Repository/QuestRepository.java" afterPath="$PROJECT_DIR$/src/main/java/Data/Repository/QuestRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/Repository/ResearchRepository.java" afterPath="$PROJECT_DIR$/src/main/java/Data/Repository/ResearchRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/Repository/SearchSiteRepository.java" afterPath="$PROJECT_DIR$/src/main/java/Data/Repository/SearchSiteRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/Repository/ServerConfigurationRepository.java" afterPath="$PROJECT_DIR$/src/main/java/Data/Repository/ServerConfigurationRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/Repository/SpawnTableRepository.java" afterPath="$PROJECT_DIR$/src/main/java/Data/Repository/SpawnTableRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/Repository/StorageRepository.java" afterPath="$PROJECT_DIR$/src/main/java/Data/Repository/StorageRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/Repository/StructureRepository.java" afterPath="$PROJECT_DIR$/src/main/java/Data/Repository/StructureRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/Repository/ZombieClothesRepository.java" afterPath="$PROJECT_DIR$/src/main/java/Data/Repository/ZombieClothesRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/ActivityLogging/GetChatChannelByID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/ActivityLogging/GetChatChannelByID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/AuthorizedDM/GetDMByCDKey.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/AuthorizedDM/GetDMByCDKey.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Badge/GetBadgeByID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Badge/GetBadgeByID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Badge/GetPCBadgeByBadgeID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Badge/GetPCBadgeByBadgeID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Badge/GetPCBadgeByPlayerID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Badge/GetPCBadgeByPlayerID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Craft/GetAllCrafts.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Craft/GetAllCrafts.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Craft/GetBlueprintByID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Craft/GetBlueprintByID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Craft/GetCraftByID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Craft/GetCraftByID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Craft/GetCraftCategoriesAvailableToPC.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Craft/GetCraftCategoriesAvailableToPC.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Craft/GetCraftCategoriesAvailableToPCByCraftID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Craft/GetCraftCategoriesAvailableToPCByCraftID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Craft/GetCraftLevelByLevel.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Craft/GetCraftLevelByLevel.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Craft/GetCraftMaxLevel.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Craft/GetCraftMaxLevel.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Craft/GetPCBlueprintByID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Craft/GetPCBlueprintByID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Craft/GetPCBlueprintsByCategoryID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Craft/GetPCBlueprintsByCategoryID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Craft/GetPCBlueprintsForCraftByCategoryID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Craft/GetPCBlueprintsForCraftByCategoryID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Craft/GetPCCraftByID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Craft/GetPCCraftByID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/CustomEffect/GetEffectByID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/CustomEffect/GetEffectByID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/CustomEffect/GetPCEffectByID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/CustomEffect/GetPCEffectByID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/CustomEffect/GetPCEffects.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/CustomEffect/GetPCEffects.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Database/KeepAlive.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Database/KeepAlive.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Fame/GetPCFameByID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Fame/GetPCFameByID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/KeyItem/GetKeyItemByID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/KeyItem/GetKeyItemByID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/KeyItem/GetListOfPCKeyItemIDs.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/KeyItem/GetListOfPCKeyItemIDs.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/KeyItem/GetPCKeyItemByKeyItemID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/KeyItem/GetPCKeyItemByKeyItemID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/KeyItem/GetPlayerKeyItemsByCategory.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/KeyItem/GetPlayerKeyItemsByCategory.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/LootTable/GetByLootTableID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/LootTable/GetByLootTableID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Magic/GetAbilityByFeatID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Magic/GetAbilityByFeatID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Magic/GetAbilityByID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Magic/GetAbilityByID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Magic/GetActiveAbilityCategories.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Magic/GetActiveAbilityCategories.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Magic/GetPCCooldownByID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Magic/GetPCCooldownByID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Magic/GetPCEquippedAbilities.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Magic/GetPCEquippedAbilities.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Magic/GetPCLearnedAbilitiesByCategoryID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Magic/GetPCLearnedAbilitiesByCategoryID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Magic/GetPCLearnedAbilityByID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Magic/GetPCLearnedAbilityByID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/OverflowItem/DeleteByID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/OverflowItem/DeleteByID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/OverflowItem/GetAllByPlayerID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/OverflowItem/GetAllByPlayerID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/OverflowItem/GetPlayerOverflowItemCount.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/OverflowItem/GetPlayerOverflowItemCount.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/PCAuthorizedCDKeys/GetByAccountName.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/PCAuthorizedCDKeys/GetByAccountName.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/PCCorpse/GetAll.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/PCCorpse/GetAll.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/PCCorpse/GetByID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/PCCorpse/GetByID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/PCMigration/GetByMigrationID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/PCMigration/GetByMigrationID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/PCOutfit/GetByUUID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/PCOutfit/GetByUUID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Player/GetByPlayerID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Player/GetByPlayerID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/PlayerProgressionSkills/DeleteAllByPlayerID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/PlayerProgressionSkills/DeleteAllByPlayerID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/PlayerProgressionSkills/GetByPlayerIDAndSkillID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/PlayerProgressionSkills/GetByPlayerIDAndSkillID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Portrait/GetBy2DAID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Portrait/GetBy2DAID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Portrait/GetByPortraitID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Portrait/GetByPortraitID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Portrait/GetByResref.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Portrait/GetByResref.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Portrait/GetNumberOfPortraits.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Portrait/GetNumberOfPortraits.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Profession/GetActiveProfessions.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Profession/GetActiveProfessions.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/ProgressionLevel/GetAllProgressionLevels.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/ProgressionLevel/GetAllProgressionLevels.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/ProgressionLevel/GetProgressionLevelByLevel.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/ProgressionLevel/GetProgressionLevelByLevel.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/ProgressionSkill/GetProgressionSkillByID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/ProgressionSkill/GetProgressionSkillByID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Quest/GetAllCompletedQuestIDs.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Quest/GetAllCompletedQuestIDs.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Quest/GetAllPCQuestStatusesByID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Quest/GetAllPCQuestStatusesByID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Quest/GetPCQuestStatusByID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Quest/GetPCQuestStatusByID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Quest/GetPlayerKillTargetsByID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Quest/GetPlayerKillTargetsByID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Quest/GetQuestByID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Quest/GetQuestByID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Quest/GetQuestKillTargetsByQuestID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Quest/GetQuestKillTargetsByQuestID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Research/DeleteAllByStructureID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Research/DeleteAllByStructureID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Research/GetResearchBlueprintByID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Research/GetResearchBlueprintByID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Research/GetResearchBlueprintsForCategory.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Research/GetResearchBlueprintsForCategory.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Research/GetResearchCategoriesAvailableForCraftAndLevel.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Research/GetResearchCategoriesAvailableForCraftAndLevel.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Research/GetResearchJobInQueueForSlot.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Research/GetResearchJobInQueueForSlot.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Research/GetResearchJobsInQueue.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Research/GetResearchJobsInQueue.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/SearchSite/GetSearchSiteByID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/SearchSite/GetSearchSiteByID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/ServerConfiguration/GetServerConfiguration.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/ServerConfiguration/GetServerConfiguration.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/SpawnTable/GetBySpawnTableID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/SpawnTable/GetBySpawnTableID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Storage/GetByContainerID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Storage/GetByContainerID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Structure/GetAllConstructionSites.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Structure/GetAllConstructionSites.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Structure/GetAllFlagsInArea.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Structure/GetAllFlagsInArea.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Structure/GetAllTerritoryFlags.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Structure/GetAllTerritoryFlags.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Structure/GetAllTerritorySelectablePermissions.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Structure/GetAllTerritorySelectablePermissions.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Structure/GetConstructionSiteByID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Structure/GetConstructionSiteByID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Structure/GetNumberOfStructuresInTerritory.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Structure/GetNumberOfStructuresInTerritory.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Structure/GetPCStructureByID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Structure/GetPCStructureByID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Structure/GetPCTerritoryFlagByID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Structure/GetPCTerritoryFlagByID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Structure/GetPermissionByID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Structure/GetPermissionByID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Structure/GetPermissionsByFlagID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Structure/GetPermissionsByFlagID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Structure/GetPermissionsByPlayerID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Structure/GetPermissionsByPlayerID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Structure/GetStructureBlueprintByID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Structure/GetStructureBlueprintByID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Structure/GetStructureCategoriesByType.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Structure/GetStructureCategoriesByType.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Structure/GetStructuresByCategoryID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Structure/GetStructuresByCategoryID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/Structure/GetTerritoryPermissionByID.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Structure/GetTerritoryPermissionByID.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SQL/ZombieClothes/GetAllZombieClothes.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/ZombieClothes/GetAllZombieClothes.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Data/SqlParameter.java" afterPath="$PROJECT_DIR$/src/main/java/Data/SqlParameter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Dialog/ActionTaken.java" afterPath="$PROJECT_DIR$/src/main/java/Dialog/ActionTaken.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Dialog/AppearsWhen.java" afterPath="$PROJECT_DIR$/src/main/java/Dialog/AppearsWhen.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Dialog/DialogBase.java" afterPath="$PROJECT_DIR$/src/main/java/Dialog/DialogBase.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Dialog/DialogEnd.java" afterPath="$PROJECT_DIR$/src/main/java/Dialog/DialogEnd.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Dialog/DialogManager.java" afterPath="$PROJECT_DIR$/src/main/java/Dialog/DialogManager.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Dialog/DialogPage.java" afterPath="$PROJECT_DIR$/src/main/java/Dialog/DialogPage.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Dialog/DialogResponse.java" afterPath="$PROJECT_DIR$/src/main/java/Dialog/DialogResponse.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Dialog/DialogStart.java" afterPath="$PROJECT_DIR$/src/main/java/Dialog/DialogStart.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Dialog/IDialogHandler.java" afterPath="$PROJECT_DIR$/src/main/java/Dialog/IDialogHandler.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Dialog/PlayerDialog.java" afterPath="$PROJECT_DIR$/src/main/java/Dialog/PlayerDialog.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Door/AutoClose.java" afterPath="$PROJECT_DIR$/src/main/java/Door/AutoClose.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Door/AutoCloseLock.java" afterPath="$PROJECT_DIR$/src/main/java/Door/AutoCloseLock.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/AbilityCategoryEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/AbilityCategoryEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/AbilityCooldownCategoryEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/AbilityCooldownCategoryEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/AbilityEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/AbilityEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/ActivePlayerEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/ActivePlayerEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/AuthorizedDMEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/AuthorizedDMEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/BadgeEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/BadgeEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/BaseItemTypeEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/BaseItemTypeEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/BuildPrivacyEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/BuildPrivacyEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/ChatChannelEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/ChatChannelEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/ChatLogEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/ChatLogEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/ConstructionSiteEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/ConstructionSiteEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/CraftBlueprintCategoryEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/CraftBlueprintCategoryEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/CraftBlueprintEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/CraftBlueprintEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/CraftComponentEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/CraftComponentEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/CraftEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/CraftEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/CraftLevelEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/CraftLevelEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/CustomEffectEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/CustomEffectEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/DMRoleEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/DMRoleEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/FameRegionEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/FameRegionEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/ForcedSPResetEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/ForcedSPResetEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/ItemCombinationEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/ItemCombinationEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/KeyItemCategoryEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/KeyItemCategoryEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/KeyItemEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/KeyItemEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/LootTableEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/LootTableEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/LootTableItemEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/LootTableItemEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/NPCGroupEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/NPCGroupEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/PCAbilityCooldownEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/PCAbilityCooldownEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/PCAuthorizedCDKeyEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/PCAuthorizedCDKeyEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/PCBadgeEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/PCBadgeEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/PCBlueprintEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/PCBlueprintEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/PCCorpseEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/PCCorpseEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/PCCorpseItemEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/PCCorpseItemEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/PCCraftEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/PCCraftEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/PCCustomEffectEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/PCCustomEffectEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/PCEquippedAbilityEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/PCEquippedAbilityEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/PCKeyItemEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/PCKeyItemEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/PCLearnedAbilityEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/PCLearnedAbilityEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/PCMigrationEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/PCMigrationEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/PCMigrationItemEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/PCMigrationItemEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/PCOutfitEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/PCOutfitEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/PCOverflowItemEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/PCOverflowItemEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/PCQuestKillTargetProgressEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/PCQuestKillTargetProgressEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/PCQuestStatusEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/PCQuestStatusEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/PCRegionalFameEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/PCRegionalFameEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/PCSearchSiteEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/PCSearchSiteEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/PCSearchSiteItemEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/PCSearchSiteItemEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/PCTerritoryFlagEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/PCTerritoryFlagEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/PCTerritoryFlagPermissionEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/PCTerritoryFlagPermissionEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/PCTerritoryFlagStructureEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/PCTerritoryFlagStructureEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/PCTerritoryFlagStructureItemEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/PCTerritoryFlagStructureItemEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/PCTerritoryFlagsStructuresResearchQueueEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/PCTerritoryFlagsStructuresResearchQueueEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/PlayerEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/PlayerEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/PlayerProgressionSkillEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/PlayerProgressionSkillEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/PortraitEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/PortraitEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/ProfessionEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/ProfessionEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/ProgressionLevelEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/ProgressionLevelEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/ProgressionSkillEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/ProgressionSkillEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/QuestEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/QuestEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/QuestKillTargetListEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/QuestKillTargetListEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/QuestPrerequisiteEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/QuestPrerequisiteEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/QuestRequiredItemListEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/QuestRequiredItemListEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/QuestRequiredKeyItemListEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/QuestRequiredKeyItemListEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/QuestRewardItemEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/QuestRewardItemEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/QuestStateEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/QuestStateEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/QuestTypeEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/QuestTypeEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/ResearchBlueprintEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/ResearchBlueprintEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/ServerConfigurationEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/ServerConfigurationEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/SpawnTableCreatureEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/SpawnTableCreatureEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/SpawnTableEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/SpawnTableEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/StorageContainerEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/StorageContainerEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/StorageItemEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/StorageItemEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/StructureBlueprintEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/StructureBlueprintEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/StructureCategoryEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/StructureCategoryEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/TerritoryFlagPermissionEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/TerritoryFlagPermissionEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Entities/ZombieClothesEntity.java" afterPath="$PROJECT_DIR$/src/main/java/Entities/ZombieClothesEntity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Enumerations/AbilityType.java" afterPath="$PROJECT_DIR$/src/main/java/Enumerations/AbilityType.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Enumerations/CustomAnimationType.java" afterPath="$PROJECT_DIR$/src/main/java/Enumerations/CustomAnimationType.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Enumerations/CustomBaseItemType.java" afterPath="$PROJECT_DIR$/src/main/java/Enumerations/CustomBaseItemType.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Enumerations/CustomEffectType.java" afterPath="$PROJECT_DIR$/src/main/java/Enumerations/CustomEffectType.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Enumerations/CustomFeat.java" afterPath="$PROJECT_DIR$/src/main/java/Enumerations/CustomFeat.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Enumerations/CustomItemProperty.java" afterPath="$PROJECT_DIR$/src/main/java/Enumerations/CustomItemProperty.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Enumerations/GunType.java" afterPath="$PROJECT_DIR$/src/main/java/Enumerations/GunType.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Enumerations/ProfessionType.java" afterPath="$PROJECT_DIR$/src/main/java/Enumerations/ProfessionType.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Enumerations/QuestType.java" afterPath="$PROJECT_DIR$/src/main/java/Enumerations/QuestType.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Enumerations/StructurePermission.java" afterPath="$PROJECT_DIR$/src/main/java/Enumerations/StructurePermission.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/Area/OnEnter.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Area/OnEnter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/Area/OnExit.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Area/OnExit.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/Area/OnHeartbeat.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Area/OnHeartbeat.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/Area/OnUserDefined.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Area/OnUserDefined.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/Creature/OnDeath.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Creature/OnDeath.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/DM/CreateItemOnArea.java" afterPath="$PROJECT_DIR$/src/main/java/Event/DM/CreateItemOnArea.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/DM/CreateItemOnObject.java" afterPath="$PROJECT_DIR$/src/main/java/Event/DM/CreateItemOnObject.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/DM/CreatePlaceable.java" afterPath="$PROJECT_DIR$/src/main/java/Event/DM/CreatePlaceable.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/DM/GiveGold.java" afterPath="$PROJECT_DIR$/src/main/java/Event/DM/GiveGold.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/DM/GiveLevel.java" afterPath="$PROJECT_DIR$/src/main/java/Event/DM/GiveLevel.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/DM/GiveXP.java" afterPath="$PROJECT_DIR$/src/main/java/Event/DM/GiveXP.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/DM/HealCreature.java" afterPath="$PROJECT_DIR$/src/main/java/Event/DM/HealCreature.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/DM/RestCreature.java" afterPath="$PROJECT_DIR$/src/main/java/Event/DM/RestCreature.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/DM/RunScript.java" afterPath="$PROJECT_DIR$/src/main/java/Event/DM/RunScript.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/DM/SpawnCreature.java" afterPath="$PROJECT_DIR$/src/main/java/Event/DM/SpawnCreature.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/DM/ToggleImmortality.java" afterPath="$PROJECT_DIR$/src/main/java/Event/DM/ToggleImmortality.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/DM/ToggleInvulnerability.java" afterPath="$PROJECT_DIR$/src/main/java/Event/DM/ToggleInvulnerability.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/Module/OnAcquireItem.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnAcquireItem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/Module/OnActivateItem.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnActivateItem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/Module/OnAttack.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnAttack.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/Module/OnCCMessage.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnCCMessage.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/Module/OnCastSpell.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnCastSpell.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/Module/OnClientEnter.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnClientEnter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/Module/OnClientLeave.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnClientLeave.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/Module/OnClientLeaving.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnClientLeaving.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/Module/OnCutsceneAbort.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnCutsceneAbort.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/Module/OnExamine.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnExamine.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/Module/OnHeartbeat.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnHeartbeat.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/Module/OnLoad.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnLoad.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/Module/OnNWNXChat.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnNWNXChat.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/Module/OnPickPocket.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnPickPocket.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/Module/OnPlayerChat.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnPlayerChat.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/Module/OnPlayerDeath.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnPlayerDeath.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/Module/OnPlayerDying.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnPlayerDying.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/Module/OnPlayerEquipItem.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnPlayerEquipItem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/Module/OnPlayerLevelUp.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnPlayerLevelUp.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/Module/OnPlayerRespawn.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnPlayerRespawn.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/Module/OnPlayerRest.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnPlayerRest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/Module/OnPlayerUnequipItem.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnPlayerUnequipItem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/Module/OnSaveGame.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnSaveGame.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/Module/OnStealth.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnStealth.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/Module/OnToggleActionMode.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnToggleActionMode.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/Module/OnTogglePause.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnTogglePause.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/Module/OnUnAcquireItem.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnUnAcquireItem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/Module/OnUseFeat.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnUseFeat.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/Module/OnUseItem.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnUseItem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/Module/OnUserDefined.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnUserDefined.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Event/Player/OnHeartbeat.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Player/OnHeartbeat.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Feat/ChangeGunAmmo.java" afterPath="$PROJECT_DIR$/src/main/java/Feat/ChangeGunAmmo.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Feat/ChangeGunMode.java" afterPath="$PROJECT_DIR$/src/main/java/Feat/ChangeGunMode.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Feat/CombineItem.java" afterPath="$PROJECT_DIR$/src/main/java/Feat/CombineItem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Feat/OnHitCastSpell.java" afterPath="$PROJECT_DIR$/src/main/java/Feat/OnHitCastSpell.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Feat/Radio_ChangeChannel.java" afterPath="$PROJECT_DIR$/src/main/java/Feat/Radio_ChangeChannel.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Feat/Radio_TogglePower.java" afterPath="$PROJECT_DIR$/src/main/java/Feat/Radio_TogglePower.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Feat/ReloadGun.java" afterPath="$PROJECT_DIR$/src/main/java/Feat/ReloadGun.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/GameObject/GunGO.java" afterPath="$PROJECT_DIR$/src/main/java/GameObject/GunGO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/GameObject/ItemGO.java" afterPath="$PROJECT_DIR$/src/main/java/GameObject/ItemGO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/GameObject/PlayerGO.java" afterPath="$PROJECT_DIR$/src/main/java/GameObject/PlayerGO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/GameSystems/ActivityLoggingSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/ActivityLoggingSystem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/GameSystems/AreaInstanceSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/AreaInstanceSystem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/GameSystems/ArmorSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/ArmorSystem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/GameSystems/CombatSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/CombatSystem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/GameSystems/CraftSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/CraftSystem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/GameSystems/CustomEffectSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/CustomEffectSystem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/GameSystems/DeathSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/DeathSystem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/GameSystems/DiseaseSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/DiseaseSystem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/GameSystems/DurabilitySystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/DurabilitySystem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/GameSystems/FoodSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/FoodSystem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/GameSystems/InventorySystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/InventorySystem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/GameSystems/KeyItemSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/KeyItemSystem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/GameSystems/MagicSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/MagicSystem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/GameSystems/MigrationSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/MigrationSystem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/GameSystems/Models/AreaInstanceModel.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/Models/AreaInstanceModel.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/GameSystems/Models/CasterSpellModel.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/Models/CasterSpellModel.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/GameSystems/Models/SpawnModel.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/Models/SpawnModel.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/GameSystems/PVPSanctuarySystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/PVPSanctuarySystem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/GameSystems/PlayerAuthorizationSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/PlayerAuthorizationSystem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/GameSystems/ProfessionSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/ProfessionSystem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/GameSystems/ProgressionSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/ProgressionSystem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/GameSystems/QuestSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/QuestSystem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/GameSystems/RadioSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/RadioSystem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/GameSystems/SearchSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/SearchSystem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/GameSystems/SpawnSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/SpawnSystem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/GameSystems/StorageSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/StorageSystem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/GameSystems/StructureSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/StructureSystem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Helper/ColorToken.java" afterPath="$PROJECT_DIR$/src/main/java/Helper/ColorToken.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Helper/EffectHelper.java" afterPath="$PROJECT_DIR$/src/main/java/Helper/EffectHelper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Helper/ErrorHelper.java" afterPath="$PROJECT_DIR$/src/main/java/Helper/ErrorHelper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Helper/ItemHelper.java" afterPath="$PROJECT_DIR$/src/main/java/Helper/ItemHelper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Helper/ItemPropertyHelper.java" afterPath="$PROJECT_DIR$/src/main/java/Helper/ItemPropertyHelper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Helper/LocalArray.java" afterPath="$PROJECT_DIR$/src/main/java/Helper/LocalArray.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Helper/LocalVariableHelper.java" afterPath="$PROJECT_DIR$/src/main/java/Helper/LocalVariableHelper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Helper/MathHelper.java" afterPath="$PROJECT_DIR$/src/main/java/Helper/MathHelper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Helper/MenuHelper.java" afterPath="$PROJECT_DIR$/src/main/java/Helper/MenuHelper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Helper/ScriptHelper.java" afterPath="$PROJECT_DIR$/src/main/java/Helper/ScriptHelper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Helper/TimeHelper.java" afterPath="$PROJECT_DIR$/src/main/java/Helper/TimeHelper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Item/AbilityDisc.java" afterPath="$PROJECT_DIR$/src/main/java/Item/AbilityDisc.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Item/Blueprint.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Blueprint.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Item/Defibrillator/Defibrillator.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Defibrillator/Defibrillator.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Item/Defibrillator/PerformDefibrillator.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Defibrillator/PerformDefibrillator.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Item/Food.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Food.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Item/GenericStartConversation.java" afterPath="$PROJECT_DIR$/src/main/java/Item/GenericStartConversation.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Item/Herb.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Herb.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Item/Lockpick/PerformLockpick.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Lockpick/PerformLockpick.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Item/Lockpick/UseLockpick.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Lockpick/UseLockpick.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Item/Medical/Antibiotics.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Medical/Antibiotics.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Item/Medical/Bandage.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Medical/Bandage.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Item/Medical/Herb.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Medical/Herb.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Item/Medical/HerbalRemedy.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Medical/HerbalRemedy.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Item/Medical/ManaKit.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Medical/ManaKit.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Item/Medical/MedicalSupplies.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Medical/MedicalSupplies.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Item/Medical/Stimulant.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Medical/Stimulant.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Item/OmniTool.java" afterPath="$PROJECT_DIR$/src/main/java/Item/OmniTool.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Item/Repair/ArmorRepairKit.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Repair/ArmorRepairKit.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Item/Repair/BladeRepairKit.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Repair/BladeRepairKit.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Item/Repair/BluntRepairKit.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Repair/BluntRepairKit.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Item/Repair/FirearmRepairKit.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Repair/FirearmRepairKit.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Item/ZombieClaws/BleederClaw.java" afterPath="$PROJECT_DIR$/src/main/java/Item/ZombieClaws/BleederClaw.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Item/ZombieClaws/InfectorClaw.java" afterPath="$PROJECT_DIR$/src/main/java/Item/ZombieClaws/InfectorClaw.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Item/ZombieClaws/ZombieClaw.java" afterPath="$PROJECT_DIR$/src/main/java/Item/ZombieClaws/ZombieClaw.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NWNX/AOEScript.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/AOEScript.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NWNX/AreaScript.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/AreaScript.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NWNX/ChatMessage.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/ChatMessage.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NWNX/CreatureAbilities.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/CreatureAbilities.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NWNX/CreatureEvent.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/CreatureEvent.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NWNX/CreatureScript.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/CreatureScript.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NWNX/CreatureSkills.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/CreatureSkills.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NWNX/DMActionType.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/DMActionType.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NWNX/DoorScript.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/DoorScript.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NWNX/EncounterScript.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/EncounterScript.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NWNX/LocalVariable.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/LocalVariable.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NWNX/MemorizedSpellSlot.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/MemorizedSpellSlot.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NWNX/ModuleScripts.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/ModuleScripts.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NWNX/MovementRate.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/MovementRate.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NWNX/NWNX_APS.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_APS.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NWNX/NWNX_Areas.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Areas.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NWNX/NWNX_Chat.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Chat.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NWNX/NWNX_DMActions.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_DMActions.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NWNX/NWNX_Events.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Events.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NWNX/NWNX_Funcs.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Funcs.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NWNX/NWNX_Names.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Names.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NWNX/NWNX_Structs.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Structs.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NWNX/NWNX_TMI.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_TMI.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NWNX/NodeType.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/NodeType.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NWNX/PlaceableScript.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/PlaceableScript.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NWNX/QuickBarSlot.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/QuickBarSlot.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NWNX/QuickbarType.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/QuickbarType.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NWNX/SpecialAbilitySlot.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/SpecialAbilitySlot.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NWNX/StoreScript.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/StoreScript.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NWNX/TimeValue.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/TimeValue.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NWNX/TriggerScript.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/TriggerScript.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NWNX/VariableType.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/VariableType.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Placeable/CraftingDevice/OnClosed.java" afterPath="$PROJECT_DIR$/src/main/java/Placeable/CraftingDevice/OnClosed.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Placeable/CraftingDevice/OnDisturbed.java" afterPath="$PROJECT_DIR$/src/main/java/Placeable/CraftingDevice/OnDisturbed.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Placeable/CraftingDevice/OnOpened.java" afterPath="$PROJECT_DIR$/src/main/java/Placeable/CraftingDevice/OnOpened.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Placeable/DeathCorpse/OnClosed.java" afterPath="$PROJECT_DIR$/src/main/java/Placeable/DeathCorpse/OnClosed.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Placeable/DeathCorpse/OnDisturbed.java" afterPath="$PROJECT_DIR$/src/main/java/Placeable/DeathCorpse/OnDisturbed.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Placeable/DeathTypewriter/OnUsed.java" afterPath="$PROJECT_DIR$/src/main/java/Placeable/DeathTypewriter/OnUsed.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Placeable/OverflowStorage/OnClosed.java" afterPath="$PROJECT_DIR$/src/main/java/Placeable/OverflowStorage/OnClosed.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Placeable/OverflowStorage/OnDisturbed.java" afterPath="$PROJECT_DIR$/src/main/java/Placeable/OverflowStorage/OnDisturbed.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Placeable/OverflowStorage/OnOpened.java" afterPath="$PROJECT_DIR$/src/main/java/Placeable/OverflowStorage/OnOpened.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Placeable/QuestSystem/OnUsed.java" afterPath="$PROJECT_DIR$/src/main/java/Placeable/QuestSystem/OnUsed.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Placeable/SearchContainer/OnClosed.java" afterPath="$PROJECT_DIR$/src/main/java/Placeable/SearchContainer/OnClosed.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Placeable/SearchContainer/OnDisturbed.java" afterPath="$PROJECT_DIR$/src/main/java/Placeable/SearchContainer/OnDisturbed.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Placeable/SearchContainer/OnOpened.java" afterPath="$PROJECT_DIR$/src/main/java/Placeable/SearchContainer/OnOpened.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Placeable/SearchContainer/OnUsed.java" afterPath="$PROJECT_DIR$/src/main/java/Placeable/SearchContainer/OnUsed.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Placeable/Sit.java" afterPath="$PROJECT_DIR$/src/main/java/Placeable/Sit.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Placeable/StartingDoor.java" afterPath="$PROJECT_DIR$/src/main/java/Placeable/StartingDoor.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Placeable/StorageContainer/OnDisturbed.java" afterPath="$PROJECT_DIR$/src/main/java/Placeable/StorageContainer/OnDisturbed.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Placeable/StorageContainer/OnOpened.java" afterPath="$PROJECT_DIR$/src/main/java/Placeable/StorageContainer/OnOpened.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Placeable/Stores/GenericStore.java" afterPath="$PROJECT_DIR$/src/main/java/Placeable/Stores/GenericStore.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Placeable/StructureSystem/ConstructionSite/OnAttacked.java" afterPath="$PROJECT_DIR$/src/main/java/Placeable/StructureSystem/ConstructionSite/OnAttacked.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Placeable/StructureSystem/PersistentStorage/OnClosed.java" afterPath="$PROJECT_DIR$/src/main/java/Placeable/StructureSystem/PersistentStorage/OnClosed.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Placeable/StructureSystem/PersistentStorage/OnDisturbed.java" afterPath="$PROJECT_DIR$/src/main/java/Placeable/StructureSystem/PersistentStorage/OnDisturbed.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Placeable/StructureSystem/PersistentStorage/OnOpened.java" afterPath="$PROJECT_DIR$/src/main/java/Placeable/StructureSystem/PersistentStorage/OnOpened.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Placeable/StructureSystem/PersistentStorage/OnUsed.java" afterPath="$PROJECT_DIR$/src/main/java/Placeable/StructureSystem/PersistentStorage/OnUsed.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Placeable/StructureSystem/ResearchTerminal/OnUsed.java" afterPath="$PROJECT_DIR$/src/main/java/Placeable/StructureSystem/ResearchTerminal/OnUsed.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Placeable/StructureSystem/Resource/OnAttacked.java" afterPath="$PROJECT_DIR$/src/main/java/Placeable/StructureSystem/Resource/OnAttacked.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Placeable/StructureSystem/Resource/OnDamaged.java" afterPath="$PROJECT_DIR$/src/main/java/Placeable/StructureSystem/Resource/OnDamaged.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Placeable/StructureSystem/Resource/OnDeath.java" afterPath="$PROJECT_DIR$/src/main/java/Placeable/StructureSystem/Resource/OnDeath.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Placeable/StructureSystem/TerritoryFlag/OnUsed.java" afterPath="$PROJECT_DIR$/src/main/java/Placeable/StructureSystem/TerritoryFlag/OnUsed.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Placeable/TestBreadAcceptQuest.java" afterPath="$PROJECT_DIR$/src/main/java/Placeable/TestBreadAcceptQuest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Placeable/TestBreadAdvanceQuest.java" afterPath="$PROJECT_DIR$/src/main/java/Placeable/TestBreadAdvanceQuest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Placeable/TrashCan/OnDisturbed.java" afterPath="$PROJECT_DIR$/src/main/java/Placeable/TrashCan/OnDisturbed.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Placeable/TrashCan/OnOpened.java" afterPath="$PROJECT_DIR$/src/main/java/Placeable/TrashCan/OnOpened.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Placeable/WarpDevice/OnUsed.java" afterPath="$PROJECT_DIR$/src/main/java/Placeable/WarpDevice/OnUsed.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Trigger/BadgeTrigger.java" afterPath="$PROJECT_DIR$/src/main/java/Trigger/BadgeTrigger.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Trigger/QuestTrigger.java" afterPath="$PROJECT_DIR$/src/main/java/Trigger/QuestTrigger.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Data/DataContext.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Stun.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Stun.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -671,110 +24,61 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GetTerritoryPermissionByID.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/sql/Structure/GetTerritoryPermissionByID.sql">
+      <file leaf-file-name="DataAccess.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Data/DataAccess.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-              <folding>
-                <marker date="1508411584000" expanded="true" signature="1:193" ph=" SELECT statement (TERRITORYFLAGPERMISSIONS)" />
-              </folding>
+            <state relative-caret-position="0">
+              <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GetDMByCDKey.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/sql/AuthorizedDM/GetDMByCDKey.sql">
+      <file leaf-file-name="QuestSystem.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/QuestSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="6" column="23" lean-forward="false" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
-              <folding>
-                <marker date="1508411584000" expanded="true" signature="0:170" ph=" SELECT statement (AUTHORIZEDDMS)" />
-              </folding>
+            <state relative-caret-position="839">
+              <caret line="277" column="0" lean-forward="false" selection-start-line="277" selection-start-column="0" selection-end-line="277" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".project" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.project">
+      <file leaf-file-name="Stun.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Stun.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="389">
+              <caret line="53" column="49" lean-forward="false" selection-start-line="53" selection-start-column="49" selection-end-line="53" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nwnstartup.sh" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nwn/czs-server-files/nwnstartup.sh">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".classpath" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.classpath">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CZS_JVM.iml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CZS_JVM.iml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="7" column="76" lean-forward="true" selection-start-line="7" selection-start-column="76" selection-end-line="7" selection-end-column="76" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-16270">
-              <caret line="289" column="139" lean-forward="false" selection-start-line="289" selection-start-column="131" selection-end-line="289" selection-end-column="139" />
-              <folding>
-                <marker date="1508481006995" expanded="true" signature="158331:158373" ph="..." />
-                <marker date="1508481006995" expanded="true" signature="158331:158391" ph="..." />
-                <marker date="1508481006995" expanded="true" signature="158331:158404" ph="..." />
-                <marker date="1508481006995" expanded="true" signature="158331:158419" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="misc.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="modules.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.idea/modules.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="compiler.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.idea/compiler.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dbnavigator.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.idea/dbnavigator.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="6" column="14" lean-forward="true" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -785,8 +89,9 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>mark as</find>
-      <find>resource</find>
       <find>Getchatchannelbyid.sql</find>
+      <find>resource</find>
+      <find>todo</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -803,6 +108,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/src/main/java/GameSystems/QuestSystem.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Stun.java" />
         <option value="$PROJECT_DIR$/src/main/java/Data/DataContext.java" />
       </list>
     </option>
@@ -858,6 +165,7 @@
       <pane id="Scratches" />
       <pane id="AndroidView" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -865,304 +173,10 @@
               <item name="CZS_JVM" type="b2602c69:ProjectViewProjectNode" />
               <item name="CZS_JVM" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="CZS_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CZS_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CZS_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CZS_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CZS_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CZS_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CZS_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CZS_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="sql" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CZS_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CZS_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="sql" type="462c0819:PsiDirectoryNode" />
-              <item name="ActivityLogging" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CZS_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CZS_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="sql" type="462c0819:PsiDirectoryNode" />
-              <item name="AuthorizedDM" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CZS_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CZS_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="sql" type="462c0819:PsiDirectoryNode" />
-              <item name="Badge" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CZS_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CZS_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="sql" type="462c0819:PsiDirectoryNode" />
-              <item name="Craft" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CZS_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CZS_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="sql" type="462c0819:PsiDirectoryNode" />
-              <item name="CustomEffect" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CZS_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CZS_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="sql" type="462c0819:PsiDirectoryNode" />
-              <item name="Database" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CZS_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CZS_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="sql" type="462c0819:PsiDirectoryNode" />
-              <item name="Fame" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CZS_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CZS_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="sql" type="462c0819:PsiDirectoryNode" />
-              <item name="KeyItem" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CZS_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CZS_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="sql" type="462c0819:PsiDirectoryNode" />
-              <item name="LootTable" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CZS_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CZS_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="sql" type="462c0819:PsiDirectoryNode" />
-              <item name="Magic" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CZS_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CZS_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="sql" type="462c0819:PsiDirectoryNode" />
-              <item name="OverflowItem" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CZS_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CZS_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="sql" type="462c0819:PsiDirectoryNode" />
-              <item name="PCAuthorizedCDKeys" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CZS_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CZS_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="sql" type="462c0819:PsiDirectoryNode" />
-              <item name="PCCorpse" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CZS_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CZS_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="sql" type="462c0819:PsiDirectoryNode" />
-              <item name="PCMigration" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CZS_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CZS_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="sql" type="462c0819:PsiDirectoryNode" />
-              <item name="PCOutfit" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CZS_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CZS_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="sql" type="462c0819:PsiDirectoryNode" />
-              <item name="Player" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CZS_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CZS_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="sql" type="462c0819:PsiDirectoryNode" />
-              <item name="PlayerProgressionSkills" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CZS_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CZS_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="sql" type="462c0819:PsiDirectoryNode" />
-              <item name="Portrait" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CZS_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CZS_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="sql" type="462c0819:PsiDirectoryNode" />
-              <item name="Profession" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CZS_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CZS_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="sql" type="462c0819:PsiDirectoryNode" />
-              <item name="ProgressionLevel" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CZS_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CZS_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="sql" type="462c0819:PsiDirectoryNode" />
-              <item name="ProgressionSkill" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CZS_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CZS_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="sql" type="462c0819:PsiDirectoryNode" />
-              <item name="Quest" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CZS_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CZS_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="sql" type="462c0819:PsiDirectoryNode" />
-              <item name="Research" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CZS_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CZS_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="sql" type="462c0819:PsiDirectoryNode" />
-              <item name="SearchSite" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CZS_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CZS_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="sql" type="462c0819:PsiDirectoryNode" />
-              <item name="ServerConfiguration" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CZS_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CZS_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="sql" type="462c0819:PsiDirectoryNode" />
-              <item name="SpawnTable" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CZS_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CZS_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="sql" type="462c0819:PsiDirectoryNode" />
-              <item name="Storage" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CZS_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CZS_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="sql" type="462c0819:PsiDirectoryNode" />
-              <item name="Structure" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CZS_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CZS_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="sql" type="462c0819:PsiDirectoryNode" />
-              <item name="ZombieClothes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CZS_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CZS_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1174,14 +188,14 @@
     <property name="settings.editor.selected.configurable" value="project.validation" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src/main/sql" />
       <recent name="$PROJECT_DIR$/src/main/java" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -1290,10 +304,18 @@
       <option name="presentableId" value="Default" />
       <updated>1508477719987</updated>
     </task>
+    <task id="LOCAL-00001" summary="Standardize project structure, move sql code to resources directory.">
+      <created>1508481048274</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1508481048274</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="-1" width="1922" height="1035" extended-state="6" />
+    <frame x="54" y="0" width="1922" height="1035" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1309,17 +331,16 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32901832" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901832" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901832" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="FAQ Robot" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="MaxCompute Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1327,7 +348,18 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -1342,6 +374,49 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Data/DataAccess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Data/DataContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2520">
+          <caret line="155" column="22" lean-forward="false" selection-start-line="155" selection-start-column="22" selection-end-line="155" selection-end-column="22" />
+          <folding>
+            <element signature="e#3673#3674#0" expanded="true" />
+            <element signature="e#3702#3703#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nwn/czs-server-files/nwnstartup.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nwn/czs-server-files/NWServer_Ubuntu64Bit_SetupInstructions.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="954">
+          <caret line="53" column="12" lean-forward="true" selection-start-line="53" selection-start-column="12" selection-end-line="53" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Data/DataAccess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
@@ -1354,9 +429,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="10" lean-forward="false" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1364,9 +436,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
           <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1374,7 +443,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="22" column="57" lean-forward="true" selection-start-line="22" selection-start-column="57" selection-end-line="22" selection-end-column="57" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1382,7 +450,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1390,7 +457,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1398,9 +464,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="7" column="16" lean-forward="false" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1416,9 +479,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="10" lean-forward="false" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1426,9 +486,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
           <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1436,7 +493,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="22" column="57" lean-forward="false" selection-start-line="22" selection-start-column="57" selection-end-line="22" selection-end-column="57" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1444,7 +500,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
           <caret line="1" column="8" lean-forward="false" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1452,7 +507,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="6" column="24" lean-forward="false" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1460,7 +514,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="232" column="4" lean-forward="false" selection-start-line="232" selection-start-column="4" selection-end-line="232" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1468,25 +521,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Data/DataContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="34" column="9" lean-forward="true" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/sql/Structure/GetTerritoryPermissionByID.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding>
-            <marker date="1508411584000" expanded="true" signature="1:193" ph=" SELECT statement (TERRITORYFLAGPERMISSIONS)" />
-          </folding>
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1494,9 +535,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="6" column="23" lean-forward="false" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
-          <folding>
-            <marker date="1508411584000" expanded="true" signature="0:170" ph=" SELECT statement (AUTHORIZEDDMS)" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1504,7 +542,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1512,28 +549,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CZS_JVM.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
-          <caret line="7" column="76" lean-forward="true" selection-start-line="7" selection-start-column="76" selection-end-line="7" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-16270">
-          <caret line="289" column="139" lean-forward="false" selection-start-line="289" selection-start-column="131" selection-end-line="289" selection-end-column="139" />
-          <folding>
-            <marker date="1508481006995" expanded="true" signature="158331:158373" ph="..." />
-            <marker date="1508481006995" expanded="true" signature="158331:158391" ph="..." />
-            <marker date="1508481006995" expanded="true" signature="158331:158404" ph="..." />
-            <marker date="1508481006995" expanded="true" signature="158331:158419" ph="..." />
-          </folding>
+          <caret line="7" column="76" lean-forward="false" selection-start-line="7" selection-start-column="76" selection-end-line="7" selection-end-column="76" />
         </state>
       </provider>
     </entry>
@@ -1541,7 +563,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1549,7 +570,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1557,14 +577,86 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/dbnavigator.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
-          <caret line="6" column="14" lean-forward="true" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+          <caret line="6" column="14" lean-forward="false" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-13754">
+          <caret line="10" column="11" lean-forward="false" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nwn/czs-server-files/nwnstartup.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nwn/czs-server-files/NWServer_Ubuntu64Bit_SetupInstructions.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="53" column="12" lean-forward="false" selection-start-line="53" selection-start-column="12" selection-end-line="53" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/QuestSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="839">
+          <caret line="277" column="0" lean-forward="false" selection-start-line="277" selection-start-column="0" selection-end-line="277" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Data/DataContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="461">
+          <caret line="140" column="28" lean-forward="true" selection-start-line="140" selection-start-column="28" selection-end-line="140" selection-end-column="28" />
+          <folding>
+            <element signature="e#3673#3674#0" expanded="true" />
+            <element signature="e#3702#3703#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Data/DataAccess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Stun.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="389">
+          <caret line="53" column="49" lean-forward="false" selection-start-line="53" selection-start-column="49" selection-end-line="53" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding />
         </state>
       </provider>

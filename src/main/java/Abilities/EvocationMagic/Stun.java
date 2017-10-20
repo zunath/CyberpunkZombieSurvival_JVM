@@ -51,7 +51,7 @@ public class Stun implements IAbility {
         int stat = NWScript.getAbilityScore(oPC, Ability.INTELLIGENCE, false) - 10;
         int itemBonus = pcGO.CalculateEvocationBonus();
         float baseDuration = 1.0f;
-        float bonusDuration = (skill * 0.20f) + (stat * 0.50f) + (itemBonus * 0.20f);
+        float bonusDuration = (skill * 0.40f) + (stat * 0.75f) + (itemBonus * 0.20f);
         float duration = baseDuration + bonusDuration;
 
         NWEffect effect = NWScript.effectStunned();
