@@ -1,17 +1,21 @@
 package GameSystems;
 
+import Data.Repository.PlayerRepository;
+import Data.Repository.StructureRepository;
 import Entities.*;
 import Enumerations.StructurePermission;
 import GameObject.PlayerGO;
 import Helper.ColorToken;
-import Data.Repository.PlayerRepository;
-import Data.Repository.StructureRepository;
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 import org.nwnx.nwnx2.jvm.*;
 import org.nwnx.nwnx2.jvm.constants.Duration;
 import org.nwnx.nwnx2.jvm.constants.ObjectType;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class StructureSystem {
 
@@ -382,7 +386,33 @@ public class StructureSystem {
         NWScript.destroyObject(target, 0.0f);
     }
 
-    public static void CompleteStructure(NWObject constructionSite)
+    public static void LogQuickBuildAction(NWObject oDM, NWObject completedStructure)
+    {
+        if(!NWScript.getIsPC(oDM) && !NWScript.getIsDM(oDM)) return;
+
+        StructureRepository repo = new StructureRepository();
+        String name = NWScript.getName(oDM, false);
+        int flagID = NWScript.getLocalInt(completedStructure, TerritoryFlagIDVariableName);
+        long structureID = (long)NWScript.getLocalInt(completedStructure, StructureIDVariableName);
+
+        StructureQuickBuildAuditEntity audit = new StructureQuickBuildAuditEntity();
+        audit.setDateBuilt(new Timestamp(new DateTime(DateTimeZone.UTC).getMillis()));
+        audit.setDmName(name);
+
+        if(flagID > 0)
+            audit.setPcTerritoryFlagID(flagID);
+        else
+            audit.setPcTerritoryFlagID(null);
+
+        if(structureID > 0)
+            audit.setPcTerritoryFlagStructureID(structureID);
+        else
+            audit.setPcTerritoryFlagStructureID(null);
+
+        repo.Save(audit);
+    }
+
+    public static NWObject CompleteStructure(NWObject constructionSite)
     {
         StructureRepository repo = new StructureRepository();
         int constructionSiteID = GetConstructionSiteID(constructionSite);
@@ -433,6 +463,8 @@ public class StructureSystem {
         }
 
         repo.Delete(entity);
+
+        return structurePlaceable;
     }
 
 

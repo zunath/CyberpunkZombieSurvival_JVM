@@ -541,7 +541,8 @@ public class ConstructionSite extends DialogBase implements IDialogHandler {
 
     private void DoQuickBuild()
     {
-        StructureSystem.CompleteStructure(GetDialogTarget());
+        NWObject completedStructure = StructureSystem.CompleteStructure(GetDialogTarget());
+        StructureSystem.LogQuickBuildAction(GetPC(), completedStructure);
         EndConversation();
     }
 

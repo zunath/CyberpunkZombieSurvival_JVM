@@ -32,7 +32,7 @@ public class CustomEffectRepository {
     {
         try(DataContext context = new DataContext())
         {
-            return context.executeSQLSingle("CustomEffect/GetPCEffectByID", CustomEffectEntity.class,
+            return context.executeSQLSingle("CustomEffect/GetEffectByID", CustomEffectEntity.class,
                     new SqlParameter("customEffectID", customEffectID));
         }
     }
