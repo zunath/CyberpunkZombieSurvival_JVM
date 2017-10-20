@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" build-on-make="true" name="CyberpunkZombieSurvival_JVM">
-    <output-path>$PROJECT_DIR$/out/artifacts/CyberpunkZombieSurvival_JVM</output-path>
-    <root id="archive" name="CyberpunkZombieSurvival_JVM.jar">
-      <element id="module-output" name="CyberpunkZombieSurvival_JVM" />
-    </root>
-  </artifact>
-</component>

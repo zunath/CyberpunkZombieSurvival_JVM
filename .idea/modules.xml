@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/CyberpunkZombieSurvival_JVM.iml" filepath="$PROJECT_DIR$/.idea/CyberpunkZombieSurvival_JVM.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CZS_JVM.iml" filepath="$PROJECT_DIR$/CZS_JVM.iml" />
     </modules>
   </component>
 </project>

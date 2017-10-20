@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="CZS">
+    <output-path>$PROJECT_DIR$/out/artifacts/CZS</output-path>
+    <root id="archive" name="CZS.jar">
+      <element id="module-output" name="CZS_JVM" />
+    </root>
+  </artifact>
+</component>
