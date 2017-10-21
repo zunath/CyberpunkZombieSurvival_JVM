@@ -28,6 +28,7 @@ sudo nano /etc/schroot/schroot.conf
 		
 cd /
 sudo mount --bind /home /nwx86/home
+sudo nano /etc/fstab
 
 	PASTE AT BOTTOM:
 		 /home /nwx86 none bind 0 0
@@ -38,7 +39,6 @@ git clone https://github.com/NWNX/nwnx2-linux.git
 cd /home/czs/nwnx2-linux
 sudo schroot cat apt-dep | xargs sudo apt-get install -y
 sudo schroot find . -name apt-dep -exec cat {} \; | xargs sudo apt-get install -y
-sudo schroot apt autoremove
 sudo schroot apt-get install cmake
 sudo schroot apt-get install nano
 sudo schroot mkdir build && cd build
