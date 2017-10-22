@@ -17,6 +17,7 @@ import org.nwnx.nwnx2.jvm.Scheduler;
 import org.nwnx.nwnx2.jvm.constants.*;
 import org.nwnx.nwnx2.jvm.constants.Package;
 
+import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class DiseaseSystem {
@@ -240,22 +241,22 @@ public class DiseaseSystem {
     private static void ModifyInfectionCrudItems(NWObject oPC, int infectionAmount)
     {
         int numberOfCruds = infectionAmount / 10;
+        ArrayList<NWObject> crudObjects = new ArrayList<>();
 
-        int crudsOwned = 0;
         for(NWObject item: NWScript.getItemsInInventory(oPC))
         {
             String resref = NWScript.getResRef(item);
             if(resref.equals(CrudResref))
             {
-                crudsOwned++;
+                crudObjects.add(item);
             }
         }
 
-        if(numberOfCruds == crudsOwned) return;
+        if(numberOfCruds == crudObjects.size()) return;
 
-        if(numberOfCruds > crudsOwned)
+        if(numberOfCruds > crudObjects.size())
         {
-            int numberToAdd = numberOfCruds - crudsOwned;
+            int numberToAdd = numberOfCruds - crudObjects.size();
             for(int cruds = 1; cruds <= numberToAdd; cruds++)
             {
                 NWScript.createItemOnObject(CrudResref, oPC, 1, "");
@@ -263,11 +264,10 @@ public class DiseaseSystem {
         }
         else
         {
-            int numberToRemove = crudsOwned - numberOfCruds;
+            int numberToRemove = crudObjects.size() - numberOfCruds;
             for(int cruds = 1; cruds <= numberToRemove; cruds++)
             {
-                NWObject item = NWScript.getItemPossessedBy(oPC, CrudResref);
-                NWScript.destroyObject(item, 0.0f);
+                NWScript.destroyObject(crudObjects.get(cruds-1), 0.0f);
             }
         }
 

@@ -50,6 +50,7 @@ public class DataAccess {
         _configuration.setProperty("hibernate.cache.use_second_level_cache", "false");
         _configuration.setProperty("hibernate.cache.use_query_cache", "false");
         _configuration.setProperty("hibernate.current_session_context_class", "thread");
+        _configuration.setProperty("transaction.auto_close_session", "true");
         _configuration.setProperty("hibernate.c3p0.min_size", "10");
 
         // Link all DB entities to the configuration here.
