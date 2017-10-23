@@ -63,6 +63,8 @@ public class DataAccess {
         _configuration.addAnnotatedClass(BuildPrivacyEntity.class);
         _configuration.addAnnotatedClass(ChatChannelEntity.class);
         _configuration.addAnnotatedClass(ChatLogEntity.class);
+        _configuration.addAnnotatedClass(ClientLogEventEntity.class);
+        _configuration.addAnnotatedClass(ClientLogEventTypeEntity.class);
         _configuration.addAnnotatedClass(ConstructionSiteEntity.class);
         _configuration.addAnnotatedClass(CraftBlueprintCategoryEntity.class);
         _configuration.addAnnotatedClass(CraftBlueprintEntity.class);

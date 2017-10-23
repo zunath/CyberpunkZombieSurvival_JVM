@@ -3,6 +3,7 @@ import Entities.PlayerEntity;
 import GameObject.PlayerGO;
 import Common.IScriptEventHandler;
 import Data.Repository.PlayerRepository;
+import GameSystems.ActivityLoggingSystem;
 import GameSystems.RadioSystem;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
@@ -27,7 +28,7 @@ public class OnClientLeave implements IScriptEventHandler {
 		// Radio GameSystems - Also used for NWNX chat (Different from SimTools)
 		radioSystem.OnModuleLeave();
 
-		WriteConnectionDisconnectToConsole();
+		ActivityLoggingSystem.OnModuleClientLeave();
 	}
 
 	private void SaveCharacter(NWObject pc) {
@@ -43,17 +44,5 @@ public class OnClientLeave implements IScriptEventHandler {
 		entity.setHitPoints(NWScript.getCurrentHitPoints(pc));
 
 		repo.save(entity);
-	}
-
-	private void WriteConnectionDisconnectToConsole()
-	{
-		NWObject oPC = NWScript.getExitingObject();
-		String name = NWScript.getName(oPC, false);
-		String cdKey = NWScript.getLocalString(oPC, "PC_CD_KEY");
-        String account = NWScript.getLocalString(oPC, "PC_ACCOUNT");
-        DateTime now = new DateTime(DateTimeZone.UTC);
-        String nowString = now.toString("yyyy-MM-dd hh:mm:ss");
-
-		System.out.println(nowString + ": " + name + " (" + account + "/" + cdKey + ") left the server.");
 	}
 }

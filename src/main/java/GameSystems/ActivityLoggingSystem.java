@@ -3,11 +3,16 @@ package GameSystems;
 import Data.Repository.ActivityLoggingRepository;
 import Entities.ChatChannelEntity;
 import Entities.ChatLogEntity;
+import Entities.ClientLogEventEntity;
 import GameObject.PlayerGO;
 import NWNX.ChatMessage;
 import NWNX.NWNX_Chat;
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
+
+import java.sql.Timestamp;
 
 public class ActivityLoggingSystem {
 
@@ -91,6 +96,59 @@ public class ActivityLoggingSystem {
             default: // DM
                 return 5;
         }
+    }
+
+    public static void OnModuleClientEnter()
+    {
+        NWObject oPC = NWScript.getEnteringObject();
+        PlayerGO pcGO = new PlayerGO(oPC);
+        String name = NWScript.getName(oPC, false);
+        String cdKey = NWScript.getPCPublicCDKey(oPC, false);
+        String account = NWScript.getPCPlayerName(oPC);
+        DateTime now = new DateTime(DateTimeZone.UTC);
+        String nowString = now.toString("yyyy-MM-dd hh:mm:ss");
+
+        // CD Key and accounts are stored as local strings on the PC
+        // because they cannot be retrieved using NWScript functions
+        // on the module OnClientLeave event.
+        NWScript.setLocalString(oPC, "PC_CD_KEY", cdKey);
+        NWScript.setLocalString(oPC, "PC_ACCOUNT", account);
+
+        System.out.println(nowString + ": " + name + " (" + account + "/" + cdKey + ") connected to the server.");
+
+        ActivityLoggingRepository repo = new ActivityLoggingRepository();
+        ClientLogEventEntity entity = new ClientLogEventEntity();
+        entity.setAccountName(account);
+        entity.setCdKey(cdKey);
+        entity.setClientLogEventTypeID(1);
+        entity.setPlayerID(pcGO.getUUID());
+        entity.setDateofEvent(new Timestamp(now.getMillis()));
+
+        repo.Save(entity);
+    }
+
+
+    public static void OnModuleClientLeave()
+    {
+        NWObject oPC = NWScript.getExitingObject();
+        PlayerGO pcGO = new PlayerGO(oPC);
+        String name = NWScript.getName(oPC, false);
+        String cdKey = NWScript.getLocalString(oPC, "PC_CD_KEY");
+        String account = NWScript.getLocalString(oPC, "PC_ACCOUNT");
+        DateTime now = new DateTime(DateTimeZone.UTC);
+        String nowString = now.toString("yyyy-MM-dd hh:mm:ss");
+
+        System.out.println(nowString + ": " + name + " (" + account + "/" + cdKey + ") left the server.");
+
+        ActivityLoggingRepository repo = new ActivityLoggingRepository();
+        ClientLogEventEntity entity = new ClientLogEventEntity();
+        entity.setAccountName(account);
+        entity.setCdKey(cdKey);
+        entity.setClientLogEventTypeID(2);
+        entity.setPlayerID(pcGO.getUUID());
+        entity.setDateofEvent(new Timestamp(now.getMillis()));
+
+        repo.Save(entity);
     }
 
 }

@@ -47,7 +47,7 @@ public class OnClientEnter implements IScriptEventHandler {
         // DMFI
         NWScript.executeScript("dmfi_onclienter", objSelf);
 
-        WriteConnectionAttemptToConsole();
+        ActivityLoggingSystem.OnModuleClientEnter();
     }
 
     private void ApplyGhostwalk()
@@ -151,23 +151,5 @@ public class OnClientEnter implements IScriptEventHandler {
         }
 
         pcGO.setIsBusy(false); // Just in case player logged out in the middle of an action.
-    }
-
-    private void WriteConnectionAttemptToConsole()
-    {
-        NWObject oPC = NWScript.getEnteringObject();
-        String name = NWScript.getName(oPC, false);
-        String cdKey = NWScript.getPCPublicCDKey(oPC, false);
-        String account = NWScript.getPCPlayerName(oPC);
-        DateTime now = new DateTime(DateTimeZone.UTC);
-        String nowString = now.toString("yyyy-MM-dd hh:mm:ss");
-
-        // CD Key and accounts are stored as local strings on the PC
-        // because they cannot be retrieved using NWScript functions
-        // on the module OnClientLeave event.
-        NWScript.setLocalString(oPC, "PC_CD_KEY", cdKey);
-        NWScript.setLocalString(oPC, "PC_ACCOUNT", account);
-
-        System.out.println(nowString + ": " + name + " (" + account + "/" + cdKey + ") connected to the server.");
     }
 }

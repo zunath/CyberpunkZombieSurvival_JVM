@@ -4,6 +4,7 @@ import Data.DataContext;
 import Data.SqlParameter;
 import Entities.ChatChannelEntity;
 import Entities.ChatLogEntity;
+import Entities.ClientLogEventEntity;
 
 public class ActivityLoggingRepository {
 
@@ -18,6 +19,14 @@ public class ActivityLoggingRepository {
 
 
     public void Save(ChatLogEntity entity)
+    {
+        try(DataContext context = new DataContext())
+        {
+            context.getSession().saveOrUpdate(entity);
+        }
+    }
+
+    public void Save(ClientLogEventEntity entity)
     {
         try(DataContext context = new DataContext())
         {
