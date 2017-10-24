@@ -29,6 +29,7 @@
     <file url="file://$PROJECT_DIR$/src/main/resources/sql/CustomEffect/GetPCEffectByID.sql" />
     <file url="file://$PROJECT_DIR$/src/main/resources/sql/CustomEffect/GetPCEffects.sql" />
     <file url="file://$PROJECT_DIR$/src/main/resources/sql/Database/KeepAlive.sql" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/sql/Fame/GetFameRegionByID.sql" />
     <file url="file://$PROJECT_DIR$/src/main/resources/sql/Fame/GetPCFameByID.sql" />
     <file url="file://$PROJECT_DIR$/src/main/resources/sql/KeyItem/GetKeyItemByID.sql" />
     <file url="file://$PROJECT_DIR$/src/main/resources/sql/KeyItem/GetListOfPCKeyItemIDs.sql" />
@@ -66,7 +67,7 @@
     <file url="file://$PROJECT_DIR$/src/main/resources/sql/Quest/GetPCQuestStatusByID.sql" />
     <file url="file://$PROJECT_DIR$/src/main/resources/sql/Quest/GetPlayerKillTargetsByID.sql" />
     <file url="file://$PROJECT_DIR$/src/main/resources/sql/Quest/GetQuestByID.sql" />
-    <file url="file://$PROJECT_DIR$/src/main/resources/sql/Quest/GetQuestKillTargetsByQuestID.sql" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/sql/Quest/GetQuestKillTargetsByQuestSequenceID.sql" />
     <file url="file://$PROJECT_DIR$/src/main/resources/sql/Research/DeleteAllByStructureID.sql" />
     <file url="file://$PROJECT_DIR$/src/main/resources/sql/Research/GetResearchBlueprintByID.sql" />
     <file url="file://$PROJECT_DIR$/src/main/resources/sql/Research/GetResearchBlueprintsForCategory.sql" />

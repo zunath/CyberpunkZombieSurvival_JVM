@@ -23,6 +23,10 @@ public class QuestRequiredItemListEntity {
     @Column(name = "Quantity")
     private int quantity;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "QuestStateID", updatable = false, insertable = false)
+    private QuestStateEntity questState;
+
     public int getQuestRequiredItemListID() {
         return questRequiredItemListID;
     }
@@ -51,5 +55,13 @@ public class QuestRequiredItemListEntity {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public QuestStateEntity getQuestState() {
+        return questState;
+    }
+
+    public void setQuestState(QuestStateEntity questState) {
+        this.questState = questState;
     }
 }

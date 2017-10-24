@@ -17,10 +17,14 @@ public class QuestRequiredKeyItemListEntity {
     @JoinColumn(name = "QuestID", updatable = false, insertable = false)
     private QuestEntity quest;
 
-
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "KeyItemID", updatable = false, insertable = false)
     private KeyItemEntity keyItem;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "QuestStateID", updatable = false, insertable = false)
+    private QuestStateEntity questState;
+
 
     public int getQuestRequiredKeyItemID() {
         return questRequiredKeyItemID;
@@ -46,4 +50,11 @@ public class QuestRequiredKeyItemListEntity {
         this.keyItem = keyItem;
     }
 
+    public QuestStateEntity getQuestState() {
+        return questState;
+    }
+
+    public void setQuestState(QuestStateEntity questState) {
+        this.questState = questState;
+    }
 }

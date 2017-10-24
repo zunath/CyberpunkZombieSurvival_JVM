@@ -23,6 +23,11 @@ public class QuestKillTargetListEntity {
     @Column(name = "Quantity")
     private int quantity;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "QuestStateID", updatable = false, insertable = false)
+    private QuestStateEntity questState;
+
+
     public int getQuestKillTargetListID() {
         return questKillTargetListID;
     }
@@ -54,4 +59,14 @@ public class QuestKillTargetListEntity {
     public void setNpcGroup(NPCGroupEntity npcGroup) {
         this.npcGroup = npcGroup;
     }
+
+
+    public QuestStateEntity getQuestState() {
+        return questState;
+    }
+
+    public void setQuestState(QuestStateEntity questState) {
+        this.questState = questState;
+    }
+
 }

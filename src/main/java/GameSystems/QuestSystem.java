@@ -35,6 +35,20 @@ public class QuestSystem {
         }
     }
 
+    public static void OnItemAcquired()
+    {
+        NWObject oPC = NWScript.getModuleItemAcquiredBy();
+        NWObject oItem = NWScript.getModuleItemAcquired();
+
+        if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return;
+
+        int questID = NWScript.getLocalInt(oItem, "QUEST_ID");
+
+        if(questID <= 0) return;
+
+        NWScript.setItemCursedFlag(oItem, true);
+    }
+
     public static void AcceptQuest(NWObject oPC, int questID)
     {
         if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return;
@@ -62,13 +76,15 @@ public class QuestSystem {
 
 
         QuestEntity quest = questRepo.GetQuestByID(questID);
+        QuestStateEntity questState = status.getCurrentQuestState();
+
         if(!DoesPlayerMeetPrerequisites(oPC, quest.getPrerequisiteQuests()))
         {
             NWScript.sendMessageToPC(oPC, "You do not meet the prerequisites necessary to accept this quest.");
             return;
         }
 
-        if(!DoesPlayerHaveRequiredKeyItems(oPC, quest.getRequiredKeyItems()))
+        if(!DoesPlayerHaveRequiredKeyItems(oPC, questState.getRequiredKeyItems()))
         {
             NWScript.sendMessageToPC(oPC, "You do not have the required key items to accept this quest.");
             return;
@@ -104,18 +120,7 @@ public class QuestSystem {
 
         questRepo.Save(status);
 
-        // Create entries for the PC kill targets.
-        List<QuestKillTargetListEntity> killTargets = questRepo.GetQuestKillTargetsByQuestID(questID);
-        for(QuestKillTargetListEntity kt : killTargets)
-        {
-            PCQuestKillTargetProgressEntity pcKT = new PCQuestKillTargetProgressEntity();
-            pcKT.setRemainingToKill(kt.getQuantity());
-            pcKT.setNpcGroup(kt.getNpcGroup());
-            pcKT.setPcQuestStatus(status);
-            pcKT.setPlayerID(pcGO.getUUID());
-
-            questRepo.Save(pcKT);
-        }
+        CreateExtendedQuestDataEntries(status, questID, 1);
 
         NWScript.addJournalQuestEntry(quest.getJournalTag(), 1, oPC, false, false, false);
         NWScript.sendMessageToPC(oPC, "Quest '" + quest.getName() + "' accepted. Refer to your journal for more information on this quest.");
@@ -155,6 +160,8 @@ public class QuestSystem {
                     questStatus.setCurrentQuestState(nextState);
                     NWScript.sendMessageToPC(oPC, "Objective for quest '" + quest.getName() + "' complete! Check your journal for information on the next objective.");
                     repo.Save(questStatus);
+
+                    CreateExtendedQuestDataEntries(questStatus, questID, nextState.getSequence());
                     return;
                 }
             }
@@ -162,6 +169,24 @@ public class QuestSystem {
 
         // Shouldn't reach this point unless configuration for the quest is broken.
         NWScript.sendMessageToPC(oPC, "There was an error advancing you to the next objective for quest '" + quest.getName() + "'. Please inform an admin this quest is bugged. (QuestID = " + questID + ")");
+    }
+
+    private static void CreateExtendedQuestDataEntries(PCQuestStatusEntity status, int questID, int sequenceID)
+    {
+        QuestRepository questRepo = new QuestRepository();
+
+        // Create entries for the PC kill targets.
+        List<QuestKillTargetListEntity> killTargets = questRepo.GetQuestKillTargetsByQuestSequenceID(questID, sequenceID);
+        for(QuestKillTargetListEntity kt : killTargets)
+        {
+            PCQuestKillTargetProgressEntity pcKT = new PCQuestKillTargetProgressEntity();
+            pcKT.setRemainingToKill(kt.getQuantity());
+            pcKT.setNpcGroup(kt.getNpcGroup());
+            pcKT.setPcQuestStatus(status);
+            pcKT.setPlayerID(status.getPlayerID());
+
+            questRepo.Save(pcKT);
+        }
     }
 
     public static void CompleteQuest(NWObject oPC, int questID)
@@ -275,6 +300,25 @@ public class QuestSystem {
 
     public static void SpawnQuestItems(NWObject oChest, NWObject oPC)
     {
+        int questID = NWScript.getLocalInt(oChest, "QUEST_ID");
+        int questStateSequence = NWScript.getLocalInt(oChest, "SEQUENCE_ID");
+        String questItemResref = NWScript.getLocalString(oChest, "QUEST_ITEM_RESREF");
+
+        if(questID <= 0 || questStateSequence <= 0 || questItemResref.equals("")) return;
+
+        PlayerGO pcGO = new PlayerGO(oPC);
+        QuestRepository questRepo = new QuestRepository();
+
+        PCQuestStatusEntity status = questRepo.GetPCQuestStatusByID(pcGO.getUUID(), questID);
+        QuestStateEntity questState = status.getCurrentQuestState();
+
+        if(questStateSequence != questState.getSequence()) return;
+        if(!NWScript.getIsObjectValid(NWScript.getItemPossessedBy(oPC, questItemResref))) return;
+
+        // PC is on the correct quest, correct state, the chest creates quest items, and the PC does not already have the quest item.
+        // Spawn it.
+
+        NWScript.createItemOnObject(questItemResref, oChest, 1, "");
 
     }
 
@@ -353,8 +397,9 @@ public class QuestSystem {
 
         QuestStateEntity questState = pcQuestStatus.getCurrentQuestState();
 
-        if(questState.getQuestType().getQuestTypeID() != QuestType.UseObject &&
-                questState.getSequence() == questSequence)
+        if(questState.getSequence() == questSequence ||
+          (questState.getQuestType().getQuestTypeID() != QuestType.UseObject &&
+                  questState.getQuestType().getQuestTypeID() != QuestType.ExploreArea))
         {
             return;
         }
@@ -380,16 +425,30 @@ public class QuestSystem {
         HandleTriggerAndPlaceableQuestLogic(oPC, oObject);
     }
 
-    public static void TurnInQuestItems(NWObject oPC, NWObject oQuestGiver, int questID)
+    public static void TurnInQuestItems(NWObject oPC, NWObject oQuestGiver, int questID, int sequenceID)
     {
         if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return;
 
         PlayerGO pcGO = new PlayerGO(oPC);
         QuestRepository questRepo = new QuestRepository();
         PCQuestStatusEntity pcStatus = questRepo.GetPCQuestStatusByID(pcGO.getUUID(), questID);
-        QuestEntity quest = pcStatus.getQuest();
 
-        for(QuestRequiredKeyItemListEntity ki : quest.getRequiredKeyItems())
+        if(pcStatus == null)
+        {
+            NWScript.sendMessageToPC(oPC, "You have not accepted this quest yet.");
+            return;
+        }
+
+        QuestStateEntity questState = pcStatus.getCurrentQuestState();
+
+        if(questState.getSequence() != sequenceID)
+        {
+            NWScript.sendMessageToPC(oPC, "SequenceID mismatch. Please inform an admin there is a bug with this quest. (QuestID = " + questID + ")");
+            return;
+        }
+
+
+        for(QuestRequiredKeyItemListEntity ki : questState.getRequiredKeyItems())
         {
             if(!KeyItemSystem.PlayerHasKeyItem(oPC, ki.getKeyItem().getKeyItemID()))
             {
@@ -398,7 +457,7 @@ public class QuestSystem {
             }
         }
 
-        List<QuestRequiredItemListEntity> requiredItems = quest.getRequiredItems();
+        List<QuestRequiredItemListEntity> requiredItems = questState.getRequiredItems();
         HashMap<String, Integer> itemsFound = new HashMap<>();
 
         for(QuestRequiredItemListEntity ri : requiredItems)

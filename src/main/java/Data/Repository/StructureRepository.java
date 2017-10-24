@@ -1,13 +1,8 @@
 package Data.Repository;
 
-import Conversation.ConstructionSite;
 import Data.DataContext;
 import Data.SqlParameter;
 import Entities.*;
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Projections;
-import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 

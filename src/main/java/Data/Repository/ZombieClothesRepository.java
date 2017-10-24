@@ -2,8 +2,6 @@ package Data.Repository;
 
 import Data.DataContext;
 import Entities.ZombieClothesEntity;
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 

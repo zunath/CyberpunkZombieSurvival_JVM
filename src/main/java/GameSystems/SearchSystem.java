@@ -213,11 +213,15 @@ public class SearchSystem {
         NWObject[] inventory = NWScript.getItemsInInventory(oChest);
         for(NWObject item : inventory)
         {
-            PCSearchSiteItemEntity itemEntity = new PCSearchSiteItemEntity();
-            itemEntity.setSearchItem(SCORCO.saveObject(item));
-            itemEntity.setSearchSite(entity);
+            if(NWScript.getLocalInt(item, "QUEST_ID") <= 0)
+            {
+                PCSearchSiteItemEntity itemEntity = new PCSearchSiteItemEntity();
+                itemEntity.setSearchItem(SCORCO.saveObject(item));
+                itemEntity.setSearchSite(entity);
 
-            entity.getSearchItems().add(itemEntity);
+                entity.getSearchItems().add(itemEntity);
+            }
+
         }
 
         repo.Save(entity);

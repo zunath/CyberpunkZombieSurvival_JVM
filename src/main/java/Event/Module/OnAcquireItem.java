@@ -2,6 +2,7 @@ package Event.Module;
 import Common.IScriptEventHandler;
 import GameSystems.InventorySystem;
 import GameSystems.KeyItemSystem;
+import GameSystems.QuestSystem;
 import GameSystems.RadioSystem;
 import org.nwnx.nwnx2.jvm.*;
 
@@ -16,5 +17,6 @@ public class OnAcquireItem implements IScriptEventHandler {
 		radioSystem.OnModuleAcquire();
 		InventorySystem.OnModuleAcquireItem();
         KeyItemSystem.OnModuleItemAcquired();
+		QuestSystem.OnItemAcquired();
 	}
 }

@@ -10,6 +10,6 @@ public class TestBreadAcceptQuest implements IScriptEventHandler {
     public void runScript(NWObject objSelf) {
 
         NWObject oPC = NWScript.getLastUsedBy();
-        QuestSystem.AcceptQuest(oPC, 2);
+        QuestSystem.AcceptQuest(oPC, 1);
     }
 }

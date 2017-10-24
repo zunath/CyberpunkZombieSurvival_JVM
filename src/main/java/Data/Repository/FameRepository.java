@@ -5,10 +5,6 @@ import Data.SqlParameter;
 import Entities.FameRegionEntity;
 import Entities.PCRegionalFameEntity;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-
 public class FameRepository {
 
     public PCRegionalFameEntity GetPCFameByID(String playerID, int regionID)
@@ -28,17 +24,9 @@ public class FameRepository {
         {
             try(DataContext context = new DataContext())
             {
-                CriteriaBuilder cb = context.getSession().getCriteriaBuilder();
-
-                CriteriaQuery<FameRegionEntity> query =
-                        cb.createQuery(FameRegionEntity.class);
-
-                Root<FameRegionEntity> root = query.from(FameRegionEntity.class);
-                query.select(root);
-
-                FameRegionEntity fameRegion = context.getSession()
-                        .createQuery(query)
-                        .uniqueResult();
+                FameRegionEntity fameRegion = context.executeSQLSingle("Fame/GetFameRegionByID",
+                        FameRegionEntity.class,
+                        new SqlParameter("fameRegionID", regionID));
 
                 entity = new PCRegionalFameEntity();
                 entity.setAmount(0);

@@ -69,14 +69,6 @@ public class QuestEntity {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "quest", fetch = FetchType.EAGER, orphanRemoval = true)
     @Fetch(FetchMode.SELECT)
-    private List<QuestRequiredItemListEntity> requiredItems;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quest", fetch = FetchType.EAGER, orphanRemoval = true)
-    @Fetch(FetchMode.SELECT)
-    private List<QuestRequiredKeyItemListEntity> requiredKeyItems;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quest", fetch = FetchType.EAGER, orphanRemoval = true)
-    @Fetch(FetchMode.SELECT)
     private List<QuestPrerequisiteEntity> prerequisiteQuests;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "quest", fetch = FetchType.EAGER, orphanRemoval = true)
@@ -210,22 +202,6 @@ public class QuestEntity {
 
     public void setRewardItems(List<QuestRewardItemEntity> rewardItems) {
         this.rewardItems = rewardItems;
-    }
-
-    public List<QuestRequiredItemListEntity> getRequiredItems() {
-        return requiredItems;
-    }
-
-    public void setRequiredItems(List<QuestRequiredItemListEntity> requiredItems) {
-        this.requiredItems = requiredItems;
-    }
-
-    public List<QuestRequiredKeyItemListEntity> getRequiredKeyItems() {
-        return requiredKeyItems;
-    }
-
-    public void setRequiredKeyItems(List<QuestRequiredKeyItemListEntity> requiredKeyItems) {
-        this.requiredKeyItems = requiredKeyItems;
     }
 
     public List<QuestPrerequisiteEntity> getPrerequisiteQuests() {

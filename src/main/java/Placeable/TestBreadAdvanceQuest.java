@@ -9,7 +9,7 @@ public class TestBreadAdvanceQuest implements IScriptEventHandler {
     @Override
     public void runScript(NWObject objSelf) {
         NWObject oPC = NWScript.getLastUsedBy();
-        //QuestSystem.AdvanceQuestState(oPC, 2);
-        QuestSystem.CompleteQuest(oPC, 2);
+        QuestSystem.AdvanceQuestState(oPC, 2);
+        //QuestSystem.CompleteQuest(oPC, 1);
     }
 }

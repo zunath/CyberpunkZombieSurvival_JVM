@@ -6,9 +6,6 @@ import Entities.PCQuestKillTargetProgressEntity;
 import Entities.PCQuestStatusEntity;
 import Entities.QuestEntity;
 import Entities.QuestKillTargetListEntity;
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Projections;
-import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 
@@ -43,12 +40,13 @@ public class QuestRepository {
         }
     }
 
-    public List<QuestKillTargetListEntity> GetQuestKillTargetsByQuestID(int questID)
+    public List<QuestKillTargetListEntity> GetQuestKillTargetsByQuestSequenceID(int questID, int sequenceID)
     {
         try(DataContext context = new DataContext())
         {
-            return context.executeSQLList("Quest/GetQuestKillTargetsByQuestID", QuestKillTargetListEntity.class,
-                    new SqlParameter("questID", questID));
+            return context.executeSQLList("Quest/GetQuestKillTargetsByQuestSequenceID", QuestKillTargetListEntity.class,
+                    new SqlParameter("questID", questID),
+                    new SqlParameter("sequenceID", sequenceID));
         }
     }
 

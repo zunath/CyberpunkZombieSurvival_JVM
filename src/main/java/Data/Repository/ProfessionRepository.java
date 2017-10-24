@@ -1,12 +1,7 @@
 package Data.Repository;
 
 import Data.DataContext;
-import Data.SqlParameter;
-import Entities.PortraitEntity;
 import Entities.ProfessionEntity;
-import Enumerations.ProfessionType;
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 

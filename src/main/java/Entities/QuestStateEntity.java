@@ -1,6 +1,10 @@
 package Entities;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
+import java.util.List;
 
 @SuppressWarnings("UnusedDeclaration")
 @Entity
@@ -28,6 +32,14 @@ public class QuestStateEntity {
 
     @Column(name = "IsFinalState")
     private boolean isFinalState;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "questState", fetch = FetchType.EAGER, orphanRemoval = true)
+    @Fetch(FetchMode.SELECT)
+    private List<QuestRequiredItemListEntity> requiredItems;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "questState", fetch = FetchType.EAGER, orphanRemoval = true)
+    @Fetch(FetchMode.SELECT)
+    private List<QuestRequiredKeyItemListEntity> requiredKeyItems;
 
     public int getQuestStateID() {
         return questStateID;
@@ -75,5 +87,21 @@ public class QuestStateEntity {
 
     public void setFinalState(boolean finalState) {
         isFinalState = finalState;
+    }
+
+    public List<QuestRequiredItemListEntity> getRequiredItems() {
+        return requiredItems;
+    }
+
+    public void setRequiredItems(List<QuestRequiredItemListEntity> requiredItems) {
+        this.requiredItems = requiredItems;
+    }
+
+    public List<QuestRequiredKeyItemListEntity> getRequiredKeyItems() {
+        return requiredKeyItems;
+    }
+
+    public void setRequiredKeyItems(List<QuestRequiredKeyItemListEntity> requiredKeyItems) {
+        this.requiredKeyItems = requiredKeyItems;
     }
 }

@@ -3,8 +3,6 @@ package Data.Repository;
 import Data.DataContext;
 import Data.SqlParameter;
 import Entities.ProgressionLevelEntity;
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 

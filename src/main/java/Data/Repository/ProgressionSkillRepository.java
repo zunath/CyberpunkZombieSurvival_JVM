@@ -2,10 +2,7 @@ package Data.Repository;
 
 import Data.DataContext;
 import Data.SqlParameter;
-import Entities.ProgressionLevelEntity;
 import Entities.ProgressionSkillEntity;
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Restrictions;
 
 public class ProgressionSkillRepository {
 
