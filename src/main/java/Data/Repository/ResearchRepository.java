@@ -31,7 +31,7 @@ public class ResearchRepository {
     {
         try(DataContext context = new DataContext())
         {
-            return context.executeSQLList("Research/GetResearchJobInQueueForSlot", CraftBlueprintCategoryEntity.class,
+            return context.executeSQLList("Research/GetResearchCategoriesAvailableForCraftAndLevel", CraftBlueprintCategoryEntity.class,
                     new SqlParameter("craftID", craftID),
                     new SqlParameter("skillRequired", researchLevel));
         }
@@ -52,7 +52,7 @@ public class ResearchRepository {
     {
         try(DataContext context = new DataContext())
         {
-            return context.executeSQLSingle("Research/GetResearchBlueprintsForCategory", ResearchBlueprintEntity.class,
+            return context.executeSQLSingle("Research/GetResearchBlueprintByID", ResearchBlueprintEntity.class,
                     new SqlParameter("researchBlueprintID", researchBlueprintID));
         }
     }
