@@ -3,6 +3,7 @@ package Abilities.Crafting;
 import Abilities.IAbility;
 import org.nwnx.nwnx2.jvm.NWObject;
 
+// Reduces the gold cost of research. (10% reduction)
 public class ResearchEfficiency implements IAbility {
     @Override
     public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {

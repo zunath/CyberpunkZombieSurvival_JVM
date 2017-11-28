@@ -4,6 +4,7 @@ import Abilities.IAbility;
 import GameSystems.InventorySystem;
 import org.nwnx.nwnx2.jvm.NWObject;
 
+// Grants +10 item slots.
 public class StrongBack implements IAbility {
     @Override
     public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {

@@ -3,6 +3,7 @@ package Abilities.Passive;
 import Abilities.IAbility;
 import org.nwnx.nwnx2.jvm.NWObject;
 
+// Increases the amount of infection removed through natural recovery by 3% per recovery period.
 public class InfectionRecovery implements IAbility {
     @Override
     public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {

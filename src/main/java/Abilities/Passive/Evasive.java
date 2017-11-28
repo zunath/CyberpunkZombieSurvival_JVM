@@ -4,6 +4,7 @@ import Abilities.IAbility;
 import NWNX.NWNX_Funcs;
 import org.nwnx.nwnx2.jvm.NWObject;
 
+// Increases natural AC bonus by 2 points.
 public class Evasive implements IAbility {
     @Override
     public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {

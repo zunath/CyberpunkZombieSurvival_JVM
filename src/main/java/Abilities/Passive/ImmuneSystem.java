@@ -3,6 +3,7 @@ package Abilities.Passive;
 import Abilities.IAbility;
 import org.nwnx.nwnx2.jvm.NWObject;
 
+// Increases infection resistance check by 3 points against the DC.
 public class ImmuneSystem implements IAbility {
     @Override
     public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {

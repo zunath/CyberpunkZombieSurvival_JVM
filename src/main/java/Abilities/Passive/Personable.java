@@ -5,6 +5,7 @@ import NWNX.NWNX_Funcs;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.constants.Ability;
 
+// Increases charisma by 2 points.
 public class Personable implements IAbility {
     @Override
     public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {

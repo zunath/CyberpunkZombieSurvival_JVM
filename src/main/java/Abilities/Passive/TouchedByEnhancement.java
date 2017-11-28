@@ -3,6 +3,7 @@ package Abilities.Passive;
 import Abilities.IAbility;
 import org.nwnx.nwnx2.jvm.NWObject;
 
+// Reduces mana cost of Enhancement spells by 1 point.
 public class TouchedByEnhancement implements IAbility {
     @Override
     public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {

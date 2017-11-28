@@ -12,6 +12,11 @@ import org.nwnx.nwnx2.jvm.constants.Duration;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+// Deals extra fire damage to a target on the next blade attack.
+// Also inflicts a temporary burn effect on the target.
+// A blade must be equipped.
+// The burn effect lasts for between 3 and 5 ticks (6 seconds per tick)
+// Deals between 6 and 12 fire damage.
 public class FlameBlade implements IAbility {
     @Override
     public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {

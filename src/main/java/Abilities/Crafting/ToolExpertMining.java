@@ -3,6 +3,7 @@ package Abilities.Crafting;
 import Abilities.IAbility;
 import org.nwnx.nwnx2.jvm.NWObject;
 
+// Reduces the chance of weapon receiving durability loss while mining. (-10%)
 public class ToolExpertMining implements IAbility {
     @Override
     public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {

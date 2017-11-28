@@ -3,6 +3,7 @@ package Abilities.Passive;
 import Abilities.IAbility;
 import org.nwnx.nwnx2.jvm.NWObject;
 
+// Grants a 5% chance to reduce the Infection Over Time status effect from 6 ticks to 3 ticks (6 seconds per tick)
 public class SlowedInfection implements IAbility {
     @Override
     public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {

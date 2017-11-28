@@ -3,6 +3,7 @@ package Abilities.Crafting;
 import Abilities.IAbility;
 import org.nwnx.nwnx2.jvm.NWObject;
 
+// Increases the chance to find wood while logging (+10% chance)
 public class Lumberjack implements IAbility {
     @Override
     public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {

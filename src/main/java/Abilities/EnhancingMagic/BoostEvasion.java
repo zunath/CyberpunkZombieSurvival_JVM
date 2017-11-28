@@ -16,6 +16,11 @@ import static org.nwnx.nwnx2.jvm.constants.All.AC_VS_DAMAGE_TYPE_ALL;
 import static org.nwnx.nwnx2.jvm.constants.All.DURATION_TYPE_INSTANT;
 import static org.nwnx.nwnx2.jvm.constants.All.DURATION_TYPE_TEMPORARY;
 
+// Increases AC dodge bonus (aka evasion) by 1 for a base duration of 60 seconds.
+// Duration is increased by 20 seconds for each wisdom point beyond 10.
+// Duration is increased by 20 seconds for each enhancement affinity skill.
+// Duration is increased by 20 seconds for each item bonus.
+// The amount of increase is raised by 1 point for every 5 points of item bonus.
 public class BoostEvasion implements IAbility {
     @Override
     public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {

@@ -8,6 +8,7 @@ import org.nwnx.nwnx2.jvm.Scheduler;
 import org.nwnx.nwnx2.jvm.constants.Feat;
 import org.nwnx.nwnx2.jvm.constants.InventorySlot;
 
+// Grants Ambidexterity and Two Weapon Fighting feats.
 public class DualWield implements IAbility {
     @Override
     public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {

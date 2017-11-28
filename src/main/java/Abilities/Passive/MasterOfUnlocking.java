@@ -3,6 +3,7 @@ package Abilities.Passive;
 import Abilities.IAbility;
 import org.nwnx.nwnx2.jvm.NWObject;
 
+// Shortens the amount of time it takes to pick locks by 25%.
 public class MasterOfUnlocking implements IAbility {
     @Override
     public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {

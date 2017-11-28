@@ -3,6 +3,7 @@ package Abilities.Crafting;
 import Abilities.IAbility;
 import org.nwnx.nwnx2.jvm.NWObject;
 
+// Increases the chance to find iron while mining (+10% chance)
 public class Miner implements IAbility {
     @Override
     public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {

@@ -8,6 +8,7 @@ import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.Scheduler;
 import org.nwnx.nwnx2.jvm.constants.InventorySlot;
 
+// Enables energy blades to be equipped.
 public class EnergyBladeAdept implements IAbility {
     @Override
     public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {

@@ -3,6 +3,7 @@ package Abilities.Crafting;
 import Abilities.IAbility;
 import org.nwnx.nwnx2.jvm.NWObject;
 
+// Reduces the chance of losing materials on crafting failure. (5%)
 public class CarefulHands implements IAbility {
     @Override
     public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {

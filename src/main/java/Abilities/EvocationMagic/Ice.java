@@ -16,6 +16,12 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import static org.nwnx.nwnx2.jvm.constants.All.*;
 
+// Deals cold damage to a single target and slows them temporarily.
+// Minimum damage = 1 + (evocation affinity + intelligence + (item bonus * 4)) * 0.10
+// Maximum damage = 4 + (evocation affinity + intelligence + (item bonus * 4)) * 0.25
+// Slow length is minimum of 2 seconds.
+// Slow length is increased by 0.5 seconds per evocation affinity skill.
+// Slow length is increased by 0.75 seconds per intelligence point past 10.
 public class Ice implements IAbility {
     @Override
     public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {

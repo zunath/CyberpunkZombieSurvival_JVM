@@ -12,6 +12,11 @@ import org.nwnx.nwnx2.jvm.constants.Ability;
 
 import static org.nwnx.nwnx2.jvm.constants.All.*;
 
+// Grants an aura of light around a target for a base duration of 120 seconds.
+// The duration is increased by 20 seconds for each point of holy affinity skill.
+// The duration is increased by 20 seconds for each point of wisdom beyond 10.
+// The duration is increased by 20 seconds for each point of item bonus.
+// The aura range is increased at 5, 10, and 20 item bonus points.
 public class Light implements IAbility {
     @Override
     public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {
@@ -53,17 +58,17 @@ public class Light implements IAbility {
         float duration = baseDuration + bonusDuration;
         int vfxID = VFX_DUR_LIGHT_WHITE_5;
 
-        if(itemBonus >= 5)
+        if(itemBonus >= 20)
         {
-            vfxID = VFX_DUR_LIGHT_WHITE_10;
+            vfxID = VFX_DUR_LIGHT_WHITE_20;
         }
         else if(itemBonus >= 10)
         {
             vfxID = VFX_DUR_LIGHT_WHITE_15;
         }
-        else if(itemBonus >= 20)
+        else if(itemBonus >= 5)
         {
-            vfxID = VFX_DUR_LIGHT_WHITE_20;
+            vfxID = VFX_DUR_LIGHT_WHITE_10;
         }
 
         NWEffect effect = NWScript.effectVisualEffect(vfxID, false);

@@ -12,6 +12,10 @@ import org.nwnx.nwnx2.jvm.constants.Ability;
 import org.nwnx.nwnx2.jvm.constants.DurationType;
 import org.nwnx.nwnx2.jvm.constants.Vfx;
 
+// Reduces the movement speed of a single target by 75% for a base amount of 30 seconds.
+// Duration increased by 5 seconds for every point of evocation affinity.
+// Duration increased by 5 seconds for every point of intelligence beyond 10.
+// Duration increased by 5 seconds for every point of item bonus.
 public class Snare implements IAbility {
     @Override
     public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {

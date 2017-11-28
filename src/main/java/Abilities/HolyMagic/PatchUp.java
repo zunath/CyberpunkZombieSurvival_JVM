@@ -11,6 +11,10 @@ import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.constants.Ability;
 
+// Removes bleeding custom effect from a single target.
+// Casting time is reduced by 0.5 seconds per point of holy affinity.
+// Casting time is reduced by 0.5 seconds per point of wisdom beyond 10.
+// Casting time is reduced by 0.5 seconds per point of item bonus.
 public class PatchUp implements IAbility {
     @Override
     public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {

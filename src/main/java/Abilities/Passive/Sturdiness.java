@@ -5,6 +5,7 @@ import NWNX.NWNX_Funcs;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 
+// Increases max hit points by 10 points.
 public class Sturdiness implements IAbility {
     @Override
     public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {

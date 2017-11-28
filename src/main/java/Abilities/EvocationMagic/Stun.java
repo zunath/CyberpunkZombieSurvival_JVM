@@ -14,6 +14,10 @@ import static org.nwnx.nwnx2.jvm.constants.All.DURATION_TYPE_INSTANT;
 import static org.nwnx.nwnx2.jvm.constants.All.DURATION_TYPE_TEMPORARY;
 import static org.nwnx.nwnx2.jvm.constants.All.VFX_IMP_STUN;
 
+// Stuns a single target for a base duration of 1 second.
+// Duration is increased by 0.4 seconds per point of Evocation Affinity.
+// Duration is increased by 0.75 seconds per point of intelligence beyond 10.
+// Duration is increased by 0.2 seconds per point of item bonus.
 public class Stun implements IAbility {
     @Override
     public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {

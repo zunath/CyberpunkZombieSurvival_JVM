@@ -13,6 +13,13 @@ import org.nwnx.nwnx2.jvm.constants.SavingThrow;
 
 import static org.nwnx.nwnx2.jvm.constants.All.DURATION_TYPE_TEMPORARY;
 
+// Forces a single target to turn if they fail the will save check.
+// Base duration is 6 seconds.
+// Base will save DC is 10.
+// Will save DC is increased by 1 per point of wisdom
+// Duration is increased by 1 second for every point of wisdom.
+// Duration is increased by 1 second for every point of item bonus.
+// Duration is increased by 1 second for every 3 points of Holy Affinity skill.
 public class TurnUndead implements IAbility {
     @Override
     public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {

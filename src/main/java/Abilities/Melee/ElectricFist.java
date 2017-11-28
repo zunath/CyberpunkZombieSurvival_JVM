@@ -12,6 +12,11 @@ import org.nwnx.nwnx2.jvm.constants.Duration;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+// Deals extra electrical damage to a target on the next unarmed strike attack.
+// Also inflicts a temporary shock effect on the target.
+// Gauntlets must be equipped and no weapon must be equipped.
+// The shock effect lasts for between 3 and 5 ticks (6 seconds per tick)
+// Deals between 8 and 15 electrical damage.
 public class ElectricFist implements IAbility {
     @Override
     public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {

@@ -10,10 +10,16 @@ import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.Scheduler;
 
+import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
 
 import static org.nwnx.nwnx2.jvm.constants.All.ABILITY_WISDOM;
 
+// Transports the caster and all party members within 5 meters to a random location in Cleiyra Forest.
+// Each player is transported individually and may or may not end up at the same location as other party members.
+// Casting time is reduced by 1 second for every point of Holy Affinity.
+// Casting time is reduced by 1 second for every 2 points of Wisdom beyond 10.
+// Casting time is reduced by 1 second for every point of item bonus.
 public class TeleportCleiyra implements IAbility {
     @Override
     public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {
@@ -55,15 +61,21 @@ public class TeleportCleiyra implements IAbility {
 
     @Override
     public void OnImpact(NWObject oPC, NWObject oTarget) {
+        NWObject oArea = NWScript.getArea(oTarget);
+        String castedArea = NWScript.getResRef(oArea);
         String waypointTagBase = "TELEPORT_CLEIYRA_";
         for(NWObject member : NWScript.getFactionMembers(oPC, true))
         {
-            int waypointID = ThreadLocalRandom.current().nextInt(1, 10);
-            String waypointTag = waypointTagBase + waypointID;
-            NWObject waypoint = NWScript.getWaypointByTag(waypointTag);
-            final NWLocation location = NWScript.getLocation(waypoint);
+            if(Objects.equals(castedArea, NWScript.getResRef(NWScript.getArea(member))) &&
+                    NWScript.getDistanceBetween(member, oPC) <= 5.0f)
+            {
+                int waypointID = ThreadLocalRandom.current().nextInt(1, 10);
+                String waypointTag = waypointTagBase + waypointID;
+                NWObject waypoint = NWScript.getWaypointByTag(waypointTag);
+                final NWLocation location = NWScript.getLocation(waypoint);
 
-            Scheduler.assign(member, () -> NWScript.actionJumpToLocation(location));
+                Scheduler.assign(member, () -> NWScript.actionJumpToLocation(location));
+            }
         }
     }
 

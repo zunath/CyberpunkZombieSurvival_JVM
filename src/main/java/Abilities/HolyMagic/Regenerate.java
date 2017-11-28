@@ -12,6 +12,12 @@ import org.nwnx.nwnx2.jvm.constants.Ability;
 
 import static org.nwnx.nwnx2.jvm.constants.All.DURATION_TYPE_TEMPORARY;
 
+// Grants an HP regeneration effect to a single target for a base duration of 60 seconds.
+//      Interval: Every 10 seconds
+//      Amount per interval: 1 Hit Point
+// Duration is increased by 20 seconds for every two points of Holy Affinity skill.
+// Duration is increased by 20 seconds for every point of wisdom beyond 10.
+// Duration is increased by 20 seconds for every point of item bonus.
 public class Regenerate implements IAbility {
     @Override
     public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {

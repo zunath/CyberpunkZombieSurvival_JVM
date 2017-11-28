@@ -11,6 +11,11 @@ import java.util.Objects;
 
 import static org.nwnx.nwnx2.jvm.constants.All.*;
 
+// Transports caster and all party members within 5 meters to the escape point for the area.
+// Casting time is reduced by 1 second for every point of holy affinity skill.
+// Casting time is reduced by 1 second for every point of item bonus.
+// Casting time is reduced by 1 second for every 2 points of Wisdom beyond 10.
+
 public class Escape implements IAbility {
     @Override
     public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {

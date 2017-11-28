@@ -10,6 +10,11 @@ import org.nwnx.nwnx2.jvm.constants.Duration;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+// Deals extra bludgeoning damage to a target on the next blunt attack.
+// Also inflicts a temporary knockdown effect.
+// A blunt weapon must be equipped.
+// The knockdown effect lasts for between 1 and 4 seconds.
+// Deals between 3 and 8 bludgeoning damage.
 public class SkullBash implements IAbility {
     @Override
     public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {
@@ -40,7 +45,7 @@ public class SkullBash implements IAbility {
     public void OnImpact(NWObject oPC, NWObject oTarget) {
         NWObject oItem = NWScript.getSpellCastItem();
 
-        if(!ItemHelper.IsBlade(oItem))
+        if(!ItemHelper.IsBlunt(oItem))
         {
             NWScript.sendMessageToPC(oPC, "Skull Bash can only be used with blunt weapons.");
             return;

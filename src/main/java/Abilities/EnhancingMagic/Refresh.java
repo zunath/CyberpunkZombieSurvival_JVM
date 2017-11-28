@@ -11,6 +11,10 @@ import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.constants.Ability;
 
+// Recovers mana of a single target for a base amount of 3 ticks (6 seconds).
+// The number of ticks increases by 1 for each point of Holy Affinity.
+// The number of ticks increases by 1 for each point of Wisdom beyond 10.
+// The number of ticks increases by 1 for every two points of item bonus.
 public class Refresh implements IAbility {
     @Override
     public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {

@@ -11,6 +11,11 @@ import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.constants.Ability;
 
+// Removes the custom poison effect from a single target.
+// Casting time is reduced by 0.5 seconds for every point of Holy Affinity.
+// Casting time is reduced by 0.5 seconds for every point of item bonus.
+// Casting time is reduced by 0.5 seconds for every point of wisdom beyond 10.
+// Minimum casting time is 0.5 seconds.
 public class Antidote implements IAbility {
     @Override
     public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {
