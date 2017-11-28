@@ -19,7 +19,7 @@ import static org.nwnx.nwnx2.jvm.constants.All.VFX_IMP_FLAME_M;
 
 // Deals flame damage to a single target.
 // Damage minimum = 4 + (evocation affinity skill + intelligence + (item bonus * 4)) * 0.25
-// Damage minimum = 6 + (evocation affinity skill + intelligence + (item bonus * 4)) * 0.25
+// Damage maximum = 6 + (evocation affinity skill + intelligence + (item bonus * 4)) * 0.25
 public class Flame implements IAbility {
     @Override
     public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {
