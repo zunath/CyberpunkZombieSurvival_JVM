@@ -8,73 +8,8 @@
   <component name="ChangeListManager">
     <list default="true" id="486e3add-e013-4d47-abab-c86692a1ecb0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Crafting/CarefulHands.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Crafting/CarefulHands.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Crafting/IronCollector.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Crafting/IronCollector.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Crafting/LumberCollector.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Crafting/LumberCollector.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Crafting/Lumberjack.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Crafting/Lumberjack.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Crafting/Miner.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Crafting/Miner.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Crafting/ResearchEfficiency.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Crafting/ResearchEfficiency.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Crafting/ToolExpertLogging.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Crafting/ToolExpertLogging.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Crafting/ToolExpertMining.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Crafting/ToolExpertMining.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostCHA.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostCHA.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostCON.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostCON.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostDEX.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostDEX.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostEvasion.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostEvasion.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostINT.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostINT.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostSTR.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostSTR.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostSearch.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostSearch.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostStealth.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostStealth.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostWIS.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostWIS.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/Light.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/Light.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/Refresh.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/Refresh.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Blind.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Blind.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Flame.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Flame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Ice.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Ice.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Poison.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Poison.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Snare.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Snare.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Stun.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Stun.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/Antidote.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/Antidote.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/Cure.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/Cure.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/Escape.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/Escape.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/PatchUp.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/PatchUp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/Regenerate.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/Regenerate.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/TeleportCleiyra.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/TeleportCleiyra.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/TeleportMason.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/TeleportMason.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/TurnUndead.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/TurnUndead.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Melee/ElectricFist.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Melee/ElectricFist.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Melee/FlameBlade.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Melee/FlameBlade.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Melee/SkullBash.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Melee/SkullBash.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Passive/AntiqueCollector.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/AntiqueCollector.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Clarity.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Clarity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Deft.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Deft.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Passive/DualWield.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/DualWield.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Passive/EnergyBladeAdept.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/EnergyBladeAdept.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Evasive.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Evasive.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Fixer.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Fixer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Passive/GoodEye.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/GoodEye.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Passive/ImmuneSystem.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/ImmuneSystem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Passive/InfectionRecovery.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/InfectionRecovery.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Insightful.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Insightful.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Passive/LizardRegeneration.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/LizardRegeneration.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Passive/MasterOfUnlocking.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/MasterOfUnlocking.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Medic.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Medic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Personable.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Personable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Powerful.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Powerful.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Passive/QuickPick.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/QuickPick.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Passive/QuickReload.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/QuickReload.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Passive/SlowedInfection.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/SlowedInfection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Smart.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Smart.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Passive/SnakeEater.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/SnakeEater.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Passive/SpeedyCrafter.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/SpeedyCrafter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Passive/StrongBack.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/StrongBack.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Sturdiness.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Sturdiness.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Passive/SturdySkin.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/SturdySkin.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Thief.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Thief.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Passive/TouchedByEnhancement.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/TouchedByEnhancement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Passive/TouchedByEvocation.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/TouchedByEvocation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Passive/TouchedByHoly.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/TouchedByHoly.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Tough.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Tough.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Abilities/Ranged/PiercingToss.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Ranged/PiercingToss.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/sql/Research/GetResearchCategoriesAvailableForCraftAndLevel.sql" afterPath="$PROJECT_DIR$/src/main/resources/sql/Research/GetResearchCategoriesAvailableForCraftAndLevel.sql" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -87,101 +22,51 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SnakeEater.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Passive/SnakeEater.java">
+      <file leaf-file-name="ResearchRepository.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Data/Repository/ResearchRepository.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
-              <caret line="5" column="33" lean-forward="false" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
+              <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SpeedyCrafter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Passive/SpeedyCrafter.java">
+      <file leaf-file-name="ResearchTerminal.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Conversation/ResearchTerminal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="5" column="35" lean-forward="false" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
+            <state relative-caret-position="383">
+              <caret line="331" column="93" lean-forward="false" selection-start-line="331" selection-start-column="93" selection-end-line="331" selection-end-column="93" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StrongBack.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Passive/StrongBack.java">
+      <file leaf-file-name="GetResearchBlueprintsForCategory.sql" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/sql/Research/GetResearchBlueprintsForCategory.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="6" column="25" lean-forward="false" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+            <state relative-caret-position="238">
+              <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Sturdiness.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Passive/Sturdiness.java">
+      <file leaf-file-name="GetResearchCategoriesAvailableForCraftAndLevel.sql" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/sql/Research/GetResearchCategoriesAvailableForCraftAndLevel.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="7" column="41" lean-forward="false" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
+            <state relative-caret-position="170">
+              <caret line="10" column="26" lean-forward="false" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SturdySkin.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Passive/SturdySkin.java">
+      <file leaf-file-name="Refresh.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/Refresh.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="5" column="52" lean-forward="false" selection-start-line="5" selection-start-column="52" selection-end-line="5" selection-end-column="52" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Thief.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Passive/Thief.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="7" column="48" lean-forward="false" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TouchedByEnhancement.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Passive/TouchedByEnhancement.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="5" selection-end-column="54" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TouchedByHoly.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Passive/TouchedByHoly.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="5" column="28" lean-forward="false" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Tough.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Passive/Tough.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="7" column="38" lean-forward="false" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TouchedByEvocation.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Passive/TouchedByEvocation.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="5" column="52" lean-forward="false" selection-start-line="5" selection-start-column="52" selection-end-line="5" selection-end-column="52" />
+            <state relative-caret-position="629">
+              <caret line="52" column="57" lean-forward="true" selection-start-line="52" selection-start-column="57" selection-end-line="52" selection-end-column="57" />
               <folding />
             </state>
           </provider>
@@ -248,9 +133,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostWIS.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/Light.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/Refresh.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Blind.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Flame.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Ice.java" />
@@ -299,6 +182,8 @@
         <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/TouchedByEvocation.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/TouchedByHoly.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/Tough.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/sql/Research/GetResearchCategoriesAvailableForCraftAndLevel.sql" />
+        <option value="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/Refresh.java" />
       </list>
     </option>
   </component>
@@ -405,7 +290,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="Abilities" type="462c0819:PsiDirectoryNode" />
-              <item name="Passive" type="462c0819:PsiDirectoryNode" />
+              <item name="EnhancingMagic" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CyberpunkZombieSurvival_JVM" type="b2602c69:ProjectViewProjectNode" />
@@ -413,8 +298,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Abilities" type="462c0819:PsiDirectoryNode" />
-              <item name="Ranged" type="462c0819:PsiDirectoryNode" />
+              <item name="Conversation" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CyberpunkZombieSurvival_JVM" type="b2602c69:ProjectViewProjectNode" />
@@ -493,7 +377,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../czs-site" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -685,7 +569,14 @@
       <option name="project" value="LOCAL" />
       <updated>1508741407719</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Add comments to all abilities to assist with the external documentation efforts.&#10;&#10;Also fixed bugs with the teleport spells and light spell.">
+      <created>1511879495024</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1511879495024</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -753,7 +644,8 @@
     <MESSAGE value="Increase the minimum damage of flame spell. Fixes #65" />
     <MESSAGE value="Reduce the max random effect and increase the base minimum static effect of treatment kits. Fixes #59" />
     <MESSAGE value="Log client logins and logouts to DB. Completes #37" />
-    <option name="LAST_COMMIT_MESSAGE" value="Log client logins and logouts to DB. Completes #37" />
+    <MESSAGE value="Add comments to all abilities to assist with the external documentation efforts.&#10;&#10;Also fixed bugs with the teleport spells and light spell." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add comments to all abilities to assist with the external documentation efforts.&#10;&#10;Also fixed bugs with the teleport spells and light spell." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -770,46 +662,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostWIS.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="16" column="19" lean-forward="false" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/Light.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="18" column="66" lean-forward="false" selection-start-line="18" selection-start-column="66" selection-end-line="18" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/Refresh.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="16" column="72" lean-forward="false" selection-start-line="16" selection-start-column="72" selection-end-line="16" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Blind.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="17" column="67" lean-forward="false" selection-start-line="17" selection-start-column="67" selection-end-line="17" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Flame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="21" column="21" lean-forward="false" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Ice.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1178,6 +1030,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/sql/Research/GetResearchBlueprintsForCategory.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Data/Repository/ResearchRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Conversation/ResearchTerminal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="331" column="93" lean-forward="false" selection-start-line="331" selection-start-column="93" selection-end-line="331" selection-end-column="93" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/sql/Research/GetResearchCategoriesAvailableForCraftAndLevel.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="26" lean-forward="false" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/Refresh.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="52" column="57" lean-forward="true" selection-start-line="52" selection-start-column="57" selection-end-line="52" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
   </component>
   <component name="masterDetails">
     <states>
@@ -1237,7 +1129,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

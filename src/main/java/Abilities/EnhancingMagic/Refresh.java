@@ -12,7 +12,7 @@ import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.constants.Ability;
 
 // Recovers mana of a single target for a base amount of 3 ticks (6 seconds).
-// The number of ticks increases by 1 for each point of Holy Affinity.
+// The number of ticks increases by 1 for each point of Enhancement Affinity.
 // The number of ticks increases by 1 for each point of Wisdom beyond 10.
 // The number of ticks increases by 1 for every two points of item bonus.
 public class Refresh implements IAbility {
@@ -48,7 +48,7 @@ public class Refresh implements IAbility {
     @Override
     public void OnImpact(NWObject oPC, NWObject oTarget) {
         PlayerGO pcGO = new PlayerGO(oPC);
-        int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_HOLY_AFFINITY);
+        int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_ENHANCEMENT_AFFINITY);
         int wisdom = NWScript.getAbilityScore(oPC, Ability.WISDOM, false) - 10;
         int itemBonus = pcGO.CalculateEnhancementBonus();
         int baseTicks = 3;
