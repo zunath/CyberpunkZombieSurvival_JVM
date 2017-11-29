@@ -12,7 +12,9 @@ import org.nwnx.nwnx2.jvm.constants.Ability;
 
 import static org.nwnx.nwnx2.jvm.constants.All.*;
 
-// Blinds a single target for a base duration of 30 seconds.
+// Reduces the attack bonus misc of a single target for a base duration of 30 seconds.
+// Base amount reduced is 2 points.
+// Amount of AC reduced increases by 1 point for every 3 points of item bonus.
 // Duration is increased by 6 seconds for each point of Evocation Affinity.
 // Duration is increased by 12 seconds for each point of intelligence beyond 10.
 // Duration is increased by 3 seconds for each point of item bonus.
