@@ -12,7 +12,7 @@ import org.nwnx.nwnx2.jvm.constants.Duration;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-// Deals extra fire piercing to a target on the next throwing weapon attack.
+// Deals extra piercing damage to a target on the next throwing weapon attack.
 // Also inflicts a temporary bleeding effect on the target.
 // A throwing weapon must be equipped.
 // The bleeding effect lasts for between 3 and 8 ticks (6 seconds per tick)
