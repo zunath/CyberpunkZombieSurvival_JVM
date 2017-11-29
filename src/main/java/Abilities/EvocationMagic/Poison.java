@@ -11,7 +11,8 @@ import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.constants.Ability;
 
-// Deals poison damage over time to a single target for a base amount of 3 ticks (6 seconds per tick)
+// Inflicts the poison custom effect to a single target for a base amount of 3 ticks (6 seconds per tick)
+// Poison deals 3-7 damage per tick and decreases AC Dodge Bonus by 2.
 // Ticks increased by 1 for every two points of Evocation Affinity
 // Ticks increased by 1 for every two points of intelligence beyond 10.
 // Ticks increased by 1 for every point of item bonus.
