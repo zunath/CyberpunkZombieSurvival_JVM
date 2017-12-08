@@ -11,6 +11,7 @@ import Helper.ColorToken;
 import Data.Repository.PlayerProgressionSkillsRepository;
 import Data.Repository.PlayerRepository;
 import org.nwnx.nwnx2.jvm.*;
+import org.nwnx.nwnx2.jvm.constants.Ability;
 import org.nwnx.nwnx2.jvm.constants.DurationType;
 import org.nwnx.nwnx2.jvm.constants.EffectType;
 
@@ -136,7 +137,15 @@ public class InventorySystem {
         // Strong Back ability grants +10 item slots.
         int abilityBonusSlots = MagicSystem.IsAbilityEquipped(oPC, AbilityType.StrongBack) ? 10 : 0;
 
-        return slots + equipBonusSlots + abilityBonusSlots;
+        // +1 inventory every other STR starting at 1. (I.E: 1, 3, 5, 7, 9, 10, etc)
+        int strength = NWScript.getAbilityScore(oPC, Ability.STRENGTH, false) - 10;
+        int strBonusSlots = 0;
+        for(int index = 1; index <= strength; index+=2)
+        {
+            strBonusSlots += 1;
+        }
+
+        return slots + equipBonusSlots + abilityBonusSlots + strBonusSlots;
     }
 
     private static void RunItemLimitCheck(NWObject oPC, NWObject oItem)
