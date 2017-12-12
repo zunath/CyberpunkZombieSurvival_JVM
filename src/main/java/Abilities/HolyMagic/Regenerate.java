@@ -57,7 +57,14 @@ public class Regenerate implements IAbility {
         float baseDuration = 60.0f;
         float bonusDuration = ((skill / 2) + wisdom + itemBonus) * 20.0f;
         float duration = baseDuration + bonusDuration;
-        NWEffect effect = NWScript.effectRegenerate(1, 10.0f);
+
+        int amount = 1;
+        float interval = 10.0f;
+
+        if(wisdom >= 3) amount++;
+        if(wisdom >= 6) interval = 5.0f;
+
+        NWEffect effect = NWScript.effectRegenerate(amount, interval);
 
         NWScript.applyEffectToObject(DURATION_TYPE_TEMPORARY, effect, oTarget, duration);
     }
