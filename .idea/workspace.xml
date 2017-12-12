@@ -6,9 +6,107 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="486e3add-e013-4d47-abab-c86692a1ecb0" name="Default" comment="">
+    <list default="true" id="486e3add-e013-4d47-abab-c86692a1ecb0" name="Default" comment="Update module files. Update SQL script backup. Add 2DA files to git. Fixes #75">
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/database/czs-db-prod-2017-12-12.sql" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/CLS_FEAT_BARB.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/CLS_FEAT_BARD.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/CLS_FEAT_DRUID.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/CLS_FEAT_FIGHT.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/CLS_FEAT_MONK.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/CLS_FEAT_PAL.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/CLS_FEAT_RANG.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/CLS_FEAT_ROG.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/CLS_FEAT_WIZ.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/ambientmusic.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/ambientsound.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/ammunitiontypes.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/appearance.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/appearancesndset.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/baseitems.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/chargenclothes.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/classes.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/cloakmodel.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/cls_atk_4.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/cls_feat_sorc.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/cls_skill_fight.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/creaturesize.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/creaturespeed.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/dgt04_edge.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/doortypes.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/effecticons.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/fcx01_edge.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/feat.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/footstepsounds.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/genericdoors.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/inventorysnds.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_ammotype.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_bonusammo.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_castbonus.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_castpenalty.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_combatdam.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_costtable.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_damagecost.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_damagetype.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_duracost.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_enhabonus.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_evocbonus.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_feats.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_firecritcos.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_firedamage.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_firepowcost.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_firerange.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_firereload.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_firestopcos.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_firetype.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_holybonus.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_invcost.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_magazine.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_magcapcost.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_onhitspell.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_rangedam.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_rateoffire.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_skillreq.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_skillreqcos.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_soakcost.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_spells past.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_spells.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/itempropdef.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/itemprops.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/loadhints.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/loadscreens.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/parts_belt.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/parts_bicep.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/parts_chest.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/parts_foot.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/parts_forearm.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/parts_hand.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/parts_legs.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/parts_neck.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/parts_pelvis.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/parts_robe.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/parts_shin.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/parts_shoulder.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/phenotype.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/placeableobjsnds.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/placeables.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/placeabletypes.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/polymorph.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/portraits.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/ranges.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/shp02_edge.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/skyboxes.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/soundset.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/spells.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/tjsb0_edge.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/vac01_edge.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/visualeffects.2da" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/weaponsounds.2da" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameSystems/InventorySystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/InventorySystem.java" />
+      <change beforePath="$PROJECT_DIR$/nwn/database/czs-db-prod-2017-12-07.sql" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/nwn/module/Cyberpunk Zombie Survival_1.69.zip" afterPath="$PROJECT_DIR$/nwn/module/Cyberpunk Zombie Survival_1.69.zip" />
+      <change beforePath="$PROJECT_DIR$/nwn/module/Cyberpunk Zombie Survival_1.74.zip" afterPath="$PROJECT_DIR$/nwn/module/Cyberpunk Zombie Survival_1.74.zip" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -20,18 +118,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="InventorySystem.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/InventorySystem.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="657">
-              <caret line="144" column="31" lean-forward="true" selection-start-line="144" selection-start-column="31" selection-end-line="144" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -147,7 +234,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="952" />
+    <option name="x" value="209" />
+    <option name="y" value="-25" />
     <option name="width" value="960" />
     <option name="height" value="1038" />
   </component>
@@ -197,6 +285,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -219,58 +311,25 @@
               <item name="CyberpunkZombieSurvival_JVM" type="b2602c69:ProjectViewProjectNode" />
               <item name="CyberpunkZombieSurvival_JVM" type="462c0819:PsiDirectoryNode" />
               <item name="nwn" type="462c0819:PsiDirectoryNode" />
+              <item name="hakpak-content" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CyberpunkZombieSurvival_JVM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CyberpunkZombieSurvival_JVM" type="462c0819:PsiDirectoryNode" />
+              <item name="nwn" type="462c0819:PsiDirectoryNode" />
+              <item name="hakpak-content" type="462c0819:PsiDirectoryNode" />
+              <item name="czs_top_v2.hak" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CyberpunkZombieSurvival_JVM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CyberpunkZombieSurvival_JVM" type="462c0819:PsiDirectoryNode" />
+              <item name="nwn" type="462c0819:PsiDirectoryNode" />
               <item name="module" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CyberpunkZombieSurvival_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CyberpunkZombieSurvival_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CyberpunkZombieSurvival_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CyberpunkZombieSurvival_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CyberpunkZombieSurvival_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CyberpunkZombieSurvival_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CyberpunkZombieSurvival_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CyberpunkZombieSurvival_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Authorization" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CyberpunkZombieSurvival_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CyberpunkZombieSurvival_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Event" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CyberpunkZombieSurvival_JVM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CyberpunkZombieSurvival_JVM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="GameSystems" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -282,16 +341,16 @@
     <property name="settings.editor.selected.configurable" value="Console" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Projects\CyberpunkZombieSurvival_JVM\nwn\module" />
       <recent name="C:\Projects\CyberpunkZombieSurvival_JVM\nwn\database" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src/main/sql" />
       <recent name="$PROJECT_DIR$/src/main/java" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -542,7 +601,14 @@
       <option name="project" value="LOCAL" />
       <updated>1512704681653</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Confer bonus inventory slots for STR upgrades. Fixes #71">
+      <created>1512707266837</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1512707266837</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -562,15 +628,15 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39827773" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32767764" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32767764" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32873806" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32873806" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="FAQ Robot" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1828125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="MaxCompute Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -620,7 +686,9 @@
     <MESSAGE value="Fix typo in the Piercing Toss comment" />
     <MESSAGE value="Update database backup." />
     <MESSAGE value="Update module file. Added two versions: 1.69 (stable) and 1.74 (experimental)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update module file. Added two versions: 1.69 (stable) and 1.74 (experimental)" />
+    <MESSAGE value="Confer bonus inventory slots for STR upgrades. Fixes #71" />
+    <MESSAGE value="Update module files. Update SQL script backup. Add 2DA files to git. Fixes #75" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update module files. Update SQL script backup. Add 2DA files to git. Fixes #75" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -637,13 +705,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Melee/ElectricFist.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="18" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Melee/FlameBlade.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -921,7 +982,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="14" column="33" lean-forward="false" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -929,7 +989,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="799">
           <caret line="65" column="5" lean-forward="false" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -937,7 +996,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -945,7 +1003,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="14" column="70" lean-forward="false" selection-start-line="14" selection-start-column="70" selection-end-line="14" selection-end-column="70" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -953,7 +1010,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
           <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -961,7 +1017,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="14" column="30" lean-forward="false" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -969,7 +1024,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -977,7 +1031,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -985,7 +1038,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -993,14 +1045,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Common/StartUp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="48" column="20" lean-forward="false" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/InventorySystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="657">
-          <caret line="144" column="31" lean-forward="true" selection-start-line="144" selection-start-column="31" selection-end-line="144" selection-end-column="31" />
+        <state relative-caret-position="17">
+          <caret line="144" column="31" lean-forward="false" selection-start-line="144" selection-start-column="31" selection-end-line="144" selection-end-column="31" />
           <folding />
         </state>
       </provider>
