@@ -1237,7 +1237,7 @@ public class CombatSystem {
             {
                 if(oShapeTarget != oAttacker && !NWScript.getIsDead(oShapeTarget) && !NWScript.getIsDead(oAttacker))
                 {
-                    if(NWScript.random(30) > (NWScript.getAC(oShapeTarget) + (numberAttacked*2)) - iShotgunAccuracy)
+                    if(NWScript.random(30) > (NWScript.getAC(oShapeTarget, 0) + (numberAttacked*2)) - iShotgunAccuracy)
                     {
                         int iDamage = CalculateDamage(oAttacker, oShapeTarget, stGunInfo, iShotgunSkill, false);
 
@@ -1287,7 +1287,7 @@ public class CombatSystem {
         int bMiss;
         float fClosestDistance = 0.0f;
         float fStunDuration = 0.0f;
-        int iTargetAC = NWScript.getAC(oTarget);
+        int iTargetAC = NWScript.getAC(oTarget, 0);
 
         // Get the correct skill, based on the type of firearm being used
         // Also determine how long the stun NWEffect lasts, based on weapon

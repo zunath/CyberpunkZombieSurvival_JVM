@@ -8,13 +8,10 @@ import GameSystems.ProgressionSystem;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.Scheduler;
-import org.nwnx.nwnx2.jvm.constants.Ability;
-import org.nwnx.nwnx2.jvm.constants.DamagePower;
-import org.nwnx.nwnx2.jvm.constants.DamageType;
+import org.nwnx.nwnx2.jvm.constants.*;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-import static org.nwnx.nwnx2.jvm.constants.All.*;
 
 // Deals cold damage to a single target and slows them temporarily.
 // Minimum damage = 1 + (evocation affinity + intelligence + (item bonus * 4)) * 0.10
@@ -63,11 +60,11 @@ public class Ice implements IAbility {
 
         float slowLength = 2.0f + (skill * 0.5f) + (intelligence * 0.75f);
 
-        NWScript.applyEffectToObject(DURATION_TYPE_INSTANT, NWScript.effectVisualEffect(VFX_FNF_ICESTORM, false), oTarget, 0.0f);
+        NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectVisualEffect(VfxFnf.ICESTORM, false), oTarget, 0.0f);
 
-        Scheduler.delay(oPC, 50, () -> NWScript.applyEffectToObject(DURATION_TYPE_TEMPORARY, NWScript.effectDamage(damage, DamageType.COLD, DamagePower.NORMAL), oTarget, 0.0f));
+        Scheduler.delay(oPC, 50, () -> NWScript.applyEffectToObject(DurationType.TEMPORARY, NWScript.effectDamage(damage, DamageType.COLD, DamagePower.NORMAL), oTarget, 0.0f));
 
-        NWScript.applyEffectToObject(DURATION_TYPE_TEMPORARY, NWScript.effectSlow(), oTarget, slowLength);
+        NWScript.applyEffectToObject(DurationType.TEMPORARY, NWScript.effectSlow(), oTarget, slowLength);
     }
 
     @Override

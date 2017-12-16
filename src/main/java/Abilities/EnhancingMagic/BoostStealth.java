@@ -9,11 +9,9 @@ import org.nwnx.nwnx2.jvm.NWEffect;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.constants.Ability;
+import org.nwnx.nwnx2.jvm.constants.DurationType;
 import org.nwnx.nwnx2.jvm.constants.EffectType;
 import org.nwnx.nwnx2.jvm.constants.Skill;
-
-import static org.nwnx.nwnx2.jvm.constants.All.DURATION_TYPE_INSTANT;
-import static org.nwnx.nwnx2.jvm.constants.All.DURATION_TYPE_TEMPORARY;
 
 // Increases hide and move silently by 2 for a base duration of 60 seconds.
 // Duration is increased by 20 seconds for each wisdom point beyond 10.
@@ -70,9 +68,9 @@ public class BoostStealth implements IAbility {
             }
         }
 
-        NWScript.applyEffectToObject(DURATION_TYPE_INSTANT, NWScript.effectVisualEffect(visualID, false), oTarget, 0.0f);
-        NWScript.applyEffectToObject(DURATION_TYPE_TEMPORARY, NWScript.effectSkillIncrease(Skill.HIDE, amount), oTarget, totalLength);
-        NWScript.applyEffectToObject(DURATION_TYPE_TEMPORARY, NWScript.effectSkillIncrease(Skill.MOVE_SILENTLY, amount), oTarget, totalLength);
+        NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectVisualEffect(visualID, false), oTarget, 0.0f);
+        NWScript.applyEffectToObject(DurationType.TEMPORARY, NWScript.effectSkillIncrease(Skill.HIDE, amount), oTarget, totalLength);
+        NWScript.applyEffectToObject(DurationType.TEMPORARY, NWScript.effectSkillIncrease(Skill.MOVE_SILENTLY, amount), oTarget, totalLength);
     }
 
     @Override

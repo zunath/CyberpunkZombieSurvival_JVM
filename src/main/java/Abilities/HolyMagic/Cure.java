@@ -8,11 +8,10 @@ import GameSystems.ProgressionSystem;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.constants.Ability;
+import org.nwnx.nwnx2.jvm.constants.DurationType;
+import org.nwnx.nwnx2.jvm.constants.VfxImp;
 
 import java.util.concurrent.ThreadLocalRandom;
-
-import static org.nwnx.nwnx2.jvm.constants.All.DURATION_TYPE_INSTANT;
-import static org.nwnx.nwnx2.jvm.constants.All.VFX_IMP_HEALING_L;
 
 // Recovers a single target's hit points for a base amount of between 2 and 8 HP (random value selected).
 // Minimum and maximum amount are increased by 1 point for every 2 points of holy affinity skill.
@@ -59,8 +58,8 @@ public class Cure implements IAbility {
 
         int hp = ThreadLocalRandom.current().nextInt(minimum, maximum);
 
-        NWScript.applyEffectToObject(DURATION_TYPE_INSTANT, NWScript.effectVisualEffect(VFX_IMP_HEALING_L, false), oTarget, 0.0f);
-        NWScript.applyEffectToObject(DURATION_TYPE_INSTANT, NWScript.effectHeal(hp), oTarget, 0.0f);
+        NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectVisualEffect(VfxImp.HEALING_L, false), oTarget, 0.0f);
+        NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectHeal(hp), oTarget, 0.0f);
     }
 
     @Override

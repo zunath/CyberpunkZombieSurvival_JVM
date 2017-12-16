@@ -9,8 +9,7 @@ import org.nwnx.nwnx2.jvm.NWEffect;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.constants.Ability;
-
-import static org.nwnx.nwnx2.jvm.constants.All.DURATION_TYPE_TEMPORARY;
+import org.nwnx.nwnx2.jvm.constants.DurationType;
 
 // Grants an HP regeneration effect to a single target for a base duration of 60 seconds.
 //      Interval: Every 10 seconds
@@ -66,7 +65,7 @@ public class Regenerate implements IAbility {
 
         NWEffect effect = NWScript.effectRegenerate(amount, interval);
 
-        NWScript.applyEffectToObject(DURATION_TYPE_TEMPORARY, effect, oTarget, duration);
+        NWScript.applyEffectToObject(DurationType.TEMPORARY, effect, oTarget, duration);
     }
 
     @Override

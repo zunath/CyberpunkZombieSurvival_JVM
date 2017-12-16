@@ -9,10 +9,8 @@ import org.nwnx.nwnx2.jvm.NWEffect;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.constants.Ability;
+import org.nwnx.nwnx2.jvm.constants.DurationType;
 import org.nwnx.nwnx2.jvm.constants.EffectType;
-
-import static org.nwnx.nwnx2.jvm.constants.All.DURATION_TYPE_INSTANT;
-import static org.nwnx.nwnx2.jvm.constants.All.DURATION_TYPE_TEMPORARY;
 
 // Increases wisdom by 2 for a base duration of 120 seconds.
 // Duration is increased by 20 seconds for each wisdom point beyond 10.
@@ -71,8 +69,8 @@ public class BoostWIS implements IAbility {
             }
         }
 
-        NWScript.applyEffectToObject(DURATION_TYPE_INSTANT, NWScript.effectVisualEffect(visualID, false), oTarget, 0.0f);
-        NWScript.applyEffectToObject(DURATION_TYPE_TEMPORARY, abilityEffect, oTarget, totalLength);
+        NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectVisualEffect(visualID, false), oTarget, 0.0f);
+        NWScript.applyEffectToObject(DurationType.TEMPORARY, abilityEffect, oTarget, totalLength);
     }
 
     @Override

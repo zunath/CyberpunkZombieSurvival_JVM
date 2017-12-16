@@ -9,8 +9,9 @@ import org.nwnx.nwnx2.jvm.NWEffect;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.constants.Ability;
-
-import static org.nwnx.nwnx2.jvm.constants.All.*;
+import org.nwnx.nwnx2.jvm.constants.AttackBonus;
+import org.nwnx.nwnx2.jvm.constants.DurationType;
+import org.nwnx.nwnx2.jvm.constants.VfxImp;
 
 // Reduces the attack bonus misc of a single target for a base duration of 30 seconds.
 // Base amount reduced is 2 points.
@@ -58,10 +59,10 @@ public class Blind implements IAbility {
         float bonusDuration = (skill * 6.0f) + (intelligence * 12.0f) + (itemBonus * 3.0f);
         float duration = baseDuration + bonusDuration;
         int amount = 2 + (itemBonus / 3);
-        NWEffect effect = NWScript.effectAttackDecrease(amount, ATTACK_BONUS_MISC);
+        NWEffect effect = NWScript.effectAttackDecrease(amount, AttackBonus.MISC);
 
-        NWScript.applyEffectToObject(DURATION_TYPE_TEMPORARY, effect, oTarget, duration);
-        NWScript.applyEffectToObject(DURATION_TYPE_INSTANT, NWScript.effectVisualEffect(VFX_IMP_BLIND_DEAF_M, false), oTarget, 0.0f);
+        NWScript.applyEffectToObject(DurationType.TEMPORARY, effect, oTarget, duration);
+        NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectVisualEffect(VfxImp.BLIND_DEAF_M, false), oTarget, 0.0f);
 
     }
 
