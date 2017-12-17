@@ -12,8 +12,9 @@ import GameObject.PlayerGO;
 import Helper.ColorToken;
 import Helper.ScriptHelper;
 import Helper.TimeHelper;
-import NWNX.NWNX_Events;
-import NWNX.NWNX_Funcs;
+import NWNX.NWNX_Creature;
+import NWNX.NWNX_Events_Old;
+import NWNX.NWNX_Funcs_Old;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.nwnx.nwnx2.jvm.*;
@@ -32,8 +33,8 @@ public class MagicSystem {
         PlayerRepository playerRepo = new PlayerRepository();
         MagicRepository repo = new MagicRepository();
         PlayerGO pcGO = new PlayerGO(pc);
-        int featID = NWNX_Events.GetEventSubType();
-        NWObject target = NWNX_Events.GetEventTarget();
+        int featID = NWNX_Events_Old.GetEventSubType();
+        NWObject target = NWNX_Events_Old.GetEventTarget();
         AbilityEntity entity = repo.GetAbilityByFeatID(featID);
 
         if(entity == null) return;
@@ -156,7 +157,7 @@ public class MagicSystem {
         CheckForSpellInterruption(pc, spellUUID, NWScript.getPosition(pc));
         NWScript.setLocalInt(pc, spellUUID, SPELL_STATUS_STARTED);
 
-        NWNX_Funcs.StartTimingBar(pc, (int)castingTime, "");
+        NWNX_Funcs_Old.StartTimingBar(pc, (int)castingTime, "");
         Scheduler.delay(pc, (int)(1050 * castingTime), () -> {
             if(NWScript.getLocalInt(pc, spellUUID) == SPELL_STATUS_INTERRUPTED)
             {
@@ -214,7 +215,7 @@ public class MagicSystem {
         if(!currentPosition.equals(position))
         {
             PlayerGO pcGO = new PlayerGO(pc);
-            NWNX_Funcs.StopTimingBar(pc, "");
+            NWNX_Funcs_Old.StopTimingBar(pc, "");
             pcGO.setIsBusy(false);
             NWScript.setLocalInt(pc, spellUUID, SPELL_STATUS_INTERRUPTED);
             return;
@@ -263,7 +264,8 @@ public class MagicSystem {
 
 
         IAbility ability = (IAbility) ScriptHelper.GetClassByName("Abilities." + abilityEntity.getJavaScriptName());
-        NWNX_Funcs.AddKnownFeat(oPC, abilityEntity.getFeatID(), 0);
+        NWNX_Creature.AddFeatByLevel(oPC, abilityEntity.getFeatID(), 0);
+
         repo.Save(entity);
         ability.OnEquip(oPC);
 
@@ -362,7 +364,7 @@ public class MagicSystem {
 
         ability = (IAbility) ScriptHelper.GetClassByName("Abilities." + scriptName);
 
-        NWNX_Funcs.RemoveKnownFeat(oPC, featID);
+        NWNX_Creature.RemoveFeat(oPC, featID);
         repo.Save(entity);
         ability.OnUnequip(oPC);
 

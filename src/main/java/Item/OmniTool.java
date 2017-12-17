@@ -6,7 +6,7 @@ import Dialog.DialogManager;
 import Entities.PlayerEntity;
 import GameObject.PlayerGO;
 import Helper.ScriptHelper;
-import NWNX.NWNX_Events;
+import NWNX.NWNX_Events_Old;
 import org.nwnx.nwnx2.jvm.NWLocation;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
@@ -16,7 +16,7 @@ import GameSystems.StructureSystem;
 public class OmniTool implements IScriptEventHandler {
     @Override
     public void runScript(NWObject oPC) {
-        int castSpellType = NWNX_Events.GetEventSubType();
+        int castSpellType = NWNX_Events_Old.GetEventSubType();
 
         if(castSpellType == 0)
         {
@@ -44,7 +44,7 @@ public class OmniTool implements IScriptEventHandler {
     private void HandleAutoFollow(NWObject oPC)
     {
 
-        final NWObject oTarget = NWNX_Events.GetEventTarget();
+        final NWObject oTarget = NWNX_Events_Old.GetEventTarget();
 
         if(!NWScript.getIsPC(oTarget) || NWScript.getIsDM(oTarget))
         {
@@ -63,8 +63,8 @@ public class OmniTool implements IScriptEventHandler {
 
     private void HandleUseStructureTool(NWObject oPC)
     {
-        NWObject oTarget = NWNX_Events.GetEventTarget();
-        NWLocation lTargetLocation = NWScript.location(NWScript.getArea(oPC), NWNX_Events.GetEventPosition(), 0.0f);
+        NWObject oTarget = NWNX_Events_Old.GetEventTarget();
+        NWLocation lTargetLocation = NWScript.location(NWScript.getArea(oPC), NWNX_Events_Old.GetEventPosition(), 0.0f);
         boolean isMovingStructure = StructureSystem.IsPCMovingStructure(oPC);
 
         if(!oTarget.equals(NWObject.INVALID))
@@ -86,7 +86,7 @@ public class OmniTool implements IScriptEventHandler {
     private void HandleCheckInfectionLevel(NWObject oPC)
     {
 
-        NWObject oTarget = NWNX_Events.GetEventTarget();
+        NWObject oTarget = NWNX_Events_Old.GetEventTarget();
 
         if(!NWScript.getIsPC(oTarget) || NWScript.getIsDM(oTarget))
         {

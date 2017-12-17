@@ -11,8 +11,6 @@ public class OnNWNXChat implements IScriptEventHandler {
     public void runScript(NWObject objSelf) {
         RadioSystem radioSystem = new RadioSystem();
 
-        NWScript.executeScript("fky_chat", objSelf);
-
         radioSystem.OnNWNXChat(objSelf);
 
         ActivityLoggingSystem.OnModuleNWNXChat(objSelf);

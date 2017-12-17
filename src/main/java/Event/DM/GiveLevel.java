@@ -1,7 +1,7 @@
 package Event.DM;
 
 import Common.IScriptEventHandler;
-import NWNX.NWNX_DMActions;
+import NWNX.NWNX_DMActions_Old;
 import GameSystems.ProgressionSystem;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
@@ -10,9 +10,9 @@ import org.nwnx.nwnx2.jvm.NWScript;
 public class GiveLevel implements IScriptEventHandler {
     @Override
     public void runScript(NWObject objSelf) {
-        NWObject oTarget = NWNX_DMActions.oGetDMAction_Target(false);
-        int levels = NWNX_DMActions.nGetDMAction_Param(false);
-        NWNX_DMActions.PreventDMAction();
+        NWObject oTarget = NWNX_DMActions_Old.oGetDMAction_Target(false);
+        int levels = NWNX_DMActions_Old.nGetDMAction_Param(false);
+        NWNX_DMActions_Old.PreventDMAction();
 
         if(levels <= 0)
         {

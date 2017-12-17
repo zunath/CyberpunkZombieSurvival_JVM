@@ -4,7 +4,7 @@ import Enumerations.CustomEffectType;
 import GameSystems.CustomEffectSystem;
 import Helper.ItemHelper;
 import Common.IScriptEventHandler;
-import NWNX.NWNX_Events;
+import NWNX.NWNX_Events_Old;
 import GameSystems.ProgressionSystem;
 import org.nwnx.nwnx2.jvm.NWEffect;
 import org.nwnx.nwnx2.jvm.NWObject;
@@ -15,7 +15,7 @@ import org.nwnx.nwnx2.jvm.constants.DurationType;
 public class Herb implements IScriptEventHandler {
     @Override
     public void runScript(NWObject oPC) {
-        NWObject item = NWNX_Events.GetEventItem();
+        NWObject item = NWNX_Events_Old.GetEventItem();
         String type = NWScript.getLocalString(item, "HERB_TYPE");
         float recoverPercentage = 0.0f;
 

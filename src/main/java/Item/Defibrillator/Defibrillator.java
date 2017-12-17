@@ -3,7 +3,7 @@ package Item.Defibrillator;
 import Bioware.Position;
 import Helper.ColorToken;
 import Common.IScriptEventHandler;
-import NWNX.NWNX_Funcs;
+import NWNX.NWNX_Funcs_Old;
 import GameSystems.ProgressionSystem;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
@@ -33,7 +33,7 @@ public class Defibrillator implements IScriptEventHandler {
         if(NWScript.getLocalInt(oPC, DefibInUseStatusVariable) == 1)
         {
             NWScript.deleteLocalInt(oPC, DefibInUseStatusVariable);
-            NWNX_Funcs.StopTimingBar(oPC, "");
+            NWNX_Funcs_Old.StopTimingBar(oPC, "");
             NWScript.floatingTextStringOnCreature(ColorToken.Red() + "Action canceled!" + ColorToken.End(), oPC, false);
             NWScript.setCommandable(true, oPC);
             // Remove temporary variable linking to the NWObject being unlocked
@@ -45,7 +45,7 @@ public class Defibrillator implements IScriptEventHandler {
         {
             if(NWScript.getCurrentHitPoints(oTarget) <= 0)
             {
-                NWNX_Funcs.StartTimingBar(oPC, iDelayTime, "Item.Defibrillator.PerformDefibrillator");
+                NWNX_Funcs_Old.StartTimingBar(oPC, iDelayTime, "Item.Defibrillator.PerformDefibrillator");
                 NWScript.setLocalObject(oPC, TemporaryTargetObjectVariable, oTarget);
                 NWScript.setLocalInt(oPC, DefibInUseStatusVariable, 1);
 

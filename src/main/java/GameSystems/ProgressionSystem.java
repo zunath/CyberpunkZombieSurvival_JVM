@@ -8,7 +8,8 @@ import Enumerations.CustomItemProperty;
 import Enumerations.ProfessionType;
 import GameObject.PlayerGO;
 import Helper.ColorToken;
-import NWNX.NWNX_Funcs;
+import NWNX.NWNX_Creature;
+import NWNX.NWNX_Funcs_Old;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.nwnx.nwnx2.jvm.NWItemProperty;
@@ -84,45 +85,43 @@ public class ProgressionSystem {
         PlayerEntity entity = playerRepo.GetByPlayerID(pcGO.getUUID());
 
         NWScript.setXP(oPC, 0);
-        int numberOfFeats = NWNX_Funcs.GetTotalKnownFeats(oPC);
+        int numberOfFeats = NWNX_Creature.GetFeatCount(oPC);
         for(int currentFeat = 1; currentFeat <= numberOfFeats; currentFeat++)
         {
-            NWNX_Funcs.SetKnownFeat(oPC, currentFeat, -1);
+            NWNX_Creature.RemoveFeat(oPC, NWNX_Creature.GetFeatByIndex(oPC, currentFeat-1));
         }
 
-        NWNX_Funcs.AddKnownFeat(oPC, Feat.ARMOR_PROFICIENCY_LIGHT, -1);
-        NWNX_Funcs.AddKnownFeat(oPC, Feat.ARMOR_PROFICIENCY_MEDIUM, -1);
-        NWNX_Funcs.AddKnownFeat(oPC, Feat.ARMOR_PROFICIENCY_HEAVY, -1);
-        NWNX_Funcs.AddKnownFeat(oPC, Feat.SHIELD_PROFICIENCY, -1);
-        NWNX_Funcs.AddKnownFeat(oPC, Feat.WEAPON_PROFICIENCY_EXOTIC, -1);
-        NWNX_Funcs.AddKnownFeat(oPC, Feat.WEAPON_PROFICIENCY_MARTIAL, -1);
-        NWNX_Funcs.AddKnownFeat(oPC, Feat.WEAPON_PROFICIENCY_SIMPLE, -1);
-        NWNX_Funcs.AddKnownFeat(oPC, CustomFeat.Reload, -1);
+        NWNX_Creature.AddFeatByLevel(oPC, Feat.ARMOR_PROFICIENCY_LIGHT, -1);
+        NWNX_Creature.AddFeatByLevel(oPC, Feat.ARMOR_PROFICIENCY_MEDIUM, -1);
+        NWNX_Creature.AddFeatByLevel(oPC, Feat.ARMOR_PROFICIENCY_HEAVY, -1);
+        NWNX_Creature.AddFeatByLevel(oPC, Feat.SHIELD_PROFICIENCY, -1);
+        NWNX_Creature.AddFeatByLevel(oPC, Feat.WEAPON_PROFICIENCY_EXOTIC, -1);
+        NWNX_Creature.AddFeatByLevel(oPC, Feat.WEAPON_PROFICIENCY_MARTIAL, -1);
+        NWNX_Creature.AddFeatByLevel(oPC, Feat.WEAPON_PROFICIENCY_SIMPLE, -1);
+        NWNX_Creature.AddFeatByLevel(oPC, CustomFeat.Reload, -1);
 
-        NWNX_Funcs.SetAbilityScore(oPC, Ability.STRENGTH, Constants.BaseStrength);
-        NWNX_Funcs.SetAbilityScore(oPC, Ability.DEXTERITY, Constants.BaseDexterity);
-        NWNX_Funcs.SetAbilityScore(oPC, Ability.CONSTITUTION, Constants.BaseConstitution);
-        NWNX_Funcs.SetAbilityScore(oPC, Ability.WISDOM, Constants.BaseWisdom);
-        NWNX_Funcs.SetAbilityScore(oPC, Ability.CHARISMA, Constants.BaseCharisma);
-        NWNX_Funcs.SetAbilityScore(oPC, Ability.INTELLIGENCE, Constants.BaseIntelligence);
+        NWNX_Creature.SetAbilityScore(oPC, Ability.STRENGTH, Constants.BaseStrength);
+        NWNX_Creature.SetAbilityScore(oPC, Ability.DEXTERITY, Constants.BaseDexterity);
+        NWNX_Creature.SetAbilityScore(oPC, Ability.CONSTITUTION, Constants.BaseConstitution);
+        NWNX_Creature.SetAbilityScore(oPC, Ability.WISDOM, Constants.BaseWisdom);
+        NWNX_Creature.SetAbilityScore(oPC, Ability.CHARISMA, Constants.BaseCharisma);
+        NWNX_Creature.SetAbilityScore(oPC, Ability.INTELLIGENCE, Constants.BaseIntelligence);
 
-        NWNX_Funcs.SetMaxHitPointsByLevel(oPC, 1, Constants.BaseHitPoints);
-        NWNX_Funcs.SetCurrentHitPoints(oPC, NWScript.getMaxHitPoints(oPC));
+        NWNX_Creature.SetMaxHitPointsByLevel(oPC, 1, Constants.BaseHitPoints);
 
         for(int iCurSkill = 1; iCurSkill <= 27; iCurSkill++)
         {
-            NWNX_Funcs.SetSkillRank(oPC, iCurSkill, 0);
+            NWNX_Creature.SetSkillRank(oPC, iCurSkill-1, 0);
         }
-        NWNX_Funcs.SetSavingThrowBonus(oPC, SavingThrow.FORT, 0);
-        NWNX_Funcs.SetSavingThrowBonus(oPC, SavingThrow.REFLEX, 0);
-        NWNX_Funcs.SetSavingThrowBonus(oPC, SavingThrow.WILL, 0);
+        NWScript.setFortitudeSavingThrow(oPC, 0);
+        NWScript.setReflexSavingThrow(oPC,  0);
+        NWScript.setWillSavingThrow(oPC, 0);
 
         int classID = NWScript.getClassByPosition(1, oPC);
 
-        // Removing known spells doesn't work, so I clear memorized spells instead.
         for(int index = 0; index <= 255; index++)
         {
-            NWNX_Funcs.ClearMemorizedSpell(oPC, classID, 0, index);
+            NWNX_Creature.RemoveKnownSpell(oPC, classID, 0, index);
         }
 
         playerSkillRepo.DeleteAllByPlayerID(pcGO.getUUID());
@@ -157,7 +156,7 @@ public class ProgressionSystem {
                 repo.save(entity);
                 break;
             case ProfessionType.ForestWarden:
-                NWNX_Funcs.SetMaxHitPointsByLevel(oPC, 1, NWScript.getMaxHitPoints(oPC) + 5);
+                NWNX_Creature.SetMaxHitPointsByLevel(oPC, 1, NWScript.getMaxHitPoints(oPC) + 5);
                 break;
             case ProfessionType.PoliceOfficer:
                 skillEntity = skillRepo.GetByPlayerIDAndSkillID(pcGO.getUUID(), SkillType_HANDGUN_PROFICIENCY);
@@ -280,54 +279,66 @@ public class ProgressionSystem {
         switch (skillID)
         {
             case SkillType_HP:
-                NWNX_Funcs.SetMaxHitPointsByLevel(oPC, 1, NWNX_Funcs.GetMaxHitPointsByLevel(oPC, 1) + 3);
+                NWNX_Creature.SetMaxHitPointsByLevel(oPC, 1, NWNX_Creature.GetMaxHitPointsByLevel(oPC, 1) + 3);
                 break;
             case SkillType_STRENGTH:
-                NWNX_Funcs.ModifyAbilityScore(oPC, Ability.STRENGTH, 1);
+                int strength = NWScript.getAbilityScore(oPC, Ability.STRENGTH, true) + 1;
+                NWNX_Creature.SetAbilityScore(oPC, Ability.STRENGTH, strength);
+
                 if(rank % 2 != 0)
                 {
                     entity.setInventorySpaceBonus(entity.getInventorySpaceBonus() + 1);
                 }
                 break;
             case SkillType_CONSTITUTION:
-                NWNX_Funcs.ModifyAbilityScore(oPC, Ability.CONSTITUTION, 1);
+                int constitution = NWScript.getAbilityScore(oPC, Ability.CONSTITUTION, true) + 1;
+                NWNX_Creature.SetAbilityScore(oPC, Ability.CONSTITUTION, constitution);
                 break;
             case SkillType_DEXTERITY:
-                NWNX_Funcs.ModifyAbilityScore(oPC, Ability.DEXTERITY, 1);
+                int dexterity = NWScript.getAbilityScore(oPC, Ability.DEXTERITY, true) + 1;
+                NWNX_Creature.SetAbilityScore(oPC, Ability.DEXTERITY, dexterity);
+
                 if(rank % 2 != 0)
                 {
-                    NWNX_Funcs.ModifySkillRank(oPC, Skill.TUMBLE, 1);
+                    int tumble = NWScript.getSkillRank(Skill.TUMBLE, oPC, true) + 1;
+                    NWNX_Creature.SetSkillRank(oPC, Skill.TUMBLE, tumble);
                 }
                 break;
             case SkillType_WISDOM:
-                NWNX_Funcs.ModifyAbilityScore(oPC, Ability.WISDOM, 1);
+                int wisdom = NWScript.getAbilityScore(oPC, Ability.WISDOM, true) + 1;
+                NWNX_Creature.SetAbilityScore(oPC, Ability.WISDOM, wisdom);
                 break;
             case SkillType_INTELLIGENCE:
-                NWNX_Funcs.ModifyAbilityScore(oPC, Ability.INTELLIGENCE, 1);
+                int intelligence = NWScript.getAbilityScore(oPC, Ability.INTELLIGENCE, true) + 1;
+                NWNX_Creature.SetAbilityScore(oPC, Ability.INTELLIGENCE, intelligence);
                 break;
             case SkillType_CHARISMA:
-                NWNX_Funcs.ModifyAbilityScore(oPC, Ability.CHARISMA, 1);
+                int charisma = NWScript.getAbilityScore(oPC, Ability.CHARISMA, true) + 1;
+                NWNX_Creature.SetAbilityScore(oPC, Ability.CHARISMA, charisma);
                 break;
             case SkillType_SEARCH:
-                NWNX_Funcs.ModifySkillRank(oPC, Skill.SEARCH, 1);
+                int search = NWScript.getSkillRank(Skill.SEARCH, oPC, true) + 1;
+                NWNX_Creature.SetSkillRank(oPC, Skill.SEARCH, search);
                 break;
             case SkillType_HIDE:
-                NWNX_Funcs.ModifySkillRank(oPC, Skill.HIDE, 1);
+                int hide = NWScript.getSkillRank(Skill.HIDE, oPC, true) + 1;
+                NWNX_Creature.SetSkillRank(oPC, Skill.HIDE, hide);
                 break;
             case SkillType_MOVE_SILENTLY:
-                NWNX_Funcs.ModifySkillRank(oPC, Skill.MOVE_SILENTLY, 1);
+                int moveSilently = NWScript.getSkillRank(Skill.MOVE_SILENTLY, oPC, true) + 1;
+                NWNX_Creature.SetSkillRank(oPC, Skill.MOVE_SILENTLY, moveSilently);
                 break;
             case SkillType_SPRING_ATTACK:
-                NWNX_Funcs.AddKnownFeat(oPC, Feat.SPRING_ATTACK, 0);
+                NWNX_Creature.AddFeatByLevel(oPC, Feat.SPRING_ATTACK, 0);
                 break;
             case SkillType_POWER_ATTACK:
-                NWNX_Funcs.AddKnownFeat(oPC, Feat.POWER_ATTACK, 0);
+                NWNX_Creature.AddFeatByLevel(oPC, Feat.POWER_ATTACK, 0);
                 break;
             case SkillType_AMBIDEXTERITY:
-                NWNX_Funcs.AddKnownFeat(oPC, Feat.AMBIDEXTERITY, 0);
+                NWNX_Creature.AddFeatByLevel(oPC, Feat.AMBIDEXTERITY, 0);
                 break;
             case SkillType_TWO_WEAPON_FIGHTING:
-                NWNX_Funcs.AddKnownFeat(oPC, Feat.TWO_WEAPON_FIGHTING, 0);
+                NWNX_Creature.AddFeatByLevel(oPC, Feat.TWO_WEAPON_FIGHTING, 0);
                 break;
             case SkillType_MANA:
                 entity.setMaxMana(entity.getMaxMana() + 5);

@@ -4,7 +4,7 @@ import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.NWVector;
 
-public class NWNX_DMActions {
+public class NWNX_DMActions_Old {
     
     public static void SetDMActionScript(int nAction, String sScript) {
         NWScript.setLocalString(NWObject.MODULE, "NWNX!DMACTIONS!SET_ACTION_SCRIPT", nAction + ":" + sScript);

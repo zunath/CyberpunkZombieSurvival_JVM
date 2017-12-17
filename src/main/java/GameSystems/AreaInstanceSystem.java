@@ -1,8 +1,8 @@
 package GameSystems;
 
 import GameSystems.Models.AreaInstanceModel;
-import NWNX.NWNX_Areas;
 import org.ini4j.Ini;
+import org.nwnx.nwnx2.jvm.NWScript;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ public class AreaInstanceSystem {
         {
             for(int x = 1; x <= model.getInstanceCount(); x++)
             {
-                NWNX_Areas.LoadArea(model.getAreaResref());
+                NWScript.createArea(model.getAreaResref(), "", "");
             }
         }
     }
@@ -69,7 +69,7 @@ public class AreaInstanceSystem {
 
         for(String resref : resrefs)
         {
-            NWNX_Areas.LoadArea(resref);
+            NWScript.createArea(resref, "", "");
         }
     }
 

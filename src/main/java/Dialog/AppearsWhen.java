@@ -3,7 +3,7 @@ package Dialog;
 import GameObject.PlayerGO;
 import Helper.ErrorHelper;
 import Common.IScriptEventHandler;
-import NWNX.NWNX_Events;
+import NWNX.NWNX_Events_Old;
 import NWNX.NodeType;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
@@ -17,12 +17,12 @@ public class AppearsWhen implements IScriptEventHandler {
         String uuid = pcGO.getUUID();
         PlayerDialog dialog = DialogManager.loadPlayerDialog(uuid);
         DialogPage page = dialog.getCurrentPage();
-        int nodeID = NWNX_Events.GetCurrentNodeID();
+        int nodeID = NWNX_Events_Old.GetCurrentNodeID();
         int currentSelectionNumber = nodeID + 1;
-        int nodeType = NWNX_Events.GetCurrentNodeType();
+        int nodeType = NWNX_Events_Old.GetCurrentNodeType();
         int gender = NWScript.getGender(oPC);
         boolean displayNode = false;
-        String nodeText = NWNX_Events.GetCurrentNodeText(NWNX_Events.LANGUAGE_ENGLISH, gender);
+        String nodeText = NWNX_Events_Old.GetCurrentNodeText(NWNX_Events_Old.LANGUAGE_ENGLISH, gender);
         String newNodeText = nodeText;
 
         if(currentSelectionNumber == DialogManager.NumberOfResponsesPerPage + 1) // Next Page

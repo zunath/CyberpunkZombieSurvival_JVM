@@ -10,8 +10,7 @@ import GameObject.ItemGO;
 import GameSystems.Models.SpawnModel;
 import Helper.LocalArray;
 import Helper.MathHelper;
-import NWNX.NWNX_Funcs;
-import NWNX.NWNX_TMI;
+import NWNX.NWNX_Funcs_Old;
 import org.nwnx.nwnx2.jvm.NWLocation;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
@@ -53,7 +52,7 @@ public class SpawnSystem {
     {
         NWObject oArea = null;
 
-        NWObject area = NWNX_Funcs.GetFirstArea();
+        NWObject area = NWScript.getFirstArea();
         while(NWScript.getIsObjectValid(area))
         {
             if(Objects.equals(NWScript.getResRef(area), areaResref))
@@ -62,7 +61,7 @@ public class SpawnSystem {
                 break;
             }
 
-            area = NWNX_Funcs.GetNextArea();
+            area = NWScript.getNextArea();
         }
 
         if(oArea == null) return;
@@ -136,7 +135,7 @@ public class SpawnSystem {
                 pcAreas.add(areaResref);
         }
 
-        NWObject area = NWNX_Funcs.GetFirstArea();
+        NWObject area = NWScript.getFirstArea();
         while(NWScript.getIsObjectValid(area))
         {
             String areaResref = NWScript.getResRef(area);
@@ -161,7 +160,7 @@ public class SpawnSystem {
             }
 
 
-            area = NWNX_Funcs.GetNextArea();
+            area = NWScript.getNextArea();
         }
     }
 
@@ -180,10 +179,7 @@ public class SpawnSystem {
 
     public void OnModuleLoad()
     {
-        int tmiLimit = NWNX_TMI.GetTMILimit();
-        NWNX_TMI.SetTMILimit(7000000);
-
-        NWObject oArea = NWNX_Funcs.GetFirstArea();
+        NWObject oArea = NWScript.getFirstArea();
 
         while(NWScript.getIsObjectValid(oArea))
         {
@@ -214,11 +210,8 @@ public class SpawnSystem {
             // Mark the unique identifier (the resref)
             NWScript.setLocalString(oArea, "ZSS_WAYPOINT_NAME", sSpawnID);
 
-            oArea = NWNX_Funcs.GetNextArea();
+            oArea = NWScript.getNextArea();
         }
-
-        // Set the TMI limit back to normal
-        NWNX_TMI.SetTMILimit(tmiLimit);
     }
 
     public void OnCreatureDeath(NWObject creature)

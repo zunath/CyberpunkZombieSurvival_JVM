@@ -5,7 +5,7 @@ import Entities.ChatChannelEntity;
 import Entities.ChatLogEntity;
 import Entities.ClientLogEventEntity;
 import GameObject.PlayerGO;
-import NWNX.ChatMessage;
+import NWNX.ChatChannel;
 import NWNX.NWNX_Chat;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
@@ -22,9 +22,10 @@ public class ActivityLoggingSystem {
 
         ActivityLoggingRepository repo = new ActivityLoggingRepository();
         ChatLogEntity entity = new ChatLogEntity();
-        ChatMessage chatMessage = NWNX_Chat.GetMessage();
-        String text = chatMessage.getText();
-        int channel = ConvertNWNXChatChannelIDToDatabaseID(chatMessage.getMode());
+        String text = NWNX_Chat.GetMessage();
+        int mode = NWNX_Chat.GetChannel();
+        int channel = ConvertNWNXChatChannelIDToDatabaseID(mode);
+        NWObject recipient = NWNX_Chat.GetTarget();
         ChatChannelEntity channelEntity = repo.GetChatChannelByID(channel);
 
         // Sender - should always have this data.
@@ -47,15 +48,15 @@ public class ActivityLoggingSystem {
         String receiverPlayerID = null;
         String receiverDMName = null;
 
-        if(NWScript.getIsObjectValid(chatMessage.getRecipient()))
+        if(NWScript.getIsObjectValid(recipient))
         {
-            PlayerGO receiverGO = new PlayerGO(chatMessage.getRecipient());
-            receiverCDKey = NWScript.getPCPublicCDKey(chatMessage.getRecipient(), false);
-            receiverAccountName = NWScript.getPCPlayerName(chatMessage.getRecipient());
+            PlayerGO receiverGO = new PlayerGO(recipient);
+            receiverCDKey = NWScript.getPCPublicCDKey(recipient, false);
+            receiverAccountName = NWScript.getPCPlayerName(recipient);
 
             // DMs do not have PlayerIDs so store their name in another field.
-            if(NWScript.getIsDM(chatMessage.getRecipient()))
-                receiverDMName = "[DM: " + NWScript.getName(chatMessage.getRecipient(), false) + " (" + senderCDKey + ")]";
+            if(NWScript.getIsDM(recipient))
+                receiverDMName = "[DM: " + NWScript.getName(recipient, false) + " (" + senderCDKey + ")]";
             else
                 receiverPlayerID = receiverGO.getUUID();
         }
@@ -81,19 +82,26 @@ public class ActivityLoggingSystem {
     {
         switch (nwnxChatChannelID)
         {
-            case 1: // Talk
+            case ChatChannel.NWNX_CHAT_CHANNEL_PLAYER_TALK:
+            case ChatChannel.NWNX_CHAT_CHANNEL_DM_TALK:
                 return 3;
-            case 2: // Shout
+            case ChatChannel.NWNX_CHAT_CHANNEL_PLAYER_SHOUT:
+            case ChatChannel.NWNX_CHAT_CHANNEL_DM_SHOUT:
                 return 1;
-            case 3: // Whisper
+            case ChatChannel.NWNX_CHAT_CHANNEL_PLAYER_WHISPER:
+            case ChatChannel.NWNX_CHAT_CHANNEL_DM_WHISPER:
                 return 2;
-            case 4: // Private (Tell)
+            case ChatChannel.NWNX_CHAT_CHANNEL_PLAYER_TELL:
+            case ChatChannel.NWNX_CHAT_CHANNEL_DM_TELL:
                 return 6;
-            case 5: // Server
+            case ChatChannel.NWNX_CHAT_CHANNEL_SERVER_MSG:
                 return 7;
-            case 6: // Party
+            case ChatChannel.NWNX_CHAT_CHANNEL_PLAYER_PARTY:
+            case ChatChannel.NWNX_CHAT_CHANNEL_DM_PARTY:
                 return 4;
-            default: // DM
+            case ChatChannel.NWNX_CHAT_CHANNEL_PLAYER_DM:
+            case ChatChannel.NWNX_CHAT_CHANNEL_DM_DM:
+            default:
                 return 5;
         }
     }

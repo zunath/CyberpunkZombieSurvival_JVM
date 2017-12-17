@@ -2,7 +2,8 @@ package Dialog;
 
 import GameObject.PlayerGO;
 import Helper.ErrorHelper;
-import NWNX.NWNX_Funcs;
+import NWNX.NWNX_Creature;
+import NWNX.NWNX_Funcs_Old;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.Scheduler;
@@ -71,7 +72,7 @@ public class DialogManager {
         try {
             loadConversation(oPC, oTalkTo, conversationName);
 
-            String convo = NWNX_Funcs.GetConversation(oTalkTo);
+            String convo = NWNX_Funcs_Old.GetConversation(oTalkTo);
 
             if(Objects.equals(convo, "") || Objects.equals(convo, "0"))
             {

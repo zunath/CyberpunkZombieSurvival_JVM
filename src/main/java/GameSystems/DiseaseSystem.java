@@ -6,9 +6,7 @@ import Enumerations.CustomEffectType;
 import GameObject.PlayerGO;
 import Helper.ColorToken;
 import Helper.MenuHelper;
-import NWNX.CreatureEvent;
-import NWNX.MovementRate;
-import NWNX.NWNX_Funcs;
+import NWNX.*;
 import Data.Repository.PlayerRepository;
 import org.nwnx.nwnx2.jvm.NWLocation;
 import org.nwnx.nwnx2.jvm.NWObject;
@@ -100,10 +98,10 @@ public class DiseaseSystem {
         final NWObject oClone = NWScript.copyObject(oPC, lLocation, NWObject.INVALID, "reo_zombie_000");
         NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectHeal(NWScript.getMaxHitPoints(oClone)), oClone, 0.0f);
 
-        NWNX_Funcs.RemoveKnownFeat(oClone, Feat.WEAPON_PROFICIENCY_EXOTIC);
-        NWNX_Funcs.RemoveKnownFeat(oClone, Feat.WEAPON_PROFICIENCY_MARTIAL);
-        NWNX_Funcs.RemoveKnownFeat(oClone, Feat.WEAPON_PROFICIENCY_SIMPLE);
-        NWNX_Funcs.RemoveKnownFeat(oClone, Feat.SHIELD_PROFICIENCY);
+        NWNX_Creature.RemoveFeat(oClone, Feat.WEAPON_PROFICIENCY_EXOTIC);
+        NWNX_Creature.RemoveFeat(oClone, Feat.WEAPON_PROFICIENCY_MARTIAL);
+        NWNX_Creature.RemoveFeat(oClone, Feat.WEAPON_PROFICIENCY_SIMPLE);
+        NWNX_Creature.RemoveFeat(oClone, Feat.SHIELD_PROFICIENCY);
 
         // All inventory items need to be set to droppable, except undroppable ones
         // Undroppable items are destroyed
@@ -174,21 +172,22 @@ public class DiseaseSystem {
 
         NWScript.setName(oClone, "(Zombie) " + NWScript.getName(oPC, false));
 
-        NWNX_Funcs.SetMovementRate(oClone, MovementRate.Slow);
+        NWNX_Creature.SetMovementRate(oClone, MovementRate.Slow);
         NWScript.setColor(oClone, ColorChannel.SKIN, 12);
-        NWNX_Funcs.SetCreatureEventHandler(oClone, CreatureEvent.Attacked, "zom_on_attacked");
-        NWNX_Funcs.SetCreatureEventHandler(oClone, CreatureEvent.Blocked, "zom_on_blocked");
-        NWNX_Funcs.SetCreatureEventHandler(oClone, CreatureEvent.Conversation, "zom_on_convo");
-        NWNX_Funcs.SetCreatureEventHandler(oClone, CreatureEvent.Damaged, "zom_on_damaged");
-        NWNX_Funcs.SetCreatureEventHandler(oClone, CreatureEvent.Death, "zom_on_death");
-        NWNX_Funcs.SetCreatureEventHandler(oClone, CreatureEvent.Disturbed, "zom_on_disturbed");
-        NWNX_Funcs.SetCreatureEventHandler(oClone, CreatureEvent.EndCombat, "zom_on_roundend");
-        NWNX_Funcs.SetCreatureEventHandler(oClone, CreatureEvent.Heartbeat, "zom_on_heartbeat");
-        NWNX_Funcs.SetCreatureEventHandler(oClone, CreatureEvent.Perception, "zom_on_percep");
-        NWNX_Funcs.SetCreatureEventHandler(oClone, CreatureEvent.Rested, "zom_on_rested");
-        NWNX_Funcs.SetCreatureEventHandler(oClone, CreatureEvent.Spawn, "zom_on_spawn");
-        NWNX_Funcs.SetCreatureEventHandler(oClone, CreatureEvent.Spellcast, "zom_on_spellcast");
-        NWNX_Funcs.SetCreatureEventHandler(oClone, CreatureEvent.UserDefined, "zom_on_userdef");
+
+        NWNX_Object.SetEventHandler(oClone, CreatureObjectScript.OnMeleeAttacked, "zom_on_attacked");
+        NWNX_Object.SetEventHandler(oClone, CreatureObjectScript.OnBlocked, "zom_on_blocked");
+        NWNX_Object.SetEventHandler(oClone, CreatureObjectScript.OnDialogue, "zom_on_convo");
+        NWNX_Object.SetEventHandler(oClone, CreatureObjectScript.OnDamaged, "zom_on_damaged");
+        NWNX_Object.SetEventHandler(oClone, CreatureObjectScript.OnDeath, "zom_on_death");
+        NWNX_Object.SetEventHandler(oClone, CreatureObjectScript.OnDisturbed, "zom_on_disturbed");
+        NWNX_Object.SetEventHandler(oClone, CreatureObjectScript.OnEndCombatRound, "zom_on_roundend");
+        NWNX_Object.SetEventHandler(oClone, CreatureObjectScript.OnHeartbeat, "zom_on_heartbeat");
+        NWNX_Object.SetEventHandler(oClone, CreatureObjectScript.OnNotice, "zom_on_percep");
+        NWNX_Object.SetEventHandler(oClone, CreatureObjectScript.OnRested, "zom_on_rested");
+        NWNX_Object.SetEventHandler(oClone, CreatureObjectScript.OnSpawnIn, "zom_on_spawn");
+        NWNX_Object.SetEventHandler(oClone, CreatureObjectScript.OnSpellCastAt, "zom_on_spellcast");
+        NWNX_Object.SetEventHandler(oClone, CreatureObjectScript.OnUserDefinedEvent, "zom_on_userdef");
 
         pcGO.destroyAllInventoryItems(false);
         pcGO.destroyAllEquippedItems();

@@ -3,8 +3,8 @@ package Item.Medical;
 import GameObject.PlayerGO;
 import Helper.ItemHelper;
 import Common.IScriptEventHandler;
-import NWNX.NWNX_Events;
-import NWNX.NWNX_Funcs;
+import NWNX.NWNX_Events_Old;
+import NWNX.NWNX_Funcs_Old;
 import GameSystems.ProgressionSystem;
 import org.nwnx.nwnx2.jvm.NWEffect;
 import org.nwnx.nwnx2.jvm.NWObject;
@@ -20,7 +20,7 @@ public class Stimulant implements IScriptEventHandler {
     public void runScript(final NWObject oPC) {
         if(NWScript.getIsDM(oPC) || !NWScript.getIsPC(oPC)) return;
 
-        final NWObject item = NWNX_Events.GetEventItem();
+        final NWObject item = NWNX_Events_Old.GetEventItem();
         final int attribute = NWScript.getLocalInt(item, "STIMULANT_TYPE");
         int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_FIRST_AID);
         final float duration = 60.0f + (skill * 6.0f);
@@ -35,7 +35,7 @@ public class Stimulant implements IScriptEventHandler {
         }
 
 
-        NWNX_Funcs.StartTimingBar(oPC, (int) delay, "");
+        NWNX_Funcs_Old.StartTimingBar(oPC, (int) delay, "");
 
         Scheduler.assign(oPC, () -> {
             pcGO.setIsBusy(true);

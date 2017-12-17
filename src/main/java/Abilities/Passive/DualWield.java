@@ -1,7 +1,8 @@
 package Abilities.Passive;
 
 import Abilities.IAbility;
-import NWNX.NWNX_Funcs;
+import NWNX.NWNX_Creature;
+import NWNX.NWNX_Funcs_Old;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.Scheduler;
@@ -42,8 +43,8 @@ public class DualWield implements IAbility {
 
     @Override
     public void OnEquip(NWObject oPC) {
-        NWNX_Funcs.AddKnownFeat(oPC, Feat.AMBIDEXTERITY, 0);
-        NWNX_Funcs.AddKnownFeat(oPC, Feat.TWO_WEAPON_FIGHTING, 0);
+        NWNX_Creature.AddFeatByLevel(oPC, Feat.AMBIDEXTERITY, 0);
+        NWNX_Creature.AddFeatByLevel(oPC, Feat.TWO_WEAPON_FIGHTING, 0);
 
         final NWObject offHand = NWScript.getItemInSlot(InventorySlot.LEFTHAND, oPC);
 
@@ -59,8 +60,8 @@ public class DualWield implements IAbility {
 
     @Override
     public void OnUnequip(NWObject oPC) {
-        NWNX_Funcs.RemoveKnownFeat(oPC, Feat.AMBIDEXTERITY);
-        NWNX_Funcs.RemoveKnownFeat(oPC, Feat.TWO_WEAPON_FIGHTING);
+        NWNX_Creature.RemoveFeat(oPC, Feat.AMBIDEXTERITY);
+        NWNX_Creature.RemoveFeat(oPC, Feat.TWO_WEAPON_FIGHTING);
 
         final NWObject offHand = NWScript.getItemInSlot(InventorySlot.LEFTHAND, oPC);
 

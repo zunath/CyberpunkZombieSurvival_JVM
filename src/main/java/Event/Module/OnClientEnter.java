@@ -8,7 +8,8 @@ import GameSystems.*;
 import Helper.ColorToken;
 import GameObject.PlayerGO;
 import Common.IScriptEventHandler;
-import NWNX.NWNX_Funcs;
+import NWNX.NWNX_Creature;
+import NWNX.NWNX_Funcs_Old;
 import Data.Repository.PlayerRepository;
 import org.nwnx.nwnx2.jvm.*;
 import org.nwnx.nwnx2.jvm.constants.*;
@@ -23,10 +24,6 @@ public class OnClientEnter implements IScriptEventHandler {
         NWScript.executeScript("x3_mod_def_enter", objSelf);
         InitializeNewCharacter();
         LoadCharacter();
-        // SimTools
-        NWScript.executeScript("fky_chat_clenter", objSelf);
-        // Radio GameSystems - Also used for NWNX chat (different from SimTools)
-        radioSystem.OnModuleEnter();
         // DM Validation
         NWScript.executeScript("dm_authorization", objSelf);
         // PC Validation
@@ -99,7 +96,7 @@ public class OnClientEnter implements IScriptEventHandler {
 
             for(int slot = 0; slot <= 10; slot++)
             {
-                NWNX_Funcs.SetRawQuickBarSlot(oPC, slot + " 0 0 0 0");
+                NWNX_Funcs_Old.SetRawQuickBarSlot(oPC, slot + " 0 0 0 0");
             }
 
             // Save to database
@@ -108,7 +105,7 @@ public class OnClientEnter implements IScriptEventHandler {
             repo.save(entity);
 
             ProgressionSystem.InitializePlayer(oPC);
-            NWNX_Funcs.SetRawQuickBarSlot(oPC, "1 4 0 1116 0");
+            NWNX_Funcs_Old.SetRawQuickBarSlot(oPC, "1 4 0 1116 0");
             Scheduler.delay(oPC, 1000, () -> NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectHeal(999), oPC, 0.0f));
         }
     }

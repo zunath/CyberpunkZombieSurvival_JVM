@@ -5,8 +5,8 @@ import Enumerations.AbilityType;
 import GameSystems.MagicSystem;
 import Helper.ColorToken;
 import Common.IScriptEventHandler;
-import NWNX.NWNX_Events;
-import NWNX.NWNX_Funcs;
+import NWNX.NWNX_Events_Old;
+import NWNX.NWNX_Funcs_Old;
 import GameSystems.ProgressionSystem;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
@@ -27,7 +27,7 @@ public class UseLockpick implements IScriptEventHandler {
     @Override
     public void runScript(final NWObject oPC) {
 
-        NWObject oTarget = NWNX_Events.GetEventTarget();
+        NWObject oTarget = NWNX_Events_Old.GetEventTarget();
 
         int iSkillRequired = NWScript.getLocalInt(oTarget, SkillRequiredVariable);
         int iSkill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_LOCKPICKING);
@@ -36,7 +36,7 @@ public class UseLockpick implements IScriptEventHandler {
         if(NWScript.getLocalInt(oPC, CurrentStatusVariable) == 1)
         {
             NWScript.deleteLocalInt(oPC, CurrentStatusVariable);
-            NWNX_Funcs.StopTimingBar(oPC, "");
+            NWNX_Funcs_Old.StopTimingBar(oPC, "");
             NWScript.floatingTextStringOnCreature(ColorToken.Red() + "Lockpicking canceled!" + ColorToken.End(), oPC, false);
             NWScript.setCommandable(true, oPC);
             // Remove temporary variable linking to the NWObject being unlocked
@@ -112,7 +112,7 @@ public class UseLockpick implements IScriptEventHandler {
             Scheduler.delay(oPC, (int) (fSeconds * 1000), () -> NWScript.setCommandable(true, oPC));
 
             // Show timing bar, set PC's current action status, and inform PC they're picking a lock.
-            NWNX_Funcs.StartTimingBar(oPC, iSeconds, "Item.Lockpick.PerformLockpick");
+            NWNX_Funcs_Old.StartTimingBar(oPC, iSeconds, "Item.Lockpick.PerformLockpick");
             NWScript.setLocalObject(oPC, UnlockingObjectVariable, oTarget);
             NWScript.setLocalInt(oPC, CurrentStatusVariable, 1);
 

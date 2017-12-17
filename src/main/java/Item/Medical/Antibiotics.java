@@ -4,8 +4,8 @@ import Enumerations.CustomEffectType;
 import GameObject.PlayerGO;
 import Helper.ItemHelper;
 import Common.IScriptEventHandler;
-import NWNX.NWNX_Events;
-import NWNX.NWNX_Funcs;
+import NWNX.NWNX_Events_Old;
+import NWNX.NWNX_Funcs_Old;
 import GameSystems.CustomEffectSystem;
 import GameSystems.ProgressionSystem;
 import org.nwnx.nwnx2.jvm.NWObject;
@@ -18,7 +18,7 @@ public class Antibiotics implements IScriptEventHandler {
     @Override
     public void runScript(final NWObject oPC) {
         final PlayerGO pcGO = new PlayerGO(oPC);
-        final NWObject target = NWNX_Events.GetEventTarget();
+        final NWObject target = NWNX_Events_Old.GetEventTarget();
 
         if(pcGO.isBusy())
         {
@@ -44,7 +44,7 @@ public class Antibiotics implements IScriptEventHandler {
             return;
         }
 
-        final NWObject item = NWNX_Events.GetEventItem();
+        final NWObject item = NWNX_Events_Old.GetEventItem();
         int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_FIRST_AID);
         final float delay = 7.0f - (skill * 0.5f);
 
@@ -53,7 +53,7 @@ public class Antibiotics implements IScriptEventHandler {
         if(!oPC.equals(target))
             NWScript.sendMessageToPC(target, NWScript.getName(oPC, false) + " begins administering antibiotics to you..");
 
-        NWNX_Funcs.StartTimingBar(oPC, (int) delay, "");
+        NWNX_Funcs_Old.StartTimingBar(oPC, (int) delay, "");
 
         Scheduler.assign(oPC, () -> {
             pcGO.setIsBusy(true);

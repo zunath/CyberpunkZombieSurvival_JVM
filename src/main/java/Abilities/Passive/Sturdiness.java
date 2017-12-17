@@ -1,9 +1,14 @@
 package Abilities.Passive;
 
 import Abilities.IAbility;
-import NWNX.NWNX_Funcs;
+import NWNX.NWNX_Creature;
+import NWNX.NWNX_Funcs_Old;
+import org.nwnx.nwnx2.jvm.NWEffect;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
+import org.nwnx.nwnx2.jvm.constants.DamagePower;
+import org.nwnx.nwnx2.jvm.constants.DamageType;
+import org.nwnx.nwnx2.jvm.constants.DurationType;
 
 // Increases max hit points by 10 points.
 public class Sturdiness implements IAbility {
@@ -39,16 +44,18 @@ public class Sturdiness implements IAbility {
 
     @Override
     public void OnEquip(NWObject oPC) {
-        NWNX_Funcs.SetMaxHitPointsByLevel(oPC, 1, NWScript.getMaxHitPoints(oPC) + 10);
+        NWNX_Creature.SetMaxHitPointsByLevel(oPC, 1, NWScript.getMaxHitPoints(oPC) + 10);
     }
 
     @Override
     public void OnUnequip(NWObject oPC) {
-        NWNX_Funcs.SetMaxHitPointsByLevel(oPC, 1, NWScript.getMaxHitPoints(oPC) - 10);
+
+        NWNX_Creature.SetMaxHitPointsByLevel(oPC, 1, NWScript.getMaxHitPoints(oPC) - 10);
 
         if(NWScript.getCurrentHitPoints(oPC) > NWScript.getMaxHitPoints(oPC))
         {
-            NWNX_Funcs.SetCurrentHitPoints(oPC, NWScript.getMaxHitPoints(oPC));
+            NWEffect damageEffect = NWScript.effectDamage(NWScript.getCurrentHitPoints(oPC) - NWScript.getMaxHitPoints(oPC), DamageType.MAGICAL, DamagePower.NORMAL);
+            NWScript.applyEffectToObject(DurationType.INSTANT, damageEffect, oPC, 0.0f);
         }
     }
 

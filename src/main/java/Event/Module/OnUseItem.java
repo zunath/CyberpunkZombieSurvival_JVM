@@ -4,7 +4,7 @@ import Bioware.XP2;
 import Common.IScriptEventHandler;
 import GameSystems.InventorySystem;
 import Helper.ScriptHelper;
-import NWNX.NWNX_Events;
+import NWNX.NWNX_Events_Old;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.Scheduler;
@@ -22,12 +22,12 @@ public class OnUseItem implements IScriptEventHandler {
 
     private void HandleGeneralItemUses(final NWObject oPC)
     {
-        NWObject oItem = NWNX_Events.GetEventItem();
+        NWObject oItem = NWNX_Events_Old.GetEventItem();
 
         String className = NWScript.getLocalString(oItem, "JAVA_SCRIPT");
         if(className.equals("")) return;
 
-        NWNX_Events.BypassEvent();
+        NWNX_Events_Old.BypassEvent();
 
         // Remove "Item." prefix if it exists.
         if(className.startsWith("Item."))
@@ -39,9 +39,9 @@ public class OnUseItem implements IScriptEventHandler {
 
     private void HandleSpecificItemUses(NWObject oPC)
     {
-        NWObject oItem = NWNX_Events.GetEventItem();
+        NWObject oItem = NWNX_Events_Old.GetEventItem();
         String sTag = NWScript.getTag(oItem);
-        int iSubtype = NWNX_Events.GetEventSubType();
+        int iSubtype = NWNX_Events_Old.GetEventSubType();
 
         // Change Ammo Priority Property
         boolean bAmmoPriority = XP2.IPGetItemHasProperty(oItem, NWScript.itemPropertyCastSpell(548, IpConst.CASTSPELL_NUMUSES_UNLIMITED_USE), -1, false);
@@ -163,7 +163,7 @@ public class OnUseItem implements IScriptEventHandler {
         // The entirety of the OnActivateItem will be skipped if bBypassEvent is true.
         if(bBypassEvent)
         {
-            NWNX_Events.BypassEvent();
+            NWNX_Events_Old.BypassEvent();
         }
     }
 

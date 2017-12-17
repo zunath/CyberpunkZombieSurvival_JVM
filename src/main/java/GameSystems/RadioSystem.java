@@ -2,9 +2,7 @@ package GameSystems;
 
 import Helper.ColorToken;
 import GameObject.PlayerGO;
-import NWNX.ChatMessage;
-import NWNX.NWNX_Chat;
-import NWNX.NWNX_Events;
+import NWNX.*;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 
@@ -45,12 +43,14 @@ public class RadioSystem {
         
         int iChannel = NWScript.getLocalInt(oDatabase, RADIO_CHANNEL);
 
-        ChatMessage stMessage = NWNX_Chat.GetMessage();
+        int mode = NWNX_Chat.GetChannel();
+        String messageText = NWNX_Chat.GetMessage();
 
         // This only matters when a PC uses the party chat channel
-        if(stMessage.getMode() != NWNX_Chat.CHAT_CHANNEL_PARTY) return;
+        if(mode != ChatChannel.NWNX_CHAT_CHANNEL_PLAYER_PARTY &&
+                mode != ChatChannel.NWNX_CHAT_CHANNEL_DM_PARTY) return;
 
-        NWNX_Chat.SuppressMessage();
+        NWNX_Chat.SkipMessage();
 
         NWObject oNPC = NWScript.getObjectByTag(RADIO_NPC, 0);
 
@@ -76,31 +76,18 @@ public class RadioSystem {
             // in the same party.
             if(iMemberChannel == iChannel || NWScript.getIsDM(member))
             {
-                NWNX_Chat.SendMessage(oNPC, NWNX_Chat.CHAT_CHANNEL_PRIVATE, sSenderName + ColorToken.White() + stMessage.getText() + ColorToken.End(), member);
+                NWNX_Chat.SendMessage(ChatChannel.NWNX_CHAT_CHANNEL_PLAYER_TELL,
+                        ColorToken.White() + messageText + ColorToken.End(),
+                        oNPC,
+                        member);
             }
         }
-    }
-
-    public void OnModuleEnter()
-    {
-        NWObject oPC = NWScript.getEnteringObject();
-        if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return;
-
-        NWNX_Chat.PCEnter(oPC);
-    }
-
-    public void OnModuleLeave()
-    {
-        NWObject oPC = NWScript.getExitingObject();
-        if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return;
-
-        NWNX_Chat.PCExit(oPC);
     }
 
     public void ChangeChannel(NWObject oPC)
     {
         PlayerGO pcGO = new PlayerGO(oPC);
-        NWObject oRadio = NWNX_Events.GetEventItem();
+        NWObject oRadio = NWNX_Events_Old.GetEventItem();
         NWObject oDatabase = pcGO.GetDatabaseItem();
         int iRadioChannel = NWScript.getLocalInt(oDatabase, RADIO_CHANNEL);
         int bPoweredOn = NWScript.getLocalInt(oRadio, RADIO_POWER);
@@ -129,7 +116,7 @@ public class RadioSystem {
     public void TogglePower(NWObject oPC)
     {
         PlayerGO pcGO = new PlayerGO(oPC);
-        NWObject oRadio = NWNX_Events.GetEventItem();
+        NWObject oRadio = NWNX_Events_Old.GetEventItem();
         NWObject oDatabase = pcGO.GetDatabaseItem();
         int iRadioChannel = NWScript.getLocalInt(oDatabase, RADIO_CHANNEL);
         int bPoweredOn = NWScript.getLocalInt(oRadio, RADIO_POWER);

@@ -3,7 +3,7 @@ package Item;
 import Common.IScriptEventHandler;
 import Enumerations.AbilityType;
 import GameSystems.MagicSystem;
-import NWNX.NWNX_Events;
+import NWNX.NWNX_Events_Old;
 import GameSystems.FoodSystem;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
@@ -12,7 +12,7 @@ import org.nwnx.nwnx2.jvm.NWScript;
 public class Food implements IScriptEventHandler {
     @Override
     public void runScript(NWObject oPC) {
-        NWObject oItem = NWNX_Events.GetEventItem();
+        NWObject oItem = NWNX_Events_Old.GetEventItem();
         int amount = NWScript.getLocalInt(oItem, "HUNGER_RESTORE");
 
         // Snake Eater ability grants +50% to hunger restore.

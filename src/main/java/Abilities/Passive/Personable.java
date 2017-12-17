@@ -1,8 +1,10 @@
 package Abilities.Passive;
 
 import Abilities.IAbility;
-import NWNX.NWNX_Funcs;
+import NWNX.NWNX_Creature;
+import NWNX.NWNX_Funcs_Old;
 import org.nwnx.nwnx2.jvm.NWObject;
+import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.constants.Ability;
 
 // Increases charisma by 2 points.
@@ -39,14 +41,16 @@ public class Personable implements IAbility {
 
     @Override
     public void OnEquip(NWObject oPC) {
-        NWNX_Funcs.ModifyAbilityScore(oPC, Ability.CHARISMA, 2);
+        int score = NWScript.getAbilityScore(oPC, Ability.CHARISMA, true) + 2;
+        NWNX_Creature.SetAbilityScore(oPC, Ability.CHARISMA, score);
     }
 
     @Override
-    public void OnUnequip(NWObject oPC) {
-        NWNX_Funcs.ModifyAbilityScore(oPC, Ability.CHARISMA, -2);
+    public void OnUnequip(NWObject oPC)
+    {
+        int score = NWScript.getAbilityScore(oPC, Ability.CHARISMA, true) - 2;
+        NWNX_Creature.SetAbilityScore(oPC, Ability.CHARISMA, score);
     }
-
     @Override
     public boolean IsHostile() {
         return false;

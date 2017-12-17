@@ -1,7 +1,7 @@
 package Event.Module;
 
 import Common.IScriptEventHandler;
-import NWNX.NWNX_Events;
+import NWNX.NWNX_Events_Old;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 
@@ -10,11 +10,11 @@ public class OnCastSpell implements IScriptEventHandler {
     public void runScript(NWObject objSelf) {
 
         NWObject oPC = objSelf;
-        NWObject oTarget = NWNX_Events.GetEventTarget();
-        NWObject oItem = NWNX_Events.GetEventItem();
+        NWObject oTarget = NWNX_Events_Old.GetEventTarget();
+        NWObject oItem = NWNX_Events_Old.GetEventItem();
         String sTag = NWScript.getTag(oItem);
-        int nEvent   = NWNX_Events.GetEventType();
-        int nSubtype = NWNX_Events.GetEventSubType();
+        int nEvent   = NWNX_Events_Old.GetEventType();
+        int nSubtype = NWNX_Events_Old.GetEventSubType();
 
         NWScript.sendMessageToPC(oPC, "oItem = " + NWScript.getName(oItem, false)); // DEBUG
         NWScript.sendMessageToPC(oPC, "oTarget = " + NWScript.getName(oTarget, false)); // DEBUG
@@ -24,6 +24,6 @@ public class OnCastSpell implements IScriptEventHandler {
         // Tag based scripting
         NWScript.executeScript(sTag, oPC);
 
-        NWNX_Events.BypassEvent();
+        NWNX_Events_Old.BypassEvent();
     }
 }

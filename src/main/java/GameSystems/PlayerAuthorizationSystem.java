@@ -3,7 +3,8 @@ package GameSystems;
 import Entities.AuthorizedDMEntity;
 import Entities.PCAuthorizedCDKeyEntity;
 import Helper.ColorToken;
-import NWNX.NWNX_Funcs;
+import NWNX.NWNX_Admin;
+import NWNX.NWNX_Funcs_Old;
 import Data.Repository.AuthorizedDMRepository;
 import Data.Repository.PCAuthorizedCDKeysRepository;
 import org.nwnx.nwnx2.jvm.NWObject;
@@ -73,7 +74,7 @@ public class PlayerAuthorizationSystem {
             else
             {
                 // Out of slots. Boot with message stating so.
-                NWNX_Funcs.BootPCWithMessage(oPC, 16782505);
+                NWNX_Admin.BootPCWithMessage(oPC,16782505 );
                 return;
             }
 
@@ -100,7 +101,7 @@ public class PlayerAuthorizationSystem {
 
         if(!CDKeyExistsForAccount(entity, cdKey))
         {
-            NWNX_Funcs.BootPCWithMessage(oPC, 16782506);
+            NWNX_Admin.BootPCWithMessage(oPC, 16782506);
         }
     }
 

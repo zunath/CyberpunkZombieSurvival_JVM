@@ -5,7 +5,8 @@ import Enumerations.AbilityType;
 import GameObject.PlayerGO;
 import Helper.ColorToken;
 import Helper.ErrorHelper;
-import NWNX.NWNX_Funcs;
+import NWNX.NWNX_Creature;
+import NWNX.NWNX_Funcs_Old;
 import Data.Repository.CraftRepository;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
@@ -57,7 +58,7 @@ public class CraftSystem {
             });
             Scheduler.delay(device, 1000 * NWScript.floatToInt(modifiedCraftDelay / 2.0f), () -> NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectVisualEffect(VfxComBlood.SPARK_MEDIUM, false), device, 0.0f));
 
-            NWNX_Funcs.StartTimingBar(oPC, NWScript.floatToInt(modifiedCraftDelay), "");
+            NWNX_Funcs_Old.StartTimingBar(oPC, NWScript.floatToInt(modifiedCraftDelay), "");
 
             Scheduler.delay(oPC, NWScript.floatToInt(modifiedCraftDelay * 1000), () -> {
                 try

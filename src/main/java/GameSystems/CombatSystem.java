@@ -11,7 +11,7 @@ import GameObject.GunGO;
 import GameObject.ItemGO;
 import GameObject.PlayerGO;
 import Helper.ColorToken;
-import NWNX.NWNX_Events;
+import NWNX.NWNX_Events_Old;
 import org.nwnx.nwnx2.jvm.*;
 import org.nwnx.nwnx2.jvm.constants.*;
 import org.nwnx.nwnx2.jvm.constants.Action;
@@ -192,7 +192,7 @@ public class CombatSystem {
 
     public void OnModuleAttack(final NWObject oAttacker)
     {
-        final NWObject oTarget = NWNX_Events.GetEventTarget();
+        final NWObject oTarget = NWNX_Events_Old.GetEventTarget();
         PlayerGO pcGO = new PlayerGO(oAttacker);
 
         if(!PVPSanctuarySystem.IsPVPAttackAllowed(oAttacker, oTarget)) return;
@@ -281,7 +281,7 @@ public class CombatSystem {
 
         if(bUsingFirearm)
         {
-            NWNX_Events.BypassEvent();
+            NWNX_Events_Old.BypassEvent();
 
             // Mode is determined by the right hand weapon. Figure out how many shots to fire based on mode
             if(NWScript.getLocalInt(oRightHand, "GUN_CUR_RATE_OF_FIRE") == 1)

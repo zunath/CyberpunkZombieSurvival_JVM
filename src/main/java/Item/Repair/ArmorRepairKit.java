@@ -5,7 +5,7 @@ import Enumerations.AbilityType;
 import GameSystems.DurabilitySystem;
 import GameSystems.MagicSystem;
 import GameSystems.ProgressionSystem;
-import NWNX.NWNX_Events;
+import NWNX.NWNX_Events_Old;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.constants.BaseItem;
@@ -16,8 +16,8 @@ import java.util.concurrent.ThreadLocalRandom;
 public class ArmorRepairKit implements IScriptEventHandler {
     @Override
     public void runScript(NWObject oPC) {
-        NWObject target = NWNX_Events.GetEventTarget();
-        NWObject item = NWNX_Events.GetEventItem();
+        NWObject target = NWNX_Events_Old.GetEventTarget();
+        NWObject item = NWNX_Events_Old.GetEventItem();
         int targetType = NWScript.getBaseItemType(target);
 
         if(targetType != BaseItem.BELT)
