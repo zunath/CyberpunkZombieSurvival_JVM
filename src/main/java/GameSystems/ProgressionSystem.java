@@ -9,7 +9,6 @@ import Enumerations.ProfessionType;
 import GameObject.PlayerGO;
 import Helper.ColorToken;
 import NWNX.NWNX_Creature;
-import NWNX.NWNX_Funcs_Old;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.nwnx.nwnx2.jvm.NWItemProperty;

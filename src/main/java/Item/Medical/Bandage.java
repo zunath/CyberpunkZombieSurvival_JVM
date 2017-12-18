@@ -5,9 +5,9 @@ import GameObject.PlayerGO;
 import Helper.ItemHelper;
 import Common.IScriptEventHandler;
 import NWNX.NWNX_Events_Old;
-import NWNX.NWNX_Funcs_Old;
 import GameSystems.CustomEffectSystem;
 import GameSystems.ProgressionSystem;
+import NWNX.NWNX_Player;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.Scheduler;
@@ -53,7 +53,7 @@ public class Bandage implements IScriptEventHandler {
         if(!oPC.equals(target))
             NWScript.sendMessageToPC(target, NWScript.getName(oPC, false) + " begins bandaging your wounds.");
 
-        NWNX_Funcs_Old.StartTimingBar(oPC, (int) delay, "");
+        NWNX_Player.StartGuiTimingBar(oPC, (int) delay, "");
 
         Scheduler.assign(oPC, () -> {
             pcGO.setIsBusy(true);

@@ -5,10 +5,10 @@ import GameObject.PlayerGO;
 import Helper.ItemHelper;
 import Common.IScriptEventHandler;
 import NWNX.NWNX_Events_Old;
-import NWNX.NWNX_Funcs_Old;
 import Data.Repository.PlayerRepository;
 import GameSystems.DiseaseSystem;
 import GameSystems.ProgressionSystem;
+import NWNX.NWNX_Player;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.Scheduler;
@@ -55,7 +55,7 @@ public class TreatmentKit implements IScriptEventHandler {
         int baseAmount = 4 + NWScript.getLocalInt(item, "ENHANCED_AMOUNT") + (skillBonus);
         final int restoreAmount = baseAmount + random.nextInt(3);
 
-        NWNX_Funcs_Old.StartTimingBar(oPC, (int) delay, "");
+        NWNX_Player.StartGuiTimingBar(oPC, (int) delay, "");
 
         Scheduler.assign(oPC, () -> {
             pcGO.setIsBusy(true);

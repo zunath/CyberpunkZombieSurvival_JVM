@@ -7,7 +7,7 @@ import GameSystems.CustomEffectSystem;
 import GameSystems.ProgressionSystem;
 import Helper.ItemHelper;
 import NWNX.NWNX_Events_Old;
-import NWNX.NWNX_Funcs_Old;
+import NWNX.NWNX_Player;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.Scheduler;
@@ -44,7 +44,7 @@ public class ManaKit implements IScriptEventHandler {
         final float delay = 12.0f - (skill * 0.5f);
         final NWObject item = NWNX_Events_Old.GetEventItem();
 
-        NWNX_Funcs_Old.StartTimingBar(oPC, (int) delay, "");
+        NWNX_Player.StartGuiTimingBar(oPC, (int) delay, "");
         NWScript.sendMessageToPC(oPC, "You begin applying a mana kit to " + NWScript.getName(oTarget, false) + ".");
         if(!oPC.equals(oTarget))
             NWScript.sendMessageToPC(oTarget, NWScript.getName(oPC, false) + " begins applying a mana kit to you.");

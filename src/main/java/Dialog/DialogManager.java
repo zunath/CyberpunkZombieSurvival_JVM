@@ -2,7 +2,6 @@ package Dialog;
 
 import GameObject.PlayerGO;
 import Helper.ErrorHelper;
-import NWNX.NWNX_Creature;
 import NWNX.NWNX_Funcs_Old;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;

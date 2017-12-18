@@ -14,7 +14,7 @@ import Helper.ScriptHelper;
 import Helper.TimeHelper;
 import NWNX.NWNX_Creature;
 import NWNX.NWNX_Events_Old;
-import NWNX.NWNX_Funcs_Old;
+import NWNX.NWNX_Player;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.nwnx.nwnx2.jvm.*;
@@ -157,7 +157,7 @@ public class MagicSystem {
         CheckForSpellInterruption(pc, spellUUID, NWScript.getPosition(pc));
         NWScript.setLocalInt(pc, spellUUID, SPELL_STATUS_STARTED);
 
-        NWNX_Funcs_Old.StartTimingBar(pc, (int)castingTime, "");
+        NWNX_Player.StartGuiTimingBar(pc, (int)castingTime, "");
         Scheduler.delay(pc, (int)(1050 * castingTime), () -> {
             if(NWScript.getLocalInt(pc, spellUUID) == SPELL_STATUS_INTERRUPTED)
             {
@@ -215,7 +215,7 @@ public class MagicSystem {
         if(!currentPosition.equals(position))
         {
             PlayerGO pcGO = new PlayerGO(pc);
-            NWNX_Funcs_Old.StopTimingBar(pc, "");
+            NWNX_Player.StopGuiTimingBar(pc);
             pcGO.setIsBusy(false);
             NWScript.setLocalInt(pc, spellUUID, SPELL_STATUS_INTERRUPTED);
             return;

@@ -8,7 +8,6 @@ import GameSystems.*;
 import Helper.ColorToken;
 import GameObject.PlayerGO;
 import Common.IScriptEventHandler;
-import NWNX.NWNX_Creature;
 import NWNX.NWNX_Funcs_Old;
 import Data.Repository.PlayerRepository;
 import org.nwnx.nwnx2.jvm.*;

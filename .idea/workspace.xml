@@ -6,15 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="486e3add-e013-4d47-abab-c86692a1ecb0" name="Default" comment="Migrate a lot of NWNX_Funcs to the new NWNX_Admin and NWNX_Creature plugins.">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/NWNX/ChatChannel.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/NWNX/CreatureObjectScript.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Admin.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Core.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Creature.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Events_Old.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Object.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/NWNX/PlaceableObjectScript.java" />
+    <list default="true" id="486e3add-e013-4d47-abab-c86692a1ecb0" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Player.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Deft.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Deft.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/Passive/DualWield.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/DualWield.java" />
@@ -27,81 +20,23 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Thief.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Thief.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Tough.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Passive/Tough.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Authorization/ValidateCDKey.java" afterPath="$PROJECT_DIR$/src/main/java/Authorization/ValidateCDKey.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dialog/ActionTaken.java" afterPath="$PROJECT_DIR$/src/main/java/Dialog/ActionTaken.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dialog/AppearsWhen.java" afterPath="$PROJECT_DIR$/src/main/java/Dialog/AppearsWhen.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Dialog/DialogManager.java" afterPath="$PROJECT_DIR$/src/main/java/Dialog/DialogManager.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Event/DM/GiveLevel.java" afterPath="$PROJECT_DIR$/src/main/java/Event/DM/GiveLevel.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Event/DM/GiveXP.java" afterPath="$PROJECT_DIR$/src/main/java/Event/DM/GiveXP.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Event/DM/HealCreature.java" afterPath="$PROJECT_DIR$/src/main/java/Event/DM/HealCreature.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Event/Module/OnCCMessage.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Event/Module/OnCastSpell.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnCastSpell.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Event/Module/OnClientEnter.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnClientEnter.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Event/Module/OnClientLeave.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnClientLeave.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Event/Module/OnExamine.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnExamine.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Event/Module/OnLoad.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnLoad.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Event/Module/OnNWNXChat.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnNWNXChat.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Event/Module/OnPlayerLevelUp.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnPlayerLevelUp.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Event/Module/OnTogglePause.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnTogglePause.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Event/Module/OnUseItem.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnUseItem.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Feat/ChangeGunAmmo.java" afterPath="$PROJECT_DIR$/src/main/java/Feat/ChangeGunAmmo.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Feat/ChangeGunMode.java" afterPath="$PROJECT_DIR$/src/main/java/Feat/ChangeGunMode.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Feat/CombineItem.java" afterPath="$PROJECT_DIR$/src/main/java/Feat/CombineItem.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameSystems/ActivityLoggingSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/ActivityLoggingSystem.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameSystems/AreaInstanceSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/AreaInstanceSystem.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameSystems/CombatSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/CombatSystem.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GameSystems/CraftSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/CraftSystem.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameSystems/DiseaseSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/DiseaseSystem.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GameSystems/MagicSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/MagicSystem.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GameSystems/PlayerAuthorizationSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/PlayerAuthorizationSystem.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GameSystems/ProgressionSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/ProgressionSystem.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameSystems/RadioSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/RadioSystem.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GameSystems/SpawnSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/SpawnSystem.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Helper/LocalVariableHelper.java" afterPath="$PROJECT_DIR$/src/main/java/Helper/LocalVariableHelper.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Item/AbilityDisc.java" afterPath="$PROJECT_DIR$/src/main/java/Item/AbilityDisc.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Item/Blueprint.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Blueprint.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Item/Defibrillator/Defibrillator.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Defibrillator/Defibrillator.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Item/Food.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Food.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Item/GenericStartConversation.java" afterPath="$PROJECT_DIR$/src/main/java/Item/GenericStartConversation.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Item/Lockpick/UseLockpick.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Lockpick/UseLockpick.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Item/Medical/Antibiotics.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Medical/Antibiotics.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Item/Medical/Bandage.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Medical/Bandage.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Item/Medical/Herb.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Medical/Herb.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Item/Medical/HerbalRemedy.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Medical/HerbalRemedy.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Item/Medical/ManaKit.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Medical/ManaKit.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Item/Medical/MedicalSupplies.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Medical/MedicalSupplies.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Item/Medical/Stimulant.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Medical/Stimulant.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Item/Medical/TreatmentKit.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Medical/TreatmentKit.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Item/OmniTool.java" afterPath="$PROJECT_DIR$/src/main/java/Item/OmniTool.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Item/Repair/ArmorRepairKit.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Repair/ArmorRepairKit.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Item/Repair/BladeRepairKit.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Repair/BladeRepairKit.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Item/Repair/BluntRepairKit.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Repair/BluntRepairKit.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Item/Repair/FirearmRepairKit.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Repair/FirearmRepairKit.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NWNX/AOEScript.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NWNX/ChatMessage.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NWNX/CreatureAbilities.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NWNX/CreatureEvent.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NWNX/CreatureScript.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NWNX/CreatureSkills.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NWNX/DoorScript.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NWNX/EncounterScript.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NWNX/LocalVariable.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/LocalVariable.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NWNX/ModuleScripts.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NWNX/MovementRate.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/MovementRate.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_APS.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Areas.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Chat.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Chat.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_DMActions.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_DMActions_Old.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Events.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Events.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Funcs.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Funcs_Old.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Names.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Structs.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_TMI.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NWNX/PlaceableScript.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NWNX/QuickBarSlot.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NWNX/QuickbarType.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NWNX/StoreScript.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NWNX/TimeValue.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NWNX/TriggerScript.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Funcs_Old.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Funcs_Old.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -114,33 +49,101 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="NWNX_Events_Old.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/NWNX/NWNX_Events_Old.java">
+      <file leaf-file-name="MagicSystem.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/MagicSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="9" column="21" lean-forward="false" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+            <state relative-caret-position="195">
+              <caret line="217" column="12" lean-forward="true" selection-start-line="217" selection-start-column="12" selection-end-line="217" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HealCreature.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Event/DM/HealCreature.java">
+      <file leaf-file-name="Defibrillator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Item/Defibrillator/Defibrillator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-              <folding>
-                <element signature="e#242#269#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="195">
+              <caret line="35" column="44" lean-forward="false" selection-start-line="35" selection-start-column="44" selection-end-line="35" selection-end-column="44" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CraftSystem.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/CraftSystem.java">
+      <file leaf-file-name="UseLockpick.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Item/Lockpick/UseLockpick.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="643">
-              <caret line="359" column="20" lean-forward="false" selection-start-line="359" selection-start-column="20" selection-end-line="359" selection-end-column="20" />
+            <state relative-caret-position="195">
+              <caret line="38" column="44" lean-forward="false" selection-start-line="38" selection-start-column="44" selection-end-line="38" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Antibiotics.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Item/Medical/Antibiotics.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="203">
+              <caret line="55" column="37" lean-forward="false" selection-start-line="55" selection-start-column="37" selection-end-line="55" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Bandage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Item/Medical/Bandage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="203">
+              <caret line="55" column="37" lean-forward="false" selection-start-line="55" selection-start-column="37" selection-end-line="55" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ManaKit.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Item/Medical/ManaKit.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="203">
+              <caret line="46" column="37" lean-forward="false" selection-start-line="46" selection-start-column="37" selection-end-line="46" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MedicalSupplies.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Item/Medical/MedicalSupplies.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="203">
+              <caret line="65" column="37" lean-forward="false" selection-start-line="65" selection-start-column="37" selection-end-line="65" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Stimulant.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Item/Medical/Stimulant.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="203">
+              <caret line="37" column="37" lean-forward="false" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TreatmentKit.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Item/Medical/TreatmentKit.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="203">
+              <caret line="57" column="37" lean-forward="false" selection-start-line="57" selection-start-column="37" selection-end-line="57" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NWNX_Funcs_Old.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/NWNX/NWNX_Funcs_Old.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="50" lean-forward="false" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -174,23 +177,20 @@
       <find>_old</find>
       <find>fky</find>
       <find>fky_</find>
-      <find>const</find>
-      <find>final int</find>
       <find>NWNX_Creature_</find>
       <find>NWNX_Administration_</find>
       <find>NWNX_Chat_</find>
       <find>modifyability</find>
       <find>const int</find>
       <find>NWNX_Object_</find>
-      <find>object</find>
       <find>NWNX_OBJECT_SCRIPT_CREATURE_</find>
       <find>NWNX_OBJECT_SCRIPT_PLACEABLE_</find>
       <find>NWNX_Funcs_Old.</find>
       <find>r</find>
+      <find>object</find>
       <find>string</find>
     </findStrings>
     <replaceStrings>
-      <replace>final</replace>
       <replace>final</replace>
       <replace>public static final int</replace>
       <replace>NWObject</replace>
@@ -220,15 +220,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Stun.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/Cure.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/Escape.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/Regenerate.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/TeleportCleiyra.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/TeleportMason.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/TurnUndead.java" />
-        <option value="$PROJECT_DIR$/src/main/java/GameSystems/CombatSystem.java" />
-        <option value="$PROJECT_DIR$/src/main/java/NWNX/NWNX_TMI.java" />
         <option value="$PROJECT_DIR$/src/main/java/GameSystems/AreaInstanceSystem.java" />
         <option value="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Structs.java" />
         <option value="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Names.java" />
@@ -255,8 +246,6 @@
         <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/Thief.java" />
         <option value="$PROJECT_DIR$/src/main/java/Authorization/ValidateCDKey.java" />
         <option value="$PROJECT_DIR$/src/main/java/Event/Module/OnClientEnter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/GameSystems/CraftSystem.java" />
-        <option value="$PROJECT_DIR$/src/main/java/GameSystems/MagicSystem.java" />
         <option value="$PROJECT_DIR$/src/main/java/GameSystems/PlayerAuthorizationSystem.java" />
         <option value="$PROJECT_DIR$/src/main/java/GameSystems/SpawnSystem.java" />
         <option value="$PROJECT_DIR$/src/main/java/NWNX/CreatureObjectScript.java" />
@@ -267,10 +256,21 @@
         <option value="$PROJECT_DIR$/src/main/java/GameSystems/ProgressionSystem.java" />
         <option value="$PROJECT_DIR$/src/main/java/NWNX/LocalVariable.java" />
         <option value="$PROJECT_DIR$/src/main/java/Helper/LocalVariableHelper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Funcs_Old.java" />
         <option value="$PROJECT_DIR$/src/main/java/Event/DM/HealCreature.java" />
         <option value="$PROJECT_DIR$/src/main/java/Event/Module/OnLoad.java" />
         <option value="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Events.java" />
+        <option value="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Player.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GameSystems/CraftSystem.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Item/Medical/Antibiotics.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Item/Medical/Bandage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Item/Medical/ManaKit.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Item/Medical/MedicalSupplies.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Item/Medical/Stimulant.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Item/Medical/TreatmentKit.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GameSystems/MagicSystem.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Item/Defibrillator/Defibrillator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Item/Lockpick/UseLockpick.java" />
+        <option value="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Funcs_Old.java" />
       </list>
     </option>
   </component>
@@ -325,9 +325,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -393,6 +390,9 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -693,7 +693,14 @@
       <option name="project" value="LOCAL" />
       <updated>1513411569992</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Migrate a lot of NWNX_Funcs to the new NWNX_Admin and NWNX_Creature plugins.">
+      <created>1513488968014</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1513488968014</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -716,6 +723,7 @@
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Project Explorer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Job Explorer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32873806" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -739,7 +747,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938644" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -802,80 +809,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/NWNX/MovementRate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="39" lean-forward="false" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/NWNX/SpecialAbilitySlot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/NWNX/NWNX_Admin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="42" column="23" lean-forward="false" selection-start-line="42" selection-start-column="23" selection-end-line="42" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/NWNX/NWNX_Chat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1054">
-          <caret line="62" column="27" lean-forward="false" selection-start-line="62" selection-start-column="27" selection-end-line="62" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1285#1286#0" expanded="false" />
-            <element signature="e#1347#1348#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/ActivityLoggingSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="27" column="39" lean-forward="false" selection-start-line="27" selection-start-column="39" selection-end-line="27" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/RadioSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="78" column="25" lean-forward="false" selection-start-line="78" selection-start-column="25" selection-end-line="78" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/NWNX/NWNX_Creature.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="20" lean-forward="false" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Passive/DualWield.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Passive/Evasive.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="46" column="71" lean-forward="false" selection-start-line="46" selection-start-column="71" selection-end-line="46" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Passive/Deft.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -936,13 +869,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="422">
           <caret line="38" column="59" lean-forward="false" selection-start-line="38" selection-start-column="59" selection-end-line="38" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/MagicSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="365" column="0" lean-forward="false" selection-start-line="365" selection-start-column="0" selection-end-line="365" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1019,14 +945,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="74" column="27" lean-forward="false" selection-start-line="74" selection-start-column="27" selection-end-line="74" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/NWNX/NWNX_Funcs_Old.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-119">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1157,17 +1075,105 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/Event/DM/HealCreature.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
-          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/NWNX/NWNX_Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="50" lean-forward="false" selection-start-line="32" selection-start-column="50" selection-end-line="32" selection-end-column="50" />
           <folding>
-            <element signature="e#242#269#0" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/CraftSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="643">
-          <caret line="359" column="20" lean-forward="false" selection-start-line="359" selection-start-column="20" selection-end-line="359" selection-end-column="20" />
+        <state relative-caret-position="195">
+          <caret line="61" column="12" lean-forward="true" selection-start-line="61" selection-start-column="12" selection-end-line="61" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Medical/Antibiotics.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="55" column="37" lean-forward="false" selection-start-line="55" selection-start-column="37" selection-end-line="55" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Medical/Bandage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="55" column="37" lean-forward="false" selection-start-line="55" selection-start-column="37" selection-end-line="55" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Medical/ManaKit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="46" column="37" lean-forward="false" selection-start-line="46" selection-start-column="37" selection-end-line="46" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Medical/MedicalSupplies.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="65" column="37" lean-forward="false" selection-start-line="65" selection-start-column="37" selection-end-line="65" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Medical/Stimulant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="37" column="37" lean-forward="false" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Medical/TreatmentKit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="57" column="37" lean-forward="false" selection-start-line="57" selection-start-column="37" selection-end-line="57" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/MagicSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="217" column="12" lean-forward="true" selection-start-line="217" selection-start-column="12" selection-end-line="217" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Defibrillator/Defibrillator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="35" column="44" lean-forward="false" selection-start-line="35" selection-start-column="44" selection-end-line="35" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Lockpick/UseLockpick.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="38" column="44" lean-forward="false" selection-start-line="38" selection-start-column="44" selection-end-line="38" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/NWNX/NWNX_Funcs_Old.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="50" lean-forward="false" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
           <folding />
         </state>
       </provider>

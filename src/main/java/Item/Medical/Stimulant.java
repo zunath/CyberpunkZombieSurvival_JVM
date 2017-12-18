@@ -4,8 +4,8 @@ import GameObject.PlayerGO;
 import Helper.ItemHelper;
 import Common.IScriptEventHandler;
 import NWNX.NWNX_Events_Old;
-import NWNX.NWNX_Funcs_Old;
 import GameSystems.ProgressionSystem;
+import NWNX.NWNX_Player;
 import org.nwnx.nwnx2.jvm.NWEffect;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
@@ -35,7 +35,7 @@ public class Stimulant implements IScriptEventHandler {
         }
 
 
-        NWNX_Funcs_Old.StartTimingBar(oPC, (int) delay, "");
+        NWNX_Player.StartGuiTimingBar(oPC, (int) delay, "");
 
         Scheduler.assign(oPC, () -> {
             pcGO.setIsBusy(true);

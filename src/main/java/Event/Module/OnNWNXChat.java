@@ -4,7 +4,6 @@ import Common.IScriptEventHandler;
 import GameSystems.ActivityLoggingSystem;
 import GameSystems.RadioSystem;
 import org.nwnx.nwnx2.jvm.NWObject;
-import org.nwnx.nwnx2.jvm.NWScript;
 
 public class OnNWNXChat implements IScriptEventHandler {
     @Override

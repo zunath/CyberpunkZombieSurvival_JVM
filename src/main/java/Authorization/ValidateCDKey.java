@@ -4,7 +4,6 @@ import Common.IScriptEventHandler;
 import Entities.AuthorizedDMEntity;
 
 import NWNX.NWNX_Admin;
-import NWNX.NWNX_Funcs_Old;
 import Data.Repository.AuthorizedDMRepository;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;

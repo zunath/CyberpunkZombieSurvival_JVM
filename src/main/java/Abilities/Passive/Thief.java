@@ -2,7 +2,6 @@ package Abilities.Passive;
 
 import Abilities.IAbility;
 import NWNX.NWNX_Creature;
-import NWNX.NWNX_Funcs_Old;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.constants.Skill;
