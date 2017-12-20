@@ -18,7 +18,7 @@ public class StartUp {
 	*/
 	@SuppressWarnings("unused")
 	private static void setup() {
-		File[] jarFiles = new File("./jvm").listFiles();
+		File[] jarFiles = new File("/nwn/home/jvm").listFiles();
 
         assert jarFiles != null;
         for(File file : jarFiles)
@@ -74,7 +74,7 @@ public class StartUp {
      * if the library is already loaded.
      * Reference: https://stackoverflow.com/questions/27187566/load-jar-dynamically-at-runtime
      */
-	public static synchronized void loadLibrary(java.io.File jar) throws Exception
+	private static synchronized void loadLibrary(java.io.File jar) throws Exception
 	{
 		try {
             /*We are using reflection here to circumvent encapsulation; addURL is not public*/

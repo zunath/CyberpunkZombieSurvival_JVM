@@ -23,7 +23,7 @@ public class DataAccess {
     {
         try
         {
-            Ini ini = new Ini(new File("nwnx2.ini"));
+            Ini ini = new Ini(new File("/nwn/home/jvm/nwnx2.ini"));
             _host = ini.get("ODBC2", "server");
             _username = ini.get("ODBC2", "user");
             _password = ini.get("ODBC2", "pass");
