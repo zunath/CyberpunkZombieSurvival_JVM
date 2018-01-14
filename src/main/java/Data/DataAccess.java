@@ -23,11 +23,11 @@ public class DataAccess {
     {
         try
         {
-            Ini ini = new Ini(new File("/nwn/home/jvm/nwnx2.ini"));
-            _host = ini.get("ODBC2", "server");
-            _username = ini.get("ODBC2", "user");
-            _password = ini.get("ODBC2", "pass");
-            _schema = ini.get("ODBC2", "db");
+            Ini ini = new Ini(new File("/nwn/home/jvm/database.ini"));
+            _host = ini.get("CZS", "server");
+            _username = ini.get("CZS", "user");
+            _password = ini.get("CZS", "pass");
+            _schema = ini.get("CZS", "db");
         }
         catch (Exception ex)
         {
