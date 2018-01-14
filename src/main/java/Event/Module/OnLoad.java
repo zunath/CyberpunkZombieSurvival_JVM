@@ -34,10 +34,10 @@ public class OnLoad implements IScriptEventHandler {
 		NWObject area = NWScript.getFirstArea();
 		while(NWScript.getIsObjectValid(area))
 		{
-			String result = NWNX_Funcs_Old.SetEventHandler(area, AreaScript.OnEnter, "area_enter");
-			NWNX_Funcs_Old.SetEventHandler(area, AreaScript.OnExit, "area_exit");
-			NWNX_Funcs_Old.SetEventHandler(area, AreaScript.OnHeartbeat, "area_heartbeat");
-			NWNX_Funcs_Old.SetEventHandler(area, AreaScript.OnUserDefinedEvent, "area_user");
+			NWNX_Object.SetEventHandler(area, AreaObjectScript.OnEnter, "area_enter");
+			NWNX_Object.SetEventHandler(area, AreaObjectScript.OnExit, "area_exit");
+			NWNX_Object.SetEventHandler(area, AreaObjectScript.OnHeartbeat, "area_heartbeat");
+			NWNX_Object.SetEventHandler(area, AreaObjectScript.OnUserDefinedEvent, "area_user");
 
 			area = NWScript.getNextArea();
 		}
