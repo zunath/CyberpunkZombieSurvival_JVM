@@ -53,13 +53,6 @@ public class NWNX_Events_Old {
         return NWScript.getLocalObject(NWObject.MODULE, "NWNX!EVENTS!TARGET");
     }
 
-    // DEPRECATED
-// For backwards compatibility only - use GetEventTarget instead
-    NWObject GetActionTarget()
-    {
-        return GetEventTarget();
-    }
-
     public static NWObject GetEventItem()
     {
         return NWScript.getLocalObject(NWObject.MODULE, "NWNX!EVENTS!ITEM");

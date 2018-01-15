@@ -93,18 +93,13 @@ public class OnClientEnter implements IScriptEventHandler {
                 NWScript.actionEquipItem(oClothes, InventorySlot.CHEST);
             });
 
-            for(int slot = 0; slot <= 10; slot++)
-            {
-                NWNX_Funcs_Old.SetRawQuickBarSlot(oPC, slot + " 0 0 0 0");
-            }
-
             // Save to database
             PlayerRepository repo = new PlayerRepository();
             PlayerEntity entity = pcGO.createEntity();
             repo.save(entity);
 
             ProgressionSystem.InitializePlayer(oPC);
-            NWNX_Funcs_Old.SetRawQuickBarSlot(oPC, "1 4 0 1116 0");
+            //NWNX_Funcs_Old.SetRawQuickBarSlot(oPC, "1 4 0 1116 0");
             Scheduler.delay(oPC, 1000, () -> NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectHeal(999), oPC, 0.0f));
         }
     }
