@@ -115,4 +115,35 @@ public class NWNX_Object {
         NWNX_CallFunction(NWNX_Object, sFunc);
     }
 
+    public static String Serialize(NWObject obj)
+    {
+        String sFunc = "Serialize";
+
+        NWNX_PushArgumentObject(NWNX_Object, sFunc, obj);
+
+        NWNX_CallFunction(NWNX_Object, sFunc);
+        return NWNX_GetReturnValueString(NWNX_Object, sFunc);
+    }
+
+    public static NWObject Deserialize(String serialized)
+    {
+        String sFunc = "Deserialize";
+
+        NWNX_PushArgumentString(NWNX_Object, sFunc, serialized);
+
+        NWNX_CallFunction(NWNX_Object, sFunc);
+        return NWNX_GetReturnValueObject(NWNX_Object, sFunc);
+    }
+
+
+    public static String GetDialogResref(NWObject obj)
+    {
+        String sFunc = "GetDialogResref";
+
+        NWNX_PushArgumentObject(NWNX_Object, sFunc, obj);
+
+        NWNX_CallFunction(NWNX_Object, sFunc);
+        return NWNX_GetReturnValueString(NWNX_Object, sFunc);
+    }
+
 }

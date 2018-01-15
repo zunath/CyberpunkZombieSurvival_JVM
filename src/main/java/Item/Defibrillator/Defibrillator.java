@@ -33,7 +33,7 @@ public class Defibrillator implements IScriptEventHandler {
         if(NWScript.getLocalInt(oPC, DefibInUseStatusVariable) == 1)
         {
             NWScript.deleteLocalInt(oPC, DefibInUseStatusVariable);
-            NWNX_Player.StopGuiTimingBar(oPC);
+            NWNX_Player.StopGuiTimingBar(oPC, "", -1);
             NWScript.floatingTextStringOnCreature(ColorToken.Red() + "Action canceled!" + ColorToken.End(), oPC, false);
             NWScript.setCommandable(true, oPC);
             // Remove temporary variable linking to the NWObject being unlocked

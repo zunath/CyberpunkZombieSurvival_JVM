@@ -36,7 +36,7 @@ public class UseLockpick implements IScriptEventHandler {
         if(NWScript.getLocalInt(oPC, CurrentStatusVariable) == 1)
         {
             NWScript.deleteLocalInt(oPC, CurrentStatusVariable);
-            NWNX_Player.StopGuiTimingBar(oPC);
+            NWNX_Player.StopGuiTimingBar(oPC, "", -1);
             NWScript.floatingTextStringOnCreature(ColorToken.Red() + "Lockpicking canceled!" + ColorToken.End(), oPC, false);
             NWScript.setCommandable(true, oPC);
             // Remove temporary variable linking to the NWObject being unlocked

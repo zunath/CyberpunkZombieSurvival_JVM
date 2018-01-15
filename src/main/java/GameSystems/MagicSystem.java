@@ -215,7 +215,7 @@ public class MagicSystem {
         if(!currentPosition.equals(position))
         {
             PlayerGO pcGO = new PlayerGO(pc);
-            NWNX_Player.StopGuiTimingBar(pc);
+            NWNX_Player.StopGuiTimingBar(pc, "", -1);
             pcGO.setIsBusy(false);
             NWScript.setLocalInt(pc, spellUUID, SPELL_STATUS_INTERRUPTED);
             return;
