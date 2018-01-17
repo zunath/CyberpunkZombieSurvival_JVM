@@ -4,7 +4,9 @@ import Bioware.XP2;
 import Common.IScriptEventHandler;
 import GameSystems.InventorySystem;
 import Helper.ScriptHelper;
+import NWNX.NWNX_Events;
 import NWNX.NWNX_Events_Old;
+import NWNX.NWNX_Object;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.Scheduler;
@@ -22,7 +24,8 @@ public class OnUseItem implements IScriptEventHandler {
 
     private void HandleGeneralItemUses(final NWObject oPC)
     {
-        NWObject oItem = NWNX_Events_Old.GetEventItem();
+        String itemID = NWNX_Events.GetEventData("ITEM_OBJECT_ID");
+        NWObject oItem = NWNX_Object.StringToObject(itemID);
 
         String className = NWScript.getLocalString(oItem, "JAVA_SCRIPT");
         if(className.equals("")) return;

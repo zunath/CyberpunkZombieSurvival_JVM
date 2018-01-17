@@ -55,7 +55,8 @@ public class OnLoad implements IScriptEventHandler {
         NWNX_Events_Old.SetGlobalEventHandler(NWNX_Events_Old.EVENT_TYPE_TOGGLE_MODE, "mod_on_toggmode");
         NWNX_Events_Old.SetGlobalEventHandler(NWNX_Events_Old.EVENT_TYPE_TOGGLE_PAUSE, "mod_on_toggpause");
         NWNX_Events_Old.SetGlobalEventHandler(NWNX_Events_Old.EVENT_TYPE_USE_FEAT, "mod_on_usefeat");
-        NWNX_Events_Old.SetGlobalEventHandler(NWNX_Events_Old.EVENT_TYPE_USE_ITEM, "mod_on_useitem");
+
+        NWNX_Events.SubscribeEvent("NWNX_ON_USE_ITEM_BEFORE", "mod_on_useitem");
 
 		NWNX_DMActions_Old.SetDMActionScript(DMActionType.CREATE_ITEM_ON_AREA, "dm_areaitem");
 		NWNX_DMActions_Old.SetDMActionScript(DMActionType.CREATE_ITEM_ON_OBJECT, "dm_objitem");
