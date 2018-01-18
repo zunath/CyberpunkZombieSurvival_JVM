@@ -3,6 +3,7 @@ package Feat;
 import Entities.ItemCombinationEntity;
 import Helper.ColorToken;
 import Common.IScriptEventHandler;
+import NWNX.NWNX_Events;
 import NWNX.NWNX_Events_Old;
 import Data.Repository.ItemCombinationRepository;
 import GameSystems.ProgressionSystem;
@@ -20,8 +21,8 @@ public class CombineItem implements IScriptEventHandler {
     @Override
     public void runScript(NWObject oPC) {
         ItemCombinationRepository repo = new ItemCombinationRepository();
-        NWObject oItemA = NWNX_Events_Old.GetEventItem();
-        NWObject oItemB = NWNX_Events_Old.GetEventTarget();
+        NWObject oItemA = NWNX_Events.OnItemUsed_GetItem();
+        NWObject oItemB = NWNX_Events.OnItemUsed_GetTarget();
         String resrefA = NWScript.getResRef(oItemA);
         String resrefB = NWScript.getResRef(oItemB);
 

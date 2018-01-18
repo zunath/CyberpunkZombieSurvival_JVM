@@ -6,6 +6,7 @@ import GameSystems.DurabilitySystem;
 import GameSystems.MagicSystem;
 import GameSystems.ProgressionSystem;
 import Helper.ItemHelper;
+import NWNX.NWNX_Events;
 import NWNX.NWNX_Events_Old;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
@@ -16,8 +17,8 @@ import java.util.concurrent.ThreadLocalRandom;
 public class FirearmRepairKit implements IScriptEventHandler {
     @Override
     public void runScript(NWObject oPC) {
-        NWObject target = NWNX_Events_Old.GetEventTarget();
-        NWObject item = NWNX_Events_Old.GetEventItem();
+        NWObject target = NWNX_Events.OnItemUsed_GetTarget();
+        NWObject item = NWNX_Events.OnItemUsed_GetItem();
 
         if(!ItemHelper.IsFirearm(target))
         {

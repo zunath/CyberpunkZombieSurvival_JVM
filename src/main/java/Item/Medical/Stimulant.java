@@ -3,6 +3,7 @@ package Item.Medical;
 import GameObject.PlayerGO;
 import Helper.ItemHelper;
 import Common.IScriptEventHandler;
+import NWNX.NWNX_Events;
 import NWNX.NWNX_Events_Old;
 import GameSystems.ProgressionSystem;
 import NWNX.NWNX_Player;
@@ -20,7 +21,7 @@ public class Stimulant implements IScriptEventHandler {
     public void runScript(final NWObject oPC) {
         if(NWScript.getIsDM(oPC) || !NWScript.getIsPC(oPC)) return;
 
-        final NWObject item = NWNX_Events_Old.GetEventItem();
+        final NWObject item = NWNX_Events.OnItemUsed_GetItem();
         final int attribute = NWScript.getLocalInt(item, "STIMULANT_TYPE");
         int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_FIRST_AID);
         final float duration = 60.0f + (skill * 6.0f);

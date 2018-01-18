@@ -2,6 +2,7 @@ package Item;
 
 import GameObject.PlayerGO;
 import Common.IScriptEventHandler;
+import NWNX.NWNX_Events;
 import NWNX.NWNX_Events_Old;
 import Data.Repository.CraftRepository;
 import org.nwnx.nwnx2.jvm.NWObject;
@@ -12,7 +13,7 @@ public class Blueprint implements IScriptEventHandler {
     @Override
     public void runScript(NWObject oPC) {
         PlayerGO pcGO = new PlayerGO(oPC);
-        NWObject oItem = NWNX_Events_Old.GetEventItem();
+        NWObject oItem = NWNX_Events.OnItemUsed_GetItem();
         String resref = NWScript.getResRef(oItem);
         int blueprintID = Integer.parseInt(resref.substring(10));
 

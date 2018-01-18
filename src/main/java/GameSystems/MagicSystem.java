@@ -13,7 +13,7 @@ import Helper.ColorToken;
 import Helper.ScriptHelper;
 import Helper.TimeHelper;
 import NWNX.NWNX_Creature;
-import NWNX.NWNX_Events_Old;
+import NWNX.NWNX_Events;
 import NWNX.NWNX_Player;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
@@ -33,8 +33,8 @@ public class MagicSystem {
         PlayerRepository playerRepo = new PlayerRepository();
         MagicRepository repo = new MagicRepository();
         PlayerGO pcGO = new PlayerGO(pc);
-        int featID = NWNX_Events_Old.GetEventSubType();
-        NWObject target = NWNX_Events_Old.GetEventTarget();
+        int featID = NWNX_Events.OnFeatUsed_GetFeatID();
+        NWObject target =  NWNX_Events.OnFeatUsed_GetTarget();
         AbilityEntity entity = repo.GetAbilityByFeatID(featID);
 
         if(entity == null) return;

@@ -87,7 +87,7 @@ public class RadioSystem {
     public void ChangeChannel(NWObject oPC)
     {
         PlayerGO pcGO = new PlayerGO(oPC);
-        NWObject oRadio = NWNX_Events_Old.GetEventItem();
+        NWObject oRadio = NWNX_Events.OnItemUsed_GetItem();
         NWObject oDatabase = pcGO.GetDatabaseItem();
         int iRadioChannel = NWScript.getLocalInt(oDatabase, RADIO_CHANNEL);
         int bPoweredOn = NWScript.getLocalInt(oRadio, RADIO_POWER);
@@ -116,7 +116,7 @@ public class RadioSystem {
     public void TogglePower(NWObject oPC)
     {
         PlayerGO pcGO = new PlayerGO(oPC);
-        NWObject oRadio = NWNX_Events_Old.GetEventItem();
+        NWObject oRadio = NWNX_Events.OnItemUsed_GetItem();
         NWObject oDatabase = pcGO.GetDatabaseItem();
         int iRadioChannel = NWScript.getLocalInt(oDatabase, RADIO_CHANNEL);
         int bPoweredOn = NWScript.getLocalInt(oRadio, RADIO_POWER);

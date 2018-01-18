@@ -5,6 +5,7 @@ import GameObject.PlayerGO;
 import GameSystems.MagicSystem;
 import Helper.ItemHelper;
 import Common.IScriptEventHandler;
+import NWNX.NWNX_Events;
 import NWNX.NWNX_Events_Old;
 import GameSystems.ProgressionSystem;
 import NWNX.NWNX_Player;
@@ -21,7 +22,7 @@ public class MedicalSupplies implements IScriptEventHandler {
     @Override
     public void runScript(final NWObject oPC) {
 
-        final NWObject oTarget = NWNX_Events_Old.GetEventTarget();
+        NWObject oTarget = NWNX_Events.OnItemUsed_GetTarget();
         final PlayerGO pcGO = new PlayerGO(oPC);
 
         if(pcGO.isBusy())
@@ -60,7 +61,7 @@ public class MedicalSupplies implements IScriptEventHandler {
         final float delay = 12.0f - (skill * 0.5f);
 
 
-        final NWObject item = NWNX_Events_Old.GetEventItem();
+        final NWObject item = NWNX_Events.OnItemUsed_GetItem();
         final int restoreAmount = 1 + NWScript.getLocalInt(item, "ENHANCED_AMOUNT");
 
         NWNX_Player.StartGuiTimingBar(oPC, (int) delay, "");

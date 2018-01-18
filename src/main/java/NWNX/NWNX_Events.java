@@ -57,11 +57,79 @@ public class NWNX_Events {
 
     // Retrieves the event data for the currently executing script.
     // THIS SHOULD ONLY BE CALLED FROM WITHIN AN EVENT HANDLER.
-    public static String GetEventData(String tag)
+    public static String GetEventDataString(String tag)
     {
         NWNX_PushArgumentString("NWNX_Events", "GET_EVENT_DATA", tag);
         NWNX_CallFunction("NWNX_Events", "GET_EVENT_DATA");
         return NWNX_GetReturnValueString("NWNX_Events", "GET_EVENT_DATA");
+    }
+
+    public static int GetEventDataInt(String tag)
+    {
+        String data = GetEventDataString(tag);
+        return Integer.parseInt(data);
+    }
+
+    public static float GetEventDataFloat(String tag)
+    {
+        String data = GetEventDataString(tag);
+        return Float.parseFloat(data);
+    }
+
+    public static NWObject GetEventDataObject(String tag)
+    {
+        String data = GetEventDataString(tag);
+        return NWNX_Object.StringToObject(data);
+    }
+
+    public static int OnFeatUsed_GetFeatID()
+    {
+        return GetEventDataInt("FEAT_ID");
+    }
+
+    public static int OnFeatUsed_GetSubFeatID()
+    {
+        return GetEventDataInt("SUBFEAT_ID");
+    }
+
+    public static NWObject OnFeatUsed_GetTarget()
+    {
+        return GetEventDataObject("TARGET_OBJECT_ID");
+    }
+
+    public static NWObject OnFeatUsed_GetArea()
+    {
+        return GetEventDataObject("AREA_OBJECT_ID");
+    }
+
+    public static float OnFeatUsed_GetTargetPositionX()
+    {
+        return GetEventDataFloat("TARGET_POSITION_X");
+    }
+
+    public static float OnFeatUsed_GetTargetPositionY()
+    {
+        return GetEventDataFloat("TARGET_POSITION_Y");
+    }
+
+    public static float OnFeatUsed_GetTargetPositionZ()
+    {
+        return GetEventDataFloat("TARGET_POSITION_Z");
+    }
+
+    public static NWObject OnItemUsed_GetItem()
+    {
+        return GetEventDataObject("ITEM_OBJECT_ID");
+    }
+
+    public static NWObject OnItemUsed_GetTarget()
+    {
+        return GetEventDataObject("TARGET_OBJECT_ID");
+    }
+
+    public static NWObject OnExamineObject_GetTarget()
+    {
+        return GetEventDataObject("EXAMINEE_OBJECT_ID");
     }
 
 }

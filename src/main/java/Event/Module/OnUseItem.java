@@ -24,8 +24,7 @@ public class OnUseItem implements IScriptEventHandler {
 
     private void HandleGeneralItemUses(final NWObject oPC)
     {
-        String itemID = NWNX_Events.GetEventData("ITEM_OBJECT_ID");
-        NWObject oItem = NWNX_Object.StringToObject(itemID);
+        NWObject oItem = NWNX_Events.OnItemUsed_GetItem();
 
         String className = NWScript.getLocalString(oItem, "JAVA_SCRIPT");
         if(className.equals("")) return;
@@ -42,7 +41,7 @@ public class OnUseItem implements IScriptEventHandler {
 
     private void HandleSpecificItemUses(NWObject oPC)
     {
-        NWObject oItem = NWNX_Events_Old.GetEventItem();
+        NWObject oItem = NWNX_Events.OnItemUsed_GetItem();
         String sTag = NWScript.getTag(oItem);
         int iSubtype = NWNX_Events_Old.GetEventSubType();
 
