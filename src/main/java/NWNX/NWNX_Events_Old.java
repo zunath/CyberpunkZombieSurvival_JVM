@@ -10,14 +10,7 @@ import java.util.Objects;
 public class NWNX_Events_Old {
     public static final int EVENT_TYPE_ATTACK             = 3;
 
-
     public static final int LANGUAGE_ENGLISH              = 0;
-
-    public static int GetEventType()
-    {   
-        NWScript.setLocalString(NWObject.MODULE, "NWNX!EVENTS!GET_EVENT_ID", "      ");
-        return NWScript.stringToInt(NWScript.getLocalString(NWObject.MODULE, "NWNX!EVENTS!GET_EVENT_ID"));
-    }
 
     public static int GetEventSubType()
     {
@@ -28,11 +21,6 @@ public class NWNX_Events_Old {
     public static NWObject GetEventTarget()
     {
         return NWScript.getLocalObject(NWObject.MODULE, "NWNX!EVENTS!TARGET");
-    }
-
-    public static NWObject GetEventItem()
-    {
-        return NWScript.getLocalObject(NWObject.MODULE, "NWNX!EVENTS!ITEM");
     }
 
     public static NWVector GetEventPosition()

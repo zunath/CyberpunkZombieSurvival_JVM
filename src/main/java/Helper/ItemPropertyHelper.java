@@ -15,13 +15,13 @@ public class ItemPropertyHelper {
                                              int paramTable,
                                              int paramValue)
     {
-        NWScript.setLocalInt(NWObject.MODULE, "jvm_ipdirect_type", type);
-        NWScript.setLocalInt(NWObject.MODULE, "jvm_ipdirect_subtype", subType);
-        NWScript.setLocalInt(NWObject.MODULE, "jvm_ipdirect_costtable", costTable);
-        NWScript.setLocalInt(NWObject.MODULE, "jvm_ipdirect_costvalue", costValue);
-        NWScript.setLocalInt(NWObject.MODULE, "jvm_ipdirect_paramtable", paramTable);
-        NWScript.setLocalInt(NWObject.MODULE, "jvm_ipdirect_paramvalue", paramValue);
+        NWScript.setLocalInt(NWObject.MODULE, "NWNX_JVM_IPDIRECT_TYPE", type);
+        NWScript.setLocalInt(NWObject.MODULE, "NWNX_JVM_IPDIRECT_SUBTYPE", subType);
+        NWScript.setLocalInt(NWObject.MODULE, "NWNX_JVM_IPDIRECT_COSTTABLE", costTable);
+        NWScript.setLocalInt(NWObject.MODULE, "NWNX_JVM_IPDIRECT_COSTVALUE", costValue);
+        NWScript.setLocalInt(NWObject.MODULE, "NWNX_JVM_IPDIRECT_PARAMTABLE", paramTable);
+        NWScript.setLocalInt(NWObject.MODULE, "NWNX_JVM_IPDIRECT_PARAMVALUE", paramValue);
 
-        NWScript.executeScript("jvm_ipdirect", oItem);
+        NWScript.executeScript("nwnx_jvm_ip", oItem);
     }
 }
