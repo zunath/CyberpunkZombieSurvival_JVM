@@ -47,13 +47,13 @@ public class OnLoad implements IScriptEventHandler {
     {
         NWNX_Events_Old.SetGlobalEventHandler(NWNX_Events_Old.EVENT_TYPE_ATTACK, "mod_on_attack");
 
-        NWNX_Events.SubscribeEvent("NWNX_ON_EXAMINE_OBJECT_BEFORE", "mod_on_examine");
+        NWNX_Events.SubscribeEvent(EventType.ExamineObjectBefore, "mod_on_examine");
+        NWNX_Events.SubscribeEvent(EventType.CastSpellBefore, "mod_on_castspell");
 
-		//NWNX_Events_Old.SetGlobalEventHandler(NWNX_Events_Old.EVENT_TYPE_CAST_SPELL, "mod_on_castspell");
         //NWNX_Events_Old.SetGlobalEventHandler(NWNX_Events_Old.EVENT_TYPE_TOGGLE_PAUSE, "mod_on_toggpause");
 
-        NWNX_Events.SubscribeEvent("NWNX_ON_USE_FEAT_BEFORE", "mod_on_usefeat");
-        NWNX_Events.SubscribeEvent("NWNX_ON_USE_ITEM_BEFORE", "mod_on_useitem");
+        NWNX_Events.SubscribeEvent(EventType.UseFeatBefore, "mod_on_usefeat");
+        NWNX_Events.SubscribeEvent(EventType.UseItemBefore, "mod_on_useitem");
 
 		//NWNX_DMActions_Old.SetDMActionScript(DMActionType.GIVE_LEVEL, "dm_level");
 		//NWNX_DMActions_Old.SetDMActionScript(DMActionType.GIVE_XP, "dm_xp");

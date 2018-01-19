@@ -5,27 +5,6 @@ import org.nwnx.nwnx2.jvm.NWObject;
 import static NWNX.NWNX_Core.*;
 
 public class NWNX_Events {
-
-    // The following events are exposed by this plugin:
-    //
-    //     NWNX_ON_ADD_ASSOCIATE_BEFORE
-    //     NWNX_ON_ADD_ASSOCIATE_AFTER
-    //     NWNX_ON_REMOVE_ASSOCIATE_BEFORE
-    //     NWNX_ON_REMOVE_ASSOCIATE_AFTER
-    //     NWNX_ON_ENTER_STEALTH_BEFORE
-    //     NWNX_ON_ENTER_STEALTH_AFTER
-    //     NWNX_ON_EXIT_STEALTH_BEFORE
-    //     NWNX_ON_EXIT_STEALTH_AFTER
-    //     NWNX_ON_EXAMINE_OBJECT_BEFORE
-    //     NWNX_ON_EXAMINE_OBJECT_AFTER
-    //     NWNX_ON_USE_ITEM_BEFORE
-    //     NWNX_ON_USE_ITEM_AFTER
-    //     NWNX_ON_DM_GIVE_GOLD (TODO: Upgrade - Currently disabled)
-    //     NWNX_ON_DM_SET_EXP (TODO: Upgrade - Currently disabled)
-    //     NWNX_ON_CLIENT_DISCONNECT_BEFORE
-    //     NWNX_ON_CLIENT_DISCONNECT_AFTER
-    //
-
     // Scripts can subscribe to events.
     // Some events are dispatched via the NWNX plugin (see NWNX_EVENTS_EVENT_* constants).
     // Others can be signalled via script code (see NWNX_Events_SignalEvent).
@@ -57,26 +36,32 @@ public class NWNX_Events {
 
     // Retrieves the event data for the currently executing script.
     // THIS SHOULD ONLY BE CALLED FROM WITHIN AN EVENT HANDLER.
-    public static String GetEventDataString(String tag)
+    private static String GetEventDataString(String tag)
     {
         NWNX_PushArgumentString("NWNX_Events", "GET_EVENT_DATA", tag);
         NWNX_CallFunction("NWNX_Events", "GET_EVENT_DATA");
         return NWNX_GetReturnValueString("NWNX_Events", "GET_EVENT_DATA");
     }
 
-    public static int GetEventDataInt(String tag)
+    private static int GetEventDataInt(String tag)
     {
         String data = GetEventDataString(tag);
         return Integer.parseInt(data);
     }
 
-    public static float GetEventDataFloat(String tag)
+    private static boolean GetEventDataBoolean(String tag)
+    {
+        int data = GetEventDataInt(tag);
+        return data == 1;
+    }
+
+    private static float GetEventDataFloat(String tag)
     {
         String data = GetEventDataString(tag);
         return Float.parseFloat(data);
     }
 
-    public static NWObject GetEventDataObject(String tag)
+    private static NWObject GetEventDataObject(String tag)
     {
         String data = GetEventDataString(tag);
         return NWNX_Object.StringToObject(data);
@@ -130,6 +115,61 @@ public class NWNX_Events {
     public static NWObject OnExamineObject_GetTarget()
     {
         return GetEventDataObject("EXAMINEE_OBJECT_ID");
+    }
+
+    public static int OnCastSpell_GetSpellID()
+    {
+        return GetEventDataInt("SPELL_ID");
+    }
+
+    public static int OnCastSpell_GetTargetPositionX()
+    {
+        return GetEventDataInt("TARGET_POSITION_X");
+    }
+
+    public static int OnCastSpell_GetTargetPositionY()
+    {
+        return GetEventDataInt("TARGET_POSITION_Y");
+    }
+
+    public static int OnCastSpell_GetTargetPositionZ()
+    {
+        return GetEventDataInt("TARGET_POSITION_Z");
+    }
+
+    public static NWObject OnCastSpell_GetTarget()
+    {
+        return GetEventDataObject("TARGET_OBJECT_ID");
+    }
+
+    public static int OnCastSpell_GetMultiClass()
+    {
+        return GetEventDataInt("MULTI_CLASS");
+    }
+
+    public static NWObject OnCastSpell_GetItem()
+    {
+        return GetEventDataObject("ITEM_OBJECT_ID");
+    }
+
+    public static boolean OnCastSpell_GetSpellCountered()
+    {
+        return GetEventDataBoolean("SPELL_COUNTERED");
+    }
+
+    public static boolean OnCastSpell_GetCounteringSpell()
+    {
+        return GetEventDataBoolean("COUNTERING_SPELL");
+    }
+
+    public static int OnCastSpell_GetProjectilePathType()
+    {
+        return GetEventDataInt("PROJECTILE_PATH_TYPE");
+    }
+
+    public static boolean OnCastSpell_IsInstantSpell()
+    {
+        return GetEventDataBoolean("IS_INSTANT_SPELL");
     }
 
 }
