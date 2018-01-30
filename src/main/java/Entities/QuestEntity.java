@@ -53,7 +53,7 @@ public class QuestEntity {
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "StartKeyItemID", updatable = false, insertable = false)
-    private KeyItemEntity startKeyItemID;
+    private KeyItemEntity startKeyItem;
 
     @Column(name = "RemoveStartKeyItemAfterCompletion")
     private boolean removeStartKeyItemAfterCompletion;
@@ -180,12 +180,12 @@ public class QuestEntity {
         this.rewardKeyItem = rewardKeyItem;
     }
 
-    public KeyItemEntity getStartKeyItemID() {
-        return startKeyItemID;
+    public KeyItemEntity getStartKeyItem() {
+        return startKeyItem;
     }
 
-    public void setStartKeyItemID(KeyItemEntity startKeyItemID) {
-        this.startKeyItemID = startKeyItemID;
+    public void setStartKeyItem(KeyItemEntity startKeyItemID) {
+        this.startKeyItem = startKeyItemID;
     }
 
     public List<QuestKillTargetListEntity> getKillTargets() {

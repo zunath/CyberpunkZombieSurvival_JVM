@@ -7,17 +7,25 @@ import Entities.*;
 import Enumerations.QuestType;
 import GameObject.PlayerGO;
 import Helper.ColorToken;
+import Helper.ItemHelper;
+import NWNX.NWNX_Events;
+import NWNX.NWNX_Funcs;
+import NWNX.NWNX_Structs;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
+import org.nwnx.nwnx2.jvm.NWLocation;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.Scheduler;
+import org.nwnx.nwnx2.jvm.constants.ObjectType;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class QuestSystem {
+
+    final static String TempStoragePlaceableTag = "QUEST_BARREL";
 
     public static void OnClientEnter()
     {
@@ -112,6 +120,12 @@ public class QuestSystem {
         {
             NWScript.sendMessageToPC(oPC, "There was an error accepting the quest '" + quest.getName() + "'. Please inform an admin this quest is bugged. (QuestID: " + questID + ")");
             return;
+        }
+
+        // Give temporary key item at start of quest.
+        if(quest.getStartKeyItem() != null)
+        {
+            KeyItemSystem.GivePlayerKeyItem(oPC, quest.getStartKeyItem().getKeyItemID());
         }
 
         status.setQuest(quest);
@@ -247,7 +261,7 @@ public class QuestSystem {
 
         if(quest.removeStartKeyItemAfterCompletion())
         {
-            KeyItemSystem.RemovePlayerKeyItem(oPC, quest.getStartKeyItemID().getKeyItemID());
+            KeyItemSystem.RemovePlayerKeyItem(oPC, quest.getStartKeyItem().getKeyItemID());
         }
 
         if(quest.getRewardFame() > 0)
@@ -425,13 +439,149 @@ public class QuestSystem {
         HandleTriggerAndPlaceableQuestLogic(oPC, oObject);
     }
 
-    public static void TurnInQuestItems(NWObject oPC, NWObject oQuestGiver, int questID, int sequenceID)
+
+    public static void OnItemCollectorOpened(NWObject container)
+    {
+        NWObject oPC = NWScript.getLastOpenedBy();
+        PlayerGO pcGO = new PlayerGO(oPC);
+        QuestRepository repo = new QuestRepository();
+        int questID = NWScript.getLocalInt(container, "QUEST_ID");
+        QuestStateEntity state = repo.GetPCQuestStatusByID(pcGO.getUUID(), questID).getCurrentQuestState();
+
+        NWScript.floatingTextStringOnCreature("Please place the items you would like to turn in for this quest into the container.", oPC, false);
+        String text = "Required Items: \n\n";
+
+        NWObject tempStorage = NWScript.getObjectByTag(TempStoragePlaceableTag, 0);
+        for(QuestRequiredItemListEntity item : state.getRequiredItems())
+        {
+            NWObject tempItem = NWScript.createItemOnObject(item.getResref(), tempStorage, 1, "");
+            String name = NWScript.getName(tempItem, false);
+            text += name + " x" + item.getQuantity() + "\n";
+            NWScript.destroyObject(tempItem, 0.0f);
+        }
+
+        NWScript.sendMessageToPC(oPC, text);
+    }
+
+    public static void OnItemCollectorClosed(NWObject container)
+    {
+        NWObject oPC = NWScript.getLastClosedBy();
+        PlayerGO pcGO = new PlayerGO(oPC);
+        QuestRepository repo = new QuestRepository();
+        int questID = NWScript.getLocalInt(container, "QUEST_ID");
+        QuestStateEntity state = repo.GetPCQuestStatusByID(pcGO.getUUID(), questID).getCurrentQuestState();
+        NWObject[] submittedItems = NWScript.getItemsInInventory(container);
+
+        HashMap<String, Integer> requiredItems = new HashMap<>();
+
+        // Consolidate the number of items required. This is necessary in case there are two entries for the same
+        // item in the database. We simply sum those up to get one result in the hash map.
+        for(QuestRequiredItemListEntity ri : state.getRequiredItems())
+        {
+            if(requiredItems.containsKey(ri.getResref()))
+            {
+                int count = requiredItems.get(ri.getResref()) + ri.getQuantity();
+                requiredItems.replace(ri.getResref(), count);
+            }
+            else
+            {
+                requiredItems.put(ri.getResref(), ri.getQuantity());
+            }
+        }
+
+        ArrayList<NWObject> collectedItems = new ArrayList<>();
+        NWObject tempStorage = NWScript.getObjectByTag(TempStoragePlaceableTag, 0);
+        for(NWObject item: submittedItems)
+        {
+            String resref = NWScript.getResRef(item);
+            int stackSize = NWScript.getItemStackSize(item);
+
+            if(requiredItems.containsKey(resref))
+            {
+                int amountRequired = requiredItems.get(resref);
+                NWObject tempItem = NWScript.copyItem(item, tempStorage, true);
+                collectedItems.add(tempItem);
+
+                // Same amount - destroy and remove.
+                if(stackSize == amountRequired)
+                {
+                    NWScript.destroyObject(item, 0.0f);
+                    requiredItems.remove(resref);
+                }
+                // Stack > amount - change stack size and remove.
+                else if(stackSize > amountRequired)
+                {
+                    stackSize = stackSize - amountRequired;
+                    NWScript.setItemStackSize(item, stackSize);
+                    requiredItems.remove(resref);
+                }
+                // Stack < amount - destroy and update required remaining.
+                else if(stackSize < amountRequired)
+                {
+                    NWScript.destroyObject(item, 0.0f);
+                    amountRequired = amountRequired - stackSize;
+                    requiredItems.put(resref, amountRequired);
+                }
+            }
+        }
+
+        // Still missing items. Return everything to player and give error message.
+        if(!requiredItems.isEmpty())
+        {
+            for(NWObject item : collectedItems)
+            {
+                NWScript.copyItem(item, oPC, true);
+                NWScript.destroyObject(item, 0.0f);
+            }
+
+            NWScript.sendMessageToPC(oPC, ColorToken.Red() + "You are missing some required items..." + ColorToken.End());
+            return;
+        }
+
+        // Succeeded. Take everything and advance the quest state.
+        for(NWObject item: collectedItems)
+        {
+            NWScript.destroyObject(item, 0.0f);
+        }
+
+        AdvanceQuestState(oPC, questID);
+        NWScript.destroyObject(container, 0.0f);
+
+        // TODO: Send player back to conversation??
+    }
+
+    public static void OnItemCollectorDisturbed(NWObject container)
+    {
+        NWObject oPC = NWScript.getLastDisturbed();
+        NWObject oItem = NWScript.getInventoryDisturbItem();
+        String resref = NWScript.getResRef(oItem);
+
+        PlayerGO pcGO = new PlayerGO(oPC);
+        QuestRepository repo = new QuestRepository();
+        int questID = NWScript.getLocalInt(container, "QUEST_ID");
+        QuestStateEntity state = repo.GetPCQuestStatusByID(pcGO.getUUID(), questID).getCurrentQuestState();
+
+        for(QuestRequiredItemListEntity reqItem: state.getRequiredItems())
+        {
+            if(reqItem.getResref().equals(resref))
+            {
+                return;
+            }
+        }
+
+        NWScript.copyItem(oItem, oPC, true);
+        NWScript.destroyObject(oItem, 0.0f);
+        NWScript.sendMessageToPC(oPC, ColorToken.Red() + "That item is not required for this quest." + ColorToken.End());
+    }
+
+    public static void RequestItemsFromPC(NWObject oPC, NWObject questOwner, int questID, int sequenceID)
     {
         if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return;
 
         PlayerGO pcGO = new PlayerGO(oPC);
         QuestRepository questRepo = new QuestRepository();
         PCQuestStatusEntity pcStatus = questRepo.GetPCQuestStatusByID(pcGO.getUUID(), questID);
+
 
         if(pcStatus == null)
         {
@@ -447,7 +597,6 @@ public class QuestSystem {
             return;
         }
 
-
         for(QuestRequiredKeyItemListEntity ki : questState.getRequiredKeyItems())
         {
             if(!KeyItemSystem.PlayerHasKeyItem(oPC, ki.getKeyItem().getKeyItemID()))
@@ -457,63 +606,12 @@ public class QuestSystem {
             }
         }
 
-        List<QuestRequiredItemListEntity> requiredItems = questState.getRequiredItems();
-        HashMap<String, Integer> itemsFound = new HashMap<>();
+        NWLocation location = NWScript.getLocation(oPC);
+        final NWObject collector = NWScript.createObject(ObjectType.PLACEABLE, "qst_item_collect", location, false, "");
 
-        for(QuestRequiredItemListEntity ri : requiredItems)
-        {
-            if(itemsFound.containsKey(ri.getResref()))
-            {
-                int count = itemsFound.get(ri.getResref()) + ri.getQuantity();
-                itemsFound.replace(ri.getResref(), count);
-            }
-            else
-            {
-                itemsFound.put(ri.getResref(), ri.getQuantity());
-            }
-        }
+        Scheduler.assign(collector, () -> NWScript.setFacingPoint(NWScript.getPosition(oPC)));
+        NWScript.setLocalInt(collector, "QUEST_ID", questID);
 
-        for(NWObject item : NWScript.getItemsInInventory(oPC))
-        {
-            String resref = NWScript.getResRef(item);
-            if(itemsFound.containsKey(resref))
-            {
-                if(itemsFound.get(resref) > 0)
-                {
-                    if(NWScript.getItemStackSize(item) == 1)
-                    {
-                        itemsFound.replace(resref, itemsFound.get(resref) - 1);
-                        NWScript.copyItem(item, oQuestGiver, true);
-                        NWScript.destroyObject(item, 0.0f);
-                    }
-                    else
-                    {
-                        // TODO: Handle stack sizes.
-                    }
-                }
-            }
-        }
-
-        for(String foundResref : itemsFound.keySet())
-        {
-            if(itemsFound.get(foundResref) > 0)
-            {
-                for(NWObject item : NWScript.getItemsInInventory(oQuestGiver))
-                {
-                    NWScript.copyItem(item, oPC, true);
-                    NWScript.destroyObject(item, 0.0f);
-                }
-
-                NWScript.sendMessageToPC(oPC, "You are missing a required item.");
-                return;
-            }
-        }
-
-        for(NWObject item : NWScript.getItemsInInventory(oQuestGiver))
-        {
-            NWScript.destroyObject(item, 0.0f);
-        }
-
-        AdvanceQuestState(oPC, questID);
+        Scheduler.assign(oPC, () -> NWScript.actionInteractObject(collector));
     }
 }
