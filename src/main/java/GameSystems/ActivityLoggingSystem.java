@@ -123,7 +123,15 @@ public class ActivityLoggingSystem {
         entity.setAccountName(account);
         entity.setCdKey(cdKey);
         entity.setClientLogEventTypeID(1);
-        entity.setPlayerID(pcGO.getUUID());
+
+        if(NWScript.getIsDM(oPC))
+        {
+            entity.setPlayerID(null);
+        }
+        else
+        {
+            entity.setPlayerID(pcGO.getUUID());
+        }
         entity.setDateofEvent(new Timestamp(now.getMillis()));
 
         repo.Save(entity);
@@ -147,7 +155,15 @@ public class ActivityLoggingSystem {
         entity.setAccountName(account);
         entity.setCdKey(cdKey);
         entity.setClientLogEventTypeID(2);
-        entity.setPlayerID(pcGO.getUUID());
+
+        if(NWScript.getIsDM(oPC))
+        {
+            entity.setPlayerID(null);
+        }
+        else
+        {
+            entity.setPlayerID(pcGO.getUUID());
+        }
         entity.setDateofEvent(new Timestamp(now.getMillis()));
 
         repo.Save(entity);
