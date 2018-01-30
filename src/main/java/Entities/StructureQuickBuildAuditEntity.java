@@ -1,11 +1,10 @@
 package Entities;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
+@Entity
+@Table(name = "StructureQuickBuildAudit")
 public class StructureQuickBuildAuditEntity {
 
     @Column(name="StructureQuickBuildID")
