@@ -17,6 +17,8 @@ import org.nwnx.nwnx2.jvm.NWLocation;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.Scheduler;
+import org.nwnx.nwnx2.jvm.constants.Inventory;
+import org.nwnx.nwnx2.jvm.constants.InventoryDisturb;
 import org.nwnx.nwnx2.jvm.constants.ObjectType;
 
 import java.util.ArrayList;
@@ -26,6 +28,7 @@ import java.util.List;
 public class QuestSystem {
 
     final static String TempStoragePlaceableTag = "QUEST_BARREL";
+    final static String SubmitQuestItemResref = "qst_submit";
 
     public static void OnClientEnter()
     {
@@ -442,6 +445,8 @@ public class QuestSystem {
 
     public static void OnItemCollectorOpened(NWObject container)
     {
+        NWScript.setUseableFlag(container, false);
+
         NWObject oPC = NWScript.getLastOpenedBy();
         PlayerGO pcGO = new PlayerGO(oPC);
         QuestRepository repo = new QuestRepository();
@@ -466,6 +471,49 @@ public class QuestSystem {
     public static void OnItemCollectorClosed(NWObject container)
     {
         NWObject oPC = NWScript.getLastClosedBy();
+        for(NWObject item : NWScript.getItemsInInventory(container))
+        {
+            if(!NWScript.getResRef(item).equals(SubmitQuestItemResref))
+            {
+                NWScript.copyItem(item, oPC, true);
+            }
+            NWScript.destroyObject(item, 0.0f);
+        }
+
+        NWScript.destroyObject(container, 0.0f);
+    }
+
+    private static void HandleAddItemToItemCollector(NWObject oPC, NWObject container, NWObject oItem)
+    {
+        String resref = NWScript.getResRef(oItem);
+        if(resref.equals(SubmitQuestItemResref)) return;
+
+        PlayerGO pcGO = new PlayerGO(oPC);
+        QuestRepository repo = new QuestRepository();
+        int questID = NWScript.getLocalInt(container, "QUEST_ID");
+        QuestStateEntity state = repo.GetPCQuestStatusByID(pcGO.getUUID(), questID).getCurrentQuestState();
+
+        for(QuestRequiredItemListEntity reqItem: state.getRequiredItems())
+        {
+            if(reqItem.getResref().equals(resref))
+            {
+                return;
+            }
+        }
+
+        NWScript.copyItem(oItem, oPC, true);
+        NWScript.destroyObject(oItem, 0.0f);
+        NWScript.sendMessageToPC(oPC, ColorToken.Red() + "That item is not required for this quest." + ColorToken.End());
+    }
+
+    private static void HandleRemoveItemFromItemCollector(NWObject oPC, NWObject container, NWObject oItem)
+    {
+        String resref = NWScript.getResRef(oItem);
+        if(!resref.equals(SubmitQuestItemResref)) return;
+
+        NWScript.destroyObject(oItem, 0.0f);
+        NWScript.createItemOnObject(SubmitQuestItemResref, container, 1, "");
+
         PlayerGO pcGO = new PlayerGO(oPC);
         QuestRepository repo = new QuestRepository();
         int questID = NWScript.getLocalInt(container, "QUEST_ID");
@@ -489,18 +537,17 @@ public class QuestSystem {
             }
         }
 
-        ArrayList<NWObject> collectedItems = new ArrayList<>();
-        NWObject tempStorage = NWScript.getObjectByTag(TempStoragePlaceableTag, 0);
         for(NWObject item: submittedItems)
         {
-            String resref = NWScript.getResRef(item);
+            resref = NWScript.getResRef(item);
+            if(resref.equals(SubmitQuestItemResref))
+                continue;
+
             int stackSize = NWScript.getItemStackSize(item);
 
             if(requiredItems.containsKey(resref))
             {
                 int amountRequired = requiredItems.get(resref);
-                NWObject tempItem = NWScript.copyItem(item, tempStorage, true);
-                collectedItems.add(tempItem);
 
                 // Same amount - destroy and remove.
                 if(stackSize == amountRequired)
@@ -514,6 +561,8 @@ public class QuestSystem {
                     stackSize = stackSize - amountRequired;
                     NWScript.setItemStackSize(item, stackSize);
                     requiredItems.remove(resref);
+                    NWScript.copyItem(item, oPC, true);
+                    NWScript.destroyObject(item, 0.0f);
                 }
                 // Stack < amount - destroy and update required remaining.
                 else if(stackSize < amountRequired)
@@ -528,50 +577,47 @@ public class QuestSystem {
         // Still missing items. Return everything to player and give error message.
         if(!requiredItems.isEmpty())
         {
-            for(NWObject item : collectedItems)
+            for(NWObject item : NWScript.getItemsInInventory(container))
             {
-                NWScript.copyItem(item, oPC, true);
+                if(!NWScript.getResRef(item).equals(SubmitQuestItemResref))
+                    NWScript.copyItem(item, oPC, true);
                 NWScript.destroyObject(item, 0.0f);
             }
 
             NWScript.sendMessageToPC(oPC, ColorToken.Red() + "You are missing some required items..." + ColorToken.End());
-            return;
         }
-
         // Succeeded. Take everything and advance the quest state.
-        for(NWObject item: collectedItems)
+        else
         {
-            NWScript.destroyObject(item, 0.0f);
+            for(NWObject item: NWScript.getItemsInInventory(container))
+            {
+                NWScript.destroyObject(item, 0.0f);
+            }
+
+            AdvanceQuestState(oPC, questID);
         }
 
-        AdvanceQuestState(oPC, questID);
+
         NWScript.destroyObject(container, 0.0f);
 
-        // TODO: Send player back to conversation??
     }
 
     public static void OnItemCollectorDisturbed(NWObject container)
     {
         NWObject oPC = NWScript.getLastDisturbed();
         NWObject oItem = NWScript.getInventoryDisturbItem();
-        String resref = NWScript.getResRef(oItem);
+        int disturbType = NWScript.getInventoryDisturbType();
 
-        PlayerGO pcGO = new PlayerGO(oPC);
-        QuestRepository repo = new QuestRepository();
-        int questID = NWScript.getLocalInt(container, "QUEST_ID");
-        QuestStateEntity state = repo.GetPCQuestStatusByID(pcGO.getUUID(), questID).getCurrentQuestState();
-
-        for(QuestRequiredItemListEntity reqItem: state.getRequiredItems())
+        if(disturbType == InventoryDisturb.TYPE_ADDED)
         {
-            if(reqItem.getResref().equals(resref))
-            {
-                return;
-            }
+            HandleAddItemToItemCollector(oPC, container, oItem);
+        }
+        else if(disturbType == InventoryDisturb.TYPE_REMOVED)
+        {
+            HandleRemoveItemFromItemCollector(oPC, container, oItem);
         }
 
-        NWScript.copyItem(oItem, oPC, true);
-        NWScript.destroyObject(oItem, 0.0f);
-        NWScript.sendMessageToPC(oPC, ColorToken.Red() + "That item is not required for this quest." + ColorToken.End());
+
     }
 
     public static void RequestItemsFromPC(NWObject oPC, NWObject questOwner, int questID, int sequenceID)
@@ -611,6 +657,7 @@ public class QuestSystem {
 
         Scheduler.assign(collector, () -> NWScript.setFacingPoint(NWScript.getPosition(oPC)));
         NWScript.setLocalInt(collector, "QUEST_ID", questID);
+        NWScript.createItemOnObject(SubmitQuestItemResref, collector, 1, "");
 
         Scheduler.assign(oPC, () -> NWScript.actionInteractObject(collector));
     }
