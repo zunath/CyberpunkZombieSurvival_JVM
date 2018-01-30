@@ -116,8 +116,6 @@ public class ActivityLoggingSystem {
 
         System.out.println(nowString + ": " + name + " (" + account + "/" + cdKey + ") connected to the server.");
 
-        if(NWScript.getIsDM(oPC)) return;
-
         ActivityLoggingRepository repo = new ActivityLoggingRepository();
         ClientLogEventEntity entity = new ClientLogEventEntity();
         entity.setAccountName(account);
