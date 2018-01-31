@@ -3,9 +3,11 @@ package GameSystems;
 import Data.Repository.FameRepository;
 import Data.Repository.KeyItemRepository;
 import Data.Repository.QuestRepository;
+import Dialog.DialogManager;
 import Entities.*;
 import Enumerations.QuestType;
 import GameObject.PlayerGO;
+import GameSystems.Models.ItemModel;
 import Helper.ColorToken;
 import Helper.ItemHelper;
 import NWNX.NWNX_Events;
@@ -168,7 +170,7 @@ public class QuestSystem {
                 // Either complete the quest or move to the new state.
                 if(nextState.isFinalState())
                 {
-                    CompleteQuest(oPC, questID);
+                    RequestRewardSelectionFromPC(oPC, questID);
                     return;
                 }
                 else
@@ -206,7 +208,26 @@ public class QuestSystem {
         }
     }
 
-    public static void CompleteQuest(NWObject oPC, int questID)
+    public static void RequestRewardSelectionFromPC(NWObject oPC, int questID)
+    {
+        if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return;
+
+        QuestRepository questRepo = new QuestRepository();
+        QuestEntity quest = questRepo.GetQuestByID(questID);
+
+        if(quest.allowRewardSelection())
+        {
+            NWScript.setLocalInt(oPC, "QST_REWARD_SELECTION_QUEST_ID", questID);
+            DialogManager.startConversation(oPC, oPC, "QuestRewardSelection");
+        }
+        else
+        {
+            CompleteQuest(oPC, questID, null);
+        }
+
+    }
+
+    public static void CompleteQuest(NWObject oPC, int questID, ItemModel selectedItem)
     {
         if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return;
 
@@ -215,13 +236,6 @@ public class QuestSystem {
         QuestRepository questRepo = new QuestRepository();
         QuestEntity quest = questRepo.GetQuestByID(questID);
         PCQuestStatusEntity pcState = questRepo.GetPCQuestStatusByID(uuid, questID);
-
-        if(quest.allowRewardSelection())
-        {
-            // TODO: Launch conversation for selecting reward.
-
-            return;
-        }
 
         QuestStateEntity finalState = null;
         for(QuestStateEntity questState : quest.getQuestStates())
@@ -242,9 +256,16 @@ public class QuestSystem {
         pcState.setCurrentQuestState(finalState);
         pcState.setCompletionDate(DateTime.now(DateTimeZone.UTC).toDate());
 
-        for(QuestRewardItemEntity reward : quest.getRewardItems())
+        if(selectedItem == null)
         {
-            NWScript.createItemOnObject(reward.getResref(), oPC, reward.getQuantity(), "");
+            for(QuestRewardItemEntity reward : quest.getRewardItems())
+            {
+                NWScript.createItemOnObject(reward.getResref(), oPC, reward.getQuantity(), "");
+            }
+        }
+        else
+        {
+            NWScript.createItemOnObject(selectedItem.getResref(), oPC, selectedItem.getQuantity(), "");
         }
 
         if(quest.getRewardGold() > 0)
@@ -442,6 +463,19 @@ public class QuestSystem {
         HandleTriggerAndPlaceableQuestLogic(oPC, oObject);
     }
 
+    public static ItemModel GetTempItemInformation(String resref, int quantity)
+    {
+        NWObject tempStorage = NWScript.getObjectByTag(TempStoragePlaceableTag, 0);
+        NWObject tempItem = NWScript.createItemOnObject(resref, tempStorage, 1, "");
+        ItemModel model = new ItemModel();
+        model.setName(NWScript.getName(tempItem, false));
+        model.setQuantity(quantity);
+        model.setResref(resref);
+        model.setTag(NWScript.getTag(tempItem));
+        model.setDescription(NWScript.getDescription(tempItem, false, true));
+
+        return model;
+    }
 
     public static void OnItemCollectorOpened(NWObject container)
     {
@@ -456,13 +490,10 @@ public class QuestSystem {
         NWScript.floatingTextStringOnCreature("Please place the items you would like to turn in for this quest into the container.", oPC, false);
         String text = "Required Items: \n\n";
 
-        NWObject tempStorage = NWScript.getObjectByTag(TempStoragePlaceableTag, 0);
         for(QuestRequiredItemListEntity item : state.getRequiredItems())
         {
-            NWObject tempItem = NWScript.createItemOnObject(item.getResref(), tempStorage, 1, "");
-            String name = NWScript.getName(tempItem, false);
-            text += name + " x" + item.getQuantity() + "\n";
-            NWScript.destroyObject(tempItem, 0.0f);
+            ItemModel tempItemModel = GetTempItemInformation(item.getResref(), item.getQuantity());
+            text += tempItemModel.getName() + " x" + item.getQuantity() + "\n";
         }
 
         NWScript.sendMessageToPC(oPC, text);
@@ -562,15 +593,22 @@ public class QuestSystem {
                     NWScript.setItemStackSize(item, stackSize);
                     requiredItems.remove(resref);
                     NWScript.copyItem(item, oPC, true);
-                    NWScript.destroyObject(item, 0.0f);
                 }
                 // Stack < amount - destroy and update required remaining.
                 else if(stackSize < amountRequired)
                 {
                     NWScript.destroyObject(item, 0.0f);
                     amountRequired = amountRequired - stackSize;
-                    requiredItems.put(resref, amountRequired);
+                    requiredItems.replace(resref, amountRequired);
                 }
+            }
+            // No more items needed.
+            else
+            {
+                NWScript.sendMessageToPC(oPC, "stackSize = " + stackSize); // DEBUG
+
+                NWScript.copyItem(item, oPC, true);
+                NWScript.destroyObject(item, 0.0f);
             }
         }
 
