@@ -10,6 +10,7 @@ import GameObject.PlayerGO;
 import GameSystems.Models.ItemModel;
 import Helper.ColorToken;
 import Helper.ItemHelper;
+import Helper.MapPinHelper;
 import NWNX.NWNX_Events;
 import NWNX.NWNX_Funcs;
 import NWNX.NWNX_Structs;
@@ -131,6 +132,11 @@ public class QuestSystem {
         if(quest.getStartKeyItem() != null)
         {
             KeyItemSystem.GivePlayerKeyItem(oPC, quest.getStartKeyItem().getKeyItemID());
+        }
+
+        if(!quest.getMapNoteTag().equals(""))
+        {
+            MapPinHelper.AddWaypointMapPin(oPC, quest.getMapNoteTag(), quest.getName(), "QST_MAP_NOTE_" + questID);
         }
 
         status.setQuest(quest);
@@ -286,6 +292,11 @@ public class QuestSystem {
         if(quest.removeStartKeyItemAfterCompletion())
         {
             KeyItemSystem.RemovePlayerKeyItem(oPC, quest.getStartKeyItem().getKeyItemID());
+        }
+
+        if(!quest.getMapNoteTag().equals(""))
+        {
+            MapPinHelper.DeleteMapPin(oPC, "QST_MAP_NOTE_" + questID);
         }
 
         if(quest.getRewardFame() > 0)
