@@ -7,9 +7,11 @@ import Entities.AbilityCategoryEntity;
 import Entities.AbilityEntity;
 import Entities.PCEquippedAbilityEntity;
 import Entities.PCLearnedAbilityEntity;
+import Enumerations.QuestID;
 import GameObject.PlayerGO;
 import GameSystems.MagicSystem;
 import GameSystems.ProgressionSystem;
+import GameSystems.QuestSystem;
 import Helper.ColorToken;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
@@ -334,6 +336,12 @@ public class AdjustAbilities extends DialogBase implements IDialogHandler {
                 entity = MagicSystem.EquipAbility(GetPC(), model.getCurrentSlot(), abilityID);
                 model.setEquippedAbilities(entity);
                 LoadSlotPageResponses();
+
+                if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QuestID.BootCampEquippingAbilities) == 1)
+                {
+                    QuestSystem.AdvanceQuestState(GetPC(), QuestID.BootCampEquippingAbilities);
+                }
+
                 ChangePage("SelectSlotPage");
                 break;
             case 2: // Back

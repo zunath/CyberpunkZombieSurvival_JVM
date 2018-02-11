@@ -8,6 +8,7 @@ import Dialog.IDialogHandler;
 import Dialog.PlayerDialog;
 import Entities.QuestEntity;
 import Entities.QuestRewardItemEntity;
+import Entities.QuestStateEntity;
 import GameSystems.Models.ItemModel;
 import GameSystems.QuestSystem;
 import org.nwnx.nwnx2.jvm.NWObject;
@@ -70,7 +71,11 @@ public class QuestRewardSelection extends DialogBase implements IDialogHandler {
         DialogPage page = GetCurrentPage();
         QuestRewardViewModel model = (QuestRewardViewModel) page.getCustomData();
         ItemModel tempItem = (ItemModel) GetResponseByID("MainPage", responseID).getCustomData();
+        QuestRepository repo = new QuestRepository();
+        QuestEntity quest = repo.GetQuestByID(model.getQuestID());
 
+        QuestStateEntity lastState = quest.getQuestStates().get(quest.getQuestStates().size()-1);
+        NWScript.addJournalQuestEntry(quest.getJournalTag(), lastState.getJournalStateID(), GetPC(), false, false, false);
         QuestSystem.CompleteQuest(GetPC(), model.getQuestID(), tempItem);
         model.setIsItemSelected(true);
 

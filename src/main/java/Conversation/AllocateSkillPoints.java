@@ -4,7 +4,9 @@ import Dialog.*;
 import Entities.PlayerEntity;
 import Entities.PlayerProgressionSkillEntity;
 import Entities.ProgressionSkillEntity;
+import Enumerations.QuestID;
 import GameObject.PlayerGO;
+import GameSystems.QuestSystem;
 import Helper.ColorToken;
 import Data.Repository.PlayerProgressionSkillsRepository;
 import Data.Repository.PlayerRepository;
@@ -104,7 +106,10 @@ public class AllocateSkillPoints extends DialogBase implements IDialogHandler {
     @Override
     public void Initialize()
     {
-
+        if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QuestID.BootCampLevelingUp) == 1)
+        {
+            QuestSystem.AdvanceQuestState(GetPC(), QuestID.BootCampLevelingUp);
+        }
     }
 
     @Override

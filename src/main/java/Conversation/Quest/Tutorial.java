@@ -1,19 +1,14 @@
-package Conversation.Quests;
+package Conversation.Quest;
 
 import Dialog.DialogBase;
 import Dialog.DialogPage;
 import Dialog.IDialogHandler;
 import Dialog.PlayerDialog;
+import Enumerations.QuestID;
 import GameSystems.QuestSystem;
 import org.nwnx.nwnx2.jvm.NWObject;
 
 public class Tutorial extends DialogBase implements IDialogHandler {
-
-    private final int QUEST_LEVELING_UP_ID = 2;
-    private final int QUEST_EQUIPPING_ABILITIES_ID = 3;
-    private final int QUEST_KEY_ITEMS_ID = 4;
-    private final int QUEST_SEARCHING_ID = 5;
-    private final int QUEST_BUILDING_STRUCTURES_ID = 6;
 
     @Override
     public PlayerDialog SetUp(NWObject oPC) {
@@ -21,7 +16,13 @@ public class Tutorial extends DialogBase implements IDialogHandler {
 
         DialogPage mainPage = new DialogPage(
                 "Well met, rookie. If you plan to survive this chaos you best listen to me.",
-                "I need training."
+                "I need training.",
+                "What is your role here?"
+        );
+
+        DialogPage rolePage = new DialogPage(
+                "I serve as the outpost's survival expert. Scrubs like you have to be trained to survive on their own out in the wasteland. If you don't want to die, you better do exactly what I say. Think you know more than me? Then get out of my face and go prove yourself!",
+                "Back"
         );
 
         DialogPage trainingPage = new DialogPage(
@@ -30,7 +31,8 @@ public class Tutorial extends DialogBase implements IDialogHandler {
                 "[QUEST] Equipping Abilities",
                 "[QUEST] Key Items",
                 "[QUEST] Searching",
-                "[QUEST] Building Structures"
+                "[QUEST] Building Structures",
+                "Back"
         );
 
         DialogPage levelingUpPage = new DialogPage(
@@ -89,6 +91,7 @@ public class Tutorial extends DialogBase implements IDialogHandler {
         );
 
         dialog.addPage("MainPage", mainPage);
+        dialog.addPage("RolePage", rolePage);
         dialog.addPage("TrainingPage", trainingPage);
         dialog.addPage("LevelingUpPage", levelingUpPage);
         dialog.addPage("EquippingAbilitiesPage", equippingAbilitiesPage);
@@ -107,28 +110,32 @@ public class Tutorial extends DialogBase implements IDialogHandler {
 
     @Override
     public void Initialize() {
-        if(QuestSystem.HasPlayerCompletedQuest(GetPC(), QUEST_LEVELING_UP_ID)) // Leveling Up
-            GetResponseByID("MainPage", 1).setActive(false);
-        if(QuestSystem.HasPlayerCompletedQuest(GetPC(), QUEST_EQUIPPING_ABILITIES_ID)) // Equipping Abilities
-            GetResponseByID("MainPage", 2).setActive(false);
-        if(QuestSystem.HasPlayerCompletedQuest(GetPC(), QUEST_KEY_ITEMS_ID)) // Key Items
-            GetResponseByID("MainPage", 3).setActive(false);
-        if(QuestSystem.HasPlayerCompletedQuest(GetPC(), QUEST_SEARCHING_ID)) // Searching
-            GetResponseByID("MainPage", 4).setActive(false);
-        if(QuestSystem.HasPlayerCompletedQuest(GetPC(), QUEST_BUILDING_STRUCTURES_ID)) // Building Structures
-            GetResponseByID("MainPage", 5).setActive(false);
+        RefreshConversationOptions();
+    }
 
-        if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QUEST_LEVELING_UP_ID) == 2)
+    private void RefreshConversationOptions()
+    {
+        if(QuestSystem.HasPlayerCompletedQuest(GetPC(), QuestID.BootCampLevelingUp)) // Leveling Up
+            GetResponseByID("TrainingPage", 1).setActive(false);
+        if(QuestSystem.HasPlayerCompletedQuest(GetPC(), QuestID.BootCampEquippingAbilities)) // Equipping Abilities
+            GetResponseByID("TrainingPage", 2).setActive(false);
+        if(QuestSystem.HasPlayerCompletedQuest(GetPC(), QuestID.BootCampKeyItems)) // Key Items
+            GetResponseByID("TrainingPage", 3).setActive(false);
+        if(QuestSystem.HasPlayerCompletedQuest(GetPC(), QuestID.BootCampSearching)) // Searching
+            GetResponseByID("TrainingPage", 4).setActive(false);
+        if(QuestSystem.HasPlayerCompletedQuest(GetPC(), QuestID.BootCampBuildingStructures)) // Building Structures
+            GetResponseByID("TrainingPage", 5).setActive(false);
+
+        if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QuestID.BootCampLevelingUp) == 2)
             GetResponseByID("LevelingUpInProgressPage", 1).setText("I have accessed my skill allocation menu.");
-        if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QUEST_EQUIPPING_ABILITIES_ID) == 2)
+        if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QuestID.BootCampEquippingAbilities) == 2)
             GetResponseByID("EquippingAbilitiesInProgressPage", 1).setText("I have equipped an ability.");
-        if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QUEST_KEY_ITEMS_ID) == 2)
+        if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QuestID.BootCampKeyItems) == 2)
             GetResponseByID("KeyItemsInProgressPage", 1).setText("I have accessed my key items.");
-        if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QUEST_SEARCHING_ID) == 2)
+        if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QuestID.BootCampSearching) == 2)
             GetResponseByID("SearchingInProgressPage", 1).setText("I have finished searching a location.");
-        if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QUEST_BUILDING_STRUCTURES_ID) == 2)
+        if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QuestID.BootCampBuildingStructures) == 2)
             GetResponseByID("BuildingStructuresInProgressPage", 1).setText("I have built a construction site.");
-
     }
 
     @Override
@@ -137,6 +144,9 @@ public class Tutorial extends DialogBase implements IDialogHandler {
         {
             case "MainPage":
                 HandleMainPageSelection(responseID);
+                break;
+            case "RolePage":
+                HandleRolePageSelection(responseID);
                 break;
             case "TrainingPage":
                 HandleTrainingPageSelection(responseID);
@@ -181,6 +191,19 @@ public class Tutorial extends DialogBase implements IDialogHandler {
             case 1: // I need training
                 ChangePage("TrainingPage");
                 break;
+            case 2: // What is your role here?
+                ChangePage("RolePage");
+                break;
+        }
+    }
+
+    private void HandleRolePageSelection(int responseID)
+    {
+        switch(responseID)
+        {
+            case 1: // Back
+                ChangePage("MainPage");
+                break;
         }
     }
 
@@ -189,29 +212,32 @@ public class Tutorial extends DialogBase implements IDialogHandler {
         switch(responseID)
         {
             case 1: // Leveling Up
-                if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QUEST_LEVELING_UP_ID) == -1)
+                if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QuestID.BootCampLevelingUp) == -1)
                     ChangePage("LevelingUpPage");
                 else ChangePage("LevelingUpInProgressPage");
                 break;
             case 2: // Equipping Abilities
-                if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QUEST_EQUIPPING_ABILITIES_ID) == -1)
+                if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QuestID.BootCampEquippingAbilities) == -1)
                     ChangePage("EquippingAbilitiesPage");
                 else ChangePage("EquippingAbilitiesInProgressPage");
                 break;
             case 3: // Key Items
-                if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QUEST_KEY_ITEMS_ID) == -1)
+                if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QuestID.BootCampKeyItems) == -1)
                     ChangePage("KeyItemsPage");
                 else ChangePage("KeyItemsInProgressPage");
                 break;
             case 4: // Searching
-                if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QUEST_SEARCHING_ID) == -1)
+                if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QuestID.BootCampSearching) == -1)
                     ChangePage("SearchingPage");
                 else ChangePage("SearchingInProgressPage");
                 break;
             case 5: // Building Structures
-                if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QUEST_BUILDING_STRUCTURES_ID) == -1)
+                if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QuestID.BootCampBuildingStructures) == -1)
                     ChangePage("BuildingStructuresPage");
                 else ChangePage("BuildingStructuresInProgressPage");
+                break;
+            case 6: // Back
+                ChangePage("MainPage");
                 break;
         }
     }
@@ -221,10 +247,11 @@ public class Tutorial extends DialogBase implements IDialogHandler {
         switch (responseID)
         {
             case 1:
-                QuestSystem.AcceptQuest(GetPC(), QUEST_LEVELING_UP_ID);
+                QuestSystem.AcceptQuest(GetPC(), QuestID.BootCampLevelingUp);
+                EndConversation();
                 break;
             case 2:
-                ChangePage("MainPage");
+                ChangePage("TrainingPage");
                 break;
         }
     }
@@ -234,15 +261,16 @@ public class Tutorial extends DialogBase implements IDialogHandler {
         switch (responseID)
         {
             case 1:
-                if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QUEST_LEVELING_UP_ID) == 2)
+                if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QuestID.BootCampLevelingUp) == 2)
                 {
-                    QuestSystem.AdvanceQuestState(GetPC(), QUEST_LEVELING_UP_ID);
+                    QuestSystem.AdvanceQuestState(GetPC(), QuestID.BootCampLevelingUp);
+                    RefreshConversationOptions();
                     ChangePage("MainPage");
                 }
                 else EndConversation();
                 break;
             case 2:
-                ChangePage("MainPage");
+                ChangePage("TrainingPage");
                 break;
         }
     }
@@ -252,10 +280,11 @@ public class Tutorial extends DialogBase implements IDialogHandler {
         switch (responseID)
         {
             case 1:
-                QuestSystem.AcceptQuest(GetPC(), QUEST_EQUIPPING_ABILITIES_ID);
+                QuestSystem.AcceptQuest(GetPC(), QuestID.BootCampEquippingAbilities);
+                EndConversation();
                 break;
             case 2:
-                ChangePage("MainPage");
+                ChangePage("TrainingPage");
                 break;
         }
     }
@@ -265,15 +294,16 @@ public class Tutorial extends DialogBase implements IDialogHandler {
         switch (responseID)
         {
             case 1:
-                if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QUEST_EQUIPPING_ABILITIES_ID) == 2)
+                if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QuestID.BootCampEquippingAbilities) == 2)
                 {
-                    QuestSystem.AdvanceQuestState(GetPC(), QUEST_EQUIPPING_ABILITIES_ID);
+                    QuestSystem.AdvanceQuestState(GetPC(), QuestID.BootCampEquippingAbilities);
+                    RefreshConversationOptions();
                     ChangePage("MainPage");
                 }
                 else EndConversation();
                 break;
             case 2:
-                ChangePage("MainPage");
+                ChangePage("TrainingPage");
                 break;
         }
     }
@@ -283,10 +313,11 @@ public class Tutorial extends DialogBase implements IDialogHandler {
         switch (responseID)
         {
             case 1:
-                QuestSystem.AcceptQuest(GetPC(), QUEST_KEY_ITEMS_ID);
+                QuestSystem.AcceptQuest(GetPC(), QuestID.BootCampKeyItems);
+                EndConversation();
                 break;
             case 2:
-                ChangePage("MainPage");
+                ChangePage("TrainingPage");
                 break;
         }
     }
@@ -296,15 +327,16 @@ public class Tutorial extends DialogBase implements IDialogHandler {
         switch (responseID)
         {
             case 1:
-                if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QUEST_KEY_ITEMS_ID) == 2)
+                if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QuestID.BootCampKeyItems) == 2)
                 {
-                    QuestSystem.AdvanceQuestState(GetPC(), QUEST_KEY_ITEMS_ID);
+                    QuestSystem.AdvanceQuestState(GetPC(), QuestID.BootCampKeyItems);
+                    RefreshConversationOptions();
                     ChangePage("MainPage");
                 }
                 else EndConversation();
                 break;
             case 2:
-                ChangePage("MainPage");
+                ChangePage("TrainingPage");
                 break;
         }
     }
@@ -314,10 +346,11 @@ public class Tutorial extends DialogBase implements IDialogHandler {
         switch (responseID)
         {
             case 1:
-                QuestSystem.AcceptQuest(GetPC(), QUEST_SEARCHING_ID);
+                QuestSystem.AcceptQuest(GetPC(), QuestID.BootCampSearching);
+                EndConversation();
                 break;
             case 2:
-                ChangePage("MainPage");
+                ChangePage("TrainingPage");
                 break;
         }
     }
@@ -327,15 +360,16 @@ public class Tutorial extends DialogBase implements IDialogHandler {
         switch (responseID)
         {
             case 1:
-                if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QUEST_SEARCHING_ID) == 2)
+                if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QuestID.BootCampSearching) == 2)
                 {
-                    QuestSystem.AdvanceQuestState(GetPC(), QUEST_SEARCHING_ID);
+                    QuestSystem.AdvanceQuestState(GetPC(), QuestID.BootCampSearching);
+                    RefreshConversationOptions();
                     ChangePage("MainPage");
                 }
                 else EndConversation();
                 break;
             case 2:
-                ChangePage("MainPage");
+                ChangePage("TrainingPage");
                 break;
         }
     }
@@ -345,10 +379,11 @@ public class Tutorial extends DialogBase implements IDialogHandler {
         switch (responseID)
         {
             case 1:
-                QuestSystem.AcceptQuest(GetPC(), QUEST_BUILDING_STRUCTURES_ID);
+                QuestSystem.AcceptQuest(GetPC(), QuestID.BootCampBuildingStructures);
+                EndConversation();
                 break;
             case 2:
-                ChangePage("MainPage");
+                ChangePage("TrainingPage");
                 break;
         }
     }
@@ -358,15 +393,16 @@ public class Tutorial extends DialogBase implements IDialogHandler {
         switch (responseID)
         {
             case 1:
-                if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QUEST_BUILDING_STRUCTURES_ID) == 2)
+                if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QuestID.BootCampBuildingStructures) == 2)
                 {
-                    QuestSystem.AdvanceQuestState(GetPC(), QUEST_BUILDING_STRUCTURES_ID);
+                    QuestSystem.AdvanceQuestState(GetPC(), QuestID.BootCampBuildingStructures);
+                    RefreshConversationOptions();
                     ChangePage("MainPage");
                 }
                 else EndConversation();
                 break;
             case 2:
-                ChangePage("MainPage");
+                ChangePage("TrainingPage");
                 break;
         }
     }

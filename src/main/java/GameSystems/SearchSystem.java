@@ -5,6 +5,7 @@ import Data.Repository.PlayerRepository;
 import Entities.*;
 import Enumerations.AbilityType;
 import Enumerations.ProfessionType;
+import Enumerations.QuestID;
 import GameObject.ItemGO;
 import GameObject.PlayerGO;
 import Helper.ColorToken;
@@ -152,6 +153,11 @@ public class SearchSystem {
             }
 
             SaveChestInventory(oPC, oChest, false);
+
+            if(QuestSystem.GetPlayerQuestJournalID(oPC, QuestID.BootCampSearching) == 1)
+            {
+                QuestSystem.AdvanceQuestState(oPC, QuestID.BootCampSearching);
+            }
         }
         else
         {

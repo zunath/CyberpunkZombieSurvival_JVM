@@ -85,7 +85,6 @@ public class QuestSystem {
 
 
         QuestEntity quest = questRepo.GetQuestByID(questID);
-        QuestStateEntity questState = status.getCurrentQuestState();
 
         if(!DoesPlayerMeetPrerequisites(oPC, quest.getPrerequisiteQuests()))
         {
@@ -93,7 +92,7 @@ public class QuestSystem {
             return;
         }
 
-        if(!DoesPlayerHaveRequiredKeyItems(oPC, questState.getRequiredKeyItems()))
+        if(!DoesPlayerHaveRequiredKeyItems(oPC, quest.getQuestStates().get(0).getRequiredKeyItems()))
         {
             NWScript.sendMessageToPC(oPC, "You do not have the required key items to accept this quest.");
             return;
@@ -160,6 +159,8 @@ public class QuestSystem {
             return;
         }
 
+        if(questStatus.getCompletionDate() != null) return;
+
         QuestEntity quest = questStatus.getQuest();
         List<QuestStateEntity> states = quest.getQuestStates();
 
@@ -223,6 +224,8 @@ public class QuestSystem {
         }
         else
         {
+            QuestStateEntity lastState = quest.getQuestStates().get(quest.getQuestStates().size()-1);
+            NWScript.addJournalQuestEntry(quest.getJournalTag(), lastState.getJournalStateID(), oPC, false, false, false);
             CompleteQuest(oPC, questID, null);
         }
 
@@ -342,7 +345,7 @@ public class QuestSystem {
         return keyItemIDs.containsAll(requiredKeyItemIDs);
     }
 
-    public static void SpawnQuestItems(NWObject oChest, NWObject oPC)
+    static void SpawnQuestItems(NWObject oChest, NWObject oPC)
     {
         int questID = NWScript.getLocalInt(oChest, "QUEST_ID");
         int questStateSequence = NWScript.getLocalInt(oChest, "SEQUENCE_ID");

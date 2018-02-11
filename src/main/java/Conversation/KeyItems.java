@@ -5,7 +5,9 @@ import Entities.CraftBlueprintCategoryEntity;
 import Entities.KeyItemEntity;
 import Entities.PCBlueprintEntity;
 import Entities.PCKeyItemEntity;
+import Enumerations.QuestID;
 import GameObject.PlayerGO;
+import GameSystems.QuestSystem;
 import Helper.ColorToken;
 import Data.Repository.CraftRepository;
 import Data.Repository.KeyItemRepository;
@@ -59,7 +61,10 @@ public class KeyItems extends DialogBase implements IDialogHandler {
     @Override
     public void Initialize()
     {
-
+        if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QuestID.BootCampKeyItems) == 1)
+        {
+            QuestSystem.AdvanceQuestState(GetPC(), QuestID.BootCampKeyItems);
+        }
     }
 
     @Override

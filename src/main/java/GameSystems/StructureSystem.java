@@ -3,6 +3,7 @@ package GameSystems;
 import Data.Repository.PlayerRepository;
 import Data.Repository.StructureRepository;
 import Entities.*;
+import Enumerations.QuestID;
 import Enumerations.StructurePermission;
 import GameObject.PlayerGO;
 import Helper.ColorToken;
@@ -227,6 +228,11 @@ public class StructureSystem {
             NWObject constructionSite = NWScript.createObject(ObjectType.PLACEABLE, ConstructionSiteResref, location, false, "");
             NWEffect eGhostWalk = NWScript.effectCutsceneGhost();
             NWScript.applyEffectToObject(Duration.TYPE_PERMANENT, eGhostWalk, constructionSite, 0.0f);
+
+            if(QuestSystem.GetPlayerQuestJournalID(oPC, QuestID.BootCampBuildingStructures) == 1)
+            {
+                QuestSystem.AdvanceQuestState(oPC, QuestID.BootCampBuildingStructures);
+            }
 
             NWScript.floatingTextStringOnCreature("Construction site created! Use the construction site to select a blueprint.", oPC, false);
         }
