@@ -9,18 +9,13 @@ import Enumerations.QuestType;
 import GameObject.PlayerGO;
 import GameSystems.Models.ItemModel;
 import Helper.ColorToken;
-import Helper.ItemHelper;
 import Helper.MapPinHelper;
-import NWNX.NWNX_Events;
-import NWNX.NWNX_Funcs;
-import NWNX.NWNX_Structs;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.nwnx.nwnx2.jvm.NWLocation;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.Scheduler;
-import org.nwnx.nwnx2.jvm.constants.Inventory;
 import org.nwnx.nwnx2.jvm.constants.InventoryDisturb;
 import org.nwnx.nwnx2.jvm.constants.ObjectType;
 
@@ -30,8 +25,8 @@ import java.util.List;
 
 public class QuestSystem {
 
-    final static String TempStoragePlaceableTag = "QUEST_BARREL";
-    final static String SubmitQuestItemResref = "qst_submit";
+    private final static String TempStoragePlaceableTag = "QUEST_BARREL";
+    private final static String SubmitQuestItemResref = "qst_submit";
 
     public static void OnClientEnter()
     {
@@ -214,7 +209,7 @@ public class QuestSystem {
         }
     }
 
-    public static void RequestRewardSelectionFromPC(NWObject oPC, int questID)
+    private static void RequestRewardSelectionFromPC(NWObject oPC, int questID)
     {
         if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return;
 
@@ -499,15 +494,15 @@ public class QuestSystem {
         QuestStateEntity state = repo.GetPCQuestStatusByID(pcGO.getUUID(), questID).getCurrentQuestState();
 
         NWScript.floatingTextStringOnCreature("Please place the items you would like to turn in for this quest into the container.", oPC, false);
-        String text = "Required Items: \n\n";
+        StringBuilder text = new StringBuilder("Required Items: \n\n");
 
         for(QuestRequiredItemListEntity item : state.getRequiredItems())
         {
             ItemModel tempItemModel = GetTempItemInformation(item.getResref(), item.getQuantity());
-            text += tempItemModel.getName() + " x" + item.getQuantity() + "\n";
+            text.append(tempItemModel.getName()).append(" x").append(item.getQuantity()).append("\n");
         }
 
-        NWScript.sendMessageToPC(oPC, text);
+        NWScript.sendMessageToPC(oPC, text.toString());
     }
 
     public static void OnItemCollectorClosed(NWObject container)
@@ -709,5 +704,23 @@ public class QuestSystem {
         NWScript.createItemOnObject(SubmitQuestItemResref, collector, 1, "");
 
         Scheduler.assign(oPC, () -> NWScript.actionInteractObject(collector));
+    }
+
+    public static boolean HasPlayerCompletedQuest(NWObject oPC, int questID) {
+        PlayerGO pcGO = new PlayerGO(oPC);
+        QuestRepository repo = new QuestRepository();
+        PCQuestStatusEntity status = repo.GetPCQuestStatusByID(pcGO.getUUID(), questID);
+
+        return status != null && status.getCompletionDate() != null;
+    }
+
+    public static int GetPlayerQuestJournalID(NWObject oPC, int questID)
+    {
+        PlayerGO pcGO = new PlayerGO(oPC);
+        QuestRepository repo = new QuestRepository();
+        PCQuestStatusEntity status = repo.GetPCQuestStatusByID(pcGO.getUUID(), questID);
+
+        if(status == null) return -1;
+        return status.getCurrentQuestState().getJournalStateID();
     }
 }
