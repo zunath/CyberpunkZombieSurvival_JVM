@@ -17,8 +17,9 @@ import GameSystems.StructureSystem;
 public class OmniTool implements IScriptEventHandler {
     @Override
     public void runScript(NWObject oPC) {
-        int castSpellType = NWNX_Events_Old.GetEventSubType();
+        //int castSpellType = NWNX_Events_Old.GetEventSubType();
 
+        int castSpellType = -1; // TODO: Update for EE
         if(castSpellType == 0)
         {
             HandleAutoFollow(oPC);
@@ -65,7 +66,7 @@ public class OmniTool implements IScriptEventHandler {
     private void HandleUseStructureTool(NWObject oPC)
     {
         NWObject oTarget = NWNX_Events.OnItemUsed_GetTarget();
-        NWLocation lTargetLocation = NWScript.location(NWScript.getArea(oPC), NWNX_Events_Old.GetEventPosition(), 0.0f);
+        NWLocation lTargetLocation = NWScript.location(NWScript.getArea(oPC), NWScript.getPosition(oTarget), 0.0f);
         boolean isMovingStructure = StructureSystem.IsPCMovingStructure(oPC);
 
         if(!oTarget.equals(NWObject.INVALID))

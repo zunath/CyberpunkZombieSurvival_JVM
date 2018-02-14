@@ -29,7 +29,8 @@ public class OnUseItem implements IScriptEventHandler {
         String className = NWScript.getLocalString(oItem, "JAVA_SCRIPT");
         if(className.equals("")) return;
 
-        NWNX_Events_Old.BypassEvent();
+        //NWNX_Events_Old.BypassEvent();
+        // TODO: Upgrade for EE
 
         // Remove "Item." prefix if it exists.
         if(className.startsWith("Item."))
@@ -165,7 +166,8 @@ public class OnUseItem implements IScriptEventHandler {
         // The entirety of the OnActivateItem will be skipped if bBypassEvent is true.
         if(bBypassEvent)
         {
-            NWNX_Events_Old.BypassEvent();
+            //NWNX_Events_Old.BypassEvent();
+            // TODO: Upgrade for EE
         }
     }
 

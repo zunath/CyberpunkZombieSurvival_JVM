@@ -15,31 +15,20 @@ import org.nwnx.nwnx2.jvm.constants.*;
 @SuppressWarnings("unused")
 public class OnClientEnter implements IScriptEventHandler {
     @Override
-    public void runScript(final NWObject objSelf) {
+    public void runScript(NWObject objSelf) {
         RadioSystem radioSystem = new RadioSystem();
-
         // Bioware Default
         NWScript.executeScript("x3_mod_def_enter", objSelf);
         InitializeNewCharacter();
         LoadCharacter();
-        // DM Validation
-        NWScript.executeScript("dm_authorization", objSelf);
-        // PC Validation
-        NWScript.executeScript("auth_mod_enter", objSelf);
         ShowMOTD();
         ApplyGhostwalk();
-        // Validate CD Key
-        PlayerAuthorizationSystem.OnModuleEnter();
-        // Profession System
         ProfessionSystem.OnModuleEnter();
-        // Progression System
         ProgressionSystem.OnModuleEnter();
-        // Quest system
         QuestSystem.OnClientEnter();
 
-        // DMFI
-        NWScript.executeScript("dmfi_onclienter", objSelf);
-
+        // TODO: Fix this call for EE.
+        //NWScript.executeScript("dmfi_onclienter", objSelf);
         ActivityLoggingSystem.OnModuleClientEnter();
     }
 

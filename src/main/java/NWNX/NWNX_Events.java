@@ -172,4 +172,9 @@ public class NWNX_Events {
         return GetEventDataBoolean("IS_INSTANT_SPELL");
     }
 
+    public static NWObject OnCombatRoundStart_GetTarget()
+    {
+        return GetEventDataObject("TARGET_OBJECT_ID");
+    }
+
 }

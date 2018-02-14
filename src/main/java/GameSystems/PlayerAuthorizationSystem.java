@@ -73,7 +73,10 @@ public class PlayerAuthorizationSystem {
             else
             {
                 // Out of slots. Boot with message stating so.
-                NWNX_Admin.BootPCWithMessage(oPC,16782505 );
+                //NWNX_Admin.BootPCWithMessage(oPC,16782505 );
+
+                // TODO: Boot player with new BootPC method.
+
                 return;
             }
 

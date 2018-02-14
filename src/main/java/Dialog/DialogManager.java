@@ -73,6 +73,8 @@ public class DialogManager {
 
             String convo = NWNX_Object.GetDialogResref(oTalkTo);
 
+            System.out.println("Convo: " + convo + "Length: " + convo.length()); // DEBUG
+
             if(Objects.equals(convo, "") || Objects.equals(convo, "0"))
             {
                 Scheduler.assign(oPC, () -> NWScript.actionStartConversation(oTalkTo, "dialog", true, false));

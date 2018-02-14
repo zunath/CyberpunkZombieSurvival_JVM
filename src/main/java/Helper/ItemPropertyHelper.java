@@ -22,6 +22,8 @@ public class ItemPropertyHelper {
         NWScript.setLocalInt(NWObject.MODULE, "NWNX_JVM_IPDIRECT_PARAMTABLE", paramTable);
         NWScript.setLocalInt(NWObject.MODULE, "NWNX_JVM_IPDIRECT_PARAMVALUE", paramValue);
 
-        NWScript.executeScript("nwnx_jvm_ip", oItem);
+        //NWScript.executeScript("nwnx_jvm_ip", oItem);
+
+        // TODO: Update for EE.
     }
 }
