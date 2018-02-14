@@ -25,7 +25,7 @@ public class StartUp {
 		{
 			try
 			{
-				if(file.getName().equals("CyberpunkZombieSurvival_JVM.jar") ||
+				if(file.getName().equals("CZS.jar") ||
 						file.getName().equals("org.nwnx.nwnx2.jvm.jar"))
 					continue;
 

@@ -24,16 +24,21 @@ public class DataAccess {
         try
         {
             Ini ini = new Ini(new File("/nwn/home/jvm/database.ini"));
-            _host = ini.get("CZS", "server");
-            _username = ini.get("CZS", "user");
-            _password = ini.get("CZS", "pass");
-            _schema = ini.get("CZS", "db");
+            _host = ini.get("JavaDB", "server");
+            _username = ini.get("JavaDB", "user");
+            _password = ini.get("JavaDB", "pass");
+            _schema = ini.get("JavaDB", "db");
         }
         catch (Exception ex)
         {
             ErrorHelper.HandleException(ex, "DataAccess Initialize()");
         }
 
+        System.out.println("Building session factory with the following settings: ");
+        System.out.println("Host: " + _host);
+        System.out.println("Username: " + _username);
+        System.out.println("Password: " + _password);
+        System.out.println("Schema: " + _schema);
         CreateSessionFactory();
     }
 

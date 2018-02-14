@@ -27,4 +27,7 @@ public class EventType {
 
     public static String UseFeatBefore = "NWNX_ON_USE_FEAT_BEFORE";
     public static String UseFeatAfter = "NWNX_ON_USE_FEAT_AFTER";
+
+    public static String StartCombatRoundBefore = "NWNX_ON_START_COMBAT_ROUND_BEFORE";
+    public static String StartCombatRoundAfter = "NWNX_ON_START_COMBAT_ROUND_AFTER";
 }

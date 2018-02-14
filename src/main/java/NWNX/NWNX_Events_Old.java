@@ -8,8 +8,6 @@ import org.nwnx.nwnx2.jvm.constants.Gender;
 import java.util.Objects;
 
 public class NWNX_Events_Old {
-    public static final int EVENT_TYPE_ATTACK             = 3;
-
     public static final int LANGUAGE_ENGLISH              = 0;
 
     public static int GetEventSubType()
@@ -54,16 +52,6 @@ public class NWNX_Events_Old {
     public static void BypassEvent()
     {
         NWScript.setLocalString(NWObject.MODULE, "NWNX!EVENTS!BYPASS", "1");
-    }
-
-    public static void SetGlobalEventHandler(int nEventID, String sHandler)
-    {
-        if (Objects.equals(sHandler, ""))
-            sHandler = "-";
-
-        String sKey = "NWNX!EVENTS!SET_EVENT_HANDLER_" + NWScript.intToString(nEventID);
-        NWScript.setLocalString(NWObject.MODULE, sKey, sHandler);
-        NWScript.deleteLocalString(NWObject.MODULE, sKey);
     }
 
     public static int GetCurrentNodeType()
