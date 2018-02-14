@@ -2,21 +2,38 @@ package GameSystems;
 
 import Bioware.AddItemPropertyPolicy;
 import Bioware.XP2;
-import Helper.ColorToken;
+import Common.Constants;
+import Enumerations.CustomItemProperty;
+import NWNX.NWNX_Funcs;
 import org.nwnx.nwnx2.jvm.NWItemProperty;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
-import org.nwnx.nwnx2.jvm.Scheduler;
-import org.nwnx.nwnx2.jvm.constants.*;
+import org.nwnx.nwnx2.jvm.constants.BaseItem;
+import org.nwnx.nwnx2.jvm.constants.IpConstOnhitCastspell;
+import org.nwnx.nwnx2.jvm.constants.ItemProperty;
 
 public class ArmorSystem {
 
     public static void OnModuleEquipItem()
     {
-        final NWObject oPC = NWScript.getPCItemLastEquippedBy();
-        final NWObject oItem = NWScript.getPCItemLastEquipped();
-        int baseItemType = NWScript.getBaseItemType(oItem);
+        NWObject oPC = NWScript.getPCItemLastEquippedBy();
+        NWObject oItem = NWScript.getPCItemLastEquipped();
 
+        ApplyOnHitCastSpellItemProperty(oItem);
+        ApplyArmorBaseAC(oPC, null);
+    }
+
+    public static void OnModuleUnequipItem()
+    {
+        NWObject oPC = NWScript.getPCItemLastUnequippedBy();
+        NWObject oItem = NWScript.getPCItemLastUnequipped();
+        ApplyArmorBaseAC(oPC, oItem);
+    }
+
+    private static void ApplyOnHitCastSpellItemProperty(NWObject oItem)
+    {
+        int baseItemType = NWScript.getBaseItemType(oItem);
+        // Apply OnHitCastSpell property if it doesn't exist.
         if(baseItemType == BaseItem.ARMOR)
         {
             for(NWItemProperty ip : NWScript.getItemProperties(oItem))
@@ -33,61 +50,37 @@ public class ArmorSystem {
             // No item property found. Add it to the armor.
             XP2.IPSafeAddItemProperty(oItem, NWScript.itemPropertyOnHitCastSpell(IpConstOnhitCastspell.ONHIT_UNIQUEPOWER, 40), 0.0f, AddItemPropertyPolicy.ReplaceExisting, false, false);
         }
-        else if(baseItemType == BaseItem.BELT)
-        {
-            if(NWScript.getIsInCombat(oPC) && NWScript.getLocalInt(oItem, "ARMOR_SKIP_MODULE_ON_EQUIP")  == 0)
-            {
-                NWScript.sendMessageToPC(oPC, ColorToken.Red() + "You cannot equip armor during combat." + ColorToken.End());
-
-                Scheduler.assign(oPC, () -> {
-                    NWScript.clearAllActions(false);
-                    NWScript.actionUnequipItem(oItem);
-                });
-            }
-            else if(!NWScript.getIsObjectValid(NWScript.getItemInSlot(InventorySlot.CHEST, oPC)))
-            {
-                NWScript.sendMessageToPC(oPC, ColorToken.Red() + "You must have clothes equipped before armor can be equipped." + ColorToken.End());
-
-                Scheduler.assign(oPC, () -> {
-                    NWScript.clearAllActions(false);
-                    NWScript.actionUnequipItem(oItem);
-                });
-            }
-        }
     }
 
-    public static void OnModuleUnequipItem()
+    private static void ApplyArmorBaseAC(NWObject oPC, NWObject itemUnequipped)
     {
-        final NWObject oPC = NWScript.getPCItemLastUnequippedBy();
-        final NWObject oItem = NWScript.getPCItemLastUnequipped();
-        int baseItemType = NWScript.getBaseItemType(oItem);
-
-        if(baseItemType != BaseItem.BELT && baseItemType != BaseItem.ARMOR) return;
-
-        if(NWScript.getIsInCombat(oPC) && baseItemType == BaseItem.BELT)
+        int ac = 0;
+        for(int slot = 0; slot < Constants.NumberOfInventorySlots; slot++)
         {
-            NWScript.setLocalInt(oItem, "ARMOR_SKIP_MODULE_ON_EQUIP", 1);
-            NWScript.sendMessageToPC(oPC, ColorToken.Red() + "You cannot unequip armor during combat." + ColorToken.End());
+            NWObject oItem = NWScript.getItemInSlot(slot, oPC);
+            if(oItem.equals(itemUnequipped))
+                continue;
 
-            Scheduler.assign(oPC, () -> {
-                NWScript.clearAllActions(false);
-                NWScript.actionEquipItem(oItem, InventorySlot.CHEST);
-            });
-
-            Scheduler.delay(oPC, 1000, () -> NWScript.deleteLocalInt(oItem, "ARMOR_SKIP_MODULE_ON_EQUIP"));
-        }
-        else if(baseItemType == BaseItem.ARMOR)
-        {
-            final NWObject oBelt = NWScript.getItemInSlot(InventorySlot.BELT, oPC);
-
-            if(NWScript.getIsObjectValid(oBelt))
+            if(!oItem.equals(NWObject.INVALID))
             {
-                Scheduler.assign(oPC, () -> {
-                    NWScript.clearAllActions(false);
-                    NWScript.actionUnequipItem(oBelt);
-                });
+                int itemAC = 0;
+                for(NWItemProperty ip : NWScript.getItemProperties(oItem))
+                {
+                    if(NWScript.getItemPropertyType(ip) == CustomItemProperty.AC)
+                    {
+                        int count = NWScript.getItemPropertyCostTableValue(ip);
+                        if(count > itemAC)
+                        {
+                            itemAC = count;
+                        }
+                    }
+                }
+
+                ac += itemAC;
             }
         }
+
+        NWNX_Funcs.SetACNaturalBase(oPC, ac);
     }
 
 }

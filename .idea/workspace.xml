@@ -6,104 +6,10 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="486e3add-e013-4d47-abab-c86692a1ecb0" name="Default" comment="Update module to use new hak set. Rebuilt a few areas because I killed tilesets we don't use. Updated database backup.">
-      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/module/Version 3 Haks/Cyberpunk Zombie Survival_1.69.zip" />
+    <list default="true" id="486e3add-e013-4d47-abab-c86692a1ecb0" name="Default" comment="Remove the &quot;belt as armor&quot; system. Handle">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/nwn/database/czs-db-prod-2018-02-11.sql" afterPath="$PROJECT_DIR$/nwn/database/czs-db-prod-2018-02-13.sql" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/CLS_FEAT_BARB.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/CLS_FEAT_BARD.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/CLS_FEAT_DRUID.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/CLS_FEAT_FIGHT.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/CLS_FEAT_MONK.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/CLS_FEAT_PAL.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/CLS_FEAT_RANG.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/CLS_FEAT_ROG.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/CLS_FEAT_WIZ.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/ambientmusic.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/ambientsound.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/ammunitiontypes.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/appearance.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/appearancesndset.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/baseitems.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/chargenclothes.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/classes.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/cloakmodel.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/cls_atk_4.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/cls_feat_sorc.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/cls_skill_fight.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/creaturesize.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/creaturespeed.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/dgt04_edge.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/doortypes.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/effecticons.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/fcx01_edge.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/feat.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/footstepsounds.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/genericdoors.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/inventorysnds.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_ammotype.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_bonusammo.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_castbonus.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_castpenalty.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_combatdam.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_costtable.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_damagecost.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_damagetype.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_duracost.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_enhabonus.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_evocbonus.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_feats.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_firecritcos.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_firedamage.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_firepowcost.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_firerange.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_firereload.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_firestopcos.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_firetype.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_holybonus.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_invcost.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_magazine.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_magcapcost.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_onhitspell.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_rangedam.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_rateoffire.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_skillreq.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_skillreqcos.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_soakcost.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_spells past.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/iprp_spells.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/itempropdef.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/itemprops.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/loadhints.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/loadscreens.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/parts_belt.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/parts_bicep.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/parts_chest.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/parts_foot.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/parts_forearm.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/parts_hand.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/parts_legs.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/parts_neck.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/parts_pelvis.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/parts_robe.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/parts_shin.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/parts_shoulder.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/phenotype.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/placeableobjsnds.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/placeables.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/placeabletypes.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/polymorph.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/portraits.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/ranges.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/shp02_edge.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/skyboxes.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/soundset.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/spells.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/tjsb0_edge.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/vac01_edge.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/visualeffects.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/hakpak-content/czs_top_v2.hak/weaponsounds.2da" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nwn/module/Cyberpunk Zombie Survival_1.69.zip" afterPath="$PROJECT_DIR$/nwn/module/Version 2 Haks/Cyberpunk Zombie Survival_1.69.zip" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Enumerations/CustomItemProperty.java" afterPath="$PROJECT_DIR$/src/main/java/Enumerations/CustomItemProperty.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GameSystems/ArmorSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/ArmorSystem.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -116,11 +22,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="NWNX_Funcs.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/NWNX/NWNX_Funcs.java">
+      <file leaf-file-name="ArmorSystem.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/ArmorSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="419">
-              <caret line="78" column="5" lean-forward="false" selection-start-line="78" selection-start-column="5" selection-end-line="78" selection-end-column="5" />
+            <state relative-caret-position="1116">
+              <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InventorySystem.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/InventorySystem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2261">
+              <caret line="133" column="13" lean-forward="false" selection-start-line="116" selection-start-column="12" selection-end-line="133" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -138,8 +54,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>toolexpert</find>
-      <find>goodeye</find>
       <find>immune</find>
       <find>infectionrecov</find>
       <find>lizard</find>
@@ -168,6 +82,8 @@
       <find>advance</find>
       <find>RequestRewardSelectionFromPC</find>
       <find>baseac</find>
+      <find>r</find>
+      <find>Constants.NumberOfInventorySlots</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src/main/java/Entities</dir>
@@ -187,8 +103,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/ImmuneSystem.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/InfectionRecovery.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/Insightful.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/LizardRegeneration.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/MasterOfUnlocking.java" />
@@ -238,6 +152,8 @@
         <option value="$PROJECT_DIR$/src/main/java/Conversation/AllocateSkillPoints.java" />
         <option value="$PROJECT_DIR$/src/main/java/Conversation/QuestRewardSelection.java" />
         <option value="$PROJECT_DIR$/src/main/java/GameSystems/QuestSystem.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Enumerations/CustomItemProperty.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GameSystems/ArmorSystem.java" />
       </list>
     </option>
   </component>
@@ -293,6 +209,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -341,15 +258,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="NWNX" type="462c0819:PsiDirectoryNode" />
+              <item name="GameSystems" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
-      <pane id="AndroidView" />
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -366,16 +282,16 @@
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="cyberpunkzombiesurvival_jvm" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/src" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Projects\CyberpunkZombieSurvival_JVM\nwn\module\Version 3 Haks" />
       <recent name="C:\Projects\CyberpunkZombieSurvival_JVM\nwn\module\D20 Modern 2.0 Haks" />
       <recent name="C:\Projects\CyberpunkZombieSurvival_JVM\nwn\module" />
       <recent name="C:\Projects\CyberpunkZombieSurvival_JVM\nwn\database" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -734,7 +650,6 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32555673" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -745,7 +660,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1828125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1828125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -761,6 +676,7 @@
       <window_info id="Job Explorer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938644" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32555673" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="FAQ Robot" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="MaxCompute Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -818,62 +734,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/CustomEffect/PoisonEffect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Poison.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="14" column="70" lean-forward="false" selection-start-line="14" selection-start-column="70" selection-end-line="14" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Ranged/PiercingToss.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="14" column="30" lean-forward="false" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/PlayerAuthorizationSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Authorization/ValidateAdmin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Authorization/ValidateCDKey.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Authorization/ValidateDM.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/InventorySystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="144" column="31" lean-forward="false" selection-start-line="144" selection-start-column="31" selection-end-line="144" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/Regenerate.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1122">
@@ -952,7 +812,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/Dialog/DialogManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1156">
-          <caret line="68" column="23" lean-forward="false" selection-start-line="68" selection-start-column="23" selection-end-line="68" selection-end-column="23" />
+          <caret line="68" column="38" lean-forward="false" selection-start-line="68" selection-start-column="38" selection-end-line="68" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -1050,8 +910,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Dialog/ActionTaken.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+        <state relative-caret-position="748">
+          <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1124,6 +984,65 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="419">
           <caret line="78" column="5" lean-forward="false" selection-start-line="78" selection-start-column="5" selection-end-line="78" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Dialog/AppearsWhen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Item/OmniTool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="20" column="11" lean-forward="false" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Event/Module/OnUseItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="163" column="8" lean-forward="false" selection-start-line="163" selection-start-column="8" selection-end-line="163" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Placeable/StartingDoor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="35" lean-forward="false" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Event/Module/OnClientEnter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="33" column="19" lean-forward="false" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/InventorySystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2261">
+          <caret line="133" column="13" lean-forward="false" selection-start-line="116" selection-start-column="12" selection-end-line="133" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Enumerations/CustomItemProperty.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="37" lean-forward="false" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/ArmorSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1116">
+          <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
           <folding />
         </state>
       </provider>

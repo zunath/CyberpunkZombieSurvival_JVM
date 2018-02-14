@@ -2,6 +2,7 @@ package Enumerations;
 
 public class CustomItemProperty {
 
+    public static final int AC = 131;
     public static final int EnergyBlade = 132;
     public static final int CastingSpeedPenalty = 133;
     public static final int CastingSpeedBonus = 134;
