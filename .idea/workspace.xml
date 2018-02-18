@@ -8,7 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="486e3add-e013-4d47-abab-c86692a1ecb0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameObject/PlayerGO.java" afterPath="$PROJECT_DIR$/src/main/java/GameObject/PlayerGO.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Event/Area/OnEnter.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Area/OnEnter.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -61,11 +61,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayerGO.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PlayerGO.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/GameObject/PlayerGO.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="297">
               <caret line="173" column="0" lean-forward="true" selection-start-line="173" selection-start-column="0" selection-end-line="173" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OnEnter.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Event/Area/OnEnter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="295">
+              <caret line="96" column="17" lean-forward="false" selection-start-line="96" selection-start-column="17" selection-end-line="96" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -132,7 +142,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/LizardRegeneration.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/MasterOfUnlocking.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/Medic.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/Personable.java" />
@@ -183,6 +192,7 @@
         <option value="$PROJECT_DIR$/src/main/java/GameSystems/ActivityLoggingSystem.java" />
         <option value="$PROJECT_DIR$/src/main/java/GameObject/PlayerGO.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/Refresh.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Event/Area/OnEnter.java" />
       </list>
     </option>
   </component>
@@ -294,7 +304,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="Event" type="462c0819:PsiDirectoryNode" />
-              <item name="Module" type="462c0819:PsiDirectoryNode" />
+              <item name="Area" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CyberpunkZombieSurvival_JVM" type="b2602c69:ProjectViewProjectNode" />
@@ -685,7 +695,14 @@
       <option name="project" value="LOCAL" />
       <updated>1518949983821</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Check for DM possessed creatures when looking for PVP sanctuary.">
+      <created>1518950401138</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1518950401138</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -773,7 +790,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fix comment for Flame" />
     <MESSAGE value="Add details to the comment for Refresh" />
     <MESSAGE value="Add details to the Blind ability comment" />
     <MESSAGE value="Update database backup file." />
@@ -798,7 +814,8 @@
     <MESSAGE value="Update database + module." />
     <MESSAGE value="Update module to use new hak set. Rebuilt a few areas because I killed tilesets we don't use. Updated database backup." />
     <MESSAGE value="Treat DM possessed creatures as regular DMs in the chat log." />
-    <option name="LAST_COMMIT_MESSAGE" value="Treat DM possessed creatures as regular DMs in the chat log." />
+    <MESSAGE value="Check for DM possessed creatures when looking for PVP sanctuary." />
+    <option name="LAST_COMMIT_MESSAGE" value="Check for DM possessed creatures when looking for PVP sanctuary." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -807,7 +824,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/Placeable/QuestSystem/ItemCollector/OnDisturbed.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Placeable/QuestSystem/ItemCollector/OnClosed.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/StorageSystem.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1138,6 +1154,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
           <caret line="173" column="0" lean-forward="true" selection-start-line="173" selection-start-column="0" selection-end-line="173" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Event/Area/OnEnter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="96" column="17" lean-forward="false" selection-start-line="96" selection-start-column="17" selection-end-line="96" selection-end-column="17" />
           <folding />
         </state>
       </provider>

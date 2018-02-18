@@ -63,7 +63,7 @@ public class OnEnter implements IScriptEventHandler {
 
     private void ApplySanctuaryEffects(final NWObject oPC)
     {
-        if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return;
+        if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC) || NWScript.getIsDMPossessed(oPC)) return;
         if(NWScript.getCurrentHitPoints(oPC) <= 0) return;
 
         NWScript.applyEffectToObject(DurationType.PERMANENT, NWScript.effectSanctuary(99), oPC, 0.0f);
@@ -75,7 +75,7 @@ public class OnEnter implements IScriptEventHandler {
 
     private void SaveLocation(NWObject oPC, NWObject oArea)
     {
-        if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return;
+        if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC) || NWScript.getIsDMPossessed(oPC)) return;
 
         String sTag = NWScript.getTag(oArea);
         if(!sTag.equals("ooc_area"))
@@ -96,7 +96,7 @@ public class OnEnter implements IScriptEventHandler {
 
     private void LoadLocation(NWObject oPC, NWObject oArea)
     {
-        if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return;
+        if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC) || NWScript.getIsDMPossessed(oPC)) return;
 
         if(NWScript.getTag(oArea).equals("ooc_area"))
         {
