@@ -28,7 +28,7 @@ public class PlayerGO {
     {
         String uuid = NWScript.getLocalString(_pc, Constants.PCIDNumberVariable);
 
-        if(NWScript.getIsDM(_pc))
+        if(NWScript.getIsDM(_pc) || NWScript.getIsDMPossessed(_pc))
         {
             if(uuid.equals(""))
             {
@@ -170,7 +170,7 @@ public class PlayerGO {
 
     public boolean hasPVPSanctuary()
     {
-        if(NWScript.getIsDM(_pc) || !NWScript.getIsPC(_pc)) return false;
+        if(NWScript.getIsDM(_pc) || !NWScript.getIsPC(_pc) || NWScript.getIsDMPossessed(_pc)) return false;
 
         PlayerRepository repo = new PlayerRepository();
         PlayerEntity entity = repo.GetByPlayerID(getUUID());

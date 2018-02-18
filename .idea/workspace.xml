@@ -6,9 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="486e3add-e013-4d47-abab-c86692a1ecb0" name="Default" comment="Remove the &quot;belt as armor&quot; system. Handle">
+    <list default="true" id="486e3add-e013-4d47-abab-c86692a1ecb0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameSystems/ActivityLoggingSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/ActivityLoggingSystem.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GameObject/PlayerGO.java" afterPath="$PROJECT_DIR$/src/main/java/GameObject/PlayerGO.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -31,11 +31,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ActivityLoggingSystem.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ActivityLoggingSystem.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/ActivityLoggingSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1020">
-              <caret line="60" column="9" lean-forward="true" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="9" />
+            <state relative-caret-position="323">
+              <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OnAttack.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Event/Module/OnAttack.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="20" lean-forward="false" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CombatSystem.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/CombatSystem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="1272" column="17" lean-forward="false" selection-start-line="1272" selection-start-column="17" selection-end-line="1272" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PlayerGO.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GameObject/PlayerGO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="297">
+              <caret line="173" column="0" lean-forward="true" selection-start-line="173" selection-start-column="0" selection-end-line="173" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -53,11 +83,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>immune</find>
-      <find>infectionrecov</find>
-      <find>lizard</find>
-      <find>quickpick</find>
-      <find>quickrelo</find>
       <find>slowedinfe</find>
       <find>strongback</find>
       <find>sturdyski</find>
@@ -83,6 +108,11 @@
       <find>baseac</find>
       <find>r</find>
       <find>Constants.NumberOfInventorySlots</find>
+      <find>senderGO</find>
+      <find>if(NWScript.getIsDM</find>
+      <find>NWScript.getIsDM</find>
+      <find>FireBullet</find>
+      <find>PlayerGO</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src/main/java/Entities</dir>
@@ -102,7 +132,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/Insightful.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/LizardRegeneration.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/MasterOfUnlocking.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/Medic.java" />
@@ -124,7 +153,6 @@
         <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/Tough.java" />
         <option value="$PROJECT_DIR$/src/main/resources/sql/Research/GetResearchCategoriesAvailableForCraftAndLevel.sql" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Flame.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/Refresh.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Blind.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Poison.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/Ranged/PiercingToss.java" />
@@ -153,6 +181,8 @@
         <option value="$PROJECT_DIR$/src/main/java/Enumerations/CustomItemProperty.java" />
         <option value="$PROJECT_DIR$/src/main/java/GameSystems/ArmorSystem.java" />
         <option value="$PROJECT_DIR$/src/main/java/GameSystems/ActivityLoggingSystem.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GameObject/PlayerGO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/Refresh.java" />
       </list>
     </option>
   </component>
@@ -648,7 +678,14 @@
       <option name="project" value="LOCAL" />
       <updated>1518326237950</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Treat DM possessed creatures as regular DMs in the chat log.">
+      <created>1518949983821</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1518949983821</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -736,7 +773,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fix GetResearchCategoriesAvailableForCraftAndLevel.sql: Search for options at and below player research level instead of exactly at that level.&#10;&#10;Refresh ability: Use enhancement affinity instead of holy." />
     <MESSAGE value="Fix comment for Flame" />
     <MESSAGE value="Add details to the comment for Refresh" />
     <MESSAGE value="Add details to the Blind ability comment" />
@@ -761,7 +797,8 @@
     <MESSAGE value="Add Tutorial.java that somehow didn't make it in before..." />
     <MESSAGE value="Update database + module." />
     <MESSAGE value="Update module to use new hak set. Rebuilt a few areas because I killed tilesets we don't use. Updated database backup." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update module to use new hak set. Rebuilt a few areas because I killed tilesets we don't use. Updated database backup." />
+    <MESSAGE value="Treat DM possessed creatures as regular DMs in the chat log." />
+    <option name="LAST_COMMIT_MESSAGE" value="Treat DM possessed creatures as regular DMs in the chat log." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -770,28 +807,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/Entities/StructureQuickBuildAuditEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Placeable/QuestSystem/OnUsed.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Placeable/StorageContainer/OnOpened.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Placeable/QuestSystem/ItemCollector/OnOpened.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Placeable/QuestSystem/ItemCollector/OnDisturbed.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Placeable/QuestSystem/ItemCollector/OnClosed.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/StorageSystem.java">
@@ -1089,8 +1104,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/ActivityLoggingSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="60" column="9" lean-forward="true" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="9" />
+        <state relative-caret-position="323">
+          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Event/Module/OnAttack.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="20" lean-forward="false" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/Refresh.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="21" column="66" lean-forward="false" selection-start-line="21" selection-start-column="66" selection-end-line="21" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/CombatSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="1272" column="17" lean-forward="false" selection-start-line="1272" selection-start-column="17" selection-end-line="1272" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameObject/PlayerGO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="173" column="0" lean-forward="true" selection-start-line="173" selection-start-column="0" selection-end-line="173" selection-end-column="0" />
           <folding />
         </state>
       </provider>
