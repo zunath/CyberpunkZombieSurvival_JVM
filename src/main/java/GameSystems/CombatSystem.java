@@ -1273,7 +1273,7 @@ public class CombatSystem {
     private void FireBullet(NWObject oAttacker, NWObject oTarget, NWObject oWeapon, GunGO stGunInfo)
     {
         boolean isPoliceOfficerProfession = false;
-        if(NWScript.getIsPC(oAttacker))
+        if(NWScript.getIsPC(oAttacker) && !NWScript.getIsDM(oAttacker) && !NWScript.getIsDMPossessed(oAttacker))
         {
             PlayerGO pcGO = new PlayerGO(oAttacker);
             PlayerRepository pcRepo = new PlayerRepository();

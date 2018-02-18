@@ -6,9 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="486e3add-e013-4d47-abab-c86692a1ecb0" name="Default" comment="">
+    <list default="true" id="486e3add-e013-4d47-abab-c86692a1ecb0" name="Default" comment="Don't save/load locations for DM possessed creatures.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Event/Area/OnEnter.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Area/OnEnter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GameSystems/CombatSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/CombatSystem.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -51,11 +51,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CombatSystem.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CombatSystem.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/CombatSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="1272" column="17" lean-forward="false" selection-start-line="1272" selection-start-column="17" selection-end-line="1272" selection-end-column="17" />
+            <state relative-caret-position="336">
+              <caret line="1282" column="9" lean-forward="true" selection-start-line="1282" selection-start-column="9" selection-end-line="1282" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -71,7 +71,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OnEnter.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="OnEnter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Event/Area/OnEnter.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="295">
@@ -142,7 +142,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/MasterOfUnlocking.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/Medic.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/Personable.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/Powerful.java" />
@@ -193,6 +192,7 @@
         <option value="$PROJECT_DIR$/src/main/java/GameObject/PlayerGO.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/Refresh.java" />
         <option value="$PROJECT_DIR$/src/main/java/Event/Area/OnEnter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GameSystems/CombatSystem.java" />
       </list>
     </option>
   </component>
@@ -702,7 +702,14 @@
       <option name="project" value="LOCAL" />
       <updated>1518950401138</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Don't save/load locations for DM possessed creatures.">
+      <created>1518951718947</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1518951718947</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -790,7 +797,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add details to the comment for Refresh" />
     <MESSAGE value="Add details to the Blind ability comment" />
     <MESSAGE value="Update database backup file." />
     <MESSAGE value="Explain the Poison custom effect in the Poison spell comment." />
@@ -815,7 +821,8 @@
     <MESSAGE value="Update module to use new hak set. Rebuilt a few areas because I killed tilesets we don't use. Updated database backup." />
     <MESSAGE value="Treat DM possessed creatures as regular DMs in the chat log." />
     <MESSAGE value="Check for DM possessed creatures when looking for PVP sanctuary." />
-    <option name="LAST_COMMIT_MESSAGE" value="Check for DM possessed creatures when looking for PVP sanctuary." />
+    <MESSAGE value="Don't save/load locations for DM possessed creatures." />
+    <option name="LAST_COMMIT_MESSAGE" value="Don't save/load locations for DM possessed creatures." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1142,14 +1149,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/CombatSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="1272" column="17" lean-forward="false" selection-start-line="1272" selection-start-column="17" selection-end-line="1272" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/GameObject/PlayerGO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
@@ -1162,6 +1161,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="295">
           <caret line="96" column="17" lean-forward="false" selection-start-line="96" selection-start-column="17" selection-end-line="96" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/CombatSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="1282" column="9" lean-forward="true" selection-start-line="1282" selection-start-column="9" selection-end-line="1282" selection-end-column="9" />
           <folding />
         </state>
       </provider>
