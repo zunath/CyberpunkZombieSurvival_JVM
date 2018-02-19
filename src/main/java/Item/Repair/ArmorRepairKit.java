@@ -10,6 +10,8 @@ import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.constants.BaseItem;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.concurrent.ThreadLocalRandom;
 
 @SuppressWarnings("unused")
@@ -20,7 +22,10 @@ public class ArmorRepairKit implements IScriptEventHandler {
         NWObject item = NWNX_Events.GetEventItem();
         int targetType = NWScript.getBaseItemType(target);
 
-        if(targetType != BaseItem.BELT)
+        ArrayList<Integer> allowedTypes = new ArrayList<>();
+        Collections.addAll(allowedTypes, BaseItem.BELT, BaseItem.ARMOR, BaseItem.GLOVES, BaseItem.BRACER, BaseItem.HELMET);
+
+        if(!allowedTypes.contains(targetType))
         {
             NWScript.sendMessageToPC(oPC, "You cannot repair that item with this kit.");
             return;

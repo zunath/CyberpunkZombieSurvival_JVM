@@ -45,7 +45,7 @@ public class UseLockpick implements IScriptEventHandler {
         // Object is not locked.
         else if(!NWScript.getLocked(oTarget))
         {
-            NWScript.floatingTextStringOnCreature(ColorToken.Red() + "That NWObject is not locked." + ColorToken.End(), oPC, false);
+            NWScript.floatingTextStringOnCreature(ColorToken.Red() + "That object is not locked." + ColorToken.End(), oPC, false);
         }
         // Object cannot be unlocked using a lockpick
         else if(iSkillRequired <= 0)
