@@ -8,8 +8,7 @@
     </option>
   </component>
   <component name="ProjectPlainTextFileTypeManager">
-    <file url="file://$PROJECT_DIR$/nwn/database/czs-db-prod-2017-12-07.sql" />
-    <file url="file://$PROJECT_DIR$/nwn/database/czs-db-prod-2017-12-12.sql" />
+    <file url="file://$PROJECT_DIR$/nwn/database/czs-db-prod-2018-02-19.sql" />
     <file url="file://$PROJECT_DIR$/src/main/resources/db-updates/GH37-LoggingUpdates.sql" />
     <file url="file://$PROJECT_DIR$/src/main/resources/sql/ActivityLogging/GetChatChannelByID.sql" />
     <file url="file://$PROJECT_DIR$/src/main/resources/sql/AuthorizedDM/GetDMByCDKey.sql" />
