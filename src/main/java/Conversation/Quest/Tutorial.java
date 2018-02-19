@@ -8,6 +8,7 @@ import Enumerations.QuestID;
 import GameSystems.QuestSystem;
 import org.nwnx.nwnx2.jvm.NWObject;
 
+@SuppressWarnings("unused")
 public class Tutorial extends DialogBase implements IDialogHandler {
 
     @Override
@@ -32,6 +33,7 @@ public class Tutorial extends DialogBase implements IDialogHandler {
                 "[QUEST] Key Items",
                 "[QUEST] Searching",
                 "[QUEST] Building Structures",
+                "[QUEST] Eating",
                 "Back"
         );
 
@@ -90,6 +92,18 @@ public class Tutorial extends DialogBase implements IDialogHandler {
                 "Back"
         );
 
+        DialogPage eatingPage = new DialogPage(
+                "Scrub, we don't have the luxury of technology to keep us fed anymore. You need to take care of it yourself. Get some food, consume it, and get back to me. Gods help me if you don't know how to do that!",
+                "Understood. I will consume food and return back to you.",
+                "Back"
+        );
+
+        DialogPage eatingInProgressPage = new DialogPage(
+                "I'm glad you haven't starved yet, scrub. You better eat some food and get back to me.",
+                "I'll eat some food and get back to you.",
+                "Back"
+        );
+
         dialog.addPage("MainPage", mainPage);
         dialog.addPage("RolePage", rolePage);
         dialog.addPage("TrainingPage", trainingPage);
@@ -98,12 +112,14 @@ public class Tutorial extends DialogBase implements IDialogHandler {
         dialog.addPage("KeyItemsPage", keyItemsPage);
         dialog.addPage("SearchingPage", searchingPage);
         dialog.addPage("BuildingStructuresPage", buildingStructuresPage);
+        dialog.addPage("EatingPage", eatingPage);
 
         dialog.addPage("LevelingUpInProgressPage", levelingUpInProgressPage);
         dialog.addPage("EquippingAbilitiesInProgressPage", equippingAbilitiesInProgressPage);
         dialog.addPage("KeyItemsInProgressPage", keyItemsInProgressPage);
         dialog.addPage("SearchingInProgressPage", searchingInProgressPage);
         dialog.addPage("BuildingStructuresInProgressPage", buildingStructuresInProgressPage);
+        dialog.addPage("EatingInProgressPage", eatingInProgressPage);
 
         return dialog;
     }
@@ -125,6 +141,8 @@ public class Tutorial extends DialogBase implements IDialogHandler {
             GetResponseByID("TrainingPage", 4).setActive(false);
         if(QuestSystem.HasPlayerCompletedQuest(GetPC(), QuestID.BootCampBuildingStructures)) // Building Structures
             GetResponseByID("TrainingPage", 5).setActive(false);
+        if(QuestSystem.HasPlayerCompletedQuest(GetPC(), QuestID.BootCampEating)) // Eating
+            GetResponseByID("TrainingPage", 6).setActive(false);
 
         if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QuestID.BootCampLevelingUp) == 2)
             GetResponseByID("LevelingUpInProgressPage", 1).setText("I have accessed my skill allocation menu.");
@@ -136,6 +154,8 @@ public class Tutorial extends DialogBase implements IDialogHandler {
             GetResponseByID("SearchingInProgressPage", 1).setText("I have finished searching a location.");
         if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QuestID.BootCampBuildingStructures) == 2)
             GetResponseByID("BuildingStructuresInProgressPage", 1).setText("I have built a construction site.");
+        if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QuestID.BootCampEating) == 2)
+            GetResponseByID("EatingInProgressPage", 1).setText("I have eaten food.");
     }
 
     @Override
@@ -180,6 +200,12 @@ public class Tutorial extends DialogBase implements IDialogHandler {
                 break;
             case "BuildingStructuresInProgressPage":
                 HandleBuildingStructuresInProgressPageSelection(responseID);
+                break;
+            case "EatingPage":
+                HandleEatingPageSelection(responseID);
+                break;
+            case "EatingInProgressPage":
+                HandleEatingInProgressPageSelection(responseID);
                 break;
         }
     }
@@ -236,7 +262,12 @@ public class Tutorial extends DialogBase implements IDialogHandler {
                     ChangePage("BuildingStructuresPage");
                 else ChangePage("BuildingStructuresInProgressPage");
                 break;
-            case 6: // Back
+            case 6: // Eating
+                if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QuestID.BootCampEating) == -1)
+                    ChangePage("EatingPage");
+                else ChangePage("EatingInProgressPage");
+                break;
+            case 7: // Back
                 ChangePage("MainPage");
                 break;
         }
@@ -396,6 +427,39 @@ public class Tutorial extends DialogBase implements IDialogHandler {
                 if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QuestID.BootCampBuildingStructures) == 2)
                 {
                     QuestSystem.AdvanceQuestState(GetPC(), QuestID.BootCampBuildingStructures);
+                    RefreshConversationOptions();
+                    ChangePage("MainPage");
+                }
+                else EndConversation();
+                break;
+            case 2:
+                ChangePage("TrainingPage");
+                break;
+        }
+    }
+
+    private void HandleEatingPageSelection(int responseID)
+    {
+        switch(responseID)
+        {
+            case 1:
+                QuestSystem.AcceptQuest(GetPC(), QuestID.BootCampEating);
+                EndConversation();
+                break;
+            case 2:
+                ChangePage("TrainingPage");
+                break;
+        }
+    }
+
+    private void HandleEatingInProgressPageSelection(int responseID)
+    {
+        switch(responseID)
+        {
+            case 1:
+                if(QuestSystem.GetPlayerQuestJournalID(GetPC(), QuestID.BootCampEating) == 2)
+                {
+                    QuestSystem.AdvanceQuestState(GetPC(), QuestID.BootCampEating);
                     RefreshConversationOptions();
                     ChangePage("MainPage");
                 }

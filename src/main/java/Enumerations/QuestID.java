@@ -6,5 +6,6 @@ public class QuestID {
     public static int BootCampKeyItems = 4;
     public static int BootCampSearching = 5;
     public static int BootCampBuildingStructures = 6;
+    public static int BootCampEating = 7;
 
 }

@@ -2,7 +2,9 @@ package Item;
 
 import Common.IScriptEventHandler;
 import Enumerations.AbilityType;
+import Enumerations.QuestID;
 import GameSystems.MagicSystem;
+import GameSystems.QuestSystem;
 import NWNX.NWNX_Events;
 import GameSystems.FoodSystem;
 import org.nwnx.nwnx2.jvm.NWObject;
@@ -23,5 +25,10 @@ public class Food implements IScriptEventHandler {
 
         FoodSystem.IncreaseHungerLevel(oPC, amount);
         NWScript.setItemCharges(oItem, NWScript.getItemCharges(oItem) - 1);
+
+        if(QuestSystem.GetPlayerQuestJournalID(oPC, QuestID.BootCampEating) == 1)
+        {
+            QuestSystem.AdvanceQuestState(oPC, QuestID.BootCampEating);
+        }
     }
 }
