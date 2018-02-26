@@ -27,7 +27,7 @@ public class OnClientEnter implements IScriptEventHandler {
         ProgressionSystem.OnModuleEnter();
         QuestSystem.OnClientEnter();
 
-        // TODO: Fix this call for EE.
+        // TODO: Fix this call for EE. Appears to be some problem with the Bioware database in Docker. Probably need to get rid of the dependency.
         //NWScript.executeScript("dmfi_onclienter", objSelf);
         ActivityLoggingSystem.OnModuleClientEnter();
     }

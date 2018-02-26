@@ -15,7 +15,7 @@ public class DialogManager {
     public static final int NumberOfResponsesPerPage = 12;
     private static HashMap<String, PlayerDialog> playerDialogs;
 
-    public static void storePlayerDialog(String uuid, PlayerDialog dialog)
+    private static void storePlayerDialog(String uuid, PlayerDialog dialog)
     {
         if(playerDialogs == null)
         {
@@ -33,14 +33,7 @@ public class DialogManager {
             playerDialogs = new HashMap<>();
         }
 
-        if(playerDialogs.containsKey(uuid))
-        {
-            return playerDialogs.get(uuid);
-        }
-        else
-        {
-            return null;
-        }
+        return playerDialogs.getOrDefault(uuid, null);
     }
 
     public static void removePlayerDialog(String uuid)
@@ -72,8 +65,6 @@ public class DialogManager {
             loadConversation(oPC, oTalkTo, conversationName);
 
             String convo = NWNX_Object.GetDialogResref(oTalkTo);
-
-            System.out.println("Convo: " + convo + "Length: " + convo.length()); // DEBUG
 
             if(Objects.equals(convo, "") || Objects.equals(convo, "0"))
             {

@@ -34,11 +34,6 @@ public class DataAccess {
             ErrorHelper.HandleException(ex, "DataAccess Initialize()");
         }
 
-        System.out.println("Building session factory with the following settings: ");
-        System.out.println("Host: " + _host);
-        System.out.println("Username: " + _username);
-        System.out.println("Password: " + _password);
-        System.out.println("Schema: " + _schema);
         CreateSessionFactory();
     }
 

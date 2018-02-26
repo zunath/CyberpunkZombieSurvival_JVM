@@ -14,7 +14,6 @@ public class ActionTaken implements IScriptEventHandler {
         PlayerGO pcGO = new PlayerGO(oPC);
         String uuid = pcGO.getUUID();
         PlayerDialog dialog = DialogManager.loadPlayerDialog(uuid);
-        int gender = NWScript.getGender(oPC);
         int nodeID = NWScript.getLocalInt(oNPC, "ACTIONS_TAKEN_NODE");
         int selectionNumber = nodeID + 1;
         int responseID = nodeID + (DialogManager.NumberOfResponsesPerPage * dialog.getPageOffset());
