@@ -4,7 +4,6 @@ import Entities.ItemCombinationEntity;
 import Helper.ColorToken;
 import Common.IScriptEventHandler;
 import NWNX.NWNX_Events;
-import NWNX.NWNX_Events_Old;
 import Data.Repository.ItemCombinationRepository;
 import GameSystems.ProgressionSystem;
 import org.nwnx.nwnx2.jvm.NWObject;
@@ -14,8 +13,8 @@ import java.util.Objects;
 
 public class CombineItem implements IScriptEventHandler {
 
-    final String COMBINE_MESSAGE_FAILED = "Combination failed.";
-    final String COMBINE_MESSAGE_LOW_SKILL = "Your mixing skill is too low to combine those items.";
+    private final String COMBINE_MESSAGE_FAILED = "Combination failed.";
+    private final String COMBINE_MESSAGE_LOW_SKILL = "Your mixing skill is too low to combine those items.";
 
 
     @Override
@@ -52,7 +51,7 @@ public class CombineItem implements IScriptEventHandler {
 
 
 
-    void CombineItemProcess(NWObject oPC, NWObject oItemA, NWObject oItemB, ItemCombinationEntity entity, int iMixingSkill)
+    private void CombineItemProcess(NWObject oPC, NWObject oItemA, NWObject oItemB, ItemCombinationEntity entity, int iMixingSkill)
     {
         int iHQQuantity = entity.getHqQuantity();
         int iQuantity = 0;

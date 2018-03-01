@@ -5,7 +5,6 @@ import GameSystems.CustomEffectSystem;
 import Helper.ItemHelper;
 import Common.IScriptEventHandler;
 import NWNX.NWNX_Events;
-import NWNX.NWNX_Events_Old;
 import GameSystems.ProgressionSystem;
 import org.nwnx.nwnx2.jvm.NWEffect;
 import org.nwnx.nwnx2.jvm.NWObject;
@@ -20,19 +19,17 @@ public class Herb implements IScriptEventHandler {
         String type = NWScript.getLocalString(item, "HERB_TYPE");
         float recoverPercentage = 0.0f;
 
-        if(type.equals("Green"))
-        {
-            recoverPercentage = 10.0f;
-        }
-        else if(type.equals("Blue"))
-        {
-            CustomEffectSystem.RemovePCCustomEffect(oPC, CustomEffectType.Poison);
-            ItemHelper.ReduceItemStack(item);
-            return;
-        }
-        else if(type.equals("Mixed"))
-        {
-            recoverPercentage = 30.0f;
+        switch (type) {
+            case "Green":
+                recoverPercentage = 10.0f;
+                break;
+            case "Blue":
+                CustomEffectSystem.RemovePCCustomEffect(oPC, CustomEffectType.Poison);
+                ItemHelper.ReduceItemStack(item);
+                return;
+            case "Mixed":
+                recoverPercentage = 30.0f;
+                break;
         }
         if(recoverPercentage <= 0.0f) return;
 

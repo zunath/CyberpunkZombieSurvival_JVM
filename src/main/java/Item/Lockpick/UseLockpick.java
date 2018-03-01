@@ -6,7 +6,6 @@ import GameSystems.MagicSystem;
 import Helper.ColorToken;
 import Common.IScriptEventHandler;
 import NWNX.NWNX_Events;
-import NWNX.NWNX_Events_Old;
 import GameSystems.ProgressionSystem;
 import NWNX.NWNX_Player;
 import org.nwnx.nwnx2.jvm.NWObject;
@@ -19,10 +18,10 @@ import java.util.concurrent.ThreadLocalRandom;
 @SuppressWarnings("UnusedDeclaration")
 public class UseLockpick implements IScriptEventHandler {
 
-    final String CurrentStatusVariable = "LOCKPICK_TEMPORARY_CURRENTLY_PICKING_LOCK";
-    final String UnlockingObjectVariable = "LOCKPICK_TEMP_UNLOCKING_OBJECT";
-    final String SkillRequiredVariable = "LOCKPICK_SKILL_REQUIRED";
-    final float MaxDistance = 2.5f;
+    private final String CurrentStatusVariable = "LOCKPICK_TEMPORARY_CURRENTLY_PICKING_LOCK";
+    private final String UnlockingObjectVariable = "LOCKPICK_TEMP_UNLOCKING_OBJECT";
+    private final String SkillRequiredVariable = "LOCKPICK_SKILL_REQUIRED";
+    private final float MaxDistance = 2.5f;
 
 
     @Override

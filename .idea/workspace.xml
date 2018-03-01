@@ -6,12 +6,41 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="486e3add-e013-4d47-abab-c86692a1ecb0" name="Default" comment="">
+    <list default="true" id="486e3add-e013-4d47-abab-c86692a1ecb0" name="Default" comment="Remove the last dependency on the old NWNX_Events. Fix crash issue with using items. Remove SimTools from the 1.74 module.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Data/DataAccess.java" afterPath="$PROJECT_DIR$/src/main/java/Data/DataAccess.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dialog/ActionTaken.java" afterPath="$PROJECT_DIR$/src/main/java/Dialog/ActionTaken.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dialog/DialogManager.java" afterPath="$PROJECT_DIR$/src/main/java/Dialog/DialogManager.java" />
+      <change beforePath="$PROJECT_DIR$/nwn/module/Cyberpunk Zombie Survival_1.74.zip" afterPath="$PROJECT_DIR$/nwn/module/Cyberpunk Zombie Survival_1.74.zip" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Event/DM/HealCreature.java" afterPath="$PROJECT_DIR$/src/main/java/Event/DM/HealCreature.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Event/Module/OnActivateItem.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnActivateItem.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Event/Module/OnCastSpell.java" afterPath="" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Event/Module/OnClientEnter.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnClientEnter.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Event/Module/OnExamine.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnExamine.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Event/Module/OnLoad.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnLoad.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Event/Module/OnTogglePause.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnTogglePause.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Event/Module/OnUseItem.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnUseItem.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Feat/ChangeGunAmmo.java" afterPath="$PROJECT_DIR$/src/main/java/Feat/ChangeGunAmmo.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Feat/ChangeGunMode.java" afterPath="$PROJECT_DIR$/src/main/java/Feat/ChangeGunMode.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Feat/CombineItem.java" afterPath="$PROJECT_DIR$/src/main/java/Feat/CombineItem.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GameSystems/CombatSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/CombatSystem.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Item/AbilityDisc.java" afterPath="$PROJECT_DIR$/src/main/java/Item/AbilityDisc.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Item/Blueprint.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Blueprint.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Item/Food.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Food.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Item/GenericStartConversation.java" afterPath="$PROJECT_DIR$/src/main/java/Item/GenericStartConversation.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Item/Lockpick/UseLockpick.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Lockpick/UseLockpick.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Item/Medical/Antibiotics.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Medical/Antibiotics.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Item/Medical/Bandage.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Medical/Bandage.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Item/Medical/Herb.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Medical/Herb.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Item/Medical/HerbalRemedy.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Medical/HerbalRemedy.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Item/Medical/ManaKit.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Medical/ManaKit.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Item/Medical/MedicalSupplies.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Medical/MedicalSupplies.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Item/Medical/Stimulant.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Medical/Stimulant.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Item/Medical/TreatmentKit.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Medical/TreatmentKit.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Item/OmniTool.java" afterPath="$PROJECT_DIR$/src/main/java/Item/OmniTool.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Item/Repair/ArmorRepairKit.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Repair/ArmorRepairKit.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Item/Repair/BladeRepairKit.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Repair/BladeRepairKit.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Item/Repair/BluntRepairKit.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Repair/BluntRepairKit.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Item/Repair/FirearmRepairKit.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Repair/FirearmRepairKit.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Events.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Events.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Events_Old.java" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -24,21 +53,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="OnCastSpell.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Event/Module/OnCastSpell.java">
+      <file leaf-file-name="OnUseItem.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Event/Module/OnUseItem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="27" lean-forward="false" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PlayerAuthorizationSystem.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/PlayerAuthorizationSystem.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="44" lean-forward="false" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="44" />
+            <state relative-caret-position="187">
+              <caret line="17" column="8" lean-forward="false" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -47,61 +66,91 @@
       <file leaf-file-name="OnClientEnter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Event/Module/OnClientEnter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="38" column="11" lean-forward="false" selection-start-line="38" selection-start-column="11" selection-end-line="38" selection-end-column="11" />
+            <state relative-caret-position="200">
+              <caret line="68" column="12" lean-forward="false" selection-start-line="68" selection-start-column="12" selection-end-line="68" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OnTogglePause.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Event/Module/OnTogglePause.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="11" lean-forward="false" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HealCreature.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Event/DM/HealCreature.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="13" column="11" lean-forward="false" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CombineItem.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Feat/CombineItem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="194">
+              <caret line="53" column="17" lean-forward="false" selection-start-line="53" selection-start-column="17" selection-end-line="53" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UseLockpick.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Item/Lockpick/UseLockpick.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="194">
+              <caret line="23" column="24" lean-forward="false" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Herb.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Item/Medical/Herb.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="21" column="8" lean-forward="false" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OmniTool.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Item/OmniTool.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="35" column="33" lean-forward="false" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ScriptHelper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Helper/ScriptHelper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="23" lean-forward="false" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Food.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Item/Food.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="23" column="52" lean-forward="false" selection-start-line="23" selection-start-column="52" selection-end-line="23" selection-end-column="52" />
               <folding>
-                <element signature="e#396#423#0" expanded="true" />
+                <marker date="1519882456260" expanded="true" signature="741:747" ph="{...}" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StartUp.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Common/StartUp.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="49" column="27" lean-forward="false" selection-start-line="49" selection-start-column="27" selection-end-line="49" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DataAccess.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Data/DataAccess.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="592">
-              <caret line="41" column="5" lean-forward="true" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DialogManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Dialog/DialogManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1479">
-              <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ActionTaken.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Dialog/ActionTaken.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConstructionSite.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Conversation/ConstructionSite.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4063">
-              <caret line="239" column="70" lean-forward="false" selection-start-line="239" selection-start-column="70" selection-end-line="239" selection-end-column="70" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -118,24 +167,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>structurequickbuil</find>
-      <find>SpawnTable</find>
-      <find>EVENT_TYPE_ATTACK</find>
-      <find>ipdire</find>
-      <find>jvm_item</find>
-      <find>jvm_visi</find>
-      <find>ipdi</find>
-      <find>NWNX_JVM_IPDIRECT_PARAMVALUE</find>
-      <find>boot_pc</find>
-      <find>BootPCWithMessage</find>
-      <find>NWNX_Events_Old</find>
-      <find>BypassEvent</find>
-      <find>GetEventTarget</find>
-      <find>GetEventSubType</find>
-      <find>GetCurrentNodeType</find>
-      <find>GetCurrentNodeID</find>
-      <find>GetSelectedNodeID</find>
-      <find>GetSelectedNodeText</find>
       <find>GetCurrentNodeText</find>
       <find>NWNX_Events_old</find>
       <find>newNodeText</find>
@@ -148,6 +179,24 @@
       <find>dialogLength</find>
       <find>convo:</find>
       <find>gender</find>
+      <find>GetEventTarget</find>
+      <find>HandleGeneralItemUses</find>
+      <find>HandleSpecificItemUses</find>
+      <find>GetEventData</find>
+      <find>GetEventSubType</find>
+      <find>fky</find>
+      <find>fky_chat</find>
+      <find>NWNX_EVENTS_Old</find>
+      <find>BypassEvent</find>
+      <find>nwnx</find>
+      <find>NWNX_EVENTS</find>
+      <find>NWNX_Events.</find>
+      <find>OnCombatRoundStart_GetTarget</find>
+      <find>GET_EVENT_DATA</find>
+      <find>OnItemUsed_GetItemPropertyIndex</find>
+      <find>OnItemUsed_getItem</find>
+      <find>onitemused_getitem</find>
+      <find>OnItemUsed_GetItem</find>
     </findStrings>
     <replaceStrings>
       <replace>final</replace>
@@ -179,8 +228,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/Helper/LocalVariableHelper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/GameSystems/CraftSystem.java" />
         <option value="$PROJECT_DIR$/src/main/java/NWNX/AreaObjectScript.java" />
         <option value="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Funcs_Old.java" />
         <option value="$PROJECT_DIR$/src/main/java/NWNX/NWNX_DMActions_Old.java" />
@@ -188,48 +235,50 @@
         <option value="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Object.java" />
         <option value="$PROJECT_DIR$/src/main/java/Item/Defibrillator/Defibrillator.java" />
         <option value="$PROJECT_DIR$/src/main/java/GameSystems/MagicSystem.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Feat/CombineItem.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Item/Repair/BluntRepairKit.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Item/Repair/BladeRepairKit.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Item/Repair/FirearmRepairKit.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Item/Repair/ArmorRepairKit.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Item/Lockpick/UseLockpick.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Event/DM/HealCreature.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Event/Module/OnExamine.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Feat/ChangeGunMode.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Feat/ChangeGunAmmo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Item/GenericStartConversation.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Item/Blueprint.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Item/AbilityDisc.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Item/Food.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Item/Medical/Herb.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Item/Medical/Bandage.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Item/Medical/ManaKit.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Item/Medical/HerbalRemedy.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Item/Medical/Antibiotics.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Item/Medical/Stimulant.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Item/Medical/TreatmentKit.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Item/Medical/MedicalSupplies.java" />
         <option value="$PROJECT_DIR$/src/main/java/GameSystems/RadioSystem.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Event/Module/OnCastSpell.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Event/Module/OnActivateItem.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostDEX.java" />
         <option value="$PROJECT_DIR$/src/main/java/Entities/StructureQuickBuildAuditEntity.java" />
         <option value="$PROJECT_DIR$/src/main/java/NWNX/EventType.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Event/Module/OnLoad.java" />
         <option value="$PROJECT_DIR$/src/main/java/Common/StartUp.java" />
         <option value="$PROJECT_DIR$/src/main/java/Helper/ItemPropertyHelper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Item/OmniTool.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Event/Module/OnUseItem.java" />
-        <option value="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Events.java" />
-        <option value="$PROJECT_DIR$/src/main/java/GameSystems/CombatSystem.java" />
         <option value="$PROJECT_DIR$/src/main/java/Dialog/AppearsWhen.java" />
-        <option value="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Events_Old.java" />
         <option value="$PROJECT_DIR$/src/main/java/GameSystems/PlayerAuthorizationSystem.java" />
         <option value="$PROJECT_DIR$/src/main/java/Dialog/DialogManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Event/Module/OnClientEnter.java" />
         <option value="$PROJECT_DIR$/src/main/java/Data/DataAccess.java" />
         <option value="$PROJECT_DIR$/src/main/java/Dialog/ActionTaken.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Event/Module/OnClientEnter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Events_Old.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Item/Medical/ManaKit.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Item/Medical/HerbalRemedy.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Item/GenericStartConversation.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Item/Medical/Antibiotics.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Event/Module/OnExamine.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Item/AbilityDisc.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Item/Blueprint.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Item/Repair/BluntRepairKit.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Item/Repair/BladeRepairKit.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Item/Medical/MedicalSupplies.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Item/Repair/ArmorRepairKit.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Event/DM/HealCreature.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Item/Medical/Bandage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Item/Repair/FirearmRepairKit.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Feat/ChangeGunAmmo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Event/Module/OnTogglePause.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Item/Medical/TreatmentKit.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Feat/ChangeGunMode.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Item/Medical/Stimulant.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Event/Module/OnCastSpell.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Event/Module/OnUseFeat.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Event/Module/OnLoad.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GameSystems/CombatSystem.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Event/Module/OnActivateItem.java" />
+        <option value="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Events.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Item/Food.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Item/OmniTool.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Event/Module/OnUseItem.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Feat/CombineItem.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Item/Lockpick/UseLockpick.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Item/Medical/Herb.java" />
       </list>
     </option>
   </component>
@@ -288,6 +337,8 @@
     </navigator>
     <panes>
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -372,6 +423,22 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="GameSystems" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CyberpunkZombieSurvival_JVM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CyberpunkZombieSurvival_JVM" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Item" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CyberpunkZombieSurvival_JVM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CyberpunkZombieSurvival_JVM" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="NWNX" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -386,14 +453,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$/libs" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -401,6 +466,10 @@
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
+    <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
+    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
+    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="cyberpunkzombiesurvival_jvm" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -408,8 +477,8 @@
       <recent name="$PROJECT_DIR$/src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Projects\CyberpunkZombieSurvival_JVM\libs" />
       <recent name="C:\Projects\CyberpunkZombieSurvival_JVM\nwn\module" />
+      <recent name="C:\Projects\CyberpunkZombieSurvival_JVM\libs" />
       <recent name="C:\Projects\CyberpunkZombieSurvival_JVM\nwn\database" />
       <recent name="C:\Projects\CyberpunkZombieSurvival_JVM\nwn\czs-server-files" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
@@ -826,7 +895,7 @@
     <frame x="390" y="0" width="1537" height="1047" extended-state="0" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979852" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32976446" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32441112" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -839,6 +908,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17159763" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32767764" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -857,7 +927,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="FAQ Robot" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="MaxCompute Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32767764" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="UnknownFeatures">
@@ -877,7 +946,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add details to the Blind ability comment" />
     <MESSAGE value="Update database backup file." />
     <MESSAGE value="Explain the Poison custom effect in the Poison spell comment." />
     <MESSAGE value="Fix typo in the Piercing Toss comment" />
@@ -902,7 +970,8 @@
     <MESSAGE value="Update hook for the OnAttack event (now called OnCombatRoundStart). Update the database.ini config file header. Fix name for the jar file." />
     <MESSAGE value="Remove the NWNX dependency for the conversation system. Mark TODOs for future work on EE migration." />
     <MESSAGE value="Update the nwnx jar file library." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update the nwnx jar file library." />
+    <MESSAGE value="Remove the last dependency on the old NWNX_Events. Fix crash issue with using items. Remove SimTools from the 1.74 module." />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove the last dependency on the old NWNX_Events. Fix crash issue with using items. Remove SimTools from the 1.74 module." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -914,154 +983,11 @@
           <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="8" />
+      <option name="time" value="10" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/Helper/EffectHelper.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/GameObject/ItemGO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="78" column="8" lean-forward="false" selection-start-line="78" selection-start-column="8" selection-end-line="78" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Feat/OnHitCastSpell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Common/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/ProgressionSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="33" column="69" lean-forward="false" selection-start-line="33" selection-start-column="69" selection-end-line="33" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostDEX.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="884">
-          <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Melee/ElectricFist.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Melee/SkullBash.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Ranged/PiercingToss.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nwn/database/czs-db-prod-2018-01-24.sql" />
-    <entry file="file://$PROJECT_DIR$/nwn/database/scripts/CZS-WipePlayerData.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Entities/AbilityCategoryEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="5" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Entities/StructureQuickBuildAuditEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="6" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/SpawnSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="89" column="22" lean-forward="false" selection-start-line="89" selection-start-column="12" selection-end-line="89" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/NWNX/EventType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="82" lean-forward="false" selection-start-line="31" selection-start-column="82" selection-end-line="31" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Event/Module/OnLoad.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="46" column="5" lean-forward="false" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Event/Module/OnAttack.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="22" lean-forward="false" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Event/Module/OnActivateItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="37" lean-forward="false" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Helper/ItemPropertyHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="35" lean-forward="true" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Authorization/ValidateCDKey.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="66" lean-forward="true" selection-start-line="23" selection-start-column="66" selection-end-line="23" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/NWNX/NWNX_Admin.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="671">
@@ -1076,45 +1002,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/NWNX/NWNX_Events.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="767">
-          <caret line="174" column="55" lean-forward="false" selection-start-line="174" selection-start-column="27" selection-end-line="174" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/CombatSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="195" column="76" lean-forward="false" selection-start-line="195" selection-start-column="76" selection-end-line="195" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Event/DM/HealCreature.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="8" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/NWNX/NWNX_Events_Old.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="30" lean-forward="false" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/ArmorSystem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="827">
           <caret line="88" column="13" lean-forward="false" selection-start-line="88" selection-start-column="13" selection-end-line="88" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/InventorySystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2261">
-          <caret line="133" column="13" lean-forward="false" selection-start-line="116" selection-start-column="12" selection-end-line="133" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1132,34 +1023,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Event/Module/OnUseItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2550">
-          <caret line="150" column="76" lean-forward="false" selection-start-line="150" selection-start-column="76" selection-end-line="150" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Item/OmniTool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="35" lean-forward="false" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Food.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Repair/ArmorRepairKit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="9" lean-forward="false" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Item/Lockpick/PerformLockpick.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1167,38 +1030,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Lockpick/UseLockpick.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1071">
-          <caret line="63" column="77" lean-forward="false" selection-start-line="63" selection-start-column="77" selection-end-line="63" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Common/EventReceiver.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="23" column="125" lean-forward="false" selection-start-line="23" selection-start-column="125" selection-end-line="23" selection-end-column="125" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Repair/BladeRepairKit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Repair/BluntRepairKit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Repair/FirearmRepairKit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1206,14 +1042,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3893">
           <caret line="229" column="0" lean-forward="false" selection-start-line="229" selection-start-column="0" selection-end-line="229" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Event/Module/OnCastSpell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="27" lean-forward="false" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
-          <folding />
+          <folding>
+            <marker date="1519810218323" expanded="true" signature="10080:10593" ph="{...}" />
+            <marker date="1519810218323" expanded="true" signature="10658:10740" ph="{...}" />
+            <marker date="1519810218323" expanded="true" signature="10831:10926" ph="{...}" />
+            <marker date="1519810218323" expanded="true" signature="10988:11067" ph="{...}" />
+            <marker date="1519810218323" expanded="true" signature="11170:12840" ph="{...}" />
+            <marker date="1519810218323" expanded="true" signature="12918:17433" ph="{...}" />
+            <marker date="1519810218323" expanded="true" signature="17525:18429" ph="{...}" />
+            <marker date="1519810218323" expanded="true" signature="18507:21150" ph="{...}" />
+            <marker date="1519810218323" expanded="true" signature="21209:23007" ph="{...}" />
+            <marker date="1519810218323" expanded="true" signature="23100:24031" ph="{...}" />
+            <marker date="1519810218323" expanded="true" signature="24136:25762" ph="{...}" />
+            <marker date="1519810218323" expanded="true" signature="25870:26880" ph="{...}" />
+            <marker date="1519810218323" expanded="true" signature="26951:28650" ph="{...}" />
+            <marker date="1519810218323" expanded="true" signature="28747:29685" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1225,10 +1069,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Conversation/ConstructionSite.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Common/StartUp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4063">
-          <caret line="239" column="70" lean-forward="false" selection-start-line="239" selection-start-column="70" selection-end-line="239" selection-end-column="70" />
+        <state relative-caret-position="0">
+          <caret line="49" column="27" lean-forward="false" selection-start-line="49" selection-start-column="27" selection-end-line="49" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Data/DataAccess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="41" column="5" lean-forward="false" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -1241,36 +1093,316 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Event/Module/OnClientEnter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Dialog/ActionTaken.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="38" column="11" lean-forward="false" selection-start-line="38" selection-start-column="11" selection-end-line="38" selection-end-column="11" />
+        <state relative-caret-position="595">
+          <caret line="35" column="35" lean-forward="false" selection-start-line="35" selection-start-column="35" selection-end-line="35" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Conversation/ConstructionSite.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4063">
+          <caret line="239" column="70" lean-forward="false" selection-start-line="239" selection-start-column="70" selection-end-line="239" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/NWNX/NWNX_Events_Old.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="34" lean-forward="false" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Medical/ManaKit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="11" lean-forward="false" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Medical/HerbalRemedy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="24" lean-forward="false" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Medical/Antibiotics.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="24" lean-forward="false" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Event/Module/OnExamine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="24" lean-forward="false" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Item/AbilityDisc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="24" lean-forward="false" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Blueprint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="24" lean-forward="false" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Repair/BluntRepairKit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="24" lean-forward="false" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Repair/BladeRepairKit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="24" lean-forward="false" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Medical/MedicalSupplies.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Repair/ArmorRepairKit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Medical/Bandage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="24" lean-forward="false" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Repair/FirearmRepairKit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="24" lean-forward="false" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Feat/ChangeGunAmmo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="24" lean-forward="false" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Medical/TreatmentKit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="24" lean-forward="false" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Feat/ChangeGunMode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="24" lean-forward="false" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Medical/Stimulant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="24" lean-forward="false" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Event/Module/OnCastSpell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="41" lean-forward="false" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Event/Module/OnUseFeat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="41" lean-forward="false" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/FoodSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="790">
+          <caret line="50" column="23" lean-forward="false" selection-start-line="50" selection-start-column="23" selection-end-line="50" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/InventorySystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="21" column="53" lean-forward="false" selection-start-line="21" selection-start-column="53" selection-end-line="21" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Event/Module/OnUserDefined.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/CombatSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="24" lean-forward="false" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Event/Module/OnLoad.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="631">
+          <caret line="53" column="78" lean-forward="false" selection-start-line="53" selection-start-column="78" selection-end-line="53" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/NWNX/NWNX_Events.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1190">
+          <caret line="70" column="5" lean-forward="true" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Helper/ScriptHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="23" lean-forward="false" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Event/Module/OnActivateItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="58" lean-forward="false" selection-start-line="8" selection-start-column="58" selection-end-line="8" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Food.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="52" lean-forward="false" selection-start-line="23" selection-start-column="52" selection-end-line="23" selection-end-column="52" />
           <folding>
-            <element signature="e#396#423#0" expanded="true" />
+            <marker date="1519882456260" expanded="true" signature="741:747" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Common/StartUp.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Item/GenericStartConversation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="49" column="27" lean-forward="false" selection-start-line="49" selection-start-column="27" selection-end-line="49" selection-end-column="27" />
+        <state relative-caret-position="136">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Data/DataAccess.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Item/OmniTool.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="592">
-          <caret line="41" column="5" lean-forward="true" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
+        <state relative-caret-position="187">
+          <caret line="35" column="33" lean-forward="false" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Dialog/ActionTaken.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Event/Module/OnUseItem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        <state relative-caret-position="187">
+          <caret line="17" column="8" lean-forward="false" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Feat/CombineItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="53" column="17" lean-forward="false" selection-start-line="53" selection-start-column="17" selection-end-line="53" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Lockpick/UseLockpick.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="23" column="24" lean-forward="false" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Medical/Herb.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="8" lean-forward="false" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Event/Module/OnClientEnter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="68" column="12" lean-forward="false" selection-start-line="68" selection-start-column="12" selection-end-line="68" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Event/Module/OnTogglePause.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="11" lean-forward="false" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Event/DM/HealCreature.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="11" lean-forward="false" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
           <folding />
         </state>
       </provider>

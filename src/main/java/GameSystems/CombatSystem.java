@@ -12,7 +12,6 @@ import GameObject.ItemGO;
 import GameObject.PlayerGO;
 import Helper.ColorToken;
 import NWNX.NWNX_Events;
-import NWNX.NWNX_Events_Old;
 import org.nwnx.nwnx2.jvm.*;
 import org.nwnx.nwnx2.jvm.constants.*;
 import org.nwnx.nwnx2.jvm.constants.Action;

@@ -3,7 +3,6 @@ package Item;
 import Common.IScriptEventHandler;
 import Dialog.DialogManager;
 import NWNX.NWNX_Events;
-import NWNX.NWNX_Events_Old;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 

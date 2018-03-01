@@ -4,7 +4,6 @@ import Common.IScriptEventHandler;
 import Enumerations.AbilityType;
 import GameSystems.MagicSystem;
 import NWNX.NWNX_Events;
-import NWNX.NWNX_Events_Old;
 import GameSystems.FoodSystem;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
@@ -23,6 +22,5 @@ public class Food implements IScriptEventHandler {
         }
 
         FoodSystem.IncreaseHungerLevel(oPC, amount);
-        NWScript.setItemCharges(oItem, NWScript.getItemCharges(oItem) - 1);
     }
 }

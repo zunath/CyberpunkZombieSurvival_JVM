@@ -2,7 +2,6 @@ package Feat;
 
 import Common.IScriptEventHandler;
 import NWNX.NWNX_Events;
-import NWNX.NWNX_Events_Old;
 import GameSystems.CombatSystem;
 import org.nwnx.nwnx2.jvm.NWObject;
 

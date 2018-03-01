@@ -112,6 +112,16 @@ public class NWNX_Events {
         return GetEventDataObject("TARGET_OBJECT_ID");
     }
 
+    public static int OnItemUsed_GetItemPropertyIndex()
+    {
+        return GetEventDataInt("ITEM_PROPERTY_INDEX");
+    }
+
+    public static int OnItemUsed_GetValue2()
+    {
+        return GetEventDataInt("TEST_VALUE_2");
+    }
+
     public static NWObject OnExamineObject_GetTarget()
     {
         return GetEventDataObject("EXAMINEE_OBJECT_ID");

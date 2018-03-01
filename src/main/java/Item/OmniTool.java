@@ -7,7 +7,6 @@ import Entities.PlayerEntity;
 import GameObject.PlayerGO;
 import Helper.ScriptHelper;
 import NWNX.NWNX_Events;
-import NWNX.NWNX_Events_Old;
 import org.nwnx.nwnx2.jvm.NWLocation;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
@@ -17,26 +16,24 @@ import GameSystems.StructureSystem;
 public class OmniTool implements IScriptEventHandler {
     @Override
     public void runScript(NWObject oPC) {
-        //int castSpellType = NWNX_Events_Old.GetEventSubType();
-
-        int castSpellType = -1; // TODO: Update for EE
-        if(castSpellType == 0)
+        int itemPropertyIndex = NWNX_Events.OnItemUsed_GetItemPropertyIndex();
+        if(itemPropertyIndex == 0)
         {
             HandleAutoFollow(oPC);
         }
-        else if(castSpellType == 1)
+        else if(itemPropertyIndex == 1)
         {
             HandleCheckInfectionLevel(oPC);
         }
-        else if(castSpellType == 2)
+        else if(itemPropertyIndex == 2)
         {
             HandleOpenRestMenu(oPC);
         }
-        else if (castSpellType == 3)
+        else if (itemPropertyIndex == 3)
         {
             HandleReloadWeapon(oPC);
         }
-        else if(castSpellType == 4)
+        else if(itemPropertyIndex == 4)
         {
             HandleUseStructureTool(oPC);
         }

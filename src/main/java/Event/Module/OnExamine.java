@@ -3,7 +3,6 @@ package Event.Module;
 import Common.IScriptEventHandler;
 import GameSystems.MagicSystem;
 import NWNX.NWNX_Events;
-import NWNX.NWNX_Events_Old;
 import org.nwnx.nwnx2.jvm.NWObject;
 
 public class OnExamine implements IScriptEventHandler {

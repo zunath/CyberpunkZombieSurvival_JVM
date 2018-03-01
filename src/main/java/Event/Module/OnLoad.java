@@ -46,9 +46,7 @@ public class OnLoad implements IScriptEventHandler {
     private void AddGlobalEventHandlers()
     {
         NWNX_Events.SubscribeEvent(EventType.StartCombatRoundBefore, "mod_on_attack");
-
         NWNX_Events.SubscribeEvent(EventType.ExamineObjectBefore, "mod_on_examine");
-        NWNX_Events.SubscribeEvent(EventType.CastSpellBefore, "mod_on_castspell");
 
         //NWNX_Events_Old.SetGlobalEventHandler(NWNX_Events_Old.EVENT_TYPE_TOGGLE_PAUSE, "mod_on_toggpause");
 

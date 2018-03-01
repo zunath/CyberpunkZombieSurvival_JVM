@@ -5,8 +5,6 @@ import Common.IScriptEventHandler;
 import GameSystems.InventorySystem;
 import Helper.ScriptHelper;
 import NWNX.NWNX_Events;
-import NWNX.NWNX_Events_Old;
-import NWNX.NWNX_Object;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.Scheduler;
@@ -16,10 +14,8 @@ import org.nwnx.nwnx2.jvm.constants.IpConst;
 public class OnUseItem implements IScriptEventHandler {
     @Override
     public void runScript(NWObject oPC) {
-
         HandleGeneralItemUses(oPC);
         HandleSpecificItemUses(oPC);
-
     }
 
     private void HandleGeneralItemUses(final NWObject oPC)
@@ -29,8 +25,7 @@ public class OnUseItem implements IScriptEventHandler {
         String className = NWScript.getLocalString(oItem, "JAVA_SCRIPT");
         if(className.equals("")) return;
 
-        //NWNX_Events_Old.BypassEvent();
-        // TODO: Upgrade for EE
+        Scheduler.assign(oPC, () -> NWScript.clearAllActions(false));
 
         // Remove "Item." prefix if it exists.
         if(className.startsWith("Item."))
@@ -44,7 +39,7 @@ public class OnUseItem implements IScriptEventHandler {
     {
         NWObject oItem = NWNX_Events.OnItemUsed_GetItem();
         String sTag = NWScript.getTag(oItem);
-        int iSubtype = NWNX_Events_Old.GetEventSubType();
+        int iSubtype = NWNX_Events.OnItemUsed_GetItemPropertyIndex();
 
         // Change Ammo Priority Property
         boolean bAmmoPriority = XP2.IPGetItemHasProperty(oItem, NWScript.itemPropertyCastSpell(548, IpConst.CASTSPELL_NUMUSES_UNLIMITED_USE), -1, false);
@@ -157,7 +152,6 @@ public class OnUseItem implements IScriptEventHandler {
             }
         }
         // Fire tag based scripting in all other cases (I.E: Don't bypass this event)
-        // Allows for backwards compatibility until we convert other systems over to Linux
         else
         {
             bBypassEvent = false;
@@ -166,8 +160,7 @@ public class OnUseItem implements IScriptEventHandler {
         // The entirety of the OnActivateItem will be skipped if bBypassEvent is true.
         if(bBypassEvent)
         {
-            //NWNX_Events_Old.BypassEvent();
-            // TODO: Upgrade for EE
+            Scheduler.assign(oPC, () -> NWScript.clearAllActions(false));
         }
     }
 
