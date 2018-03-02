@@ -1,7 +1,5 @@
 package GameObject;
 
-import Enumerations.CustomItemProperty;
-import GameSystems.DurabilitySystem;
 import org.nwnx.nwnx2.jvm.NWItemProperty;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;

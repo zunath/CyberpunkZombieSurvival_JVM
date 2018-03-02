@@ -12,7 +12,7 @@ public class Blueprint implements IScriptEventHandler {
     @Override
     public void runScript(NWObject oPC) {
         PlayerGO pcGO = new PlayerGO(oPC);
-        NWObject oItem = NWNX_Events.OnItemUsed_GetItem();
+        NWObject oItem = NWScript.getItemActivated();
         String resref = NWScript.getResRef(oItem);
         int blueprintID = Integer.parseInt(resref.substring(10));
 

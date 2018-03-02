@@ -6,7 +6,6 @@ import Entities.LootTableEntity;
 import Entities.LootTableItemEntity;
 import Entities.SpawnTableCreatureEntity;
 import Entities.SpawnTableEntity;
-import GameObject.ItemGO;
 import GameSystems.Models.SpawnModel;
 import Helper.LocalArray;
 import Helper.MathHelper;

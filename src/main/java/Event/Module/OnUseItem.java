@@ -2,7 +2,6 @@ package Event.Module;
 
 import Bioware.XP2;
 import Common.IScriptEventHandler;
-import GameSystems.InventorySystem;
 import Helper.ScriptHelper;
 import NWNX.NWNX_Events;
 import org.nwnx.nwnx2.jvm.NWObject;
@@ -14,25 +13,7 @@ import org.nwnx.nwnx2.jvm.constants.IpConst;
 public class OnUseItem implements IScriptEventHandler {
     @Override
     public void runScript(NWObject oPC) {
-        HandleGeneralItemUses(oPC);
         HandleSpecificItemUses(oPC);
-    }
-
-    private void HandleGeneralItemUses(final NWObject oPC)
-    {
-        NWObject oItem = NWNX_Events.OnItemUsed_GetItem();
-
-        String className = NWScript.getLocalString(oItem, "JAVA_SCRIPT");
-        if(className.equals("")) return;
-
-        Scheduler.assign(oPC, () -> NWScript.clearAllActions(false));
-
-        // Remove "Item." prefix if it exists.
-        if(className.startsWith("Item."))
-            className = className.substring(5);
-        ScriptHelper.RunJavaScript(oPC, "Item." + className);
-
-        Scheduler.delay(oPC, 1, () -> InventorySystem.RunItemLimitCheck(oPC));
     }
 
     private void HandleSpecificItemUses(NWObject oPC)

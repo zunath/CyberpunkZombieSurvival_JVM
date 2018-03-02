@@ -1,6 +1,8 @@
 package NWNX;
 
+import org.nwnx.nwnx2.jvm.NWLocation;
 import org.nwnx.nwnx2.jvm.NWObject;
+import org.nwnx.nwnx2.jvm.NWScript;
 
 import static NWNX.NWNX_Core.*;
 
@@ -80,6 +82,15 @@ public class NWNX_Events {
     public static NWObject OnFeatUsed_GetTarget()
     {
         return GetEventDataObject("TARGET_OBJECT_ID");
+    }
+
+    public static NWLocation OnFeatUsed_GetTargetLocation()
+    {
+        return NWScript.location(
+                OnFeatUsed_GetArea(),
+                NWScript.vector(OnFeatUsed_GetTargetPositionX(), OnFeatUsed_GetTargetPositionY(), OnFeatUsed_GetTargetPositionZ()),
+                0.0f
+        );
     }
 
     public static NWObject OnFeatUsed_GetArea()

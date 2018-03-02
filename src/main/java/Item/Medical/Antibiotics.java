@@ -1,12 +1,11 @@
 package Item.Medical;
 
+import Common.IScriptEventHandler;
 import Enumerations.CustomEffectType;
 import GameObject.PlayerGO;
-import Helper.ItemHelper;
-import Common.IScriptEventHandler;
-import NWNX.NWNX_Events;
 import GameSystems.CustomEffectSystem;
 import GameSystems.ProgressionSystem;
+import Helper.ItemHelper;
 import NWNX.NWNX_Player;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
@@ -18,7 +17,7 @@ public class Antibiotics implements IScriptEventHandler {
     @Override
     public void runScript(final NWObject oPC) {
         final PlayerGO pcGO = new PlayerGO(oPC);
-        NWObject target = NWNX_Events.OnItemUsed_GetTarget();
+        NWObject target = NWScript.getItemActivatedTarget();
 
         if(pcGO.isBusy())
         {
@@ -44,7 +43,7 @@ public class Antibiotics implements IScriptEventHandler {
             return;
         }
 
-        final NWObject item = NWNX_Events.OnItemUsed_GetItem();
+        final NWObject item = NWScript.getItemActivated();
         int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_FIRST_AID);
         final float delay = 7.0f - (skill * 0.5f);
 

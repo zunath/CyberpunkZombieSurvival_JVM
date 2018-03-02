@@ -6,7 +6,6 @@ import GameSystems.DurabilitySystem;
 import GameSystems.MagicSystem;
 import GameSystems.ProgressionSystem;
 import Helper.ItemHelper;
-import NWNX.NWNX_Events;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 
@@ -14,8 +13,8 @@ import org.nwnx.nwnx2.jvm.NWScript;
 public class BladeRepairKit implements IScriptEventHandler {
     @Override
     public void runScript(NWObject oPC) {
-        NWObject target = NWNX_Events.OnItemUsed_GetTarget();
-        NWObject item = NWNX_Events.OnItemUsed_GetItem();
+        NWObject target = NWScript.getItemActivatedTarget();
+        NWObject item = NWScript.getItemActivated();
 
         if(!ItemHelper.IsBlade(target))
         {

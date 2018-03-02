@@ -9,7 +9,7 @@ import org.nwnx.nwnx2.jvm.NWScript;
 public class GenericStartConversation implements IScriptEventHandler {
     @Override
     public void runScript(NWObject oPC) {
-        NWObject oItem = NWNX_Events.OnItemUsed_GetItem();
+        NWObject oItem = NWScript.getItemActivated();
         String conversation = NWScript.getLocalString(oItem, "CONVERSATION");
 
         DialogManager.startConversation(oPC, oPC, conversation);

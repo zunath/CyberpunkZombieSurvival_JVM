@@ -6,7 +6,6 @@ import GameObject.PlayerGO;
 import GameSystems.CustomEffectSystem;
 import GameSystems.ProgressionSystem;
 import Helper.ItemHelper;
-import NWNX.NWNX_Events;
 import NWNX.NWNX_Player;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
@@ -17,7 +16,7 @@ import org.nwnx.nwnx2.jvm.constants.Animation;
 public class ManaKit implements IScriptEventHandler {
     @Override
     public void runScript(final NWObject oPC) {
-        final NWObject oTarget = NWNX_Events.OnItemUsed_GetTarget();
+        final NWObject oTarget = NWScript.getItemActivatedTarget();
         final PlayerGO pcGO = new PlayerGO(oPC);
 
         if(pcGO.isBusy())
@@ -42,7 +41,7 @@ public class ManaKit implements IScriptEventHandler {
         int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_FIRST_AID);
         final int durationTicks = 4 + (skill / 2);
         final float delay = 12.0f - (skill * 0.5f);
-        final NWObject item = NWNX_Events.OnItemUsed_GetItem();
+        final NWObject item = NWScript.getItemActivated();
 
         NWNX_Player.StartGuiTimingBar(oPC, (int) delay, "");
         NWScript.sendMessageToPC(oPC, "You begin applying a mana kit to " + NWScript.getName(oTarget, false) + ".");

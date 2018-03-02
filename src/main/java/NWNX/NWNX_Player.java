@@ -1,11 +1,8 @@
 package NWNX;
 
-import Helper.ScriptHelper;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.Scheduler;
-
-import java.util.Objects;
 
 import static NWNX.NWNX_Core.*;
 

@@ -1,13 +1,12 @@
 package Item.Medical;
 
+import Common.IScriptEventHandler;
+import Data.Repository.PlayerRepository;
 import Entities.PlayerEntity;
 import GameObject.PlayerGO;
-import Helper.ItemHelper;
-import Common.IScriptEventHandler;
-import NWNX.NWNX_Events;
-import Data.Repository.PlayerRepository;
 import GameSystems.DiseaseSystem;
 import GameSystems.ProgressionSystem;
+import Helper.ItemHelper;
 import NWNX.NWNX_Player;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
@@ -20,7 +19,7 @@ import java.util.Random;
 public class TreatmentKit implements IScriptEventHandler {
     @Override
     public void runScript(final NWObject oPC) {
-        NWObject target = NWNX_Events.OnItemUsed_GetTarget();
+        NWObject target = NWScript.getItemActivatedTarget();
         final PlayerGO pcGO = new PlayerGO(oPC);
 
         if(pcGO.isBusy())
@@ -30,7 +29,7 @@ public class TreatmentKit implements IScriptEventHandler {
         }
 
         PlayerGO targetGO = new PlayerGO(target);
-        NWObject oItem = NWNX_Events.OnItemUsed_GetItem();
+        NWObject oItem = NWScript.getItemActivated();
         PlayerRepository repo = new PlayerRepository();
         PlayerEntity entity = repo.GetByPlayerID(targetGO.getUUID());
 
@@ -48,7 +47,7 @@ public class TreatmentKit implements IScriptEventHandler {
         }
 
         Random random = new Random();
-        final NWObject item = NWNX_Events.OnItemUsed_GetItem();
+        final NWObject item = NWScript.getItemActivated();
         int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_FIRST_AID);
         int skillBonus = skill / 2;
         final float delay = 8.0f - (skill * 0.5f);

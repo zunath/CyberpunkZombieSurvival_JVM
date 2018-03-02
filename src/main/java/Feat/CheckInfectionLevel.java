@@ -1,91 +1,17 @@
-package Item;
+package Feat;
 
 import Common.IScriptEventHandler;
 import Data.Repository.PlayerRepository;
-import Dialog.DialogManager;
 import Entities.PlayerEntity;
 import GameObject.PlayerGO;
-import Helper.ScriptHelper;
-import NWNX.NWNX_Events;
-import org.nwnx.nwnx2.jvm.NWLocation;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
-import org.nwnx.nwnx2.jvm.Scheduler;
-import GameSystems.StructureSystem;
 
-public class OmniTool implements IScriptEventHandler {
+public class CheckInfectionLevel implements IScriptEventHandler {
     @Override
     public void runScript(NWObject oPC) {
-        int itemPropertyIndex = NWNX_Events.OnItemUsed_GetItemPropertyIndex();
-        if(itemPropertyIndex == 0)
-        {
-            HandleAutoFollow(oPC);
-        }
-        else if(itemPropertyIndex == 1)
-        {
-            HandleCheckInfectionLevel(oPC);
-        }
-        else if(itemPropertyIndex == 2)
-        {
-            HandleOpenRestMenu(oPC);
-        }
-        else if (itemPropertyIndex == 3)
-        {
-            HandleReloadWeapon(oPC);
-        }
-        else if(itemPropertyIndex == 4)
-        {
-            HandleUseStructureTool(oPC);
-        }
 
-    }
-
-    private void HandleAutoFollow(NWObject oPC)
-    {
-
-        final NWObject oTarget = NWNX_Events.OnItemUsed_GetTarget();
-
-        if(!NWScript.getIsPC(oTarget) || NWScript.getIsDM(oTarget))
-        {
-            NWScript.sendMessageToPC(oPC, "You can only follow other players.");
-            return;
-        }
-
-        NWScript.floatingTextStringOnCreature("Now following " + NWScript.getName(oTarget, false) + ".", oPC, false);
-        Scheduler.delay(oPC, 2000, () -> NWScript.actionForceFollowObject(oTarget, 2.0f));
-    }
-
-    private void HandleOpenRestMenu(NWObject oPC)
-    {
-        DialogManager.startConversation(oPC, oPC, "RestMenu");
-    }
-
-    private void HandleUseStructureTool(NWObject oPC)
-    {
-        NWObject oTarget = NWNX_Events.OnItemUsed_GetTarget();
-        NWLocation lTargetLocation = NWScript.location(NWScript.getArea(oPC), NWScript.getPosition(oTarget), 0.0f);
-        boolean isMovingStructure = StructureSystem.IsPCMovingStructure(oPC);
-
-        if(!oTarget.equals(NWObject.INVALID))
-        {
-            lTargetLocation = NWScript.getLocation(oTarget);
-        }
-
-        if(isMovingStructure)
-        {
-            StructureSystem.MoveStructure(oPC, lTargetLocation);
-        }
-        else
-        {
-            NWScript.setLocalLocation(oPC, "BUILD_TOOL_LOCATION_TARGET", lTargetLocation);
-            DialogManager.startConversation(oPC, oPC, "BuildToolMenu");
-        }
-    }
-
-    private void HandleCheckInfectionLevel(NWObject oPC)
-    {
-
-        NWObject oTarget = NWNX_Events.OnItemUsed_GetTarget();
+        NWObject oTarget = NWScript.getSpellTargetObject();
 
         if(!NWScript.getIsPC(oTarget) || NWScript.getIsDM(oTarget))
         {
@@ -152,10 +78,4 @@ public class OmniTool implements IScriptEventHandler {
 
         NWScript.sendMessageToPC(oPC, name + ": " + message);
     }
-
-    private void HandleReloadWeapon(NWObject oPC)
-    {
-        ScriptHelper.RunJavaScript(oPC, "Feat.ReloadGun");
-    }
-
 }

@@ -4,7 +4,6 @@ import Entities.PlayerEntity;
 import GameObject.PlayerGO;
 import Helper.ItemHelper;
 import Common.IScriptEventHandler;
-import NWNX.NWNX_Events;
 import Data.Repository.PlayerRepository;
 import GameSystems.DiseaseSystem;
 import GameSystems.ProgressionSystem;
@@ -20,7 +19,7 @@ public class HerbalRemedy implements IScriptEventHandler {
         if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return;
 
         PlayerGO pcGO = new PlayerGO(oPC);
-        NWObject oItem = NWNX_Events.OnItemUsed_GetItem();
+        NWObject oItem = NWScript.getItemActivated();
         PlayerRepository repo = new PlayerRepository();
         PlayerEntity entity = repo.GetByPlayerID(pcGO.getUUID());
         int skillLevel = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_FIRST_AID);

@@ -8,7 +8,6 @@ import Enumerations.CustomAnimationType;
 import Enumerations.GunType;
 import Enumerations.ProfessionType;
 import GameObject.GunGO;
-import GameObject.ItemGO;
 import GameObject.PlayerGO;
 import Helper.ColorToken;
 import NWNX.NWNX_Events;

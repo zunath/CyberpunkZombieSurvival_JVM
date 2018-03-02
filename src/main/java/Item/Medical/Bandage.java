@@ -4,7 +4,6 @@ import Enumerations.CustomEffectType;
 import GameObject.PlayerGO;
 import Helper.ItemHelper;
 import Common.IScriptEventHandler;
-import NWNX.NWNX_Events;
 import GameSystems.CustomEffectSystem;
 import GameSystems.ProgressionSystem;
 import NWNX.NWNX_Player;
@@ -17,7 +16,7 @@ import org.nwnx.nwnx2.jvm.constants.Animation;
 public class Bandage implements IScriptEventHandler {
     @Override
     public void runScript(final NWObject oPC) {
-        NWObject target = NWNX_Events.OnItemUsed_GetTarget();
+        NWObject target = NWScript.getItemActivatedTarget();
         final PlayerGO pcGO = new PlayerGO(oPC);
 
         if(pcGO.isBusy())
@@ -44,7 +43,7 @@ public class Bandage implements IScriptEventHandler {
             return;
         }
 
-        final NWObject item = NWNX_Events.OnItemUsed_GetItem();
+        final NWObject item = NWScript.getItemActivated();
         int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_FIRST_AID);
         final float delay = 8.0f - (skill * 0.5f);
 
