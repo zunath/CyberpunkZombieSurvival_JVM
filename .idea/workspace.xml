@@ -6,26 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="486e3add-e013-4d47-abab-c86692a1ecb0" name="Default" comment="Rework durability system to use local variables instead of item properties. Change calculations on damage loss in ranged combat system. Change calculations for repair kits. Remove most random factors from durability loss. Also remove the CD key management options from the rest menu (no longer needed in EE).">
+    <list default="true" id="486e3add-e013-4d47-abab-c86692a1ecb0" name="Default" comment="Fix max durability display bug on examine.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Conversation/CharacterManagement.java" afterPath="$PROJECT_DIR$/src/main/java/Conversation/CharacterManagement.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Conversation/ManageCDKeys.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Event/Module/OnClientEnter.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnClientEnter.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Event/Module/OnExamine.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnExamine.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameObject/GunGO.java" afterPath="$PROJECT_DIR$/src/main/java/GameObject/GunGO.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameObject/ItemGO.java" afterPath="$PROJECT_DIR$/src/main/java/GameObject/ItemGO.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameSystems/CombatSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/CombatSystem.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GameSystems/DurabilitySystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/DurabilitySystem.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameSystems/MagicSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/MagicSystem.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameSystems/SearchSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/SearchSystem.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameSystems/SpawnSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/SpawnSystem.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Helper/ItemPropertyHelper.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Item/Repair/ArmorRepairKit.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Repair/ArmorRepairKit.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Item/Repair/BladeRepairKit.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Repair/BladeRepairKit.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Item/Repair/BluntRepairKit.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Repair/BluntRepairKit.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Item/Repair/FirearmRepairKit.java" afterPath="$PROJECT_DIR$/src/main/java/Item/Repair/FirearmRepairKit.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Placeable/StructureSystem/ConstructionSite/OnAttacked.java" afterPath="$PROJECT_DIR$/src/main/java/Placeable/StructureSystem/ConstructionSite/OnAttacked.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Placeable/StructureSystem/Resource/OnDamaged.java" afterPath="$PROJECT_DIR$/src/main/java/Placeable/StructureSystem/Resource/OnDamaged.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -38,21 +21,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DurabilitySystem.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DurabilitySystem.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/DurabilitySystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="193" column="4" lean-forward="false" selection-start-line="193" selection-start-column="4" selection-end-line="193" selection-end-column="4" />
+            <state relative-caret-position="502">
+              <caret line="163" column="71" lean-forward="false" selection-start-line="163" selection-start-column="71" selection-end-line="163" selection-end-column="71" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MagicSystem.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MagicSystem.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/MagicSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="264" column="0" lean-forward="true" selection-start-line="264" selection-start-column="0" selection-end-line="264" selection-end-column="0" />
+            <state relative-caret-position="374">
+              <caret line="270" column="0" lean-forward="true" selection-start-line="270" selection-start-column="0" selection-end-line="270" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -887,7 +870,14 @@
       <option name="project" value="LOCAL" />
       <updated>1519884219255</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Rework durability system to use local variables instead of item properties. Change calculations on damage loss in ranged combat system. Change calculations for repair kits. Remove most random factors from durability loss. Also remove the CD key management options from the rest menu (no longer needed in EE).">
+      <created>1519969559495</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1519969559495</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TodoView">
@@ -904,7 +894,7 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32343584" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32343584" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1358,6 +1348,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/MagicSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="270" column="0" lean-forward="true" selection-start-line="270" selection-start-column="0" selection-end-line="270" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Placeable/StructureSystem/Resource/OnDamaged.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
@@ -1368,16 +1366,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/DurabilitySystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="193" column="4" lean-forward="false" selection-start-line="193" selection-start-column="4" selection-end-line="193" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/MagicSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="264" column="0" lean-forward="true" selection-start-line="264" selection-start-column="0" selection-end-line="264" selection-end-column="0" />
+        <state relative-caret-position="502">
+          <caret line="163" column="71" lean-forward="false" selection-start-line="163" selection-start-column="71" selection-end-line="163" selection-end-column="71" />
           <folding />
         </state>
       </provider>
