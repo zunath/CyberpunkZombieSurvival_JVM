@@ -6,9 +6,10 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="486e3add-e013-4d47-abab-c86692a1ecb0" name="Default" comment="Fix max durability display bug on examine.">
+    <list default="true" id="486e3add-e013-4d47-abab-c86692a1ecb0" name="Default" comment="Only apply durability to">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameSystems/DurabilitySystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/DurabilitySystem.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GameSystems/SearchSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/SearchSystem.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GameSystems/SpawnSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/SpawnSystem.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -21,7 +22,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DurabilitySystem.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DurabilitySystem.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/DurabilitySystem.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="502">
@@ -84,8 +85,18 @@
       <file leaf-file-name="SpawnSystem.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/SpawnSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="409">
-              <caret line="279" column="76" lean-forward="false" selection-start-line="279" selection-start-column="76" selection-end-line="279" selection-end-column="76" />
+            <state relative-caret-position="708">
+              <caret line="280" column="0" lean-forward="true" selection-start-line="280" selection-start-column="0" selection-end-line="280" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SearchSystem.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/SearchSystem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="249" column="20" lean-forward="false" selection-start-line="249" selection-start-column="20" selection-end-line="249" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -106,16 +117,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="196">
               <caret line="26" column="21" lean-forward="false" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OnAttacked.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Placeable/StructureSystem/ConstructionSite/OnAttacked.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2034">
-              <caret line="132" column="53" lean-forward="false" selection-start-line="132" selection-start-column="53" selection-end-line="132" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -235,8 +236,6 @@
         <option value="$PROJECT_DIR$/src/main/java/GameObject/ItemGO.java" />
         <option value="$PROJECT_DIR$/src/main/java/Event/Module/OnExamine.java" />
         <option value="$PROJECT_DIR$/src/main/java/GameObject/GunGO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/GameSystems/SearchSystem.java" />
-        <option value="$PROJECT_DIR$/src/main/java/GameSystems/SpawnSystem.java" />
         <option value="$PROJECT_DIR$/src/main/java/Placeable/StructureSystem/ConstructionSite/OnAttacked.java" />
         <option value="$PROJECT_DIR$/src/main/java/GameSystems/CombatSystem.java" />
         <option value="$PROJECT_DIR$/src/main/java/Item/Repair/ArmorRepairKit.java" />
@@ -245,6 +244,8 @@
         <option value="$PROJECT_DIR$/src/main/java/Item/Repair/FirearmRepairKit.java" />
         <option value="$PROJECT_DIR$/src/main/java/Placeable/StructureSystem/Resource/OnDamaged.java" />
         <option value="$PROJECT_DIR$/src/main/java/GameSystems/DurabilitySystem.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GameSystems/SpawnSystem.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GameSystems/SearchSystem.java" />
       </list>
     </option>
   </component>
@@ -877,7 +878,14 @@
       <option name="project" value="LOCAL" />
       <updated>1519969559495</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Fix max durability display bug on examine.">
+      <created>1519970737303</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1519970737303</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TodoView">
@@ -944,7 +952,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fix typo in the Piercing Toss comment" />
     <MESSAGE value="Update module file. Added two versions: 1.69 (stable) and 1.74 (experimental)" />
     <MESSAGE value="Confer bonus inventory slots for STR upgrades. Fixes #71" />
     <MESSAGE value="Update module files. Update SQL script backup. Add 2DA files to git. Fixes #75" />
@@ -969,7 +976,8 @@
     <MESSAGE value="Remove the last dependency on the old NWNX_Events. Fix crash issue with using items. Remove SimTools from the 1.74 module." />
     <MESSAGE value="Rework durability system to use local variables instead of item properties. Change calculations on damage loss in ranged combat system. Change calculations for repair kits. Remove most random factors from durability loss." />
     <MESSAGE value="Rework durability system to use local variables instead of item properties. Change calculations on damage loss in ranged combat system. Change calculations for repair kits. Remove most random factors from durability loss. Also remove the CD key management options from the rest menu (no longer needed in EE)." />
-    <option name="LAST_COMMIT_MESSAGE" value="Rework durability system to use local variables instead of item properties. Change calculations on damage loss in ranged combat system. Change calculations for repair kits. Remove most random factors from durability loss. Also remove the CD key management options from the rest menu (no longer needed in EE)." />
+    <MESSAGE value="Fix max durability display bug on examine." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix max durability display bug on examine." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1284,22 +1292,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/SearchSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="248" column="96" lean-forward="true" selection-start-line="248" selection-start-column="96" selection-end-line="248" selection-end-column="96" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/SpawnSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="279" column="76" lean-forward="false" selection-start-line="279" selection-start-column="76" selection-end-line="279" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Placeable/StructureSystem/ConstructionSite/OnAttacked.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2034">
@@ -1368,6 +1360,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="502">
           <caret line="163" column="71" lean-forward="false" selection-start-line="163" selection-start-column="71" selection-end-line="163" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/SpawnSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="708">
+          <caret line="280" column="0" lean-forward="true" selection-start-line="280" selection-start-column="0" selection-end-line="280" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/SearchSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="249" column="20" lean-forward="false" selection-start-line="249" selection-start-column="20" selection-end-line="249" selection-end-column="20" />
           <folding />
         </state>
       </provider>

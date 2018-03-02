@@ -278,7 +278,9 @@ public class SpawnSystem {
         {
             NWObject item = NWScript.createItemOnObject(itemEntity.getResref(), creature, quantity, "");
             int maxDurability = DurabilitySystem.GetMaxItemDurability(item);
-            DurabilitySystem.SetItemDurability(item, ThreadLocalRandom.current().nextInt(1, maxDurability));
+
+            if(maxDurability > -1)
+                DurabilitySystem.SetItemDurability(item, ThreadLocalRandom.current().nextInt(1, maxDurability));
         }
     }
 
