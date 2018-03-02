@@ -10,8 +10,6 @@ import NWNX.NWNX_Events;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 @SuppressWarnings("unused")
 public class BluntRepairKit implements IScriptEventHandler {
     @Override
@@ -26,7 +24,7 @@ public class BluntRepairKit implements IScriptEventHandler {
         }
 
         int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_ITEM_REPAIR) * 2;
-        int repairAmount = ThreadLocalRandom.current().nextInt(20) + skill + 5;
+        float repairAmount = 10.0f + skill;
 
         if(MagicSystem.IsAbilityEquipped(oPC, AbilityType.Fixer))
         {

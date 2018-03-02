@@ -1,6 +1,7 @@
 package GameObject;
 
 import Enumerations.CustomItemProperty;
+import GameSystems.DurabilitySystem;
 import org.nwnx.nwnx2.jvm.NWItemProperty;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
@@ -18,12 +19,13 @@ public class GunGO {
     private int criticalRating;
     private boolean isEnhancedAmmoAvailable;
     private boolean isIncendiaryAmmoAvailable;
-    private int durability;
+    private float durability;
 
     public GunGO(NWObject gun)
     {
         this.gun = gun;
         NWItemProperty[] itemProperties = NWScript.getItemProperties(gun);
+        durability = DurabilitySystem.GetItemDurability(gun);
 
         for(NWItemProperty ipCurItemProperty : itemProperties)
         {
@@ -76,12 +78,6 @@ public class GunGO {
             {
                 if(iPropertySubType == 1) isEnhancedAmmoAvailable = true;
                 else if(iPropertySubType == 2) isIncendiaryAmmoAvailable = true;
-            }
-            // Store the item's current durability
-            else if(iPropertyType == CustomItemProperty.ItemDurability)
-            {
-                int iIndex = NWScript.getItemPropertyCostTableValue(ipCurItemProperty);
-                durability = Integer.parseInt(NWScript.get2DAString("iprp_duracost", "Label", iIndex));
             }
         }
     }
@@ -174,11 +170,11 @@ public class GunGO {
         this.isIncendiaryAmmoAvailable = isIncendiaryAmmoAvailable;
     }
 
-    public int getDurability() {
+    public float getDurability() {
         return durability;
     }
 
-    public void setDurability(int durability) {
+    public void setDurability(float durability) {
         this.durability = durability;
     }
 }

@@ -245,8 +245,8 @@ public class SearchSystem {
             if(!spawnItem.getResref().equals("") && spawnItem.getQuantity() > 0)
             {
                 NWObject foundItem = NWScript.createItemOnObject(spawnItem.getResref(), oChest, spawnItem.getQuantity(), "");
-                ItemGO itemGO = new ItemGO(foundItem);
-                itemGO.setDurability(NWScript.random(70) + 1);
+                int maxDurability = DurabilitySystem.GetMaxItemDurability(foundItem);
+                DurabilitySystem.SetItemDurability(foundItem, NWScript.random(maxDurability) + 1);
             }
         }
         else

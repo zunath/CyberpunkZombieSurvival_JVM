@@ -24,7 +24,7 @@ public class OnDamaged implements IScriptEventHandler {
         String resourceName = NWScript.getLocalString(objSelf, "RESOURCE_NAME");
         int resourceCount = NWScript.getLocalInt(objSelf, "RESOURCE_COUNT");
         String resourceProp = NWScript.getLocalString(objSelf, "RESOURCE_PROP");
-        int abilityID = -1;
+        int abilityID;
 
         if(NWScript.getLocalInt(oPC, "NOT_USING_CORRECT_WEAPON") == 1)
         {
@@ -32,15 +32,15 @@ public class OnDamaged implements IScriptEventHandler {
             return;
         }
 
-        int baseDurabilityChance = 20;
-        int durabilityChanceReduction = 0;
-        int weaponChanceBonus = 0;
+        int baseDurabilityChance = 100;
+        int durabilityChanceReduction;
+        int weaponChanceBonus;
         boolean createSecondItem = false;
 
         if(activityID == 1) // 1 = Logging
         {
             abilityID = AbilityType.Lumberjack;
-            durabilityChanceReduction = MagicSystem.IsAbilityEquipped(oPC, AbilityType.ToolExpertLogging) ? 10 : 0;
+            durabilityChanceReduction = MagicSystem.IsAbilityEquipped(oPC, AbilityType.ToolExpertLogging) ? 50 : 0;
             weaponChanceBonus = NWScript.getLocalInt(oWeapon, "LOGGING_BONUS");
 
             if(MagicSystem.IsAbilityEquipped(oPC, AbilityType.LumberCollector))
@@ -55,7 +55,7 @@ public class OnDamaged implements IScriptEventHandler {
         else if(activityID == 2) // Mining
         {
             abilityID = AbilityType.Miner;
-            durabilityChanceReduction = MagicSystem.IsAbilityEquipped(oPC, AbilityType.ToolExpertMining) ? 10 : 0;
+            durabilityChanceReduction = MagicSystem.IsAbilityEquipped(oPC, AbilityType.ToolExpertMining) ? 50 : 0;
             weaponChanceBonus = NWScript.getLocalInt(oWeapon, "MINING_BONUS");
 
             if(MagicSystem.IsAbilityEquipped(oPC, AbilityType.IronCollector))
@@ -69,7 +69,11 @@ public class OnDamaged implements IScriptEventHandler {
         else return;
 
         int durabilityLossChance = baseDurabilityChance - durabilityChanceReduction;
-        DurabilitySystem.RunItemDecay(oPC, oWeapon, durabilityLossChance, 1, true);
+
+        if(ThreadLocalRandom.current().nextInt() <= durabilityLossChance)
+        {
+            DurabilitySystem.RunItemDecay(oPC, oWeapon);
+        }
 
         int baseChance = 10;
         int bonusChance = MagicSystem.IsAbilityEquipped(oPC, abilityID) ? 10 : 0;

@@ -416,12 +416,12 @@ public class MagicSystem {
         }
     }
 
-    public static void OnModuleExamine(NWObject oExaminer, NWObject oExaminedObject)
+    public static String OnModuleExamine(String existingDescription, NWObject oExaminer, NWObject oExaminedObject)
     {
-        if(!NWScript.getIsPC(oExaminer)) return;
-        if(NWScript.getObjectType(oExaminedObject) != ObjectType.ITEM) return;
+        if(!NWScript.getIsPC(oExaminer)) return existingDescription;
+        if(NWScript.getObjectType(oExaminedObject) != ObjectType.ITEM) return existingDescription;
         String resref = NWScript.getResRef(oExaminedObject);
-        if(!resref.startsWith("ability_disc_")) return;
+        if(!resref.startsWith("ability_disc_")) return existingDescription;
         int abilityID = Integer.parseInt(resref.substring(13));
 
         MagicRepository repo = new MagicRepository();
@@ -430,8 +430,7 @@ public class MagicSystem {
         String fullDescription = entity.getDescription() + "\n\n";
         fullDescription += "Mana Cost: " + entity.getBaseManaCost();
 
-        NWScript.setDescription(oExaminedObject, fullDescription, true);
-        NWScript.setDescription(oExaminedObject, fullDescription, false);
+        return existingDescription + "\n\n" + fullDescription;
     }
 
     public static PlayerEntity RestoreMana(NWObject oPC, int amount, PlayerEntity entity)

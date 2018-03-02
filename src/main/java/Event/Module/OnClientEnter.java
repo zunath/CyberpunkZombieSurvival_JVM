@@ -66,7 +66,6 @@ public class OnClientEnter implements IScriptEventHandler {
                 NWScript.giveGoldToCreature(oPC, 10);
             });
 
-            //NWScript.createItemOnObject("fky_chat_target", oPC, 1, ""); // TODO: Update SimTools to EE
             NWObject bread = NWScript.createItemOnObject("food_bread", oPC, 1, "");
             NWScript.setName(bread, "Starting Bread");
             NWScript.setItemCursedFlag(bread, true);

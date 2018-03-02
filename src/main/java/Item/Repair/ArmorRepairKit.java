@@ -10,8 +10,6 @@ import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.constants.BaseItem;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 @SuppressWarnings("unused")
 public class ArmorRepairKit implements IScriptEventHandler {
     @Override
@@ -27,7 +25,7 @@ public class ArmorRepairKit implements IScriptEventHandler {
         }
 
         int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_ITEM_REPAIR) * 2;
-        int repairAmount = ThreadLocalRandom.current().nextInt(20) + skill + 5;
+        float repairAmount = 10.0f + skill;
 
         if(MagicSystem.IsAbilityEquipped(oPC, AbilityType.Fixer))
         {

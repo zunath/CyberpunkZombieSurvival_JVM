@@ -277,8 +277,8 @@ public class SpawnSystem {
         if(!itemEntity.getResref().equals("") && quantity > 0)
         {
             NWObject item = NWScript.createItemOnObject(itemEntity.getResref(), creature, quantity, "");
-            ItemGO itemGO = new ItemGO(item);
-            itemGO.setDurability(ThreadLocalRandom.current().nextInt(1, 20));
+            int maxDurability = DurabilitySystem.GetMaxItemDurability(item);
+            DurabilitySystem.SetItemDurability(item, ThreadLocalRandom.current().nextInt(1, maxDurability));
         }
     }
 

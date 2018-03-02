@@ -99,10 +99,9 @@ public class CombatSystem {
     {
         NWObject oPC = NWScript.getPCItemLastEquippedBy();
         NWObject oItem = NWScript.getPCItemLastEquipped();
-        ItemGO itemGO = new ItemGO(oItem);
         int iBulletCount = NWScript.getLocalInt(oItem, GUN_MAGAZINE_BULLET_COUNT);
 
-        if(iBulletCount > 0 && NWScript.getLocalInt(oItem, GUN_TEMP_GUN_EQUIPPED) == 0 && itemGO.getDurability() != 0)
+        if(iBulletCount > 0 && NWScript.getLocalInt(oItem, GUN_TEMP_GUN_EQUIPPED) == 0 && DurabilitySystem.GetItemDurability(oItem) != 0)
         {
             GunGO stGunInfo = new GunGO(oItem);
             final NWObject oAmmo;
@@ -1011,7 +1010,7 @@ public class CombatSystem {
         UpdateItemName(oWeapon1);
 
         // Fire durability system for gun
-        DurabilitySystem.RunItemDecay(oAttacker, oWeapon1, 0, 0, true);
+        DurabilitySystem.RunItemDecay(oAttacker, oWeapon1);
     }
 
     private void FireShot(NWObject oAttacker, NWObject oTarget, NWObject oWeapon, int iAnimation)
@@ -1156,18 +1155,10 @@ public class CombatSystem {
             fMultiplier = fMultiplier + 0.015f;
         }
 
-        float durabilityReductionMultiplier = 1.0f;
+        // Round current durability to nearest whole number, then calculate the multiplier based on the percent difference.
+        float percentDamaged = Math.round(DurabilitySystem.GetItemDurability(stGunInfo.getGun())) / DurabilitySystem.GetMaxItemDurability(stGunInfo.getGun());
 
-        if (stGunInfo.getDurability() <= 10)
-            durabilityReductionMultiplier = 0.1f;
-        else if(stGunInfo.getDurability() <= 30)
-            durabilityReductionMultiplier = 0.3f;
-        else if(stGunInfo.getDurability() <= 60)
-            durabilityReductionMultiplier = 0.6f;
-        else if(stGunInfo.getDurability() <= 90)
-            durabilityReductionMultiplier = 0.8f;
-
-        int iFirepower = NWScript.floatToInt(stGunInfo.getFirepower() * durabilityReductionMultiplier);
+        int iFirepower = NWScript.floatToInt(stGunInfo.getFirepower() * percentDamaged);
         int iDamage = NWScript.floatToInt(iFirepower * fMultiplier);
 
         if(bIsCriticalHit == 1){

@@ -130,7 +130,7 @@ public class OnAttacked implements IScriptEventHandler {
         else if(foundResource)
         {
             repo.Save(entity);
-            DurabilitySystem.RunItemDecay(oPC, weapon, 4, 0, true);
+            DurabilitySystem.RunItemDecay(oPC, weapon);
         }
         else
         {
