@@ -72,6 +72,7 @@ public class ProgressionSystem {
     public static final int SkillType_EVOCATION_AFFINITY         = 39;
     public static final int SkillType_ENHANCEMENT_AFFINITY       = 40;
     public static final int SkillType_RESEARCHING                = 41;
+    public static final int SkillType_TUMBLE                     = 42;
 
 
 
@@ -326,6 +327,10 @@ public class ProgressionSystem {
             case SkillType_MOVE_SILENTLY:
                 int moveSilently = NWScript.getSkillRank(Skill.MOVE_SILENTLY, oPC, true) + 1;
                 NWNX_Creature.SetSkillRank(oPC, Skill.MOVE_SILENTLY, moveSilently);
+                break;
+            case SkillType_TUMBLE:
+                int tumble = NWScript.getSkillRank(Skill.TUMBLE, oPC, true) + 1;
+                NWNX_Creature.SetSkillRank(oPC, Skill.TUMBLE, tumble);
                 break;
             case SkillType_SPRING_ATTACK:
                 NWNX_Creature.AddFeatByLevel(oPC, Feat.SPRING_ATTACK, 0);
