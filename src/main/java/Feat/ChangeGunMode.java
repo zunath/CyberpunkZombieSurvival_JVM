@@ -10,7 +10,7 @@ public class ChangeGunMode implements IScriptEventHandler {
     @Override
     public void runScript(NWObject objSelf) {
         CombatSystem combatSystem = new CombatSystem();
-        NWObject oItem = NWNX_Events.GetEventItem();
+        NWObject oItem = NWNX_Events.OnItemUsed_GetItem();
         combatSystem.ChangeWeaponMode(oItem);
     }
 }

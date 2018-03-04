@@ -2,7 +2,6 @@ package Event.Module;
 
 import Bioware.XP2;
 import Common.IScriptEventHandler;
-import GameSystems.InventorySystem;
 import Helper.ScriptHelper;
 import NWNX.NWNX_Events;
 import org.nwnx.nwnx2.jvm.NWObject;
@@ -14,34 +13,14 @@ import org.nwnx.nwnx2.jvm.constants.IpConst;
 public class OnUseItem implements IScriptEventHandler {
     @Override
     public void runScript(NWObject oPC) {
-
-        HandleGeneralItemUses(oPC);
         HandleSpecificItemUses(oPC);
-
-    }
-
-    private void HandleGeneralItemUses(final NWObject oPC)
-    {
-        NWObject oItem = NWNX_Events.GetEventItem();
-
-        String className = NWScript.getLocalString(oItem, "JAVA_SCRIPT");
-        if(className.equals("")) return;
-
-        NWNX_Events.BypassEvent();
-
-        // Remove "Item." prefix if it exists.
-        if(className.startsWith("Item."))
-            className = className.substring(5);
-        ScriptHelper.RunJavaScript(oPC, "Item." + className);
-
-        Scheduler.delay(oPC, 1, () -> InventorySystem.RunItemLimitCheck(oPC));
     }
 
     private void HandleSpecificItemUses(NWObject oPC)
     {
-        NWObject oItem = NWNX_Events.GetEventItem();
+        NWObject oItem = NWNX_Events.OnItemUsed_GetItem();
         String sTag = NWScript.getTag(oItem);
-        int iSubtype = NWNX_Events.GetEventSubType();
+        int iSubtype = NWNX_Events.OnItemUsed_GetItemPropertyIndex();
 
         // Change Ammo Priority Property
         boolean bAmmoPriority = XP2.IPGetItemHasProperty(oItem, NWScript.itemPropertyCastSpell(548, IpConst.CASTSPELL_NUMUSES_UNLIMITED_USE), -1, false);
@@ -154,7 +133,6 @@ public class OnUseItem implements IScriptEventHandler {
             }
         }
         // Fire tag based scripting in all other cases (I.E: Don't bypass this event)
-        // Allows for backwards compatibility until we convert other systems over to Linux
         else
         {
             bBypassEvent = false;
@@ -163,7 +141,7 @@ public class OnUseItem implements IScriptEventHandler {
         // The entirety of the OnActivateItem will be skipped if bBypassEvent is true.
         if(bBypassEvent)
         {
-            NWNX_Events.BypassEvent();
+            Scheduler.assign(oPC, () -> NWScript.clearAllActions(false));
         }
     }
 

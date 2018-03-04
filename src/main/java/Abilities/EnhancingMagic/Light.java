@@ -9,8 +9,8 @@ import org.nwnx.nwnx2.jvm.NWEffect;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.constants.Ability;
-
-import static org.nwnx.nwnx2.jvm.constants.All.*;
+import org.nwnx.nwnx2.jvm.constants.DurationType;
+import org.nwnx.nwnx2.jvm.constants.VfxDur;
 
 // Grants an aura of light around a target for a base duration of 120 seconds.
 // The duration is increased by 20 seconds for each point of holy affinity skill.
@@ -56,24 +56,24 @@ public class Light implements IAbility {
         float baseDuration = 120.0f;
         float bonusDuration = (skill + wisdom + itemBonus) * 20.0f;
         float duration = baseDuration + bonusDuration;
-        int vfxID = VFX_DUR_LIGHT_WHITE_5;
+        int vfxID = VfxDur.LIGHT_WHITE_5;
 
         if(itemBonus >= 20)
         {
-            vfxID = VFX_DUR_LIGHT_WHITE_20;
+            vfxID = VfxDur.LIGHT_WHITE_20;
         }
         else if(itemBonus >= 10)
         {
-            vfxID = VFX_DUR_LIGHT_WHITE_15;
+            vfxID = VfxDur.LIGHT_WHITE_15;
         }
         else if(itemBonus >= 5)
         {
-            vfxID = VFX_DUR_LIGHT_WHITE_10;
+            vfxID = VfxDur.LIGHT_WHITE_10;
         }
 
         NWEffect effect = NWScript.effectVisualEffect(vfxID, false);
 
-        NWScript.applyEffectToObject(DURATION_TYPE_TEMPORARY, effect, oTarget, duration);
+        NWScript.applyEffectToObject(DurationType.TEMPORARY, effect, oTarget, duration);
     }
 
     @Override

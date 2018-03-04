@@ -1,8 +1,9 @@
 package Abilities.Passive;
 
 import Abilities.IAbility;
-import NWNX.NWNX_Funcs;
+import NWNX.NWNX_Creature;
 import org.nwnx.nwnx2.jvm.NWObject;
+import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.constants.Skill;
 
 // Increases hide and move silently by 2 points.
@@ -39,15 +40,20 @@ public class Thief implements IAbility {
 
     @Override
     public void OnEquip(NWObject oPC) {
-        NWNX_Funcs.ModifySkillRank(oPC, Skill.MOVE_SILENTLY, 2);
-        NWNX_Funcs.ModifySkillRank(oPC, Skill.HIDE, 2);
+        int hideSkill = NWScript.getSkillRank(Skill.HIDE, oPC, true) + 2;
+        int moveSilentlySkill = NWScript.getSkillRank(Skill.MOVE_SILENTLY, oPC, true) + 2;
 
+        NWNX_Creature.SetSkillRank(oPC, Skill.HIDE, hideSkill);
+        NWNX_Creature.SetSkillRank(oPC, Skill.MOVE_SILENTLY, moveSilentlySkill);
     }
 
     @Override
     public void OnUnequip(NWObject oPC) {
-        NWNX_Funcs.ModifySkillRank(oPC, Skill.MOVE_SILENTLY, -2);
-        NWNX_Funcs.ModifySkillRank(oPC, Skill.HIDE, -2);
+        int hideSkill = NWScript.getSkillRank(Skill.HIDE, oPC, true) - 2;
+        int moveSilentlySkill = NWScript.getSkillRank(Skill.MOVE_SILENTLY, oPC, true) - 2;
+
+        NWNX_Creature.SetSkillRank(oPC, Skill.HIDE, hideSkill);
+        NWNX_Creature.SetSkillRank(oPC, Skill.MOVE_SILENTLY, moveSilentlySkill);
     }
 
     @Override

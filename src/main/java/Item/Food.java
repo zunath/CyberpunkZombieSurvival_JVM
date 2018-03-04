@@ -14,7 +14,7 @@ import org.nwnx.nwnx2.jvm.NWScript;
 public class Food implements IScriptEventHandler {
     @Override
     public void runScript(NWObject oPC) {
-        NWObject oItem = NWNX_Events.GetEventItem();
+        NWObject oItem = NWScript.getItemActivated();
         int amount = NWScript.getLocalInt(oItem, "HUNGER_RESTORE");
 
         // Snake Eater ability grants +50% to hunger restore.
@@ -24,7 +24,6 @@ public class Food implements IScriptEventHandler {
         }
 
         FoodSystem.IncreaseHungerLevel(oPC, amount);
-        NWScript.setItemCharges(oItem, NWScript.getItemCharges(oItem) - 1);
 
         if(QuestSystem.GetPlayerQuestJournalID(oPC, QuestID.BootCampEating) == 1)
         {

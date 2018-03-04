@@ -20,12 +20,6 @@ public class OnClientLeave implements IScriptEventHandler {
         }
 
 		SaveCharacter(pc);
-
-		// SimTools
-		NWScript.executeScript("fky_chat_clexit", objSelf);
-		// Radio GameSystems - Also used for NWNX chat (Different from SimTools)
-		radioSystem.OnModuleLeave();
-
 		ActivityLoggingSystem.OnModuleClientLeave();
 	}
 

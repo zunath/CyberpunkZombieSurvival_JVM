@@ -6,12 +6,9 @@ import Entities.LootTableEntity;
 import Entities.LootTableItemEntity;
 import Entities.SpawnTableCreatureEntity;
 import Entities.SpawnTableEntity;
-import GameObject.ItemGO;
 import GameSystems.Models.SpawnModel;
 import Helper.LocalArray;
 import Helper.MathHelper;
-import NWNX.NWNX_Funcs;
-import NWNX.NWNX_TMI;
 import org.nwnx.nwnx2.jvm.NWLocation;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
@@ -53,7 +50,7 @@ public class SpawnSystem {
     {
         NWObject oArea = null;
 
-        NWObject area = NWNX_Funcs.GetFirstArea();
+        NWObject area = NWScript.getFirstArea();
         while(NWScript.getIsObjectValid(area))
         {
             if(Objects.equals(NWScript.getResRef(area), areaResref))
@@ -62,7 +59,7 @@ public class SpawnSystem {
                 break;
             }
 
-            area = NWNX_Funcs.GetNextArea();
+            area = NWScript.getNextArea();
         }
 
         if(oArea == null) return;
@@ -136,7 +133,7 @@ public class SpawnSystem {
                 pcAreas.add(areaResref);
         }
 
-        NWObject area = NWNX_Funcs.GetFirstArea();
+        NWObject area = NWScript.getFirstArea();
         while(NWScript.getIsObjectValid(area))
         {
             String areaResref = NWScript.getResRef(area);
@@ -161,7 +158,7 @@ public class SpawnSystem {
             }
 
 
-            area = NWNX_Funcs.GetNextArea();
+            area = NWScript.getNextArea();
         }
     }
 
@@ -180,10 +177,7 @@ public class SpawnSystem {
 
     public void OnModuleLoad()
     {
-        int tmiLimit = NWNX_TMI.GetTMILimit();
-        NWNX_TMI.SetTMILimit(7000000);
-
-        NWObject oArea = NWNX_Funcs.GetFirstArea();
+        NWObject oArea = NWScript.getFirstArea();
 
         while(NWScript.getIsObjectValid(oArea))
         {
@@ -214,11 +208,8 @@ public class SpawnSystem {
             // Mark the unique identifier (the resref)
             NWScript.setLocalString(oArea, "ZSS_WAYPOINT_NAME", sSpawnID);
 
-            oArea = NWNX_Funcs.GetNextArea();
+            oArea = NWScript.getNextArea();
         }
-
-        // Set the TMI limit back to normal
-        NWNX_TMI.SetTMILimit(tmiLimit);
     }
 
     public void OnCreatureDeath(NWObject creature)
@@ -285,8 +276,10 @@ public class SpawnSystem {
         if(!itemEntity.getResref().equals("") && quantity > 0)
         {
             NWObject item = NWScript.createItemOnObject(itemEntity.getResref(), creature, quantity, "");
-            ItemGO itemGO = new ItemGO(item);
-            itemGO.setDurability(ThreadLocalRandom.current().nextInt(1, 20));
+            int maxDurability = DurabilitySystem.GetMaxItemDurability(item);
+
+            if(maxDurability > -1)
+                DurabilitySystem.SetItemDurability(item, ThreadLocalRandom.current().nextInt(1, maxDurability));
         }
     }
 

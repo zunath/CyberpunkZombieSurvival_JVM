@@ -1,13 +1,12 @@
 package Item.Medical;
 
+import Common.IScriptEventHandler;
 import Enumerations.AbilityType;
 import GameObject.PlayerGO;
 import GameSystems.MagicSystem;
-import Helper.ItemHelper;
-import Common.IScriptEventHandler;
-import NWNX.NWNX_Events;
-import NWNX.NWNX_Funcs;
 import GameSystems.ProgressionSystem;
+import Helper.ItemHelper;
+import NWNX.NWNX_Player;
 import org.nwnx.nwnx2.jvm.NWEffect;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
@@ -21,7 +20,7 @@ public class MedicalSupplies implements IScriptEventHandler {
     @Override
     public void runScript(final NWObject oPC) {
 
-        final NWObject oTarget = NWNX_Events.GetEventTarget();
+        NWObject oTarget = NWScript.getItemActivatedTarget();
         final PlayerGO pcGO = new PlayerGO(oPC);
 
         if(pcGO.isBusy())
@@ -60,10 +59,10 @@ public class MedicalSupplies implements IScriptEventHandler {
         final float delay = 12.0f - (skill * 0.5f);
 
 
-        final NWObject item = NWNX_Events.GetEventItem();
+        final NWObject item = NWScript.getItemActivated();
         final int restoreAmount = 1 + NWScript.getLocalInt(item, "ENHANCED_AMOUNT");
 
-        NWNX_Funcs.StartTimingBar(oPC, (int) delay, "");
+        NWNX_Player.StartGuiTimingBar(oPC, (int) delay, "");
         NWScript.sendMessageToPC(oPC, "You begin treating " + NWScript.getName(oTarget, false) + "'s wounds.");
         if(!oPC.equals(oTarget))
             NWScript.sendMessageToPC(oTarget, NWScript.getName(oPC, false) + " begins treating your wounds.");

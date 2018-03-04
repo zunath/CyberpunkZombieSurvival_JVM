@@ -8,7 +8,6 @@ import Enumerations.CustomAnimationType;
 import Enumerations.GunType;
 import Enumerations.ProfessionType;
 import GameObject.GunGO;
-import GameObject.ItemGO;
 import GameObject.PlayerGO;
 import Helper.ColorToken;
 import NWNX.NWNX_Events;
@@ -99,10 +98,9 @@ public class CombatSystem {
     {
         NWObject oPC = NWScript.getPCItemLastEquippedBy();
         NWObject oItem = NWScript.getPCItemLastEquipped();
-        ItemGO itemGO = new ItemGO(oItem);
         int iBulletCount = NWScript.getLocalInt(oItem, GUN_MAGAZINE_BULLET_COUNT);
 
-        if(iBulletCount > 0 && NWScript.getLocalInt(oItem, GUN_TEMP_GUN_EQUIPPED) == 0 && itemGO.getDurability() != 0)
+        if(iBulletCount > 0 && NWScript.getLocalInt(oItem, GUN_TEMP_GUN_EQUIPPED) == 0 && DurabilitySystem.GetItemDurability(oItem) != 0)
         {
             GunGO stGunInfo = new GunGO(oItem);
             final NWObject oAmmo;
@@ -192,7 +190,7 @@ public class CombatSystem {
 
     public void OnModuleAttack(final NWObject oAttacker)
     {
-        final NWObject oTarget = NWNX_Events.GetEventTarget();
+        final NWObject oTarget = NWNX_Events.OnCombatRoundStart_GetTarget();
         PlayerGO pcGO = new PlayerGO(oAttacker);
 
         if(!PVPSanctuarySystem.IsPVPAttackAllowed(oAttacker, oTarget)) return;
@@ -281,7 +279,7 @@ public class CombatSystem {
 
         if(bUsingFirearm)
         {
-            NWNX_Events.BypassEvent();
+            Scheduler.delay(oAttacker, 1, () -> NWScript.clearAllActions(false));
 
             // Mode is determined by the right hand weapon. Figure out how many shots to fire based on mode
             if(NWScript.getLocalInt(oRightHand, "GUN_CUR_RATE_OF_FIRE") == 1)
@@ -1011,7 +1009,7 @@ public class CombatSystem {
         UpdateItemName(oWeapon1);
 
         // Fire durability system for gun
-        DurabilitySystem.RunItemDecay(oAttacker, oWeapon1, 0, 0, true);
+        DurabilitySystem.RunItemDecay(oAttacker, oWeapon1);
     }
 
     private void FireShot(NWObject oAttacker, NWObject oTarget, NWObject oWeapon, int iAnimation)
@@ -1156,18 +1154,10 @@ public class CombatSystem {
             fMultiplier = fMultiplier + 0.015f;
         }
 
-        float durabilityReductionMultiplier = 1.0f;
+        // Round current durability to nearest whole number, then calculate the multiplier based on the percent difference.
+        float percentDamaged = Math.round(DurabilitySystem.GetItemDurability(stGunInfo.getGun())) / DurabilitySystem.GetMaxItemDurability(stGunInfo.getGun());
 
-        if (stGunInfo.getDurability() <= 10)
-            durabilityReductionMultiplier = 0.1f;
-        else if(stGunInfo.getDurability() <= 30)
-            durabilityReductionMultiplier = 0.3f;
-        else if(stGunInfo.getDurability() <= 60)
-            durabilityReductionMultiplier = 0.6f;
-        else if(stGunInfo.getDurability() <= 90)
-            durabilityReductionMultiplier = 0.8f;
-
-        int iFirepower = NWScript.floatToInt(stGunInfo.getFirepower() * durabilityReductionMultiplier);
+        int iFirepower = NWScript.floatToInt(stGunInfo.getFirepower() * percentDamaged);
         int iDamage = NWScript.floatToInt(iFirepower * fMultiplier);
 
         if(bIsCriticalHit == 1){
@@ -1237,7 +1227,7 @@ public class CombatSystem {
             {
                 if(oShapeTarget != oAttacker && !NWScript.getIsDead(oShapeTarget) && !NWScript.getIsDead(oAttacker))
                 {
-                    if(NWScript.random(30) > (NWScript.getAC(oShapeTarget) + (numberAttacked*2)) - iShotgunAccuracy)
+                    if(NWScript.random(30) > (NWScript.getAC(oShapeTarget, 0) + (numberAttacked*2)) - iShotgunAccuracy)
                     {
                         int iDamage = CalculateDamage(oAttacker, oShapeTarget, stGunInfo, iShotgunSkill, false);
 
@@ -1287,7 +1277,7 @@ public class CombatSystem {
         int bMiss;
         float fClosestDistance = 0.0f;
         float fStunDuration = 0.0f;
-        int iTargetAC = NWScript.getAC(oTarget);
+        int iTargetAC = NWScript.getAC(oTarget, 0);
 
         // Get the correct skill, based on the type of firearm being used
         // Also determine how long the stun NWEffect lasts, based on weapon

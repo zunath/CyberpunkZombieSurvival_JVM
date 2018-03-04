@@ -123,6 +123,10 @@ public class MigrationSystem {
     {
         switch(versionNumber)
         {
+            /*
+                TODO: Implement EE migration.
+                Should handle setting players to the correct standard class.
+            */
         }
     }
 }

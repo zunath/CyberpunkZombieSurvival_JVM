@@ -3,7 +3,6 @@ package Dialog;
 import GameObject.PlayerGO;
 import Helper.ErrorHelper;
 import Common.IScriptEventHandler;
-import NWNX.NWNX_Events;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 
@@ -15,11 +14,9 @@ public class ActionTaken implements IScriptEventHandler {
         PlayerGO pcGO = new PlayerGO(oPC);
         String uuid = pcGO.getUUID();
         PlayerDialog dialog = DialogManager.loadPlayerDialog(uuid);
-        int gender = NWScript.getGender(oPC);
-        int nodeID = NWNX_Events.GetSelectedNodeID();
+        int nodeID = NWScript.getLocalInt(oNPC, "ACTIONS_TAKEN_NODE");
         int selectionNumber = nodeID + 1;
-        String nodeText = NWNX_Events.GetSelectedNodeText(NWNX_Events.LANGUAGE_ENGLISH, gender);
-        int responseID = NWNX_Events.GetSelectedNodeID() + (DialogManager.NumberOfResponsesPerPage * dialog.getPageOffset());
+        int responseID = nodeID + (DialogManager.NumberOfResponsesPerPage * dialog.getPageOffset());
 
         if(selectionNumber == DialogManager.NumberOfResponsesPerPage + 1) // Next Page
         {

@@ -9,9 +9,8 @@ import org.nwnx.nwnx2.jvm.NWEffect;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.constants.Ability;
+import org.nwnx.nwnx2.jvm.constants.DurationType;
 import org.nwnx.nwnx2.jvm.constants.SavingThrow;
-
-import static org.nwnx.nwnx2.jvm.constants.All.DURATION_TYPE_TEMPORARY;
 
 // Forces a single target to turn if they fail the will save check.
 // Base duration is 6 seconds.
@@ -65,7 +64,7 @@ public class TurnUndead implements IAbility {
 
         if(NWScript.willSave(oTarget, willSaveDC, SavingThrow.TYPE_DIVINE, oPC) == 0)
         {
-            NWScript.applyEffectToObject(DURATION_TYPE_TEMPORARY, effect, oTarget, duration);
+            NWScript.applyEffectToObject(DurationType.TEMPORARY, effect, oTarget, duration);
         }
 
     }

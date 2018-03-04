@@ -3,8 +3,6 @@ package Dialog;
 import GameObject.PlayerGO;
 import Helper.ErrorHelper;
 import Common.IScriptEventHandler;
-import NWNX.NWNX_Events;
-import NWNX.NodeType;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 
@@ -17,13 +15,12 @@ public class AppearsWhen implements IScriptEventHandler {
         String uuid = pcGO.getUUID();
         PlayerDialog dialog = DialogManager.loadPlayerDialog(uuid);
         DialogPage page = dialog.getCurrentPage();
-        int nodeID = NWNX_Events.GetCurrentNodeID();
+        int nodeID = NWScript.getLocalInt(oNPC, "APPEARS_WHEN_NODE");
         int currentSelectionNumber = nodeID + 1;
-        int nodeType = NWNX_Events.GetCurrentNodeType();
+        int nodeType = NWScript.getLocalInt(oNPC, "APPEARS_WHEN_TYPE");
         int gender = NWScript.getGender(oPC);
         boolean displayNode = false;
-        String nodeText = NWNX_Events.GetCurrentNodeText(NWNX_Events.LANGUAGE_ENGLISH, gender);
-        String newNodeText = nodeText;
+        String newNodeText = "";
 
         if(currentSelectionNumber == DialogManager.NumberOfResponsesPerPage + 1) // Next Page
         {
@@ -41,7 +38,7 @@ public class AppearsWhen implements IScriptEventHandler {
                 displayNode = true;
             }
         }
-        else if(nodeType == NodeType.ReplyNode)
+        else if(nodeType == 2)
         {
             int responseID = (dialog.getPageOffset() * DialogManager.NumberOfResponsesPerPage) + nodeID;
 
@@ -54,7 +51,7 @@ public class AppearsWhen implements IScriptEventHandler {
                 }
             }
         }
-        else if(nodeType == NodeType.StartingNode || nodeType == NodeType.EntryNode)
+        else if(nodeType == 1)
         {
             if(NWScript.getLocalInt(oPC, "DIALOG_SYSTEM_INITIALIZE_RAN") != 1)
             {

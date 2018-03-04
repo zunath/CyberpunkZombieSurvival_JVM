@@ -2,7 +2,7 @@ package Dialog;
 
 import GameObject.PlayerGO;
 import Helper.ErrorHelper;
-import NWNX.NWNX_Funcs;
+import NWNX.NWNX_Object;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.Scheduler;
@@ -15,7 +15,7 @@ public class DialogManager {
     public static final int NumberOfResponsesPerPage = 12;
     private static HashMap<String, PlayerDialog> playerDialogs;
 
-    public static void storePlayerDialog(String uuid, PlayerDialog dialog)
+    private static void storePlayerDialog(String uuid, PlayerDialog dialog)
     {
         if(playerDialogs == null)
         {
@@ -33,14 +33,7 @@ public class DialogManager {
             playerDialogs = new HashMap<>();
         }
 
-        if(playerDialogs.containsKey(uuid))
-        {
-            return playerDialogs.get(uuid);
-        }
-        else
-        {
-            return null;
-        }
+        return playerDialogs.getOrDefault(uuid, null);
     }
 
     public static void removePlayerDialog(String uuid)
@@ -71,7 +64,7 @@ public class DialogManager {
         try {
             loadConversation(oPC, oTalkTo, conversationName);
 
-            String convo = NWNX_Funcs.GetConversation(oTalkTo);
+            String convo = NWNX_Object.GetDialogResref(oTalkTo);
 
             if(Objects.equals(convo, "") || Objects.equals(convo, "0"))
             {

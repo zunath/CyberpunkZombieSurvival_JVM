@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jar" build-on-make="true" name="CZS">
-    <output-path>$USER_HOME$/nwn/jvm</output-path>
+    <output-path>C:/nwn-ee/jvm</output-path>
     <root id="archive" name="CZS.jar">
       <element id="module-output" name="CZS_JVM" />
     </root>

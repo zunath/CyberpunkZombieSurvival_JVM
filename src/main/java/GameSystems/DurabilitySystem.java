@@ -4,31 +4,31 @@ import Bioware.AddItemPropertyPolicy;
 import Bioware.XP2;
 import Common.Constants;
 import Enumerations.CustomBaseItemType;
-import GameObject.ItemGO;
+import Enumerations.CustomItemProperty;
 import Helper.ColorToken;
 import org.nwnx.nwnx2.jvm.NWItemProperty;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.Scheduler;
 import org.nwnx.nwnx2.jvm.constants.BaseItem;
-import org.nwnx.nwnx2.jvm.constants.InventorySlot;
 import org.nwnx.nwnx2.jvm.constants.IpConst;
 import org.nwnx.nwnx2.jvm.constants.ItemProperty;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class DurabilitySystem {
-    private static final int DurabilityLossChance = 2;
+    private static final String MaxDurabilityVariable = "DURABILITY_MAX";
+    private static final String CurrentDurabilityVariable = "DURABILITY_CURRENT";
+    private static final String InitializedDurabilityVariable = "DURABILITY_INITIALIZED";
 
     public static void OnModuleEquip() {
         NWObject oPC = NWScript.getPCItemLastEquippedBy();
         final NWObject oItem = NWScript.getPCItemLastEquipped();
-        ItemGO itemGO = new ItemGO(oItem);
-        int iDurability = itemGO.getDurability();
+        float durability = GetItemDurability(oItem);
 
-        if (iDurability <= 0 && iDurability != -1) {
+        if (durability <= 0 && durability != -1) {
             Scheduler.assign(oPC, () -> {
                 NWScript.clearAllActions(false);
                 NWScript.actionUnequipItem(oItem);
@@ -55,10 +55,22 @@ public class DurabilitySystem {
                 XP2.IPSafeAddItemProperty(oItem, NWScript.itemPropertyOnHitCastSpell(IpConst.ONHIT_CASTSPELL_ONHIT_UNIQUEPOWER, 40), 0.0f, AddItemPropertyPolicy.ReplaceExisting, true, true);
             }
         }
-
     }
 
-    public static void RunItemDecay(NWObject oPC, NWObject oItem, int decayChanceModifier, int decayAmountModifier, boolean displayMessage) {
+    public static String OnModuleExamine(String existingDescription, NWObject examinedObject) {
+        if(!GetValidDurabilityTypes().contains(NWScript.getBaseItemType(examinedObject))) return existingDescription;
+
+        String description = ColorToken.Orange() + "Durability: " + ColorToken.End();
+        float durability = GetItemDurability(examinedObject);
+        if(durability <= 0.0f) description += ColorToken.Red() + durability + ColorToken.End();
+        else description += ColorToken.White() + FormatDurability(durability) + ColorToken.End();
+
+        description += ColorToken.White() + " / " + GetMaxItemDurability(examinedObject) + ColorToken.End();
+
+        return existingDescription + "\n\n" + description;
+    }
+
+    public static void RunItemDecay(NWObject oPC, NWObject oItem) {
         // Item decay doesn't run for any items if Invincible is in effect
         // Or if the item is unbreakable (e.g profession items)
         // Or if the item is not part of the valid list of base item types
@@ -66,66 +78,124 @@ public class DurabilitySystem {
             NWScript.getLocalInt(oItem, "UNBREAKABLE") == 1 ||
             !GetValidDurabilityTypes().contains(NWScript.getBaseItemType(oItem)))
             return;
-        ItemGO itemGO = new ItemGO(oItem);
 
-        int iDurability = itemGO.getDurability();
-
-        int iRoll = ThreadLocalRandom.current().nextInt(1, 100);
+        float durability = GetItemDurability(oItem);
         String sItemName = NWScript.getName(oItem, true);
-        // Take the base decay loss chance and subtract it by player's skill in Maintenance.
-        int iDC = DurabilityLossChance + decayChanceModifier;
 
-        // Player failed the roll - lower durability by a few points
-        if (iRoll <= iDC) {
-            // Lose 1-4 points plus iDecayAmountModifier
-            iRoll = NWScript.random(4) + 1 + decayAmountModifier;
-            if (iRoll < 1) {
-                iRoll = 1;
-            }
+        // Reduce by 0.001 each time it's run. Player only receives notifications when it drops a full point.
+        // I.E: Dropping from 29.001 to 29.
+        // Note that players only see two decimal places in-game on purpose.
+        durability -= 0.001f;
+        boolean displayMessage = durability % 1 == 0;
 
-            iDurability = iDurability - iRoll;
-            // Durability has hit 0% - force PC to unequip the item immediately by copying it and destroying the old one
-            if (iDurability <= 0) {
-                NWObject oCopy = NWScript.copyItem(oItem, oPC, true);
-                NWScript.destroyObject(oItem, 0.0f);
-                ItemGO copyGO = new ItemGO(oCopy);
-                copyGO.setDurability(0);
+        if(displayMessage)
+        {
+            NWScript.sendMessageToPC(oPC, ColorToken.Red() + "Your " + sItemName + " has been damaged. (" + FormatDurability(durability) + " / " + GetMaxItemDurability(oItem) + ColorToken.End());
+        }
 
-                NWScript.deleteLocalInt(oCopy, Constants.GunEquippedTemporaryVariable);
+        if(durability <= 0.00f)
+        {
+            NWObject oCopy = NWScript.copyItem(oItem, oPC, true);
+            NWScript.destroyObject(oItem, 0.0f);
+            SetItemDurability(oCopy, 0);
 
-                if (displayMessage) {
-                    NWScript.sendMessageToPC(oPC, ColorToken.Red() + "Your " + sItemName + " has broken!" + ColorToken.End());
-                }
-            }
-            // Update the item's durability and change its name
-            else {
-                // Inform player that their weapon has decayed
-                if (displayMessage) {
-                    NWScript.sendMessageToPC(oPC, ColorToken.Red() + "Your " + sItemName + " has been damaged. (" + iDurability + "%)" + ColorToken.End());
-                }
-                itemGO.setDurability(iDurability);
-            }
+            NWScript.deleteLocalInt(oCopy, Constants.GunEquippedTemporaryVariable);
+            NWScript.sendMessageToPC(oPC, ColorToken.Red() + "Your " + sItemName + " has broken!" + ColorToken.End());
+        }
+        else {
+            SetItemDurability(oItem, durability);
         }
     }
 
-    public static void RunItemRepair(NWObject oPC, NWObject oItem, int amount) {
-        // Prevent repairing for less than 1%
-        if (amount < 1) return;
-        ItemGO itemGO = new ItemGO(oItem);
+    private static String FormatDurability(float durability)
+    {
+        DecimalFormat df = new DecimalFormat();
+        df.setMaximumFractionDigits(2);
+        return df.format(durability);
+    }
+
+    public static void RunItemRepair(NWObject oPC, NWObject oItem, float amount) {
+        // Prevent repairing for less than 0.01
+        if (amount < 0.01f) return;
 
         // Item has no durability - inform player they can't repair it
-        if (itemGO.getDurability() == -1) {
+        if (GetItemDurability(oItem) == -1) {
             NWScript.sendMessageToPC(oPC, ColorToken.Red() + "You cannot repair that item." + ColorToken.End());
             return;
         }
 
-        itemGO.setDurability(itemGO.getDurability() + amount);
-
-        NWScript.sendMessageToPC(oPC, ColorToken.Green() + "You repaired your " + NWScript.getName(oItem, true) + ". (" + itemGO.getDurability() + "%)" + ColorToken.End());
+        SetItemDurability(oItem, GetItemDurability(oItem) + amount);
+        String durMessage = FormatDurability(GetItemDurability(oItem)) + " / " + GetMaxItemDurability(oItem);
+        NWScript.sendMessageToPC(oPC, ColorToken.Green() + "You repaired your " + NWScript.getName(oItem, true) + ". (" + durMessage + ")" + ColorToken.End());
     }
 
+    public static int GetMaxItemDurability(NWObject item)
+    {
+        int itemType = NWScript.getBaseItemType(item);
+        if(!DurabilitySystem.GetValidDurabilityTypes().contains(itemType))
+            return -1;
 
-    public static List<Integer> GetValidDurabilityTypes() {
+        return NWScript.getLocalInt(item, MaxDurabilityVariable) <= 0 ? 30 : NWScript.getLocalInt(item, MaxDurabilityVariable);
+    }
+
+    public static float GetItemDurability(NWObject item)
+    {
+        int itemType = NWScript.getBaseItemType(item);
+        if(!DurabilitySystem.GetValidDurabilityTypes().contains(itemType))
+            return -1;
+        InitializeDurability(item);
+
+        return NWScript.getLocalFloat(item, CurrentDurabilityVariable);
+    }
+
+    public static void SetItemDurability(NWObject item, float value)
+    {
+        int itemType = NWScript.getBaseItemType(item);
+        if(!DurabilitySystem.GetValidDurabilityTypes().contains(itemType))
+            return;
+        InitializeDurability(item);
+
+        int maxDurability = GetMaxItemDurability(item);
+        if(maxDurability == -1) maxDurability = 30;
+
+        if(value > maxDurability) value = maxDurability;
+        else if(value < 0) value = 0;
+
+        NWScript.setLocalFloat(item, CurrentDurabilityVariable, value);
+    }
+
+    private static void InitializeDurability(NWObject item)
+    {
+        RemoveOldItemProperty(item);
+        if(!DurabilitySystem.GetValidDurabilityTypes().contains(NWScript.getBaseItemType(item))) return;
+
+        // If item hasn't been initialized and doesn't have a current durability value,
+        // set its current value to the maximum amount. Then mark it as initialized so this doesn't fire again.
+        if(NWScript.getLocalInt(item, InitializedDurabilityVariable) <= 0 &&
+                NWScript.getLocalFloat(item, CurrentDurabilityVariable) <= 0.0f)
+        {
+            int maxDurability = GetMaxItemDurability(item);
+            maxDurability = maxDurability <= 0 ? 30 : maxDurability;
+            NWScript.setLocalFloat(item, CurrentDurabilityVariable, maxDurability);
+        }
+        NWScript.setLocalInt(item, InitializedDurabilityVariable, 1);
+    }
+
+    private static void RemoveOldItemProperty(NWObject item)
+    {
+        // NOTE: When we moved to NWN: EE, we had to rewrite the durability system as it was not compatible with the new NWNX version.
+        // This check is done to remove the old item property since we now store durability as a variable on the item instead.
+        for(NWItemProperty ip : NWScript.getItemProperties(item))
+        {
+            if(NWScript.getItemPropertyType(ip) == CustomItemProperty.ItemDurability)
+            {
+                NWScript.removeItemProperty(item, ip);
+            }
+        }
+
+    }
+
+    private static List<Integer> GetValidDurabilityTypes() {
         Integer[] result = {
                 BaseItem.ARMOR,
                 BaseItem.BASTARDSWORD,
@@ -192,17 +262,9 @@ public class DurabilitySystem {
         NWObject oSpellOrigin = NWScript.getSpellCastItem();
         int itemType = NWScript.getBaseItemType(oSpellOrigin);
         // Durability system
-        if(itemType == BaseItem.ARMOR)
+        if(DurabilitySystem.GetValidDurabilityTypes().contains(itemType))
         {
-            NWObject oBelt = NWScript.getItemInSlot(InventorySlot.BELT, oTarget);
-            if(!oBelt.equals(NWObject.INVALID))
-            {
-                DurabilitySystem.RunItemDecay(oTarget, oBelt, 18, ThreadLocalRandom.current().nextInt(2), true);
-            }
-        }
-        else if(DurabilitySystem.GetValidDurabilityTypes().contains(itemType))
-        {
-            DurabilitySystem.RunItemDecay(oTarget, oSpellOrigin, 3, ThreadLocalRandom.current().nextInt(2), true);
+            DurabilitySystem.RunItemDecay(oTarget, oSpellOrigin);
         }
     }
 

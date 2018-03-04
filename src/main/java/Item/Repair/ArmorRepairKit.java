@@ -5,7 +5,6 @@ import Enumerations.AbilityType;
 import GameSystems.DurabilitySystem;
 import GameSystems.MagicSystem;
 import GameSystems.ProgressionSystem;
-import NWNX.NWNX_Events;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.constants.BaseItem;
@@ -18,8 +17,8 @@ import java.util.concurrent.ThreadLocalRandom;
 public class ArmorRepairKit implements IScriptEventHandler {
     @Override
     public void runScript(NWObject oPC) {
-        NWObject target = NWNX_Events.GetEventTarget();
-        NWObject item = NWNX_Events.GetEventItem();
+        NWObject target = NWScript.getItemActivatedTarget();
+        NWObject item = NWScript.getItemActivated();
         int targetType = NWScript.getBaseItemType(target);
 
         ArrayList<Integer> allowedTypes = new ArrayList<>();
@@ -32,7 +31,7 @@ public class ArmorRepairKit implements IScriptEventHandler {
         }
 
         int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_ITEM_REPAIR) * 2;
-        int repairAmount = ThreadLocalRandom.current().nextInt(20) + skill + 5;
+        float repairAmount = 10.0f + skill;
 
         if(MagicSystem.IsAbilityEquipped(oPC, AbilityType.Fixer))
         {

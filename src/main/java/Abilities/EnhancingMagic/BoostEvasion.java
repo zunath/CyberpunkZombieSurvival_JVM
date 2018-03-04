@@ -10,11 +10,8 @@ import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.constants.Ability;
 import org.nwnx.nwnx2.jvm.constants.Ac;
+import org.nwnx.nwnx2.jvm.constants.DurationType;
 import org.nwnx.nwnx2.jvm.constants.EffectType;
-
-import static org.nwnx.nwnx2.jvm.constants.All.AC_VS_DAMAGE_TYPE_ALL;
-import static org.nwnx.nwnx2.jvm.constants.All.DURATION_TYPE_INSTANT;
-import static org.nwnx.nwnx2.jvm.constants.All.DURATION_TYPE_TEMPORARY;
 
 // Increases AC dodge bonus (aka evasion) by 1 for a base duration of 60 seconds.
 // Duration is increased by 20 seconds for each wisdom point beyond 10.
@@ -61,7 +58,7 @@ public class BoostEvasion implements IAbility {
         float totalLength = baseLengthSeconds + extensionSeconds;
         int visualID = 0;
         int amount = 1 + (itemBonus / 5);
-        NWEffect acEffect = NWScript.effectACIncrease(amount, Ac.DODGE_BONUS, AC_VS_DAMAGE_TYPE_ALL);
+        NWEffect acEffect = NWScript.effectACIncrease(amount, Ac.DODGE_BONUS, Ac.VS_DAMAGE_TYPE_ALL);
 
         // Remove existing bonuses to prevent stacking.
         for(NWEffect effect : NWScript.getEffects(oTarget))
@@ -72,8 +69,8 @@ public class BoostEvasion implements IAbility {
             }
         }
 
-        NWScript.applyEffectToObject(DURATION_TYPE_INSTANT, NWScript.effectVisualEffect(visualID, false), oTarget, 0.0f);
-        NWScript.applyEffectToObject(DURATION_TYPE_TEMPORARY, acEffect, oTarget, totalLength);
+        NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectVisualEffect(visualID, false), oTarget, 0.0f);
+        NWScript.applyEffectToObject(DurationType.TEMPORARY, acEffect, oTarget, totalLength);
     }
 
     @Override

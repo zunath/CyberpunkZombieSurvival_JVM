@@ -9,11 +9,10 @@ import org.nwnx.nwnx2.jvm.NWLocation;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.Scheduler;
+import org.nwnx.nwnx2.jvm.constants.Ability;
 
 import java.util.Objects;
 import java.util.concurrent.ThreadLocalRandom;
-
-import static org.nwnx.nwnx2.jvm.constants.All.ABILITY_WISDOM;
 
 // Transports the caster and all party members within 5 meters to a random location in Mason City.
 // Each player is transported individually and may or may not end up at the same location as other party members.
@@ -43,7 +42,7 @@ public class TeleportMason implements IAbility {
     public float CastingTime(NWObject oPC, float baseCastingTime) {
         PlayerGO pcGO = new PlayerGO(oPC);
         int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_HOLY_AFFINITY);
-        int wisdom = NWScript.getAbilityScore(oPC, ABILITY_WISDOM, false) - 10;
+        int wisdom = NWScript.getAbilityScore(oPC, Ability.WISDOM, false) - 10;
         int itemBonus = pcGO.CalculateHolyBonus();
         float castingTimeReduction = (skill) + (wisdom * 2) + itemBonus;
         float castingTime = baseCastingTime - castingTimeReduction;

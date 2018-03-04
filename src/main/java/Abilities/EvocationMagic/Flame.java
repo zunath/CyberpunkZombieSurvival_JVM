@@ -8,14 +8,9 @@ import GameSystems.ProgressionSystem;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.Scheduler;
-import org.nwnx.nwnx2.jvm.constants.Ability;
-import org.nwnx.nwnx2.jvm.constants.DamagePower;
-import org.nwnx.nwnx2.jvm.constants.DamageType;
+import org.nwnx.nwnx2.jvm.constants.*;
 
 import java.util.concurrent.ThreadLocalRandom;
-
-import static org.nwnx.nwnx2.jvm.constants.All.DURATION_TYPE_INSTANT;
-import static org.nwnx.nwnx2.jvm.constants.All.VFX_IMP_FLAME_M;
 
 // Deals flame damage to a single target.
 // Damage minimum = 4 + (evocation affinity skill + intelligence + (item bonus * 4)) * 0.25
@@ -60,9 +55,9 @@ public class Flame implements IAbility {
         int maximumDamage = 6 + (int)((skill + intelligence + (itemBonus * 4)) * 0.50f);
 
         final int damage = ThreadLocalRandom.current().nextInt(minimumDamage, maximumDamage + 1);
-        NWScript.applyEffectToObject(DURATION_TYPE_INSTANT, NWScript.effectVisualEffect(VFX_IMP_FLAME_M, false), oTarget, 0.0f);
+        NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectVisualEffect(VfxImp.FLAME_M, false), oTarget, 0.0f);
 
-        Scheduler.delay(oPC, 50, () -> NWScript.applyEffectToObject(DURATION_TYPE_INSTANT, NWScript.effectDamage(damage, DamageType.MAGICAL, DamagePower.NORMAL), oTarget, 0.0f));
+        Scheduler.delay(oPC, 50, () -> NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectDamage(damage, DamageType.MAGICAL, DamagePower.NORMAL), oTarget, 0.0f));
 
     }
 

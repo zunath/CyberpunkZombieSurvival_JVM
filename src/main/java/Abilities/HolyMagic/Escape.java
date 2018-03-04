@@ -6,10 +6,9 @@ import GameObject.PlayerGO;
 import GameSystems.MagicSystem;
 import GameSystems.ProgressionSystem;
 import org.nwnx.nwnx2.jvm.*;
+import org.nwnx.nwnx2.jvm.constants.Ability;
 
 import java.util.Objects;
-
-import static org.nwnx.nwnx2.jvm.constants.All.*;
 
 // Transports caster and all party members within 5 meters to the escape point for the area.
 // Casting time is reduced by 1 second for every point of holy affinity skill.
@@ -41,7 +40,7 @@ public class Escape implements IAbility {
     public float CastingTime(NWObject oPC, float baseCastingTime) {
         PlayerGO pcGO = new PlayerGO(oPC);
         int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_HOLY_AFFINITY);
-        int wisdom = NWScript.getAbilityScore(oPC, ABILITY_WISDOM, false) - 10;
+        int wisdom = NWScript.getAbilityScore(oPC, Ability.WISDOM, false) - 10;
         int itemBonus = pcGO.CalculateHolyBonus();
         float castingTimeReduction = (skill + itemBonus) + (wisdom * 2);
         float castingTime = baseCastingTime - castingTimeReduction;

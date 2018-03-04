@@ -10,7 +10,7 @@ public class ChangeGunAmmo implements IScriptEventHandler {
     @Override
     public void runScript(NWObject objSelf) {
         CombatSystem combatSystem = new CombatSystem();
-        NWObject oWeapon = NWNX_Events.GetEventItem();
-        combatSystem.ChangeGunAmmoPriority(oWeapon);
+        NWObject oItem = NWNX_Events.OnItemUsed_GetItem();
+        combatSystem.ChangeGunAmmoPriority(oItem);
     }
 }

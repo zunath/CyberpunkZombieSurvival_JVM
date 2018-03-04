@@ -1,172 +1,201 @@
 package NWNX;
 
+import org.nwnx.nwnx2.jvm.NWLocation;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
-import org.nwnx.nwnx2.jvm.NWVector;
-import org.nwnx.nwnx2.jvm.constants.Gender;
 
-import java.util.Objects;
+import static NWNX.NWNX_Core.*;
 
-@SuppressWarnings("UnusedDeclaration")
 public class NWNX_Events {
-    public static final int EVENT_TYPE_ALL                = 0;
-    public static final int EVENT_TYPE_SAVE_CHAR          = 1;
-    public static final int EVENT_TYPE_PICKPOCKET         = 2;
-    public static final int EVENT_TYPE_ATTACK             = 3;
-    public static final int EVENT_TYPE_USE_ITEM           = 4;
-    public static final int EVENT_TYPE_QUICKCHAT          = 5;
-    public static final int EVENT_TYPE_EXAMINE            = 6;
-    public static final int EVENT_TYPE_USE_SKILL          = 7;
-    public static final int EVENT_TYPE_USE_FEAT           = 8;
-    public static final int EVENT_TYPE_TOGGLE_MODE        = 9;
-    public static final int EVENT_TYPE_CAST_SPELL         = 10;
-    public static final int EVENT_TYPE_TOGGLE_PAUSE       = 11;
-    public static final int EVENT_TYPE_POSSESS_FAMILIAR   = 12;
-    public static final int EVENT_TYPE_VALIDATE_CHARACTER = 13;
-    public static final int EVENT_TYPE_DESTROY_OBJECT     = 14;
-
-
-    public static final int LANGUAGE_ENGLISH              = 0;
-    public static final int LANGUAGE_FRENCH               = 1;
-    public static final int LANGUAGE_GERMAN               = 2;
-    public static final int LANGUAGE_ITALIAN              = 3;
-    public static final int LANGUAGE_SPANISH              = 4;
-    public static final int LANGUAGE_POLISH               = 5;
-    public static final int LANGUAGE_KOREAN               = 128;
-    public static final int LANGUAGE_CHINESE_TRADITIONAL  = 129;
-    public static final int LANGUAGE_CHINESE_SIMPLIFIED   = 130;
-    public static final int LANGUAGE_JAPANESE             = 131;
-
-    public static int GetEventType()
-    {   
-        NWScript.setLocalString(NWObject.MODULE, "NWNX!EVENTS!GET_EVENT_ID", "      ");
-        return NWScript.stringToInt(NWScript.getLocalString(NWObject.MODULE, "NWNX!EVENTS!GET_EVENT_ID"));
-    }
-
-    public static int GetEventSubType()
+    // Scripts can subscribe to events.
+    // Some events are dispatched via the NWNX plugin (see NWNX_EVENTS_EVENT_* constants).
+    // Others can be signalled via script code (see NWNX_Events_SignalEvent).
+    public static void SubscribeEvent(String evt, String script)
     {
-        NWScript.setLocalString(NWObject.MODULE, "NWNX!EVENTS!GET_EVENT_SUBID", "      ");
-        return NWScript.stringToInt(NWScript.getLocalString(NWObject.MODULE, "NWNX!EVENTS!GET_EVENT_SUBID"));
+        NWNX_PushArgumentString("NWNX_Events", "SUBSCRIBE_EVENT", script);
+        NWNX_PushArgumentString("NWNX_Events", "SUBSCRIBE_EVENT", evt);
+        NWNX_CallFunction("NWNX_Events", "SUBSCRIBE_EVENT");
     }
 
-    public static NWObject GetEventTarget()
+    // Pushes event data at the provided tag, which subscribers can access with GetEventData.
+    // This should be called BEFORE SignalEvent.
+    public static void PushEventData(String tag, String data)
     {
-        return NWScript.getLocalObject(NWObject.MODULE, "NWNX!EVENTS!TARGET");
+        NWNX_PushArgumentString("NWNX_Events", "PUSH_EVENT_DATA", data);
+        NWNX_PushArgumentString("NWNX_Events", "PUSH_EVENT_DATA", tag);
+        NWNX_CallFunction("NWNX_Events", "PUSH_EVENT_DATA");
     }
 
-    // DEPRECATED
-// For backwards compatibility only - use GetEventTarget instead
-    NWObject GetActionTarget()
+    // Signals an event. This will dispatch a notification to all subscribed handlers.
+    // Returns TRUE if anyone was subscribed to the event, FALSE otherwise.
+    public static int SignalEvent(String evt, NWObject target)
     {
-        return GetEventTarget();
+        NWNX_PushArgumentObject("NWNX_Events", "SIGNAL_EVENT", target);
+        NWNX_PushArgumentString("NWNX_Events", "SIGNAL_EVENT", evt);
+        NWNX_CallFunction("NWNX_Events", "SIGNAL_EVENT");
+        return NWNX_GetReturnValueInt("NWNX_Events", "SIGNAL_EVENT");
     }
 
-    public static NWObject GetEventItem()
+    // Retrieves the event data for the currently executing script.
+    // THIS SHOULD ONLY BE CALLED FROM WITHIN AN EVENT HANDLER.
+    private static String GetEventDataString(String tag)
     {
-        return NWScript.getLocalObject(NWObject.MODULE, "NWNX!EVENTS!ITEM");
+        NWNX_PushArgumentString("NWNX_Events", "GET_EVENT_DATA", tag);
+        NWNX_CallFunction("NWNX_Events", "GET_EVENT_DATA");
+        return NWNX_GetReturnValueString("NWNX_Events", "GET_EVENT_DATA");
     }
 
-    public static NWVector GetEventPosition()
+    private static int GetEventDataInt(String tag)
     {
-        NWScript.setLocalString(NWObject.MODULE, "NWNX!EVENTS!GET_EVENT_POSITION", "                                              ");
-        String sVector = NWScript.getLocalString(NWObject.MODULE, "NWNX!EVENTS!GET_EVENT_POSITION");
-        float x, y, z;
-
-        //Get X
-        int nPos = NWScript.findSubString(sVector, "¬", 0);
-        if(nPos == -1) return new NWVector(0.0f, 0.0f, 0.0f);
-        x = NWScript.stringToFloat(NWScript.getStringLeft(sVector, nPos));
-        sVector = NWScript.getStringRight(sVector, NWScript.getStringLength(sVector) - nPos - 1);
-
-        //Get Y
-        nPos = NWScript.findSubString(sVector, "¬", 0);
-        if(nPos == -1) return new NWVector(0.0f, 0.0f, 0.0f);
-        y = NWScript.stringToFloat(NWScript.getStringLeft(sVector, nPos));
-        sVector = NWScript.getStringRight(sVector, NWScript.getStringLength(sVector) - nPos - 1);
-
-        //Get Z
-        nPos = NWScript.findSubString(sVector, "¬", 0);
-        if(nPos == -1)
-        {
-            z = NWScript.stringToFloat(sVector);
-        }
-        else return new NWVector(0.0f, 0.0f, 0.0f);
-        return new NWVector(x, y, z);
+        String data = GetEventDataString(tag);
+        return Integer.parseInt(data);
     }
 
-    public static void BypassEvent()
+    private static boolean GetEventDataBoolean(String tag)
     {
-        NWScript.setLocalString(NWObject.MODULE, "NWNX!EVENTS!BYPASS", "1");
+        int data = GetEventDataInt(tag);
+        return data == 1;
     }
 
-    public static void SetReturnValue(int nRetVal)
+    private static float GetEventDataFloat(String tag)
     {
-        NWScript.setLocalString(NWObject.MODULE, "NWNX!EVENTS!RETURN", NWScript.intToString(nRetVal));
+        String data = GetEventDataString(tag);
+        return Float.parseFloat(data);
     }
 
-    public static void SetGlobalEventHandler(int nEventID, String sHandler)
+    private static NWObject GetEventDataObject(String tag)
     {
-        if (Objects.equals(sHandler, ""))
-            sHandler = "-";
-
-        String sKey = "NWNX!EVENTS!SET_EVENT_HANDLER_" + NWScript.intToString(nEventID);
-        NWScript.setLocalString(NWObject.MODULE, sKey, sHandler);
-        NWScript.deleteLocalString(NWObject.MODULE, sKey);
+        String data = GetEventDataString(tag);
+        return NWNX_Object.StringToObject(data);
     }
 
-    public static int GetCurrentNodeType()
+    public static int OnFeatUsed_GetFeatID()
     {
-        NWScript.setLocalString(NWObject.MODULE, "NWNX!EVENTS!GET_NODE_TYPE", "      ");
-        return NWScript.stringToInt(NWScript.getLocalString(NWObject.MODULE, "NWNX!EVENTS!GET_NODE_TYPE"));
+        return GetEventDataInt("FEAT_ID");
     }
 
-    public static int GetCurrentNodeID()
+    public static int OnFeatUsed_GetSubFeatID()
     {
-        NWScript.setLocalString(NWObject.MODULE, "NWNX!EVENTS!GET_NODE_ID", "      ");
-        return NWScript.stringToInt(NWScript.getLocalString(NWObject.MODULE, "NWNX!EVENTS!GET_NODE_ID"));
+        return GetEventDataInt("SUBFEAT_ID");
     }
 
-    public static int GetCurrentAbsoluteNodeID()
+    public static NWObject OnFeatUsed_GetTarget()
     {
-        NWScript.setLocalString(NWObject.MODULE, "NWNX!EVENTS!GET_ABSOLUTE_NODE_ID", "      ");
-        return NWScript.stringToInt(NWScript.getLocalString(NWObject.MODULE, "NWNX!EVENTS!GET_ABSOLUTE_NODE_ID"));
+        return GetEventDataObject("TARGET_OBJECT_ID");
     }
 
-    public static int GetSelectedNodeID()
+    public static NWLocation OnFeatUsed_GetTargetLocation()
     {
-        NWScript.setLocalString(NWObject.MODULE, "NWNX!EVENTS!GET_SELECTED_NODE_ID", "      ");
-        return NWScript.stringToInt(NWScript.getLocalString(NWObject.MODULE, "NWNX!EVENTS!GET_SELECTED_NODE_ID"));
+        return NWScript.location(
+                OnFeatUsed_GetArea(),
+                NWScript.vector(OnFeatUsed_GetTargetPositionX(), OnFeatUsed_GetTargetPositionY(), OnFeatUsed_GetTargetPositionZ()),
+                0.0f
+        );
     }
 
-    public static int GetSelectedAbsoluteNodeID()
+    public static NWObject OnFeatUsed_GetArea()
     {
-        NWScript.setLocalString(NWObject.MODULE, "NWNX!EVENTS!GET_SELECTED_ABSOLUTE_NODE_ID", "      ");
-        return NWScript.stringToInt(NWScript.getLocalString(NWObject.MODULE, "NWNX!EVENTS!GET_SELECTED_ABSOLUTE_NODE_ID"));
+        return GetEventDataObject("AREA_OBJECT_ID");
     }
 
-    public static String GetSelectedNodeText(int nLangID, int nGender)
+    public static float OnFeatUsed_GetTargetPositionX()
     {
-        if (nGender != Gender.FEMALE) nGender = Gender.MALE;
-        NWScript.setLocalString(NWObject.MODULE, "NWNX!EVENTS!GET_SELECTED_NODE_TEXT", NWScript.intToString(nLangID * 2 + nGender));
-        return NWScript.getLocalString(NWObject.MODULE, "NWNX!EVENTS!GET_SELECTED_NODE_TEXT");
+        return GetEventDataFloat("TARGET_POSITION_X");
     }
 
-    public static String GetCurrentNodeText(int nLangID, int nGender)
+    public static float OnFeatUsed_GetTargetPositionY()
     {
-        if (nGender != Gender.FEMALE) nGender = Gender.MALE;
-        NWScript.setLocalString(NWObject.MODULE, "NWNX!EVENTS!GET_NODE_TEXT", NWScript.intToString(nLangID * 2 + nGender));
-        return NWScript.getLocalString(NWObject.MODULE, "NWNX!EVENTS!GET_NODE_TEXT");
+        return GetEventDataFloat("TARGET_POSITION_Y");
     }
 
-    public static void SetCurrentNodeText(String sText, int nLangID, int nGender)
+    public static float OnFeatUsed_GetTargetPositionZ()
     {
-        if (nGender != Gender.FEMALE) nGender = Gender.MALE;
-        NWScript.setLocalString(NWObject.MODULE, "NWNX!EVENTS!SET_NODE_TEXT", NWScript.intToString(nLangID * 2 + nGender) + "¬" + sText);
+        return GetEventDataFloat("TARGET_POSITION_Z");
     }
 
-    public static int GetScriptReturnValue()
+    public static NWObject OnItemUsed_GetItem()
     {
-        NWScript.setLocalString(NWObject.MODULE, "NWNX!EVENTS!GET_SCRIPT_RETURN_VALUE", "         ");
-        return NWScript.stringToInt(NWScript.getLocalString(NWObject.MODULE, "NWNX!EVENTS!GET_SCRIPT_RETURN_VALUE"));
+        return GetEventDataObject("ITEM_OBJECT_ID");
     }
+
+    public static NWObject OnItemUsed_GetTarget()
+    {
+        return GetEventDataObject("TARGET_OBJECT_ID");
+    }
+
+    public static int OnItemUsed_GetItemPropertyIndex()
+    {
+        return GetEventDataInt("ITEM_PROPERTY_INDEX");
+    }
+
+    public static int OnItemUsed_GetValue2()
+    {
+        return GetEventDataInt("TEST_VALUE_2");
+    }
+
+    public static NWObject OnExamineObject_GetTarget()
+    {
+        return GetEventDataObject("EXAMINEE_OBJECT_ID");
+    }
+
+    public static int OnCastSpell_GetSpellID()
+    {
+        return GetEventDataInt("SPELL_ID");
+    }
+
+    public static int OnCastSpell_GetTargetPositionX()
+    {
+        return GetEventDataInt("TARGET_POSITION_X");
+    }
+
+    public static int OnCastSpell_GetTargetPositionY()
+    {
+        return GetEventDataInt("TARGET_POSITION_Y");
+    }
+
+    public static int OnCastSpell_GetTargetPositionZ()
+    {
+        return GetEventDataInt("TARGET_POSITION_Z");
+    }
+
+    public static NWObject OnCastSpell_GetTarget()
+    {
+        return GetEventDataObject("TARGET_OBJECT_ID");
+    }
+
+    public static int OnCastSpell_GetMultiClass()
+    {
+        return GetEventDataInt("MULTI_CLASS");
+    }
+
+    public static NWObject OnCastSpell_GetItem()
+    {
+        return GetEventDataObject("ITEM_OBJECT_ID");
+    }
+
+    public static boolean OnCastSpell_GetSpellCountered()
+    {
+        return GetEventDataBoolean("SPELL_COUNTERED");
+    }
+
+    public static boolean OnCastSpell_GetCounteringSpell()
+    {
+        return GetEventDataBoolean("COUNTERING_SPELL");
+    }
+
+    public static int OnCastSpell_GetProjectilePathType()
+    {
+        return GetEventDataInt("PROJECTILE_PATH_TYPE");
+    }
+
+    public static boolean OnCastSpell_IsInstantSpell()
+    {
+        return GetEventDataBoolean("IS_INSTANT_SPELL");
+    }
+
+    public static NWObject OnCombatRoundStart_GetTarget()
+    {
+        return GetEventDataObject("TARGET_OBJECT_ID");
+    }
+
 }

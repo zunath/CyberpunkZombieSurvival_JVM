@@ -13,15 +13,15 @@ import java.util.Objects;
 
 public class CombineItem implements IScriptEventHandler {
 
-    final String COMBINE_MESSAGE_FAILED = "Combination failed.";
-    final String COMBINE_MESSAGE_LOW_SKILL = "Your mixing skill is too low to combine those items.";
+    private final String COMBINE_MESSAGE_FAILED = "Combination failed.";
+    private final String COMBINE_MESSAGE_LOW_SKILL = "Your mixing skill is too low to combine those items.";
 
 
     @Override
     public void runScript(NWObject oPC) {
         ItemCombinationRepository repo = new ItemCombinationRepository();
-        NWObject oItemA = NWNX_Events.GetEventItem();
-        NWObject oItemB = NWNX_Events.GetEventTarget();
+        NWObject oItemA = NWNX_Events.OnItemUsed_GetItem();
+        NWObject oItemB = NWNX_Events.OnItemUsed_GetTarget();
         String resrefA = NWScript.getResRef(oItemA);
         String resrefB = NWScript.getResRef(oItemB);
 
@@ -51,7 +51,7 @@ public class CombineItem implements IScriptEventHandler {
 
 
 
-    void CombineItemProcess(NWObject oPC, NWObject oItemA, NWObject oItemB, ItemCombinationEntity entity, int iMixingSkill)
+    private void CombineItemProcess(NWObject oPC, NWObject oItemA, NWObject oItemB, ItemCombinationEntity entity, int iMixingSkill)
     {
         int iHQQuantity = entity.getHqQuantity();
         int iQuantity = 0;

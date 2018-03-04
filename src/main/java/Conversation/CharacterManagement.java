@@ -17,7 +17,6 @@ public class CharacterManagement extends DialogBase implements IDialogHandler {
                 "Character Management & Information Page",
                 "Disable PVP Protection",
                 "Reset Skill Purchases",
-                "Manage CD Keys",
                 //"Change Portrait",
                 "Change Head",
                 "Back"
@@ -51,16 +50,13 @@ public class CharacterManagement extends DialogBase implements IDialogHandler {
                     case 2: // Reset Skill Purchases
                         SwitchConversation("ResetSkillPoints");
                         break;
-                    case 3: // Manage CD Keys
-                        SwitchConversation("ManageCDKeys");
-                        break;
                     /*case 4: // Change Portrait
                         SwitchConversation("ChangePortrait");
                         break;*/
-                    case 4: // Change Head
+                    case 3: // Change Head
                         SwitchConversation("ChangeHead");
                         break;
-                    case 5: // Back
+                    case 4: // Back
                         SwitchConversation("RestMenu");
                         break;
                 }

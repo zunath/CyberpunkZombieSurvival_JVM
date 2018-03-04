@@ -1,7 +1,7 @@
 package Abilities.Passive;
 
 import Abilities.IAbility;
-import NWNX.NWNX_Funcs;
+import NWNX.NWNX_Creature;
 import org.nwnx.nwnx2.jvm.NWObject;
 
 // Increases natural AC bonus by 2 points.
@@ -38,12 +38,12 @@ public class Evasive implements IAbility {
 
     @Override
     public void OnEquip(NWObject oPC) {
-        NWNX_Funcs.SetACNaturalBase(oPC, NWNX_Funcs.GetACNaturalBase(oPC) + 2);
+        NWNX_Creature.SetBaseAC(oPC, NWNX_Creature.GetBaseAC(oPC) + 2);
     }
 
     @Override
     public void OnUnequip(NWObject oPC) {
-        NWNX_Funcs.SetACNaturalBase(oPC, NWNX_Funcs.GetACNaturalBase(oPC) - 2);
+        NWNX_Creature.SetBaseAC(oPC, NWNX_Creature.GetBaseAC(oPC) - 2);
     }
 
     @Override

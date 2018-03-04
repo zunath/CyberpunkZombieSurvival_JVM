@@ -6,7 +6,6 @@ import org.nwnx.nwnx2.jvm.*;
 public class OnPlayerLevelUp implements IScriptEventHandler {
 	@Override
 	public void runScript(NWObject objSelf) {
-		// SimTools
-		NWScript.executeScript("fky_chat_levelup", objSelf);
+
 	}
 }

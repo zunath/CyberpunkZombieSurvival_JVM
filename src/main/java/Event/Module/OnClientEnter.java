@@ -4,48 +4,42 @@ import Common.Constants;
 import Data.Repository.ServerConfigurationRepository;
 import Entities.PlayerEntity;
 import Entities.ServerConfigurationEntity;
+import Enumerations.CustomClass;
 import GameSystems.*;
 import Helper.ColorToken;
 import GameObject.PlayerGO;
 import Common.IScriptEventHandler;
-import NWNX.NWNX_Funcs;
 import Data.Repository.PlayerRepository;
+import NWNX.NWNX_Creature;
 import org.nwnx.nwnx2.jvm.*;
 import org.nwnx.nwnx2.jvm.constants.*;
 
 @SuppressWarnings("unused")
 public class OnClientEnter implements IScriptEventHandler {
     @Override
-    public void runScript(final NWObject objSelf) {
+    public void runScript(NWObject objSelf) {
         RadioSystem radioSystem = new RadioSystem();
+        NWObject oPC = NWScript.getEnteringObject();
 
         // Bioware Default
         NWScript.executeScript("x3_mod_def_enter", objSelf);
         InitializeNewCharacter();
         LoadCharacter();
-        // SimTools
-        NWScript.executeScript("fky_chat_clenter", objSelf);
-        // Radio GameSystems - Also used for NWNX chat (different from SimTools)
-        radioSystem.OnModuleEnter();
-        // DM Validation
-        NWScript.executeScript("dm_authorization", objSelf);
-        // PC Validation
-        NWScript.executeScript("auth_mod_enter", objSelf);
         ShowMOTD();
         ApplyGhostwalk();
-        // Validate CD Key
-        PlayerAuthorizationSystem.OnModuleEnter();
-        // Profession System
         ProfessionSystem.OnModuleEnter();
-        // Progression System
         ProgressionSystem.OnModuleEnter();
-        // Quest system
         QuestSystem.OnClientEnter();
 
-        // DMFI
-        NWScript.executeScript("dmfi_onclienter", objSelf);
-
+        // TODO: Fix this call for EE. Appears to be some problem with the Bioware database in Docker. Probably need to get rid of the dependency.
+        //NWScript.executeScript("dmfi_onclienter", objSelf);
         ActivityLoggingSystem.OnModuleClientEnter();
+
+        // Swap existing characters over to the "Standard" class.
+        if(NWScript.getIsPC(oPC) && !NWScript.getIsDM(oPC) && !NWScript.getIsDMPossessed(oPC))
+        {
+            NWNX_Creature.SetClassByPosition(oPC, 0, CustomClass.Standard);
+        }
     }
 
     private void ApplyGhostwalk()
@@ -82,7 +76,6 @@ public class OnClientEnter implements IScriptEventHandler {
                 NWScript.giveGoldToCreature(oPC, 10);
             });
 
-            NWScript.createItemOnObject("fky_chat_target", oPC, 1, "");
             NWObject bread = NWScript.createItemOnObject("food_bread", oPC, 1, "");
             NWScript.setName(bread, "Starting Bread");
             NWScript.setItemCursedFlag(bread, true);
@@ -97,18 +90,13 @@ public class OnClientEnter implements IScriptEventHandler {
                 NWScript.actionEquipItem(oClothes, InventorySlot.CHEST);
             });
 
-            for(int slot = 0; slot <= 10; slot++)
-            {
-                NWNX_Funcs.SetRawQuickBarSlot(oPC, slot + " 0 0 0 0");
-            }
-
             // Save to database
             PlayerRepository repo = new PlayerRepository();
             PlayerEntity entity = pcGO.createEntity();
             repo.save(entity);
 
             ProgressionSystem.InitializePlayer(oPC);
-            NWNX_Funcs.SetRawQuickBarSlot(oPC, "1 4 0 1116 0");
+            //NWNX_Funcs_Old.SetRawQuickBarSlot(oPC, "1 4 0 1116 0");
             Scheduler.delay(oPC, 1000, () -> NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectHeal(999), oPC, 0.0f));
         }
     }

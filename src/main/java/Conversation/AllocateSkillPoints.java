@@ -68,6 +68,7 @@ public class AllocateSkillPoints extends DialogBase implements IDialogHandler {
                 "First Aid",
                 "Lockpicking",
                 "Item Repair",
+                "Tumble",
                 "Back"
         );
 
@@ -244,7 +245,10 @@ public class AllocateSkillPoints extends DialogBase implements IDialogHandler {
                     case 6:
                         LoadSkillUpgradePage(ProgressionSystem.SkillType_ITEM_REPAIR);
                         break;
-                    case 7: // "Back"
+                    case 7:
+                        LoadSkillUpgradePage(ProgressionSystem.SkillType_TUMBLE);
+                        break;
+                    case 8: // "Back"
                         ClearTempVariables();
                         ChangePage("MainPage");
                         break;

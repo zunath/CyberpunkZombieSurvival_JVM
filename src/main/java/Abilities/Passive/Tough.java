@@ -1,8 +1,9 @@
 package Abilities.Passive;
 
 import Abilities.IAbility;
-import NWNX.NWNX_Funcs;
+import NWNX.NWNX_Creature;
 import org.nwnx.nwnx2.jvm.NWObject;
+import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.constants.Ability;
 
 // Increases constitution by 2 points.
@@ -39,14 +40,16 @@ public class Tough implements IAbility {
 
     @Override
     public void OnEquip(NWObject oPC) {
-        NWNX_Funcs.ModifyAbilityScore(oPC, Ability.CONSTITUTION, 2);
+        int score = NWScript.getAbilityScore(oPC, Ability.CONSTITUTION, true) + 2;
+        NWNX_Creature.SetAbilityScore(oPC, Ability.CONSTITUTION, score);
     }
 
     @Override
-    public void OnUnequip(NWObject oPC) {
-        NWNX_Funcs.ModifyAbilityScore(oPC, Ability.CONSTITUTION, -2);
+    public void OnUnequip(NWObject oPC)
+    {
+        int score = NWScript.getAbilityScore(oPC, Ability.CONSTITUTION, true) - 2;
+        NWNX_Creature.SetAbilityScore(oPC, Ability.CONSTITUTION, score);
     }
-
     @Override
     public boolean IsHostile() {
         return false;

@@ -9,10 +9,8 @@ import org.nwnx.nwnx2.jvm.NWEffect;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.constants.Ability;
-
-import static org.nwnx.nwnx2.jvm.constants.All.DURATION_TYPE_INSTANT;
-import static org.nwnx.nwnx2.jvm.constants.All.DURATION_TYPE_TEMPORARY;
-import static org.nwnx.nwnx2.jvm.constants.All.VFX_IMP_STUN;
+import org.nwnx.nwnx2.jvm.constants.DurationType;
+import org.nwnx.nwnx2.jvm.constants.VfxImp;
 
 // Stuns a single target for a base duration of 1 second.
 // Duration is increased by 0.4 seconds per point of Evocation Affinity.
@@ -59,8 +57,8 @@ public class Stun implements IAbility {
         float duration = baseDuration + bonusDuration;
 
         NWEffect effect = NWScript.effectStunned();
-        NWScript.applyEffectToObject(DURATION_TYPE_TEMPORARY, effect, oTarget, duration);
-        NWScript.applyEffectToObject(DURATION_TYPE_INSTANT, NWScript.effectVisualEffect(VFX_IMP_STUN, false), oTarget, 0.0f);
+        NWScript.applyEffectToObject(DurationType.TEMPORARY, effect, oTarget, duration);
+        NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectVisualEffect(VfxImp.STUN, false), oTarget, 0.0f);
     }
 
     @Override
