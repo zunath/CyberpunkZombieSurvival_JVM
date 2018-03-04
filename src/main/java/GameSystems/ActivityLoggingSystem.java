@@ -55,8 +55,8 @@ public class ActivityLoggingSystem {
             receiverAccountName = NWScript.getPCPlayerName(recipient);
 
             // DMs do not have PlayerIDs so store their name in another field.
-            if(NWScript.getIsDM(chatMessage.getRecipient()) || NWScript.getIsDMPossessed(chatMessage.getRecipient()))
-                receiverDMName = "[DM: " + NWScript.getName(chatMessage.getRecipient(), false) + " (" + senderCDKey + ")]";
+            if(NWScript.getIsDM(recipient) || NWScript.getIsDMPossessed(recipient))
+                receiverDMName = "[DM: " + NWScript.getName(recipient, false) + " (" + senderCDKey + ")]";
             else
                 receiverPlayerID = receiverGO.getUUID();
         }

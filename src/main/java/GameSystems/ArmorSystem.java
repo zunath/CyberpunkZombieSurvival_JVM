@@ -4,7 +4,7 @@ import Bioware.AddItemPropertyPolicy;
 import Bioware.XP2;
 import Common.Constants;
 import Enumerations.CustomItemProperty;
-import NWNX.NWNX_Funcs;
+import NWNX.NWNX_Creature;
 import org.nwnx.nwnx2.jvm.NWItemProperty;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
@@ -80,7 +80,7 @@ public class ArmorSystem {
             }
         }
 
-        NWNX_Funcs.SetACNaturalBase(oPC, ac);
+        NWNX_Creature.SetBaseAC(oPC, ac);
     }
 
 }

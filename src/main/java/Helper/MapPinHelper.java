@@ -1,7 +1,6 @@
 package Helper;
 
 import GameObject.MapPinGameObject;
-import NWNX.NWNX_Funcs;
 import org.nwnx.nwnx2.jvm.NWLocation;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
