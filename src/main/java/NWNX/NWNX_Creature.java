@@ -443,4 +443,14 @@ public class NWNX_Creature {
         NWNX_CallFunction(NWNX_Creature, sFunc);
     }
 
+    public static void SetClassByPosition(NWObject creature, int position, int classID)
+    {
+        String sFunc = "SetClassByPosition";
+        NWNX_PushArgumentInt(NWNX_Creature, sFunc, classID);
+        NWNX_PushArgumentInt(NWNX_Creature, sFunc, position);
+        NWNX_PushArgumentObject(NWNX_Creature, sFunc, creature);
+
+        NWNX_CallFunction(NWNX_Creature, sFunc);
+    }
+
 }

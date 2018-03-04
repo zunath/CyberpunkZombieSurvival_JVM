@@ -4,11 +4,13 @@ import Common.Constants;
 import Data.Repository.ServerConfigurationRepository;
 import Entities.PlayerEntity;
 import Entities.ServerConfigurationEntity;
+import Enumerations.CustomClass;
 import GameSystems.*;
 import Helper.ColorToken;
 import GameObject.PlayerGO;
 import Common.IScriptEventHandler;
 import Data.Repository.PlayerRepository;
+import NWNX.NWNX_Creature;
 import org.nwnx.nwnx2.jvm.*;
 import org.nwnx.nwnx2.jvm.constants.*;
 
@@ -17,6 +19,8 @@ public class OnClientEnter implements IScriptEventHandler {
     @Override
     public void runScript(NWObject objSelf) {
         RadioSystem radioSystem = new RadioSystem();
+        NWObject oPC = NWScript.getEnteringObject();
+
         // Bioware Default
         NWScript.executeScript("x3_mod_def_enter", objSelf);
         InitializeNewCharacter();
@@ -30,6 +34,12 @@ public class OnClientEnter implements IScriptEventHandler {
         // TODO: Fix this call for EE. Appears to be some problem with the Bioware database in Docker. Probably need to get rid of the dependency.
         //NWScript.executeScript("dmfi_onclienter", objSelf);
         ActivityLoggingSystem.OnModuleClientEnter();
+
+        // Swap existing characters over to the "Standard" class.
+        if(NWScript.getIsPC(oPC) && !NWScript.getIsDM(oPC) && !NWScript.getIsDMPossessed(oPC))
+        {
+            NWNX_Creature.SetClassByPosition(oPC, 0, CustomClass.Standard);
+        }
     }
 
     private void ApplyGhostwalk()
