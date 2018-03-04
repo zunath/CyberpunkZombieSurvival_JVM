@@ -85,19 +85,19 @@ public class ProgressionSystem {
 
         NWScript.setXP(oPC, 0);
         int numberOfFeats = NWNX_Creature.GetFeatCount(oPC);
-        for(int currentFeat = 1; currentFeat <= numberOfFeats; currentFeat++)
+        for(int currentFeat = numberOfFeats; currentFeat >= 0; currentFeat--)
         {
             NWNX_Creature.RemoveFeat(oPC, NWNX_Creature.GetFeatByIndex(oPC, currentFeat-1));
         }
 
-        NWNX_Creature.AddFeatByLevel(oPC, Feat.ARMOR_PROFICIENCY_LIGHT, -1);
-        NWNX_Creature.AddFeatByLevel(oPC, Feat.ARMOR_PROFICIENCY_MEDIUM, -1);
-        NWNX_Creature.AddFeatByLevel(oPC, Feat.ARMOR_PROFICIENCY_HEAVY, -1);
-        NWNX_Creature.AddFeatByLevel(oPC, Feat.SHIELD_PROFICIENCY, -1);
-        NWNX_Creature.AddFeatByLevel(oPC, Feat.WEAPON_PROFICIENCY_EXOTIC, -1);
-        NWNX_Creature.AddFeatByLevel(oPC, Feat.WEAPON_PROFICIENCY_MARTIAL, -1);
-        NWNX_Creature.AddFeatByLevel(oPC, Feat.WEAPON_PROFICIENCY_SIMPLE, -1);
-        NWNX_Creature.AddFeatByLevel(oPC, CustomFeat.Reload, -1);
+        NWNX_Creature.AddFeatByLevel(oPC, Feat.ARMOR_PROFICIENCY_LIGHT, 1);
+        NWNX_Creature.AddFeatByLevel(oPC, Feat.ARMOR_PROFICIENCY_MEDIUM, 1);
+        NWNX_Creature.AddFeatByLevel(oPC, Feat.ARMOR_PROFICIENCY_HEAVY, 1);
+        NWNX_Creature.AddFeatByLevel(oPC, Feat.SHIELD_PROFICIENCY, 1);
+        NWNX_Creature.AddFeatByLevel(oPC, Feat.WEAPON_PROFICIENCY_EXOTIC, 1);
+        NWNX_Creature.AddFeatByLevel(oPC, Feat.WEAPON_PROFICIENCY_MARTIAL, 1);
+        NWNX_Creature.AddFeatByLevel(oPC, Feat.WEAPON_PROFICIENCY_SIMPLE, 1);
+        NWNX_Creature.AddFeatByLevel(oPC, CustomFeat.Reload, 1);
 
         NWNX_Creature.SetAbilityScore(oPC, Ability.STRENGTH, Constants.BaseStrength);
         NWNX_Creature.SetAbilityScore(oPC, Ability.DEXTERITY, Constants.BaseDexterity);
