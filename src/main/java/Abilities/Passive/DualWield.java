@@ -42,8 +42,8 @@ public class DualWield implements IAbility {
 
     @Override
     public void OnEquip(NWObject oPC) {
-        NWNX_Creature.AddFeatByLevel(oPC, Feat.AMBIDEXTERITY, 0);
-        NWNX_Creature.AddFeatByLevel(oPC, Feat.TWO_WEAPON_FIGHTING, 0);
+        NWNX_Creature.AddFeatByLevel(oPC, Feat.AMBIDEXTERITY, 1);
+        NWNX_Creature.AddFeatByLevel(oPC, Feat.TWO_WEAPON_FIGHTING, 1);
 
         final NWObject offHand = NWScript.getItemInSlot(InventorySlot.LEFTHAND, oPC);
 

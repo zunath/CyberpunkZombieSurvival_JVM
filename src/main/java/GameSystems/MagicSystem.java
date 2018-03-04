@@ -264,7 +264,7 @@ public class MagicSystem {
 
 
         IAbility ability = (IAbility) ScriptHelper.GetClassByName("Abilities." + abilityEntity.getJavaScriptName());
-        NWNX_Creature.AddFeatByLevel(oPC, abilityEntity.getFeatID(), 0);
+        NWNX_Creature.AddFeatByLevel(oPC, abilityEntity.getFeatID(), 1);
 
         repo.Save(entity);
         ability.OnEquip(oPC);

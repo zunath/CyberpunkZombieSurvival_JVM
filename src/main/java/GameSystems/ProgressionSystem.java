@@ -332,18 +332,6 @@ public class ProgressionSystem {
                 int tumble = NWScript.getSkillRank(Skill.TUMBLE, oPC, true) + 1;
                 NWNX_Creature.SetSkillRank(oPC, Skill.TUMBLE, tumble);
                 break;
-            case SkillType_SPRING_ATTACK:
-                NWNX_Creature.AddFeatByLevel(oPC, Feat.SPRING_ATTACK, 0);
-                break;
-            case SkillType_POWER_ATTACK:
-                NWNX_Creature.AddFeatByLevel(oPC, Feat.POWER_ATTACK, 0);
-                break;
-            case SkillType_AMBIDEXTERITY:
-                NWNX_Creature.AddFeatByLevel(oPC, Feat.AMBIDEXTERITY, 0);
-                break;
-            case SkillType_TWO_WEAPON_FIGHTING:
-                NWNX_Creature.AddFeatByLevel(oPC, Feat.TWO_WEAPON_FIGHTING, 0);
-                break;
             case SkillType_MANA:
                 entity.setMaxMana(entity.getMaxMana() + 5);
                 repo.save(entity);
