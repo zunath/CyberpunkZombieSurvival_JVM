@@ -40,15 +40,13 @@ public class Insightful implements IAbility {
 
     @Override
     public void OnEquip(NWObject oPC) {
-        int score = NWScript.getAbilityScore(oPC, Ability.WISDOM, true) + 2;
-        NWNX_Creature.SetAbilityScore(oPC, Ability.WISDOM, score);
+        NWNX_Creature.NWNX_Creature_ModifyRawAbilityScore(oPC, Ability.WISDOM, 2);
     }
 
     @Override
     public void OnUnequip(NWObject oPC)
     {
-        int score = NWScript.getAbilityScore(oPC, Ability.WISDOM, true) - 2;
-        NWNX_Creature.SetAbilityScore(oPC, Ability.WISDOM, score);
+        NWNX_Creature.NWNX_Creature_ModifyRawAbilityScore(oPC, Ability.WISDOM, -2);
     }
 
     @Override

@@ -83,7 +83,7 @@ public class ResearchTerminal extends DialogBase implements IDialogHandler {
     public void Initialize() {
         NWObject oPC = GetPC();
 
-        if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC))
+        if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC) || NWScript.getIsDMPossessed(oPC))
         {
             NWScript.sendMessageToPC(oPC, "Only player characters may use this terminal.");
             EndConversation();

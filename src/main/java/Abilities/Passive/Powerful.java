@@ -40,15 +40,13 @@ public class Powerful implements IAbility {
 
     @Override
     public void OnEquip(NWObject oPC) {
-        int score = NWScript.getAbilityScore(oPC, Ability.STRENGTH, true) + 2;
-        NWNX_Creature.SetAbilityScore(oPC, Ability.STRENGTH, score);
+        NWNX_Creature.NWNX_Creature_ModifyRawAbilityScore(oPC, Ability.STRENGTH, 2);
     }
 
     @Override
     public void OnUnequip(NWObject oPC)
     {
-        int score = NWScript.getAbilityScore(oPC, Ability.STRENGTH, true) - 2;
-        NWNX_Creature.SetAbilityScore(oPC, Ability.STRENGTH, score);
+        NWNX_Creature.NWNX_Creature_ModifyRawAbilityScore(oPC, Ability.STRENGTH, -2);
     }
     @Override
     public boolean IsHostile() {

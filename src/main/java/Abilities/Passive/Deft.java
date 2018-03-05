@@ -40,15 +40,13 @@ public class Deft implements IAbility {
 
     @Override
     public void OnEquip(NWObject oPC) {
-        int score = NWScript.getAbilityScore(oPC, Ability.DEXTERITY, true) + 2;
-        NWNX_Creature.SetAbilityScore(oPC, Ability.DEXTERITY, score);
+        NWNX_Creature.NWNX_Creature_ModifyRawAbilityScore(oPC, Ability.DEXTERITY, 2);
     }
 
     @Override
     public void OnUnequip(NWObject oPC)
     {
-        int score = NWScript.getAbilityScore(oPC, Ability.DEXTERITY, true) - 2;
-        NWNX_Creature.SetAbilityScore(oPC, Ability.DEXTERITY, score);
+        NWNX_Creature.NWNX_Creature_ModifyRawAbilityScore(oPC, Ability.DEXTERITY, -2);
     }
 
     @Override

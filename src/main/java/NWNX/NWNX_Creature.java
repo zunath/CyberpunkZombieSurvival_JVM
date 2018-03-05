@@ -197,11 +197,34 @@ public class NWNX_Creature {
         return NWNX_GetReturnValueInt(NWNX_Creature, sFunc);
     }
 
-    public static void SetAbilityScore(NWObject creature, int ability, int value)
+    public static void SetRawAbilityScore(NWObject creature, int ability, int value)
     {
-        String sFunc = "SetAbilityScore";
+        String sFunc = "SetRawAbilityScore";
 
         NWNX_PushArgumentInt(NWNX_Creature, sFunc, value);
+        NWNX_PushArgumentInt(NWNX_Creature, sFunc, ability);
+        NWNX_PushArgumentObject(NWNX_Creature, sFunc, creature);
+
+        NWNX_CallFunction(NWNX_Creature, sFunc);
+    }
+
+
+    public static int GetRawAbilityScore(NWObject creature, int ability)
+    {
+        String sFunc = "GetRawAbilityScore";
+
+        NWNX_PushArgumentInt(NWNX_Creature, sFunc, ability);
+        NWNX_PushArgumentObject(NWNX_Creature, sFunc, creature);
+
+        NWNX_CallFunction(NWNX_Creature, sFunc);
+        return NWNX_GetReturnValueInt(NWNX_Creature, sFunc);
+    }
+
+    public static void NWNX_Creature_ModifyRawAbilityScore(NWObject creature, int ability, int modifier)
+    {
+        String sFunc = "ModifyRawAbilityScore";
+
+        NWNX_PushArgumentInt(NWNX_Creature, sFunc, modifier);
         NWNX_PushArgumentInt(NWNX_Creature, sFunc, ability);
         NWNX_PushArgumentObject(NWNX_Creature, sFunc, creature);
 

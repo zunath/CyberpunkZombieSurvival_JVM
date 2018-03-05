@@ -40,15 +40,13 @@ public class Personable implements IAbility {
 
     @Override
     public void OnEquip(NWObject oPC) {
-        int score = NWScript.getAbilityScore(oPC, Ability.CHARISMA, true) + 2;
-        NWNX_Creature.SetAbilityScore(oPC, Ability.CHARISMA, score);
+        NWNX_Creature.NWNX_Creature_ModifyRawAbilityScore(oPC, Ability.CHARISMA, 2);
     }
 
     @Override
     public void OnUnequip(NWObject oPC)
     {
-        int score = NWScript.getAbilityScore(oPC, Ability.CHARISMA, true) - 2;
-        NWNX_Creature.SetAbilityScore(oPC, Ability.CHARISMA, score);
+        NWNX_Creature.NWNX_Creature_ModifyRawAbilityScore(oPC, Ability.CHARISMA, -2);
     }
     @Override
     public boolean IsHostile() {

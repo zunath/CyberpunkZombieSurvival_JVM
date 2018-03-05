@@ -9,6 +9,7 @@ import Enumerations.ProfessionType;
 import GameObject.PlayerGO;
 import Helper.ColorToken;
 import NWNX.NWNX_Creature;
+import NWNX.NWNX_Object;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.nwnx.nwnx2.jvm.NWItemProperty;
@@ -100,12 +101,12 @@ public class ProgressionSystem {
         NWNX_Creature.AddFeatByLevel(oPC, Feat.WEAPON_PROFICIENCY_SIMPLE, 1);
         NWNX_Creature.AddFeatByLevel(oPC, CustomFeat.Reload, 1);
 
-        NWNX_Creature.SetAbilityScore(oPC, Ability.STRENGTH, Constants.BaseStrength);
-        NWNX_Creature.SetAbilityScore(oPC, Ability.DEXTERITY, Constants.BaseDexterity);
-        NWNX_Creature.SetAbilityScore(oPC, Ability.CONSTITUTION, Constants.BaseConstitution);
-        NWNX_Creature.SetAbilityScore(oPC, Ability.WISDOM, Constants.BaseWisdom);
-        NWNX_Creature.SetAbilityScore(oPC, Ability.CHARISMA, Constants.BaseCharisma);
-        NWNX_Creature.SetAbilityScore(oPC, Ability.INTELLIGENCE, Constants.BaseIntelligence);
+        NWNX_Creature.SetRawAbilityScore(oPC, Ability.STRENGTH, Constants.BaseStrength);
+        NWNX_Creature.SetRawAbilityScore(oPC, Ability.DEXTERITY, Constants.BaseDexterity);
+        NWNX_Creature.SetRawAbilityScore(oPC, Ability.CONSTITUTION, Constants.BaseConstitution);
+        NWNX_Creature.SetRawAbilityScore(oPC, Ability.WISDOM, Constants.BaseWisdom);
+        NWNX_Creature.SetRawAbilityScore(oPC, Ability.CHARISMA, Constants.BaseCharisma);
+        NWNX_Creature.SetRawAbilityScore(oPC, Ability.INTELLIGENCE, Constants.BaseIntelligence);
 
         NWNX_Creature.SetMaxHitPointsByLevel(oPC, 1, Constants.BaseHitPoints);
 
@@ -282,8 +283,7 @@ public class ProgressionSystem {
                 NWNX_Creature.SetMaxHitPointsByLevel(oPC, 1, NWNX_Creature.GetMaxHitPointsByLevel(oPC, 1) + 3);
                 break;
             case SkillType_STRENGTH:
-                int strength = NWScript.getAbilityScore(oPC, Ability.STRENGTH, true) + 1;
-                NWNX_Creature.SetAbilityScore(oPC, Ability.STRENGTH, strength);
+                NWNX_Creature.NWNX_Creature_ModifyRawAbilityScore(oPC, Ability.STRENGTH, 1);
 
                 if(rank % 2 != 0)
                 {
@@ -291,12 +291,10 @@ public class ProgressionSystem {
                 }
                 break;
             case SkillType_CONSTITUTION:
-                int constitution = NWScript.getAbilityScore(oPC, Ability.CONSTITUTION, true) + 1;
-                NWNX_Creature.SetAbilityScore(oPC, Ability.CONSTITUTION, constitution);
+                NWNX_Creature.NWNX_Creature_ModifyRawAbilityScore(oPC, Ability.CONSTITUTION, 1);
                 break;
             case SkillType_DEXTERITY:
-                int dexterity = NWScript.getAbilityScore(oPC, Ability.DEXTERITY, true) + 1;
-                NWNX_Creature.SetAbilityScore(oPC, Ability.DEXTERITY, dexterity);
+                NWNX_Creature.NWNX_Creature_ModifyRawAbilityScore(oPC, Ability.DEXTERITY, 1);
 
                 if(rank % 2 != 0)
                 {
@@ -305,16 +303,13 @@ public class ProgressionSystem {
                 }
                 break;
             case SkillType_WISDOM:
-                int wisdom = NWScript.getAbilityScore(oPC, Ability.WISDOM, true) + 1;
-                NWNX_Creature.SetAbilityScore(oPC, Ability.WISDOM, wisdom);
+                NWNX_Creature.NWNX_Creature_ModifyRawAbilityScore(oPC, Ability.WISDOM, 1);
                 break;
             case SkillType_INTELLIGENCE:
-                int intelligence = NWScript.getAbilityScore(oPC, Ability.INTELLIGENCE, true) + 1;
-                NWNX_Creature.SetAbilityScore(oPC, Ability.INTELLIGENCE, intelligence);
+                NWNX_Creature.NWNX_Creature_ModifyRawAbilityScore(oPC, Ability.INTELLIGENCE, 1);
                 break;
             case SkillType_CHARISMA:
-                int charisma = NWScript.getAbilityScore(oPC, Ability.CHARISMA, true) + 1;
-                NWNX_Creature.SetAbilityScore(oPC, Ability.CHARISMA, charisma);
+                NWNX_Creature.NWNX_Creature_ModifyRawAbilityScore(oPC, Ability.CHARISMA, 1);
                 break;
             case SkillType_SEARCH:
                 int search = NWScript.getSkillRank(Skill.SEARCH, oPC, true) + 1;

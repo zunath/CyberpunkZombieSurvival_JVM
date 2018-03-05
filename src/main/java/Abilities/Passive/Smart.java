@@ -40,15 +40,13 @@ public class Smart implements IAbility {
 
     @Override
     public void OnEquip(NWObject oPC) {
-        int score = NWScript.getAbilityScore(oPC, Ability.INTELLIGENCE, true) + 2;
-        NWNX_Creature.SetAbilityScore(oPC, Ability.INTELLIGENCE, score);
+        NWNX_Creature.NWNX_Creature_ModifyRawAbilityScore(oPC, Ability.INTELLIGENCE, 2);
     }
 
     @Override
     public void OnUnequip(NWObject oPC)
     {
-        int score = NWScript.getAbilityScore(oPC, Ability.INTELLIGENCE, true) - 2;
-        NWNX_Creature.SetAbilityScore(oPC, Ability.INTELLIGENCE, score);
+        NWNX_Creature.NWNX_Creature_ModifyRawAbilityScore(oPC, Ability.INTELLIGENCE, -2);
     }
     @Override
     public boolean IsHostile() {

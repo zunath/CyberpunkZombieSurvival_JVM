@@ -40,15 +40,13 @@ public class Tough implements IAbility {
 
     @Override
     public void OnEquip(NWObject oPC) {
-        int score = NWScript.getAbilityScore(oPC, Ability.CONSTITUTION, true) + 2;
-        NWNX_Creature.SetAbilityScore(oPC, Ability.CONSTITUTION, score);
+        NWNX_Creature.NWNX_Creature_ModifyRawAbilityScore(oPC, Ability.CONSTITUTION, 2);
     }
 
     @Override
     public void OnUnequip(NWObject oPC)
     {
-        int score = NWScript.getAbilityScore(oPC, Ability.CONSTITUTION, true) - 2;
-        NWNX_Creature.SetAbilityScore(oPC, Ability.CONSTITUTION, score);
+        NWNX_Creature.NWNX_Creature_ModifyRawAbilityScore(oPC, Ability.CONSTITUTION, -2);
     }
     @Override
     public boolean IsHostile() {

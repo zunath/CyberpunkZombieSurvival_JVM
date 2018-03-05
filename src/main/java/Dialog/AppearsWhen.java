@@ -1,10 +1,12 @@
 package Dialog;
 
+import Common.IScriptEventHandler;
 import GameObject.PlayerGO;
 import Helper.ErrorHelper;
-import Common.IScriptEventHandler;
+import NWNX.NWNX_Object;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
+import org.nwnx.nwnx2.jvm.SCORCO;
 
 @SuppressWarnings("UnusedDeclaration")
 public class AppearsWhen implements IScriptEventHandler {
