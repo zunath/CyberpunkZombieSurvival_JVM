@@ -3,8 +3,7 @@ package CustomEffect;
 import GameSystems.DiseaseSystem;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
-
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 @SuppressWarnings("unused")
 public class InfectionOverTimeEffect implements ICustomEffectHandler {
@@ -13,7 +12,6 @@ public class InfectionOverTimeEffect implements ICustomEffectHandler {
 
         if(!NWScript.getIsPC(oTarget)) return;
 
-        Random random = new Random();
-        DiseaseSystem.IncreaseDiseaseLevel(oTarget, random.nextInt(5));
+        DiseaseSystem.IncreaseDiseaseLevel(oTarget, ThreadLocalRandom.current().nextInt(5));
     }
 }
