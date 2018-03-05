@@ -13,17 +13,16 @@ import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.Scheduler;
 import org.nwnx.nwnx2.jvm.constants.EffectType;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public class CustomEffectSystem {
     private static HashMap<CasterSpellModel, Integer> npcEffectList;
+    private static ArrayList<CasterSpellModel> effectsToRemove;
 
     static
     {
         npcEffectList = new HashMap<>();
+        effectsToRemove = new ArrayList<>();
     }
 
     public static void OnPlayerHeartbeat(NWObject oPC)
@@ -76,17 +75,26 @@ public class CustomEffectSystem {
             }
 
 
-            if(entry.getValue() <= 0)
+            // Kill the effect if it has expired, target is invalid, or target is dead.
+            if(entry.getValue() <= 0 ||
+                    !NWScript.getIsObjectValid(casterModel.getTarget()) ||
+                    NWScript.getCurrentHitPoints(casterModel.getTarget()) <= -11 ||
+                    NWScript.getIsDead(casterModel.getTarget()))
             {
-                npcEffectList.remove(entry.getKey());
+                effectsToRemove.add(entry.getKey());
 
-                if(NWScript.getIsPC(casterModel.getCaster()))
+                if(NWScript.getIsObjectValid(casterModel.getCaster()) && NWScript.getIsPC(casterModel.getCaster()))
                 {
                     NWScript.sendMessageToPC(casterModel.getCaster(), "Your effect '" + casterModel.getEffectName() + "' has worn off of " + NWScript.getName(casterModel.getTarget(), false));
                 }
-
             }
         }
+
+        for(CasterSpellModel entry : effectsToRemove)
+        {
+            npcEffectList.remove(entry);
+        }
+        npcEffectList.clear();
     }
 
     private static PCCustomEffectEntity RunPCCustomEffectProcess(NWObject oPC, PCCustomEffectEntity effect)
