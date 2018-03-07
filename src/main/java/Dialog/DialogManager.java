@@ -1,6 +1,7 @@
 package Dialog;
 
 import GameObject.PlayerGO;
+import Helper.ColorToken;
 import Helper.ErrorHelper;
 import NWNX.NWNX_Object;
 import org.nwnx.nwnx2.jvm.NWObject;
@@ -13,46 +14,71 @@ import java.util.Objects;
 public class DialogManager {
 
     public static final int NumberOfResponsesPerPage = 12;
+    private static final int NumberOfDialogs = 96;
+
     private static HashMap<String, PlayerDialog> playerDialogs;
+    private static HashMap<Integer, Boolean> dialogFilesInUse;
+
+    static {
+        playerDialogs = new HashMap<>();
+        dialogFilesInUse = new HashMap<>();
+
+        for(int x = 1; x <= NumberOfDialogs; x++)
+        {
+            dialogFilesInUse.put(x, false);
+        }
+    }
 
     private static void storePlayerDialog(String uuid, PlayerDialog dialog)
     {
-        if(playerDialogs == null)
+        if(dialog.getDialogNumber() <= 0)
         {
-            playerDialogs = new HashMap<>();
+            for(int x = 1; x <= NumberOfDialogs; x++)
+            {
+                if(!dialogFilesInUse.get(x))
+                {
+                    dialogFilesInUse.put(x, true);
+                    dialog.setDialogNumber(x);
+                    break;
+                }
+            }
         }
 
+        // Couldn't find an open dialog file. Throw error.
+        if(dialog.getDialogNumber() <= 0)
+        {
+            System.out.println("ERROR: Unable to locate a free dialog. Add more dialog files, update their custom tokens, and update DialogManager.java");
+            return;
+        }
 
         playerDialogs.put(uuid, dialog);
     }
 
     public static PlayerDialog loadPlayerDialog(String uuid)
     {
-        if(playerDialogs == null)
-        {
-            playerDialogs = new HashMap<>();
-        }
-
         return playerDialogs.getOrDefault(uuid, null);
     }
 
     public static void removePlayerDialog(String uuid)
     {
-        if(playerDialogs == null)
-        {
-            playerDialogs = new HashMap<>();
-        }
+        // Free up the dialog file for another player.
+        PlayerDialog dialog = playerDialogs.get(uuid);
+        dialogFilesInUse.put(dialog.getDialogNumber(), false);
 
+        // Remove the player's dialog info
         playerDialogs.remove(uuid);
     }
 
-    public static void loadConversation(NWObject oPC, NWObject oTalkTo, String conversationName)
+    public static void loadConversation(NWObject oPC, NWObject oTalkTo, String conversationName, int dialogNumber)
             throws ClassNotFoundException, IllegalAccessException, InstantiationException
     {
         PlayerGO pcGO = new PlayerGO(oPC);
         Class scriptClass = Class.forName("Conversation." + conversationName);
         IDialogHandler script = (IDialogHandler)scriptClass.newInstance();
         PlayerDialog dialog = script.SetUp(oPC);
+        if(dialogNumber > 0)
+            dialog.setDialogNumber(dialogNumber);
+
         dialog.setActiveDialogName(conversationName);
         dialog.setDialogTarget(oTalkTo);
         DialogManager.storePlayerDialog(pcGO.getUUID(), dialog);
@@ -62,13 +88,24 @@ public class DialogManager {
     public static void startConversation(NWObject oPC, final NWObject oTalkTo, final String conversationName)
     {
         try {
-            loadConversation(oPC, oTalkTo, conversationName);
+            PlayerGO pcGO = new PlayerGO(oPC);
+            String uuid = pcGO.getUUID();
+
+            loadConversation(oPC, oTalkTo, conversationName, -1);
+
+            PlayerDialog dialog = playerDialogs.get(uuid);
+
+            if(dialog.getDialogNumber() <= 0)
+            {
+                NWScript.floatingTextStringOnCreature(ColorToken.Red() + "ERROR: No dialog files are available for use." + ColorToken.End(), oPC, false);
+                return;
+            }
 
             String convo = NWNX_Object.GetDialogResref(oTalkTo);
 
             if(Objects.equals(convo, "") || Objects.equals(convo, "0"))
             {
-                Scheduler.assign(oPC, () -> NWScript.actionStartConversation(oTalkTo, "dialog", true, false));
+                Scheduler.assign(oPC, () -> NWScript.actionStartConversation(oTalkTo, "dialog" + dialog.getDialogNumber(), true, false));
             }
         }
         catch(Exception ex) {

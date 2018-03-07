@@ -3,10 +3,8 @@ package Dialog;
 import Common.IScriptEventHandler;
 import GameObject.PlayerGO;
 import Helper.ErrorHelper;
-import NWNX.NWNX_Object;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
-import org.nwnx.nwnx2.jvm.SCORCO;
 
 @SuppressWarnings("UnusedDeclaration")
 public class AppearsWhen implements IScriptEventHandler {
@@ -23,6 +21,7 @@ public class AppearsWhen implements IScriptEventHandler {
         int gender = NWScript.getGender(oPC);
         boolean displayNode = false;
         String newNodeText = "";
+        int dialogOffset = (DialogManager.NumberOfResponsesPerPage + 1) * (dialog.getDialogNumber() - 1);
 
         if(currentSelectionNumber == DialogManager.NumberOfResponsesPerPage + 1) // Next Page
         {
@@ -89,12 +88,14 @@ public class AppearsWhen implements IScriptEventHandler {
 
             page = dialog.getCurrentPage();
             newNodeText = page.getHeader();
-            NWScript.setCustomToken(90000, newNodeText);
+
+
+            NWScript.setCustomToken(90000 + dialogOffset, newNodeText);
             NWScript.setLocalInt(oNPC, "CONVERSATION_SHOW_NODE", 1);
             return;
         }
 
-        NWScript.setCustomToken(90001 + nodeID, newNodeText);
+        NWScript.setCustomToken(90001 + nodeID + dialogOffset, newNodeText);
         NWScript.setLocalInt(oNPC, "CONVERSATION_SHOW_NODE", displayNode ? 1 : 0);
 
     }

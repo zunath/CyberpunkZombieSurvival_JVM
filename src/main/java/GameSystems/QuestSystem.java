@@ -614,8 +614,6 @@ public class QuestSystem {
             // No more items needed.
             else
             {
-                NWScript.sendMessageToPC(oPC, "stackSize = " + stackSize); // DEBUG
-
                 NWScript.copyItem(item, oPC, true);
                 NWScript.destroyObject(item, 0.0f);
             }

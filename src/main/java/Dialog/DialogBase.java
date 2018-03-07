@@ -101,13 +101,12 @@ public abstract class DialogBase {
     {
         NWObject oPC = GetPC();
         NWObject oTarget = GetDialogTarget();
-
         PlayerGO pcGO = new PlayerGO(GetPC());
         PlayerDialog dialog = DialogManager.loadPlayerDialog(pcGO.getUUID());
 
         try
         {
-            DialogManager.loadConversation(GetPC(), dialog.getDialogTarget(), conversationName);
+            DialogManager.loadConversation(GetPC(), dialog.getDialogTarget(), conversationName, dialog.getDialogNumber());
         }
         catch (Exception ex)
         {

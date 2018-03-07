@@ -14,6 +14,7 @@ public class PlayerDialog {
     private Object dialogCustomData;
     private boolean isEnding;
     private String defaultPageName;
+    private int dialogNumber;
 
     public PlayerDialog(String defaultPageName)
     {
@@ -97,4 +98,13 @@ public class PlayerDialog {
     public void setIsEnding(boolean isEnding) {
         this.isEnding = isEnding;
     }
+
+    public int getDialogNumber() {
+        return dialogNumber;
+    }
+
+    public void setDialogNumber(int dialogNumber) {
+        this.dialogNumber = dialogNumber;
+    }
+
 }
