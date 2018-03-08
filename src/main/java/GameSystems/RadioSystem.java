@@ -12,27 +12,27 @@ public class RadioSystem {
 
     // The number of channels available to players using radios.
     // Default: 10
-    final int RADIO_NUMBER_OF_CHANNELS = 10;
+    private final int RADIO_NUMBER_OF_CHANNELS = 10;
 
     // Tag and resref of the radio item
-    final String RADIO_RESREF = "reo_radio";
+    private final String RADIO_RESREF = "reo_radio";
 
     // Name of the variable which determines if a radio is turned on or not.
-    final String RADIO_POWER = "RADIO_POWER";
+    private final String RADIO_POWER = "RADIO_POWER";
     // Name of the variable which determines which radio a PC is currently tuned into.
     // A PC may only be tuned into one station at a time even if they have more than one
     // radio in their inventory.
-    final String RADIO_CHANNEL = "RADIO_CHANNEL";
+    private final String RADIO_CHANNEL = "RADIO_CHANNEL";
 
     // The name of the variable which tracks the PC ID number the radio was turned by.
     // This is used to ensure the radios don't get turned off after a server reset,
     // as the game fires the OnAcquire event for all items on module entry. Normally this would
     // reset the radio's status but if the PC ID matches then we can ignore it.
-    final String RADIO_PC_ID_ENABLED_BY = "RADIO_PC_ID_ENABLED_BY";
+    private final String RADIO_PC_ID_ENABLED_BY = "RADIO_PC_ID_ENABLED_BY";
 
 
     // Resref and tag of the radio NPC which handles distributing messages.
-    final String RADIO_NPC = "radio_npc";
+    private final String RADIO_NPC = "radio_npc";
 
 
 
@@ -51,7 +51,6 @@ public class RadioSystem {
                 mode != ChatChannel.NWNX_CHAT_CHANNEL_DM_PARTY) return;
 
         NWNX_Chat.SkipMessage();
-
         NWObject oNPC = NWScript.getObjectByTag(RADIO_NPC, 0);
 
         // Can't send messages without a radio turned on.
@@ -61,9 +60,6 @@ public class RadioSystem {
             return;
         }
         String sSenderName = ColorToken.Custom(115, 101, 206) + "(Ch. " + iChannel + ") " + NWScript.getName(oPC, false) + ": " + ColorToken.End();
-
-        // Why is there no CHAT_CHANNEL_DM??
-        //NWNXChat_SendMessage(oNPC, CHAT_CHANNEL_DM, sSenderName = stMessage.Text + ColorTokenEnd());
 
         NWObject[] oMembers = NWScript.getPCs();
         for(NWObject member : oMembers)
@@ -77,7 +73,7 @@ public class RadioSystem {
             if(iMemberChannel == iChannel || NWScript.getIsDM(member))
             {
                 NWNX_Chat.SendMessage(ChatChannel.NWNX_CHAT_CHANNEL_PLAYER_TELL,
-                        ColorToken.White() + messageText + ColorToken.End(),
+                        sSenderName + ColorToken.White() + messageText + ColorToken.End(),
                         oNPC,
                         member);
             }
