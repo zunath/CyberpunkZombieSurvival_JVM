@@ -8,12 +8,8 @@
   <component name="ChangeListManager">
     <list default="true" id="486e3add-e013-4d47-abab-c86692a1ecb0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/nwn/module/Cyberpunk Zombie Survival.zip" afterPath="$PROJECT_DIR$/nwn/module/Cyberpunk Zombie Survival.zip" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dialog/AppearsWhen.java" afterPath="$PROJECT_DIR$/src/main/java/Dialog/AppearsWhen.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dialog/DialogBase.java" afterPath="$PROJECT_DIR$/src/main/java/Dialog/DialogBase.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Creature/GenericOnConversation.java" afterPath="$PROJECT_DIR$/src/main/java/Creature/GenericOnConversation.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Dialog/DialogManager.java" afterPath="$PROJECT_DIR$/src/main/java/Dialog/DialogManager.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dialog/PlayerDialog.java" afterPath="$PROJECT_DIR$/src/main/java/Dialog/PlayerDialog.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameSystems/QuestSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/QuestSystem.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -29,8 +25,18 @@
       <file leaf-file-name="DialogManager.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Dialog/DialogManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="36" column="13" lean-forward="false" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+            <state relative-caret-position="708">
+              <caret line="118" column="9" lean-forward="true" selection-start-line="118" selection-start-column="9" selection-end-line="118" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GenericOnConversation.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Creature/GenericOnConversation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="72" lean-forward="false" selection-start-line="14" selection-start-column="72" selection-end-line="14" selection-end-column="72" />
               <folding />
             </state>
           </provider>
@@ -39,8 +45,8 @@
       <file leaf-file-name="DialogEnd.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Dialog/DialogEnd.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="28" lean-forward="false" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="28" />
+            <state relative-caret-position="0">
+              <caret line="0" column="15" lean-forward="true" selection-start-line="0" selection-start-column="15" selection-end-line="0" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -49,18 +55,8 @@
       <file leaf-file-name="DialogBase.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Dialog/DialogBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1150">
+            <state relative-caret-position="1717">
               <caret line="101" column="31" lean-forward="false" selection-start-line="101" selection-start-column="31" selection-end-line="101" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GenericStartConversation.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Item/GenericStartConversation.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="20" lean-forward="false" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -69,7 +65,7 @@
       <file leaf-file-name="PlayerDialog.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Dialog/PlayerDialog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="861">
+            <state relative-caret-position="1819">
               <caret line="107" column="5" lean-forward="false" selection-start-line="107" selection-start-column="5" selection-end-line="107" selection-end-column="5" />
               <folding />
             </state>
@@ -79,7 +75,7 @@
       <file leaf-file-name="AppearsWhen.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Dialog/AppearsWhen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-414">
+            <state relative-caret-position="527">
               <caret line="31" column="35" lean-forward="false" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
               <folding />
             </state>
@@ -122,13 +118,13 @@
       <find>isEnding</find>
       <find>static</find>
       <find>&quot;dialog&quot;</find>
-      <find>startConversation</find>
       <find>storePlayerDialog</find>
       <find>customToken</find>
       <find>switchconv</find>
       <find>removePlayerDialog</find>
       <find>loadConversation</find>
       <find>debug</find>
+      <find>startConversation</find>
     </findStrings>
     <replaceStrings>
       <replace>final</replace>
@@ -160,7 +156,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/InfectionRecovery.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/LizardRegeneration.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/MasterOfUnlocking.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/Medic.java" />
@@ -209,8 +204,9 @@
         <option value="$PROJECT_DIR$/src/main/java/Dialog/PlayerDialog.java" />
         <option value="$PROJECT_DIR$/src/main/java/Dialog/AppearsWhen.java" />
         <option value="$PROJECT_DIR$/src/main/java/Dialog/DialogBase.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Dialog/DialogManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/GameSystems/QuestSystem.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Creature/GenericOnConversation.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Dialog/DialogManager.java" />
       </list>
     </option>
   </component>
@@ -269,9 +265,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
@@ -388,7 +384,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Freescape_JVM" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -712,7 +708,14 @@
       <option name="project" value="LOCAL" />
       <updated>1520253621273</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Add dialog swapping to the convo system to fix custom token issues.">
+      <created>1520417971047</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1520417971048</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TodoView">
@@ -735,8 +738,8 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32873806" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -746,8 +749,8 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39660656" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39660656" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -779,7 +782,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fix Custom Effect Repository: GetEffectByID call. Add audit trail for quick building structures." />
     <MESSAGE value="Add transaction.auto_close_session property to DB properties. Fix issue with removing infection crud inventory items on infection loss." />
     <MESSAGE value="Remove minimum c3p0 connections. Add timeout for idle connections." />
     <MESSAGE value="Increase the minimum damage of flame spell. Fixes #65" />
@@ -804,7 +806,8 @@
     <MESSAGE value="Make the owner of custom effects the caster. This'll make it so that players get messages about damage and other effects in their combat log." />
     <MESSAGE value="Clean up expired custom effects separately to fix an exception." />
     <MESSAGE value="Clean up expired custom effects separately to fix an exception. Make custom effects expire if target is dead or invalid." />
-    <option name="LAST_COMMIT_MESSAGE" value="Clean up expired custom effects separately to fix an exception. Make custom effects expire if target is dead or invalid." />
+    <MESSAGE value="Add dialog swapping to the convo system to fix custom token issues." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add dialog swapping to the convo system to fix custom token issues." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -821,13 +824,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Poison.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="14" column="70" lean-forward="false" selection-start-line="14" selection-start-column="70" selection-end-line="14" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Ranged/PiercingToss.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -889,7 +885,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -897,7 +892,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2295">
           <caret line="135" column="116" lean-forward="false" selection-start-line="135" selection-start-column="116" selection-end-line="135" selection-end-column="116" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -905,7 +899,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1377">
           <caret line="81" column="0" lean-forward="false" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -927,7 +920,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7565">
           <caret line="445" column="34" lean-forward="false" selection-start-line="445" selection-start-column="34" selection-end-line="445" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -944,7 +936,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
           <caret line="35" column="52" lean-forward="false" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -952,7 +943,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="88" column="18" lean-forward="false" selection-start-line="88" selection-start-column="18" selection-end-line="88" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -974,7 +964,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="57" column="0" lean-forward="true" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -990,7 +979,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="587">
           <caret line="222" column="104" lean-forward="true" selection-start-line="222" selection-start-column="104" selection-end-line="222" selection-end-column="104" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -998,9 +986,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
           <caret line="108" column="28" lean-forward="false" selection-start-line="108" selection-start-column="28" selection-end-line="108" selection-end-column="28" />
-          <folding>
-            <element signature="e#613#651#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1008,7 +993,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="348">
           <caret line="47" column="5" lean-forward="false" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1023,7 +1007,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="365">
           <caret line="48" column="83" lean-forward="false" selection-start-line="48" selection-start-column="83" selection-end-line="48" selection-end-column="83" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1031,7 +1014,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="365">
           <caret line="48" column="79" lean-forward="false" selection-start-line="48" selection-start-column="79" selection-end-line="48" selection-end-column="79" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1117,7 +1099,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
           <caret line="88" column="17" lean-forward="false" selection-start-line="88" selection-start-column="17" selection-end-line="88" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1133,7 +1114,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="27" column="9" lean-forward="true" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1141,7 +1121,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1149,37 +1128,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="203">
           <caret line="97" column="34" lean-forward="false" selection-start-line="97" selection-start-column="34" selection-end-line="97" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Dialog/PlayerDialog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="861">
+        <state relative-caret-position="1819">
           <caret line="107" column="5" lean-forward="false" selection-start-line="107" selection-start-column="5" selection-end-line="107" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Item/GenericStartConversation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="20" lean-forward="false" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Dialog/DialogEnd.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="28" lean-forward="false" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Dialog/AppearsWhen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-414">
+        <state relative-caret-position="527">
           <caret line="31" column="35" lean-forward="false" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
           <folding />
         </state>
@@ -1187,7 +1149,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Dialog/DialogBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1150">
+        <state relative-caret-position="1717">
           <caret line="101" column="31" lean-forward="false" selection-start-line="101" selection-start-column="31" selection-end-line="101" selection-end-column="31" />
           <folding />
         </state>
@@ -1201,10 +1163,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Item/GenericStartConversation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="22" lean-forward="false" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Dialog/DialogEnd.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="15" lean-forward="true" selection-start-line="0" selection-start-column="15" selection-end-line="0" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Creature/GenericOnConversation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="72" lean-forward="false" selection-start-line="14" selection-start-column="72" selection-end-line="14" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Dialog/DialogManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="36" column="13" lean-forward="false" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+        <state relative-caret-position="708">
+          <caret line="118" column="9" lean-forward="true" selection-start-line="118" selection-start-column="9" selection-end-line="118" selection-end-column="9" />
           <folding />
         </state>
       </provider>

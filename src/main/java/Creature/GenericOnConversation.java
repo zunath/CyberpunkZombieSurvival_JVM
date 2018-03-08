@@ -13,6 +13,5 @@ public class GenericOnConversation implements IScriptEventHandler {
 
         String conversationName = NWScript.getLocalString(objSelf, "CONVERSATION");
         DialogManager.startConversation(oPC, objSelf, conversationName);
-        NWScript.beginConversation("", NWObject.INVALID);
     }
 }

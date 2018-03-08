@@ -3,13 +3,12 @@ package Dialog;
 import GameObject.PlayerGO;
 import Helper.ColorToken;
 import Helper.ErrorHelper;
-import NWNX.NWNX_Object;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.Scheduler;
+import org.nwnx.nwnx2.jvm.constants.ObjectType;
 
 import java.util.HashMap;
-import java.util.Objects;
 
 public class DialogManager {
 
@@ -101,9 +100,16 @@ public class DialogManager {
                 return;
             }
 
-            String convo = NWNX_Object.GetDialogResref(oTalkTo);
-
-            if(Objects.equals(convo, "") || Objects.equals(convo, "0"))
+            // NPC conversations
+            if(NWScript.getObjectType(oTalkTo) == ObjectType.CREATURE &&
+                    !NWScript.getIsPC(oTalkTo) &&
+                    !NWScript.getIsDM(oTalkTo) &&
+                    !NWScript.getIsDMPossessed(oTalkTo))
+            {
+                NWScript.beginConversation("dialog" + dialog.getDialogNumber(), NWObject.INVALID);
+            }
+            // Everything else
+            else
             {
                 Scheduler.assign(oPC, () -> NWScript.actionStartConversation(oTalkTo, "dialog" + dialog.getDialogNumber(), true, false));
             }
