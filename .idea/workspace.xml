@@ -6,13 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="486e3add-e013-4d47-abab-c86692a1ecb0" name="Default" comment="">
+    <list default="true" id="486e3add-e013-4d47-abab-c86692a1ecb0" name="Default" comment="Fix issue which was wiping custom effects.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CustomEffect/BleedingEffect.java" afterPath="$PROJECT_DIR$/src/main/java/CustomEffect/BleedingEffect.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CustomEffect/BurnEffect.java" afterPath="$PROJECT_DIR$/src/main/java/CustomEffect/BurnEffect.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CustomEffect/PiercingTossBleedEffect.java" afterPath="$PROJECT_DIR$/src/main/java/CustomEffect/PiercingTossBleedEffect.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CustomEffect/PoisonEffect.java" afterPath="$PROJECT_DIR$/src/main/java/CustomEffect/PoisonEffect.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CustomEffect/ShockEffect.java" afterPath="$PROJECT_DIR$/src/main/java/CustomEffect/ShockEffect.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GameSystems/CustomEffectSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/CustomEffectSystem.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -77,21 +73,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DurabilitySystem.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/DurabilitySystem.java">
+      <file leaf-file-name="PoisonEffect.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/CustomEffect/PoisonEffect.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="149" column="0" lean-forward="true" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
+            <state relative-caret-position="153">
+              <caret line="9" column="57" lean-forward="false" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="57" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PoisonEffect.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/CustomEffect/PoisonEffect.java">
+      <file leaf-file-name="Poison.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Poison.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+            <state relative-caret-position="776">
+              <caret line="58" column="35" lean-forward="true" selection-start-line="58" selection-start-column="35" selection-end-line="58" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -107,7 +103,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ShockEffect.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ShockEffect.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/CustomEffect/ShockEffect.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
@@ -117,11 +113,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CustomEffectSystem.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CustomEffectSystem.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/CustomEffectSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="67" column="24" lean-forward="false" selection-start-line="67" selection-start-column="24" selection-end-line="67" selection-end-column="24" />
+            <state relative-caret-position="82">
+              <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -238,7 +234,6 @@
         <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/Insightful.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/Smart.java" />
         <option value="$PROJECT_DIR$/src/main/java/CustomEffect/InfectionOverTimeEffect.java" />
-        <option value="$PROJECT_DIR$/src/main/java/GameSystems/CustomEffectSystem.java" />
         <option value="$PROJECT_DIR$/src/main/java/Dialog/PlayerDialog.java" />
         <option value="$PROJECT_DIR$/src/main/java/Dialog/AppearsWhen.java" />
         <option value="$PROJECT_DIR$/src/main/java/Dialog/DialogBase.java" />
@@ -252,6 +247,7 @@
         <option value="$PROJECT_DIR$/src/main/java/CustomEffect/PiercingTossBleedEffect.java" />
         <option value="$PROJECT_DIR$/src/main/java/CustomEffect/PoisonEffect.java" />
         <option value="$PROJECT_DIR$/src/main/java/CustomEffect/ShockEffect.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GameSystems/CustomEffectSystem.java" />
       </list>
     </option>
   </component>
@@ -798,7 +794,14 @@
       <option name="project" value="LOCAL" />
       <updated>1520483681554</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Revert the custom effect linking change to fix scheduler issues. Will revisit at a later point.">
+      <created>1520485222254</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1520485222254</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TodoView">
@@ -815,7 +818,7 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32767764" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32767764" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -865,8 +868,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Reduce the max random effect and increase the base minimum static effect of treatment kits. Fixes #59" />
-    <MESSAGE value="Log client logins and logouts to DB. Completes #37" />
     <MESSAGE value="Add comments to all abilities to assist with the external documentation efforts.&#10;&#10;Also fixed bugs with the teleport spells and light spell." />
     <MESSAGE value="Fix GetResearchCategoriesAvailableForCraftAndLevel.sql: Search for options at and below player research level instead of exactly at that level.&#10;&#10;Refresh ability: Use enhancement affinity instead of holy." />
     <MESSAGE value="Fix comment for Flame" />
@@ -890,7 +891,9 @@
     <MESSAGE value="Use a different conversation start method depending on where the dialog is called. Fixes #120" />
     <MESSAGE value="Add the sender name info when a radio message is sent." />
     <MESSAGE value="Add light and heavy picks to the valid durability types list." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add light and heavy picks to the valid durability types list." />
+    <MESSAGE value="Revert the custom effect linking change to fix scheduler issues. Will revisit at a later point." />
+    <MESSAGE value="Fix issue which was wiping custom effects." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix issue which was wiping custom effects." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1199,26 +1202,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Poison.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/DurabilitySystem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="349">
           <caret line="149" column="0" lean-forward="true" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/CustomEffectSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="67" column="24" lean-forward="false" selection-start-line="67" selection-start-column="24" selection-end-line="67" selection-end-column="24" />
           <folding />
         </state>
       </provider>
@@ -1265,14 +1252,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/CustomEffect/PoisonEffect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/CustomEffect/RefreshEffect.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -1285,6 +1264,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Poison.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="776">
+          <caret line="58" column="35" lean-forward="true" selection-start-line="58" selection-start-column="35" selection-end-line="58" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/CustomEffect/PoisonEffect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="57" lean-forward="false" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/CustomEffectSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="82">
+          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
           <folding />
         </state>
       </provider>

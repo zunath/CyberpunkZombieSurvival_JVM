@@ -94,7 +94,7 @@ public class CustomEffectSystem {
         {
             npcEffectList.remove(entry);
         }
-        npcEffectList.clear();
+        effectsToRemove.clear();
     }
 
     private static PCCustomEffectEntity RunPCCustomEffectProcess(NWObject oPC, PCCustomEffectEntity effect)
