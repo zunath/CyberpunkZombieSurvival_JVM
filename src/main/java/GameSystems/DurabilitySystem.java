@@ -251,7 +251,9 @@ public class DurabilitySystem {
                 CustomBaseItemType.SmallArmD8,
                 CustomBaseItemType.D20HeavyWeapon,
                 CustomBaseItemType.D20SmallArms6,
-                CustomBaseItemType.MZS3Handgun
+                CustomBaseItemType.MZS3Handgun,
+                CustomBaseItemType.LightPick,
+                CustomBaseItemType.HeavyPick
         };
 
         return Arrays.asList(result);
