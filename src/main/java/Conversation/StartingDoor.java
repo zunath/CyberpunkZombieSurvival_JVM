@@ -4,6 +4,7 @@ import Dialog.DialogBase;
 import Dialog.DialogPage;
 import Dialog.IDialogHandler;
 import Dialog.PlayerDialog;
+import GameSystems.DeathSystem;
 import Helper.ColorToken;
 import org.nwnx.nwnx2.jvm.NWLocation;
 import org.nwnx.nwnx2.jvm.NWObject;
@@ -72,6 +73,7 @@ public class StartingDoor extends DialogBase implements IDialogHandler {
                         Scheduler.assign(oPC, () -> {
                             NWLocation location = NWScript.getLocation(NWScript.getWaypointByTag("ZODIAC_OUTPOST_STARTING_LOCATION"));
                             NWScript.actionJumpToLocation(location);
+                            DeathSystem.BindSoul(oPC, location);
                             EndConversation();
                         });
                         NWScript.takeGoldFromCreature(NWScript.getGold(oPC), oPC, true);
@@ -88,6 +90,7 @@ public class StartingDoor extends DialogBase implements IDialogHandler {
                         Scheduler.assign(oPC, () -> {
                             NWLocation location = NWScript.getLocation(NWScript.getWaypointByTag("RUBY_OUTPOST_STARTING_LOCATION"));
                             NWScript.actionJumpToLocation(location);
+                            DeathSystem.BindSoul(oPC, location);
                             EndConversation();
                         });
                         NWScript.takeGoldFromCreature(NWScript.getGold(oPC), oPC, true);

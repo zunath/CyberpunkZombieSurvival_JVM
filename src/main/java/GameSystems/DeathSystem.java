@@ -113,8 +113,9 @@ public class DeathSystem {
     {
         NWObject oPC = NWScript.getLastRespawnButtonPresser();
 
+        int hp = NWScript.getMaxHitPoints(oPC);
         NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectResurrection(), oPC, 0.0f);
-        NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectHeal(1), oPC, 0.0f);
+        NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectHeal(hp), oPC, 0.0f);
 
         Scheduler.assign(oPC, () -> {
             NWLocation lLocation = NWScript.getLocation(NWScript.getWaypointByTag("DEATH_WP"));
@@ -173,23 +174,26 @@ public class DeathSystem {
     {
         if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return;
 
+        BindSoul(oPC, NWScript.getLocation(oPC));
+        NWScript.floatingTextStringOnCreature("Your soul has been bound to this location.", oPC, false);
+    }
+
+    public static void BindSoul(NWObject oPC, NWLocation location)
+    {
+        if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return;
+
         PlayerRepository repo = new PlayerRepository();
         PlayerGO pcGO = new PlayerGO(oPC);
         PlayerEntity entity = repo.GetByPlayerID(pcGO.getUUID());
-        NWObject area = NWScript.getArea(oPC);
-        String areaTag = NWScript.getTag(area);
-        float facing = NWScript.getFacing(oPC);
-        NWVector position = NWScript.getPosition(oPC);
+        String areaTag = NWScript.getTag(location.getArea());
 
         entity.setRespawnAreaTag(areaTag);
-        entity.setRespawnLocationOrientation(facing);
-        entity.setRespawnLocationX(position.getX());
-        entity.setRespawnLocationY(position.getY());
-        entity.setRespawnLocationZ(position.getZ());
+        entity.setRespawnLocationOrientation(location.getFacing());
+        entity.setRespawnLocationX(location.getX());
+        entity.setRespawnLocationY(location.getY());
+        entity.setRespawnLocationZ(location.getZ());
 
         repo.save(entity);
-
-        NWScript.floatingTextStringOnCreature("Your soul has been bound to this location.", oPC, false);
     }
 
     public static void RespawnPlayer(NWObject oPC)
