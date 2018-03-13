@@ -6,10 +6,10 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="486e3add-e013-4d47-abab-c86692a1ecb0" name="Default" comment="">
+    <list default="true" id="486e3add-e013-4d47-abab-c86692a1ecb0" name="Default" comment="Auto-attack resources when clicked on. Fixes #123">
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Placeable/StructureSystem/Resource/OnUsed.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Conversation/StartingDoor.java" afterPath="$PROJECT_DIR$/src/main/java/Conversation/StartingDoor.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameSystems/DeathSystem.java" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/DeathSystem.java" />
+      <change beforePath="$PROJECT_DIR$/nwn/module/CyberpunkZombieSurvivalEE.zip" afterPath="$PROJECT_DIR$/nwn/module/CyberpunkZombieSurvivalEE.zip" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -32,11 +32,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DeathSystem.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DeathSystem.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/DeathSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="512">
-              <caret line="183" column="0" lean-forward="true" selection-start-line="183" selection-start-column="0" selection-end-line="183" selection-end-column="0" />
+            <state relative-caret-position="1328">
+              <caret line="183" column="0" lean-forward="false" selection-start-line="183" selection-start-column="0" selection-end-line="183" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OnUsed.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Placeable/StructureSystem/Resource/OnUsed.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="36" lean-forward="false" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -126,7 +136,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/QuickReload.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/SlowedInfection.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/SnakeEater.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/SpeedyCrafter.java" />
@@ -177,6 +186,7 @@
         <option value="$PROJECT_DIR$/src/main/java/GameSystems/CustomEffectSystem.java" />
         <option value="$PROJECT_DIR$/src/main/java/GameSystems/DeathSystem.java" />
         <option value="$PROJECT_DIR$/src/main/java/Conversation/StartingDoor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Placeable/StructureSystem/Resource/OnUsed.java" />
       </list>
     </option>
   </component>
@@ -368,6 +378,25 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="Placeable" type="462c0819:PsiDirectoryNode" />
               <item name="StorageContainer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CyberpunkZombieSurvival_JVM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CyberpunkZombieSurvival_JVM" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Placeable" type="462c0819:PsiDirectoryNode" />
+              <item name="StructureSystem" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CyberpunkZombieSurvival_JVM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CyberpunkZombieSurvival_JVM" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Placeable" type="462c0819:PsiDirectoryNode" />
+              <item name="StructureSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="Resource" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -765,7 +794,14 @@
       <option name="project" value="LOCAL" />
       <updated>1520897922048</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Death: Store initial respawn point based on initial starting location choice. Also recover all HP instead of just 1 point on respawn.">
+      <created>1520899105993</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1520899105993</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TodoView">
@@ -782,7 +818,7 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32767764" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3272727" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -832,8 +868,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add details to the comment for Refresh" />
-    <MESSAGE value="Add details to the Blind ability comment" />
     <MESSAGE value="Update database backup file." />
     <MESSAGE value="Explain the Poison custom effect in the Poison spell comment." />
     <MESSAGE value="Fix typo in the Piercing Toss comment" />
@@ -857,7 +891,9 @@
     <MESSAGE value="Update database backup and module - prior to EE release." />
     <MESSAGE value="Update module - remove armor which was crashing players from the starting shop." />
     <MESSAGE value="Update module - fix a journal entry for one of the quests. Also update database backup." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update module - fix a journal entry for one of the quests. Also update database backup." />
+    <MESSAGE value="Death: Store initial respawn point based on initial starting location choice. Also recover all HP instead of just 1 point on respawn." />
+    <MESSAGE value="Auto-attack resources when clicked on. Fixes #123" />
+    <option name="LAST_COMMIT_MESSAGE" value="Auto-attack resources when clicked on. Fixes #123" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -874,13 +910,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/ArmorSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1377">
-          <caret line="81" column="0" lean-forward="false" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/ActivityLoggingSystem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="986">
@@ -1248,8 +1277,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/DeathSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="183" column="0" lean-forward="true" selection-start-line="183" selection-start-column="0" selection-end-line="183" selection-end-column="0" />
+        <state relative-caret-position="1328">
+          <caret line="183" column="0" lean-forward="false" selection-start-line="183" selection-start-column="0" selection-end-line="183" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Placeable/StructureSystem/Resource/OnUsed.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="36" lean-forward="false" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
           <folding />
         </state>
       </provider>
