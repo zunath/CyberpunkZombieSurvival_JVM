@@ -964,7 +964,7 @@ public class CombatSystem {
             // Second Shot for dual-pistols/SMGs
             if (iAnimation == CustomAnimationType.PistolDual || iAnimation == CustomAnimationType.SMGDual)
             {
-                // Again, we need to ensure there's bullets available for use. Otherwise the second shot won't take NWEffect
+                // Again, we need to ensure there's bullets available for use. Otherwise the second shot won't take effect
 
                 if(iMagazineSize <= 0)
                 {
@@ -1155,7 +1155,7 @@ public class CombatSystem {
         }
 
         // Round current durability to nearest whole number, then calculate the multiplier based on the percent difference.
-        float percentDamaged = Math.round(DurabilitySystem.GetItemDurability(stGunInfo.getGun())) / DurabilitySystem.GetMaxItemDurability(stGunInfo.getGun());
+        float percentDamaged = (float)Math.round(DurabilitySystem.GetItemDurability(stGunInfo.getGun())) / (float)DurabilitySystem.GetMaxItemDurability(stGunInfo.getGun());
 
         int iFirepower = NWScript.floatToInt(stGunInfo.getFirepower() * percentDamaged);
         int iDamage = NWScript.floatToInt(iFirepower * fMultiplier);
