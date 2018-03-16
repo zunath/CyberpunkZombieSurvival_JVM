@@ -1,12 +1,11 @@
 package Item.Lockpick;
 
 import Bioware.Position;
+import Common.IScriptEventHandler;
 import Enumerations.AbilityType;
 import GameSystems.MagicSystem;
-import Helper.ColorToken;
-import Common.IScriptEventHandler;
-import NWNX.NWNX_Events;
 import GameSystems.ProgressionSystem;
+import Helper.ColorToken;
 import NWNX.NWNX_Player;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
@@ -26,8 +25,7 @@ public class UseLockpick implements IScriptEventHandler {
 
     @Override
     public void runScript(final NWObject oPC) {
-
-        NWObject oTarget = NWNX_Events.OnItemUsed_GetTarget();
+        NWObject oTarget = NWScript.getSpellTargetObject();
 
         int iSkillRequired = NWScript.getLocalInt(oTarget, SkillRequiredVariable);
         int iSkill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_LOCKPICKING);
