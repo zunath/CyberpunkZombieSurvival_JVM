@@ -1,5 +1,6 @@
 package NWNX;
 
+import Helper.ScriptHelper;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.Scheduler;
@@ -57,7 +58,17 @@ public class NWNX_Player {
 
         if(!script.equals(""))
         {
-            NWScript.executeScript(script, player);
+            // "." is an invalid character in NWN script files, but valid for the Java classes.
+            // Assume this is intended to be a Java call.
+            if(script.contains("."))
+            {
+                ScriptHelper.RunJavaScript(player, script);
+            }
+            // Everything else is assumed to be an NWN script.
+            else
+            {
+                NWScript.executeScript(script, player);
+            }
         }
     }
 
