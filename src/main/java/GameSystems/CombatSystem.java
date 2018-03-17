@@ -1216,6 +1216,7 @@ public class CombatSystem {
 
         int iShotgunSkill = ProgressionSystem.GetPlayerSkillLevel(oAttacker, ProgressionSystem.SkillType_SHOTGUN_PROFICIENCY);
         int iShotgunAccuracy = ProgressionSystem.GetPlayerSkillLevel(oAttacker, ProgressionSystem.SkillType_SHOTGUN_ACCURACY);
+        int dex = NWScript.getAbilityModifier(Ability.DEXTERITY, oAttacker);
 
         int numberAttacked = 0;
         NWObject[] shapeTargets = NWScript.getObjectsInShape(Shape.SPELLCYLINDER, fRangeDistance, lTarget, true, ObjectType.CREATURE, vOrigin);
@@ -1227,7 +1228,10 @@ public class CombatSystem {
             {
                 if(oShapeTarget != oAttacker && !NWScript.getIsDead(oShapeTarget) && !NWScript.getIsDead(oAttacker))
                 {
-                    if(NWScript.random(30) > (NWScript.getAC(oShapeTarget, 0) + (numberAttacked*2)) - iShotgunAccuracy)
+                    int targetAC = NWScript.getAC(oShapeTarget, 0) + numberAttacked * 2;
+                    int rollChance = 30 + (int)((float)iShotgunAccuracy * 1.5f) + dex;
+
+                    if(ThreadLocalRandom.current().nextInt(rollChance) + 1 > targetAC)
                     {
                         int iDamage = CalculateDamage(oAttacker, oShapeTarget, stGunInfo, iShotgunSkill, false);
 
@@ -1312,7 +1316,7 @@ public class CombatSystem {
                 break;
         }
 
-        // Gas canisters always take priority when targeting. Otherwise players will cry about not hitting them when they want to.
+        // Gas canisters always take priority when targeting.
         String sTag = NWScript.getTag(oTarget);
         if(!Objects.equals(sTag, GUN_GAS_CANISTER_TAG))
         {
@@ -1345,9 +1349,9 @@ public class CombatSystem {
         }
 
         // Do accuracy check
-        iTargetAC = iTargetAC - iAccuracySkill;
-
-        if(NWScript.random(30) + 1 > iTargetAC)
+        int dex = NWScript.getAbilityModifier(Ability.DEXTERITY, oAttacker);
+        int roll = 30 + (int)((float)iAccuracySkill * 1.5f) + dex;
+        if(ThreadLocalRandom.current().nextInt(roll) + 1 > iTargetAC)
         {
             bMiss = 0;
         }
