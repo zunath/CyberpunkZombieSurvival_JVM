@@ -101,6 +101,13 @@ public class OnHeartbeat implements IScriptEventHandler {
 					amount++;
 				}
 
+				// CON bonus
+				int con = NWScript.getAbilityModifier(Ability.CONSTITUTION, oPC);
+				if(con > 0)
+				{
+					amount += con;
+				}
+
 				NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectHeal(amount), oPC, 0.0f);
 			}
 
