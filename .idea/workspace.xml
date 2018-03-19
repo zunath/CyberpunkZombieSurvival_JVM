@@ -6,10 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="486e3add-e013-4d47-abab-c86692a1ecb0" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/database/czs-db-prod-2018-03-19.zip" />
+    <list default="true" id="486e3add-e013-4d47-abab-c86692a1ecb0" name="Default" comment="Fix a server crash issue when player HP reaches -9, they log out, and log back in. Also fix a very glaring bug in the dying event where HP wasn't being healed properly.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/nwn/database/czs-db-prod-2018-03-13.zip" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Event/Module/OnPlayerDying.java" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnPlayerDying.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -22,11 +21,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DeathSystem.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DeathSystem.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/DeathSystem.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="852">
               <caret line="207" column="19" lean-forward="false" selection-start-line="207" selection-start-column="19" selection-end-line="207" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OnClientEnter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Event/Module/OnClientEnter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="580">
+              <caret line="129" column="9" lean-forward="true" selection-start-line="129" selection-start-column="9" selection-end-line="129" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OnPlayerDying.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Event/Module/OnPlayerDying.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="142">
+              <caret line="14" column="60" lean-forward="true" selection-start-line="14" selection-start-column="60" selection-end-line="14" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -45,7 +64,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>NWNX_Creature.SetAbilityScore(oPC, Ability.STRENGTH,</find>
       <find>isEnding</find>
       <find>static</find>
       <find>&quot;dialog&quot;</find>
@@ -75,6 +93,7 @@
       <find>fireshotgun</find>
       <find>dext</find>
       <find>distance</find>
+      <find>.gethitpoints</find>
     </findStrings>
     <replaceStrings>
       <replace>final</replace>
@@ -106,7 +125,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/SturdySkin.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/Thief.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/TouchedByEnhancement.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/TouchedByEvocation.java" />
@@ -125,7 +143,6 @@
         <option value="$PROJECT_DIR$/src/main/java/GameSystems/ActivityLoggingSystem.java" />
         <option value="$PROJECT_DIR$/src/main/java/GameSystems/DialogSystem.java" />
         <option value="$PROJECT_DIR$/src/main/java/Conversation/ResearchTerminal.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Event/Module/OnClientEnter.java" />
         <option value="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Creature.java" />
         <option value="$PROJECT_DIR$/src/main/java/GameSystems/ProgressionSystem.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/Personable.java" />
@@ -157,6 +174,8 @@
         <option value="$PROJECT_DIR$/src/main/java/Event/Module/OnHeartbeat.java" />
         <option value="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Player.java" />
         <option value="$PROJECT_DIR$/src/main/java/GameSystems/CombatSystem.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Event/Module/OnClientEnter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Event/Module/OnPlayerDying.java" />
       </list>
     </option>
   </component>
@@ -838,7 +857,14 @@
       <option name="project" value="LOCAL" />
       <updated>1521290502544</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Update database backup.">
+      <created>1521454856481</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1521454856481</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TodoView">
@@ -855,6 +881,7 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32655245" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -866,6 +893,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19587053" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32767764" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24947807" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -881,11 +909,9 @@
       <window_info id="Job Explorer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938644" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3272727" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="FAQ Robot" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="MaxCompute Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32767764" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="UnknownFeatures">
@@ -905,8 +931,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Confer bonus inventory slots for STR upgrades. Fixes #71" />
-    <MESSAGE value="Update module files. Update SQL script backup. Add 2DA files to git. Fixes #75" />
     <MESSAGE value="Regenerate ability: Increase amount to 2 at 3 wisdom modifier. decrease interval to 5 seconds at 6 wisdom modifier. Fixes #68" />
     <MESSAGE value="Fix some merge problems." />
     <MESSAGE value="Update database backup and module. Remove old 1.69 versions." />
@@ -930,7 +954,9 @@
     <MESSAGE value="Apply a CON bonus to natural healing as long as modifier is above 0 (no penalties)" />
     <MESSAGE value="Branch NWNX_Player's StopGuiTimingBar call based on the type of script passed in." />
     <MESSAGE value="Increase the benefit of firearm accuracy and add a bonus/penalty based on DEX modifier when firing guns." />
-    <option name="LAST_COMMIT_MESSAGE" value="Increase the benefit of firearm accuracy and add a bonus/penalty based on DEX modifier when firing guns." />
+    <MESSAGE value="Update database backup." />
+    <MESSAGE value="Fix a server crash issue when player HP reaches -9, they log out, and log back in. Also fix a very glaring bug in the dying event where HP wasn't being healed properly." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix a server crash issue when player HP reaches -9, they log out, and log back in. Also fix a very glaring bug in the dying event where HP wasn't being healed properly." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -951,27 +977,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Passive/Deft.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="48" column="83" lean-forward="false" selection-start-line="48" selection-start-column="83" selection-end-line="48" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Passive/Tough.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="48" column="83" lean-forward="false" selection-start-line="48" selection-start-column="83" selection-end-line="48" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Passive/Powerful.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="48" column="79" lean-forward="false" selection-start-line="48" selection-start-column="79" selection-end-line="48" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Passive/Insightful.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="348">
@@ -1263,6 +1268,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="28" lean-forward="false" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1270,6 +1276,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1700">
           <caret line="100" column="29" lean-forward="false" selection-start-line="100" selection-start-column="29" selection-end-line="100" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1284,6 +1291,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1904">
           <caret line="112" column="32" lean-forward="false" selection-start-line="112" selection-start-column="32" selection-end-line="112" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1298,6 +1306,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="489">
           <caret line="1183" column="108" lean-forward="true" selection-start-line="1183" selection-start-column="108" selection-end-line="1183" selection-end-column="108" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1305,6 +1314,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="852">
           <caret line="207" column="19" lean-forward="false" selection-start-line="207" selection-start-column="19" selection-end-line="207" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Event/Module/OnClientEnter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="580">
+          <caret line="129" column="9" lean-forward="true" selection-start-line="129" selection-start-column="9" selection-end-line="129" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/OpenJDK/OpenJDK8/src.zip!/java/lang/Runnable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="67" column="25" lean-forward="false" selection-start-line="67" selection-start-column="25" selection-end-line="67" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Event/Module/OnPlayerDying.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="14" column="60" lean-forward="true" selection-start-line="14" selection-start-column="60" selection-end-line="14" selection-end-column="60" />
           <folding />
         </state>
       </provider>
