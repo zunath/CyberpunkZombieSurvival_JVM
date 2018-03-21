@@ -51,7 +51,7 @@ public class TreatmentKit implements IScriptEventHandler {
         int skill = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_FIRST_AID);
         int skillBonus = skill / 2;
         final float delay = 8.0f - (skill * 0.5f);
-        int baseAmount = 4 + NWScript.getLocalInt(item, "ENHANCED_AMOUNT") + (skillBonus);
+        int baseAmount = 12 + NWScript.getLocalInt(item, "ENHANCED_AMOUNT") + (skillBonus * 2);
         final int restoreAmount = baseAmount + random.nextInt(3);
 
         NWNX_Player.StartGuiTimingBar(oPC, (int) delay, "");
