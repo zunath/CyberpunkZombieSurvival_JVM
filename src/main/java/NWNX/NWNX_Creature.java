@@ -38,7 +38,7 @@ public class NWNX_Creature {
         NWNX_CallFunction(NWNX_Creature, sFunc);
     }
 
-    public static int GetKnowsFeat(NWObject creature, int feat)
+    public static boolean GetKnowsFeat(NWObject creature, int feat)
     {
         String sFunc = "GetKnowsFeat";
 
@@ -46,7 +46,7 @@ public class NWNX_Creature {
         NWNX_PushArgumentObject(NWNX_Creature, sFunc, creature);
 
         NWNX_CallFunction(NWNX_Creature, sFunc);
-        return NWNX_GetReturnValueInt(NWNX_Creature, sFunc);
+        return NWNX_GetReturnValueInt(NWNX_Creature, sFunc) > 0;
     }
 
     public static int GetFeatCountByLevel(NWObject creature, int level)
@@ -471,6 +471,128 @@ public class NWNX_Creature {
         String sFunc = "SetClassByPosition";
         NWNX_PushArgumentInt(NWNX_Creature, sFunc, classID);
         NWNX_PushArgumentInt(NWNX_Creature, sFunc, position);
+        NWNX_PushArgumentObject(NWNX_Creature, sFunc, creature);
+
+        NWNX_CallFunction(NWNX_Creature, sFunc);
+    }
+
+
+    public static void SetBaseAttackBonus(NWObject creature, int bab)
+    {
+        String sFunc = "SetBaseAttackBonus";
+        NWNX_PushArgumentInt(NWNX_Creature, sFunc, bab);
+        NWNX_PushArgumentObject(NWNX_Creature, sFunc, creature);
+
+        NWNX_CallFunction(NWNX_Creature, sFunc);
+    }
+
+    public static int GetAttacksPerRound(NWObject creature, int bBaseAPR)
+    {
+        String sFunc = "GetAttacksPerRound";
+        NWNX_PushArgumentInt(NWNX_Creature, sFunc, bBaseAPR);
+        NWNX_PushArgumentObject(NWNX_Creature, sFunc, creature);
+
+        NWNX_CallFunction(NWNX_Creature, sFunc);
+        return NWNX_GetReturnValueInt(NWNX_Creature, sFunc);
+    }
+
+    public static void SetGender(NWObject creature, int gender)
+    {
+        String sFunc = "SetGender";
+        NWNX_PushArgumentInt(NWNX_Creature, sFunc, gender);
+        NWNX_PushArgumentObject(NWNX_Creature, sFunc, creature);
+
+        NWNX_CallFunction(NWNX_Creature, sFunc);
+    }
+
+    public static void RestoreFeats(NWObject creature)
+    {
+        String sFunc = "RestoreFeats";
+        NWNX_PushArgumentObject(NWNX_Creature, sFunc, creature);
+
+        NWNX_CallFunction(NWNX_Creature, sFunc);
+    }
+
+    public static void RestoreSpecialAbilities(NWObject creature)
+    {
+        String sFunc = "RestoreSpecialAbilities";
+        NWNX_PushArgumentObject(NWNX_Creature, sFunc, creature);
+
+        NWNX_CallFunction(NWNX_Creature, sFunc);
+    }
+
+    public static void RestoreSpells(NWObject creature, int level)
+    {
+        String sFunc = "RestoreSpells";
+        NWNX_PushArgumentInt(NWNX_Creature, sFunc, level);
+        NWNX_PushArgumentObject(NWNX_Creature, sFunc, creature);
+
+        NWNX_CallFunction(NWNX_Creature, sFunc);
+    }
+
+    public static void RestoreItems(NWObject creature)
+    {
+        String sFunc = "RestoreItems";
+        NWNX_PushArgumentObject(NWNX_Creature, sFunc, creature);
+
+        NWNX_CallFunction(NWNX_Creature, sFunc);
+    }
+
+    public static void SetSize(NWObject creature, int size)
+    {
+        String sFunc = "SetSize";
+        NWNX_PushArgumentInt(NWNX_Creature, sFunc, size);
+        NWNX_PushArgumentObject(NWNX_Creature, sFunc, creature);
+
+        NWNX_CallFunction(NWNX_Creature, sFunc);
+    }
+
+    public static int GetSkillPointsRemaining(NWObject creature)
+    {
+        String sFunc = "GetSkillPointsRemaining";
+        NWNX_PushArgumentObject(NWNX_Creature, sFunc, creature);
+
+        NWNX_CallFunction(NWNX_Creature, sFunc);
+        return NWNX_GetReturnValueInt(NWNX_Creature, sFunc);
+    }
+
+
+    public static void SetSkillPointsRemaining(NWObject creature, int skillpoints)
+    {
+        String sFunc = "SetSkillPointsRemaining";
+        NWNX_PushArgumentInt(NWNX_Creature, sFunc, skillpoints);
+        NWNX_PushArgumentObject(NWNX_Creature, sFunc, creature);
+
+        NWNX_CallFunction(NWNX_Creature, sFunc);
+    }
+
+
+    public static void SetRacialType(NWObject creature, int racialtype)
+    {
+        String sFunc = "SetRacialType";
+        NWNX_PushArgumentInt(NWNX_Creature, sFunc, racialtype);
+        NWNX_PushArgumentObject(NWNX_Creature, sFunc, creature);
+
+        NWNX_CallFunction(NWNX_Creature, sFunc);
+    }
+
+    public static int GetMovementType(NWObject creature)
+    {
+        String sFunc = "GetMovementType";
+        NWNX_PushArgumentObject(NWNX_Creature, sFunc, creature);
+
+        NWNX_CallFunction(NWNX_Creature, sFunc);
+        return NWNX_GetReturnValueInt(NWNX_Creature, sFunc);
+    }
+
+    // Sets the maximum movement rate a creature can have while walking (not running)
+    // This allows a creature with movement speed enhancemens to walk at a normal rate.
+    // Setting the value to -1.0 will remove the cap.
+    // Default value is 2000.0, which is the base human walk speed.
+    public static void SetWalkRateCap(NWObject creature, float fWalkRate) // Default fWalkRate = 2000.0f
+    {
+        String sFunc = "SetWalkRateCap";
+        NWNX_PushArgumentFloat(NWNX_Creature, sFunc, fWalkRate);
         NWNX_PushArgumentObject(NWNX_Creature, sFunc, creature);
 
         NWNX_CallFunction(NWNX_Creature, sFunc);
