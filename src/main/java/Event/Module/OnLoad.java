@@ -8,6 +8,9 @@ import GameSystems.SpawnSystem;
 import GameSystems.StructureSystem;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
+import org.nwnx.nwnx2.jvm.constants.EventScript;
+
+import static org.nwnx.nwnx2.jvm.NWScript.setEventScript;
 
 @SuppressWarnings("unused")
 public class OnLoad implements IScriptEventHandler {
@@ -34,10 +37,10 @@ public class OnLoad implements IScriptEventHandler {
 		NWObject area = NWScript.getFirstArea();
 		while(NWScript.getIsObjectValid(area))
 		{
-			NWNX_Object.SetEventHandler(area, AreaObjectScript.OnEnter, "area_enter");
-			NWNX_Object.SetEventHandler(area, AreaObjectScript.OnExit, "area_exit");
-			NWNX_Object.SetEventHandler(area, AreaObjectScript.OnHeartbeat, "area_heartbeat");
-			NWNX_Object.SetEventHandler(area, AreaObjectScript.OnUserDefinedEvent, "area_user");
+			setEventScript(area, EventScript.AREA_ON_ENTER, "area_enter");
+			setEventScript(area, EventScript.AREA_ON_EXIT, "area_exit");
+			setEventScript(area, EventScript.AREA_ON_HEARTBEAT, "area_heartbeat");
+			setEventScript(area, EventScript.AREA_ON_USER_DEFINED_EVENT, "area_user");
 
 			area = NWScript.getNextArea();
 		}

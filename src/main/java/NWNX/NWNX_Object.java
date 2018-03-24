@@ -42,28 +42,6 @@ public class NWNX_Object {
         return NWNX_GetReturnValueObject(NWNX_Object, sFunc);
     }
 
-    public static String GetEventHandler(NWObject obj, int handler)
-    {
-        String sFunc = "GetEventHandler";
-
-        NWNX_PushArgumentInt(NWNX_Object, sFunc, handler);
-        NWNX_PushArgumentObject(NWNX_Object, sFunc, obj);
-        NWNX_CallFunction(NWNX_Object, sFunc);
-
-        return NWNX_GetReturnValueString(NWNX_Object, sFunc);
-    }
-
-    public static void SetEventHandler(NWObject obj, int handler, String script)
-    {
-        String sFunc = "SetEventHandler";
-
-        NWNX_PushArgumentString(NWNX_Object, sFunc, script);
-        NWNX_PushArgumentInt(NWNX_Object, sFunc, handler);
-        NWNX_PushArgumentObject(NWNX_Object, sFunc, obj);
-        NWNX_CallFunction(NWNX_Object, sFunc);
-
-    }
-
     public static void SetPosition(NWObject obj, NWVector pos)
     {
         String sFunc = "SetPosition";
