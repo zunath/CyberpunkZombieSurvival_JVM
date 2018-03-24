@@ -7,14 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="486e3add-e013-4d47-abab-c86692a1ecb0" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/database/czs-db-prod-2018-03-24.zip" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Authorization/ValidateCDKey.java" afterPath="$PROJECT_DIR$/src/main/java/Authorization/ValidateCDKey.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NWNX/EventType.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/EventType.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Admin.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Admin.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Core.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Core.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Creature.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Creature.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Object.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Object.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Player.java" afterPath="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Player.java" />
+      <change beforePath="$PROJECT_DIR$/nwn/database/czs-db-prod-2018-03-21.zip" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/Passive/SpeedyCrafter.java" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Crafting/SpeedyCrafter.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -30,18 +26,28 @@
       <file leaf-file-name="UseLockpick.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Item/Lockpick/UseLockpick.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
+            <state relative-caret-position="357">
               <caret line="21" column="73" lean-forward="false" selection-start-line="21" selection-start-column="50" selection-end-line="21" selection-end-column="73" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ValidateCDKey.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ValidateCDKey.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Authorization/ValidateCDKey.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="37" column="36" lean-forward="true" selection-start-line="37" selection-start-column="36" selection-end-line="37" selection-end-column="36" />
+            <state relative-caret-position="646">
+              <caret line="38" column="13" lean-forward="false" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SpeedyCrafter.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Crafting/SpeedyCrafter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="359">
+              <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -121,7 +127,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/Refresh.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Blind.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Poison.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/Ranged/PiercingToss.java" />
@@ -172,6 +177,7 @@
         <option value="$PROJECT_DIR$/src/main/java/Event/Area/OnEnter.java" />
         <option value="$PROJECT_DIR$/src/main/java/Event/Module/OnPlayerEquipItem.java" />
         <option value="$PROJECT_DIR$/src/main/java/Authorization/ValidateCDKey.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Abilities/Crafting/SpeedyCrafter.java" />
       </list>
     </option>
   </component>
@@ -277,6 +283,32 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Abilities" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CyberpunkZombieSurvival_JVM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CyberpunkZombieSurvival_JVM" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Abilities" type="462c0819:PsiDirectoryNode" />
+              <item name="Crafting" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CyberpunkZombieSurvival_JVM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CyberpunkZombieSurvival_JVM" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Abilities" type="462c0819:PsiDirectoryNode" />
+              <item name="Passive" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CyberpunkZombieSurvival_JVM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CyberpunkZombieSurvival_JVM" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="Item" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -293,8 +325,8 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -764,7 +796,14 @@
       <option name="project" value="LOCAL" />
       <updated>1521722151827</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Update NWNX">
+      <created>1521828126123</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1521828126123</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TodoView">
@@ -781,7 +820,6 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32655245" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -808,6 +846,7 @@
       <window_info id="Job Explorer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938644" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32655245" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="FAQ Robot" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="MaxCompute Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -831,7 +870,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Update database backup and module. Remove old 1.69 versions." />
     <MESSAGE value="Fix issues with adjusting stats due to NWNX changes." />
     <MESSAGE value="Make the owner of custom effects the caster. This'll make it so that players get messages about damage and other effects in their combat log." />
     <MESSAGE value="Clean up expired custom effects separately to fix an exception." />
@@ -856,7 +894,8 @@
     <MESSAGE value="Fix a server crash issue when player HP reaches -9, they log out, and log back in. Also fix a very glaring bug in the dying event where HP wasn't being healed properly." />
     <MESSAGE value="Update the NWNX2 library. Increase the effectiveness of treatment kits. Slightly decrease the effectiveness of herbal remedies. Update the database backup." />
     <MESSAGE value="Roll back the org.nwnx.nwnx2.jvm.jar library due to some crashing problems. Update module with lighting fixes." />
-    <option name="LAST_COMMIT_MESSAGE" value="Roll back the org.nwnx.nwnx2.jvm.jar library due to some crashing problems. Update module with lighting fixes." />
+    <MESSAGE value="Update NWNX" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update NWNX" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -877,13 +916,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/QuestSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="952">
-          <caret line="615" column="13" lean-forward="false" selection-start-line="615" selection-start-column="13" selection-end-line="615" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Item/GenericStartConversation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -1222,7 +1254,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Item/Lockpick/UseLockpick.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
+        <state relative-caret-position="357">
           <caret line="21" column="73" lean-forward="false" selection-start-line="21" selection-start-column="50" selection-end-line="21" selection-end-column="73" />
           <folding />
         </state>
@@ -1230,8 +1262,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Authorization/ValidateCDKey.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="37" column="36" lean-forward="true" selection-start-line="37" selection-start-column="36" selection-end-line="37" selection-end-column="36" />
+        <state relative-caret-position="646">
+          <caret line="38" column="13" lean-forward="false" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Crafting/SpeedyCrafter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
           <folding />
         </state>
       </provider>

@@ -1,4 +1,4 @@
-package Abilities.Passive;
+package Abilities.Crafting;
 
 import Abilities.IAbility;
 import org.nwnx.nwnx2.jvm.NWObject;
