@@ -8,7 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="486e3add-e013-4d47-abab-c86692a1ecb0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Placeable/StructureSystem/ResearchTerminal/OnUsed.java" afterPath="$PROJECT_DIR$/src/main/java/Placeable/StructureSystem/ResearchTerminal/OnUsed.java" />
+      <change beforePath="$PROJECT_DIR$/nwn/module/CyberpunkZombieSurvivalEE.zip" afterPath="$PROJECT_DIR$/nwn/module/CyberpunkZombieSurvivalEE.zip" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -35,7 +35,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/Data/Repository/PCOutfitRepository.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="442">
-              <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+              <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -55,7 +55,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/Conversation/ResearchTerminal.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="731">
-              <caret line="84" column="0" lean-forward="true" selection-start-line="84" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+              <caret line="84" column="0" lean-forward="false" selection-start-line="84" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -264,6 +264,17 @@
             <path>
               <item name="CyberpunkZombieSurvival_JVM" type="b2602c69:ProjectViewProjectNode" />
               <item name="CyberpunkZombieSurvival_JVM" type="462c0819:PsiDirectoryNode" />
+              <item name="nwn" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CyberpunkZombieSurvival_JVM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CyberpunkZombieSurvival_JVM" type="462c0819:PsiDirectoryNode" />
+              <item name="nwn" type="462c0819:PsiDirectoryNode" />
+              <item name="module" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CyberpunkZombieSurvival_JVM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CyberpunkZombieSurvival_JVM" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -357,17 +368,17 @@
     <property name="settings.editor.selected.configurable" value="Console" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Projects\CyberpunkZombieSurvival_JVM\libs" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Projects\CyberpunkZombieSurvival_JVM\nwn\module" />
       <recent name="C:\Projects\CyberpunkZombieSurvival_JVM\libs" />
       <recent name="C:\Projects\CyberpunkZombieSurvival_JVM\nwn\database" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src/main/sql" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Projects\CyberpunkZombieSurvival_JVM\libs" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -491,13 +502,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1508477719987</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Log client logins and logouts to DB. Completes #37">
-      <created>1508741407719</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1508741407719</updated>
     </task>
     <task id="LOCAL-00009" summary="Add comments to all abilities to assist with the external documentation efforts.&#10;&#10;Also fixed bugs with the teleport spells and light spell.">
       <created>1511879495024</created>
@@ -835,7 +839,14 @@
       <option name="project" value="LOCAL" />
       <updated>1522052443656</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="Perform the PC check when a DM uses a research terminal instead of the Initialize method of the convo. Fixes #113">
+      <created>1522054405830</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1522054405830</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TodoView">
@@ -902,7 +913,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fix issue which was wiping custom effects." />
     <MESSAGE value="Update database backup and module - prior to EE release." />
     <MESSAGE value="Update module - remove armor which was crashing players from the starting shop." />
     <MESSAGE value="Update module - fix a journal entry for one of the quests. Also update database backup." />
@@ -927,7 +937,8 @@
     <MESSAGE value="Update readme" />
     <MESSAGE value="Add sample server start scripts and rename czs-server-files folder to server-files." />
     <MESSAGE value="Fix issue with error on persistent outfit storage. Remove dead testing code." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix issue with error on persistent outfit storage. Remove dead testing code." />
+    <MESSAGE value="Perform the PC check when a DM uses a research terminal instead of the Initialize method of the convo. Fixes #113" />
+    <option name="LAST_COMMIT_MESSAGE" value="Perform the PC check when a DM uses a research terminal instead of the Initialize method of the convo. Fixes #113" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1279,7 +1290,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/Data/Repository/PCOutfitRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
-          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1295,7 +1306,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/Conversation/ResearchTerminal.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="731">
-          <caret line="84" column="0" lean-forward="true" selection-start-line="84" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+          <caret line="84" column="0" lean-forward="false" selection-start-line="84" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
           <folding />
         </state>
       </provider>
