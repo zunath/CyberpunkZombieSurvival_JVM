@@ -17,7 +17,11 @@ public class OnUsed implements IScriptEventHandler {
         StructureRepository repo = new StructureRepository();
         PCTerritoryFlagStructureEntity structure = repo.GetPCStructureByID(structureID);
 
-        if(StructureSystem.PlayerHasPermission(oPC, StructurePermission.CanAccessResearchSlots, structure.getPcTerritoryFlag().getPcTerritoryFlagID()))
+        if(!NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC) || NWScript.getIsDMPossessed(oPC))
+        {
+            NWScript.sendMessageToPC(oPC, "Only player characters may use this terminal.");
+        }
+        else if(StructureSystem.PlayerHasPermission(oPC, StructurePermission.CanAccessResearchSlots, structure.getPcTerritoryFlag().getPcTerritoryFlagID()))
         {
             DialogManager.startConversation(oPC, objSelf, "ResearchTerminal");
         }
