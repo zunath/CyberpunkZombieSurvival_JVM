@@ -459,13 +459,6 @@
       <option name="presentableId" value="Default" />
       <updated>1508477719987</updated>
     </task>
-    <task id="LOCAL-00003" summary="Fix libs folder reference">
-      <created>1508483049278</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1508483049278</updated>
-    </task>
     <task id="LOCAL-00004" summary="Add transaction.auto_close_session property to DB properties. Fix issue with removing infection crud inventory items on infection loss.">
       <created>1508686187078</created>
       <option name="number" value="00004" />
@@ -802,7 +795,14 @@
       <option name="project" value="LOCAL" />
       <updated>1521951387935</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Update module to use the new NWNX core script. It got overwritten in one of the previous updates accidentally.">
+      <created>1522031027471</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1522031027471</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TodoView">
@@ -869,7 +869,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add dialog swapping to the convo system to fix custom token issues." />
     <MESSAGE value="Use a different conversation start method depending on where the dialog is called. Fixes #120" />
     <MESSAGE value="Add the sender name info when a radio message is sent." />
     <MESSAGE value="Add light and heavy picks to the valid durability types list." />
@@ -894,7 +893,8 @@
     <MESSAGE value="Rebuilt the JVM jar file. Removed the NWNX set event handlers and updated references to use the built-in one now. Updated the module." />
     <MESSAGE value="Update database + module with Drakaden's changes." />
     <MESSAGE value="Reduce Zahir DC from 18 to 12. Fixes #97" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reduce Zahir DC from 18 to 12. Fixes #97" />
+    <MESSAGE value="Update module to use the new NWNX core script. It got overwritten in one of the previous updates accidentally." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update module to use the new NWNX core script. It got overwritten in one of the previous updates accidentally." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
