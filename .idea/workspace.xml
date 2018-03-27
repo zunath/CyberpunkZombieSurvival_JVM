@@ -7,9 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="486e3add-e013-4d47-abab-c86692a1ecb0" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/database/czs-db-prod-2018-03-26.zip" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nwn/database/czs-db-prod-2018-03-27.zip" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/nwn/database/czs-db-prod-2018-03-25.zip" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/nwn/database/czs-db-prod-2018-03-26.zip" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/nwn/module/CyberpunkZombieSurvivalEE.zip" afterPath="$PROJECT_DIR$/nwn/module/CyberpunkZombieSurvivalEE.zip" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -25,7 +26,7 @@
       <file leaf-file-name="Outfit.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Conversation/Outfit.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="1632">
               <caret line="96" column="43" lean-forward="false" selection-start-line="96" selection-start-column="43" selection-end-line="96" selection-end-column="43" />
               <folding />
             </state>
@@ -255,8 +256,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -280,7 +279,9 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -292,17 +293,17 @@
     <property name="settings.editor.selected.configurable" value="Console" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Projects\CyberpunkZombieSurvival_JVM\libs" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/src" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Projects\CyberpunkZombieSurvival_JVM\nwn\module" />
       <recent name="C:\Projects\CyberpunkZombieSurvival_JVM\libs" />
       <recent name="C:\Projects\CyberpunkZombieSurvival_JVM\nwn\database" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src/main/sql" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Projects\CyberpunkZombieSurvival_JVM\libs" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -426,13 +427,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1508477719987</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Fix comment for Flame">
-      <created>1511881360753</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1511881360754</updated>
     </task>
     <task id="LOCAL-00012" summary="Add details to the comment for Refresh">
       <created>1511916431041</created>
@@ -770,7 +764,14 @@
       <option name="project" value="LOCAL" />
       <updated>1522058968503</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="Update database backup.">
+      <created>1522076270965</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1522076270965</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TodoView">
@@ -845,7 +846,6 @@
     <MESSAGE value="Apply a CON bonus to natural healing as long as modifier is above 0 (no penalties)" />
     <MESSAGE value="Branch NWNX_Player's StopGuiTimingBar call based on the type of script passed in." />
     <MESSAGE value="Increase the benefit of firearm accuracy and add a bonus/penalty based on DEX modifier when firing guns." />
-    <MESSAGE value="Update database backup." />
     <MESSAGE value="Fix a server crash issue when player HP reaches -9, they log out, and log back in. Also fix a very glaring bug in the dying event where HP wasn't being healed properly." />
     <MESSAGE value="Update the NWNX2 library. Increase the effectiveness of treatment kits. Slightly decrease the effectiveness of herbal remedies. Update the database backup." />
     <MESSAGE value="Roll back the org.nwnx.nwnx2.jvm.jar library due to some crashing problems. Update module with lighting fixes." />
@@ -862,7 +862,8 @@
     <MESSAGE value="Perform the PC check when a DM uses a research terminal instead of the Initialize method of the convo. Fixes #113" />
     <MESSAGE value="Remove broken options in the armor appearance crafting menu. Fixes #16" />
     <MESSAGE value="Add license." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add license." />
+    <MESSAGE value="Update database backup." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update database backup." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1179,7 +1180,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Conversation/Outfit.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="1632">
           <caret line="96" column="43" lean-forward="false" selection-start-line="96" selection-start-column="43" selection-end-line="96" selection-end-column="43" />
           <folding />
         </state>
@@ -1220,7 +1221,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
