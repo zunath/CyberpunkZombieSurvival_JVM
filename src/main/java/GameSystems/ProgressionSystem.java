@@ -335,8 +335,7 @@ public class ProgressionSystem {
                 repo.save(entity);
                 break;
             case SkillType_BASE_ATTACK_BONUS:
-                int bab = NWScript.getBaseAttackBonus(oPC) + 1;
-                NWNX_Creature.SetBaseAttackBonus(oPC, bab);
+                ApplyPCBaseAttackBonus(oPC);
                 break;
 
         }
@@ -430,6 +429,7 @@ public class ProgressionSystem {
         PlayerEntity playerEntity = playerRepo.GetByPlayerID(pcGO.getUUID());
         ForcedSPResetEntity spEntity = spRepo.GetLatestForcedSPResetDate();
 
+        ApplyPCBaseAttackBonus(oPC);
         if(spEntity == null) return;
 
         if(playerEntity.getDateLastForcedSPReset() == null ||
@@ -503,6 +503,16 @@ public class ProgressionSystem {
         ProgressionLevelEntity entity = repo.GetProgressionLevelByLevel(level);
 
         return entity.getExperience();
+    }
+
+    private static void ApplyPCBaseAttackBonus(NWObject oPC)
+    {
+        PlayerGO pcGO = new PlayerGO(oPC);
+        PlayerProgressionSkillsRepository skillRepo = new PlayerProgressionSkillsRepository();
+        PlayerProgressionSkillEntity entity = skillRepo.GetByPlayerIDAndSkillID(pcGO.getUUID(), SkillType_BASE_ATTACK_BONUS);
+        int bab = 1 + entity.getUpgradeLevel();
+
+        NWNX_Creature.SetBaseAttackBonus(oPC, bab);
     }
 
 }
