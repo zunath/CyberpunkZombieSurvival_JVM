@@ -43,6 +43,7 @@ public class AllocateSkillPoints extends DialogBase implements IDialogHandler {
                 "Charisma",
                 "Inventory Space",
                 "Natural Regeneration",
+                "Base Attack Bonus",
                 "Back"
         );
 
@@ -184,7 +185,10 @@ public class AllocateSkillPoints extends DialogBase implements IDialogHandler {
                     case 11:
                         LoadSkillUpgradePage(ProgressionSystem.SkillType_NATURAL_REGENERATION);
                         break;
-                    case 12: // "Back"
+                    case 12:
+                        LoadSkillUpgradePage(ProgressionSystem.SkillType_BASE_ATTACK_BONUS);
+                        break;
+                    case 13: // "Back"
                         ClearTempVariables();
                         ChangePage("MainPage");
                         break;

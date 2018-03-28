@@ -9,14 +9,16 @@ import Enumerations.ProfessionType;
 import GameObject.PlayerGO;
 import Helper.ColorToken;
 import NWNX.NWNX_Creature;
-import NWNX.NWNX_Object;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.nwnx.nwnx2.jvm.NWItemProperty;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.Scheduler;
-import org.nwnx.nwnx2.jvm.constants.*;
+import org.nwnx.nwnx2.jvm.constants.Ability;
+import org.nwnx.nwnx2.jvm.constants.BaseItem;
+import org.nwnx.nwnx2.jvm.constants.Feat;
+import org.nwnx.nwnx2.jvm.constants.Skill;
 
 import java.util.List;
 import java.util.Objects;
@@ -74,7 +76,7 @@ public class ProgressionSystem {
     public static final int SkillType_ENHANCEMENT_AFFINITY       = 40;
     public static final int SkillType_RESEARCHING                = 41;
     public static final int SkillType_TUMBLE                     = 42;
-
+    public static final int SkillType_BASE_ATTACK_BONUS          = 43;
 
 
     public static PlayerEntity InitializePlayer(NWObject oPC)
@@ -109,6 +111,7 @@ public class ProgressionSystem {
         NWNX_Creature.SetRawAbilityScore(oPC, Ability.INTELLIGENCE, Constants.BaseIntelligence);
 
         NWNX_Creature.SetMaxHitPointsByLevel(oPC, 1, Constants.BaseHitPoints);
+        NWNX_Creature.SetBaseAttackBonus(oPC, 1);
 
         for(int iCurSkill = 1; iCurSkill <= 27; iCurSkill++)
         {
@@ -330,6 +333,10 @@ public class ProgressionSystem {
             case SkillType_MANA:
                 entity.setMaxMana(entity.getMaxMana() + 5);
                 repo.save(entity);
+                break;
+            case SkillType_BASE_ATTACK_BONUS:
+                int bab = NWScript.getBaseAttackBonus(oPC) + 1;
+                NWNX_Creature.SetBaseAttackBonus(oPC, bab);
                 break;
 
         }
