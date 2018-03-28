@@ -14,6 +14,9 @@ import NWNX.NWNX_Creature;
 import org.nwnx.nwnx2.jvm.*;
 import org.nwnx.nwnx2.jvm.constants.*;
 
+import static org.nwnx.nwnx2.jvm.NWScript.getModule;
+import static org.nwnx.nwnx2.jvm.NWScript.setEventScript;
+
 @SuppressWarnings("unused")
 public class OnClientEnter implements IScriptEventHandler {
     @Override
@@ -35,10 +38,27 @@ public class OnClientEnter implements IScriptEventHandler {
         //NWScript.executeScript("dmfi_onclienter", objSelf);
         ActivityLoggingSystem.OnModuleClientEnter();
 
-        // Swap existing characters over to the "Standard" class.
+        // Swap existing characters over to the "Standard" class and set their event handlers.
         if(NWScript.getIsPC(oPC) && !NWScript.getIsDM(oPC) && !NWScript.getIsDMPossessed(oPC))
         {
             NWNX_Creature.SetClassByPosition(oPC, 0, CustomClass.Standard);
+
+            // As of 2018-03-28 only the OnDialogue, OnHeartbeat, and OnUserDefined events fire for PCs.
+            // The rest are included here for completeness sake.
+
+            //setEventScript(oPC, EventScript.CREATURE_ON_BLOCKED_BY_DOOR, "pc_on_blocked");
+            //setEventScript(oPC, EventScript.CREATURE_ON_DAMAGED, "pc_on_damaged");
+            //setEventScript(oPC, EventScript.CREATURE_ON_DEATH, "pc_on_death");
+            setEventScript(oPC, EventScript.CREATURE_ON_DIALOGUE, "default");
+            //setEventScript(oPC, EventScript.CREATURE_ON_DISTURBED, "pc_on_disturb");
+            //setEventScript(oPC, EventScript.CREATURE_ON_END_COMBATROUND, "pc_on_endround");
+            setEventScript(oPC, EventScript.CREATURE_ON_HEARTBEAT, "pc_on_heartbeat");
+            //setEventScript(oPC, EventScript.CREATURE_ON_MELEE_ATTACKED, "pc_on_attacked");
+            //setEventScript(oPC, EventScript.CREATURE_ON_NOTICE, "pc_on_notice");
+            //setEventScript(oPC, EventScript.CREATURE_ON_RESTED, "pc_on_rested");
+            //setEventScript(oPC, EventScript.CREATURE_ON_SPAWN_IN, "pc_on_spawn");
+            //setEventScript(oPC, EventScript.CREATURE_ON_SPELLCASTAT, "pc_on_spellcast");
+            setEventScript(oPC, EventScript.CREATURE_ON_USER_DEFINED_EVENT, "pc_on_user");
         }
     }
 

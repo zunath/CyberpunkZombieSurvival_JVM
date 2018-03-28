@@ -9,7 +9,9 @@ import GameSystems.StructureSystem;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.constants.EventScript;
+import org.nwnx.nwnx2.jvm.constants.EventScriptModuleOnPlayer;
 
+import static org.nwnx.nwnx2.jvm.NWScript.getModule;
 import static org.nwnx.nwnx2.jvm.NWScript.setEventScript;
 
 @SuppressWarnings("unused")
@@ -59,7 +61,5 @@ public class OnLoad implements IScriptEventHandler {
 		//NWNX_DMActions_Old.SetDMActionScript(DMActionType.GIVE_LEVEL, "dm_level");
 		//NWNX_DMActions_Old.SetDMActionScript(DMActionType.GIVE_XP, "dm_xp");
 		//NWNX_DMActions_Old.SetDMActionScript(DMActionType.HEAL_CREATURE, "dm_heal");
-
-
     }
 }
