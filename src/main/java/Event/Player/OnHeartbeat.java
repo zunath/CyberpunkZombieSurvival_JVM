@@ -9,7 +9,5 @@ public class OnHeartbeat implements IScriptEventHandler {
     @Override
     public void runScript(NWObject oPC) {
         CustomEffectSystem.OnPlayerHeartbeat(oPC);
-
-        System.out.println("Firing PC heartbeat");
     }
 }
