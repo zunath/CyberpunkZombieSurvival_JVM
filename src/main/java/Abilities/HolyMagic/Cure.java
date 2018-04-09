@@ -9,6 +9,7 @@ import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
 import org.nwnx.nwnx2.jvm.constants.Ability;
 import org.nwnx.nwnx2.jvm.constants.DurationType;
+import org.nwnx.nwnx2.jvm.constants.RacialType;
 import org.nwnx.nwnx2.jvm.constants.VfxImp;
 
 import java.util.concurrent.ThreadLocalRandom;
@@ -20,7 +21,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Cure implements IAbility {
     @Override
     public boolean CanCastSpell(NWObject oPC, NWObject oTarget) {
-        return true;
+        return NWScript.getRacialType(oTarget) != RacialType.UNDEAD;
     }
 
     @Override
