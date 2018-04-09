@@ -19,6 +19,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
+import static org.nwnx.nwnx2.jvm.NWScript.*;
+import static org.nwnx.nwnx2.jvm.NWScript.createItemOnObject;
+import static org.nwnx.nwnx2.jvm.NWScript.getItemStackSize;
+import static org.nwnx.nwnx2.jvm.NWScript.setIdentified;
+
 
 public class CraftSystem {
 
@@ -31,7 +36,7 @@ public class CraftSystem {
 
         if(pcGO.isBusy())
         {
-            NWScript.sendMessageToPC(oPC, "You are too busy right now.");
+            sendMessageToPC(oPC, "You are too busy right now.");
             return;
         }
         pcGO.setIsBusy(true);
@@ -50,16 +55,16 @@ public class CraftSystem {
                     CraftDelay * 0.20f :
                     CraftDelay;
 
-            NWScript.applyEffectToObject(DurationType.TEMPORARY, NWScript.effectCutsceneImmobilize(), oPC, modifiedCraftDelay + 0.1f);
+            applyEffectToObject(DurationType.TEMPORARY, effectCutsceneImmobilize(), oPC, modifiedCraftDelay + 0.1f);
             Scheduler.assign(oPC, () -> {
-                NWScript.clearAllActions(false);
-                NWScript.actionPlayAnimation(Animation.LOOPING_GET_MID, 1.0f, modifiedCraftDelay);
+                clearAllActions(false);
+                actionPlayAnimation(Animation.LOOPING_GET_MID, 1.0f, modifiedCraftDelay);
             });
-            Scheduler.delay(device, 1000 * NWScript.floatToInt(modifiedCraftDelay / 2.0f), () -> NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectVisualEffect(VfxComBlood.SPARK_MEDIUM, false), device, 0.0f));
+            Scheduler.delay(device, 1000 * floatToInt(modifiedCraftDelay / 2.0f), () -> applyEffectToObject(DurationType.INSTANT, effectVisualEffect(VfxComBlood.SPARK_MEDIUM, false), device, 0.0f));
 
-            NWNX_Player.StartGuiTimingBar(oPC, NWScript.floatToInt(modifiedCraftDelay), "");
+            NWNX_Player.StartGuiTimingBar(oPC, floatToInt(modifiedCraftDelay), "");
 
-            Scheduler.delay(oPC, NWScript.floatToInt(modifiedCraftDelay * 1000), () -> {
+            Scheduler.delay(oPC, floatToInt(modifiedCraftDelay * 1000), () -> {
                 try
                 {
                     RunCreateItem(oPC, device, blueprintID);
@@ -73,7 +78,7 @@ public class CraftSystem {
         }
         else
         {
-            NWScript.sendMessageToPC(oPC, ColorToken.Red() + "You are missing required components..." + ColorToken.End());
+            sendMessageToPC(oPC, ColorToken.Red() + "You are missing required components..." + ColorToken.End());
         }
     }
 
@@ -88,16 +93,16 @@ public class CraftSystem {
             components.put(component.getItemResref(), component.getQuantity());
         }
 
-        NWObject tempStorage = NWScript.createObject(ObjectType.PLACEABLE, "craft_temp_store", NWScript.getLocation(device), false, "");
-        NWScript.setLocalObject(device, "CRAFT_TEMP_STORAGE", tempStorage);
+        NWObject tempStorage = createObject(ObjectType.PLACEABLE, "craft_temp_store", getLocation(device), false, "");
+        setLocalObject(device, "CRAFT_TEMP_STORAGE", tempStorage);
 
-        for(NWObject item : NWScript.getItemsInInventory(device)) {
-            String resref = NWScript.getResRef(item);
+        for(NWObject item : getItemsInInventory(device)) {
+            String resref = getResRef(item);
             if (components.containsKey(resref) && components.get(resref) > 0) {
                 components.put(resref, components.get(resref) - 1);
 
-                NWScript.copyItem(item, tempStorage, true);
-                NWScript.destroyObject(item, 0.0f);
+                copyItem(item, tempStorage, true);
+                destroyObject(item, 0.0f);
             }
 
             int remainingQuantities = 0;
@@ -112,10 +117,10 @@ public class CraftSystem {
 
         if(!allComponentsFound)
         {
-            for(NWObject item : NWScript.getItemsInInventory(tempStorage))
+            for(NWObject item : getItemsInInventory(tempStorage))
             {
-                NWScript.copyItem(item, device, true);
-                NWScript.destroyObject(item, 0.0f);
+                copyItem(item, device, true);
+                destroyObject(item, 0.0f);
             }
             pcGO.setIsBusy(false);
         }
@@ -125,7 +130,7 @@ public class CraftSystem {
 
     private static void RunCreateItem(NWObject oPC, NWObject device, int blueprintID)
     {
-        NWObject tempStorage = NWScript.getLocalObject(device, "CRAFT_TEMP_STORAGE");
+        NWObject tempStorage = getLocalObject(device, "CRAFT_TEMP_STORAGE");
         PlayerGO pcGO = new PlayerGO(oPC);
         CraftRepository repo = new CraftRepository();
         PCBlueprintEntity pcBlueprint = repo.GetPCBlueprintByID(pcGO.getUUID(), blueprintID);
@@ -137,19 +142,31 @@ public class CraftSystem {
         if(roll <= chance)
         {
             // Success!
-            for(NWObject item : NWScript.getItemsInInventory(tempStorage))
+            for(NWObject item : getItemsInInventory(tempStorage))
             {
-                NWScript.destroyObject(item, 0.0f);
+                destroyObject(item, 0.0f);
             }
 
-            NWScript.createItemOnObject(blueprint.getItemResref(), oPC, blueprint.getQuantity(), "");
-            NWScript.sendMessageToPC(oPC, "You created " + blueprint.getQuantity() + "x " + blueprint.getItemName() + "!");
+            NWObject craftedItem = createItemOnObject(blueprint.getItemResref(), oPC, blueprint.getQuantity(), "");
+            setIdentified(craftedItem, true);
+
+            // If item isn't stackable, loop through and create as many as necessary.
+            if(getItemStackSize(craftedItem) < blueprint.getQuantity())
+            {
+                for(int x = 2; x <= blueprint.getQuantity(); x++)
+                {
+                    craftedItem = createItemOnObject(blueprint.getItemResref(), oPC, 1, "");
+                    setIdentified(craftedItem, true);
+                }
+            }
+
+            sendMessageToPC(oPC, "You created " + blueprint.getQuantity() + "x " + blueprint.getItemName() + "!");
             GiveCraftingExperience(oPC, blueprint.getCraft().getCraftID(), CalculateExperience(craft.getLevel(), blueprint.getLevel()));
         }
         else
         {
             // Failure...
-            NWObject[] items = NWScript.getItemsInInventory(tempStorage);
+            NWObject[] items = getItemsInInventory(tempStorage);
             int chanceToLoseItems = 20;
 
             if(MagicSystem.IsAbilityEquipped(oPC, AbilityType.CarefulHands))
@@ -161,15 +178,15 @@ public class CraftSystem {
             {
                 if(ThreadLocalRandom.current().nextInt(100) > chanceToLoseItems)
                 {
-                    NWScript.copyItem(item, device, true);
+                    copyItem(item, device, true);
                 }
-                NWScript.destroyObject(item, 0.0f);
+                destroyObject(item, 0.0f);
             }
 
-            NWScript.sendMessageToPC(oPC, "You failed to create that item...");
+            sendMessageToPC(oPC, "You failed to create that item...");
         }
 
-        NWScript.destroyObject(tempStorage, 0.0f);
+        destroyObject(tempStorage, 0.0f);
     }
 
     private static String CalculateDifficulty(int pcLevel, int blueprintLevel)
@@ -313,7 +330,7 @@ public class CraftSystem {
 
     public static void GiveCraftingExperience(NWObject oPC, int craftID, int experience)
     {
-        if(experience <= 0 || !NWScript.getIsPC(oPC) || NWScript.getIsDM(oPC)) return;
+        if(experience <= 0 || !getIsPC(oPC) || getIsDM(oPC)) return;
 
         PlayerGO pcGO = new PlayerGO(oPC);
         CraftRepository repo = new CraftRepository();
@@ -323,7 +340,7 @@ public class CraftSystem {
         CraftEntity craft = repo.GetCraftByID(craftID);
         long maxLevel = repo.GetCraftMaxLevel(craftID);
 
-        NWScript.sendMessageToPC(oPC, "You earned " + craft.getName() + " experience.");
+        sendMessageToPC(oPC, "You earned " + craft.getName() + " experience.");
         if(entity.getLevel() >= maxLevel)
         {
             entity.setExperience(level.getExperience() - 1);
@@ -333,7 +350,7 @@ public class CraftSystem {
         {
             entity.setExperience(entity.getExperience() - level.getExperience());
             entity.setLevel(entity.getLevel() + 1);
-            NWScript.sendMessageToPC(oPC, "You attained level " + entity.getLevel() + " in " + craft.getName() + "!");
+            sendMessageToPC(oPC, "You attained level " + entity.getLevel() + " in " + craft.getName() + "!");
         }
 
         repo.Save(entity);
@@ -346,7 +363,7 @@ public class CraftSystem {
         CraftBlueprintEntity blueprint = repo.GetBlueprintByID(blueprintID);
         CraftEntity craft = blueprint.getCraft();
         PCCraftEntity pcCraft = repo.GetPCCraftByID(pcGO.getUUID(), craft.getCraftID());
-        NWObject tempStorage = NWScript.getObjectByTag("craft_temp_storage", 0);
+        NWObject tempStorage = getObjectByTag("craft_temp_storage", 0);
 
         String header = ColorToken.Green() + "Blueprint: " + ColorToken.End() + ColorToken.White() + blueprint.getItemName() + ColorToken.End() + "\n\n";
         header += ColorToken.Green() + "Skill: " + ColorToken.End() + ColorToken.White() + craft.getName() + " (" + pcCraft.getLevel() + ")" + ColorToken.End() + "\n";
@@ -355,9 +372,9 @@ public class CraftSystem {
 
         for(CraftComponentEntity component : blueprint.getComponents())
         {
-            NWObject item = NWScript.createItemOnObject(component.getItemResref(), tempStorage, 1, "");
-            header += ColorToken.White() + component.getQuantity() + "x " + NWScript.getName(item, false) + ColorToken.End() + "\n";
-            NWScript.destroyObject(item, 0.0f);
+            NWObject item = createItemOnObject(component.getItemResref(), tempStorage, 1, "");
+            header += ColorToken.White() + component.getQuantity() + "x " + getName(item, false) + ColorToken.End() + "\n";
+            destroyObject(item, 0.0f);
         }
 
         return header;

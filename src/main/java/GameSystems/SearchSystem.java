@@ -22,6 +22,10 @@ import java.sql.Timestamp;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
+import static org.nwnx.nwnx2.jvm.NWScript.createItemOnObject;
+import static org.nwnx.nwnx2.jvm.NWScript.getItemStackSize;
+import static org.nwnx.nwnx2.jvm.NWScript.setIdentified;
+
 public class SearchSystem {
 
     private static final String SearchSiteCopyResref = "srch_plc_copy";
@@ -251,6 +255,16 @@ public class SearchSystem {
             if(!spawnItem.getResref().equals("") && spawnItem.getQuantity() > 0)
             {
                 NWObject foundItem = NWScript.createItemOnObject(spawnItem.getResref(), oChest, spawnItem.getQuantity(), "");
+
+                // If item isn't stackable, loop through and create as many as necessary.
+                if(getItemStackSize(foundItem) < spawnItem.getQuantity())
+                {
+                    for(int x = 2; x <= spawnItem.getQuantity(); x++)
+                    {
+                        createItemOnObject(spawnItem.getResref(), oPC, 1, "");
+                    }
+                }
+
                 int maxDurability = DurabilitySystem.GetMaxItemDurability(foundItem);
                 if(maxDurability > -1)
                     DurabilitySystem.SetItemDurability(foundItem, NWScript.random(maxDurability) + 1);
