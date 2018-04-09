@@ -204,7 +204,7 @@ public class DiseaseSystem {
 
         if (iChanceToInfect <= percentChanceToInfect && !getHasSpellEffect(Spell.SANCTUARY, oPC))
         {
-            int iDiseaseCheck = ThreadLocalRandom.current().nextInt(0,20);
+            int iDiseaseCheck = ThreadLocalRandom.current().nextInt(1,20);
             int iDiseaseDC = DiseaseSystem.DCCheck + ThreadLocalRandom.current().nextInt(6) + dcModifier;
             int iDiseaseResistance = ProgressionSystem.GetPlayerSkillLevel(oPC, ProgressionSystem.SkillType_DISEASE_RESISTANCE);
             int conBonus = (getAbilityScore(oPC, Ability.CONSTITUTION, false) - 10) / 2;
