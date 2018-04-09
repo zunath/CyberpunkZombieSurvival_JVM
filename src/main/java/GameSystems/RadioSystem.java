@@ -5,8 +5,11 @@ import GameObject.PlayerGO;
 import NWNX.*;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
+import org.nwnx.nwnx2.jvm.Scheduler;
 
 import java.util.Objects;
+
+import static org.nwnx.nwnx2.jvm.NWScript.*;
 
 public class RadioSystem {
 
@@ -41,7 +44,7 @@ public class RadioSystem {
         PlayerGO pcGO = new PlayerGO(oPC);
         NWObject oDatabase = pcGO.GetDatabaseItem();
         
-        int iChannel = NWScript.getLocalInt(oDatabase, RADIO_CHANNEL);
+        int iChannel = getLocalInt(oDatabase, RADIO_CHANNEL);
 
         int mode = NWNX_Chat.GetChannel();
         String messageText = NWNX_Chat.GetMessage();
@@ -51,31 +54,31 @@ public class RadioSystem {
                 mode != ChatChannel.NWNX_CHAT_CHANNEL_DM_PARTY) return;
 
         NWNX_Chat.SkipMessage();
-        NWObject oNPC = NWScript.getObjectByTag(RADIO_NPC, 0);
+        NWObject oNPC = getObjectByTag(RADIO_NPC, 0);
 
         // Can't send messages without a radio turned on.
         if(iChannel <= 0)
         {
-            NWScript.sendMessageToPC(oPC, ColorToken.Red() + "You must have a radio to communicate over party chat." + ColorToken.End());
+            sendMessageToPC(oPC, ColorToken.Red() + "You must have a radio to communicate over party chat." + ColorToken.End());
             return;
         }
-        String sSenderName = ColorToken.Custom(115, 101, 206) + "(Ch. " + iChannel + ") " + NWScript.getName(oPC, false) + ": " + ColorToken.End();
+        String sSenderName = ColorToken.Custom(115, 101, 206) + "(Ch. " + iChannel + ") " + getName(oPC, false) + ": " + ColorToken.End();
 
-        NWObject[] oMembers = NWScript.getPCs();
+        NWObject[] oMembers = getPCs();
         for(NWObject member : oMembers)
         {
             pcGO = new PlayerGO(member);
             NWObject oMemberDatabase = pcGO.GetDatabaseItem();
-            int iMemberChannel = NWScript.getLocalInt(oMemberDatabase, RADIO_CHANNEL);
+            int iMemberChannel = getLocalInt(oMemberDatabase, RADIO_CHANNEL);
 
             // Message is sent to anyone if they've got a radio tuned in to the correct channel. They do not need to be
             // in the same party.
-            if(iMemberChannel == iChannel || NWScript.getIsDM(member))
+            if(iMemberChannel == iChannel || getIsDM(member))
             {
-                NWNX_Chat.SendMessage(ChatChannel.NWNX_CHAT_CHANNEL_PLAYER_TELL,
+                Scheduler.delay(oNPC, 10, () -> NWNX_Chat.SendMessage(ChatChannel.NWNX_CHAT_CHANNEL_PLAYER_TELL,
                         sSenderName + ColorToken.White() + messageText + ColorToken.End(),
                         oNPC,
-                        member);
+                        member));
             }
         }
     }
@@ -85,13 +88,13 @@ public class RadioSystem {
         PlayerGO pcGO = new PlayerGO(oPC);
         NWObject oRadio = NWNX_Events.OnItemUsed_GetItem();
         NWObject oDatabase = pcGO.GetDatabaseItem();
-        int iRadioChannel = NWScript.getLocalInt(oDatabase, RADIO_CHANNEL);
-        int bPoweredOn = NWScript.getLocalInt(oRadio, RADIO_POWER);
+        int iRadioChannel = getLocalInt(oDatabase, RADIO_CHANNEL);
+        int bPoweredOn = getLocalInt(oRadio, RADIO_POWER);
 
         // Can't change channel unless the radio is turned on
         if(bPoweredOn == 0)
         {
-            NWScript.sendMessageToPC(oPC, ColorToken.Red() + "You must turn the radio on first." + ColorToken.End());
+            sendMessageToPC(oPC, ColorToken.Red() + "You must turn the radio on first." + ColorToken.End());
             return;
         }
 
@@ -104,8 +107,8 @@ public class RadioSystem {
         }
 
         // Mark the new channel, inform player of new channel, and update the radio's name to reflect the new channel
-        NWScript.setLocalInt(oDatabase, RADIO_CHANNEL, iRadioChannel);
-        NWScript.sendMessageToPC(oPC, ColorToken.Purple() + "Radio Channel: " + iRadioChannel + ColorToken.End());
+        setLocalInt(oDatabase, RADIO_CHANNEL, iRadioChannel);
+        sendMessageToPC(oPC, ColorToken.Purple() + "Radio Channel: " + iRadioChannel + ColorToken.End());
         UpdateItemName(oRadio);
     }
 
@@ -114,52 +117,52 @@ public class RadioSystem {
         PlayerGO pcGO = new PlayerGO(oPC);
         NWObject oRadio = NWNX_Events.OnItemUsed_GetItem();
         NWObject oDatabase = pcGO.GetDatabaseItem();
-        int iRadioChannel = NWScript.getLocalInt(oDatabase, RADIO_CHANNEL);
-        int bPoweredOn = NWScript.getLocalInt(oRadio, RADIO_POWER);
+        int iRadioChannel = getLocalInt(oDatabase, RADIO_CHANNEL);
+        int bPoweredOn = getLocalInt(oRadio, RADIO_POWER);
         String sUUID = pcGO.getUUID();
 
         // Another radio is already turned on. Can't turn on another.
         if(iRadioChannel > 0 && bPoweredOn == 0)
         {
-            NWScript.sendMessageToPC(oPC, ColorToken.Red() + "Another radio is already turned on. You may only have one radio turned on at a time." + ColorToken.End());
+            sendMessageToPC(oPC, ColorToken.Red() + "Another radio is already turned on. You may only have one radio turned on at a time." + ColorToken.End());
             return;
         }
 
         // It's powered on right now, but we're turning it off. Remove variables from the owner and the radio itself
         if(bPoweredOn == 1)
         {
-            NWScript.deleteLocalInt(oDatabase, RADIO_CHANNEL);
-            NWScript.deleteLocalInt(oRadio, RADIO_POWER);
-            NWScript.deleteLocalInt(oRadio, RADIO_PC_ID_ENABLED_BY);
-            NWScript.sendMessageToPC(oPC, ColorToken.Purple() + "Radio powered off." + ColorToken.End());
+            deleteLocalInt(oDatabase, RADIO_CHANNEL);
+            deleteLocalInt(oRadio, RADIO_POWER);
+            deleteLocalInt(oRadio, RADIO_PC_ID_ENABLED_BY);
+            sendMessageToPC(oPC, ColorToken.Purple() + "Radio powered off." + ColorToken.End());
         }
         // It's powered off right now, and we're turning it on. Add variables to the owner and the radio itself
         else
         {
-            NWScript.setLocalInt(oDatabase, RADIO_CHANNEL, 1);
-            NWScript.setLocalInt(oRadio, RADIO_POWER, 1);
-            NWScript.setLocalString(oRadio, RADIO_PC_ID_ENABLED_BY, sUUID);
-            NWScript.sendMessageToPC(oPC, ColorToken.Purple() + "Radio powered on." + ColorToken.End());
-            NWScript.sendMessageToPC(oPC, ColorToken.Purple() + "Radio Channel: 1" + ColorToken.End());
+            setLocalInt(oDatabase, RADIO_CHANNEL, 1);
+            setLocalInt(oRadio, RADIO_POWER, 1);
+            setLocalString(oRadio, RADIO_PC_ID_ENABLED_BY, sUUID);
+            sendMessageToPC(oPC, ColorToken.Purple() + "Radio powered on." + ColorToken.End());
+            sendMessageToPC(oPC, ColorToken.Purple() + "Radio Channel: 1" + ColorToken.End());
         }
         UpdateItemName(oRadio);
     }
 
     public void OnModuleUnacquire()
     {
-        NWObject oPC = NWScript.getModuleItemLostBy();
+        NWObject oPC = getModuleItemLostBy();
         PlayerGO pcGO = new PlayerGO(oPC);
-        NWObject oRadio = NWScript.getModuleItemLost();
-        String sResref = NWScript.getResRef(oRadio);
+        NWObject oRadio = getModuleItemLost();
+        String sResref = getResRef(oRadio);
 
         if(Objects.equals(sResref, RADIO_RESREF))
         {
             NWObject oDatabase = pcGO.GetDatabaseItem();
-            int bPoweredOn = NWScript.getLocalInt(oRadio, RADIO_POWER);
+            int bPoweredOn = getLocalInt(oRadio, RADIO_POWER);
             if(bPoweredOn == 1)
             {
-                NWScript.deleteLocalInt(oDatabase, RADIO_CHANNEL);
-                NWScript.deleteLocalInt(oRadio, RADIO_POWER);
+                deleteLocalInt(oDatabase, RADIO_CHANNEL);
+                deleteLocalInt(oRadio, RADIO_POWER);
                 UpdateItemName(oRadio);
             }
         }
@@ -167,17 +170,17 @@ public class RadioSystem {
 
     public void OnModuleAcquire()
     {
-        NWObject oPC = NWScript.getModuleItemAcquiredBy();
+        NWObject oPC = getModuleItemAcquiredBy();
         PlayerGO pcGO = new PlayerGO(oPC);
         NWObject oDatabase = pcGO.GetDatabaseItem();
-        NWObject oRadio = NWScript.getModuleItemAcquired();
-        String sResref = NWScript.getResRef(oRadio);
+        NWObject oRadio = getModuleItemAcquired();
+        String sResref = getResRef(oRadio);
         String sUUID = pcGO.getUUID();
-        String sRadioPCID = NWScript.getLocalString(oRadio, RADIO_PC_ID_ENABLED_BY);
+        String sRadioPCID = getLocalString(oRadio, RADIO_PC_ID_ENABLED_BY);
 
         if(Objects.equals(sResref, RADIO_RESREF))
         {
-            int bPoweredOn = NWScript.getLocalInt(oRadio, RADIO_POWER);
+            int bPoweredOn = getLocalInt(oRadio, RADIO_POWER);
 
             // The radio must be turned on and the person who turned it on must not be
             // the current owner. I.E: When the server resets, the OnAcquire event is fired
@@ -185,8 +188,8 @@ public class RadioSystem {
             // that happens.
             if(bPoweredOn == 1 && !Objects.equals(sUUID, sRadioPCID))
             {
-                NWScript.deleteLocalInt(oDatabase, RADIO_CHANNEL);
-                NWScript.deleteLocalInt(oRadio, RADIO_POWER);
+                deleteLocalInt(oDatabase, RADIO_CHANNEL);
+                deleteLocalInt(oRadio, RADIO_POWER);
                 UpdateItemName(oRadio);
             }
         }
@@ -194,21 +197,21 @@ public class RadioSystem {
 
     private void UpdateItemName(NWObject radio)
     {
-        NWObject oPC = NWScript.getItemPossessor(radio);
+        NWObject oPC = getItemPossessor(radio);
         PlayerGO pcGO = new PlayerGO(oPC);
 
         NWObject oDatabase = pcGO.GetDatabaseItem();
-        String sName = NWScript.getName(radio, true);
+        String sName = getName(radio, true);
         String sNewName = "";
 
-        int iChannel = NWScript.getLocalInt(oDatabase, RADIO_CHANNEL);
+        int iChannel = getLocalInt(oDatabase, RADIO_CHANNEL);
         if(iChannel > 0)
         {
             sNewName = sName + ColorToken.Custom(0, 255, 0) + " (Channel " + iChannel + ")";
         }
 
         // Update item name
-        NWScript.setName(radio, sNewName);
+        setName(radio, sNewName);
     }
 
 
