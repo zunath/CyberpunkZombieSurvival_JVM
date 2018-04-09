@@ -30,6 +30,12 @@ public class ArmorSystem {
         ApplyArmorBaseAC(oPC, oItem);
     }
 
+    public static void OnModuleEnter()
+    {
+        NWObject oPC = NWScript.getEnteringObject();
+        ApplyArmorBaseAC(oPC, null);
+    }
+
     private static void ApplyOnHitCastSpellItemProperty(NWObject oItem)
     {
         int baseItemType = NWScript.getBaseItemType(oItem);
