@@ -8,7 +8,9 @@
   <component name="ChangeListManager">
     <list default="true" id="486e3add-e013-4d47-abab-c86692a1ecb0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nwn/server-files/docker-linux-startServer.sh" beforeDir="false" afterPath="$PROJECT_DIR$/nwn/server-files/docker-linux-startServer.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CustomEffect/BleedingEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CustomEffect/BleedingEffect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CustomEffect/BurnEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CustomEffect/BurnEffect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CustomEffect/PoisonEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CustomEffect/PoisonEffect.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -51,7 +53,7 @@
       <file leaf-file-name="RadioSystem.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/RadioSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
+            <state relative-caret-position="1309">
               <caret line="77" column="48" selection-start-line="77" selection-start-column="48" selection-end-line="77" selection-end-column="48" />
             </state>
           </provider>
@@ -66,11 +68,47 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="docker-windows.startServer.cmd" pinned="false" current-in-tab="true">
+      <file leaf-file-name="docker-windows.startServer.cmd" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nwn/server-files/docker-windows.startServer.cmd">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="799">
               <caret line="47" column="25" selection-start-line="47" selection-start-column="25" selection-end-line="47" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PoisonEffect.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/CustomEffect/PoisonEffect.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ShockEffect.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/CustomEffect/ShockEffect.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BleedingEffect.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/CustomEffect/BleedingEffect.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BurnEffect.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/CustomEffect/BurnEffect.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="16" column="57" lean-forward="true" selection-start-line="16" selection-start-column="57" selection-end-line="16" selection-end-column="57" />
             </state>
           </provider>
         </entry>
@@ -145,9 +183,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/Conversation/StartingDoor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Placeable/StructureSystem/Resource/OnUsed.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Event/Module/OnUseItem.java" />
         <option value="$PROJECT_DIR$/src/main/java/Item/Lockpick/UseLockpick.java" />
         <option value="$PROJECT_DIR$/src/main/java/Event/Module/OnHeartbeat.java" />
         <option value="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Player.java" />
@@ -196,12 +231,15 @@
         <option value="$PROJECT_DIR$/src/main/java/GameSystems/RadioSystem.java" />
         <option value="$PROJECT_DIR$/nwn/server-files/docker-linux-startServer.sh" />
         <option value="$PROJECT_DIR$/nwn/server-files/docker-windows.startServer.cmd" />
+        <option value="$PROJECT_DIR$/src/main/java/CustomEffect/PoisonEffect.java" />
+        <option value="$PROJECT_DIR$/src/main/java/CustomEffect/BleedingEffect.java" />
+        <option value="$PROJECT_DIR$/src/main/java/CustomEffect/BurnEffect.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
-    <option name="width" value="1738" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="794" />
+    <option name="width" value="1133" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -243,9 +281,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -334,6 +369,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="CustomEffect" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CyberpunkZombieSurvival_JVM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CyberpunkZombieSurvival_JVM" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="Data" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -407,16 +450,19 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Projects/CyberpunkZombieSurvival_JVM/src/main/java/Event/Module/OnClientEnter.java" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../unified/Plugins/JVM/java" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="Console" />
-    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Projects/CyberpunkZombieSurvival_JVM/src/main/java/Event/Module/OnClientEnter.java" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -526,13 +572,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1508477719987</updated>
-    </task>
-    <task id="LOCAL-00026" summary="Clean up expired custom effects separately to fix an exception. Make custom effects expire if target is dead or invalid.">
-      <created>1520253621273</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1520253621273</updated>
     </task>
     <task id="LOCAL-00027" summary="Add dialog swapping to the convo system to fix custom token issues.">
       <created>1520417971047</created>
@@ -870,7 +909,14 @@
       <option name="project" value="LOCAL" />
       <updated>1523293380687</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="Update server script to use correct image.">
+      <created>1523365012072</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1523365012072</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TodoView">
@@ -883,11 +929,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="794" y="0" width="1133" height="1047" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.32518598" />
       <window_info anchor="right" id="Palette&#9;" order="4" />
       <window_info id="Image Layers" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
@@ -898,7 +945,7 @@
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="9" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23645833" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.40644583" />
       <window_info anchor="bottom" id="Statistic" order="13" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24947807" />
@@ -908,7 +955,6 @@
       <window_info id="Favorites" order="8" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="DB Execution Console" order="7" />
-      <window_info active="true" anchor="bottom" id="Messages" order="8" visible="true" weight="0.32518598" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32624868" />
@@ -939,7 +985,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Update database + module with Drakaden's changes." />
     <MESSAGE value="Reduce Zahir DC from 18 to 12. Fixes #97" />
     <MESSAGE value="Update module to use the new NWNX core script. It got overwritten in one of the previous updates accidentally." />
     <MESSAGE value="Add missing blueprint items to module." />
@@ -964,7 +1009,8 @@
     <MESSAGE value="Increase minimum roll on disease checks to 1 instead of 0." />
     <MESSAGE value="Prevent cure and regenerate from being cast on undead targets." />
     <MESSAGE value="Fix radio message delivery." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix radio message delivery." />
+    <MESSAGE value="Update server script to use correct image." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update server script to use correct image." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -976,34 +1022,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/Conversation/Outfit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1632">
-          <caret line="96" column="43" selection-start-line="96" selection-start-column="43" selection-end-line="96" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Data/Repository/PCOutfitRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Dialog/DialogManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="86" column="23" selection-start-line="86" selection-start-column="23" selection-end-line="86" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Conversation/ResearchTerminal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1428">
-          <caret line="84" selection-start-line="84" selection-end-line="91" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/LICENSE.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -1314,7 +1332,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/RadioSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
+        <state relative-caret-position="1309">
           <caret line="77" column="48" selection-start-line="77" selection-start-column="48" selection-end-line="77" selection-end-column="48" />
         </state>
       </provider>
@@ -1330,6 +1348,34 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="799">
           <caret line="47" column="25" selection-start-line="47" selection-start-column="25" selection-end-line="47" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/CustomEffect/PoisonEffect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/CustomEffect/ShockEffect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/CustomEffect/BleedingEffect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/CustomEffect/BurnEffect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="57" lean-forward="true" selection-start-line="16" selection-start-column="57" selection-end-line="16" selection-end-column="57" />
         </state>
       </provider>
     </entry>
