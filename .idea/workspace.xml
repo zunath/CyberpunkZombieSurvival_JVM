@@ -6,11 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="486e3add-e013-4d47-abab-c86692a1ecb0" name="Default" comment="Add a new player guide.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nwn/module/CyberpunkZombieSurvivalEE.zip" beforeDir="false" afterPath="$PROJECT_DIR$/nwn/module/CyberpunkZombieSurvivalEE.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Event/Module/OnClientEnter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnClientEnter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameSystems/InventorySystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/InventorySystem.java" afterDir="false" />
+    <list default="true" id="486e3add-e013-4d47-abab-c86692a1ecb0" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Item/RevivalStone.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -32,11 +29,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InventorySystem.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="InventorySystem.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/InventorySystem.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="672">
               <caret line="194" column="128" selection-start-line="194" selection-start-column="128" selection-end-line="194" selection-end-column="128" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RevivalStone.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Item/RevivalStone.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
             </state>
           </provider>
         </entry>
@@ -138,7 +144,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/Abilities/Crafting/SpeedyCrafter.java" />
         <option value="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Object.java" />
         <option value="$PROJECT_DIR$/src/main/java/Authorization/ValidateCDKey.java" />
         <option value="$PROJECT_DIR$/README.md" />
@@ -189,6 +194,7 @@
         <option value="$PROJECT_DIR$/src/main/java/GameSystems/StructureSystem.java" />
         <option value="$PROJECT_DIR$/src/main/java/Event/Module/OnClientEnter.java" />
         <option value="$PROJECT_DIR$/src/main/java/GameSystems/InventorySystem.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Item/RevivalStone.java" />
       </list>
     </option>
   </component>
@@ -528,13 +534,6 @@
       <option name="presentableId" value="Default" />
       <updated>1508477719987</updated>
     </task>
-    <task id="LOCAL-00030" summary="Add light and heavy picks to the valid durability types list.">
-      <created>1520483681554</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1520483681554</updated>
-    </task>
     <task id="LOCAL-00031" summary="Revert the custom effect linking change to fix scheduler issues. Will revisit at a later point.">
       <created>1520485222254</created>
       <option name="number" value="00031" />
@@ -871,7 +870,14 @@
       <option name="project" value="LOCAL" />
       <updated>1523855841364</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="Add a new player guide.">
+      <created>1523860019640</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1523860019640</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TodoView">
@@ -998,13 +1004,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/Event/Player/OnRested.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Event/Player/OnSpawn.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -1348,6 +1347,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="672">
           <caret line="194" column="128" selection-start-line="194" selection-start-column="128" selection-end-line="194" selection-end-column="128" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Item/RevivalStone.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>
