@@ -106,6 +106,10 @@ public class OnClientEnter implements IScriptEventHandler {
             NWScript.setName(darts, "Starting Darts");
             NWScript.setItemCursedFlag(darts, true);
 
+            NWObject guide = NWScript.createItemOnObject("player_guide", oPC, 1, ""); // Player guide
+            NWScript.setName(guide, NWScript.getName(oPC, false) + "'s Player Guide");
+            NWScript.setItemCursedFlag(guide, true);
+
             Scheduler.assign(oPC, () -> {
                 NWObject oClothes = NWScript.createItemOnObject("starting_shirt", oPC, 1, "");
                 NWScript.actionEquipItem(oClothes, InventorySlot.CHEST);
