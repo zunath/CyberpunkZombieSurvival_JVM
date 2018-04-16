@@ -261,7 +261,7 @@ public class SearchSystem {
                 {
                     for(int x = 2; x <= spawnItem.getQuantity(); x++)
                     {
-                        createItemOnObject(spawnItem.getResref(), oPC, 1, "");
+                        createItemOnObject(spawnItem.getResref(), oChest, 1, "");
                     }
                 }
 
