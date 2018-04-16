@@ -30,9 +30,10 @@ public class BladeRepairKit implements IScriptEventHandler {
             repairAmount *= 1.25f;
         }
 
-        DurabilitySystem.RunItemRepair(oPC, item, repairAmount);
-
-        NWScript.destroyObject(item, 0.0f);
+        if(DurabilitySystem.RunItemRepair(oPC, target, repairAmount))
+        {
+            NWScript.destroyObject(item, 0.0f);
+        }
     }
 
 }

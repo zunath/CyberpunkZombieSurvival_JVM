@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="CZS" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="d82c2d02-0b58-4256-a5a4-c6323f89ed17" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/CZS.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="486e3add-e013-4d47-abab-c86692a1ecb0" name="Default" comment="Add XP tome books. Update module to include the items. Update database backup.">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/CZS.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/CZS.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CZS_JVM.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CZS_JVM.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GameSystems/DurabilitySystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/DurabilitySystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Helper/ItemHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Helper/ItemHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Item/Repair/ArmorRepairKit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Item/Repair/ArmorRepairKit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Item/Repair/BladeRepairKit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Item/Repair/BladeRepairKit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Item/Repair/BluntRepairKit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Item/Repair/BluntRepairKit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Item/Repair/FirearmRepairKit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Item/Repair/FirearmRepairKit.java" afterDir="false" />
     </list>
+    <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,65 +27,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PoisonEffect.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/CustomEffect/PoisonEffect.java">
+      <file leaf-file-name="ArmorRepairKit.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Item/Repair/ArmorRepairKit.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+            <state relative-caret-position="544">
+              <caret line="32" column="53" selection-start-line="32" selection-start-column="53" selection-end-line="32" selection-end-column="53" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ShockEffect.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/CustomEffect/ShockEffect.java">
+      <file leaf-file-name="DurabilitySystem.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/DurabilitySystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BleedingEffect.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/CustomEffect/BleedingEffect.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BurnEffect.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/CustomEffect/BurnEffect.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="1" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="XPTome.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Item/XPTome.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="42" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="QuestEntity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Entities/QuestEntity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="32" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
+            <state relative-caret-position="603">
+              <caret line="142" column="24" selection-start-line="142" selection-start-column="24" selection-end-line="142" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -84,34 +48,107 @@
       <file leaf-file-name="BladeRepairKit.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Item/Repair/BladeRepairKit.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
+            <state relative-caret-position="544">
+              <caret line="32" column="53" selection-start-line="32" selection-start-column="53" selection-end-line="32" selection-end-column="53" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ItemHelper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Helper/ItemHelper.java">
+      <file leaf-file-name="BluntRepairKit.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Item/Repair/BluntRepairKit.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1921">
-              <caret line="113" column="5" selection-start-line="113" selection-start-column="5" selection-end-line="113" selection-end-column="5" />
+            <state relative-caret-position="544">
+              <caret line="32" column="53" selection-start-line="32" selection-start-column="53" selection-end-line="32" selection-end-column="53" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Blueprint.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Item/Blueprint.java">
+      <file leaf-file-name="FirearmRepairKit.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Item/Repair/FirearmRepairKit.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+            <state relative-caret-position="544">
+              <caret line="32" column="53" selection-start-line="32" selection-start-column="53" selection-end-line="32" selection-end-column="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="41" lean-forward="true" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="SQL Script" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>LOCKPICK_TEMP_UNLOCKING_OBJECT</find>
+      <find>UnlockingObjectVariable</find>
+      <find>accurac</find>
+      <find>bIsCriticalHit</find>
+      <find>targetac</find>
+      <find>fire</find>
+      <find>fireshot</find>
+      <find>fireshotgun</find>
+      <find>dext</find>
+      <find>distance</find>
+      <find>.gethitpoints</find>
+      <find>NWNX_Object.SetEventHandler(</find>
+      <find>critical</find>
+      <find>tumble</find>
+      <find>skipmessage</find>
+      <find>Free</find>
+      <find>SkillType_TUMBLE</find>
+      <find>last chance</find>
+      <find>setBase</find>
+      <find>createdate</find>
+      <find>ini4j</find>
+      <find>maxqua</find>
+      <find>czs-db</find>
+      <find>handlecollectionpa</find>
+      <find>GetPlayerQuestJournalID</find>
+      <find>bab</find>
+      <find>setidentif</find>
+      <find>created</find>
+      <find>skip</find>
+      <find>29</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>final</replace>
+      <replace>public static final int</replace>
+      <replace>NWObject</replace>
+      <replace>String</replace>
+      <replace>setEventScript(</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/src/main/java/Entities</dir>
+      <dir>C:\Projects\CyberpunkZombieSurvival_JVM</dir>
+    </dirStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/resources/sql/ActivityLogging/GetChatChannelByID.sql" root0="SKIP_HIGHLIGHTING" />
@@ -119,12 +156,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Player.java" />
-        <option value="$PROJECT_DIR$/src/main/java/GameSystems/CombatSystem.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Event/Module/OnPlayerDying.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Item/Medical/HerbalRemedy.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Item/Medical/TreatmentKit.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Item/ZombieClaws/ZombieClaw.java" />
         <option value="$PROJECT_DIR$/src/main/java/Event/Area/OnEnter.java" />
         <option value="$PROJECT_DIR$/src/main/java/Event/Module/OnPlayerEquipItem.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/Crafting/SpeedyCrafter.java" />
@@ -170,14 +201,50 @@
         <option value="$PROJECT_DIR$/src/main/java/CustomEffect/BurnEffect.java" />
         <option value="$PROJECT_DIR$/src/main/java/Item/XPTome.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/main/java/Helper/ItemHelper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GameSystems/DurabilitySystem.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Item/Repair/ArmorRepairKit.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Item/Repair/BladeRepairKit.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Item/Repair/BluntRepairKit.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Item/Repair/FirearmRepairKit.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="395" />
-    <option name="y" value="-15" />
-    <option name="width" value="1133" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="416" />
+    <option name="width" value="1511" />
     <option name="height" value="1047" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Java</id>
+          </State>
+          <State>
+            <id>Probable bugsJava</id>
+          </State>
+          <State>
+            <id>Serialization issuesJava</id>
+          </State>
+          <State>
+            <id>Spelling</id>
+          </State>
+          <State>
+            <id>toString() issuesJava</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>SpellCheckingInspection</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -367,10 +434,13 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../CZS" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Projects/CyberpunkZombieSurvival_JVM/src/main/java/Event/Module/OnClientEnter.java" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../unified/Plugins/JVM/java" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="Console" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -399,6 +469,9 @@
     </option>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
@@ -411,12 +484,32 @@
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="singleModule" />
       </option>
       <patterns />
+    </configuration>
+    <configuration name="Remote" type="Remote" factoryName="Remote">
+      <module name="CZS_JVM" />
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="8000" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="8000" />
+        <option name="LOCAL" value="false" />
+      </RunnerSettings>
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <module name="CZS_JVM" />
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="8000" />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -429,7 +522,7 @@
       <option name="TEST_OBJECT" value="CLASS" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <option name="OUTPUT_DIRECTORY" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
@@ -440,24 +533,23 @@
       <properties />
       <listeners />
     </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file id="idea.log" enabled="true" />
+    </configuration>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d82c2d02-0b58-4256-a5a4-c6323f89ed17" name="Default" comment="" />
+      <changelist id="486e3add-e013-4d47-abab-c86692a1ecb0" name="Default" comment="" />
       <created>1508477719987</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1508477719987</updated>
-    </task>
-    <task id="LOCAL-00028" summary="Use a different conversation start method depending on where the dialog is called. Fixes #120">
-      <created>1520479398272</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1520479398273</updated>
     </task>
     <task id="LOCAL-00029" summary="Add the sender name info when a radio message is sent.">
       <created>1520483272971</created>
@@ -795,101 +887,140 @@
       <option name="project" value="LOCAL" />
       <updated>1523459007231</updated>
     </task>
+    <task id="LOCAL-00077" summary="Add XP tome books. Update module to include the items. Update database backup.">
+      <created>1523846247105</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1523846247105</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="8" weight="0.32518598" />
+      <window_info anchor="bottom" id="TODO" order="8" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32518598" />
       <window_info anchor="right" id="Palette&#9;" order="4" />
       <window_info id="Image Layers" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="18" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="8" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32832617" />
+      <window_info anchor="bottom" id="Version Control" order="13" weight="0.32832617" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Terminal" order="15" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="9" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23697917" />
-      <window_info anchor="bottom" id="Statistic" order="13" />
+      <window_info anchor="bottom" id="Statistic" order="22" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24947807" />
       <window_info id="UI Designer" order="5" />
       <window_info anchor="right" id="Theme Preview" order="7" />
       <window_info id="Favorites" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39660656" />
-      <window_info anchor="bottom" id="DB Execution Console" order="7" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="bottom" id="Inspection Results" order="13" weight="0.32938644" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32624868" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info id="Project Explorer" order="3" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="right" id="FAQ Robot" order="6" />
       <window_info id="DB Browser" order="6" />
+      <window_info anchor="bottom" id="Event Log" order="19" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30367893" />
+      <window_info id="Favorites" order="8" side_tool="true" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.24947807" />
+      <window_info anchor="bottom" id="MaxCompute Console" order="17" />
+      <window_info anchor="bottom" id="Debug" order="5" weight="0.39660656" />
       <window_info id="Job Explorer" order="4" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Palette&#9;" order="4" />
+      <window_info anchor="bottom" id="DB Execution Console" order="10" />
+      <window_info id="Project Explorer" order="3" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="MaxCompute Console" order="11" />
+      <window_info id="Image Layers" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="7" />
+      <window_info anchor="bottom" id="Statistic" order="20" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info anchor="bottom" id="Version Control" order="14" weight="0.32832617" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="bottom" id="TODO" order="9" />
+      <window_info anchor="bottom" id="Inspection Results" order="21" weight="0.32938644" />
+      <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
+      <window_info anchor="right" id="FAQ Robot" order="6" />
+      <window_info anchor="bottom" id="Terminal" order="16" />
+      <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
+      <window_info id="UI Designer" order="5" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32624868" />
+      <window_info anchor="bottom" id="Run" order="4" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32518598" />
+      <window_info anchor="right" id="Maven Projects" order="8" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info id="Designer" order="9" />
     </layout>
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.sql" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add missing blueprint items to module." />
+    <MESSAGE value="Update readme" />
+    <MESSAGE value="Add sample server start scripts and rename czs-server-files folder to server-files." />
+    <MESSAGE value="Fix issue with error on persistent outfit storage. Remove dead testing code." />
+    <MESSAGE value="Perform the PC check when a DM uses a research terminal instead of the Initialize method of the convo. Fixes #113" />
+    <MESSAGE value="Remove broken options in the armor appearance crafting menu. Fixes #16" />
+    <MESSAGE value="Add license." />
+    <MESSAGE value="Update database backup." />
+    <MESSAGE value="Update module + database." />
+    <MESSAGE value="Add Base Attack Bonus upgrade" />
+    <MESSAGE value="Update database + module. Add event hooks for PCs. Currently only a handful of them work, but I added them in preparation for when the rest work in EE." />
+    <MESSAGE value="Recalc BAB on client login." />
+    <MESSAGE value="Remove debug line." />
+    <MESSAGE value="Backup database and update module." />
+    <MESSAGE value="Add missing script files to module." />
+    <MESSAGE value="Use environment variables for database connections. Remove ini4j library. Update jvm library. Remove dead area instancing code." />
+    <MESSAGE value="Remove database.ini example and update docker scripts to use new environment variables for SQL server." />
+    <MESSAGE value="Recalc AC on client login." />
+    <MESSAGE value="Create additional items if crafted or found items are not stackable." />
+    <MESSAGE value="Increase minimum roll on disease checks to 1 instead of 0." />
+    <MESSAGE value="Prevent cure and regenerate from being cast on undead targets." />
+    <MESSAGE value="Fix radio message delivery." />
+    <MESSAGE value="Update server script to use correct image." />
+    <MESSAGE value="Fix Poison and other damage over time spells to give XP to caster if target dies." />
+    <MESSAGE value="Add XP tome books. Update module to include the items. Update database backup." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add XP tome books. Update module to include the items. Update database backup." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="7" />
+    </breakpoint-manager>
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/Event/Module/OnLoad.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1054">
-          <caret line="62" column="86" selection-start-line="62" selection-start-column="86" selection-end-line="62" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/CustomEffectSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/libs/org.nwnx.nwnx2.jvm.jar!/org/nwnx/nwnx2/jvm/constants/EventScript.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="17" column="60" lean-forward="true" selection-start-line="17" selection-start-column="60" selection-end-line="30" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Event/Player/OnBlocked.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Event/Player/OnDeath.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Event/Player/OnDisturbed.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Event/Player/OnEndCombatRound.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Event/Player/OnAttacked.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -1177,13 +1308,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Repair/ArmorRepairKit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Entities/QuestEntity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -1191,10 +1315,62 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/org.nwnx.nwnx2.jvm.jar!/org/nwnx/nwnx2/jvm/constants/BaseItem.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="68" column="43" selection-start-line="68" selection-start-column="41" selection-end-line="68" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Helper/ItemHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="587">
+          <caret line="112" column="8" selection-start-line="112" selection-start-column="8" selection-end-line="112" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Repair/ArmorRepairKit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="53" selection-start-line="32" selection-start-column="53" selection-end-line="32" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/DurabilitySystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="603">
+          <caret line="142" column="24" selection-start-line="142" selection-start-column="24" selection-end-line="142" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Repair/BladeRepairKit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="53" selection-start-line="32" selection-start-column="53" selection-end-line="32" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Repair/BluntRepairKit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="53" selection-start-line="32" selection-start-column="53" selection-end-line="32" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Repair/FirearmRepairKit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="53" selection-start-line="32" selection-start-column="53" selection-end-line="32" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="14" column="42" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
+          <caret line="14" column="41" lean-forward="true" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -1253,18 +1429,6 @@
       <state key="ModuleStructureConfigurable.UI">
         <settings>
           <last-edited>CZS_JVM</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

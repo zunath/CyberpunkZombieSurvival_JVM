@@ -5,13 +5,9 @@ import Enumerations.AbilityType;
 import GameSystems.DurabilitySystem;
 import GameSystems.MagicSystem;
 import GameSystems.ProgressionSystem;
+import Helper.ItemHelper;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
-import org.nwnx.nwnx2.jvm.constants.BaseItem;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.concurrent.ThreadLocalRandom;
 
 @SuppressWarnings("unused")
 public class ArmorRepairKit implements IScriptEventHandler {
@@ -19,12 +15,8 @@ public class ArmorRepairKit implements IScriptEventHandler {
     public void runScript(NWObject oPC) {
         NWObject target = NWScript.getItemActivatedTarget();
         NWObject item = NWScript.getItemActivated();
-        int targetType = NWScript.getBaseItemType(target);
 
-        ArrayList<Integer> allowedTypes = new ArrayList<>();
-        Collections.addAll(allowedTypes, BaseItem.BELT, BaseItem.ARMOR, BaseItem.GLOVES, BaseItem.BRACER, BaseItem.HELMET);
-
-        if(!allowedTypes.contains(targetType))
+        if(!ItemHelper.IsArmor(target))
         {
             NWScript.sendMessageToPC(oPC, "You cannot repair that item with this kit.");
             return;
@@ -38,8 +30,9 @@ public class ArmorRepairKit implements IScriptEventHandler {
             repairAmount *= 1.25f;
         }
 
-        DurabilitySystem.RunItemRepair(oPC, item, repairAmount);
-
-        NWScript.destroyObject(item, 0.0f);
+        if(DurabilitySystem.RunItemRepair(oPC, target, repairAmount))
+        {
+            NWScript.destroyObject(item, 0.0f);
+        }
     }
 }

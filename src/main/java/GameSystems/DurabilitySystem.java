@@ -114,19 +114,21 @@ public class DurabilitySystem {
         return df.format(durability);
     }
 
-    public static void RunItemRepair(NWObject oPC, NWObject oItem, float amount) {
+    public static boolean RunItemRepair(NWObject oPC, NWObject oItem, float amount) {
         // Prevent repairing for less than 0.01
-        if (amount < 0.01f) return;
+        if (amount < 0.01f) return false;
 
         // Item has no durability - inform player they can't repair it
         if (GetItemDurability(oItem) == -1) {
             NWScript.sendMessageToPC(oPC, ColorToken.Red() + "You cannot repair that item." + ColorToken.End());
-            return;
+            return false;
         }
 
         SetItemDurability(oItem, GetItemDurability(oItem) + amount);
         String durMessage = FormatDurability(GetItemDurability(oItem)) + " / " + GetMaxItemDurability(oItem);
         NWScript.sendMessageToPC(oPC, ColorToken.Green() + "You repaired your " + NWScript.getName(oItem, true) + ". (" + durMessage + ")" + ColorToken.End());
+
+        return true;
     }
 
     public static int GetMaxItemDurability(NWObject item)

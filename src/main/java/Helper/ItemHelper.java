@@ -110,7 +110,16 @@ public class ItemHelper {
     public static boolean IsArmor(NWObject item)
     {
         int itemType = NWScript.getBaseItemType(item);
-        return itemType == BaseItem.BELT;
+
+        Integer[] allowedArmorTypes = {
+                BaseItem.BELT,
+                BaseItem.ARMOR,
+                BaseItem.GLOVES,
+                BaseItem.BRACER,
+                BaseItem.HELMET
+        };
+
+        return Arrays.asList(allowedArmorTypes).contains(itemType);
     }
 
 }
