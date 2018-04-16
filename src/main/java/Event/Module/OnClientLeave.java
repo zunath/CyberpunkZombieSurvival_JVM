@@ -4,6 +4,7 @@ import GameObject.PlayerGO;
 import Common.IScriptEventHandler;
 import Data.Repository.PlayerRepository;
 import GameSystems.ActivityLoggingSystem;
+import GameSystems.MapPinSystem;
 import GameSystems.RadioSystem;
 import org.nwnx.nwnx2.jvm.*;
 
@@ -21,6 +22,7 @@ public class OnClientLeave implements IScriptEventHandler {
 
 		SaveCharacter(pc);
 		ActivityLoggingSystem.OnModuleClientLeave();
+		MapPinSystem.OnClientLeave();
 	}
 
 	private void SaveCharacter(NWObject pc) {

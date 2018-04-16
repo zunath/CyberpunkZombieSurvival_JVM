@@ -82,6 +82,7 @@ public class DataAccess {
         _configuration.addAnnotatedClass(PCBadgeEntity.class);
         _configuration.addAnnotatedClass(PCBlueprintEntity.class);
         _configuration.addAnnotatedClass(PCKeyItemEntity.class);
+        _configuration.addAnnotatedClass(PCMapPinEntity.class);
         _configuration.addAnnotatedClass(PCMigrationEntity.class);
         _configuration.addAnnotatedClass(PCMigrationItemEntity.class);
         _configuration.addAnnotatedClass(PCCorpseEntity.class);
