@@ -7,16 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="486e3add-e013-4d47-abab-c86692a1ecb0" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Data/Repository/MapPinRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Entities/PCMapPinEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/GameSystems/MapPinSystem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/sql/MapPin/DeletePlayerMapPins.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/sql/MapPin/GetPlayerMapPins.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Data/DataAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Data/DataAccess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Event/Module/OnClientEnter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnClientEnter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Event/Module/OnClientLeave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Event/Module/OnClientLeave.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Helper/MapPinHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Helper/MapPinHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Conversation/StartingDoor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Conversation/StartingDoor.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -29,83 +21,47 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="StructureSystem.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/StructureSystem.java">
+      <file leaf-file-name="SearchSystem.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/SearchSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
-              <caret line="202" column="27" selection-start-line="202" selection-start-column="27" selection-end-line="202" selection-end-column="27" />
+            <state relative-caret-position="4284">
+              <caret line="252" column="64" lean-forward="true" selection-start-line="252" selection-start-column="64" selection-end-line="252" selection-end-column="64" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InventorySystem.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/InventorySystem.java">
+      <file leaf-file-name="OnHeartbeat.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Event/Module/OnHeartbeat.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="672">
-              <caret line="194" column="128" selection-start-line="194" selection-start-column="128" selection-end-line="194" selection-end-column="128" />
+            <state relative-caret-position="678">
+              <caret line="77" column="37" selection-start-line="77" selection-start-column="37" selection-end-line="77" selection-end-column="37" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RevivalStone.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Item/RevivalStone.java">
+      <file leaf-file-name="StartingDoor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Placeable/StartingDoor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+            <state relative-caret-position="136">
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OnEnter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Event/Area/OnEnter.java">
+      <file leaf-file-name="StartingDoor.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Conversation/StartingDoor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="69" column="55" selection-start-line="69" selection-start-column="55" selection-end-line="69" selection-end-column="55" />
+            <state relative-caret-position="595">
+              <caret line="35" column="345" selection-start-line="35" selection-start-column="345" selection-end-line="35" selection-end-column="345" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MapPinHelper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Helper/MapPinHelper.java">
+      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Common/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="768">
-              <caret line="114" lean-forward="true" selection-start-line="114" selection-end-line="114" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MapPinSystem.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/MapPinSystem.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="29" column="19" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OnClientEnter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Event/Module/OnClientEnter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="36" column="37" selection-start-line="36" selection-start-column="37" selection-end-line="36" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OnClientLeave.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Event/Module/OnClientLeave.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" column="37" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BluntRepairKit.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Item/Repair/BluntRepairKit.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="32" column="53" selection-start-line="32" selection-start-column="53" selection-end-line="32" selection-end-column="53" />
+            <state relative-caret-position="510">
+              <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
             </state>
           </provider>
         </entry>
@@ -123,8 +79,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>bIsCriticalHit</find>
-      <find>targetac</find>
       <find>fire</find>
       <find>fireshot</find>
       <find>fireshotgun</find>
@@ -153,6 +107,8 @@
       <find>initialize</find>
       <find>sanctuary</find>
       <find>pcterritoryflagid</find>
+      <find>Leaving</find>
+      <find>natural_re</find>
     </findStrings>
     <replaceStrings>
       <replace>final</replace>
@@ -180,7 +136,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/NWNX/NWNX_Creature.java" />
         <option value="$PROJECT_DIR$/src/main/java/Event/Module/OnLoad.java" />
         <option value="$PROJECT_DIR$/src/main/java/Event/Player/OnBlocked.java" />
         <option value="$PROJECT_DIR$/src/main/java/Event/Player/OnDeath.java" />
@@ -199,7 +154,6 @@
         <option value="$PROJECT_DIR$/src/main/java/GameSystems/AreaInstanceSystem.java" />
         <option value="$PROJECT_DIR$/src/main/java/Conversation/Quest/Tutorial.java" />
         <option value="$PROJECT_DIR$/src/main/java/GameSystems/ArmorSystem.java" />
-        <option value="$PROJECT_DIR$/src/main/java/GameSystems/SearchSystem.java" />
         <option value="$PROJECT_DIR$/src/main/java/GameSystems/CraftSystem.java" />
         <option value="$PROJECT_DIR$/src/main/java/GameSystems/DiseaseSystem.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/Regenerate.java" />
@@ -231,6 +185,8 @@
         <option value="$PROJECT_DIR$/src/main/java/Helper/MapPinHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/Event/Module/OnClientEnter.java" />
         <option value="$PROJECT_DIR$/src/main/java/Event/Module/OnClientLeave.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GameSystems/SearchSystem.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Conversation/StartingDoor.java" />
       </list>
     </option>
   </component>
@@ -473,6 +429,14 @@
               <item name="CyberpunkZombieSurvival_JVM" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Placeable" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CyberpunkZombieSurvival_JVM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CyberpunkZombieSurvival_JVM" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -618,20 +582,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1508477719987</updated>
-    </task>
-    <task id="LOCAL-00033" summary="Update database backup and module - prior to EE release.">
-      <created>1520561829835</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1520561829835</updated>
-    </task>
-    <task id="LOCAL-00034" summary="Update module - remove armor which was crashing players from the starting shop.">
-      <created>1520682244988</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1520682244988</updated>
     </task>
     <task id="LOCAL-00035" summary="Update module - fix a journal entry for one of the quests. Also update database backup.">
       <created>1520897922048</created>
@@ -962,7 +912,21 @@
       <option name="project" value="LOCAL" />
       <updated>1523861068136</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="Persistent map pins.">
+      <created>1523875776519</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1523875776519</updated>
+    </task>
+    <task id="LOCAL-00083" summary="Spawn additional items in the chest inventory when searching instead of the player.">
+      <created>1523893211646</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1523893211646</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1052,8 +1016,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Perform the PC check when a DM uses a research terminal instead of the Initialize method of the convo. Fixes #113" />
-    <MESSAGE value="Remove broken options in the armor appearance crafting menu. Fixes #16" />
     <MESSAGE value="Add license." />
     <MESSAGE value="Update database backup." />
     <MESSAGE value="Update module + database." />
@@ -1077,7 +1039,9 @@
     <MESSAGE value="Add a new player guide." />
     <MESSAGE value="Add item to grant revival stone to players." />
     <MESSAGE value="Ignore sanctuary effects if player enters OOC area. This should prevent it from being removed automatically after a server reset." />
-    <option name="LAST_COMMIT_MESSAGE" value="Ignore sanctuary effects if player enters OOC area. This should prevent it from being removed automatically after a server reset." />
+    <MESSAGE value="Persistent map pins." />
+    <MESSAGE value="Spawn additional items in the chest inventory when searching instead of the player." />
+    <option name="LAST_COMMIT_MESSAGE" value="Spawn additional items in the chest inventory when searching instead of the player." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1089,41 +1053,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/Item/ZombieClaws/BleederClaw.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Item/ZombieClaws/InfectorClaw.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Event/Module/OnHeartbeat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3247">
-          <caret line="191" column="38" selection-start-line="191" selection-start-column="38" selection-end-line="191" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Entities/ActivePlayerEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/AreaInstanceSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/QuestSystem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="12189">
@@ -1156,13 +1085,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="35" column="36" lean-forward="true" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/SearchSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="257" selection-start-line="257" selection-end-line="257" />
         </state>
       </provider>
     </entry>
@@ -1421,13 +1343,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Helper/MapPinHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="768">
-          <caret line="114" lean-forward="true" selection-start-line="114" selection-end-line="114" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Event/Module/OnClientEnter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -1435,10 +1350,59 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Event/Module/OnClientLeaving.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Event/Module/OnClientLeave.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="37" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
+        <state relative-caret-position="51">
+          <caret line="3" column="9" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Helper/MapPinHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="82" column="4" selection-start-line="82" selection-start-column="4" selection-end-line="82" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/SearchSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4284">
+          <caret line="252" column="64" lean-forward="true" selection-start-line="252" selection-start-column="64" selection-end-line="252" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Common/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Event/Module/OnHeartbeat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="678">
+          <caret line="77" column="37" selection-start-line="77" selection-start-column="37" selection-end-line="77" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Placeable/StartingDoor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Conversation/StartingDoor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="35" column="345" selection-start-line="35" selection-start-column="345" selection-end-line="35" selection-end-column="345" />
         </state>
       </provider>
     </entry>
