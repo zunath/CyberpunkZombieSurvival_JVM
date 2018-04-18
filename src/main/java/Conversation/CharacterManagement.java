@@ -19,6 +19,7 @@ public class CharacterManagement extends DialogBase implements IDialogHandler {
                 "Reset Skill Purchases",
                 //"Change Portrait",
                 "Change Head",
+                "Change Description",
                 "Back"
         );
 
@@ -56,7 +57,10 @@ public class CharacterManagement extends DialogBase implements IDialogHandler {
                     case 3: // Change Head
                         SwitchConversation("ChangeHead");
                         break;
-                    case 4: // Back
+                    case 4: // Change Description
+                        SwitchConversation("ChangeDescription");
+                        break;
+                    case 5: // Back
                         SwitchConversation("RestMenu");
                         break;
                 }
