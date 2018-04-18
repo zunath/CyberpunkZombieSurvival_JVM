@@ -2,6 +2,7 @@ package Event.Module;
 import Common.IScriptEventHandler;
 import GameSystems.ArmorSystem;
 import GameSystems.CombatSystem;
+import GameSystems.HelmetToggleSystem;
 import GameSystems.InventorySystem;
 import org.nwnx.nwnx2.jvm.*;
 
@@ -16,6 +17,6 @@ public class OnPlayerUnequipItem implements IScriptEventHandler {
 		combatSystem.OnModuleUnequip();
 		ArmorSystem.OnModuleUnequipItem();
 		InventorySystem.OnModuleUnEquipItem();
-
+		HelmetToggleSystem.OnModuleItemUnequipped();
 	}
 }

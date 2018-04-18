@@ -3,6 +3,7 @@ package Conversation;
 import Conversation.ViewModels.CharacterManagementViewModel;
 import Dialog.*;
 import GameObject.PlayerGO;
+import GameSystems.HelmetToggleSystem;
 import Helper.ColorToken;
 import org.nwnx.nwnx2.jvm.NWObject;
 import org.nwnx.nwnx2.jvm.NWScript;
@@ -20,6 +21,7 @@ public class CharacterManagement extends DialogBase implements IDialogHandler {
                 //"Change Portrait",
                 "Change Head",
                 "Change Description",
+                "Toggle Helmet Display",
                 "Back"
         );
 
@@ -60,7 +62,10 @@ public class CharacterManagement extends DialogBase implements IDialogHandler {
                     case 4: // Change Description
                         SwitchConversation("ChangeDescription");
                         break;
-                    case 5: // Back
+                    case 5: // Toggle Helmet Display
+                        HelmetToggleSystem.ToggleHelmetDisplay(GetPC());
+                        break;
+                    case 6: // Back
                         SwitchConversation("RestMenu");
                         break;
                 }

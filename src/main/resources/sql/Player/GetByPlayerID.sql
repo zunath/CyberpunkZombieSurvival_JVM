@@ -39,6 +39,7 @@ SELECT pc.PlayerID ,
        pc.RespawnLocationOrientation ,
        pc.DateLastForcedSPReset ,
        pc.DateSanctuaryEnds ,
-       pc.IsSanctuaryOverrideEnabled
+       pc.IsSanctuaryOverrideEnabled,
+       pc.DisplayHelmet
 FROM dbo.PlayerCharacters pc
 WHERE pc.PlayerID = :playerID

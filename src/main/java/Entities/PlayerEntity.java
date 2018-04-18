@@ -95,6 +95,9 @@ public class PlayerEntity {
     @Column(name = "IsSanctuaryOverrideEnabled")
     private boolean isSanctuaryOverrideEnabled;
 
+    @Column(name = "DisplayHelmet")
+    private boolean displayHelmet;
+
     public PlayerEntity()
     {
 
@@ -448,5 +451,13 @@ public class PlayerEntity {
 
     public void setSanctuaryOverrideEnabled(boolean sanctuaryOverrideEnabled) {
         isSanctuaryOverrideEnabled = sanctuaryOverrideEnabled;
+    }
+
+    public boolean isDisplayHelmet() {
+        return displayHelmet;
+    }
+
+    public void setDisplayHelmet(boolean displayHelmet) {
+        this.displayHelmet = displayHelmet;
     }
 }
