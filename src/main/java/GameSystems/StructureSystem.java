@@ -7,6 +7,7 @@ import Enumerations.QuestID;
 import Enumerations.StructurePermission;
 import GameObject.PlayerGO;
 import Helper.ColorToken;
+import NWNX.NWNX_Chat;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.nwnx.nwnx2.jvm.*;
@@ -16,6 +17,9 @@ import org.nwnx.nwnx2.jvm.constants.ObjectType;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.nwnx.nwnx2.jvm.NWScript.*;
+import static org.nwnx.nwnx2.jvm.NWScript.sendMessageToPC;
 
 
 public class StructureSystem {
@@ -83,6 +87,23 @@ public class StructureSystem {
             }
 
         }
+    }
+
+    public static void OnModuleNWNXChat(NWObject sender)
+    {
+        if(getLocalInt(sender, "LISTENING_FOR_NEW_CONTAINER_NAME") != 1) return;
+        if(!getIsPC(sender)) return;
+
+        NWNX_Chat.SkipMessage();
+        String text = NWNX_Chat.GetMessage().trim();
+        if(text.length() > 32)
+        {
+            floatingTextStringOnCreature("Container names must be 32 characters or less.", sender, false);
+            return;
+        }
+
+        setLocalString(sender, "NEW_CONTAINER_NAME", text);
+        sendMessageToPC(sender, "New container name received. Please press the 'Next' button in the conversation window.");
     }
 
     public static boolean IsPCMovingStructure(NWObject oPC)
@@ -458,6 +479,7 @@ public class StructureSystem {
             pcStructure.setLocationZ(entity.getLocationZ());
             pcStructure.setPcTerritoryFlag(entity.getPcTerritoryFlag());
             pcStructure.setIsUseable(entity.getBlueprint().isUseable());
+            pcStructure.setCustomName("");
 
             repo.Save(pcStructure);
             NWScript.setLocalInt(structurePlaceable, StructureIDVariableName, pcStructure.getPcTerritoryFlagStructureID());
@@ -667,6 +689,32 @@ public class StructureSystem {
         {
             return false;
         }
+    }
+
+    public static void SetStructureCustomName(NWObject oPC, NWObject structure, String customName)
+    {
+        StructureRepository repo = new StructureRepository();
+        int structureID = GetPlaceableStructureID(structure);
+        customName = customName.trim();
+
+        if(structureID <= 0) return;
+        if(customName.equals("")) return;
+
+        PCTerritoryFlagStructureEntity entity = repo.GetPCStructureByID(structureID);
+
+        if(!PlayerHasPermission(oPC, StructurePermission.CanRenameStructures, entity.getPcTerritoryFlag().getPcTerritoryFlagID()))
+        {
+            floatingTextStringOnCreature("You don't have permission to rename structures. Contact the territory owner for permission.", oPC, false);
+            return;
+        }
+
+        customName += " (" + entity.getBlueprint().getItemStorageCount() + " items)";
+        entity.setCustomName(customName);
+
+        repo.Save(entity);
+        setName(structure, customName);
+
+        floatingTextStringOnCreature("New name set: " + customName, oPC, false);
     }
 
 }

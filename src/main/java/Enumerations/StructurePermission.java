@@ -9,4 +9,5 @@ public class StructurePermission {
     public static final int CanRotateStructures = 5;
     public static final int CanAccessPersistentStorage = 6;
     public static final int CanAccessResearchSlots = 7;
+    public static final int CanRenameStructures = 8;
 }
