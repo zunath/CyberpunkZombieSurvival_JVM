@@ -80,6 +80,11 @@ public class StructureSystem {
                 NWScript.setPlotFlag(structurePlaceable, true);
                 NWScript.setUseableFlag(structurePlaceable, structure.isUseable());
 
+                if(!structure.getCustomName().equals(""))
+                {
+                    setName(structurePlaceable, structure.getCustomName());
+                }
+
                 if(structure.getBlueprint().getItemStorageCount() > 0)
                 {
                     NWScript.setName(structurePlaceable, NWScript.getName(structurePlaceable, false) + " (" + structure.getBlueprint().getItemStorageCount() + " items)");
