@@ -8,23 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="486e3add-e013-4d47-abab-c86692a1ecb0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostCHA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostCHA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostCON.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostCON.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostDEX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostDEX.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostEvasion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostEvasion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostINT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostINT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostSTR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostSTR.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostSearch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostStealth.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostStealth.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostWIS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostWIS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/Light.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/Light.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Blind.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Blind.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Ice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Ice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Snare.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Snare.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Stun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Stun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/Regenerate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/Regenerate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/TurnUndead.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/TurnUndead.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/Melee/SkullBash.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Melee/SkullBash.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -37,92 +20,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="BoostSearch.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostSearch.java">
+      <file leaf-file-name="Evasive.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Passive/Evasive.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="730">
-              <caret line="71" column="99" selection-start-line="71" selection-start-column="99" selection-end-line="71" selection-end-column="99" />
+            <state relative-caret-position="638">
+              <caret line="45" column="41" selection-start-line="45" selection-start-column="41" selection-end-line="45" selection-end-column="41" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BoostStealth.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostStealth.java">
+      <file leaf-file-name="ArmorSystem.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/ArmorSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="611">
-              <caret line="71" column="136" selection-start-line="71" selection-start-column="136" selection-end-line="71" selection-end-column="136" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BoostSTR.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostSTR.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="543">
-              <caret line="72" column="101" selection-start-line="72" selection-start-column="101" selection-end-line="72" selection-end-column="101" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BoostWIS.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostWIS.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="645">
-              <caret line="72" column="101" selection-start-line="72" selection-start-column="101" selection-end-line="72" selection-end-column="101" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Light.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/Light.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="543">
-              <caret line="75" column="91" selection-start-line="75" selection-start-column="91" selection-end-line="75" selection-end-column="91" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Refresh.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/Refresh.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-195">
-              <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ElectricFist.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Melee/ElectricFist.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-212">
-              <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FlameBlade.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Melee/FlameBlade.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-52">
-              <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SkullBash.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Melee/SkullBash.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="57" column="112" selection-start-line="57" selection-start-column="112" selection-end-line="57" selection-end-column="112" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PiercingToss.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Ranged/PiercingToss.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1">
-              <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+            <state relative-caret-position="423">
+              <caret line="61" column="10" selection-start-line="61" selection-start-column="10" selection-end-line="61" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -140,7 +51,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>dext</find>
       <find>distance</find>
       <find>.gethitpoints</find>
       <find>NWNX_Object.SetEventHandler(</find>
@@ -170,6 +80,7 @@
       <find>manipualte</find>
       <find>setcreatedate</find>
       <find>setIsUs</find>
+      <find>SetBaseAC</find>
     </findStrings>
     <replaceStrings>
       <replace>final</replace>
@@ -197,8 +108,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/Item/Repair/ArmorRepairKit.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Item/Repair/BladeRepairKit.java" />
         <option value="$PROJECT_DIR$/src/main/java/Item/Repair/BluntRepairKit.java" />
         <option value="$PROJECT_DIR$/src/main/java/Item/Repair/FirearmRepairKit.java" />
         <option value="$PROJECT_DIR$/src/main/java/GameSystems/InventorySystem.java" />
@@ -248,6 +157,8 @@
         <option value="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostWIS.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/Light.java" />
         <option value="$PROJECT_DIR$/src/main/java/Abilities/Melee/SkullBash.java" />
+        <option value="$PROJECT_DIR$/src/main/java/GameSystems/ArmorSystem.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Abilities/Passive/Evasive.java" />
       </list>
     </option>
   </component>
@@ -345,6 +256,15 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="Abilities" type="462c0819:PsiDirectoryNode" />
               <item name="Melee" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CyberpunkZombieSurvival_JVM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CyberpunkZombieSurvival_JVM" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Abilities" type="462c0819:PsiDirectoryNode" />
+              <item name="Passive" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CyberpunkZombieSurvival_JVM" type="b2602c69:ProjectViewProjectNode" />
@@ -574,20 +494,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1508477719987</updated>
-    </task>
-    <task id="LOCAL-00041" summary="Branch NWNX_Player's StopGuiTimingBar call based on the type of script passed in.">
-      <created>1521287962445</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1521287962445</updated>
-    </task>
-    <task id="LOCAL-00042" summary="Increase the benefit of firearm accuracy and add a bonus/penalty based on DEX modifier when firing guns.">
-      <created>1521290502544</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1521290502544</updated>
     </task>
     <task id="LOCAL-00043" summary="Update database backup.">
       <created>1521454856481</created>
@@ -918,7 +824,21 @@
       <option name="project" value="LOCAL" />
       <updated>1524097273645</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="Add 0.1f seconds to all duration effects for abilities.">
+      <created>1525164393610</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1525164393611</updated>
+    </task>
+    <task id="LOCAL-00091" summary="Move the evasive ability check to the armor system. Change ability equip/unequip to use the armor system AC calc.">
+      <created>1525164705330</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1525164705330</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="TodoView">
@@ -936,6 +856,7 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="9" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32199788" />
       <window_info anchor="right" id="Palette&#9;" order="4" />
       <window_info id="Image Layers" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
@@ -948,6 +869,7 @@
       <window_info id="Designer" order="9" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16875" />
       <window_info anchor="bottom" id="Statistic" order="20" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32624868" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24947807" />
       <window_info id="UI Designer" order="5" />
@@ -955,11 +877,9 @@
       <window_info id="Favorites" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="5" weight="0.39660656" />
       <window_info anchor="bottom" id="DB Execution Console" order="10" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.32199788" />
       <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="bottom" id="Inspection Results" order="21" weight="0.32938644" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32624868" />
       <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
       <window_info id="Project Explorer" order="3" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -987,8 +907,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Remove debug line." />
-    <MESSAGE value="Backup database and update module." />
     <MESSAGE value="Add missing script files to module." />
     <MESSAGE value="Use environment variables for database connections. Remove ini4j library. Update jvm library. Remove dead area instancing code." />
     <MESSAGE value="Remove database.ini example and update docker scripts to use new environment variables for SQL server." />
@@ -1012,7 +930,9 @@
     <MESSAGE value="Add a way to toggle helmets from the character management menu." />
     <MESSAGE value="Add a way to change container names." />
     <MESSAGE value="Reapply custom names on structures after reload." />
-    <option name="LAST_COMMIT_MESSAGE" value="Reapply custom names on structures after reload." />
+    <MESSAGE value="Add 0.1f seconds to all duration effects for abilities." />
+    <MESSAGE value="Move the evasive ability check to the armor system. Change ability equip/unequip to use the armor system AC calc." />
+    <option name="LAST_COMMIT_MESSAGE" value="Move the evasive ability check to the armor system. Change ability equip/unequip to use the armor system AC calc." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1024,20 +944,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/Data/Repository/MapPinRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Data/DataAccess.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="84" column="63" selection-start-line="84" selection-start-column="63" selection-end-line="84" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/MapPinSystem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
@@ -1370,8 +1276,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Ranged/PiercingToss.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+        <state relative-caret-position="390">
+          <caret line="42" column="26" lean-forward="true" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/ArmorSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="61" column="10" selection-start-line="61" selection-start-column="10" selection-end-line="61" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Passive/Evasive.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="638">
+          <caret line="45" column="41" selection-start-line="45" selection-start-column="41" selection-end-line="45" selection-end-column="41" />
         </state>
       </provider>
     </entry>
