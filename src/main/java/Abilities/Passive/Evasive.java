@@ -1,6 +1,7 @@
 package Abilities.Passive;
 
 import Abilities.IAbility;
+import GameSystems.ArmorSystem;
 import NWNX.NWNX_Creature;
 import org.nwnx.nwnx2.jvm.NWObject;
 
@@ -38,12 +39,12 @@ public class Evasive implements IAbility {
 
     @Override
     public void OnEquip(NWObject oPC) {
-        NWNX_Creature.SetBaseAC(oPC, NWNX_Creature.GetBaseAC(oPC) + 2);
+        ArmorSystem.ApplyArmorBaseAC(oPC, null);
     }
 
     @Override
     public void OnUnequip(NWObject oPC) {
-        NWNX_Creature.SetBaseAC(oPC, NWNX_Creature.GetBaseAC(oPC) - 2);
+        ArmorSystem.ApplyArmorBaseAC(oPC, null);
     }
 
     @Override

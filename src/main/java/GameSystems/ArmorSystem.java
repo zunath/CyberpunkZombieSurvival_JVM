@@ -3,6 +3,7 @@ package GameSystems;
 import Bioware.AddItemPropertyPolicy;
 import Bioware.XP2;
 import Common.Constants;
+import Enumerations.AbilityType;
 import Enumerations.CustomItemProperty;
 import NWNX.NWNX_Creature;
 import org.nwnx.nwnx2.jvm.NWItemProperty;
@@ -58,7 +59,7 @@ public class ArmorSystem {
         }
     }
 
-    private static void ApplyArmorBaseAC(NWObject oPC, NWObject itemUnequipped)
+    public static void ApplyArmorBaseAC(NWObject oPC, NWObject itemUnequipped)
     {
         int ac = 0;
         for(int slot = 0; slot < Constants.NumberOfInventorySlots; slot++)
@@ -85,6 +86,12 @@ public class ArmorSystem {
                 ac += itemAC;
             }
         }
+
+        if(MagicSystem.IsAbilityEquipped(oPC, AbilityType.Evasive))
+        {
+            ac += 2;
+        }
+
 
         NWNX_Creature.SetBaseAC(oPC, ac);
     }
