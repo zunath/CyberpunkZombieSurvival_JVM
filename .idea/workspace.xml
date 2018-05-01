@@ -8,7 +8,23 @@
   <component name="ChangeListManager">
     <list default="true" id="486e3add-e013-4d47-abab-c86692a1ecb0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GameSystems/StructureSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GameSystems/StructureSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostCHA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostCHA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostCON.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostCON.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostDEX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostDEX.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostEvasion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostEvasion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostINT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostINT.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostSTR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostSTR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostSearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostStealth.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostStealth.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostWIS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostWIS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/Light.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/Light.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Blind.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Blind.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Ice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Ice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Snare.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Snare.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Stun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Stun.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/Regenerate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/Regenerate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/TurnUndead.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/TurnUndead.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Abilities/Melee/SkullBash.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Abilities/Melee/SkullBash.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -21,20 +37,92 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="StructureSystem.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/StructureSystem.java">
+      <file leaf-file-name="BoostSearch.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostSearch.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="454">
-              <caret line="86" lean-forward="true" selection-start-line="86" selection-end-line="86" />
+            <state relative-caret-position="730">
+              <caret line="71" column="99" selection-start-line="71" selection-start-column="99" selection-end-line="71" selection-end-column="99" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PCTerritoryFlagStructureEntity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Entities/PCTerritoryFlagStructureEntity.java">
+      <file leaf-file-name="BoostStealth.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostStealth.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" selection-start-line="2" selection-end-line="2" />
+            <state relative-caret-position="611">
+              <caret line="71" column="136" selection-start-line="71" selection-start-column="136" selection-end-line="71" selection-end-column="136" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BoostSTR.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostSTR.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="543">
+              <caret line="72" column="101" selection-start-line="72" selection-start-column="101" selection-end-line="72" selection-end-column="101" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BoostWIS.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostWIS.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="645">
+              <caret line="72" column="101" selection-start-line="72" selection-start-column="101" selection-end-line="72" selection-end-column="101" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Light.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/Light.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="543">
+              <caret line="75" column="91" selection-start-line="75" selection-start-column="91" selection-end-line="75" selection-end-column="91" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Refresh.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/Refresh.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-195">
+              <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ElectricFist.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Melee/ElectricFist.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-212">
+              <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FlameBlade.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Melee/FlameBlade.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-52">
+              <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SkullBash.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Melee/SkullBash.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="57" column="112" selection-start-line="57" selection-start-column="112" selection-end-line="57" selection-end-column="112" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PiercingToss.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Ranged/PiercingToss.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1">
+              <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -109,23 +197,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/GameSystems/AreaInstanceSystem.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Conversation/Quest/Tutorial.java" />
-        <option value="$PROJECT_DIR$/src/main/java/GameSystems/ArmorSystem.java" />
-        <option value="$PROJECT_DIR$/src/main/java/GameSystems/CraftSystem.java" />
-        <option value="$PROJECT_DIR$/src/main/java/GameSystems/DiseaseSystem.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/Regenerate.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/Cure.java" />
-        <option value="$PROJECT_DIR$/src/main/java/GameSystems/RadioSystem.java" />
-        <option value="$PROJECT_DIR$/nwn/server-files/docker-linux-startServer.sh" />
-        <option value="$PROJECT_DIR$/nwn/server-files/docker-windows.startServer.cmd" />
-        <option value="$PROJECT_DIR$/src/main/java/CustomEffect/PoisonEffect.java" />
-        <option value="$PROJECT_DIR$/src/main/java/CustomEffect/BleedingEffect.java" />
-        <option value="$PROJECT_DIR$/src/main/java/CustomEffect/BurnEffect.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Item/XPTome.java" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/main/java/Helper/ItemHelper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/GameSystems/DurabilitySystem.java" />
         <option value="$PROJECT_DIR$/src/main/java/Item/Repair/ArmorRepairKit.java" />
         <option value="$PROJECT_DIR$/src/main/java/Item/Repair/BladeRepairKit.java" />
         <option value="$PROJECT_DIR$/src/main/java/Item/Repair/BluntRepairKit.java" />
@@ -160,6 +231,23 @@
         <option value="$PROJECT_DIR$/src/main/java/Conversation/StructureStorage.java" />
         <option value="$PROJECT_DIR$/src/main/java/Placeable/StructureSystem/PersistentStorage/OnUsed.java" />
         <option value="$PROJECT_DIR$/src/main/java/GameSystems/StructureSystem.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/Regenerate.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/TurnUndead.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Blind.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Ice.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Snare.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Stun.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostCHA.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostCON.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostDEX.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostEvasion.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostINT.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostSearch.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostStealth.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostSTR.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostWIS.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/Light.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Abilities/Melee/SkullBash.java" />
       </list>
     </option>
   </component>
@@ -207,7 +295,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -232,6 +319,41 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CyberpunkZombieSurvival_JVM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CyberpunkZombieSurvival_JVM" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Abilities" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CyberpunkZombieSurvival_JVM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CyberpunkZombieSurvival_JVM" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Abilities" type="462c0819:PsiDirectoryNode" />
+              <item name="EnhancingMagic" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CyberpunkZombieSurvival_JVM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CyberpunkZombieSurvival_JVM" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Abilities" type="462c0819:PsiDirectoryNode" />
+              <item name="Melee" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CyberpunkZombieSurvival_JVM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CyberpunkZombieSurvival_JVM" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Abilities" type="462c0819:PsiDirectoryNode" />
+              <item name="Ranged" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CyberpunkZombieSurvival_JVM" type="b2602c69:ProjectViewProjectNode" />
@@ -330,6 +452,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
       <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
@@ -451,13 +574,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1508477719987</updated>
-    </task>
-    <task id="LOCAL-00040" summary="Apply a CON bonus to natural healing as long as modifier is above 0 (no penalties)">
-      <created>1521287391557</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1521287391557</updated>
     </task>
     <task id="LOCAL-00041" summary="Branch NWNX_Player's StopGuiTimingBar call based on the type of script passed in.">
       <created>1521287962445</created>
@@ -795,7 +911,14 @@
       <option name="project" value="LOCAL" />
       <updated>1524047162099</updated>
     </task>
-    <option name="localTasksCounter" value="89" />
+    <task id="LOCAL-00089" summary="Reapply custom names on structures after reload.">
+      <created>1524097273645</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1524097273645</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="TodoView">
@@ -813,37 +936,37 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="9" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.32199788" />
       <window_info anchor="right" id="Palette&#9;" order="4" />
       <window_info id="Image Layers" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="bottom" id="Event Log" order="19" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="19" side_tool="true" weight="0.32943678" />
       <window_info anchor="right" id="Maven Projects" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="14" weight="0.32731137" />
       <window_info anchor="bottom" id="Run" order="4" />
-      <window_info anchor="bottom" id="Version Control" order="14" weight="0.32832617" />
       <window_info anchor="bottom" id="Terminal" order="16" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="9" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16875" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16875" />
       <window_info anchor="bottom" id="Statistic" order="20" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32624868" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24947807" />
       <window_info id="UI Designer" order="5" />
       <window_info anchor="right" id="Theme Preview" order="7" />
-      <window_info anchor="bottom" id="Debug" order="5" weight="0.39660656" />
       <window_info id="Favorites" order="8" side_tool="true" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Debug" order="5" weight="0.39660656" />
       <window_info anchor="bottom" id="DB Execution Console" order="10" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32199788" />
       <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Inspection Results" order="21" weight="0.32938644" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32624868" />
       <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
       <window_info id="Project Explorer" order="3" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" id="FAQ Robot" order="6" />
       <window_info id="DB Browser" order="6" />
       <window_info id="Job Explorer" order="4" />
-      <window_info anchor="bottom" id="Inspection Results" order="21" weight="0.32938644" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="MaxCompute Console" order="17" />
     </layout>
   </component>
@@ -864,7 +987,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Recalc BAB on client login." />
     <MESSAGE value="Remove debug line." />
     <MESSAGE value="Backup database and update module." />
     <MESSAGE value="Add missing script files to module." />
@@ -889,7 +1011,8 @@
     <MESSAGE value="Fix a typo." />
     <MESSAGE value="Add a way to toggle helmets from the character management menu." />
     <MESSAGE value="Add a way to change container names." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add a way to change container names." />
+    <MESSAGE value="Reapply custom names on structures after reload." />
+    <option name="LAST_COMMIT_MESSAGE" value="Reapply custom names on structures after reload." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -901,167 +1024,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/nwn/server-files/docker-windows.startServer.cmd">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="47" column="25" selection-start-line="47" selection-start-column="25" selection-end-line="47" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/CustomEffect/PoisonEffect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/CustomEffect/ShockEffect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/CustomEffect/BleedingEffect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/CustomEffect/BurnEffect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="1" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Herb.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Blueprint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Item/XPTome.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Entities/QuestEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="32" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/libs/org.nwnx.nwnx2.jvm.jar!/org/nwnx/nwnx2/jvm/constants/BaseItem.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="68" column="43" selection-start-line="68" selection-start-column="41" selection-end-line="68" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Helper/ItemHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="587">
-          <caret line="112" column="8" selection-start-line="112" selection-start-column="8" selection-end-line="112" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Repair/ArmorRepairKit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="53" selection-start-line="32" selection-start-column="53" selection-end-line="32" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/DurabilitySystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="603">
-          <caret line="142" column="24" selection-start-line="142" selection-start-column="24" selection-end-line="142" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Repair/BladeRepairKit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="53" selection-start-line="32" selection-start-column="53" selection-end-line="32" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="41" lean-forward="true" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Repair/FirearmRepairKit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="53" selection-start-line="32" selection-start-column="53" selection-end-line="32" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Item/Repair/BluntRepairKit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="53" selection-start-line="32" selection-start-column="53" selection-end-line="32" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/InventorySystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="672">
-          <caret line="194" column="128" selection-start-line="194" selection-start-column="128" selection-end-line="194" selection-end-column="128" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Item/RevivalStone.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Event/Area/OnEnter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="69" column="55" selection-start-line="69" selection-start-column="55" selection-end-line="69" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/sql/MapPin/GetPlayerMapPins.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/sql/MapPin/DeletePlayerMapPins.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Entities/PCMapPinEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1292">
-          <caret line="76" lean-forward="true" selection-start-line="76" selection-end-line="76" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Data/Repository/MapPinRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="612">
@@ -1228,9 +1190,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2975">
           <caret line="175" lean-forward="true" selection-start-line="175" selection-end-line="175" />
-          <folding>
-            <element signature="e#570#597#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1250,8 +1209,169 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/GameSystems/StructureSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="86" lean-forward="true" selection-start-line="86" selection-end-line="86" />
+        <state relative-caret-position="272">
+          <caret line="79" column="7" selection-start-line="79" selection-start-column="7" selection-end-line="79" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/Regenerate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="611">
+          <caret line="68" column="91" selection-start-line="68" selection-start-column="91" selection-end-line="68" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/HolyMagic/TurnUndead.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="713">
+          <caret line="66" column="95" selection-start-line="66" selection-start-column="95" selection-end-line="66" selection-end-column="95" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Blind.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="611">
+          <caret line="63" column="91" selection-start-line="63" selection-start-column="91" selection-end-line="63" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Flame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-170">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Ice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="662">
+          <caret line="66" column="108" selection-start-line="66" selection-start-column="108" selection-end-line="66" selection-end-column="108" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Poison.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-103">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Snare.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="577">
+          <caret line="58" column="129" selection-start-line="58" selection-start-column="129" selection-end-line="58" selection-end-column="129" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EvocationMagic/Stun.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="59" column="91" selection-start-line="59" selection-start-column="91" selection-end-line="59" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostCHA.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="747">
+          <caret line="72" column="101" selection-start-line="72" selection-start-column="101" selection-end-line="72" selection-end-column="101" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostCON.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="696">
+          <caret line="72" column="101" selection-start-line="72" selection-start-column="101" selection-end-line="72" selection-end-column="101" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostDEX.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="72" column="101" selection-start-line="72" selection-start-column="101" selection-end-line="72" selection-end-column="101" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostEvasion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="628">
+          <caret line="72" column="96" selection-start-line="72" selection-start-column="96" selection-end-line="72" selection-end-column="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostINT.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="747">
+          <caret line="72" column="101" selection-start-line="72" selection-start-column="101" selection-end-line="72" selection-end-column="101" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostSearch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="730">
+          <caret line="71" column="99" selection-start-line="71" selection-start-column="99" selection-end-line="71" selection-end-column="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostStealth.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="611">
+          <caret line="71" column="136" selection-start-line="71" selection-start-column="136" selection-end-line="71" selection-end-column="136" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostSTR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="543">
+          <caret line="72" column="101" selection-start-line="72" selection-start-column="101" selection-end-line="72" selection-end-column="101" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/BoostWIS.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="72" column="101" selection-start-line="72" selection-start-column="101" selection-end-line="72" selection-end-column="101" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/Light.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="543">
+          <caret line="75" column="91" selection-start-line="75" selection-start-column="91" selection-end-line="75" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/EnhancingMagic/Refresh.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-195">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Melee/ElectricFist.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-212">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Melee/FlameBlade.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-52">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Melee/SkullBash.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="57" column="112" selection-start-line="57" selection-start-column="112" selection-end-line="57" selection-end-column="112" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Abilities/Ranged/PiercingToss.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
         </state>
       </provider>
     </entry>

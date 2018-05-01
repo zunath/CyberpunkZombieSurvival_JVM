@@ -64,7 +64,7 @@ public class Ice implements IAbility {
 
         Scheduler.delay(oPC, 50, () -> NWScript.applyEffectToObject(DurationType.TEMPORARY, NWScript.effectDamage(damage, DamageType.COLD, DamagePower.NORMAL), oTarget, 0.0f));
 
-        NWScript.applyEffectToObject(DurationType.TEMPORARY, NWScript.effectSlow(), oTarget, slowLength);
+        NWScript.applyEffectToObject(DurationType.TEMPORARY, NWScript.effectSlow(), oTarget, slowLength+0.1f);
     }
 
     @Override

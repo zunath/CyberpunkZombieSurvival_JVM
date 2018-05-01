@@ -73,7 +73,7 @@ public class Light implements IAbility {
 
         NWEffect effect = NWScript.effectVisualEffect(vfxID, false);
 
-        NWScript.applyEffectToObject(DurationType.TEMPORARY, effect, oTarget, duration);
+        NWScript.applyEffectToObject(DurationType.TEMPORARY, effect, oTarget, duration+0.1f);
     }
 
     @Override

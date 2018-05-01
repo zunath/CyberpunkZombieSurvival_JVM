@@ -69,7 +69,7 @@ public class BoostSearch implements IAbility {
         }
 
         NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectVisualEffect(visualID, false), oTarget, 0.0f);
-        NWScript.applyEffectToObject(DurationType.TEMPORARY, skillEffect, oTarget, totalLength);
+        NWScript.applyEffectToObject(DurationType.TEMPORARY, skillEffect, oTarget, totalLength+0.1f);
     }
 
     @Override

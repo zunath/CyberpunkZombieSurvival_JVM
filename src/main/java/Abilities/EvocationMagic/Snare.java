@@ -56,7 +56,7 @@ public class Snare implements IAbility {
         NWEffect effect = NWScript.effectMovementSpeedDecrease(75);
 
         NWScript.applyEffectToObject(DurationType.TEMPORARY, effect, oTarget, length);
-        NWScript.applyEffectToObject(DurationType.TEMPORARY, NWScript.effectVisualEffect(Vfx.IMP_ACID_L, false), oPC, length);
+        NWScript.applyEffectToObject(DurationType.TEMPORARY, NWScript.effectVisualEffect(Vfx.IMP_ACID_L, false), oPC, length+0.1f);
     }
 
     @Override

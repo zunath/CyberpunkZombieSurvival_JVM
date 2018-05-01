@@ -69,8 +69,8 @@ public class BoostStealth implements IAbility {
         }
 
         NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectVisualEffect(visualID, false), oTarget, 0.0f);
-        NWScript.applyEffectToObject(DurationType.TEMPORARY, NWScript.effectSkillIncrease(Skill.HIDE, amount), oTarget, totalLength);
-        NWScript.applyEffectToObject(DurationType.TEMPORARY, NWScript.effectSkillIncrease(Skill.MOVE_SILENTLY, amount), oTarget, totalLength);
+        NWScript.applyEffectToObject(DurationType.TEMPORARY, NWScript.effectSkillIncrease(Skill.HIDE, amount), oTarget, totalLength+0.1f);
+        NWScript.applyEffectToObject(DurationType.TEMPORARY, NWScript.effectSkillIncrease(Skill.MOVE_SILENTLY, amount), oTarget, totalLength+0.1f);
     }
 
     @Override

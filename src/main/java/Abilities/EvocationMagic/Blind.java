@@ -61,7 +61,7 @@ public class Blind implements IAbility {
         int amount = 2 + (itemBonus / 3);
         NWEffect effect = NWScript.effectAttackDecrease(amount, AttackBonus.MISC);
 
-        NWScript.applyEffectToObject(DurationType.TEMPORARY, effect, oTarget, duration);
+        NWScript.applyEffectToObject(DurationType.TEMPORARY, effect, oTarget, duration+0.1f);
         NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectVisualEffect(VfxImp.BLIND_DEAF_M, false), oTarget, 0.0f);
 
     }

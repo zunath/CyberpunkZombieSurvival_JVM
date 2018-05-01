@@ -55,7 +55,7 @@ public class SkullBash implements IAbility {
         NWScript.applyEffectToObject(Duration.TYPE_INSTANT, NWScript.effectDamage(damage, DamageType.BLUDGEONING, DamagePower.NORMAL), oTarget, 0.0f);
 
         float duration = (float)ThreadLocalRandom.current().nextDouble(1.0, 4.0);
-        NWScript.applyEffectToObject(Duration.TYPE_TEMPORARY, NWScript.effectKnockdown(), oTarget, duration);
+        NWScript.applyEffectToObject(Duration.TYPE_TEMPORARY, NWScript.effectKnockdown(), oTarget, duration+0.1f);
     }
 
     @Override

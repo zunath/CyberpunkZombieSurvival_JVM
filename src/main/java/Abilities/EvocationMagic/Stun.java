@@ -57,7 +57,7 @@ public class Stun implements IAbility {
         float duration = baseDuration + bonusDuration;
 
         NWEffect effect = NWScript.effectStunned();
-        NWScript.applyEffectToObject(DurationType.TEMPORARY, effect, oTarget, duration);
+        NWScript.applyEffectToObject(DurationType.TEMPORARY, effect, oTarget, duration+0.1f);
         NWScript.applyEffectToObject(DurationType.INSTANT, NWScript.effectVisualEffect(VfxImp.STUN, false), oTarget, 0.0f);
     }
 

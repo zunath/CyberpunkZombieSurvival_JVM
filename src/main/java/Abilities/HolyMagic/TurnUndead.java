@@ -64,7 +64,7 @@ public class TurnUndead implements IAbility {
 
         if(NWScript.willSave(oTarget, willSaveDC, SavingThrow.TYPE_DIVINE, oPC) == 0)
         {
-            NWScript.applyEffectToObject(DurationType.TEMPORARY, effect, oTarget, duration);
+            NWScript.applyEffectToObject(DurationType.TEMPORARY, effect, oTarget, duration+0.1f);
         }
 
     }

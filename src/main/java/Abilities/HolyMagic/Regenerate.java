@@ -66,7 +66,7 @@ public class Regenerate implements IAbility {
 
         NWEffect effect = NWScript.effectRegenerate(amount, interval);
 
-        NWScript.applyEffectToObject(DurationType.TEMPORARY, effect, oTarget, duration);
+        NWScript.applyEffectToObject(DurationType.TEMPORARY, effect, oTarget, duration+0.1f);
     }
 
     @Override
