@@ -95,7 +95,7 @@
     <file url="file://$PROJECT_DIR$/src/main/resources/sql/Structure/GetTerritoryPermissionByID.sql" />
     <file url="file://$PROJECT_DIR$/src/main/resources/sql/ZombieClothes/GetAllZombieClothes.sql" />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8  v181" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
